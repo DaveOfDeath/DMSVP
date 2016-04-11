@@ -1,3 +1,0 @@
-# DMSVP
-Vox Populi
-Testing
