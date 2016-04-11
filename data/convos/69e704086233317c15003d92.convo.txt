@@ -1,0 +1,437 @@
+idRef {
+  id: "69e704086233317c15003d92"
+}
+ui_name: "c08-s2_Planeyard_Computer"
+nodes {
+  idRef {
+    id: "69e78aea6233317c15003d98"
+  }
+  index: 0
+  text: "The researcher\'s work cyberterminal has been left on, presumably by the Lone Star investigators."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "69e8141d6233317c15003d9d"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "{{GM}}Read the notes for case file #95.{{/GM}}"
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d6134a396365e01b003a2b"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Read the notes for case file #96.{{/GM}}"
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d61338396365e01b003a29"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Read the notes for case file #98.{{/GM}}"
+    nextNodeIndex: 5
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d6132f396365e01b003a28"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Read the researcher\'s private notes.{{/GM}}"
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d61340396365e01b003a2a"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Leave the computer.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "6a0189e56233317c15003db0"
+  }
+  index: 2
+  text: "Case file #95, Federated Boeing Jetliner IDN#2305 \nCorporate owner: Ares\n\nThe plane had several mechanical issues resulting in a mayday at 3:04 AM on June 17th, 2053. \n2:45 AM - The pilot reported that the altimeter was reading in the negative values.\n2:49 AM - The co-pilot takes over the controls as the pilot leaves the cabin to investigate the rear of the plane."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "848dedea623331b412003d11"
+  }
+  index: 3
+  text: "2:58 AM - The pilot cannot be contacted or located by a plane steward.\n3:04 AM - The co-pilot radios in a mayday. \n3:12 AM - The plane crashes into an empty field in western North Dakota."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "6a01a6496233317c15003dc2"
+  }
+  index: 4
+  text: "Case file #96, Pratt & Whitney Unmanned IDN#327\nCorporate owner: Ares\n\nSummary: ***REDACTED***\nTime-log: ***REDACTED***"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "69f3b9f96233317c15003da3"
+  }
+  index: 5
+  text: "The file has been corrupted."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8e3a14cf623331403c004e73"
+  }
+  index: 6
+  text: "{{GM}}The notes that appear onscreen pertain to NTSB case file #96, the crash of an Ares jetliner near the UCAS and Sioux Nation border. The crash is reportedly the result of an equipment failure. Reading further into the investigator\'s notes, however, you find substantial evidence linking the crash to an experimental Renraku research initiative. This information could be worth a great deal to the right buyer.\n\nYou download the researcher\'s notes to your PDA.{{/GM}}\n\n"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "FoundCorpEvidence"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "c08-s2_CorpData"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Active Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51b0b025623331f021003a85"
+  }
+  index: 7
+  text: "The computer is locked with a two-factor encryption key."
+  branches {
+    responseText: "{{CC}}Decking: 4{{/CC}} Send a dummy token upstream and packet-sniff what returns."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 5
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 4
+        }
+      }
+    }
+    nextNodeIndex: 8
+  }
+  branches {
+    responseText: "{{GM}}Leave the computer.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51b0b1c4623331f021003a89"
+  }
+  index: 8
+  text: "The auto-crack in your deck\'s program easily pieces together a real token from the data within the returning authentication key.\n\nThe cyberterminal unlocks."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasCrackedComputer"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "518d7674643431b03f0041ab"
+          }
+          args {
+            string_value: "c06_BribedSergeant"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "518d7674643431b03f0041ab"
+          }
+          args {
+            string_value: "c06_BribedSergeant"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasCrackedComputer"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 7
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasCrackedComputer"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 1
+  auxiliaryLink: true
+}

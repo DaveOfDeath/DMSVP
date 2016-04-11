@@ -1,0 +1,653 @@
+idRef {
+  id: "9361b920623331e01300164a"
+}
+ui_name: "c10-s2_PlaneyardReturn_Spirit"
+nodes {
+  idRef {
+    id: "9362006a623331e013001650"
+  }
+  index: 0
+  text: "The air grows cold, and the spirits of dead children coalesce from the vapor of your breath. Their cherubic faces are burned, and their lips quiver as if they are about to cry. But their eyes are round and vacant, and they glare at you now, unblinking."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "42fd0380623665b80b0000d2"
+  }
+  index: 1
+  text: "We are the innocents who have perished in the flames... choking on smoke... as we fell from the sky, crying for our mothers. \n\nYou bring anchors to your world... which was once home to us... and we will use them to testify."
+  branches {
+    responseText: "{{GM}}Show the first magical fetish to the spirits.{{/GM}}"
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ae9cbb3236648c110065d4"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "42fd0380623665b80b0000d5"
+  }
+  index: 2
+  text: "We no longer see the world of flesh, Seeker. Only the essence and auras of living things. \n\nWords, though... words may echo through the veil, and sometimes... sometimes we may hear them."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "42fd0380623665b80b0000d8"
+  }
+  index: 3
+  text: "Last night, this place was filled with a scream that went on and on, drawing us to it. It was a man, crying out for a witness as he died...\n\nAnd so we came to bear witness... but fled in terror before the malevolent spirit... that profaned the man\'s remains.\n\nThis spirit was Other. It was not of this place. It had twisted its way through the veil and through the dark to come here."
+  branches {
+    responseText: "{{GM}}Show the second magical fetish to the spirits.{{/GM}}"
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ad53d03961636829001f25"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a12821623331d017001745"
+  }
+  index: 4
+  text: "When the Other had gone and we returned to our vigil, we found two creatures of flesh.\n\nOne you would call an elf, unsullied by technology and able to channel the energies of the cosmos... yet his spirit was corrupted from within. He was dark and twisted... yet not like the Other, so we did not flee."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a12821623331d017001748"
+  }
+  index: 5
+  text: "The second we knew to be a troll. Ribbons of his essence had been flayed from him, leaving cold machinery behind. \n\nHis aura was the aura of one simple and confused.\n\nBetween elf and troll lay the remains of the man whose sister now chants to us for justice."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a12821623331d01700174b"
+  }
+  index: 6
+  text: "The elf... his essence remains in this place. Where the man died. Something has been left behind. A small part of him, perhaps."
+  branches {
+    responseText: "{{GM}}Show the third magical fetish to the spirits.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "518d7674643431b03f0041ab"
+            }
+            args {
+              string_value: "c08_FetishCount"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 3
+        }
+      }
+    }
+    nextNodeIndex: 7
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51e81fec623331a81200011c"
+    }
+  }
+  branches {
+    responseText: "Spirit, can you tell us any more?"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "seattle"
+            }
+            args {
+              string_value: "C08FetishCount"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 4
+            }
+          }
+        }
+        args {
+          int_value: 3
+        }
+      }
+    }
+    nextNodeIndex: 8
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "SpiritEvidenceFound"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "ToldAboutEvidence"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ae9f1b3236648c110065e4"
+  }
+  index: 7
+  text: "Through us, you shall bear witness and hear the words of the elf and troll. \n\nPrepare yourself."
+  branches {
+    responseText: ""
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "SpiritVision"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae9f2a3236648c110065f4"
+  }
+  index: 8
+  text: "The spirits begin to fade. All but the one. Its eyes harden and it takes full measure of you, as if to commit everything about you to memory."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "51ae9f2a3236648c110065f7"
+  }
+  index: 9
+  text: "No. We must not stay."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae9f2a3236648c110065fa"
+  }
+  index: 10
+  text: "{{GM}}With the spirits gone, the young shaman releases her hold on the magical tether connecting her to the other realm. She reels from the backlash, or perhaps from the emotional toll of knowing her brother\'s last moments.{{/GM}}\n\nThey saw him. They were with him when he died..."
+  branches {
+    responseText: "You all right?"
+    nextNodeIndex: 11
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "19f3a1b46233313c15006f4c"
+  }
+  actions {
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "93fed5ad6233318c39004886"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ae9f2a3236648c110065fd"
+  }
+  index: 11
+  text: "{{GM}}She takes a series of controlled breaths, only shuddering with the first few.{{/GM}}\n\nNo, but I will be."
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "19f3a1b46233313c15006f4c"
+  }
+}
+nodes {
+  idRef {
+    id: "51aea06e3236648c1100660c"
+  }
+  index: 12
+  text: "I... I don\'t want that for him. Not what those poor souls have endured. My brother deserves to be free."
+  branches {
+    responseText: "He will be, once we find his killer."
+    nextNodeIndex: 13
+  }
+  branches {
+    responseText: "Can\'t get much more free than death."
+    nextNodeIndex: 15
+  }
+  branches {
+    responseText: "He is free. What we do now, we do for the living."
+    nextNodeIndex: 17
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "19f3a1b46233313c15006f4c"
+  }
+}
+nodes {
+  idRef {
+    id: "51aea13a3236648c11006611"
+  }
+  index: 13
+  text: "Yes. The elf and the troll."
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "19f3a1b46233313c15006f4c"
+  }
+}
+nodes {
+  idRef {
+    id: "51aea14f3236648c11006614"
+  }
+  index: 14
+  text: "We have to find that piece of the elf the spirits spoke of. It\'s our best hope of stopping this."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "19f3a1b46233313c15006f4c"
+  }
+}
+nodes {
+  idRef {
+    id: "51aea1733236648c11006616"
+  }
+  index: 15
+  text: "Do you truly believe that, after what we just witnessed?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "19f3a1b46233313c15006f4c"
+  }
+}
+nodes {
+  idRef {
+    id: "51aea3703236648c11006655"
+  }
+  index: 16
+  text: "{{GM}}She regards you with an expression falling somewhere between confusion, exasperation, and pity. Then she shakes her head.{{/GM}}\n\nOh, but what does it matter?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "19f3a1b46233313c15006f4c"
+  }
+}
+nodes {
+  idRef {
+    id: "51aea1823236648c11006618"
+  }
+  index: 17
+  text: "Thank you. And you\'re right. This isn\'t over yet."
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "19f3a1b46233313c15006f4c"
+  }
+}
+nodes {
+  idRef {
+    id: "51a12980623331d01700178d"
+  }
+  index: 18
+  text: "Our presence grows weary."
+  branches {
+    responseText: "{{GM}}Show the fourth magical fetish to the spirits.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "518d7674643431b03f0041ab"
+            }
+            args {
+              string_value: "c08_FetishCount"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 4
+        }
+      }
+    }
+    nextNodeIndex: 19
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ae9fdb3236648c11006605"
+    }
+  }
+  branches {
+    responseText: "Spirit, can you tell us any more?"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "seattle"
+            }
+            args {
+              string_value: "C08FetishCount"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 4
+            }
+          }
+        }
+        args {
+          int_value: 4
+        }
+      }
+    }
+    nextNodeIndex: 23
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a12981623331d017001790"
+  }
+  index: 19
+  text: "One of the spirits stares at the object for a long, long time. It lets out a sigh of relief as if reunited with a loved one after a long absence. It closes its eyes. Its face, once a mask of pain and despair, appears hopeful."
+  branches {
+    responseText: ""
+    nextNodeIndex: 20
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "51a12981623331d017001793"
+  }
+  index: 20
+  text: "May I depart, Seeker? I wish the rest I have long waited for. "
+  branches {
+    responseText: "Yes. Go now and rest, spirit. Thank you. "
+    actions {
+      ops {
+        functionName: "Kill Actor"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Actor)"
+                args {
+                  string_value: "93fed5ad6233318c39004886"
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "DeathMethod"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Stay. I may have further questions for you."
+    nextNodeIndex: 21
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a12981623331d017001797"
+  }
+  index: 21
+  text: "The spirits begin to fade. All but the one. Its eyes harden and it takes full measure of you, as if to commit everything about you to memory."
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "51a12981623331d01700179a"
+  }
+  index: 22
+  text: "And I may require something further of you. Some day."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a129be623331d0170017a4"
+  }
+  index: 23
+  text: "The spirits begin to fade. All but the one. Its eyes harden and it takes full measure of you, as if to commit everything about you to memory."
+  branches {
+    responseText: ""
+    nextNodeIndex: 24
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "51a129be623331d0170017a7"
+  }
+  index: 24
+  text: "No. We must not stay."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "VisionQuest"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  nextNodeIndex: 0
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "VisionQuest"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  nextNodeIndex: 18
+}

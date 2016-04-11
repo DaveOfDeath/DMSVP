@@ -1,0 +1,68 @@
+idRef {
+  id: "51b9f7b1623331000e00441e"
+}
+ui_name: "c17-s2_Seamstress_Doctor"
+nodes {
+  idRef {
+    id: "51b9f7b4623331000e004424"
+  }
+  index: 0
+  text: "Hey there, need anything from me?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ba004b623331541b00155d"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "I need some healing supplies."
+    actions {
+      ops {
+        functionName: "Open Store Screen From Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "8c5128bf3030313417004385"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Let me see your cyberware selection."
+    actions {
+      ops {
+        functionName: "Open Cyberware Screen From Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "8c5128bf3030313417004385"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Nothing right now."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

@@ -1,0 +1,248 @@
+idRef {
+  id: "51e071833963651821006cbf"
+}
+ui_name: "c09-s1_Tweakers_OverhearPushers"
+nodes {
+  idRef {
+    id: "51e075c33963651821006d1c"
+  }
+  index: 0
+  text: "{{GM}}The sound of raised voices comes clearly through the cracks in the wall, a clear edge of panic.{{/GM}}\n\nI\'m *telling you* it\'s only a matter of time! She and her crew took took out Stevie J\'s place. We need to put some security cameras and a door guard with two good eyes! "
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51e076b93963651821006d1f"
+  }
+  index: 1
+  text: "{{GM}}A new voice, with the heavy digitization of someone with a lot of cyber, calmly interjects.{{/GM}}\n\nWe don\'t need more guards. I\'ve got it covered. With a push of a button, I can make these chip-heads into my own personal killer puppets."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+}
+nodes {
+  idRef {
+    id: "51e078323963651821006d3d"
+  }
+  index: 2
+  text: "{{GM}}Coyote whispers with urgency.{{/GM}}\n\nNo matter what, I don\342\200\231t want any collateral damage in there. Shoot all the BTL pushers you want but no chip-heads die, if we can help it. Got it?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+  }
+  sourceInSceneRef {
+    id: "51c24dc8356164200d006df2"
+  }
+}
+nodes {
+  idRef {
+    id: "51e078323963651821006d40"
+  }
+  index: 3
+  text: "Sure. Of course. They\342\200\231re innocent.\n\nI also brought a concussion grenade like you asked. Better than fragging the tweakers if they get caught in the middle."
+  branches {
+    responseText: "I wouldn\342\200\231t say they\342\200\231re innocent."
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "No civilian casualties. Got it."
+    nextNodeIndex: 6
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "51be13eb3561642817005d04"
+  }
+}
+nodes {
+  idRef {
+    id: "51e078323963651821006d43"
+  }
+  index: 4
+  text: "No one\342\200\231s innocent. \n\n{{GM}}She looks at you both.{{/GM}}\n\nNot us, not anyone in the Sprawl. But they\342\200\231re chip-heads not pushers. They have a problem. They didn\342\200\231t ask for this."
+  branches {
+    responseText: "I still can\342\200\231t promise that no chip-heads will die."
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51e078323963651821006d46"
+  }
+  index: 5
+  text: "My run, my rules."
+  branches {
+    responseText: "No civilian casualties. Got it."
+    nextNodeIndex: 6
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I\342\200\231m in. I got your back."
+    nextNodeIndex: 6
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "That\342\200\231s not how I roll. Good luck with this. {{GM}}Abort the run and head back to the Union.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Open Scene"
+        args {
+          call_value {
+            functionName: "Get Map Item (Scene)"
+            args {
+              string_value: "c08-s3_Seamstress"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51e078323963651821006d50"
+  }
+  index: 6
+  text: ""
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51e078323963651821006d53"
+  }
+  index: 7
+  text: "Good. Let\'s go burn down their playhouse."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "No chiphead can die."
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5ad95d1b306434cc0f00434e"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+      }
+    }
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5ae2c41d306434cc0f004351"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+      }
+    }
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "51d34f4f3561642408000134"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

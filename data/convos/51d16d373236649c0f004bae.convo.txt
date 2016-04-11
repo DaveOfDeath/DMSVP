@@ -1,0 +1,265 @@
+idRef {
+  id: "51d16d373236649c0f004bae"
+}
+ui_name: "c17-s0_GunShop"
+nodes {
+  idRef {
+    id: "51d209953236649c0f004e75"
+  }
+  index: 0
+  text: "{{GM}}On his workbench, Buster currently has a MilSpec shotgun fully disassembled and its parts neatly arranged. He lovingly massages each piece with a microfiber cloth coated in some kind of gun oil or polish. Whatever the stuff is, it leaves the pieces shining brilliantly and pungent as hell.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countWeaponsVisits"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d21aed3236649c0f00528b"
+  }
+  index: 1
+  text: "Got some catalogs just come in, if you might be interested in an order. I can get gear shipped overnight from the manufacturer, though I won\'t lie to you, you\'ll be paying for the convenience.\n\nOtherwise, I got plenty of the usual bang-bangs waiting for a good home. What do you say?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d21aed3236649c0f00528e"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "What\'s the new hotness when it comes to dealing damage, Buster?"
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ddff3e6236652c0d000fce"
+    }
+  }
+  branches {
+    responseText: "I\'ll take a look at what you\'ve got."
+    actions {
+      ops {
+        functionName: "Open Store Screen From Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "8c521aa73030313417004386"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Nothing right now."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d21aed3236649c0f005291"
+  }
+  index: 3
+  text: "Well, there are two schools of thought on the matter. There are those who swear by their smartguns and such because they make the weapon more accurate, and thus more deadly. Then there are those who subscribe to the bigger boom theory, putting all their money on the biggest and baddest rounds. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d21aed3236649c0f005294"
+  }
+  index: 4
+  text: "But you ask me, it\'s all situational. That\'s where the real advances have come. You can pack a Panther assault cannon, but it won\'t do ya no favors if you\'re fighting in a basement hallway. By the same token, a roomsweeper might carve up your average pack of gangers up close \'n\' personal, but its range is a big limitation."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51de003b6236652c0d000fe0"
+  }
+  index: 5
+  text: "Military life never taught me that. It was dealing to runners like yourself that afforded me this epiphany. You\'ve got to be ready for anything."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+  }
+}
+nodes {
+  idRef {
+    id: "51de003b6236652c0d000fe3"
+  }
+  index: 6
+  text: "On that note, might I interest you in some custom mods?  Or perhaps some specialty grenades?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+}
+nodes {
+  idRef {
+    id: "51d209973236649c0f004e77"
+  }
+  index: 7
+  text: "I hope you\'re planning for the worst, and arming yourself as appropriate.\n\nIs there something I can show you?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countWeaponsVisits"
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d209983236649c0f004e79"
+  }
+  index: 8
+  text: "What can I do for you?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countWeaponsVisits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  nextNodeIndex: 0
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countWeaponsVisits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  nextNodeIndex: 7
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countWeaponsVisits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+  }
+  nextNodeIndex: 8
+}

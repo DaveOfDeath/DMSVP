@@ -1,0 +1,643 @@
+idRef {
+  id: "51bc9057633635e81000155b"
+}
+ui_name: "c21-s1 Approach team with Guard Officer"
+nodes {
+  idRef {
+    id: "51bc9081633635e810001561"
+  }
+  index: 0
+  text: "The facility is on lockdown. The remote scanners cleared your badge, but who are these people?"
+  branches {
+    responseText: "New members that Grandmother Jessica requested to see."
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "They are Brothers and Sisters who have been working undercover."
+    nextNodeIndex: 2
+  }
+  branches {
+    responseText: "That\'s none of your business. Let me pass or I\'ll report you."
+    nextNodeIndex: 7
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51bc91d3633635e810001566"
+  }
+  index: 1
+  text: "{{GM}}He seems satisfied.{{/GM}}\n\nI see. Well, until you deliver them to Grandmother Jessica you\342\200\231re responsible for them, so don\342\200\231t let them go wandering off."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51bc91d6633635e810001568"
+  }
+  index: 2
+  text: "Is that so? Who have they been working undercover for?"
+  branches {
+    responseText: "Father Willy."
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "Mother Lynne."
+    nextNodeIndex: 5
+  }
+  branches {
+    responseText: "Grandmother Jessica herself."
+    nextNodeIndex: 6
+  }
+  branches {
+    responseText: "Me."
+    nextNodeIndex: 7
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51bc9277633635e810001573"
+  }
+  index: 3
+  text: "Then Father Willy needs to escort them into the Inner Sanctum."
+  branches {
+    responseText: "Screw this! {{GM}}Pull out the guns.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Guards Open Fire"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "Are you really going to delay their report to Grandmother Jessica by making me get Father Willy?"
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51bc92f3633635e81000157d"
+  }
+  index: 4
+  text: "{{GM}}He considers.{{/GM}}\n\nAhhh. Okay... well until you deliver them to Grandmother Jessica, you\342\200\231re responsible for them, so don\342\200\231t let them go wandering."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51bc9279633635e810001575"
+  }
+  index: 5
+  text: "That doesn\'t sound right to me. Now stay out of the restricted area or we will be forced to open fire."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "InnerSanctumGoneBad"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51bc927b633635e810001577"
+  }
+  index: 6
+  text: "Oh, I see. Well, until you deliver them to Grandmother Jessica you\342\200\231re responsible for them, so don\342\200\231t let them go wandering off."
+}
+nodes {
+  idRef {
+    id: "51bc927e633635e810001579"
+  }
+  index: 7
+  text: "And who are you?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51bc9c63633635e8100015cb"
+  }
+  index: 8
+  text: ""
+  branches {
+    responseText: "I\'m Mother Julie."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "IDQuality"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+      ops {
+        functionName: "Compare Actor Gender"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Gender"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 9
+  }
+  branches {
+    responseText: "I\'m Father Julius. There seems to be a data entry issue in my record."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "IDQuality"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+      ops {
+        functionName: "Compare Actor Gender"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Gender"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "I\'m $(scene.FatherMother) $(s.name)."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "IDQuality"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 2
+        }
+      }
+    }
+    nextNodeIndex: 11
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "I\'m $(scene.FatherMother) $(s.name)."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "IDQuality"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+      ops {
+        functionName: "Compare Actor Gender"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Gender"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 12
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "I\'m $(scene.FatherMother) $(s.name)."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "IDQuality"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 13
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "I\'m Father Willy Hansen."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "IDQuality"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+      ops {
+        functionName: "Compare Actor Gender"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Gender"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 14
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "I\'m the $(s.guy) that can get your ass in a lot of trouble if you don\'t let us by."
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "GiveGuardName"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 15
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51bc9c63633635e8100015d1"
+  }
+  index: 9
+  text: "{{GM}}You hear the clicking of a keyboard.{{/GM}}\n\nOkay, newly minted Mother Julie, welcome to the Inner Sanctum."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51bcd216633635d816001c9e"
+  }
+  index: 10
+  text: "{{GM}}You hear the clicking of a keyboard.{{/GM}}\n\nMight of happened when they upgraded you to being a Mother ... I mean Father. \n\nWelcome to the Inner Sanctum."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51bc9c63633635e8100015d4"
+  }
+  index: 11
+  text: "{{GM}}You hear the clicking of a keyboard.{{/GM}}\n\nWelcome to the Inner Sanctum $(scene.FatherMother) $(l.name)."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51bc9c63633635e8100015d7"
+  }
+  index: 12
+  text: "{{GM}}You hear the clicking of a keyboard.{{/GM}}\n\nIt says here you should be Mother Julie."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Guards Open Fire"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51bc9c63633635e8100015ce"
+  }
+  index: 13
+  text: "{{GM}}You hear the clicking of a keyboard.{{/GM}}\n\nIt says here you should be Father Willy."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Guards Open Fire"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51bcd318633635d816001ca4"
+  }
+  index: 14
+  text: "You think this is my first day? I know Father Willy and you\'re not him."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Guards Open Fire"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51bc9c63633635e8100015da"
+  }
+  index: 15
+  text: "{{GM}}He fixes you with a stare.{{/GM}}\n\nI\'m very scared. \n\nNow let\'s try that again. Who the hell are you?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "GiveGuardName"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

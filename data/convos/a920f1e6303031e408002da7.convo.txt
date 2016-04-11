@@ -1,0 +1,50 @@
+idRef {
+  id: "a920f1e6303031e408002da7"
+}
+ui_name: "c14-s4_Harvesters"
+nodes {
+  idRef {
+    id: "a92251fe303031e408002dad"
+  }
+  index: 0
+  text: "This is a photo-realistic painting of five massive harvesters in Telestrian colors in a staggered formation cutting a swath across a rippling field of wheat. The plaque reads \"Unity\"."
+  branches {
+    responseText: "{{GM}}Push the frame.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "CombinePushed"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "{{GM}}Leave it alone.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "NewPress"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

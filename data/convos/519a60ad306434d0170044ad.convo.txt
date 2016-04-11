@@ -1,0 +1,248 @@
+idRef {
+  id: "519a60ad306434d0170044ad"
+}
+ui_name: "c15-s1_SeamstressUnion_AJ"
+nodes {
+  idRef {
+    id: "519a60ba306434d0170044b3"
+  }
+  index: 0
+  text: "The magic dealer\'s area is abuzz with chaotic activity as you watch the contents of a dozen boxes fly through the air. The articles land on Aljernon\'s table in some elaborate sorting scheme while the man himself casually sits reading a magazine from the previous century."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countMagicVisits"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "519a60c9306434d0170044b6"
+  }
+  index: 1
+  text: "Welcome, $(l.name). Is there anything I might provide to make your life easier, or perhaps make another\342\200\231s more difficult?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d07d473236646019001aea"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "Let me see what you\342\200\231ve got."
+    actions {
+      ops {
+        functionName: "Open Store Screen From Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "8c4fdb783030313417004383"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "Ever hear of a bug spirit or bug shaman, Aljernon?"
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d0f5c0623331f8180007ad"
+    }
+  }
+  branches {
+    responseText: "Nevermind."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d07d973236646019001aef"
+  }
+  index: 3
+  text: "{{GM}}The elf\'s face curls into a grimace.{{/GM}}\n\nI\'m sorry. I find the very thought repugnant."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d07dd53236646019001afb"
+  }
+  index: 4
+  text: "You must understand, a shaman does not follow the literal incarnation of his totem. One who pledges himself to Cat does not drink milk from a saucer or claw the drapes. Instead, a shaman follows the ideals of his totem."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+}
+nodes {
+  idRef {
+    id: "51d07e293236646019001afe"
+  }
+  index: 5
+  text: "Dog is less a canine and more a symbol of loyalty. Coyote is less a scavenger and more a trickster."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d07ee13236646019001b01"
+  }
+  index: 6
+  text: "So you can understand why I find the idea of an insect totem so foreign. To what quality would a shaman aspire in such a case?\n\n{{GM}}A chill visibly runs through him.{{/GM}} "
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d07f633236646019001b1f"
+  }
+  index: 7
+  text: "Please, let us speak of more pleasant things. Perhaps, commerce?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+}
+nodes {
+  idRef {
+    id: "51d07d203236646019001ae1"
+  }
+  index: 8
+  text: "Hello again. Please let me know if there\'s any way I can help."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countMagicVisits"
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d07d223236646019001ae3"
+  }
+  index: 9
+  text: "What more can I do for you?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countMagicVisits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  nextNodeIndex: 0
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countMagicVisits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  nextNodeIndex: 8
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 9
+}

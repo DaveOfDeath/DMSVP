@@ -1,0 +1,293 @@
+idRef {
+  id: "51e07b343963651821006dd2"
+}
+ui_name: "c09-s1_Tweakers_LabEntrance"
+nodes {
+  idRef {
+    id: "51e07b9b3963651821006ddc"
+  }
+  index: 0
+  text: "{{GM}}The entire floor of this tenement has been given over to a chaos of technology and squalor. Across the room, a chromed out decker argues loudly with an armed thug, abruptly falling silent as they turn towards you.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51e080013963651821006e2f"
+  }
+  index: 1
+  text: "{{GM}}The shotgun-wielding thug squeaks in panic.{{/GM}}\n\nIt\'s the crew that took out Stevie J\'s place. I told you it was only a matter of time!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5ae2c41d306434cc0f004351"
+  }
+  actions {
+    ops {
+      functionName: "Clear Camera Points of Interest"
+    }
+    ops {
+      functionName: "Add Camera Point of Interest (Actors)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5ae2c41d306434cc0f004351"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+    }
+    ops {
+      functionName: "Add Camera Point of Interest (Actors)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "51d34f4f3561642408000134"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+    }
+    ops {
+      functionName: "Order Actor to Face Direction"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5ae2c41d306434cc0f004351"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51e080013963651821006e32"
+  }
+  index: 2
+  text: "{{GM}}The man with the cyberdeck calmly speaks with a heavily digitized voice.{{/GM}}\n\nYou messed with the wrong BTL Lab, aho. This is a Yakuza operation.\n\nWith a push of a button, I can make these tweakers into my own personal killer puppets. You\'re fragged."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Order Actor to Face Direction"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "51d34f4f3561642408000134"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51e080013963651821006e35"
+  }
+  index: 3
+  text: "$(l.name), don\'t attack any of the chip-heads! They don\'t know what they\'re doing, and you could hurt Gino. "
+  branches {
+    responseText: "No civilian casualties. Got it."
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I can\342\200\231t promise no chip-heads will die."
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "51c24dc8356164200d006df2"
+  }
+  actions {
+    ops {
+      functionName: "Clear Camera Points of Interest"
+    }
+    ops {
+      functionName: "Add Camera Point of Interest (Actors)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+    }
+    ops {
+      functionName: "Add Camera Point of Interest (Actors)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "51c24dc8356164200d006df2"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51e080013963651821006e38"
+  }
+  index: 4
+  text: "My run, my rules."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "51c24dc8356164200d006df2"
+  }
+}
+nodes {
+  idRef {
+    id: "51e0a7c6396365e81b003197"
+  }
+  index: 5
+  text: "I have a concussion grenade. Better than fragging the tweakers if they get caught in the middle."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "51be13eb3561642817005d04"
+  }
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "51bd0bd9356164580b001749"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "BattleHasStarted"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

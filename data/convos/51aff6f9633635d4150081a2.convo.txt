@@ -1,0 +1,350 @@
+idRef {
+  id: "51aff6f9633635d4150081a2"
+}
+ui_name: "c21-s1 Lobby Questions Part 2"
+nodes {
+  idRef {
+    id: "51aff715633635d4150081a8"
+  }
+  index: 0
+  text: "Hello $(scene.BroSis), what can I help you with?"
+  branches {
+    responseText: "I have some questions."
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b2332f6336358017001719"
+  }
+  index: 1
+  text: "That\'s why we are here! What are your questions?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51df161a623331c00e00312b"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "Do you like it here?"
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d1ecd96236651c120041ab"
+    }
+  }
+  branches {
+    responseText: "Is there a computer terminal I could use?"
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d1ea296236651c12004091"
+    }
+  }
+  branches {
+    responseText: "Where is the counseling center?"
+    nextNodeIndex: 5
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51df162e623331c00e00317b"
+    }
+  }
+  branches {
+    responseText: "My UB Home access keycard got ruined. Where do I get a new one?"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c21-s1 Melted blank UB ID card"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d1ea996236651c12004093"
+    }
+  }
+  branches {
+    responseText: "Tell me about the Inner Sanctum?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "InnerSanctum"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d1eac16236651c12004095"
+    }
+  }
+  branches {
+    responseText: "Tell me about Home section of the UB?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Home"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b016cd633635d41500861a"
+    }
+  }
+  branches {
+    responseText: "Tell me about the Sanctuary area?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Sanctuary"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 9
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b001d7633635d4150083c8"
+    }
+  }
+  branches {
+    responseText: "Thanks, I\'m going to look around."
+    nextNodeIndex: 10
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51df161a623331c00e00312e"
+  }
+  index: 3
+  text: "I love it being part of the Universal Brotherhood. Belonging helps everyone. We have a free soup kitchen that feeds hundreds of people every day, educational talks in our auditorium, and a counseling center to help prospective members with deep one-on-one therapy."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51df161a623331c00e003134"
+  }
+  index: 4
+  text: "No, we believe it is important to remove mundane distractions from our daily life so we can focus on the Truth. Our only computers are in the office, and that\'s off limits to the prospective members."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51df161a623331c00e00313a"
+  }
+  index: 5
+  text: "Just on the other side of the entrance lobby. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51df161a623331c00e003140"
+  }
+  index: 6
+  text: "Sister Brenda can help you with that. Last I saw her, she was in front of the office door, inside the counseling center."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51df161a623331c00e003146"
+  }
+  index: 7
+  text: "It is a place of great meditation to which only our senior members, our Mothers and Fathers, have access. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51df161a623331c00e00314c"
+  }
+  index: 8
+  text: "The Home, which is right behind these walls, is where the new Brothers and Sisters live. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51df161a623331c00e003152"
+  }
+  index: 9
+  text: "Behind the Home is the Sanctuary where our more senior Brothers and Sisters live."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51df161a623331c00e003158"
+  }
+  index: 10
+  text: "Truth makes us one."
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

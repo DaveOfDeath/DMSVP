@@ -1,0 +1,50 @@
+idRef {
+  id: "a908af66303031e408002d47"
+}
+ui_name: "c14-s4_LightHousePainting"
+nodes {
+  idRef {
+    id: "a9090fde303031e408002d4d"
+  }
+  index: 0
+  text: "The painting is of a small lighthouse in intense storm at night perched on a rocky outcropping. Its light stabs out into the darkness. The plaque reads \"Vigilance\"."
+  branches {
+    responseText: "{{GM}}Push the frame?{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "LighthousePushed"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "{{GM}}Leave it alone?{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "NewPress"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

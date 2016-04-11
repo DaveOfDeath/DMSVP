@@ -1,0 +1,649 @@
+idRef {
+  id: "6084d83b6233317c16000072"
+}
+ui_name: "c08-s2_Planeyard_Coroner"
+nodes {
+  idRef {
+    id: "60851eb66233317c16000078"
+  }
+  index: 0
+  text: "$(l.name)! Still working for the dead man? {{GM}}He chuckles.{{/GM}}\n\nAs you can see... we\'ve got another Ripper victim on our hands."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "60b6603d6233317c1600009f"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "Looks like business is good for Dial-a-Morgue, these days."
+    nextNodeIndex: 2
+  }
+  branches {
+    responseText: "So what\'s the story with this one?"
+    nextNodeIndex: 17
+  }
+  branches {
+    responseText: "You look like you\'ve been putting in some overtime, Dresden. What can you tell me about the victim?"
+    nextNodeIndex: 18
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "655d2a236233311830004af2"
+  }
+  index: 2
+  text: "Ha! Yes... yes, indeed.\n\nThe victim\'s male, mixed Native American descent, age 38. Based on the condition of the body, it looks like he was killed around two in the morning."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "655eff346233311830004afc"
+  }
+  index: 3
+  text: "Cause of death... unknown. Several internal organs were removed from his body after death, quite gruesomely. I\'m not sure if the killer even knew what they wanted before they started cutting.\n\nNot much else to tell yet, really. He does have lot of pre-existing scar tissue, so he probably had a major surgery at some point in recent history. Unfortunately, with the organs gone, I can\'t determine the nature of the surgery."
+  branches {
+    responseText: "Any idea which organ the Ripper was after this time?"
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "Nice hole where his chest was. So... what was on the butcher\'s shopping list?"
+    nextNodeIndex: 15
+  }
+  branches {
+    responseText: "Not quite how I\'d want to go out."
+    nextNodeIndex: 16
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "6b435dff623331ec1b0048c6"
+  }
+  index: 4
+  text: "Well, the killer definitely took the lungs. The more I look at it though, the other missing organs may just be eviscerated within the chest cavity."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "6b4b615f623331ec1b0048cb"
+  }
+  index: 5
+  text: ""
+  branches {
+    responseText: "Is McKlusky getting any closer to a suspect?"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countDresdenQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b0ba34623331f021003ecf"
+    }
+  }
+  branches {
+    responseText: "How\'s Officer Aguirre doing on the case? He seems like a real go-getter."
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countDresdenQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 7
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51e6e2d8623331ac1e00022d"
+    }
+  }
+  branches {
+    responseText: "It sounds like the Ripper is taking a different trophy from each victim. Sam\'s liver, this guy\'s lungs... any theories?"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countDresdenQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 9
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d08455396163ac2b007b3f"
+    }
+  }
+  branches {
+    responseText: "Who is that woman over there?"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countDresdenQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 12
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ae5b39396163c81800158d"
+    }
+  }
+  branches {
+    responseText: "I\'m going to take a look around."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "DresdenWillCall"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 13
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b0ba13623331f021003e8d"
+    }
+  }
+  branches {
+    responseText: "I\'m going to look around."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "DresdenWillCall"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 14
+    hideIfUnavailable: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "SpokeToCoroner"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "a3ee83846233313826006937"
+  }
+  index: 6
+  text: "McKlusky couldn\'t find his ass with both hands.\n\nDon\'t tell him I said that, though."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a3ee5e5e623331382600692f"
+  }
+  index: 7
+  text: "Aguirre would love to solve it before McKlusky and get his gold detective\'s shield. Plus, he\'d love to see McKlusky suck it in front of his superiors. He\'s already tried to bribe me to keep information from McKlusky and slip it to him.\n\nI\'m inspired by their tireless pursuit of justice. "
+  branches {
+    responseText: "Did you take the money?"
+    nextNodeIndex: 8
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "2077f3df6236659822006887"
+  }
+  index: 8
+  text: "{{GM}}He grins from ear to ear.{{/GM}}\n\nDo you have any idea how much this job pays these days, $(l.sir)? I don\'t think Aguirre\'s officer\'s salary is going to do much to seduce me into helping him."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a3ee7cc96233313826006935"
+  }
+  index: 9
+  text: "Sorry, I don\'t do theories. I\'m just a scientist who happens to prefer dead people. However, while there was massive damage in the chest cavity, I can see that the victims lungs were transplants. Which is interesting, since another victim\'s missing heart was also a transplant. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "207164d7623665982200684a"
+  }
+  index: 10
+  text: "Granted, modern medicine has made organ transplants relatively easy but it is an odd coincidence. But, as a scientist, it\'s just that. A coincidence.\n\n"
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "61b1a8066236659422004955"
+  }
+  index: 11
+  text: "This is only the third body I\'ve personally examined. One of our other branch managers handled the other two. If I find that more of the victims had organ transplants, I\'ll let you know. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a3ee70726233313826006932"
+  }
+  index: 12
+  text: "No clue. She just showed up. Next of kin, I think."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "61b7216b6233312c14001684"
+  }
+  index: 13
+  text: "Good luck out there."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "DresdenWillCall"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ae5b5b396163c818001592"
+  }
+  index: 14
+  text: "Good luck out there."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "6b4b9ba4623331ec1b0048d1"
+  }
+  index: 15
+  text: "Well, the killer definitely took the lungs. The more I look at it though... the other missing organs may just be eviscerated within the chest cavity."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "6b48fbb0623331ec1b0048c8"
+  }
+  index: 16
+  text: "Well, it seems that the victim was quite dead before the organs were removed. So at least he had that going for him, don\'t you think?\n\nThe killer definitely took the lungs. The more I look at it though, the other missing organs may just be eviscerated within the chest cavity."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae5884396163c818001512"
+  }
+  index: 17
+  text: "The victim\'s male, mixed Native American descent, age 38. Based on the condition of the body, it looks like he was killed around two in the morning."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "655e2faa6233311830004af6"
+  }
+  index: 18
+  text: "The victim\'s male, mixed Native American descent, age 38. Based on the condition of the body, it looks like he was killed around two in the morning.\n\nAnd yes, I\'m a little tired. Bodies have been piling up like cordwood, it seems."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "60b4b7d36233317c1600009c"
+  }
+  index: 19
+  text: "$+(l.name)! Surprised to see you here. Let me guess... Officer Aguirre tipped you off? Suppose you must\'a made an impression on him at the Market yesterday. Or your credstick did, at any rate. {{GM}}He chuckles.{{/GM}}\n\nAnyway, surprise... we\'ve got another Ripper victim on our hands."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "51b0b9e8623331f021003e3c"
+  }
+  index: 20
+  text: "Yes?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "518d7674643431b03f0041ab"
+          }
+          args {
+            string_value: "c06_BribedSergeant"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "SpokeToCoroner"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  nextNodeIndex: 0
+  onlyOnce: true
+  idRef {
+    id: "51b0b649623331f021003c7d"
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "518d7674643431b03f0041ab"
+          }
+          args {
+            string_value: "c06_BribedSergeant"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "SpokeToCoroner"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  nextNodeIndex: 19
+  onlyOnce: true
+  idRef {
+    id: "51b0b651623331f021003c7e"
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "SpokeToCoroner"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  nextNodeIndex: 20
+}

@@ -1,0 +1,175 @@
+idRef {
+  id: "8f2185e2623331ec35004893"
+}
+ui_name: "c08-s2_Planeyard_Garbage"
+nodes {
+  idRef {
+    id: "8f2242df623331ec3500491c"
+  }
+  index: 0
+  text: "{{GM}}It\'s hard to say whether this is a heap of items and refuse recovered from a plane crash... or simply trash that hasn\'t been taken out yet.{{/GM}}"
+  branches {
+    responseText: "{{GM}}Dig through the trash.{{/GM}}"
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "{{GM}}Walk away.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "8f228d2e623331ec35004920"
+  }
+  index: 1
+  text: "{{GM}}A sticky substance of some sort seems to have seeped through the trash pile, and your hands are quickly covered with the stuff. After searching for a minute, you unearth a handful of interesting items."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "8f22bb7a623331ec35004923"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "{{GM}}Inspect the earring.{{/GM}}"
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51c8bfcd623331d81e004245"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Inspect the dented lunchbox.{{/GM}}"
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b00ab6396163d00c0047f4"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Inspect the credstick.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 200
+        }
+      }
+    }
+    nextNodeIndex: 5
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51c8bfe2623331d81e00425d"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Walk away.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "8f2364e0623331ec35004929"
+  }
+  index: 3
+  text: "{{GM}}The earring is made out of burnished steel, formed into the shape of a small salmon. An intense, primal fear washes over you as you touch it\'s surface. This must be one of the items the shaman was looking for. \n\nYou take the earring.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Add To Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "seattle"
+          }
+          args {
+            string_value: "c08_FetishCount"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "c08-s2_Fetish4"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "8f237cf5623331ec3500492c"
+  }
+  index: 4
+  text: "A dented tin lunchbox that\'s seen better days. You can barely make out the face of a grinning troll on the front."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "8f23885c623331ec3500492f"
+  }
+  index: 5
+  text: "Surprisingly, the credstick is still functional. You slot it into your PDA and 200\302\245 is added to your account."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

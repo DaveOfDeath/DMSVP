@@ -1,0 +1,286 @@
+idRef {
+  id: "51a568cc623331d023006df3"
+}
+ui_name: "c06-s2_AptsTopFloor_BTLBluff"
+nodes {
+  idRef {
+    id: "51a568e4623331d023006df9"
+  }
+  index: 0
+  text: "Well? Got the goods?"
+  branches {
+    responseText: "{{GM}}Show him the BTL chip.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c05_ZebraMeat"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "{{GM}}Show him the BTL chip.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c05_ZebraMeat"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "{{GM}}Attack him.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasAttackedBTLGuard"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "Take me to Stevie, lowly manservant."
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a56938623331d023006dfe"
+  }
+  index: 1
+  text: "Alright, $(l.man). Go down the hall and take a left and you will see the cell, you\'ll know it when you see it. We have been waiting for that chip, time to make an example out of that slitch. \n\nOh and you already brought some zebra meat glad you thought ahead. Shoulda seen what happened to the last guy. The hounds will tear you to pieces without it."
+  branches {
+    responseText: "So I had better feed it to them before I go in?"
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "What if I am looking for a pair of new hell hound slippers?"
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Fork over the meat and get to the prisoner got it."
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "51e6d3bf30303124040049ba"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51e5d6b0303031cc0600592d"
+  }
+  index: 2
+  text: "Heh, well Stevie loves those hounds so let just say it would be bad for you if you make \'em mad."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51e5d4b7303031cc06005912"
+  }
+  index: 3
+  text: "Alright, $(l.man). Go down the hall and take a left and you will see the cell, you\'ll know it when you see it. We have been waiting for that chip, time to make an example out of that slitch. \n\nOh and take this zebra meat with you. The hounds will tear you to pieces without it."
+  branches {
+    responseText: "So I had better feed it to them before I go in?"
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "What if I am looking for a pair of new hell hound slippers?"
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Fork over the meat and get to the prisoner got it."
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "c05_ZebraMeat"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "51e6d3bf30303124040049ba"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51e5d631303031cc06005917"
+  }
+  index: 4
+  text: "Heh, well Stevie loves those hounds so let just say it would be bad for you if you make \'em mad."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a56af0623331d023006e09"
+  }
+  index: 5
+  text: "Real funny. Now stuff it, new blood. \n\nGo down the hall and take a left, you\'ll know it when you see it. Slot that chip and I\'ll bring the boss over in a minute."
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

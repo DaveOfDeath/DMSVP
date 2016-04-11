@@ -1,0 +1,278 @@
+idRef {
+  id: "a0d1a52a3064349c08004cab"
+}
+ui_name: "c01-s1_SamBattle03"
+nodes {
+  idRef {
+    id: "a11fe5b530643480140049d6"
+  }
+  index: 0
+  text: "Damn it, let me help! Give me something to shoot with!"
+  branches {
+    responseText: "Just pick up something to throw at them."
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "I wish you had another grenade to throw, because I\342\200\231m not giving you a gun!"
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "{{GM}}Loan him Dowd\342\200\231s pistol{{/GM}}"
+    actions {
+      ops {
+        functionName: "Add Item to Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "Pi 3 Ruger Thunderbolt"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Actor)"
+                args {
+                  string_value: "8f9eb272306434d8160069c1"
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Change Actor Team"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Actor)"
+                args {
+                  string_value: "8f9eb272306434d8160069c1"
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (string)"
+            args {
+              string_value: "FactionList"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Change Actor Control"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Actor)"
+                args {
+                  string_value: "8f9eb272306434d8160069c1"
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "PlayerOrAI"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "SamPistol"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a120c07c30643480140049db"
+  }
+  index: 1
+  text: "Holy cats, I forgot! I\342\200\231ve got a grenade in my backpack! And the crates I was picking up have hand-grenades and med-kits in them."
+  branches {
+    responseText: "Sam Watts for President! Where are they?"
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I knew I liked you, chummer. Where\342\200\231s the party gifts you brought?"
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a121244430643480140049df"
+  }
+  index: 2
+  text: "The longshoreman scattered the crates around this area. One of us is going to have to go find the crates and see what\342\200\231s inside each one."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "CrateTalk"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "8f9eb272306434d8160069c1"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "a122a69930643480140049e1"
+  }
+  index: 3
+  text: "Wait a minute, there are more grenades! With the crap hitting the fan I forgot that the crates I was picking up have hand-grenades and med-kits in them."
+  branches {
+    responseText: "Sam Watts for President! Where are they?"
+    nextNodeIndex: 4
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I knew I liked you, chummer. Where\342\200\231s the party gifts you brought?"
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a12312e430643480140049e8"
+  }
+  index: 4
+  text: "The longshoreman scattered them around this area. One of us is going to have to go find the crates and see what\342\200\231s inside each one. "
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "CrateTalk"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "8f9eb272306434d8160069c1"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

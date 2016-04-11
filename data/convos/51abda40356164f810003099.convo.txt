@@ -1,0 +1,90 @@
+idRef {
+  id: "51abda40356164f810003099"
+}
+ui_name: "c01-s1_3YearsAgo_Notebook"
+nodes {
+  idRef {
+    id: "51abda4f356164f81000309f"
+  }
+  index: 0
+  text: "Your notebook - calendar, contacts, that kind of thing."
+  branches {
+    responseText: "{{GM}}View your list of contacts.{{/GM}}"
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "{{GM}}View your personal calendar.{{/GM}}"
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "{{GM}}Put down your notebook.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "NotebookInteracted"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51abda97356164f8100030a4"
+  }
+  index: 1
+  text: "The list is sad, dried up. \n\nCarter Detroit - Fixer - no response to messages\nDowd - Runner - dead\nFelton Nash - Fixer - missing since Feb. \nNew Larry - Runner - dead\nSam Watts - Runner  - ??? probably in a gutter somewhere\nSangoma  - Runner - dead\nHalf Jack - Dealer - retired or dead"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51abda9e356164f8100030a7"
+  }
+  index: 2
+  text: "The list goes on. All either dead ends or just plain dead."
+  branches {
+    responseText: ""
+    nextNodeIndex: 0
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51abdab0356164f8100030a9"
+  }
+  index: 3
+  text: "It\342\200\231s empty. Nothing to do."
+  branches {
+    responseText: ""
+    nextNodeIndex: 0
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

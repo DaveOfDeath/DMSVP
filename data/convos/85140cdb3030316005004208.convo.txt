@@ -1,0 +1,226 @@
+idRef {
+  id: "85140cdb3030316005004208"
+}
+ui_name: "c07-s1_SampsonATheStairs"
+nodes {
+  idRef {
+    id: "8515ea02303031600500420e"
+  }
+  index: 0
+  text: "Mr. Kluwe is working the velvet rope. No one gets upstairs unless they go through him. The huge troll is dapper in his enormous, custom-tailored suit."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToSampson"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "9ef28c6d303031c40e000283"
+  }
+  index: 1
+  text: "Hoi. Only paying customers are allowed upstairs. Is there something I can do for you, $(l.sir)?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b0db39303031d813001645"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "You\342\200\231re looking dashing as always. Do you have to pay extra for a manicure on hands that big?"
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b0e46a62366558080041d6"
+    }
+  }
+  branches {
+    responseText: "You know where I can find a fence, Mr. Kluwe?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasTalkedToDelilah"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b0dc57303031d813001675"
+    }
+  }
+  branches {
+    responseText: "Say big man, how long have you been working for Mrs. Kubota?"
+    nextNodeIndex: 5
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b0e4d662366558080041d7"
+    }
+  }
+  branches {
+    responseText: "I\'m good for now."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b0db3f303031d81300164b"
+  }
+  index: 3
+  text: "It\342\200\231s not the size they charge more for. It\'s the blood under the fingernails.\n\n"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b0db45303031d813001651"
+  }
+  index: 4
+  text: "I think that Van Graas is in the bar near the stage. He\'s a dwarf with a cyber-eye. You shouldn\'t be able to miss him."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b0db4c303031d813001658"
+  }
+  index: 5
+  text: "I crawled in here after I gobli... I Awoke. \n\nMrs. Kubota took me in and gave me a job. I\'ve been here ever since. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "851a4f2a303031600500421e"
+  }
+  index: 6
+  text: " $+(l.sir), you haven\'t paid to go upstairs. Is there something I can do for you?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+  onlyOnce: true
+  idRef {
+    id: "853cc5323030316005004230"
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToSampson"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 6
+  hideIfUnavailable: true
+}

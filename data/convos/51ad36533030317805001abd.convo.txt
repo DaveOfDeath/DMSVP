@@ -1,0 +1,763 @@
+idRef {
+  id: "51ad36533030317805001abd"
+}
+ui_name: "c07-s1_CoyoteAfterSeeingSamsBunk"
+nodes {
+  idRef {
+    id: "51ad367f3030317805001ac3"
+  }
+  index: 0
+  text: "You\342\200\231re back. I think the highlights of the Wolves game will be on soon, wanna take a load off and watch with me?"
+  branches {
+    responseText: "I found something in the bunk Sam was using."
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "Did Sam have a sister?"
+    nextNodeIndex: 19
+  }
+  branches {
+    responseText: "You know someone named Jessica?"
+    nextNodeIndex: 20
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "8c5e7f1e303031341700438e"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasPlaneyardInfo"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Return to Coyote"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ad36e33030317805001ac8"
+  }
+  index: 1
+  text: "Yeah? Great! What was it?"
+  branches {
+    responseText: "A photo. Did you know Sam had a twin sister?"
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ad37243030317805001acb"
+  }
+  index: 2
+  text: "Yeah, I did! He mentioned her once or twice. It didn\'t sound like they got along that well.\n\n{{GM}}She thinks.{{/GM}}\n\nHe was rambling on about her the last time I saw him. By that point, he was completely gone. I really couldn\'t follow what he was saying - but he sounded miserable."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "518d7674643431b03f0041ab"
+            }
+            args {
+              string_value: "c06_BribedSergeant"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "518d7674643431b03f0041ab"
+            }
+            args {
+              string_value: "c06_BribedSergeant"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 9
+    hideIfUnavailable: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ad37773030317805001ace"
+  }
+  index: 3
+  text: "Your commlink chips and the screen shows the smiling face of Officer Aguirre. If he\342\200\231s smiling, it must be about money."
+  branches {
+    responseText: " Are all cops on the take as happy as you?"
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "Talk."
+    nextNodeIndex: 7
+  }
+  branches {
+    responseText: "Officer Aguirre, what a pleasure to hear from you."
+    nextNodeIndex: 8
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+  sourceInSceneRef {
+    id: "9ab85f073030310407003925"
+  }
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "props"
+          }
+          args {
+            string_value: "PDA-Ring1"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ad38c13030317805001adb"
+  }
+  index: 4
+  text: "Yeah, we have our own clubhouse and everything.\n\nAs per our discussion, I\342\200\231m informing you of another Ripper murder. The victim worked at the NTSB investigation facility down on the docks. You owe me for this."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "9ab85f073030310407003925"
+  }
+}
+nodes {
+  idRef {
+    id: "51b25c9e623331a02a003153"
+  }
+  index: 5
+  text: ""
+  branches {
+    responseText: "Put it on my tab. You there now?"
+    nextNodeIndex: 6
+  }
+  branches {
+    responseText: "I need to see that now."
+    nextNodeIndex: 6
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "9ab85f073030310407003925"
+  }
+}
+nodes {
+  idRef {
+    id: "51b25c9e623331a02a003156"
+  }
+  index: 6
+  text: "Better get here quick - before McKlusky arrives."
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "9ab85f073030310407003925"
+  }
+}
+nodes {
+  idRef {
+    id: "51ad45713030317805001b21"
+  }
+  index: 7
+  text: "There\342\200\231s been another Ripper murder, this one at the NTSB investigation facility down on the docks. You owe me for this."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "9ab85f073030310407003925"
+  }
+}
+nodes {
+  idRef {
+    id: "51ad45c33030317805001b2f"
+  }
+  index: 8
+  text: "Yeah, yeah. We\342\200\231re buddies. Let\342\200\231s go dancing soon.\n\nListen, the Ripper got another one. The victim worked at the NTSB investigation facility down on the docks. You owe me for this."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "9ab85f073030310407003925"
+  }
+}
+nodes {
+  idRef {
+    id: "51ad382a3030317805001ad4"
+  }
+  index: 9
+  text: "Your commlink chips and the screen shows John Dresden, the coroner from Organ Grinders. He doesn\342\200\231t look happy."
+  branches {
+    responseText: "Dresden, you don\342\200\231t look so good."
+    nextNodeIndex: 10
+  }
+  branches {
+    responseText: "Talk."
+    nextNodeIndex: 11
+  }
+  branches {
+    responseText: "Dresden, you old bone-saw. Good to hear from you."
+    nextNodeIndex: 12
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+  sourceInSceneRef {
+    id: "9aba479b3030310407003926"
+  }
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "props"
+          }
+          args {
+            string_value: "PDA-Ring1"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ad47023030317805001b3d"
+  }
+  index: 10
+  text: "Never mind that, I\342\200\231m fine. Listen, I\342\200\231m at the NTSB investigation facility down on the docks with the corpse of what looks like another Ripper victim. If you want to check this out, I would get here fast - before McKlusky does."
+  branches {
+    responseText: "Thanks for the call. On my way."
+    nextNodeIndex: 16
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "9aba479b3030310407003926"
+  }
+}
+nodes {
+  idRef {
+    id: "51ad47433030317805001b40"
+  }
+  index: 11
+  text: "There\342\200\231s been another Ripper murder, this one at the NTSB investigation facility down on the docks."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "9aba479b3030310407003926"
+  }
+}
+nodes {
+  idRef {
+    id: "51ad47e93030317805001b48"
+  }
+  index: 12
+  text: "Hey, $(l.name). I gotta talk fast. Looks like the Ripper got another one. The victim worked at the NTSB investigation facility down on the docks."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "9aba479b3030310407003926"
+  }
+}
+nodes {
+  idRef {
+    id: "51b25cff623331a02a00318d"
+  }
+  index: 13
+  text: ""
+  branches {
+    responseText: "You there now?"
+    nextNodeIndex: 14
+  }
+  branches {
+    responseText: "I need to see that now."
+    nextNodeIndex: 15
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "9aba479b3030310407003926"
+  }
+}
+nodes {
+  idRef {
+    id: "51b25cff623331a02a003190"
+  }
+  index: 14
+  text: "Yes, but you\342\200\231d better get here quick - before McKlusky arrives."
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "9aba479b3030310407003926"
+  }
+}
+nodes {
+  idRef {
+    id: "51b25cff623331a02a003196"
+  }
+  index: 15
+  text: "Yes, but you\342\200\231d better get here quick - before McKlusky arrives."
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "9aba479b3030310407003926"
+  }
+}
+nodes {
+  idRef {
+    id: "51b25cff623331a02a003199"
+  }
+  index: 16
+  text: "The image on your PDA dissolves as the call ends."
+  branches {
+    responseText: ""
+    nextNodeIndex: 17
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51b25cff623331a02a00319c"
+  }
+  index: 17
+  text: "Another Ripper murder? Where?"
+  branches {
+    responseText: "The docks. I\'ve got to go."
+    nextNodeIndex: 18
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b25cff623331a02a00319f"
+  }
+  index: 18
+  text: "Okay, listen. I want to help. You dragged me out of the Royale before... something bad happened. Worse than getting my arm torn off. And Sam was my friend.\n\nYou head to the docks and I\342\200\231ll see if I can track down Sam\342\200\231s sister, Jessica. She might be able to help us."
+  branches {
+    responseText: "See you when I get back."
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "I don\342\200\231t need your help. See you around."
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "Thanks, I appreciate the help."
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "Dead Man\'s Switch: The Mystery of Sam Watts"
+            }
+            args {
+              string_value: "c07_askedCoyoteToLookForJess"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ad3a4e3030317805001afd"
+  }
+  index: 19
+  text: "{{GM}}Her brow furrows.{{/GM}}\n\nYeah, I think he did! He mentioned her once. It didn\'t sound like they got along that well."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "518d7674643431b03f0041ab"
+            }
+            args {
+              string_value: "c06_BribedSergeant"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "518d7674643431b03f0041ab"
+            }
+            args {
+              string_value: "c06_BribedSergeant"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 9
+    hideIfUnavailable: true
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ad3a243030317805001afb"
+  }
+  index: 20
+  text: "{{GM}}Her brow furrows.{{/GM}}\n\nNo. Why?"
+  branches {
+    responseText: "That\342\200\231s the name of Sam\342\200\231s sister."
+    nextNodeIndex: 21
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ad3ba13030317805001b13"
+  }
+  index: 21
+  text: "Jessica Watts... yeah! He mentioned her once. It didn\'t sound like they got along that well."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "518d7674643431b03f0041ab"
+            }
+            args {
+              string_value: "c06_BribedSergeant"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "518d7674643431b03f0041ab"
+            }
+            args {
+              string_value: "c06_BribedSergeant"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 9
+    hideIfUnavailable: true
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

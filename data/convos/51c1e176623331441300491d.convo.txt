@@ -1,0 +1,1369 @@
+idRef {
+  id: "51c1e176623331441300491d"
+}
+ui_name: "c21-s0_PikePlaceConcert_UBGreeter"
+nodes {
+  idRef {
+    id: "51c1e1866233314413004923"
+  }
+  index: 0
+  text: "Welcome $(scene.BroSis)! Are you ready to build a better tomorrow?"
+  branches {
+    responseText: "I sure am!"
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "I\342\200\231m thinking about it."
+    nextNodeIndex: 23
+  }
+  branches {
+    responseText: "Have you looked at the world lately? I don\342\200\231t see a better tomorrow coming."
+    nextNodeIndex: 24
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToUBGreeter"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51c1e1a56233314413004928"
+  }
+  index: 1
+  text: "That\342\200\231s great news!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e1cb623331441300492f"
+  }
+  index: 2
+  text: "Come in and find the power of Belonging."
+  branches {
+    responseText: "Sounds good."
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "I have some questions first."
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "Belonging? Seriously?"
+    nextNodeIndex: 22
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e1f6623331441300493a"
+  }
+  index: 3
+  text: "Then go right in, $(scene.BroSis)! Someone from the Counseling Center would love to talk with you."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e1ff623331441300493c"
+  }
+  index: 4
+  text: "Of course, $(scene.BroSis)! Go right ahead and ask."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e20e6233314413004941"
+  }
+  index: 5
+  text: ""
+  branches {
+    responseText: "What is the Universal Brotherhood?"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countUBQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasHeardAboutTruth"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51c1e8486233314413004b15"
+    }
+  }
+  branches {
+    responseText: "At least tell me a bit of the Truth!"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasHeardAboutTruth"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countUBQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 14
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51cdb20562333138110014df"
+    }
+  }
+  branches {
+    responseText: "Who can join?"
+    conditions {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countUBQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 16
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51c1ec81623331f0140010d2"
+    }
+  }
+  branches {
+    responseText: "Who can join?"
+    conditions {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countUBQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 17
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51c1ec84623331f0140010d3"
+    }
+  }
+  branches {
+    responseText: "Do you know Jessica Watts?"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countUBQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 18
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51c1e81c6233314413004b13"
+    }
+  }
+  branches {
+    responseText: "Tell me about Lynne Telestrian."
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countUBQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 19
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51c1e3f3623331441300498d"
+    }
+  }
+  branches {
+    responseText: "That\'s all for now."
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "isTryingToOpenDoor"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 20
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "I\'m ready to go in now."
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "isTryingToOpenDoor"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 21
+    hideIfUnavailable: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e27b6233314413004952"
+  }
+  index: 6
+  text: "The Universal Brotherhood is a community that welcomes all forms of meta-humanity with the mission of making the world a better place by helping individuals to become so much more than they currently are."
+  branches {
+    responseText: "So it\342\200\231s a religion?"
+    nextNodeIndex: 7
+  }
+  branches {
+    responseText: "It sounds like a religion."
+    nextNodeIndex: 12
+  }
+  branches {
+    responseText: "It\342\200\231s not a religion, is it?"
+    nextNodeIndex: 13
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e445623331441300499d"
+  }
+  index: 7
+  text: "Yes, $(scene.BroSis)! We don\342\200\231t try to hide that!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e45d62333144130049a4"
+  }
+  index: 8
+  text: "After all, what is religion but an organized collection of beliefs that relate meta-humanity to our spirituality? We believe that the Brotherhood is the highest form of religion because it brings us closer to the Truth."
+  branches {
+    responseText: "And what is the Truth?"
+    nextNodeIndex: 9
+  }
+  branches {
+    responseText: "So you think the Universal Brotherhood is the Truth?"
+    nextNodeIndex: 10
+  }
+  branches {
+    responseText: "This sounds like a cult."
+    nextNodeIndex: 11
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e48d62333144130049b3"
+  }
+  index: 9
+  text: "That\342\200\231s what you\342\200\231ll find out inside! Come in and find the power of Belonging."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e48762333144130049b1"
+  }
+  index: 10
+  text: "Why don\342\200\231t you come inside and find out? Come in and find the power of Belonging."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e48162333144130049af"
+  }
+  index: 11
+  text: "We\342\200\231ve heard that before and it doesn\342\200\231t offend us. Religions are often referred to as cults by the fearful and the ignorant. Why don\342\200\231t you take in a Discovery Meeting and hear what we have to say? Come in and find the power of Belonging."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e448623331441300499f"
+  }
+  index: 12
+  text: "That\342\200\231s because it is, $(scene.BroSis)!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e44962333144130049a1"
+  }
+  index: 13
+  text: "You say that like it\342\200\231s a bad thing, $(scene.BroSis)!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e4046233314413004992"
+  }
+  index: 14
+  text: "Gladly! It\342\200\231s something we\342\200\231re happy to share. I just thought you\342\200\231d prefer to hear it from someone more articulate than me. It starts with the idea that meta-humanity is good at its core and that we are all one family. But more than that, it\342\200\231s that we are linked to something greater than ourselves. Something beyond time - something beyond flesh."
+  branches {
+    responseText: "And that is?"
+    nextNodeIndex: 15
+  }
+  branches {
+    responseText: "Beyond flesh?"
+    nextNodeIndex: 15
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Beyond time?"
+    nextNodeIndex: 15
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e4216233314413004997"
+  }
+  index: 15
+  text: "You\342\200\231re going to have to go inside if you want to learn more!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e2ca623331441300495f"
+  }
+  index: 16
+  text: "Why anyone, of course! It wouldn\342\200\231t be very universal if we left anyone out, would it, $(scene.BroSis)?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e2cb6233314413004961"
+  }
+  index: 17
+  text: "Why anyone, of course! It wouldn\342\200\231t be very universal if we left anyone out, would it? $+(l.race_plural) are especially welcome, $(scene.BroSis)!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e3f1623331441300498c"
+  }
+  index: 18
+  text: "Of course! Grandmother Jessica is the leader of this chapter of the Universal Brotherhood."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e3f4623331441300498f"
+  }
+  index: 19
+  text: "Happily! Mother Lynne is our chapter\342\200\231s most dynamic spokesperson. She is truly an inspiration to us all."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e26b623331441300494f"
+  }
+  index: 20
+  text: "Great! Come in and find the power of Belonging."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51cdb23e62333138110014e6"
+  }
+  index: 21
+  text: "Great! Come in and find the power of Belonging."
+  branches {
+    responseText: ""
+    nextNodeIndex: 29
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e206623331441300493e"
+  }
+  index: 22
+  text: "Absolutely, $(scene.BroSis)! In a world as cold as this one, what\342\200\231s more important than Belonging? I can see you have some questions. Why don\342\200\231t you ask them?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e1a6623331441300492a"
+  }
+  index: 23
+  text: "We totally understand. Once you hear our message, we believe you will see that there is a better way!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+}
+nodes {
+  idRef {
+    id: "51c1e1a7623331441300492c"
+  }
+  index: 24
+  text: "I used to feel the same way! Then I heard Lynne Telestrian speak at my first Discovery Meeting and I realized what I\342\200\231d been missing!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1e4c26233314413004a3c"
+  }
+  index: 25
+  text: "How can I help you, $(scene.BroSis)?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51cdab176233313811001025"
+  }
+  index: 26
+  text: "You hear the sounds of soft music playing within and what many soft slippers gliding across a smooth floor."
+  branches {
+    responseText: "{{GM}}Enter the Universal Brotherhood.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasTalkedToUBGreeter"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 27
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "{{GM}}Enter the Universal Brotherhood.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasTalkedToUBGreeter"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 35
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "{{GM}}Walk away.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51cdab176233313811001028"
+  }
+  index: 27
+  text: "Oh, $(scene.BroSis) - I forgot to mention that everyone must enter the Universal Brotherhood alone."
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Order Actor to Face Direction"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "80c1267d3064347c170054e1"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51cdab17623331381100102b"
+  }
+  index: 28
+  text: ""
+  branches {
+    responseText: "I understand."
+    nextNodeIndex: 29
+  }
+  branches {
+    responseText: "My friends and I are together."
+    nextNodeIndex: 32
+  }
+  branches {
+    responseText: "I\342\200\231m going to need some moral support."
+    nextNodeIndex: 32
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I don\342\200\231t want to be alone."
+    nextNodeIndex: 32
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I have a few questions first."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countUBQuestions"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 4
+            }
+          }
+        }
+        args {
+          int_value: 5
+        }
+      }
+    }
+    nextNodeIndex: 34
+    hideIfUnavailable: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51cdab17623331381100102e"
+  }
+  index: 29
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countRunners"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 3
+        }
+      }
+    }
+    nextNodeIndex: 30
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countRunners"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 4
+            }
+          }
+        }
+        args {
+          int_value: 3
+        }
+      }
+    }
+    nextNodeIndex: 31
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "51b9fb8e623331000e004430"
+  }
+}
+nodes {
+  idRef {
+    id: "51d4b4906233315016007ad8"
+  }
+  index: 30
+  text: "{{GM}}Coyote whispers in your ear.{{/GM}}\n\nWe\342\200\231ll wait outside for you, $(l.name). I\342\200\231ll take the team and circle around the building, looking for another way in. I\342\200\231ll chirp you on your commlink if we find one."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "51b9fb8e623331000e004430"
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "isLeavingScene"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d4b56d6233315016007bdc"
+  }
+  index: 31
+  text: "{{GM}}Coyote whispers in your ear.{{/GM}}\n\nI\342\200\231ll circle around the building and look for another way in, $(l.name). I\342\200\231ll chirp you on your commlink if I find one."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "51b9fb8e623331000e004430"
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "isLeavingScene"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51cdab176233313811001031"
+  }
+  index: 32
+  text: "In order to become part of a larger family, we must first know ourselves. You need to hear our message in solitude so that your mind can be clear from distraction and the shackles of this heartbreakingly oppressive world."
+  branches {
+    responseText: "I understand."
+    nextNodeIndex: 29
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I have a few questions first."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countUBQuestions"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 4
+            }
+          }
+        }
+        args {
+          int_value: 5
+        }
+      }
+    }
+    nextNodeIndex: 33
+    hideIfUnavailable: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51cdad5b623331381100132e"
+  }
+  index: 33
+  text: "Of course."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51cdad876233313811001385"
+  }
+  index: 34
+  text: "Of course."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51cdab17623331381100103f"
+  }
+  index: 35
+  text: "Welcome $(scene.BroSis)! I hope you are ready to build a better tomorrow!\n\nI\342\200\231m sorry but we do not allow groups. Everyone must enter the Universal Brotherhood alone."
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Order Actor to Face Direction"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "80c1267d3064347c170054e1"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToUBGreeter"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "isTryingToOpenDoor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToUBGreeter"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "isTryingToOpenDoor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 25
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "isTryingToOpenDoor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 26
+}

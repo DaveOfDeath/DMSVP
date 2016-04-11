@@ -1,0 +1,76 @@
+id: "Spell Escape"
+type: ItemType_Spell
+uirep {
+  icon: "icon_stride"
+  name: "Escape"
+  description: "The target has movement increased by 15 with 50% penalty to aim loss of 1 AP"
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_Willpower
+coreSkill: Skill_Spellcasting
+forceRating: 1
+apCost: 1
+prereqStrings: "Player.SKILL.Skill_Spellcasting >= 2"
+baseHPDamage: 0
+baseAPDamage: 0
+rangeModTable: 10
+rangeModTable: 9
+rangeModTable: 8
+rangeModTable: 7
+rangeModTable: 6
+rangeModTable: 5
+rangeModTable: 4
+rangeModTable: 3
+rangeModTable: 2
+rangeModTable: 1
+rangeModTable: 0
+rangeModTable: 0
+rangeModTable: -1
+rangeModTable: -2
+rangeModTable: -3
+rangeModTable: -4
+rangeModTable: -5
+rangeModTable: -6
+rangeModTable: -7
+rangeModTable: -8
+noiseLevel: 0
+noiseRounds: 0
+modelessAbilities: "Buff Spells"
+affectsFriendly: true
+affectsEnemy: false
+canTargetSelf: true
+canTargetActor: true
+canTargetOccupiedGridPoint: false
+canTargetUnoccupiedGridPoint: false
+isBuff: true
+cooldown: 5
+isMagic: true
+effectDuration: 0
+fxrep {
+  preActionFxName: "GenericSpellPrepare"
+  actionFxName: "AdeptSpellBuffAction"
+  postActionFxName: ""
+  hitReactionFxName: "AdeptOffenseBuffHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_stride"
+    name: "Escape: Movement +15, Accuracy -50%, AP -1"
+  }
+  stackingCategory: "Move"
+  statMods {
+    attribute: Attribute_Move_Speed
+    intModValue: 15
+  }
+  statMods {
+    attribute: Attribute_AP
+    intModValue: -1
+  }
+  statMods {
+    attribute: Attribute_Accuracy
+    intModValue: -50
+  }
+  fxScript: "AdeptOffenseBuffStatus"
+}
+sorting_group: "Spellcasting (Mage)"

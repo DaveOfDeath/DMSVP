@@ -1,0 +1,204 @@
+idRef {
+  id: "86d99e9f306434e40c003062"
+}
+ui_name: "c05-s2_PikePlace_OfficerLanders"
+nodes {
+  idRef {
+    id: "86da3b7d306434e40c003068"
+  }
+  index: 0
+  text: "{{GM}}A tall, emotionless Lone Star officer blocks entry to the crime scene. Behind her, you spot the lively face of the Organ Grinders coroner, Dresden.{{/GM}} \n\nThis is an active Lone Star investigation. Please step away from the barrier."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "86cdf227306434e40c003061"
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasSpokenToLanders"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51a6a8fb3961638011004471"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "What happened here, officer?"
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51a6a90539616380110044a9"
+    }
+  }
+  branches {
+    responseText: "Let me through, please. I need to take a closer look at the body."
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "I\'m here to see Coroner Dresden."
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Security{{/CC}} Detective $(s.name), Auburn Precinct. We have reason to believe the victim may have been involved in an illegal BTL-smuggling ring we\'re investigating. I\'d like to examine her belongings for evidence."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 14
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 7
+  }
+}
+nodes {
+  idRef {
+    id: "51a6a8fb3961638011004474"
+  }
+  index: 2
+  text: "Homicide. Now move along, please."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "86cdf227306434e40c003061"
+  }
+}
+nodes {
+  idRef {
+    id: "51a6a93439616380110044ab"
+  }
+  index: 3
+  text: "Sorry, no civilians past this line. Move along, please."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a6a8fb396163801100447d"
+  }
+  index: 4
+  text: "And who might you be?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a6a8fb3961638011004480"
+  }
+  index: 5
+  text: "It\'s alright, officer. $+(l.he)\'s with me. {{GM}}Dresden steps up to the barrier with a warm grin.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "86de88ba306434e40c00307a"
+  }
+}
+nodes {
+  idRef {
+    id: "51a6a8fb3961638011004483"
+  }
+  index: 6
+  text: "{{GM}}The officer looks at you with poorly-concealed skepticism.{{/GM}} Okay then. Make it quick."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "86cdf227306434e40c003061"
+  }
+}
+nodes {
+  idRef {
+    id: "51a6a8fb3961638011004487"
+  }
+  index: 7
+  text: "Badge and SIN, please."
+  branches {
+    responseText: "Well... - "
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

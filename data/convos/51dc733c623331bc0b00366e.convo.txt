@@ -1,0 +1,236 @@
+idRef {
+  id: "51dc733c623331bc0b00366e"
+}
+ui_name: "c17-s0_Seamstress_VanGraasFence"
+nodes {
+  idRef {
+    id: "51dc734f623331bc0b003674"
+  }
+  index: 0
+  text: "I\'m enjoying my drink, here. What is it?"
+  branches {
+    responseText: "How much this Super Brawl championship ring go for on the street?"
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "Nothing. Sorry to bother you."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51dc73c8623331bc0b003678"
+  }
+  index: 1
+  text: "Depends on the year. Let me take a look.\n\n{{GM}}He angles his cyber-optics towards the ring, and ponders a moment.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51dc73d1623331bc0b00367b"
+  }
+  index: 2
+  text: "The inset gems alone are worth 800 nuyen or so, but a collector would probably pay more for that year\'s ring. You want me to get rid of it? 1200 nuyen."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasSeenFenceOffer"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51dc74f1623331bc0b003684"
+  }
+  index: 3
+  text: ""
+  branches {
+    responseText: "I\'ll take the money."
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "Nevermind, I want to hold on to it."
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51dc7529623331bc0b003690"
+  }
+  index: 4
+  text: "It\'s done. I\'ll transfer the money."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Nuyen"
+      args {
+        int_value: 1200
+      }
+    }
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "c12-s1_SuperBrawlRing"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51dc7522623331bc0b00368e"
+  }
+  index: 5
+  text: "Great. Have fun."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51dc7727623331bc0b0036d7"
+  }
+  index: 6
+  text: "I said I\'d pay 1200. Final offer."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasSeenFenceOffer"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasSeenFenceOffer"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 6
+}

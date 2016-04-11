@@ -1,0 +1,86 @@
+idRef {
+  id: "c54275fb3064666021001882"
+}
+ui_name: "c06-s1_PacoOpeningDialogue"
+nodes {
+  idRef {
+    id: "235212a9306466e0170018dc"
+  }
+  index: 0
+  text: "The Royale Apartments. What a hole. Can\'t imagine what it was like for Coyote, growing up here... {{GM}}Paco trails off.{{/GM}}\n"
+  branches {
+    responseText: "We\'re here to take care of business. Let\'s get to it."
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "A hellhole full of junkies. Looks like Stevie-J\'s gets their rent money AND their drug money."
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "These poor people. What a waste."
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "235212a9306466e0170018df"
+  }
+  index: 1
+  text: "If Coyote\'s here, we have to hurry. She\'s good but... well... these BTL guys pay to stay well informed. They may have known she was coming."
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Find Coyote"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Keep Paco Alive"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

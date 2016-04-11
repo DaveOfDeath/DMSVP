@@ -1,0 +1,204 @@
+idRef {
+  id: "51d21a8f623331a019004926"
+}
+ui_name: "c15-s1_Seamstress_KubotaCoyote"
+nodes {
+  idRef {
+    id: "51d21aa3623331a01900492c"
+  }
+  index: 0
+  text: "{{GM}}Mrs. Kubota\342\200\231s lips are tight and there appears to be a weight on her shoulders you haven\342\200\231t seen before.{{/GM}}\n\nHave you seen Coyote, omae? She is late for another shift."
+  branches {
+    responseText: "{{CC}}Charisma: 3{{/CC}} No, Mrs. Kubota. Haven\342\200\231t seen her."
+    conditions {
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 3
+        }
+      }
+    }
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "You\342\200\231d better call someone else, Mrs. Kubota."
+    nextNodeIndex: 2
+  }
+  branches {
+    responseText: "Coyote isn\342\200\231t coming back, Mrs. Kubota."
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d21ae9623331a019004931"
+  }
+  index: 1
+  text: "{{GM}}She eyes you closely.{{/GM}}\n\nVery well. I will cover the bar myself. "
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "518d7674643431b03f0041ab"
+          }
+          args {
+            string_value: "c15_hasLiedAboutCoyoteDeath"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d21aea623331a019004933"
+  }
+  index: 2
+  text: "There is no one else available tonight. She knows that. \n\nThe two of us will have a long talk when I see her again...\n\n{{GM}}She stops. Sees your expression.{{/GM}}"
+  branches {
+    responseText: "I\342\200\231m afraid not."
+    nextNodeIndex: 3
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "You won\342\200\231t see her again."
+    nextNodeIndex: 3
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Coyote\342\200\231s gone, Mrs. Kubota."
+    nextNodeIndex: 3
+    auxiliaryLink: true
+  }
+}
+nodes {
+  idRef {
+    id: "51d21aeb623331a019004935"
+  }
+  index: 3
+  text: "{{GM}}Mrs. Kubota declines her head. Stares at the floor. Breathes.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d21b35623331a019004938"
+  }
+  index: 4
+  text: "My girl... is not coming back.\n\nMy girl."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d21b48623331a01900493b"
+  }
+  index: 5
+  text: "{{GM}}She looks up. Steely.{{/GM}}\n\nIt was her crusade, wasn\342\200\231t it? Her private war on the BTL trade. Do not tell me it was a senseless shadowrun for some corporation who saw her as nothing more than a disposable asset."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+  }
+}
+nodes {
+  idRef {
+    id: "51d21b56623331a01900493e"
+  }
+  index: 6
+  text: "Wait. Do not tell me at all. It will change nothing. \n\nCoyote will still be dead."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "518d7674643431b03f0041ab"
+          }
+          args {
+            string_value: "c15_hasResolvedCoyoteDeath"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

@@ -1,0 +1,262 @@
+idRef {
+  id: "565f66506233314414005f55"
+}
+ui_name: "c10-s1_PlaneyardReturn_Lookout"
+nodes {
+  idRef {
+    id: "565f7e186233314414005f5b"
+  }
+  index: 0
+  text: "Y-you there! This block is off limits! There\'s uh... we\'ve got a gas leak on the docks here. No loitering."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5660b8606233314414005f5e"
+  }
+  index: 1
+  text: "This guy doesn\'t look like one of the hired mercenaries."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "1a44aec9623331d01000164f"
+  }
+}
+nodes {
+  idRef {
+    id: "5663db5c6233314414005f74"
+  }
+  index: 2
+  text: "Hey! Are you even listening? Get outta here!"
+  branches {
+    responseText: "I\'m not leaving."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "LookoutAttacks"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Set Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "LookoutAttacks"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "I\'m not here for you. Just let me through."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "LookoutAttacks"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Set Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "LookoutAttacks"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 3
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Shadowrunner{{/CC}} Really, guy? They aren\'t paying you enough. Especially not once Lone Star sends a response team."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 17
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "LookoutLeaves"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Corporate{{/CC}} Damn, kid, did you have to break the fence? Killing you won\'t cost a dime, but replacing that fence..."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 13
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "LookoutLeaves"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "56688d106233314414005f91"
+  }
+  index: 3
+  text: "Look $(l.guy), I didn\'t want to have to do this."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "566ae9466233314414005f93"
+  }
+  index: 4
+  text: "Frag, I knew she was lying. Told me they jammed all the Lone Star channels. Dammit. I\'m out."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "566b03626233314414005f95"
+  }
+  index: 5
+  text: "Whoa, hey, I got nothin\' to do with that! It was those guys in the warehouse, they did it! Frag, I\'m gettin\' out of here!"
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

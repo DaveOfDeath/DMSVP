@@ -1,0 +1,112 @@
+idRef {
+  id: "8c2ec13530303134170042e0"
+}
+ui_name: "c07-s1_PianoConversation"
+nodes {
+  idRef {
+    id: "8c30924330303134170042e6"
+  }
+  index: 0
+  text: "The piano looks like it\342\200\231s been here since the Union was built, but doesn\342\200\231t look like anyone has played it in earnest for almost as long."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "8c34d9f430303134170042f9"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "{{GM}}Inspect the piano.{{/GM}}"
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b64f866233315815004f2b"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Play \"Chopsticks\".{{/GM}}"
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51abcf2c623665b0200067d0"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Play G-A-F-F-C.{{/GM}}"
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "{{GM}}Leave the piano.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8c360bb330303134170042fe"
+  }
+  index: 2
+  text: "The piano seems normal until you notice that it is very rigid. Upon further investigation it\'s because the piano is bolted to the wall. A close look at the floor reveals skid marks, indicating that the piano slides to the left."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "8c362e7c3030313417004300"
+  }
+  index: 3
+  text: "You\342\200\231re a natural, you should give up Shadowrunning and become a touring pianist. Johnny does not look impressed. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "8c367d943030313417004302"
+  }
+  index: 4
+  text: "As you slowly peck the notes out on the keyboard, they spark a faint memory of wonder - immediately forgotten as the entire piano slides to the left revealing a hidden staircase. You descend the stairs into the Union safehouse."
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "isUsingPiano"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

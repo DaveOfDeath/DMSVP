@@ -1,0 +1,145 @@
+idRef {
+  id: "51b7bf7d3030315c150047dc"
+}
+ui_name: "c14-s2_BaddiesStillAlive"
+nodes {
+  idRef {
+    id: "51b7bf973030315c150047e2"
+  }
+  index: 0
+  text: "Ah! What is this? This panel is odd, I need some time to investigate."
+  branches {
+    responseText: "Have you done this before?"
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "What the hell? I don\'t have all day."
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Take your time. I\'ll be fine."
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToBaronAboutBaddies"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51b7c0b83030315c150047e7"
+  }
+  index: 1
+  text: "There must be a way to get in there! We must get that sample, but for now I suggest you eliminate the remaining guards. Unless you think stealing high security corp assets benefits from witnesses."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b7cd323030315006003717"
+  }
+  index: 2
+  text: "You must deal with those guards, I will deal with this panel!"
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToBaronAboutBaddies"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+  hideIfUnavailable: true
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToBaronAboutBaddies"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 2
+}

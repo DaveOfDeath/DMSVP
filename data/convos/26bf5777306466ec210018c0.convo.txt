@@ -1,0 +1,129 @@
+idRef {
+  id: "26bf5777306466ec210018c0"
+}
+ui_name: "c06-s1_Addict"
+nodes {
+  idRef {
+    id: "26bf86ef306466ec210018c6"
+  }
+  index: 0
+  text: "{{GM}}The woman scratches herself like a cat at a couch leg.{{/GM}}\n\nPlease... can you spare some nuyen?"
+  branches {
+    responseText: "My credstick\'s a little light too, lady. What can you do for me in exchange?"
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "You\'ve got a stink on you, junkie. Drop the chips. Get clean."
+    nextNodeIndex: 5
+  }
+  branches {
+    responseText: "You look like you could use a break. All you need is a few nuyen for a Better-Than-Life chip, right? "
+    nextNodeIndex: 6
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "26ba18b8306466ec210018bf"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "b3276563306466a01d005e69"
+  }
+  index: 1
+  text: "I got nothing left to give, $(l.guy). It all goes to BTLs.\n\nEverything.\n\nPlease! Just a few nuyen."
+  branches {
+    responseText: "Maybe I can cred you for some information. Have you seen a woman come through here today? Armed and looking for trouble?"
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "b3276563306466a01d005e6c"
+  }
+  index: 2
+  text: "Yes... no! Hell, what do you want me to say? \n\nI\'ll tell you anything. Everything... \n\nPleeaaase?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "196496a0623665041f004e0f"
+  }
+  index: 3
+  text: "{{GM}}She drops to her knees, pleading.{{/GM}}"
+  branches {
+    responseText: "You\'re too far gone to help me. Or anyone."
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "I\'m sorry, but I can\'t help you. You should leave this place if you can."
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ad3ae3396163580f0042b8"
+  }
+  index: 4
+  text: "But... but that doesn\'t make sense. The BTLs are here! I just... need... something...\n\n{{GM}}She collapses, whimpering, and seems lost to this world.{{/GM}}"
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "b3276564306466a01d005e70"
+  }
+  index: 5
+  text: "Hey, we can\'t all be... like you. Please, I just need one BTL to get through the day. Two, tops. \n\nWhat do you say?"
+  branches {
+    responseText: "That doesn\'t sound like a good idea. Have you seen a woman come through here today? Armed and looking for trouble?"
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "b3276564306466a01d005e76"
+  }
+  index: 6
+  text: "Yes, yes! I just need another BTL to get through the day. Something pretty. \n\nSomething... soft..."
+  branches {
+    responseText: "Sure, I get it. Have you seen a woman come through here today? Armed and looking for trouble? Maybe I can cred you.\n"
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

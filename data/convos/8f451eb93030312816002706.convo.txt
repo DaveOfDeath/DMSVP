@@ -1,0 +1,276 @@
+idRef {
+  id: "8f451eb93030312816002706"
+}
+ui_name: "c07-s1_GunShop"
+nodes {
+  idRef {
+    id: "8f47d330303031281600270d"
+  }
+  index: 0
+  text: "Theodore \"Buster\" Gruberman is a well-groomed ork, dressed with a precision that suggests the straight lines of a military officer\'s uniform. His hair is cropped short, high and tight, as they say, and the neatness this presents is only compromised by the uneven tusks protruding from his mouth. The only other defect in this picture of perfection is the man\'s cybernetic right arm, which is obvious enough to be noticeable but not so obvious as to ruin the line of his suit."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countWeaponsVisits"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToGunGuy"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d1711c3236649c0f004bf8"
+  }
+  index: 1
+  text: "{{GM}}When he speaks, the ork\342\200\231s voice is soft and thoughtful, and he talks almost exclusively in numbers: calibers, ranges, rounds per second, arc of fire, razoring factor, tensile strength and, of course, price.{{/GM}}\n\nBunker Buster Gruberman, at your service. Friends call me Buster. I also answer to Sergeant, Sir, and even Theodore on occasion. Anytime you\'re in the market for firearms, ammunition, or ordinance, I\342\200\231m your man.\n\nHow can I help you?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d1766c3236649c0f004c5f"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "What exactly do you sell here?"
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d31a6a623331d419006728"
+    }
+  }
+  branches {
+    responseText: "Let\'s take a look at what you\'ve got."
+    actions {
+      ops {
+        functionName: "Open Store Screen From Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "8c521aa73030313417004386"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Nothing right now, thanks."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d1766c3236649c0f004c62"
+  }
+  index: 3
+  text: "Things that go bang in all shapes and sizes, plus other odds and ends, on occasion. Consider me your own personal armory. All weapons are guaranteed to meet strict UCAS military spec or your money back. In addition, I can handle routine maintenance, repairs, and upgrades, if you so desire. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d1766c3236649c0f004c65"
+  }
+  index: 4
+  text: "And if that wasn\'t enough, I also teach a safety and instructional course every weekend. This week we\'re covering bayonets. Mark my words, they\'re making a comeback."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d1766c3236649c0f004c68"
+  }
+  index: 5
+  text: "So what can I get you?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+}
+nodes {
+  idRef {
+    id: "8f4b8fa03030312816002714"
+  }
+  index: 6
+  text: "Kiss Kiss, Bang Bang... love that one. You, my friend, were right to check back with me so soon. Circumstances can change just that fast, and you know that you need more things that go boom in your life. Check out what I have in stock."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countWeaponsVisits"
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d16fbc3236649c0f004be1"
+  }
+  index: 7
+  text: "What can I do you for?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countWeaponsVisits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  nextNodeIndex: 0
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countWeaponsVisits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  nextNodeIndex: 6
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countWeaponsVisits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+  }
+  nextNodeIndex: 7
+}

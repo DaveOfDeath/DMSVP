@@ -1,0 +1,99 @@
+idRef {
+  id: "fb6f17533030316c1300160d"
+}
+ui_name: "c14-s1_AccountingHR"
+nodes {
+  idRef {
+    id: "fb6fa35b3030316c1300161e"
+  }
+  index: 0
+  text: "{{GM}}This terminal is active and displays a login screen that reads \"Accounting Division\", \"Level: Human Resources I\".{{/GM}}"
+  branches {
+    responseText: "{{GM}}Run search?{{/GM}}"
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "fb7d5e1b3030316c13001621"
+  }
+  index: 1
+  text: ">>Local access granted\n>>Network access granted"
+  branches {
+    responseText: "{{GM}}HR Communications{{/GM}}"
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "SawHR"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51aa590a303031ec0d0040f0"
+  }
+  index: 2
+  text: "HR Communications"
+  branches {
+    responseText: "{{GM}}Run Search: \"Lynne Telestrian\"{{/GM}}"
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "{{GM}}Run Search: \"Universal Brotherhood\"{{/GM}}"
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "{{GM}}Exit{{/GM}}"
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51aa5969303031ec0d00411b"
+  }
+  index: 3
+  text: ">>Employee status: Terminated"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51aa65e0303031ec0d004159"
+  }
+  index: 4
+  text: ">>Brotherhood, Universal: Record not found"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51aa6604303031ec0d00415c"
+  }
+  index: 5
+  text: ">>Logging Off"
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

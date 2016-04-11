@@ -1,0 +1,354 @@
+idRef {
+  id: "51cf382f356164d015000125"
+}
+ui_name: "c09-s1_Tweakers_CoyoteReminder"
+nodes {
+  idRef {
+    id: "51cf3838356164d01500012b"
+  }
+  index: 0
+  text: "{{GM}}Coyote stops you for a moment.{{/GM}}\n\nListen people, this is important."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d1d4ce3561648412000136"
+  }
+  index: 1
+  text: "What\342\200\231s up, baby?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  sourceInSceneRef {
+    id: "51be13eb3561642817005d04"
+  }
+}
+nodes {
+  idRef {
+    id: "51d1d4d63561648412000139"
+  }
+  index: 2
+  text: "No matter what, I don\342\200\231t want any collateral damage in there. Shoot all the BTL pushers you want but no chip-heads die, if we can help it. Got it?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+  }
+}
+nodes {
+  idRef {
+    id: "51d1d4dd356164841200013c"
+  }
+  index: 3
+  text: "Sure. Of course. They\342\200\231re innocent.\n\nI also brought a concussion grenade like you asked. Better than fragging the tweakers if they get caught in the middle."
+  branches {
+    responseText: "I wouldn\342\200\231t say they\342\200\231re innocent."
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "No civilian casualties. Got it."
+    nextNodeIndex: 6
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "51be13eb3561642817005d04"
+  }
+}
+nodes {
+  idRef {
+    id: "51d1d4fa3561648412000140"
+  }
+  index: 4
+  text: "No one\342\200\231s innocent. \n\n{{GM}}She looks at you both.{{/GM}}\n\nNot us, not anyone in the Sprawl. But they\342\200\231re chip-heads not pushers. They have a problem. They didn\342\200\231t ask for this."
+  branches {
+    responseText: "I still can\342\200\231t promise that no chip-heads will die."
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d1d51f3561648412000144"
+  }
+  index: 5
+  text: "My run, my rules."
+  branches {
+    responseText: "No civilian casualties. Got it."
+    nextNodeIndex: 6
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I\342\200\231m in. I got your back."
+    nextNodeIndex: 6
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "That\342\200\231s not how I roll. Good luck with this. {{GM}}Abort the run and head back to the Union.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Open Scene"
+        args {
+          call_value {
+            functionName: "Get Map Item (Scene)"
+            args {
+              string_value: "c08-s3_Seamstress"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d1d5e43561648412000159"
+  }
+  index: 6
+  text: ""
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Surprise"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Surprise"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d3488b396365ec19000178"
+  }
+  index: 7
+  text: "Good. We kicked the hornet\'s nest back there, so be ready."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "No chiphead can die."
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5ad95d1b306434cc0f00434e"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+      }
+    }
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "5ae2c41d306434cc0f004351"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+      }
+    }
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "51d34f4f3561642408000134"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d34852396365ec1900014f"
+  }
+  index: 8
+  text: "Good. Let\342\200\231s go and play it cool."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "No chiphead can die."
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

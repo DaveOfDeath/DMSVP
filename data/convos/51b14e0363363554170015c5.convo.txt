@@ -1,0 +1,304 @@
+idRef {
+  id: "51b14e0363363554170015c5"
+}
+ui_name: "c21-s1 Going Away Party"
+nodes {
+  idRef {
+    id: "51b14e0d63363554170015cb"
+  }
+  index: 0
+  text: "Streamers and greeting cards decorate the lower bunk."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b397bb633635c017002320"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "{{GM}}Look at the cards.{{/GM}}"
+    nextNodeIndex: 2
+  }
+  branches {
+    responseText: "{{GM}}Search the bunk.{{/GM}}"
+    nextNodeIndex: 6
+  }
+  branches {
+    responseText: "{{GM}}Done looking at the bunk.{{/GM}}"
+    actions {
+      ops {
+        functionName: "No Effect"
+      }
+    }
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b397bb633635c017002323"
+  }
+  index: 2
+  text: "There are two greeting cards are taped to the bunk. One is a giant, home-made card. The other is professionally printed and features the logo of the Universal Brotherhood."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b397bb633635c017002326"
+  }
+  index: 3
+  text: ""
+  branches {
+    responseText: "{{GM}}Open the home-made card, \"Missing you already!\"{{/GM}}"
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "{{GM}}Open the professionally printed card, \"Congratulations!\"{{/GM}}"
+    nextNodeIndex: 5
+  }
+  branches {
+    responseText: "{{GM}}Look at something else.{{/GM}}"
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b397bb633635c017002329"
+  }
+  index: 4
+  text: "Julie,\nWe are all so proud of you for advancing to the Inner Sanctum. Remember us lowly Brothers and Sisters and come visit us often!\n\nLove,\nMonica & your fellow dorm mates"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b397bb633635c01700232f"
+  }
+  index: 5
+  text: "Dear Sister Julie,\n\nIt is my pleasure to invite you to join us in the Inner Sanctum as a Mother of the Universal Brotherhood. \n\nI have left your upgraded keycard in your locker. \n\nWe rejoice to be with you!\nFather Willy"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "51ae1a3d6336351c0a001575"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51b397bb633635c01700233f"
+  }
+  index: 6
+  text: "You find a fresh Universal Brotherhood Sister\'s uniform on the bed. "
+  branches {
+    responseText: "{{GM}}Take the uniform.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Gender"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Gender"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add Item to Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "Cult Follower"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51df1882623331c00e0033ce"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Take the uniform.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Gender"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Gender"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d4d8f6623665ec1f000765"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Leave the uniform alone.{{/GM}}"
+    nextNodeIndex: 9
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51b397bb633635c017002342"
+  }
+  index: 7
+  text: "It\'s the right size for you."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+}
+nodes {
+  idRef {
+    id: "51b39b07633635c017002446"
+  }
+  index: 8
+  text: "The uniform doesn\'t fit you. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b6b3ea63363574140015d6"
+  }
+  index: 9
+  text: ""
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    auxiliaryLink: true
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

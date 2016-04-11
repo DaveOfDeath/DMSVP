@@ -1,0 +1,228 @@
+idRef {
+  id: "62b16a513064340c1300030c"
+}
+ui_name: "c03-s1_Barrens_Vlad"
+nodes {
+  idRef {
+    id: "62b184973064340c13000312"
+  }
+  index: 0
+  text: "{{GM}}As you approach, the man sizes you up. You can see the age-old fight-or-flight equation running behind his drug-clouded eyes. Beneath the track marks on his arms, you spot a set of tattoos that indicate he is, or at least once was, a shaman.{{/GM}}"
+  branches {
+    responseText: "What\342\200\231s your story?"
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "Hey man... are you okay?"
+    nextNodeIndex: 5
+  }
+  branches {
+    responseText: "Get out of my way."
+    nextNodeIndex: 11
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "MoveVladBack"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5dbc399e306434701b004349"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "62b34d0b3064340c13000317"
+  }
+  index: 1
+  text: "Nothing. No story. Nothing, just le-leave me alone. I didn\342\200\231t see anything, I swear."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae998b396163ac28002a46"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "What didn\342\200\231t you see?"
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ae99fb396163ac28002a66"
+    }
+  }
+  branches {
+    responseText: "Calm down. I\342\200\231m $(s.name). What\342\200\231s your name?"
+    nextNodeIndex: 6
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I\'ve had enough of this."
+    nextNodeIndex: 11
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae998b396163ac28002a49"
+  }
+  index: 3
+  text: "Nothing. I didn\342\200\231t see anything. I... I... I just need my fix. But I can\342\200\231t get it because of the big pumpkin heads!"
+  branches {
+    responseText: "You\'re seeing giant pumpkin heads, eh?"
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae998b396163ac28002a4c"
+  }
+  index: 4
+  text: "Yes! The pumpkins down the street... they kill everyone who looks at them funny. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "62b9d3a13064340c1300034b"
+  }
+  index: 5
+  text: "Yes NOO yes. No. I saw something... it\'s going to kill me!"
+  branches {
+    responseText: "Calm down. I\342\200\231m $(s.name). What\342\200\231s your name?"
+    nextNodeIndex: 6
+  }
+  branches {
+    responseText: "I\'ve had enough of this."
+    nextNodeIndex: 11
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "62ba5b273064340c1300034e"
+  }
+  index: 6
+  text: "My name... is... my name is Vlad. "
+  branches {
+    responseText: "Vlad, those are some nice tattoos. Are you a shaman?"
+    nextNodeIndex: 7
+  }
+  branches {
+    responseText: "I\342\200\231ve had enough of this."
+    nextNodeIndex: 11
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "62baa2b73064340c13000351"
+  }
+  index: 7
+  text: "{{GM}}The word \'shaman\' strikes a cord. He seems to shake off some of the mental cobwebs.{{/GM}} \n\nYes... yes, I am a shaman."
+  branches {
+    responseText: "I thought so. Vlad, what did you see?"
+    nextNodeIndex: 8
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "62bb1a8b3064340c13000355"
+  }
+  index: 8
+  text: "See. Yes. I saw something. The other night I saw a spirit so dark, so ALIEN, that... {{GM}}Vlad trails off, and shudders.{{/GM}}"
+  branches {
+    responseText: "Where did you see this spirit?"
+    nextNodeIndex: 9
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "62bb91473064340c1300035c"
+  }
+  index: 9
+  text: "Just across the street from the Seamstresses Union."
+  branches {
+    responseText: "It\'s gone now Vlad. It\'s not going to kill you. You\'re safe."
+    nextNodeIndex: 10
+  }
+  branches {
+    responseText: "I\'m done here. Good luck with that sanity thing."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae9b1d396163ac28002a8f"
+  }
+  index: 10
+  text: "Th-thank you. I think you\'re right. I feel better now. More whole. Now... I think I need some sleep."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "62b99b7d3064340c13000349"
+  }
+  index: 11
+  text: "OK ok OoOok ok ok ok OK ok ok Ok oK ooooK.\n\n{{GM}}The broken man backs away, hiding his head in his hands.{{/GM}}"
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

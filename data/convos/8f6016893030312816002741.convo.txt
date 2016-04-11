@@ -1,0 +1,464 @@
+idRef {
+  id: "8f6016893030312816002741"
+}
+ui_name: "c07-s1_DocStore"
+nodes {
+  idRef {
+    id: "8f604ff83030312816002747"
+  }
+  index: 0
+  text: "In shadowrunner circles, the term \"doctor\" is often used quite liberally to describe any sawbones with a needle and thread. But in the case of the Union\'s resident medical expert, nothing could be further from the truth. The safe house boasts a fully-equipped medical suite, complete with shamanic fetishes. This is Sixth World medicine of the highest caliber."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countDoctorVisits"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToDoc"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d08f173236646019001ff1"
+  }
+  index: 1
+  text: "{{GM}}The doctor herself is an unassuming sort, perhaps the type to go unnoticed entirely, if not for the spritely spirit perched on her shoulder like her own personal gargoyle. The spirit\'s burning eyes follow you constantly, even as the doctor\'s own eyes are buried in her charts. However, she does look up long enough to acknowledge your approach.{{/GM}}\n\nI\'m Dr. Castle. I understand you were instrumental in bringing Coyote back to us. Thank you for that."
+  branches {
+    responseText: "And I suppose you were the one who patched her up. Impressive work."
+    nextNodeIndex: 2
+  }
+  branches {
+    responseText: "Null sheen. Now, fixing up her arm, that was a piece of work."
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "You\'re welcome, doc. And I gotta say, that was some work you did on her. Your talents may be going to waste down here."
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d0922b32366460190020aa"
+  }
+  index: 2
+  text: "Thank you. It\'s a shame she wouldn\'t let me repair her face, though."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d0924c32366460190020ad"
+  }
+  index: 3
+  text: "Surprisingly routine, as it so happens."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d0921b3236646019002084"
+  }
+  index: 4
+  text: "High praise for a simple arm swap, especially since she wouldn\342\200\231t let me repair her face."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d0921b3236646019002087"
+  }
+  index: 5
+  text: "{{GM}}She notes you eyeballing the facilities.{{/GM}}\n\nI can tell you\'re surprised to find a full-service medbay under a dive bar in a slum. Don\'t be. This is a shadowrunner bar, after all."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d0933832366460190020f7"
+  }
+  index: 6
+  text: "For a purveyor of cyberware and trauma kits, there is no better place to set up a practice. I patch runners up, install and maintain their cyberware, and provide medical supplies for their runs. I may not be as mobile as Doc Wagon, but I\'m the next best thing.\n\nCan I help you with anything?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+  }
+}
+nodes {
+  idRef {
+    id: "51d0933832366460190020fa"
+  }
+  index: 7
+  text: ""
+  branches {
+    responseText: "Tell me more about trauma kits."
+    nextNodeIndex: 8
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d164b13236646019003016"
+    }
+  }
+  branches {
+    responseText: "Let\'s see your medical supplies."
+    actions {
+      ops {
+        functionName: "Open Store Screen From Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "8c5128bf3030313417004385"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "What cyberware do you have available?"
+    actions {
+      ops {
+        functionName: "Open Cyberware Screen From Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "8c5128bf3030313417004385"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I see shamanic fetishes. You a shaman too?"
+    nextNodeIndex: 10
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d0955d3236646019002143"
+    }
+  }
+  branches {
+    responseText: "What\342\200\231s that on your shoulder?"
+    nextNodeIndex: 11
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d0cf563236646019002cad"
+    }
+  }
+  branches {
+    responseText: "Thanks for your time."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countDoctorVisits"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 12
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "Nevermind."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countDoctorVisits"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: -1
+    hideIfUnavailable: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d0933832366460190020fd"
+  }
+  index: 8
+  text: "Trauma kits are fully-automated stabilization units that include a defibrillator, spray-on synthetic skin, and medical nanomachines. They can save a runner\'s life, if you move fast enough."
+  branches {
+    responseText: "So if you are bleeding out, one of those can get you back on your feet?"
+    nextNodeIndex: 9
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d093383236646019002100"
+  }
+  index: 9
+  text: "Exactly, but you have to be quick. This is Doc Wagon\'s own field tech, but even their stuff has its limits."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d09338323664601900210c"
+  }
+  index: 10
+  text: "While modern medical technology makes surgery less disruptive than it used to be, it\'s still an ordeal for both the body and the spirit, requiring extensive recuperation to properly heal.\n\nI am trained in the ways of the spirit world as well as the scientific world. I do my best to heal the whole patient."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d093383236646019002112"
+  }
+  index: 11
+  text: "This little guy supports the healing rituals I perform on my patients after surgery, dramatically reducing their recovery time. Not standard procedure, of course, but the results speak for themselves."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d093383236646019002118"
+  }
+  index: 12
+  text: "{{GM}}Doc Castle gives you a final once-over, noting your gear.{{/GM}}\n\nI\'m sure we\'ll see each other again."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8f612570303031281600274a"
+  }
+  index: 13
+  text: "You don\342\200\231t look like you\'re bleeding, so I assume you want to see my current inventory of cyberware and medkits."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countDoctorVisits"
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d08ba13236646019001e72"
+  }
+  index: 14
+  text: "Can I help you?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countDoctorVisits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  nextNodeIndex: 0
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countDoctorVisits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  nextNodeIndex: 13
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countDoctorVisits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+  }
+  nextNodeIndex: 14
+}

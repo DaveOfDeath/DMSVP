@@ -1,0 +1,274 @@
+idRef {
+  id: "d6d0841b303031800f00696c"
+}
+ui_name: "c17-s1_FinalConversation"
+nodes {
+  idRef {
+    id: "d6d0c1ea303031800f006972"
+  }
+  index: 0
+  text: "{{GM}}You listen as the sounds of gunfire and spell bursts fade away and the silence of the dead returns to the cemetery.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "isFinalConvoDone"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51a7fc903030318c0a001a10"
+  }
+  index: 1
+  text: "{{GM}}The man is beyond healing. As you look down at him, you notice the quality of his suit and shoes. This isn\342\200\231t a runner and he\342\200\231s not from the street.{{/GM}}"
+  branches {
+    responseText: "Jessica Watts. She hired you. Where can I find her?"
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+  sourceInSceneRef {
+    id: "c79b855b303031141100730a"
+  }
+  actions {
+    ops {
+      functionName: "Set Actor Unkillable"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "c79b855b303031141100730a"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51a801f7303031e816001653"
+  }
+  index: 2
+  text: "You... get... nothing.\n\n{{GM}}He convulses and dies.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "c79b855b303031141100730a"
+  }
+  actions {
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "c79b855b303031141100730a"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51a80345303031e816001675"
+  }
+  index: 3
+  text: "We don\342\200\231t know each other too well, but it seems to me that you need to find a better group of people to associate with."
+  branches {
+    responseText: "You\'re not the first person to tell me that."
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "Where did those guys come from?"
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "51a7d35a303031f41600168d"
+  }
+}
+nodes {
+  idRef {
+    id: "51a80723303031e8160016df"
+  }
+  index: 4
+  text: "Yeah, well it\342\200\231s part of living in the shadows. Do the research, chummer."
+  branches {
+    responseText: "How did those troops materialize?"
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "That woman, Lynne, seemed familiar."
+    nextNodeIndex: 11
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "51a7d35a303031f41600168d"
+  }
+}
+nodes {
+  idRef {
+    id: "51a803a6303031e816001679"
+  }
+  index: 5
+  text: "You didn\342\200\231t recognize who the elf was?"
+  branches {
+    responseText: "No. Who was she?"
+    nextNodeIndex: 6
+  }
+  branches {
+    responseText: "She looks familiar. Have I seen her somewhere?"
+    nextNodeIndex: 11
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "51a7d356303031f41600168c"
+  }
+}
+nodes {
+  idRef {
+    id: "51a803f8303031e81600167d"
+  }
+  index: 6
+  text: "She\342\200\231s Lynne Telestrian, super rich and super into the Universal Brotherhood. She\'s a major spokesperson for them in Seattle."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "51a7d356303031f41600168c"
+  }
+}
+nodes {
+  idRef {
+    id: "51a80414303031e816001680"
+  }
+  index: 7
+  text: "Hmmmm.\n\n{{GM}}Jake grabs the dead man by the throat. At first it looks like he\342\200\231s trying to kill him again, and then you notice he\342\200\231s feeling for something under the skin.{{/GM}}\n\nYep, he\342\200\231s got a corp ID chip."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "51a7d35a303031f41600168d"
+  }
+}
+nodes {
+  idRef {
+    id: "51a80480303031e816001696"
+  }
+  index: 8
+  text: "{{GM}}You watch as Jake pulls out his modified PDA and slots the chip.{{/GM}}\n\nMister... Wylie here was with Eagle Security. They work for the UB. That must\'ve been Lynne Telestrian\342\200\231s security detail we just chewed through. If she\342\200\231s protecting Jessica, they\342\200\231ll be inside the Universal Brotherhood."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "51a7d35a303031f41600168d"
+  }
+}
+nodes {
+  idRef {
+    id: "51c0eb55623331ac07001af9"
+  }
+  index: 9
+  text: "If you\342\200\231re going to hit the Universal Brotherhood, I\'m coming too. That psycho just admitted she had my friend Sam and a lot of innocent people killed so she could put her dead mother back together. \n\nThat is totally slagged-up. Plus, she and her elf-buddy Lynne just tried to geek me.\n\nThey\'re gonna hurt for that. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+  }
+  sourceInSceneRef {
+    id: "51a7d356303031f41600168c"
+  }
+}
+nodes {
+  idRef {
+    id: "51c0eb55623331ac07001afc"
+  }
+  index: 10
+  text: "Suit yourself, lady. I was only stopping by to pay my respects to Sam. Merc hit squads, the Universal Brotherhood... not my scene, at the moment. \n\nI can call up some of Delilah\'s runners if you want to go there now. Let me know what you decide."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "51a7d35a303031f41600168d"
+  }
+}
+nodes {
+  idRef {
+    id: "51a805cd303031e8160016cf"
+  }
+  index: 11
+  text: "Yep, she\342\200\231s a major spokesperson for the Universal Brotherhood. Her name is Lynne Telestrian. She\342\200\231s super rich."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "51a7d356303031f41600168c"
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

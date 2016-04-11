@@ -1,0 +1,502 @@
+idRef {
+  id: "8f98ee2930303128160028fa"
+}
+ui_name: "c07-s1_TechStore"
+nodes {
+  idRef {
+    id: "8f9965a13030312816002900"
+  }
+  index: 0
+  text: "Every inch of the tech alcove is covered in a chaotic patchwork quilt of circuit boards, chips, wires, displays, and a million other things that you can\342\200\231t identify. In the eye of this techno-bits storm stands a dwarf, immaculately dressed and supremely calm."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedtoDF"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "8f322d3630303128160026ed"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "8f99b6b13030312816002903"
+  }
+  index: 1
+  text: "I know that look, don\342\200\231t let the size of the shop fool you, I can get any Matrix hardware or software that exists, and if it doesn\342\200\231t exist then I can get it made it for you. Any questions I can answer or anything gear you need?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8f9a10793030312816002906"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "What\342\200\231s a deck?"
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "What\342\200\231s a program?"
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "What\342\200\231s an ESP?"
+    nextNodeIndex: 5
+  }
+  branches {
+    responseText: "What do you have for sale?"
+    actions {
+      ops {
+        functionName: "Open Store Screen From Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "8c5059d63030313417004384"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "See you later."
+    nextNodeIndex: 7
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8f9a3cd13030312816002909"
+  }
+  index: 3
+  text: "You jack into the Matrix or in the context of a run, when you jack into the local node of the facility you\342\200\231re in, the deck determines how many programs and ESPs you can carry and the firepower of your base Matrix attack. Decks have IP when a deck\342\200\231s IP is reduced to zero you\'ll get booted from the system - and it\'ll hurt."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8f9d24513030312816002918"
+  }
+  index: 4
+  text: "A program in the Matrix allows you to defend your avatar against countermeasures and enemy deckers. There are a wide variety of different programs for attack and defense at different power levels. \n\nAs you progress as a decker, you can use more powerful versions of these programs. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8f9eda313030312816002921"
+  }
+  index: 5
+  text: "Johnny, you want to take this one?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8f9f28613030312816002924"
+  }
+  index: 6
+  text: "Sure, when you infiltrate a facility on a run you have a team, when you jack into the Matrix you are all alone. That\342\200\231s where ESPs come in. An ESP is a highly advanced artificial life program which when you deploy it manifests as another team member in the Matrix. Different types of ESPs have different abilities."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "8f322d3630303128160026ed"
+  }
+}
+nodes {
+  idRef {
+    id: "8fa1bfb1303031281600294d"
+  }
+  index: 7
+  text: "Oh I\342\200\231m being rude, let me also introduce you to our resident decker and my good friend Johnny Clean."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8fa237d13030312816002950"
+  }
+  index: 8
+  text: "While in the same overalls that you saw him in upstairs, down here, leaning over a workbench crammed with circuit boards, cables and chips, Johnny Clean seems a totally different person. You get the impression that Johnny was once as hot and as invisible as the most infamous deckers today."
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "seattle"
+            }
+            args {
+              string_value: "C04BadToJohnny"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 9
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "seattle"
+            }
+            args {
+              string_value: "C04BadToJohnny"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 14
+    hideIfUnavailable: true
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+  sourceInSceneRef {
+    id: "8f322d3630303128160026ed"
+  }
+}
+nodes {
+  idRef {
+    id: "8fa504593030312816002973"
+  }
+  index: 9
+  text: "Good to see you down here, happy to be of help if I can be.\n"
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "80b73b8430303184100041d2"
+  }
+}
+nodes {
+  idRef {
+    id: "8fa5a8793030312816002978"
+  }
+  index: 10
+  text: ""
+  branches {
+    responseText: "How is decking used?"
+    nextNodeIndex: 11
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b650166233315815004f7a"
+    }
+  }
+  branches {
+    responseText: "Why are you dressed as a janitor?"
+    nextNodeIndex: 12
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b6501c6233315815004f7b"
+    }
+  }
+  branches {
+    responseText: "Is it true that you were part of the Echo Mirage team?"
+    nextNodeIndex: 13
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b650236233315815004f7c"
+    }
+  }
+  branches {
+    responseText: "See you guys around."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8fa832413030312816002982"
+  }
+  index: 11
+  text: "The decking skill is often used just on terminals in the real world to get information, hack doors, etc. But occasionally a run will have the option or the requirement to go into the local Matrix LAN of the facility you are infiltrating in order to gain access to valuable information or control more important things in the real world"
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "80b73b8430303184100041d2"
+  }
+}
+nodes {
+  idRef {
+    id: "8fa8bd213030312816002985"
+  }
+  index: 12
+  text: "Did I stand out upstairs? No. Janitors never do.\n\nWhen I was younger, I had a rep for getting in and getting out of systems so cleanly that no one knew I was there. \n\nHalf the Matrix runs that earned me my rep were made possible because I was able to get inside the facility posing as a janitor. Now it\342\200\231s just sort of part of me.\n"
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "80b73b8430303184100041d2"
+  }
+}
+nodes {
+  idRef {
+    id: "8fa992513030312816002987"
+  }
+  index: 13
+  text: "Let me take this one. Listen, I\342\200\231ve known the guy for over a decade and he\'s been smart enough not to tell me. So he is sure as hell not going to tell you anything about those days. \n\nFor your health and his, best to let the subject drop."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8fa513e13030312816002975"
+  }
+  index: 14
+  text: " You were an asshole upstairs, but I\342\200\231ll give you another shot down here."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "8f322d3630303128160026ed"
+  }
+}
+nodes {
+  idRef {
+    id: "8fac0b4230303128160029e0"
+  }
+  index: 15
+  text: "Glad you checked back, I am always getting new stuff in, so check the lists as I am sure you will find something you can\342\200\231t live without."
+  branches {
+    responseText: "Alright lets see the what you have."
+    actions {
+      ops {
+        functionName: "Open Store Screen From Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "8c5059d63030313417004384"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "I\'m good for now."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedtoDF"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedtoDF"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 15
+  hideIfUnavailable: true
+}

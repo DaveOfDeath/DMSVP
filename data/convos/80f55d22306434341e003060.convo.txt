@@ -1,0 +1,559 @@
+idRef {
+  id: "80f55d22306434341e003060"
+}
+ui_name: "c05-s2_PikePlace_Manny"
+nodes {
+  idRef {
+    id: "80f56298306434341e003066"
+  }
+  index: 0
+  text: "The small meat stand presents an enormous diversity of dead animals - from cow and canine to the exotic and paranormal. The pictures on the back of the stand feature a much older version of the man in front of you."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Find Maury\'s Meat Emporium"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "80f5fa83306434341e00306c"
+  }
+  index: 1
+  text: "{{GM}}As soon as he notices Paco, the proprietor\'s eyes become hard and angry.{{/GM}} What do you want? You know we can\342\200\231t afford more!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "80f44e28306434341e00305f"
+  }
+}
+nodes {
+  idRef {
+    id: "80f80ff8306434341e0030de"
+  }
+  index: 2
+  text: "Relax, man. My friend just has a question."
+  branches {
+    responseText: "Everything cool here?"
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "You must be Maury."
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "808167a130643454080045c7"
+  }
+}
+nodes {
+  idRef {
+    id: "80f90581306434341e0030e5"
+  }
+  index: 3
+  text: "Yeah... everything\'s swell. {{GM}}Manny continues to stare daggers in Paco\'s direction.{{/GM}}\n\nThe name\'s Manny. Now what do you want?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "80f44e28306434341e00305f"
+  }
+}
+nodes {
+  idRef {
+    id: "80fa65f1306434341e0030ed"
+  }
+  index: 4
+  text: "Do I look like a fat old man to you? I\'m Manny. Maury\'s my dad. Now what do you want?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "80f44e28306434341e00305f"
+  }
+}
+nodes {
+  idRef {
+    id: "80fad283306434341e003103"
+  }
+  index: 5
+  text: ""
+  branches {
+    responseText: "What would someone want to buy zebra meat for?"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countMannyQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ae2a63623331681a001f43"
+    }
+  }
+  branches {
+    responseText: "Do you know someone named Coyote?"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countMannyQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 9
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b237ba3961636416003def"
+    }
+  }
+  branches {
+    responseText: "I have this receipt for an order of zebra meat. Still have it for me?"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countMannyQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+      ops {
+        functionName: "Add Item to Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c05_ZebraMeat"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51a1771c3961638813007d18"
+    }
+  }
+  branches {
+    responseText: "What\'s your problem with Paco?"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countMannyQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 11
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b22702623331501c0032a7"
+    }
+  }
+  branches {
+    responseText: "I\'ll be leaving now."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "80f44e28306434341e00305f"
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasSpokenToManny"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "80fe7344306434341e00318b"
+  }
+  index: 6
+  text: "Some people eat it... but I wouldn\'t recommend that. Tough as nails. We mostly sell it to corp security teams who use it to reward their Hellhounds. The flamers go crazy for the stuff for some reason."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "80f44e28306434341e00305f"
+  }
+}
+nodes {
+  idRef {
+    id: "51a173493961638813007caf"
+  }
+  index: 7
+  text: "Oh.. drek! THAT\'s why Coyote wanted zebra meat. Everyone talks about the pet Hellhounds Stevie J keeps locked up somewhere in the Royale. And if she never picked it up..."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "808167a130643454080045c7"
+  }
+}
+nodes {
+  idRef {
+    id: "51a17c023961638813007fce"
+  }
+  index: 8
+  text: "Whatever. Anything else?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  sourceInSceneRef {
+    id: "80f44e28306434341e00305f"
+  }
+}
+nodes {
+  idRef {
+    id: "80fea214306434341e00318f"
+  }
+  index: 9
+  text: "Nope. I don\'t go in much for that Shaman stuff."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "80f44e28306434341e00305f"
+  }
+}
+nodes {
+  idRef {
+    id: "80fedda6306434341e003193"
+  }
+  index: 10
+  text: "I\342\200\231ll look it up...\n\nYeah, got it right here. Two days past the pickup time, didn\'t think anyone was going to come for it. Here - it\'s all yours now."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "80f44e28306434341e00305f"
+  }
+}
+nodes {
+  idRef {
+    id: "81015dd4306434341e0031c4"
+  }
+  index: 11
+  text: "Why don\'t you ask him. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "80f44e28306434341e00305f"
+  }
+}
+nodes {
+  idRef {
+    id: "810173b6306434341e0031c7"
+  }
+  index: 12
+  text: "What the hell is that supposed to mean?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "808167a130643454080045c7"
+  }
+}
+nodes {
+  idRef {
+    id: "8101fd0a306434341e0031ca"
+  }
+  index: 13
+  text: "It means that your gang likes to stroll through here and relieve us merchants of our nuyen. My dad stood up to them... and he\342\200\231s still in the hospital."
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "80f44e28306434341e00305f"
+  }
+}
+nodes {
+  idRef {
+    id: "51a174ac3961638813007cfe"
+  }
+  index: 14
+  text: "Look, that\'s not my problem. I\'m at the bottom of the Cutter ranks anyway - I couldn\'t do drek about that even if I wanted to."
+  branches {
+    responseText: ""
+    nextNodeIndex: 15
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "808167a130643454080045c7"
+  }
+}
+nodes {
+  idRef {
+    id: "51a175753961638813007d03"
+  }
+  index: 15
+  text: "Tell that to my dad."
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "80f44e28306434341e00305f"
+  }
+}
+nodes {
+  idRef {
+    id: "51a175873961638813007d08"
+  }
+  index: 16
+  text: "I don\'t have time for this. We need to find Coyote. "
+  branches {
+    responseText: "You\'re right, Paco. Let\'s get going."
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "We will, in a minute. I still have some questions."
+    nextNodeIndex: 17
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "808167a130643454080045c7"
+  }
+}
+nodes {
+  idRef {
+    id: "51a17c323961638813007fd5"
+  }
+  index: 17
+  text: "Whatever. Make it quick."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "80f44e28306434341e00305f"
+  }
+}
+nodes {
+  idRef {
+    id: "51b226a2623331501c003271"
+  }
+  index: 18
+  text: "Yeah, what now?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasSpokenToManny"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasSpokenToManny"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 18
+}

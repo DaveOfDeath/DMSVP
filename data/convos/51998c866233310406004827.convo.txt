@@ -1,0 +1,248 @@
+idRef {
+  id: "51998c866233310406004827"
+}
+ui_name: "c03-s1_Barrens_JakeAtCrimescene"
+nodes {
+  idRef {
+    id: "51998cde623331040600482d"
+  }
+  index: 0
+  text: "{{GM}}As you approach the scene of Sam\'s murder, Jake spies the flashing red and blue lights up ahead.{{/GM}}\n\nWhoa, hold up a minute. Lone Star isn\'t above collecting on a corp issued bounty, and the one on my head isn\'t going away any time soon. \n\n{{GM}}He sighs.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasSplitWithJake"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51aec48d396163ac28002f04"
+  }
+  index: 1
+  text: "Sorry friend... I think this is where our paths diverge. \n\nThanks again for the help with those Halloweeners. Here\'s your payment - they don\'t take nuyen where I\'m going, and you look like you could use the funds. "
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "Dead Man\'s Switch: The Mystery of Sam Watts"
+            }
+            args {
+              string_value: "c02_hasNegotiatedExtraNuyen"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 1000
+        }
+      }
+    }
+    nextNodeIndex: 2
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "Dead Man\'s Switch: The Mystery of Sam Watts"
+            }
+            args {
+              string_value: "c02_hasNegotiatedExtraNuyen"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 1500
+        }
+      }
+    }
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51aec48d396163ac28002f07"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "Good luck out there."
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "What, you want a hug or something?"
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "Likewise, Jake. Give me a call when you\'re in the clear."
+    nextNodeIndex: 5
+  }
+  branches {
+    responseText: "Sure you don\'t want to stick around? I could use the backup..."
+    nextNodeIndex: 8
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51aec6f8396163ac28002f16"
+  }
+  index: 3
+  text: "Yeah, you too. \n\n{{GM}}He starts to leave, then tilts his head back.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51aec6f5396163ac28002f14"
+  }
+  index: 4
+  text: "Hah.\n\n{{GM}}He starts to leave, then tilts his head back.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51aec4d6396163ac28002f0f"
+  }
+  index: 5
+  text: "Yeah, sure. \n\n{{GM}}He starts to leave, then tilts his head back.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51aec553396163ac28002f12"
+  }
+  index: 6
+  text: "Hey, one more thing. When you\'re done checking out your pal\'s crime scene, pop in to the Seamstresses Union. It\'s just down the street. You need gear, information, or just a damned stiff drink, that\'s the place to be. Best dive this side of Chicago. I used that place as a base of operations for years, back in the day. \n\nMake the right friends there and I\'m sure you\'ll get to the bottom of this Ripper business."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51afc0d23961633828004e6e"
+  }
+  index: 7
+  text: "Well - nice knowin\' ya.\n\n{{GM}}Jake turns, and disappears into shadowy depths of the Redmond Barrens.{{/GM}}"
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51aec8ca396163ac28002f35"
+  }
+  index: 8
+  text: "Sorry chummer, not my style. Besides - you seem like you can take care of yourself.\n\n{{GM}}He takes a step, then tilts his head back.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

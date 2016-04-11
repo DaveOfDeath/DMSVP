@@ -1,0 +1,429 @@
+idRef {
+  id: "51a5703a396163240d007b09"
+}
+ui_name: "c05-s2_PikePlace_Necklace"
+nodes {
+  idRef {
+    id: "51a5704d396163240d007b13"
+  }
+  index: 0
+  text: "You scan the ground near Lucy\'s body and spot a small wooden object, mostly hidden beneath the dead woman\'s hair. This must be the necklace Frank was talking about. A thin broken cord trails off to one side - it must have snapped during the struggle."
+  branches {
+    responseText: "{{CC}}Quickness: 4{{/CC}} {{GM}}Pretend to drop your PDA, then quickly pocket the necklace while bending down to retrieve it.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 4
+        }
+      }
+    }
+    nextNodeIndex: 4
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{GM}}Lean down to pick up the necklace.{{/GM}}"
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "{{GM}}Catch the attention of the nearby Officer Aguirre.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "seattle"
+            }
+            args {
+              string_value: "c06_BribedSergeant"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51a57342396163240d007b1c"
+  }
+  index: 1
+  text: "{{GM}}As you start to reach for the necklace, a slim black Lone Star boot slams down on the pavement.{{/GM}}\n\nAnd what do you think you\'re doing?"
+  branches {
+    responseText: "Just... tying my shoe. I\'ll be leaving now."
+    nextNodeIndex: 2
+  }
+  branches {
+    responseText: "{{CC}}\302\24550{{/CC}}Just... reaching for my wallet. I\'d like to make a contribution to the Lone Star, um, morale fund."
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 50
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Nuyen"
+        args {
+          int_value: 50
+        }
+      }
+    }
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "{{CC}}Spirit Summoning: 2{{/CC}} This carving is a powerful Shamanic summoning fetish. If there was any magic involved in this woman\'s death, the latent magical energies in this necklace could have become EXTREMELY unstable. I need to get it away from here, NOW.\n"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 8
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 2
+        }
+      }
+    }
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "86cdf227306434e40c003061"
+  }
+}
+nodes {
+  idRef {
+    id: "51a576c2396163240d007b44"
+  }
+  index: 2
+  text: "Good. Nobody tampers with a crime scene on my watch."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "86cdf227306434e40c003061"
+  }
+}
+nodes {
+  idRef {
+    id: "51a57474396163240d007b2a"
+  }
+  index: 3
+  text: "I see. Well, thank you for your contribution, citizen. Don\'t forget that necklace you dropped.\n\n{{GM}}The officer smoothly pockets your money and turns away.{{/GM}}"
+  branches {
+    responseText: "{{GM}}Lean down to pick up the necklace.{{/GM}}"
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "86cdf227306434e40c003061"
+  }
+}
+nodes {
+  idRef {
+    id: "51a5748a396163240d007b2d"
+  }
+  index: 4
+  text: "You pick up the necklace. It\'s an intricately carved piece of wood in the shape of a dragonfly, with small turquoise stones set within its eyes. The wood feels very study for its weight. With genuine wood such a rarity in the Sixth World, this piece might be worth quite a bit to the right buyer."
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasRetrievedNecklace"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "c05-s1_LucyNecklace"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51a577c0396163240d007b46"
+  }
+  index: 5
+  text: "{{GM}}You see uncertainty spread across the young officer\'s face.{{/GM}} Well... you seem to know what you\'re doing. But bring that right back once it\'s safe. That could be important evidence."
+  branches {
+    responseText: "You bet. {{GM}}Lean down to pick up the necklace.{{/GM}}"
+    nextNodeIndex: 4
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "86cdf227306434e40c003061"
+  }
+}
+nodes {
+  idRef {
+    id: "51a5732e396163240d007b1a"
+  }
+  index: 6
+  text: "Hello again. Can I help you?"
+  branches {
+    responseText: "I need to take the victim\'s necklace with me. It may help in my investigation."
+    nextNodeIndex: 7
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "870e92d4306434e806003104"
+  }
+}
+nodes {
+  idRef {
+    id: "51a57972396163240d007b63"
+  }
+  index: 7
+  text: "Well, if it\'ll help you, that means it wont be helping McKlusky. {{GM}}Officer Aguirre reaches down, picks up the necklace, and hands it to you.{{/GM}}"
+  branches {
+    responseText: "Thanks, Officer."
+    nextNodeIndex: 8
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "870e92d4306434e806003104"
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasRetrievedNecklace"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "c05-s1_LucyNecklace"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51a579db396163240d007b66"
+  }
+  index: 8
+  text: "Yeah, sure thing. Good luck out there."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "870e92d4306434e806003104"
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

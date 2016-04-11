@@ -1,0 +1,86 @@
+idRef {
+  id: "fb1d57ab3030316c13001542"
+}
+ui_name: "c14-s1_LobbyTerminal"
+nodes {
+  idRef {
+    id: "fb1f7b313030316c13001548"
+  }
+  index: 0
+  text: "{{GM}}The key card slides into the terminal and the screen comes to life.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "fb2297d93030316c1300154b"
+  }
+  index: 1
+  text: "PRIORITY ALERT: Intrusion detected, all elevators locked down, security response Oscar Six.\n\nNOTICE: Terminal 6J4-Accounting is unsecured. Notify the user to secure the terminal at once."
+  branches {
+    responseText: "{{GM}}Unlock lobby doors{{/GM}}"
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "fb23df2a3030316c1300154f"
+  }
+  index: 2
+  text: "Lobby doors unlocked. "
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasDoneLobbyComputer"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "areLobbyDoorsUnlocked"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

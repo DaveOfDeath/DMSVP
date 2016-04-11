@@ -1,0 +1,50 @@
+idRef {
+  id: "a91a7626303031e408002d79"
+}
+ui_name: "c14-s4_MountianPainting"
+nodes {
+  idRef {
+    id: "a91b643e303031e408002d7f"
+  }
+  index: 0
+  text: "This painting shows a wild mountain landscape with clouds ringing lofty peaks. The plaque reads \"Independence\"."
+  branches {
+    responseText: "{{GM}}Push the frame.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "MountainPushed"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "{{GM}}Leave it alone.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "NewPress"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

@@ -1,0 +1,180 @@
+idRef {
+  id: "6282eb3064343111165d128d"
+}
+ui_name: "c18-s1_fixer"
+nodes {
+  idRef {
+    id: "62a1606264343111165d12bd"
+  }
+  index: 0
+  text: "So, $+(l.name) are you looking for work?"
+  branches {
+    responseText: "Do I know you?"
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "How the frag do you know my name?"
+    nextNodeIndex: 2
+  }
+  branches {
+    responseText: "Work? What kind of work?"
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8644c20a643431e1066cdcd1"
+  }
+  index: 1
+  text: "No, but my Boss knows you. If you are interested in work, he\'s interested in hiring you."
+  branches {
+    responseText: "I\'m game."
+    actions {
+      ops {
+        functionName: "No Effect"
+      }
+    }
+    nextNodeIndex: 4
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Frag off!"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "86460181643431e1066cdcd3"
+  }
+  index: 2
+  text: "My Boss knows a lot of names...some working for him some working against. Which side do you want to be on?"
+  branches {
+    responseText: "I can spare a few minutes."
+    nextNodeIndex: 4
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I need answers first. Who are you?"
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "Frag off!"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "86ce0eba643431e1066cdd0a"
+  }
+  index: 3
+  text: "I\'m just a humble fixer looking to match you with a certain Mr. Johnson."
+  branches {
+    responseText: "I\'ll hear this Mr. Johnson out."
+    nextNodeIndex: 4
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Suck on this Mr. Fixer. I\'m out."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8646e3f7643431e1066cdcd5"
+  }
+  index: 4
+  text: "My Boss has all the details are you interested?"
+  branches {
+    responseText: "Where\'s he at?"
+    actions {
+      ops {
+        functionName: "Enable/Disable Interactable Object"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (InteractableObject)"
+            args {
+              string_value: "86ed2dbe643431d50b5d128d"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Set Waypoint on Actor"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "PrimaryOrSecondary"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "5d3e4dd8643431dc005d1290"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Enable/Disable Interactable Object"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (InteractableObject)"
+            args {
+              string_value: "5d3e4dd8643431dc005d1290"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+  }
+  branches {
+    responseText: "I\'m out."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "86dfb350643431e1066cdd16"
+  }
+  index: 5
+  text: "Just through here. In the back of the junkyard."
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

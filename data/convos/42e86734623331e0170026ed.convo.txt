@@ -1,0 +1,174 @@
+idRef {
+  id: "42e86734623331e0170026ed"
+}
+ui_name: "c11-s2_Matrix_MedicalBoard1"
+nodes {
+  idRef {
+    id: "42e8b475623331e0170026f3"
+  }
+  index: 0
+  text: ">>>SEARCHING MEDICAL RECORDS [Silas Forsberg] "
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b0e84762366558080043a7"
+  }
+  index: 1
+  text: "MEDICAL RECORDS FILE FOR [Silas Forsberg] LOCATED!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b0fc25623665580800447c"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "{{GM}}2020 - 2030.{{/GM}}"
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "{{GM}}2030 - 2040.{{/GM}}"
+    nextNodeIndex: 5
+  }
+  branches {
+    responseText: "{{GM}}2040 - Present.{{/GM}}"
+    nextNodeIndex: 6
+  }
+  branches {
+    responseText: "{{GM}}Leave Medical Database.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "PatientRecordsRead"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: -1
+    hideIfUnavailable: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b0fc25623665580800447f"
+  }
+  index: 3
+  text: "PEDIATRIC RECORD (PARTIAL)\n\nOne particular pediatrician\'s entry stands out from the rest."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b0fc256236655808004482"
+  }
+  index: 4
+  text: "\"Child suffers from a chronic depression and social anxiety most likely caused by his physical abnormalities. We\'ve seen many cases like this recently, with the outbreak of changeling children being born. With the aberrant physiology we\'re seeing there is no telling what sort of brain functions are affected. Prescribed a series of sedatives last year that seemed to have no effect. Upping the dosage.\""
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b0fc256236655808004485"
+  }
+  index: 5
+  text: "Data missing or corrupted. Contact your administrator for help."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b0fc256236655808004488"
+  }
+  index: 6
+  text: "The file is quite large and takes well over an hour to read through. The final entry, however, is the most significant.\n\nIt is written by Dr. Henry Holmes."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b0fc25623665580800448b"
+  }
+  index: 7
+  text: "\"Silas has overcome significant mental disorders and no longer goes through periods of violent episodes. Latest medications have proven especially effective but I believe that being treated by another elf has significantly impacted his treatment. Unfortunately, my efforts to maintain an emotional boundary with him have proven challenging. He has bonded to me in an unhealthy and frankly an unnerving way. His hero-worship exhibits itself in the form of mimicked speech patterns and adopting my dress. For this reason and for the health of the patient, I am assigning another doctor to his case. I will inform him at his next session.\" "
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "UnlockSecondaryMedicalNodes"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "PatientRecordsRead"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

@@ -1,0 +1,71 @@
+idRef {
+  id: "51c1071c623331101e003c01"
+}
+ui_name: "c15-s1_Seamstress_Bobby"
+nodes {
+  idRef {
+    id: "51c10720623331101e003c07"
+  }
+  index: 0
+  text: "Yo, $(l.guy). Have we met? You look familiar. \n\nI meet a lot of people. No problem. You need some brainbenders tonight? I got some of that merc stuff. Freakers, taxi drivers, you know."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c1082e623331101e003c10"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "Let me see what you\'ve got."
+    actions {
+      ops {
+        functionName: "Open Store Screen From Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "51c10695623331101e003bf7"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "Can I, uh... trust you?"
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51c10916623331101e003c42"
+    }
+  }
+  branches {
+    responseText: "No thanks."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c10830623331101e003c15"
+  }
+  index: 2
+  text: "Nobody\'s more trustworthy than ol\' Bobby. Kubota wouldn\'t let me in the place if I wasn\'t legit."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

@@ -1,0 +1,50 @@
+idRef {
+  id: "a9157f06303031e408002d58"
+}
+ui_name: "c14-s4_ClockTowerPainting"
+nodes {
+  idRef {
+    id: "a9180eae303031e408002d5e"
+  }
+  index: 0
+  text: "Depicted is a clock tower at a train station in downtown Portland in the Tir. The plaque reads \"Efficiency\"."
+  branches {
+    responseText: "{{GM}}Push the frame?{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "ClocktowerPushed"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "{{GM}}Leave it alone?{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "NewPress"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

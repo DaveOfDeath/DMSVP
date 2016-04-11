@@ -1,0 +1,187 @@
+idRef {
+  id: "5da745e8306434701b0042cb"
+}
+ui_name: "c03-s1_Barrens_Safe"
+nodes {
+  idRef {
+    id: "5da76b47306434701b0042d1"
+  }
+  index: 0
+  text: "{{GM}}Hidden in the garbage strewn alley is a high-tech safe with a MagCard reader on the front.{{/GM}}"
+  branches {
+    responseText: "{{GM}}Open the safe with Jake\'s MagCard.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Move Prop"
+        args {
+          call_value {
+            functionName: "Get Map Item (Prop)"
+            args {
+              string_value: "5d9dcab2306434701b0042c6"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Current Location of Prop"
+            args {
+              call_value {
+                functionName: "Get Map Item (Prop)"
+                args {
+                  string_value: "a9bb4bf8623331441b003073"
+                }
+              }
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Delete Prop"
+        args {
+          call_value {
+            functionName: "Get Map Item (Prop)"
+            args {
+              string_value: "a9bb4bf8623331441b003073"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Play Sound"
+        args {
+          call_value {
+            functionName: "Get Map Item (Sound)"
+            args {
+              string_value: "props"
+            }
+            args {
+              string_value: "DoorSlide"
+            }
+          }
+        }
+        args {
+          float_value: 0.8
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "5da8f41b306434701b0042d4"
+  }
+  index: 1
+  text: "{{GM}}With a smooth hiss, the safe opens to reveal a collection of gear that is a perfect match for your skills. \n\nYou take the gear.{{/GM}}"
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "EventMuggerAmbush"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Find Jake\'s Stash"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasFoundStash"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "c02_s1_Jakes_Safe_MagCard"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

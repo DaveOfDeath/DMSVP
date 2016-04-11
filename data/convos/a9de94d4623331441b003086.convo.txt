@@ -1,0 +1,133 @@
+idRef {
+  id: "a9de94d4623331441b003086"
+}
+ui_name: "c03-s1_Barrens_JakeAfterMugging"
+nodes {
+  idRef {
+    id: "a9debfb2623331441b00308c"
+  }
+  index: 0
+  text: "So, welcome to the Barrens. Guess I\'ll need to find a new spot to hide my gear."
+  branches {
+    responseText: "Good dead-drops are so hard to keep."
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "Same drek in every city these days."
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "So I shouldn\'t invest in real estate around here?"
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "EventJakeAfterMuggersDone"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "aa1603c9623331441b0030b4"
+  }
+  index: 1
+  text: "{{GM}}He chuckles.{{/GM}} Well, at least they were too dumb to break my maglock."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "aa1707f1623331441b0030bb"
+  }
+  index: 2
+  text: "Now that you\'ve got some gear... let\'s go deal with those Halloweeners."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Deal with the Halloweeners Gang"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Waypoint on Prop"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PrimaryOrSecondary"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "aa186318623331441b0030d4"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "aa161bd1623331441b0030b6"
+  }
+  index: 3
+  text: "True. I\'ve been around, but Seattle\'s still a runner\'s paradise as far as I\'m concerned. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "aa162112623331441b0030b8"
+  }
+  index: 4
+  text: "Only by the hour. Hey, you\'ve seen where I stay the night."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

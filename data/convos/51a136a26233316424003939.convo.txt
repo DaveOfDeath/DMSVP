@@ -1,0 +1,48 @@
+idRef {
+  id: "51a136a26233316424003939"
+}
+ui_name: "c08-s2_Planeyard_AirSpirit"
+nodes {
+  idRef {
+    id: "51a136a4623331642400393f"
+  }
+  index: 0
+  text: "You can feel a wild spirit within this object. You will only be able to control it for a moment, but it\'s enough time to open the locked door from the other side."
+  branches {
+    responseText: "{{GM}}Release the spirit.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasSummonedSpirit"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "{{GM}}Leave it alone.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

@@ -1,0 +1,191 @@
+idRef {
+  id: "1d725e07643431692f058edc"
+}
+ui_name: "c18-s2_Security Speaker"
+nodes {
+  idRef {
+    id: "3f6f3668623665a4010066e8"
+  }
+  index: 0
+  text: "{{GM}}A voice from a hidden speaker fills the room.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "580aba026236655c23008031"
+  }
+  index: 1
+  text: "You are trespassing on private property. Your movements are being monitored. State your business."
+  branches {
+    responseText: "\"My business\" is that there\'s been a breach in your security. "
+    nextNodeIndex: 2
+  }
+  branches {
+    responseText: "I found something that belongs to one of your employees. I thought you\'d want it back."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "60581b806434317102058f33"
+  }
+}
+nodes {
+  idRef {
+    id: "580aba036236655c23008034"
+  }
+  index: 2
+  text: "Look chummer. Hit the street and crawl back into the chip you were using before you stumbled in here."
+  branches {
+    responseText: "I\'ll could do that... or I could sell this ID card to the highest bidder. "
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "Whoa, slow down. I found something that belongs to one of your employees. I thought you\'d want it back."
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+  sourceInSceneRef {
+    id: "60b379ab6434317f5306dace"
+  }
+}
+nodes {
+  idRef {
+    id: "580aba036236655c23008037"
+  }
+  index: 3
+  text: "ID Card? Prove it. Use it on that scanner there."
+  branches {
+    responseText: "There better be a big reward for this."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+  sourceInSceneRef {
+    id: "60581b806434317102058f33"
+  }
+}
+nodes {
+  idRef {
+    id: "580aba036236655c2300803b"
+  }
+  index: 4
+  text: "What exactly did you find?"
+  branches {
+    responseText: "It looks to me as if it\'s some kind of ID Card."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+  sourceInSceneRef {
+    id: "60b379ab6434317f5306dace"
+  }
+}
+nodes {
+  idRef {
+    id: "3f6f3668623665a4010066fb"
+  }
+  index: 5
+  text: "{{GM}}A voice from a hidden speaker fills the room.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "5b99d12e643431400363972d"
+  }
+  index: 6
+  text: "You are trespassing on private property. Your actions are being monitored. "
+  branches {
+    responseText: "Drek! A security camera. We need to take out that camera. That should buy us some time to hack the wall console that controls the door. "
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "HasID"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "HasID"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 5
+}

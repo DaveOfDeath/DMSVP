@@ -1,0 +1,223 @@
+idRef {
+  id: "51d03f9b32366460190018c8"
+}
+ui_name: "c08-s3_MagicStore"
+nodes {
+  idRef {
+    id: "51d03fcd32366460190018d0"
+  }
+  index: 0
+  text: "{{GM}}The elf called Aljernon appears to be in a hushed but intense conversation as you approach. However, the other party of this discourse is nowhere to be seen. Turning to greet you, Aljernon dismisses his invisible associate with a wave of his hand.{{/GM}}\n\nWelcome, fellow child of the Sixth World. What can I help you with today?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countMagicVisits"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d045cd32366460190018fc"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "Let\'s see what you\'ve got."
+    actions {
+      ops {
+        functionName: "Open Store Screen From Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "8c4fdb783030313417004383"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "Tell me a bit about yourself, Aljernon."
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d0f3e9623331a41a000fde"
+    }
+  }
+  branches {
+    responseText: "Nevermind."
+    nextNodeIndex: -1
+  }
+}
+nodes {
+  idRef {
+    id: "51d045cd3236646019001900"
+  }
+  index: 2
+  text: "My story is not so different from those who have come before. I am but a merchant, though one whose wares are far from mundane."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d047583236646019001914"
+  }
+  index: 3
+  text: "I came here from Tir Tairngire four years ago, after the governor of Seattle signed an exclusive trade agreement with the Council of Princes. And so as the flow of magical goods came to pass through this city\'s ports, so have I."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+  }
+}
+nodes {
+  idRef {
+    id: "51d04bb83236646019001917"
+  }
+  index: 4
+  text: "At times I miss the Tir, but as unlikely as it may sound, this new home of mine is far more interesting."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+}
+nodes {
+  idRef {
+    id: "51d04c39323664601900191a"
+  }
+  index: 5
+  text: "Is there anything else I can help you with?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+}
+nodes {
+  idRef {
+    id: "51d03fd132366460190018d2"
+  }
+  index: 6
+  text: "Welcome back. What more can I do for you?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countMagicVisits"
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d03fd232366460190018d4"
+  }
+  index: 7
+  text: "How can I help you?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countMagicVisits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  nextNodeIndex: 0
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countDoctorVisits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  nextNodeIndex: 6
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 7
+}

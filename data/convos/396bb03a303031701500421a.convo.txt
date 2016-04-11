@@ -1,0 +1,100 @@
+idRef {
+  id: "396bb03a303031701500421a"
+}
+ui_name: "c14-s2_BaronAtVPDoor"
+nodes {
+  idRef {
+    id: "399b35523030317015004246"
+  }
+  index: 0
+  text: "{{GM}}Your commlink chirps again and the Baron\'s face appears on-screen. His voice is far less confident than before.{{/GM}}\n\nAh... eh... this is new. "
+  branches {
+    responseText: "You didn\'t know about this control panel. Great."
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "What? What\'s new?!"
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Things not going according to plan, Baron?"
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "39a33872303031701500424c"
+  }
+  index: 1
+  text: "Apparently, Mr. Silverstar\'s reputation for paranoia is well-founded. This panel is a hard-coded door control that cannot be accessed from the Matrix. It was not here yesterday. \n\nHow did he have it installed so fast?"
+  branches {
+    responseText: "So what now?"
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "That\'s just great. Got a new plan? A real plan? "
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Maybe if you gave me more information we could figure out the next step together."
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "39b1a2da3030317015004256"
+  }
+  index: 2
+  text: "I will think of something! \n"
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "CriticalMatrixObjectiveCount"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 4
+            }
+          }
+        }
+        args {
+          int_value: 2
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "3e8bc8d3303031f012005b05"
+  }
+  index: 3
+  text: "The CEO\'s office is the key to your goal. Go there now. \n\nI will consider what to do about this little setback."
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

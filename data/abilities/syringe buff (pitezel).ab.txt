@@ -1,0 +1,64 @@
+id: "Syringe Buff (Pitezel)"
+uirep {
+  icon: "icon_wound"
+  name: "Syringe Buff"
+  description: "Single Target."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: -12
+apDamageMod: -12
+accuracyMod: 0
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+effectDuration: 2
+fxrep {
+  preActionFxName: ""
+  actionFxName: "UnarmedPunchAction"
+  postActionFxName: ""
+  hitReactionFxName: "UnarmedHitReaction"
+  missReactionFxName: "UnarmedMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "buffTarget"
+activationStatusEffects {
+  uirep {
+    icon: "icon_wound"
+    name: "Combat Enhanced: Movement +2, Armor +2, Accuracy +15%"
+  }
+  stackingCategory: "PitezelBuff"
+  statMods {
+    attribute: Attribute_Move_Speed
+    intModValue: 2
+  }
+  statMods {
+    attribute: Attribute_Accuracy
+    intModValue: 15
+  }
+  statMods {
+    attribute: Attribute_Armor
+    intModValue: 2
+  }
+}

@@ -1,0 +1,469 @@
+idRef {
+  id: "57d7d6f0306434000d00497f"
+}
+ui_name: "c04-s1_CoyoteDiary"
+nodes {
+  idRef {
+    id: "57d7f568306434000d004985"
+  }
+  index: 0
+  text: "Coyote\342\200\231s bed has a diary with several papers sticking out of it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "906a0d2c623331100c0032d1"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "{{GM}}Open the diary to the first paper.{{/GM}}"
+    nextNodeIndex: 2
+  }
+  branches {
+    responseText: "{{GM}}Open the diary to the second paper.{{/GM}}"
+    nextNodeIndex: 7
+  }
+  branches {
+    responseText: "{{GM}}Open the diary to the third paper.{{/GM}}"
+    nextNodeIndex: 12
+  }
+  branches {
+    responseText: "{{GM}}Open the diary to the fourth paper.{{/GM}}"
+    nextNodeIndex: 16
+  }
+  branches {
+    responseText: "{{GM}}Put the diary back down.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "InvestigationsComplete"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+      ops {
+        functionName: "Enable/Disable Interactable Object"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (InteractableObject)"
+            args {
+              string_value: "34d63e946166346018004a5b"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "906a0d2c623331100c0032d4"
+  }
+  index: 2
+  text: "There\'s a receipt stuck between the pages, and a diary entry."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "9073f86e623331100c0033a7"
+  }
+  index: 3
+  text: ""
+  branches {
+    responseText: "{{GM}}Read the diary entry.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasHeardAboutPaco"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "{{GM}}Inspect the receipt.{{/GM}}"
+    nextNodeIndex: 6
+  }
+  branches {
+    responseText: "{{GM}}Flip to a different page.{{/GM}}"
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "9073f86e623331100c0033aa"
+  }
+  index: 4
+  text: "I came back from my shift to find four of Paco\342\200\231s goons sleeping on our apartment floor. It\342\200\231s getting fragging ridiculous. I want to be with him, with the real Paco, but this Cutter drek keeps messing everything up. I love him. But he\342\200\231s totally different with the gang. \n\342\200\234It\342\200\231s how I make cash, baby,\342\200\235 he always says.\nI try to tell him he doesn\342\200\231t need the cash\342\200\224I can support us both with what I make at the Seamstresses\342\200\231 Union\342\200\224but he still goes on these runs. With these bozos all over my floor, I feel like he\342\200\231s just seeing how far he can push me before I kick him out. I try to be patient, but why does it have to be all one way?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "956feda46233313818002cf7"
+  }
+  index: 5
+  text: "As soon as the last Cutter was out the door I lost it. I told him if he ever pulled drek like that again that he would be sleeping in the alley. Of course he begged and pleaded with me, telling me it wouldn\'t happen again. \nI don\342\200\231t want to deal with this anymore, but I don\342\200\231t want him to leave. He\342\200\231s the reason I got through all that stuff last year, got my bartending license, got this apartment, and this life. I know he cares about me and loves me. More than his involvement with the Cutters. I just wish I could slice out that gang from our life together, slice out the fear that comes along with it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "9073f86e623331100c0033ad"
+  }
+  index: 6
+  text: "A receipt for a Browning Max Power pistol from Jin Park downstairs with a note saying how big guns on hot women turn her on."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "BrowningReceiptSeen"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "906a0d2c623331100c0032da"
+  }
+  index: 7
+  text: "The paper has a hand-written poem on it, and a diary entry."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "90750030623331100c0033d8"
+  }
+  index: 8
+  text: ""
+  branches {
+    responseText: "{{GM}}Read the diary entry.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasHeardAboutPaco"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 9
+  }
+  branches {
+    responseText: "{{GM}}Read the poem.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasHeardAboutPaco"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 11
+  }
+  branches {
+    responseText: "{{GM}}Flip to a different page.{{/GM}}"
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "956f03d46233313818002ce0"
+  }
+  index: 9
+  text: "Sometimes it seems like Paco reads my mind, or my diary. Maybe he does the latter. I wouldn\342\200\231t be surprised. HI PACO!\n\nEver since last week, he hasn\342\200\231t mentioned the Cutters once. He leaves the apartment with a \342\200\234See you in a few hours, babe,\342\200\235 and returns later without comment. I don\342\200\231t know if it\342\200\231s really going to help for us to avoid the subject in conversation completely. But I have felt better without our constant arguing about it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "95cc47ef623331782b002951"
+  }
+  index: 10
+  text: "The last two nights, I\342\200\231ve come home from work to Paco waiting up for me, slouching on the old dumpster couch with a novel four inches from his face. I imagine that as I turn the key in the door he perks up and makes himself look especially studious for when I get the door open. He seems superficially surprised to see me, but I love this little act."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "90750030623331100c0033db"
+  }
+  index: 11
+  text: "Let\342\200\231s just say that \"Paco\" should stick to guns and motorcycles and leave the poetry to others."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "906a0d2c623331100c0032e0"
+  }
+  index: 12
+  text: "There is a receipt, and an old photograph stuck between the pages."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "95835e5c6233313818002ddf"
+  }
+  index: 13
+  text: ""
+  branches {
+    responseText: "{{GM}}Look at the picture.{{/GM}}"
+    nextNodeIndex: 14
+  }
+  branches {
+    responseText: "{{GM}}Inspect the receipt.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasSeenMeatReceipt"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "518d7674643431b03f0041ab"
+            }
+            args {
+              string_value: "c04_hasFoundMeatReceipt"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 15
+  }
+  branches {
+    responseText: "{{GM}}Flip to a different page.{{/GM}}"
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "95835e5c6233313818002de2"
+  }
+  index: 14
+  text: "The picture shows a young girl with caramel skin and dark brown hair. She has a snake wrapped around her arm, yet she is smiling. The back of the photograph has \"Shadow\" scrawled on it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "95835e5c6233313818002de6"
+  }
+  index: 15
+  text: "A C.O.D. receipt for a special order: 5 pounds of zebra meat from Maury\342\200\231s Meat Emporium, located near Pike Place Market."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "906a0d2d623331100c0032ec"
+  }
+  index: 16
+  text: "A receipt for a wall safe, installed near the bathroom door. Set to a combination of 342436."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "SeenStashReceipt"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

@@ -1,0 +1,48 @@
+idRef {
+  id: "51d0a5a56233313c0f003240"
+}
+ui_name: "c08-s1_Planeyard_DwarfCrawl"
+nodes {
+  idRef {
+    id: "51d0a5b46233313c0f003246"
+  }
+  index: 0
+  text: "There\'s a gap between the fuselage and the building just large enough for someone of your stature to crawl through. It looks like you can sneak through here to bypass the security checkpoint."
+  branches {
+    responseText: "{{GM}}Crawl through.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasCrawledThrough"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "{{GM}}Walk away.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

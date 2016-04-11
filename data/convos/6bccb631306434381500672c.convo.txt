@@ -1,0 +1,534 @@
+idRef {
+  id: "6bccb631306434381500672c"
+}
+ui_name: "c03-s1_Barrens_Lonestar"
+nodes {
+  idRef {
+    id: "51995a0f6233310406004688"
+  }
+  index: 0
+  text: "{{GM}}He looks in your direction.{{/GM}} \n\nNow what?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "6b8cbdd43064344810005a9a"
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToLonestar"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51999a466233313c1800445d"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "The coroner, Dresden, sent me over."
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ae7d3b396163c818001e5b"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Lie{{/GM}} I\'m here to check the site for spectral DNA."
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b21ee5623331f428001389"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Item{{/CC}} Long night, eh? You looked cold, so I picked up a donut and some soykaf for you."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c03-s1_SoycafDonut"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "canEnterCrimescene"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c03-s1_SoycafDonut"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+  }
+  branches {
+    responseText: "{{CC}}Bribe: \302\245100{{/CC}} Meet my friend, Mr. Credstick. We just need a few minutes to look around."
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 100
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "canEnterCrimescene"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Remove Nuyen"
+        args {
+          int_value: 100
+        }
+      }
+    }
+    nextNodeIndex: 10
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Security{{/CC}} What, they didn\'t radio you? Damn operator\'s probably asleep again. I\'m here to take over your shift. You can head back to base."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 14
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "canEnterCrimescene"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 11
+  }
+  branches {
+    responseText: "Nothing, just passing by."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51999a466233313c18004460"
+  }
+  index: 2
+  text: "Doesn\'t mean jack to me. Unless someone radios me with an update, my orders are that nobody gets in."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "6b8cbdd43064344810005a9a"
+  }
+}
+nodes {
+  idRef {
+    id: "51999a466233313c18004463"
+  }
+  index: 3
+  text: "I ain\342\200\231t ever heard of that - what is it?"
+  branches {
+    responseText: "Yeah, it\'s this brand new thing the forensics guys are using. I don\342\200\231t totally understand it, but... it\342\200\231s the ectoplasmic residue of a magical attack. I need to take some ecto scans of the site. "
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "Listen, don\342\200\231t give me a hassle about this... I just need to do my job and you need to let me do it."
+    nextNodeIndex: 5
+  }
+  branches {
+    responseText: "You think Dresden explained it to me? That guy only talks to dead people. He just told me to scan the site."
+    nextNodeIndex: 6
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "6b8cbdd43064344810005a9a"
+  }
+}
+nodes {
+  idRef {
+    id: "51999a466233313c18004466"
+  }
+  index: 4
+  text: "You think I\'m stupid? I go by the book, or I don\'t get paid. There\'s nothin\' in the book about that bull-drek."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "6b8cbdd43064344810005a9a"
+  }
+}
+nodes {
+  idRef {
+    id: "51999a466233313c18004469"
+  }
+  index: 5
+  text: "You think I\'m stupid? I go by the book, or I don\'t get paid. You\'re not getting in."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "6b8cbdd43064344810005a9a"
+  }
+}
+nodes {
+  idRef {
+    id: "51999a466233313c1800446c"
+  }
+  index: 6
+  text: "Sorry, not without going through the proper channels. You go back to the coroner and tell him to clear this through Lone Star before you get back in my face again."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "6b8cbdd43064344810005a9a"
+  }
+}
+nodes {
+  idRef {
+    id: "51999a466233313c1800446f"
+  }
+  index: 7
+  text: "Hey... thanks! {{GM}}The officer\'s face lights up as he takes a sip. He seems pretty trusting, for an officer of the law.{{/GM}}\n\nYou know... when my dad was a cop... this was back when cops actually worked for the government... he said folks would buy him coffee all the time. But I ain\'t seen it \'till now. \n\nSo what can I do for you?"
+  branches {
+    responseText: "I am actually working for the dead man to help find his killer. Can I come into the alley and look around a bit?"
+    nextNodeIndex: 8
+  }
+  branches {
+    responseText: "My pleasure. I\342\200\231m here from internal affairs to review the forensics guys work, to find anything they might have missed."
+    nextNodeIndex: 9
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "6b8cbdd43064344810005a9a"
+  }
+}
+nodes {
+  idRef {
+    id: "51999a466233313c18004472"
+  }
+  index: 8
+  text: "Your client is the chalk line? That\342\200\231s messed up $(l.man), but I respect it, ok, but don\342\200\231t mess anything up. Not that anyone would likely notice because the forensics aren\342\200\231t coming back. "
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "6b8cbdd43064344810005a9a"
+  }
+}
+nodes {
+  idRef {
+    id: "51999a466233313c18004475"
+  }
+  index: 9
+  text: "Sure dig in. I certainly wouldn\342\200\231t mind those guys getting taken down a peg or two. Man do they put on airs if you know what I mean. "
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "6b8cbdd43064344810005a9a"
+  }
+}
+nodes {
+  idRef {
+    id: "51999a466233313c18004478"
+  }
+  index: 10
+  text: "Got it, chief."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51999a466233313c1800447b"
+  }
+  index: 11
+  text: "Yeah? Where\'s your uniform?"
+  branches {
+    responseText: "{{CC}}Etiquette: Security{{/CC}} C\'mon... clearly I\'m not with the Star. Private security contractor, temporary assignment. Sounded like your boss is short a few guys this week."
+    nextNodeIndex: 12
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae79fc396163c818001dd0"
+  }
+  index: 12
+  text: "Yeah... we\'ve been spread pretty thin lately. Anyway, it\'s about fraggin\' time someone showed up. Thanks for the relief."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b21b57623331f428001284"
+  }
+  index: 13
+  text: "You again? What?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToLonestar"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToLonestar"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 13
+}

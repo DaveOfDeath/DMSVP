@@ -1,0 +1,106 @@
+idRef {
+  id: "a85b7ff3623331fc290019b5"
+}
+ui_name: "c08-s1_Planeyard_Bum"
+nodes {
+  idRef {
+    id: "a85bbb85623331fc290019bb"
+  }
+  index: 0
+  text: "Who raised ya, a pack of wolves? That there ladder is rightfully mine!"
+  branches {
+    responseText: "{{CC}}\302\2455{{/CC}} Can I borrow it for a few minutes?"
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "I could use your intestines as a rope instead."
+    nextNodeIndex: 2
+  }
+  branches {
+    responseText: "{{CC}}Charisma: 3{{/CC}} I\'m not taking it far. I just need a little boost over the fence."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Actor Attribute"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "BaseOrCurrent"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "ActorAttributes"
+                }
+                args {
+                  int_value: 3
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 3
+        }
+      }
+    }
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a85f71b4623331fc290019c4"
+  }
+  index: 1
+  text: "Five, eh? Sure. Maybe that noodle machine is still workin\'...."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a85edb23623331fc290019c2"
+  }
+  index: 2
+  text: "Uh, you can have it! I didn\'t mean nothin\'!"
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a85d8f7a623331fc290019c0"
+  }
+  index: 3
+  text: "Oh, you breakin\' into the NTSB warehouse too? If you see any o\' them airplane blankets or pillows, snag me one."
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

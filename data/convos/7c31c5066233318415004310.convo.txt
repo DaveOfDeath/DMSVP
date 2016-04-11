@@ -1,0 +1,315 @@
+idRef {
+  id: "7c31c5066233318415004310"
+}
+ui_name: "c11-s2_Matrix_Fry"
+nodes {
+  idRef {
+    id: "51afafc3623665cc1c0041f9"
+  }
+  index: 0
+  text: "Morning. You look like you\'ve been up all night."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51affd9a6236653c1d003137"
+  }
+  index: 1
+  text: "You look like you\'ve seen some action, too."
+  branches {
+    responseText: "S\'pose I could use a shower. "
+    nextNodeIndex: 2
+  }
+  branches {
+    responseText: "Where\'s Doc Castle?"
+    nextNodeIndex: 6
+  }
+  branches {
+    responseText: "Can either of you two do a DNA analysis on a blood sample?"
+    nextNodeIndex: 7
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "fafbad9c623331341400482c"
+  }
+}
+nodes {
+  idRef {
+    id: "51affeff6236653c1d003177"
+  }
+  index: 2
+  text: "You here to buy equipment?"
+  branches {
+    responseText: "Negative. Need a DNA analysis."
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "Maybe later. I need to track someone down."
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51afff866236653c1d00317c"
+  }
+  index: 3
+  text: "Fry can help you out. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    auxiliaryLink: true
+  }
+  sourceInSceneRef {
+    id: "fafbad9c623331341400482c"
+  }
+}
+nodes {
+  idRef {
+    id: "51afff876236653c1d00317e"
+  }
+  index: 4
+  text: "Got any clues?"
+  branches {
+    responseText: "Yeah, I got a blood sample."
+    nextNodeIndex: 5
+  }
+}
+nodes {
+  idRef {
+    id: "51b000106236653c1d0031c6"
+  }
+  index: 5
+  text: "Really? Fry can help you out then."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "fafbad9c623331341400482c"
+  }
+}
+nodes {
+  idRef {
+    id: "51affd9a6236653c1d00313a"
+  }
+  index: 6
+  text: "Asleep, I assume. Do you need a medkit or something?"
+  branches {
+    responseText: "I need someone to analyze a DNA sample."
+    nextNodeIndex: 7
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51affd9a6236653c1d003149"
+  }
+  index: 7
+  text: "Hmm. Doc Castle\'s equipment isn\'t really set up for that.\n\n{{GM}}He considers for a minute.{{/GM}}\n\nHowever... I could employ a semiconductor chip... it could decode DNA using a voltage change, instead of light. That would eliminate the use of highly expensive equipment that would be required otherwise. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c882af623665b8180076dc"
+  }
+  index: 8
+  text: "{{GM}}He brightens.{{/GM}}\n\nI just read a journal about it so the information\'s still fresh. Frankly, it should be easy. What do you want to know about it?"
+  branches {
+    responseText: "The owner\'s identity."
+    nextNodeIndex: 9
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c882af623665b8180076df"
+  }
+  index: 9
+  text: "Ah, that\'s beyond me. All I can get you is the gene code sequence.\n"
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c882f3623665b818007718"
+  }
+  index: 10
+  text: "But that\'s where I come in. \n\nDavid, if you can get me that code sequence I\342\200\231m pretty sure we can track it\342\200\231s owner down via a Matrix run."
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "fafbad9c623331341400482c"
+  }
+}
+nodes {
+  idRef {
+    id: "51c88758623665b8180077a3"
+  }
+  index: 11
+  text: "Will do! Let me have the DNA you want to test."
+  branches {
+    responseText: "{{GM}}Give Fry the blood sample.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c10-s2_Fingerprint"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 12
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c88758623665b8180077a6"
+  }
+  index: 12
+  text: "$(l.name), when David gives me the sequence, I\'ll jack in and help you trace the blood sample back to its source."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "fafbad9c623331341400482c"
+  }
+}
+nodes {
+  idRef {
+    id: "51c88758623665b8180077a9"
+  }
+  index: 13
+  text: ""
+  branches {
+    responseText: "If this works, I\'ll bring back more than just a sample."
+    nextNodeIndex: 14
+  }
+  branches {
+    responseText: "Wiz. Get to work."
+    nextNodeIndex: 15
+  }
+  branches {
+    responseText: "Thanks guys. If this works, we may find the Emerald City Ripper."
+    nextNodeIndex: 16
+  }
+}
+nodes {
+  idRef {
+    id: "51c88758623665b8180077ac"
+  }
+  index: 14
+  text: "Uh, who\'s blood is it?"
+  branches {
+    responseText: "Could be the Emerald City Ripper."
+    nextNodeIndex: 16
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c88758623665b8180077b2"
+  }
+  index: 15
+  text: "A question, if I may? Who\'s..."
+  branches {
+    responseText: "I think it\'s the Ripper\'s blood."
+    nextNodeIndex: 16
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c88758623665b8180077b8"
+  }
+  index: 16
+  text: "No drek? \n\n{{GM}}He turns to Johnny, excited.{{/GM}}\n\nWake up, Johnny-boy. You\'ve got work to do. And $(l.name), if you need any gear, I\'ll be right here."
+  branches {
+    responseText: ""
+    nextNodeIndex: 17
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c88758623665b8180077bb"
+  }
+  index: 17
+  text: "I just got a second wind! Meet you at my rig, $(l.name)."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "fafbad9c623331341400482c"
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "FryConversationComplete"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

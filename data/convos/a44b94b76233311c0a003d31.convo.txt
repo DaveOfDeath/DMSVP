@@ -1,0 +1,96 @@
+idRef {
+  id: "a44b94b76233311c0a003d31"
+}
+ui_name: "c02-s1_Morgue_Drawer"
+nodes {
+  idRef {
+    id: "a44bb2966233311c0a003d37"
+  }
+  index: 0
+  text: "The cold storage drawer is labeled \342\200\234John Doe\342\200\235 but the internal thermostat is set to 21 degrees celsius."
+  branches {
+    responseText: "{{GM}}Open the drawer.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "JakeDrawerOpens"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "{{GM}}Walk away.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "a4501ed36233311c0a003d4c"
+  }
+  index: 1
+  text: "The cold storage drawer opens to reveal the fully-clothed body of a man, arms folded across his chest. In addition to sporting some of the brightest orange hair you\342\200\231ve ever seen, the body seems to be in very good condition..."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "a46e27476233311c0a003fac"
+  }
+  index: 2
+  text: "Whoa! Easy there."
+  branches {
+    responseText: ""
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "JakeJumpsOut"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Enable/Disable Interactable Object"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (InteractableObject)"
+            args {
+              string_value: "a4732ef66233311c0a00408e"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

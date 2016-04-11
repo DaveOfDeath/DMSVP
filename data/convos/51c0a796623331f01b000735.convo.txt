@@ -1,0 +1,417 @@
+idRef {
+  id: "51c0a796623331f01b000735"
+}
+ui_name: "c15-s1_Seamstress_Kubota"
+nodes {
+  idRef {
+    id: "51c0a79e623331f01b00073b"
+  }
+  index: 0
+  text: "{{GM}}The former runner stands near the door, appraising her bar. She appears worried in a way you haven\342\200\231t seen before.{{/GM}}\n\nKonbanwa, $(l.name)."
+  branches {
+    responseText: "Something wrong, Mrs. Kubota?"
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "Konbanwa, Mrs. Kubota."
+    nextNodeIndex: 9
+  }
+  branches {
+    responseText: "Hey, Mrs. Kubota. Sorry, I can\342\200\231t talk. I have to do a thing."
+    nextNodeIndex: 12
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "518d7674643431b03f0041ab"
+          }
+          args {
+            string_value: "c15_hasTalkedToKubota"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "51c0a72b623331f01b000733"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51c0a7be623331f01b000740"
+  }
+  index: 1
+  text: "{{GM}}She nods slowly. Sadly.{{/GM}}\n\nHai. There is something very wrong, yes."
+  branches {
+    responseText: "Is it Coyote?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "518d7674643431b03f0041ab"
+            }
+            args {
+              string_value: "isCoyoteDead"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "518d7674643431b03f0041ab"
+            }
+            args {
+              string_value: "c15_hasResolvedCoyoteDeath"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "Need some help?"
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "Sounds like trouble."
+    nextNodeIndex: 8
+  }
+  branches {
+    responseText: "Sorry, but I gotta go, Mrs. Kubota. I have to do a thing."
+    nextNodeIndex: 12
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d2283d6233313419000f76"
+  }
+  index: 2
+  text: "No. I will grieve for my girl later. Alone. This is bigger than the life of one shadowrunner."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c0a9b5623331f01b00074e"
+  }
+  index: 3
+  text: "I wish you could be of service."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c0a9b7623331f01b000751"
+  }
+  index: 4
+  text: "I have learned through my contacts that the city is planning to quietly shut down the power grid in Touristville. They espouse many reasons for this \342\200\234minor rerouting of resources\342\200\235 but I know the truth. They do not want to devote the police manpower to protect their precious citizens who come here to get a taste of the darker side of the Sprawl."
+  branches {
+    responseText: "I can\342\200\231t let that happen."
+    nextNodeIndex: 5
+  }
+  branches {
+    responseText: "Hard for a shadowrunner to affect city politics."
+    nextNodeIndex: 6
+  }
+  branches {
+    responseText: "Sounds like we just have to grease the right palms and this will go away."
+    nextNodeIndex: 7
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "518d7674643431b03f0041ab"
+          }
+          args {
+            string_value: "c15_hasHeardAboutBarrensGrid"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51c0acdb623331f01b00077a"
+  }
+  index: 5
+  text: "{{GM}}She purses her lips, clearly frustrated.{{/GM}}\n\nThank you but I believe this is beyond the power of a shadowrunner to solve. It is about the power in bureaucracy. The small people live for the convenience of the rich."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c0ace5623331f01b00077c"
+  }
+  index: 6
+  text: "{{GM}}She purses her lips, clearly frustrated.{{/GM}}\n\nYou are correct. It is about the power in bureaucracy. The small people live for the convenience of the rich."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c0acf1623331f01b00077e"
+  }
+  index: 7
+  text: "{{GM}}She purses her lips, clearly frustrated.{{/GM}}\n\nI believe this is beyond the power of mere money to solve. It is about the power in bureaucracy. The small people live for the convenience of the rich. One bribe cannot change a natural law."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c0a9c6623331f01b000753"
+  }
+  index: 8
+  text: "It is trouble, yes. For many."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c0a7bf623331f01b000742"
+  }
+  index: 9
+  text: "{{GM}}She smiles at your use of Japanese.{{/GM}}\n\nYou are a good $(l.man), omae, and a friend of the Seamstresses Union. It is unfortunate that we do not have more friends like you."
+  branches {
+    responseText: "Need a hand with something?"
+    nextNodeIndex: 10
+  }
+  branches {
+    responseText: "Trouble?"
+    nextNodeIndex: 11
+  }
+  branches {
+    responseText: "Sorry, but I gotta go, Mrs. Kubota. I have to do a thing."
+    nextNodeIndex: 12
+    auxiliaryLink: true
+  }
+}
+nodes {
+  idRef {
+    id: "51c0ad69623331f01b000780"
+  }
+  index: 10
+  text: "I wish you could be of service, my friend."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c0ad70623331f01b000782"
+  }
+  index: 11
+  text: "Hai. There is something very wrong, yes."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c0a7c1623331f01b000744"
+  }
+  index: 12
+  text: "Are you headed out for the night, omae?"
+  branches {
+    responseText: "Yes, Mrs. Kubota. I don\342\200\231t know when I\342\200\231ll be back."
+    nextNodeIndex: 13
+  }
+  branches {
+    responseText: "I have to finish the job."
+    nextNodeIndex: 14
+  }
+  branches {
+    responseText: "I\342\200\231m gonna go visit a sick friend."
+    nextNodeIndex: 16
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c0ac16623331f01b000776"
+  }
+  index: 13
+  text: "You say, \342\200\234when\342\200\235 but I hear \342\200\234if\342\200\235 in your voice. I know that tone - I have used it myself on occasion. \n\nVery well, omae. Let us say \342\200\234So long for now.\342\200\235 But before you go, I remind you to take advantage of all the Union has to offer."
+  branches {
+    responseText: ""
+    nextNodeIndex: 17
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c0abd3623331f01b000766"
+  }
+  index: 14
+  text: "{{GM}}She looks you in the eye. Sighs.{{/GM}}\n\nI know, omae, I know. From what I have seen, working for your friend, Sam, has proven to be a bigger task than perhaps you thought."
+  branches {
+    responseText: "Perhaps."
+    nextNodeIndex: 15
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c0abe3623331f01b000769"
+  }
+  index: 15
+  text: "Perhaps too big. It is not for me to say. \n\nI am not here to comment on the way you live your life. I will simply remind you to take all that you need to guarantee success. The people... downstairs are there to serve you."
+  branches {
+    responseText: ""
+    nextNodeIndex: 17
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c0abc1623331f01b000762"
+  }
+  index: 16
+  text: "Of course. When I was in your line of work, I often visited sick friends in the middle of the night. Do you have everything you need - to visit your friend? Sick friends may require extended care. Be sure you leave here... fully packed."
+  branches {
+    responseText: ""
+    nextNodeIndex: 17
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51c0abf4623331f01b00076c"
+  }
+  index: 17
+  text: ""
+  branches {
+    responseText: "Goodnight, Mrs. Kubota."
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "Thank you, Mrs. Kubota."
+    nextNodeIndex: -1
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

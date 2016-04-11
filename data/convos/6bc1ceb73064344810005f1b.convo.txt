@@ -1,0 +1,276 @@
+idRef {
+  id: "6bc1ceb73064344810005f1b"
+}
+ui_name: "c03-s1_Barrens_DanDonut"
+nodes {
+  idRef {
+    id: "6bc2b4373064344810005f21"
+  }
+  index: 0
+  text: "The smell of fried food, powdered sugar, and slightly-burned soykaf is almost enough to overpower the dusty sewage stench of Redmond\'s streets. The troll working the stand is covered in food stains older than he is."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "6bc325853064344810005f24"
+  }
+  index: 1
+  text: "What can I get you, chummer?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "519948e76233316401004843"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "Did you see the murder in the alley across the way?"
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b2200a6233313413004e8d"
+    }
+  }
+  branches {
+    responseText: "What can you tell me about the Barrens?"
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b2200d6233313413004e8e"
+    }
+  }
+  branches {
+    responseText: "{{CC}}\302\24510{{/CC}} I\342\200\231ll take a jelly donut and a soykaf."
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 10
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c03-s1_SoycafDonut"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Nuyen"
+        args {
+          int_value: 10
+        }
+      }
+    }
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "You sell some donuts to a troll wearing scrubs last night?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasHeardAboutPitezel"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51e079386233316816003c59"
+    }
+  }
+  branches {
+    responseText: "I\'ll see you around."
+    nextNodeIndex: -1
+  }
+}
+nodes {
+  idRef {
+    id: "519948e76233316401004846"
+  }
+  index: 3
+  text: "Nope... I was closed when it happened. But hey, it\'s the Barrens - a back-alley killing\'s nothing new around here. The only reason the cops are making a big deal \'bout this Ripper business is that some of the victims are REAL people... you know, folks with SINs."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "519948e7623331640100484a"
+  }
+  index: 4
+  text: "The Barrens? Hell, if you have to ask, you probably shouldn\'t be out here. This stretch we\'re on is called Touristville though, and I suppose it\'s the closest thing around here to respectable. Fewer muggings, and you might even survive drinkin\' the water if you\'re lucky. Wouldn\'t recommend it, though. \n\n{{GM}}He scratches his armpit.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae8658396163c818001f98"
+  }
+  index: 5
+  text: "Now behind me... that\'s the Seamstresses Union. You want drinks, drugs, favors or information \'round here... the Union\'s your spot. Hell, that place is the reason I\342\200\231m in business. Folks get the munchies when they party. Mrs. Kubota owns the joint, and she\'s quality - a hard woman, but fair."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+}
+nodes {
+  idRef {
+    id: "519948e7623331640100484e"
+  }
+  index: 6
+  text: "Enjoy."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "c03-s1_SoycafDonut"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51e078656233316816003c39"
+  }
+  index: 7
+  text: "Maybe. What\'s it to you? I sell a lot of donuts, to a lot of people. I know how Lone Star profiles metahumans. I tell \'em about a troll that bought donuts from me right before a murder, they\'ll haul him in just to see if anyone will pay the bail. Not today, my friend."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

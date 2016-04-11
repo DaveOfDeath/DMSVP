@@ -1,0 +1,186 @@
+idRef {
+  id: "254028ef306434dc1000129c"
+}
+ui_name: "c02-s1_Morgue_Dresden01"
+nodes {
+  idRef {
+    id: "2541c290306434dc100012a2"
+  }
+  index: 0
+  text: "Hovering over the recently-departed is a small dwarf, whistling a tune. His broad grin says \"I love my job\" a little more than you\'d want or expect from someone in the chop shop trade. As you approach, he looks up with a lopsided grin. There\342\200\231s something kindly in his eyes... though it might just be a stray reflection of chrome and surgical tools."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "6cfb6414623665a82a0060bc"
+  }
+  index: 1
+  text: "Sorry, didn\'t expect any visitors at this hour. And some asshole at corporate took my receptionist. What can I do for you, $(l.Sir)?"
+  branches {
+    responseText: "Are you the coroner?"
+    nextNodeIndex: 2
+  }
+}
+nodes {
+  idRef {
+    id: "6cfb6414623665a82a0060bf"
+  }
+  index: 2
+  text: "I\342\200\231m John Dresden, the Organ Grinders Branch Manager here. So yeah, that makes me this franchise area\342\200\231s coroner, too. \n\nAnd you are?"
+  branches {
+    responseText: "$(s.name). I\'m here about Sam Watts."
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "$(s.name). I represent a man named Sam Watts, and I\'m here to look into his murder."
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "No one you\'ve ever heard of. Now tell me about Sam Watts."
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51995fbe396163e80d006936"
+  }
+  index: 3
+  text: "{{GM}}His grin fades.{{/GM}} And what makes you think I know anything about that?"
+  branches {
+    responseText: "Sam had a locator chip embedded in his skull. I followed it here."
+    nextNodeIndex: 6
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51996340396163e80d0069f8"
+  }
+  index: 4
+  text: "{{GM}}He frowns.{{/GM}} Interesting. A dead man makes for a strange client. \n\nBut what makes you think he\'s here?"
+  branches {
+    responseText: "Sam had a locator chip embedded in his skull. I followed it here."
+    nextNodeIndex: 6
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "6cfb6414623665a82a0060c8"
+  }
+  index: 5
+  text: "{{GM}}He fixes you with a hard gaze.{{/GM}} Careful, friend. I can have Lone Star here in 2 minutes. \n\nNow, what makes you think I\'d know anything about Sam Watts?"
+  branches {
+    responseText: "Sam had a locator chip embedded in his skull. I followed it here."
+    nextNodeIndex: 6
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "6cfb6414623665a82a0060ce"
+  }
+  index: 6
+  text: "I see. Well, you\'re right, he\'s here. Not too many people know about the murder yet, though... the press haven\'t caught wind of it yet, what with it being all the way out here in the Barrens."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51996aa3396163e80d006a87"
+  }
+  index: 7
+  text: "So who told you he was dead?"
+  branches {
+    responseText: "Sam did. When his heart stopped, \302\245100,000 was wired to a secure account in my name. I find the killer, I get paid."
+    nextNodeIndex: 8
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Sam\'s digital ghost. When his heart stopped, I got sent a recorded message asking me to bring his killer to justice. Guess he had a hunch."
+    nextNodeIndex: 8
+  }
+}
+nodes {
+  idRef {
+    id: "51996aa3396163e80d006a8d"
+  }
+  index: 8
+  text: "{{GM}}The dwarf raises his eyebrows, a smile wiping the suspicion from his face.{{/GM}} A dead man\'s switch, eh? Fascinating!\n\nI was working on him earlier. He\342\200\231s over here."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "d263d4983036333017003fae"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "39223948306434f00f006793"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "d263d4983036333017003fae"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

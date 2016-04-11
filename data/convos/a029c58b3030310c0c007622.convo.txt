@@ -1,0 +1,129 @@
+idRef {
+  id: "a029c58b3030310c0c007622"
+}
+ui_name: "c14-s3_ElevatorGuard"
+nodes {
+  idRef {
+    id: "a02f382a3030310c0c00764e"
+  }
+  index: 0
+  text: "What can I do for you?"
+  branches {
+    responseText: "I need to get upstairs. My supervisor says there\'s more cleaning to do."
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a22b8291303031680e00697a"
+  }
+  index: 1
+  text: "The top floors may only be accessed with the expressed authorization of Erik Silverstar, our VP of Security. You can head to the lower floors if your supervisor wants. "
+  branches {
+    responseText: "Okay, well I better get back to it."
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "Hey, I found all these chips on the some of the Matrix switch boxes. Is that important?"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "numPanelsChipped"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 3
+        }
+      }
+    }
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a336d2f23030316414006c68"
+  }
+  index: 2
+  text: "The guard thinks for a moment and activates his commlink. He turns his back on you and has a brief conversation. Then he turns back."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "32b602c1616634f016006001"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "9da12c123030316c100072b3"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "44919766623665440c001929"
+  }
+  index: 3
+  text: "Mr. Silverstar wants to see you in his office immediately."
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

@@ -1,0 +1,76 @@
+idRef {
+  id: "51a6aa56396163801100459a"
+}
+ui_name: "c05-s2_PikePlace_Holmes"
+nodes {
+  idRef {
+    id: "51a6aa5f39616380110045a2"
+  }
+  index: 0
+  text: "{{GM}}The elf standing before you may quite possibly be the ugliest elf you\'ve ever seen. His meticulously clean lab coat, format jacket, and old-fashioned bowtie give him the look of an undertaker from centuries past. He notices you approach and locks eyes with you, smiling a thin, unnerving smile.{{/GM}}\n\nHello there, stranger. Might I inquire... do you know which Organ Grinders facility this body will be removed to?"
+  branches {
+    responseText: "Who\'s asking?"
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "Why would you want to know something like that?"
+    nextNodeIndex: 2
+  }
+  branches {
+    responseText: "Wow... I didn\'t even know elves could be that ugly."
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasSpokenToHolmes"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51a6db66396163842300006b"
+  }
+  index: 1
+  text: "{{GM}}The elf giggles - a strange, high-pitched warble you would not expect to emerge from his misshapen face.{{/GM}} Oh, I\'m no one of consequence. Never mind that though. A good evening to you and your friend the coroner.\n"
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a6d9c13961638423000064"
+  }
+  index: 2
+  text: "{{GM}}The elf giggles - a strange, high-pitched warble you would not expect to emerge from his misshapen face.{{/GM}} Oh, just a hobby. Never mind that though. A good evening to you and your friend the coroner.\n"
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a6dacc3961638423000069"
+  }
+  index: 3
+  text: "{{GM}}The elf\'s smile doesn\'t flicker.{{/GM}} I\'m sure there are a great many things you don\'t know, $(l.race). But never mind that. A good evening to you and your friend the coroner."
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

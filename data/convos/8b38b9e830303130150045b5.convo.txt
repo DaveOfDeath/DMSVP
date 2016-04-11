@@ -1,0 +1,145 @@
+idRef {
+  id: "8b38b9e830303130150045b5"
+}
+ui_name: "c07-s1_JWConvo"
+nodes {
+  idRef {
+    id: "8b39767730303130150045bb"
+  }
+  index: 0
+  text: "Hey, I know you. You\342\200\231re... uh... $(l.Name)! Thanks again for your help back in 2012. What can I do for you today?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8b3cedff30303130150045d7"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "What are you doing here?"
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "9f174550303031c40e00078e"
+    }
+  }
+  branches {
+    responseText: "Got any stories today?"
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "8b3d1a2730303130150045df"
+    }
+  }
+  branches {
+    responseText: "Got any goodies for me today?"
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b653f06233315815005087"
+    }
+  }
+  branches {
+    responseText: "Well, I gotta get back to biz."
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8b3d13e830303130150045de"
+  }
+  index: 2
+  text: "Damned if I know. While I was alive, I wished I\342\200\231d written Harry Potter because I\342\200\231d be incredibly rich and have brought joy to endless millions. Now, in death, I wish I\'d written Harry Potter because I would be haunting Hogwarts instead of this dive."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8b3d23df30303130150045e5"
+  }
+  index: 3
+  text: "Hmm... well, picking up on the last story - \n\nAccording to Scott Berfleld, what happened next was me calling him on the phone to tell him all the Mayan calendar stuff and about the Sixth World, going on and on with tons of details I\342\200\231d come up with. \n\nWhat I didn\342\200\231t realize was that it was about 2am when I called and past 3am when he finally begged me to let him go back to sleep."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8b3d57d730303130150045ec"
+  }
+  index: 4
+  text: "Indeed I do! Doc Wagon\342\200\231s armed medical response teams are how runners live to fight another day. They\'re kind of like Blue Cross/Blue Shield meets Black Hawk Down. \n\nYou can buy their remote trauma kits and give them to your hired runners to revive them. A Doc Wagon trauma kit brings back one hired runner from Death\342\200\231s Door - kind of like a one-time-use resurrection pill. \n\nIs that cheating? Nah, it\342\200\231s a single player game - think of it more like easy mode! Anyway here\'s a trauma kit for you. You may need it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "DocWagonBasic"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "8b3e1ba730303130150045ef"
+  }
+  index: 5
+  text: "Have fun."
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

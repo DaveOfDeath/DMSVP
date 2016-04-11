@@ -1,0 +1,88 @@
+idRef {
+  id: "51986136303031cc1a0012e4"
+}
+ui_name: "c21-s2_GuardAtGate"
+nodes {
+  idRef {
+    id: "51986147303031cc1a0012ea"
+  }
+  index: 0
+  text: "Sorry, that\'s as far as you go. Don\'t worry... all the Brotherhood\'s mysteries will be revealed in time. Now please step away."
+  branches {
+    responseText: "Look, just let me by."
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "I don\'t know how fast you are with that weapon but my bet is not fast enough. Just let us by."
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "I have learned so much! I can\'t stop now. Stand aside my friend, our enlightenment awaits."
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "519861f8303031cc1a0012ef"
+  }
+  index: 1
+  text: "Take another step and it will be your last. Head back upstairs immediately."
+  branches {
+    responseText: "Our time of enlightenment is upon us all. I must pass."
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b9f6ac3030319414006b46"
+  }
+  index: 2
+  text: "Hey - I have not seen you in briefing sheets. Wait... I\'ve never seen any of you before!\n\n{{GM}}He reaches for his weapon.{{/GM}}"
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "GateGuardsGoHostile"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51b9f7ef3030319414006b48"
+  }
+  index: 3
+  text: "{{GM}}He reaches for his weapon.{{/GM}}"
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "GateGuardsGoHostile"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+  hideIfUnavailable: true
+  onlyOnce: true
+  idRef {
+    id: "5198645c303031cc1a001304"
+  }
+}

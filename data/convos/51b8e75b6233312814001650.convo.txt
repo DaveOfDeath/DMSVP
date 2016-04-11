@@ -1,0 +1,54 @@
+idRef {
+  id: "51b8e75b6233312814001650"
+}
+ui_name: "c17-s1_Funeral_Exit"
+nodes {
+  idRef {
+    id: "51b8e7656233312814001656"
+  }
+  index: 0
+  text: "Where to?"
+  branches {
+    responseText: "{{GM}}Head back to the Seamstresses Union to re-stock and hire a team.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Open Scene"
+        args {
+          call_value {
+            functionName: "Get Map Item (Scene)"
+            args {
+              string_value: "c17-s2_Seamstress"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "{{GM}}Hire a team and head for the Universal Brotherhood.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Open Scene"
+        args {
+          call_value {
+            functionName: "Get Map Item (Scene)"
+            args {
+              string_value: "c21-s0_PikePlaceConcert"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "{{GM}}Stay here for now.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

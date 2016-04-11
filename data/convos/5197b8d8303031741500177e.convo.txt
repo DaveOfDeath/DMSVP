@@ -1,0 +1,167 @@
+idRef {
+  id: "5197b8d8303031741500177e"
+}
+ui_name: "c21-s2_AfterBugIsSeenConvo"
+nodes {
+  idRef {
+    id: "51bdf7b0303031f013001b03"
+  }
+  index: 0
+  text: "{{GM}}The creature makes a mangled sound of chittering and human agony.{{/GM}} "
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "51bb7445303031f4000012dc"
+  }
+  actions {
+    ops {
+      functionName: "Add Camera Point of Interest (Actors)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "51bb7445303031f4000012dc"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        float_value: 6
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51bdf841303031f013001b1a"
+  }
+  index: 1
+  text: "Ho-ly crap."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5196f656303031a812002ebf"
+  }
+}
+nodes {
+  idRef {
+    id: "51bdf841303031f013001b1d"
+  }
+  index: 2
+  text: "Don\342\200\231t be afraid, darling girl. No one will hurt you. You are our Queen!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5196f964303031a812002f0a"
+  }
+}
+nodes {
+  idRef {
+    id: "51bdf841303031f013001b20"
+  }
+  index: 3
+  text: "She locked us in but I can get us out of here.\n\nLast night, they were holding me in the next room - the one with the computers. I jacked into one and was hacking their security system when I tripped the alarm and got caught.\n\nThey threw me in that cell and disabled the jackpoints, but I can fix them!\n\n"
+  branches {
+    responseText: "Just stay behind us."
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "We\342\200\231ll help you fix the jackpoints."
+    conditions {
+      ops {
+        functionName: "Evaluate If Team Has Cyberdeck"
+        args {
+          call_value {
+            functionName: "Get Preset Value (string)"
+            args {
+              string_value: "FactionList"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+        }
+      }
+    }
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5196f656303031a812002ebf"
+  }
+}
+nodes {
+  idRef {
+    id: "51bdf841303031f013001b23"
+  }
+  index: 4
+  text: "Look, I went to the best school in the country for Matrix engineering. I KNOW what I\342\200\231m doing! They locked the nodes down when they caught me but I put slipped in some code before they did, so it has to be me that jacks in. Just hold them off and let me fix it! "
+  branches {
+    responseText: "What about intrusion countermeasures?"
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5196f656303031a812002ebf"
+  }
+}
+nodes {
+  idRef {
+    id: "51bdf841303031f013001b26"
+  }
+  index: 5
+  text: "I write IC as a hobby, okay? Just trust me. And keep that... thing away from me!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5196f656303031a812002ebf"
+  }
+}
+nodes {
+  idRef {
+    id: "51bdf841303031f013001b29"
+  }
+  index: 6
+  text: "How entertaining!\n\nI\342\200\231m glad you weren\342\200\231t killed at the cemetery, $(l.name). It will be much more fun to watch you die."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5196f964303031a812002f0a"
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

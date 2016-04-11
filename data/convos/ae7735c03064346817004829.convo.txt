@@ -1,0 +1,1884 @@
+idRef {
+  id: "ae7735c03064346817004829"
+}
+ui_name: "c21-s1_Brotherhood_Janitor"
+nodes {
+  idRef {
+    id: "b3629dc03064347012004456"
+  }
+  index: 0
+  text: "As you approach the Janitor he looks up, seeming surprised that anyone noticed he was here."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Janitor01"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "b3646f1c3064347012004463"
+  }
+  index: 1
+  text: "What do you want?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b237686336358017001bfc"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "I need a little information. I\'m willing to pay for it."
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "You looking to make a little easy money today?"
+    nextNodeIndex: 16
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b237686336358017001bff"
+  }
+  index: 3
+  text: "Ok, as long as I don\'t lose my job or anything. How much you talking about?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b23eff6336358017002063"
+  }
+  index: 4
+  text: ""
+  branches {
+    responseText: "Don\'t know yet, lets talk and then I\'ll pay you what it\'s worth."
+    nextNodeIndex: 5
+  }
+  branches {
+    responseText: "I don\'t have time to bargain; I\'ll pay you 300 nuyen right now for you start talking and only stop when I tell you to."
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 300
+        }
+      }
+    }
+    nextNodeIndex: 14
+  }
+  branches {
+    responseText: "How about 50 nuyen?"
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 50
+        }
+      }
+    }
+    nextNodeIndex: 15
+  }
+  branches {
+    responseText: "On second thought, lets pretend we didn\'t meet."
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "JanitorCheapo"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b23eff6336358017002066"
+  }
+  index: 5
+  text: "Oh yeah, like my grandpa used to say, \"the check is in the mail.\" Don\342\200\231t think so."
+  branches {
+    responseText: "Your Grandpa is dead, and so is the mail. "
+    nextNodeIndex: 6
+  }
+  branches {
+    responseText: "What ever happened to trust?"
+    nextNodeIndex: 7
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b23eff6336358017002069"
+  }
+  index: 6
+  text: "Don\'t talk smack about my Gramps."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b23eff633635801700206f"
+  }
+  index: 7
+  text: "Put some money upfront or no deal."
+  branches {
+    responseText: "How about 100 nuyen now and another 200 if I like what you say?"
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 300
+        }
+      }
+    }
+    nextNodeIndex: 8
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "{{CC}}Charisma: 4 {{/CC}} How about 100 nuyen now and another 100 if I like what you say?"
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 200
+        }
+      }
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 4
+        }
+      }
+    }
+    nextNodeIndex: 9
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "{{CC}}Charisma: 6{{/CC}} I\342\200\231m not exactly flush, so how about 50 now and 100 if I can use what you\342\200\231ve said. "
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 150
+        }
+      }
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 6
+        }
+      }
+    }
+    nextNodeIndex: 10
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "Never mind, go back to pushing your mop."
+    nextNodeIndex: 11
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b23eff6336358017002072"
+  }
+  index: 8
+  text: "You got a deal. {{GM}}He hands you his credstick and you transfer 100 nuyen to it.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 27
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Remove Nuyen"
+      args {
+        int_value: 100
+      }
+    }
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "JanitorPayment"
+          }
+        }
+      }
+      args {
+        int_value: 200
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51b23eff6336358017002078"
+  }
+  index: 9
+  text: "You got a deal. {{GM}}He hands you his credstick and you transfer 100 nuyen to it.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 27
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Remove Nuyen"
+      args {
+        int_value: 100
+      }
+    }
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "JanitorPayment"
+          }
+        }
+      }
+      args {
+        int_value: 100
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51b23eff633635801700207e"
+  }
+  index: 10
+  text: "Wow, you must be worse off than me. Okay, here\'s my credstick. {{GM}}He hands you his credstick and you transfer 100 nuyen to it.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 27
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Remove Nuyen"
+      args {
+        int_value: 50
+      }
+    }
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "JanitorPayment"
+          }
+        }
+      }
+      args {
+        int_value: 100
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51b23eff6336358017002084"
+  }
+  index: 11
+  text: "Hey how about 50 nuyen now and 100 if I give you the info you\342\200\231re looking for?"
+  branches {
+    responseText: "Alright deal."
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 150
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "JanitorPayment"
+            }
+          }
+        }
+        args {
+          int_value: 100
+        }
+      }
+      ops {
+        functionName: "Remove Nuyen"
+        args {
+          int_value: 50
+        }
+      }
+    }
+    nextNodeIndex: 12
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "Too rich for me. How about 50 now and 50 if I can use what you say?"
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 100
+        }
+      }
+    }
+    nextNodeIndex: 13
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "I\342\200\231m done here."
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Janitor"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b23eff6336358017002087"
+  }
+  index: 12
+  text: "{{GM}}He hands you his credstick and you transfer 50 nuyen to it.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 27
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b23eff633635801700208d"
+  }
+  index: 13
+  text: "Damn... well ok. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 27
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Remove Nuyen"
+      args {
+        int_value: 50
+      }
+    }
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "JanitorPayment"
+          }
+        }
+      }
+      args {
+        int_value: 50
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ba2adc633635d82e001923"
+  }
+  index: 14
+  text: "Ha! You gotta deal!\n{{GM}}He hands you his Credstick and you transfer the 300 over.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 27
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Remove Nuyen"
+      args {
+        int_value: 300
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51b23eff6336358017002094"
+  }
+  index: 15
+  text: "Ha! I gotta go back to pushing a mop for a real paycheck."
+  branches {
+    responseText: ""
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "JanitorCheapo"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51b237686336358017001c80"
+  }
+  index: 16
+  text: "What\'ya got in mind, cause you\'re not my type. "
+  branches {
+    responseText: "I pay you to talk to me about what the UB looks like from a Janitor\'s point of view."
+    nextNodeIndex: 17
+  }
+  branches {
+    responseText: "I bet you see lots of things around here, and I want to hear about some of them."
+    nextNodeIndex: 18
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b237686336358017001c83"
+  }
+  index: 17
+  text: "What does talking pay?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b237686336358017001c89"
+  }
+  index: 18
+  text: "You mentioned money?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51abff636336357819002104"
+  }
+  index: 19
+  text: "I have never seen you before. Go away."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b276a5633635801700255e"
+  }
+  index: 20
+  text: "You back again?"
+  branches {
+    responseText: "We got off to a bad start. Can we make a deal?"
+    nextNodeIndex: 21
+  }
+  branches {
+    responseText: "You like working here?"
+    nextNodeIndex: 22
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b277366336358017002562"
+  }
+  index: 21
+  text: ""
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    auxiliaryLink: true
+  }
+}
+nodes {
+  idRef {
+    id: "51b2777e633635801700258a"
+  }
+  index: 22
+  text: "My job doesn\'t include talking with the visitors."
+  branches {
+    responseText: "Understood. What do I need to do for the privilege of talking with you?"
+    nextNodeIndex: 23
+  }
+  branches {
+    responseText: "No worries. I am sure we can make a deal."
+    nextNodeIndex: 24
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b278446336358017002591"
+  }
+  index: 23
+  text: ""
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b278636336358017002595"
+  }
+  index: 24
+  text: ""
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b4cd2e6336353017001769"
+  }
+  index: 25
+  text: "Back again huh?"
+  branches {
+    responseText: "Yeah I still have questions."
+    nextNodeIndex: 28
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "See you around."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b23a596336358017001e30"
+  }
+  index: 26
+  text: ""
+  branches {
+    responseText: "Start Questions"
+    nextNodeIndex: 27
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b23a5b6336358017001e33"
+  }
+  index: 27
+  text: "Ok, what do you want to know?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b23a5b6336358017001e36"
+  }
+  index: 28
+  text: ""
+  branches {
+    responseText: "Have you seen Jessica Watts around today?"
+    nextNodeIndex: 29
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51abd4716336357819001e4e"
+    }
+  }
+  branches {
+    responseText: "I need a computer terminal, you know where one is?"
+    nextNodeIndex: 30
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51dc5d1f303031f414006f6e"
+    }
+  }
+  branches {
+    responseText: "Tell me what areas of this place you have access to?"
+    nextNodeIndex: 31
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51dc5dff303031f414006f71"
+    }
+  }
+  branches {
+    responseText: "What do you know of the areas you don\'t have access to?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "Janitor01"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 32
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51dc5d26303031f414006f6f"
+    }
+  }
+  branches {
+    responseText: "I want to get into the office, what will your keycard cost me?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "JanOffice"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 33
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51dc5da1303031f414006f70"
+    }
+  }
+  branches {
+    responseText: "I\'m done asking questions."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b23a5b6336358017001e39"
+  }
+  index: 29
+  text: "Nope, but that don\'t mean much. Most of this place is off limits to me."
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Janitor01"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51b23a5b6336358017001e3f"
+  }
+  index: 30
+  text: "The only computers I\'ve seen in the place are in the office section of The Home, behind the staff only doors. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Janitor03"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51b23a5b6336358017001e45"
+  }
+  index: 31
+  text: "I only have access to the public space which we are in now; the storage room, locker room, and the office."
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Janitor02"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Home"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "JanOffice"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51b23a5b6336358017001e4b"
+  }
+  index: 32
+  text: "The Brothers and Sisters live in what\'s called \"The Home\" which I\'ve heard has the kitchen and dorm rooms. From there I\'ve been told there is a ton of security protecting what the freaks call the Inner Sanctum, but I\342\200\231ve never seen any of that stuff."
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Sanctuary"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "InnerSanctum"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51b23a5b6336358017001e51"
+  }
+  index: 33
+  text: "There is no way I\342\200\231m giving you my card for you to cause trouble with. That sort of thing would come back to haunt me. "
+  branches {
+    responseText: "Not even for 500 nuyen?"
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 500
+        }
+      }
+    }
+    nextNodeIndex: 34
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "Where can I get a different keycard?"
+    nextNodeIndex: 37
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b23a5b6336358017001e54"
+  }
+  index: 34
+  text: "Nope but for the 500 I will let you into the storeroom behind me which connects to the locker room and I will bet you can find someone else\342\200\231s uniform and ID card there. \n\nI\'m about done with all this, if someone see us I could be some real trouble, make a decision chummer."
+  branches {
+    responseText: "Deal."
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 500
+        }
+      }
+    }
+    nextNodeIndex: 35
+  }
+  branches {
+    responseText: "Too rich for maybe finding a card. I\'ll pay you 250 to let me into the storeroom. "
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 250
+        }
+      }
+    }
+    nextNodeIndex: 36
+  }
+  branches {
+    responseText: "No deal."
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "JanitorKeycardDeal"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b23a5b6336358017001e57"
+  }
+  index: 35
+  text: "{{GM}}After you put 500 nuyen onto his credstick, he unlocks the door to storeroom.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Remove Nuyen"
+      args {
+        int_value: 500
+      }
+    }
+    ops {
+      functionName: "Force-Use Interactable Object (Basic)"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "51c0ed2e633635141d00391b"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "JanitorKeycardDeal"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51b23a5b6336358017001e5a"
+  }
+  index: 36
+  text: "Okay, deal. \n\n{{GM}}After you put 250 nuyen onto his credstick, he unlocks the door to storeroom.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Remove Nuyen"
+      args {
+        int_value: 250
+      }
+    }
+    ops {
+      functionName: "Force-Use Interactable Object (Basic)"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "51c0ed2e633635141d00391b"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "JanitorKeycardDeal"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51b23a5b6336358017001e6a"
+  }
+  index: 37
+  text: "Sometimes staff leave keycards and uniforms in the locker room. Tell you what for 300 nuyen I could let you into the store room which connects to the locker room and you could look around."
+  branches {
+    responseText: "Deal."
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 300
+        }
+      }
+    }
+    nextNodeIndex: 38
+  }
+  branches {
+    responseText: "To rich for a fishing expedition. How about 150?"
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 150
+        }
+      }
+    }
+    nextNodeIndex: 39
+  }
+  branches {
+    responseText: "No thanks."
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "JanitorKeycardChepo"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 40
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b23a5b6336358017001e6d"
+  }
+  index: 38
+  text: "{{GM}}After you put 300 nuyen onto his Credstick, he unlocks the door to storeroom.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Remove Nuyen"
+      args {
+        int_value: 300
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "JanitorKeycardDeal"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Force-Use Interactable Object (Basic)"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "51c0ed2e633635141d00391b"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51b23a5b6336358017001e70"
+  }
+  index: 39
+  text: "Okay, but make it quick before someone looks over here. {{GM}}After you put 150 nuyen onto his credstick, he opens the door to storeroom.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Remove Nuyen"
+      args {
+        int_value: 150
+      }
+    }
+    ops {
+      functionName: "Force-Use Interactable Object (Basic)"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "51c0ed2e633635141d00391b"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "JanitorKeycardDeal"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51b4d2006336353017001966"
+  }
+  index: 40
+  text: ""
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "Janitor01"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "JanitorKeycardDeal"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 19
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "JanitorCheapo"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "JanitorKeycardDeal"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 20
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "JanitorKeycardChepo"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "JanitorKeycardDeal"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 25
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 26
+}

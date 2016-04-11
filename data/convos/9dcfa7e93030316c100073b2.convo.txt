@@ -1,0 +1,96 @@
+idRef {
+  id: "9dcfa7e93030316c100073b2"
+}
+ui_name: "c14-s3_SupervisorIntro"
+nodes {
+  idRef {
+    id: "9dcfe7513030316c100073b8"
+  }
+  index: 0
+  text: "The supervisor has the look of a Stuffer Shack manager with delusions that he\'s on a \"career track\" rather than what he is - a disposable, dime-a-dozen resource."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "444db6e5623665440c00182a"
+  }
+  index: 1
+  text: "Hey! There you are! I\'m Steve Scott. I\'ll be your direct supervisor. Sorry I missed you when you first came in but I only found out that you were starting an hour ago when you suddenly showed up in the system. \n\nWeird glitch or something.\n\nNormally, we\'d watch an orientation trid and walk through our mission statement but... well, it\'s going to be hard for you on your first day but you\'re going to need to clean up some blood. Maybe a lot."
+  branches {
+    responseText: "Cleaning up other people\'s messes is what I do. "
+    nextNodeIndex: 2
+  }
+  branches {
+    responseText: "Right. I\'m a janitor. Wiz."
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I can handle it. Just tell me what to do."
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "444db6e5623665440c00182d"
+  }
+  index: 2
+  text: "You\'ll have your hands full. There was some sort of break-in last night! Some people were... um... just get things cleaned up on this floor. \n\nAnd listen - people are going to be on edge today. So try to stay invisible and don\'t get into any trouble. \n\nOtherwise, they\'re going to call me, and I\'m going to have to reprimand you and put a note in your file. \n\n"
+  branches {
+    responseText: "Straighten up this floor and stay out of trouble. Got it."
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "I\'m your servant. What\'s first?"
+    nextNodeIndex: 3
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Sounds good! We\'ll get to those orientation trids another day. "
+    nextNodeIndex: 3
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "444db6e5623665440c001830"
+  }
+  index: 3
+  text: "I hope they get whoever did this.\n\nOnly a fool would attack a Telestrian Corporate office and think they can get away with it!\n\nStart heading from room to room and clean what needs cleaning. Good luck and welcome to Telestrian."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasDoneSupervisorIntro"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

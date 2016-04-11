@@ -1,0 +1,147 @@
+idRef {
+  id: "51d3ae27396365b81e0001ac"
+}
+ui_name: "c09-s1_Tweakers_Notebook"
+nodes {
+  idRef {
+    id: "51d3ae48396365b81e0001b2"
+  }
+  index: 0
+  text: "You pick up a worn and mangled notebook. It smells of sweat and alcohol."
+  branches {
+    responseText: "{{GM}}Leaf through the notebook.{{/GM}}"
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51d3ae65396365b81e0001b5"
+  }
+  index: 1
+  text: "The notebook contains lists of illegal simsense rides and the names of clients who have purchased them."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51d3ae7c396365b81e0001b8"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "{{GM}}Look for interesting BTL names.{{/GM}}"
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "{{GM}}Look for interesting client names.{{/GM}}"
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "{{GM}}Put the notebook down.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51d3aeaa396365b81e0001bc"
+  }
+  index: 3
+  text: "The Better-Than-Life rides run the gamut from fantasies like \342\200\234I CAN FLY\342\200\235 to real life recordings such as \342\200\234BUM KILLER\342\200\235.\n\nThe list of rides doesn\342\200\231t seem to have much value."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51d3aec5396365b81e0001be"
+  }
+  index: 4
+  text: "Upon further examination, the client list is more than a simple list of names. It also contains private information about some of the more well-to-do or connected clientele. It may be that the syndicate behind this lab is directing certain clients here to secretly extract information from them while they are under the influence."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51d3aecb396365b81e0001c1"
+  }
+  index: 5
+  text: "The notebook is likely worth something if you can sell it."
+  branches {
+    responseText: "{{GM}}Put the notebook down.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "{{GM}}Take the notebook.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Delete Prop"
+        args {
+          call_value {
+            functionName: "Get Map Item (Prop)"
+            args {
+              string_value: "51d32d6f356164140f000125"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Add Item to Team"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c09-s1_Notebook"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (string)"
+            args {
+              string_value: "FactionList"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

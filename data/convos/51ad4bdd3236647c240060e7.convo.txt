@@ -1,0 +1,237 @@
+idRef {
+  id: "51ad4bdd3236647c240060e7"
+}
+ui_name: "c12-s3_MercyMental_Workbench"
+nodes {
+  idRef {
+    id: "51ad4bfe3236647c240060ed"
+  }
+  index: 0
+  text: "Holmes\'s workbench falls somewhere between coroner\'s slab and medieval torture device. It is decorated in the many colors of death, and littered with the instruments of that trade. To one side, there is a leather-bound journal stuffed with uneven pages. To the other is a pocsec, its small screen still glowing. Beneath the bench is a rolled sheaf of papers held closed with a tied length of surgical tubing."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51ad51103236647c2400615a"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "{{GM}}Investigate the work space.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countWorkbenchInspections"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d36b3d623331440a001665"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Skim the journal.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countWorkbenchInspections"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d36afe623331440a001663"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Access the pocket secretary.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countWorkbenchInspections"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51e4618c623331dc1500262f"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Examine the rolled sheet of paper.{{/GM}}"
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d36b33623331440a001664"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Leave the workbench.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countWorkbenchInspections"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 3
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "OpenOffice"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: -1
+    hideIfUnavailable: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51ad51103236647c2400615d"
+  }
+  index: 2
+  text: "The bench has clearly played host to numerous bodies over its lifetime. It includes limb restraints, as well as skeletal traction mechanisms. At this table, Holmes likely dismembered bodies, or quite possibly put them back together. The tackiness of the blood suggests it has been used relatively recently."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51ad51103236647c24006160"
+  }
+  index: 3
+  text: "Leafing through the pages, you find few intelligible entries. Holmes may not have been a real doctor, but his handwriting certainly fits the stereotype.\n\nStuffed in the last few pages is a copy of a disinterment order from a local cemetery, with the grave\'s occupant marked as \"Melinda Watts\"."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51ad55603236647c24006177"
+  }
+  index: 4
+  text: "Holmes is still logged in, granting you access to his currently loaded files. Prominent among them is a hospital report from a donor program. It lists the organs beside the names and vital statistics of the recipients. Your eye catches Sam Watts\' name beside the entry for \"liver\". Also on the list are the Ripper\'s other known victims, along with several others who may have shared in the same fate."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51e46167623331dc1500262b"
+  }
+  index: 5
+  text: "There is also a large sum of nuyen which can easily be transferred to your account."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Add Nuyen"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "numNuyenPayout"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ad56553236647c2400617b"
+  }
+  index: 6
+  text: "Unfurling the large sheet of paper, you discover a diagram of the human female form, rendered to an impressive level of detail. It appears to be the blueprint for making Holmes\'s very own monster."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

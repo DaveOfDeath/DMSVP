@@ -1,0 +1,264 @@
+idRef {
+  id: "51d08d053236646019001fa5"
+}
+ui_name: "c08-s3_GunShop"
+nodes {
+  idRef {
+    id: "51d08d2d3236646019001faf"
+  }
+  index: 0
+  text: "{{GM}}The ork stands at attention and looks every bit like he\'s waiting for a commanding officer who he can crisply salute. He only appears \"at ease\" when he\'s cleaning the barrel of a rifle or counting out the bullets in a magazine. The rest of the time he appears as he is now, ramrod straight and primed for anything.{{/GM}}\n\nAnd how are you, my friend?  Fine day to fire a weapon. What say you?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countWeaponsVisits"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d1774b3236649c0f004d0d"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "Tell me a little about yourself, Buster. Were you military?"
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d37f45623331b813000f7c"
+    }
+  }
+  branches {
+    responseText: "Can I see what you have in stock?"
+    actions {
+      ops {
+        functionName: "Open Store Screen From Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "8c521aa73030313417004386"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Nevermind."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d1774b3236649c0f004d10"
+  }
+  index: 2
+  text: "After a fashion, yes, $(l.sir). Sergeant in the 31st California Militia. It\'s no longer a recognized unit, and there are those who would say we never were. But someone had to stand up to the Tir, and it fell to us."
+  branches {
+    responseText: "Tir Tairngire?"
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d1780f3236649c0f004d29"
+  }
+  index: 3
+  text: "Yes, $(l.sir). I was in CalFree when the elves came marching down from the north in \'36. After the UCAS pulled their support, we had little in the ways of an organized defense. But what we did have was a stockpile of weapons and ammo down in Oakland."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d1780f3236649c0f004d2c"
+  }
+  index: 4
+  text: "The locals in NoCal held out long enough for us to bring the heat. And I tell you, all the magic hoo-ha in the world ain\'t enough to stop a V11 Hotrock from cracking your dome."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+}
+nodes {
+  idRef {
+    id: "51d1780f3236649c0f004d2f"
+  }
+  index: 5
+  text: "We drove them elves all the way back to Yreka. Would have pushed them all the way back to Portland, too, but some ninny down south reached out to the Japanese for aid and got our own version of Normandy for the trouble."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+  }
+}
+nodes {
+  idRef {
+    id: "51d1780f3236649c0f004d32"
+  }
+  index: 6
+  text: "Things went to hell in a handbasket from there. Don\'t much like to talk about those later days...\n\nSo let\'s talk guns instead. Can I get you anything?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+}
+nodes {
+  idRef {
+    id: "51d08d3d3236646019001fb5"
+  }
+  index: 7
+  text: "Back for more, eh?  You know, if you\'re looking to test out some gear, I\'ve got a little firing range set up a few klicks from here. Space enough to level a building without hurting a fly. You just let me know what you need."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countWeaponsVisits"
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d08d473236646019001fbb"
+  }
+  index: 8
+  text: "What can I get you?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countWeaponsVisits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  nextNodeIndex: 0
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countWeaponsVisits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  nextNodeIndex: 7
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countWeaponsVisits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+  }
+  nextNodeIndex: 8
+}

@@ -1,0 +1,177 @@
+idRef {
+  id: "a0e80c3e3064349c08004d00"
+}
+ui_name: "c01-s1_SamBattle04"
+nodes {
+  idRef {
+    id: "a5508cfa6236657c0e001bfc"
+  }
+  index: 0
+  text: "Hey! $(l.name)!"
+  branches {
+    responseText: "Make it fast. We\'re in the drek."
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "Stop talking and keep shooting! "
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Actor)"
+                args {
+                  string_value: "8f9eb272306434d8160069c1"
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "Pi 3 Ruger Thunderbolt"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "What is it Sam? We\342\200\231re kinda busy here."
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a5508cfa6236657c0e001bff"
+  }
+  index: 1
+  text: "Just thought you should know - the crates I was picking up are for a weapons dealer. He said they contained med-kits and hand-grenades."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a5508cfb6236657c0e001c05"
+  }
+  index: 2
+  text: "Listen I have something that could actually help! The crates I was picking up are for a weapons dealer. They\'re supposed to contain med-kits and hand-grenades."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a5508cfb6236657c0e001c0b"
+  }
+  index: 3
+  text: "I never answered your question about what\'s in the crates. According to my friend, the weapons dealer, they contain med-kits and hand-grenades. Just thought you should know."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a5508cfb6236657c0e001c0e"
+  }
+  index: 4
+  text: ""
+  branches {
+    responseText: "Nice of you to mention that! Where are they?"
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I knew I liked you, chummer. Where\342\200\231s the party gifts you brought?"
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a5508cfb6236657c0e001c14"
+  }
+  index: 5
+  text: "The longshoreman scattered them around this area. We\'ll need to open each crate and see what\342\200\231s inside it."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "CrateTalk"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "8f9eb272306434d8160069c1"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

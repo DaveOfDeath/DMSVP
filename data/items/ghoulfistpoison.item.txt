@@ -1,0 +1,37 @@
+id: "GhoulFistPoison"
+type: ItemType_Unarmed
+uirep {
+  icon: "icon_melee"
+  name: "Poisoned Ghould Fist"
+  description: "A poison fist that does DMG and then causes -6 HP for 1 RND."
+}
+anim_type: AnimType_Unarmed
+coreAttribute: Attribute_Strength
+coreSkill: Skill_CloseCombat
+coreSpecialization: Specialization_CC_Unarmed
+apCost: 1
+maxAmmo: 0
+baseHPDamage: 0
+baseAPDamage: 0
+rangeModTable: 2
+noiseLevel: 0
+noiseRounds: 0
+modelessAbilities: "GhoulPunch(default)"
+affectsEnemy: true
+canTargetActor: true
+effectDuration: 1
+activationStatusEffects {
+  uirep {
+    icon: "icon_melee"
+    name: "Infection: HP -6 per RND"
+  }
+  stackingCategory: "Acid"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -6
+    damageType: VulnerabilityType_Poison
+  }
+  fxScript: "AcidBurnStatus"
+}
+sorting_group: "Critter Powers"
+damageType: VulnerabilityType_Poison

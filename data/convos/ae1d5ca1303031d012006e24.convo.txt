@@ -1,0 +1,140 @@
+idRef {
+  id: "ae1d5ca1303031d012006e24"
+}
+ui_name: "c14-s4_Safe"
+nodes {
+  idRef {
+    id: "ae1d89f0303031d012006e2a"
+  }
+  index: 0
+  text: "There is a safe that has a large DNA scanner on the front most likely keyed to Mr. Silverstar."
+  branches {
+    responseText: "{{GM}}Walk away.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "Put the moist end of the cigar on the DNA scanner."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c14_EricCigar"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "SwapSafe"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+    hideIfUnavailable: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasLookedAtSafe"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51c86821303031a815002623"
+  }
+  index: 1
+  text: "With a click and faint hiss of escaping air the safe opens."
+  branches {
+    responseText: "{{GM}}Take the sample.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "TakeSample"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  sourceInSceneRef {
+    id: "51a921d130303154050016c5"
+  }
+}
+nodes {
+  idRef {
+    id: "51c86b50303031a815002626"
+  }
+  index: 2
+  text: "Great work mon ami! The time for stealth has passed, it has set off every alarm in the system but I have unlocked the executive elevator and your path is clear. Head to the elevator and make your escape!"
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "8eaf881a3030314413001908"
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

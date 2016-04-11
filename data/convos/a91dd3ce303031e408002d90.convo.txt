@@ -1,0 +1,50 @@
+idRef {
+  id: "a91dd3ce303031e408002d90"
+}
+ui_name: "c14-s4_GuardsPainting"
+nodes {
+  idRef {
+    id: "a91e8f3d303031e408002d96"
+  }
+  index: 0
+  text: "This shows a profile of three elves in Telestrian security uniforms looking upwards at a flag flying the Telestrian logo. The plaque reads \"Duty\"."
+  branches {
+    responseText: "{{GM}}Push the frame.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "GuardsPushed"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "{{GM}}Leave it alone.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "NewPress"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

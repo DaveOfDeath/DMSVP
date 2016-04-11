@@ -1,0 +1,193 @@
+idRef {
+  id: "656679186233311830004b29"
+}
+ui_name: "c08-s2_Planeyard_Locker"
+nodes {
+  idRef {
+    id: "6aa85de5623331ec1c0072b4"
+  }
+  index: 0
+  text: "{{GM}}This appears to be the victim\'s locker. The door is slightly ajar. Inside, you see several of the dead man\'s personal items.{{/GM}}"
+  branches {
+    responseText: "{{GM}}Inspect the toothbrush.{{/GM}}"
+    nextNodeIndex: 1
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b00f47623331541d0041ce"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Inspect the comb.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "SpokeToShaman"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b00a88396163d00c00476d"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Inspect the comb.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "SpokeToShaman"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51af80ea623331b42a0049ca"
+    }
+  }
+  branches {
+    responseText: "{{GM}} Leave the locker.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "6aa9872c623331ec1c0072b9"
+  }
+  index: 1
+  text: "The blue toothbrush is still wet from being used. It smells of mint and cigarettes."
+  branches {
+    responseText: ""
+    nextNodeIndex: 0
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "6aaa3b3c623331ec1c0072c5"
+  }
+  index: 2
+  text: "The comb is black plastic, and has some wiry grey hairs stuck in it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 0
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "155a2561623331d81a003a96"
+  }
+  index: 3
+  text: "{{GM}}As you reach for the comb, the hair on the back of your hand stands on end. And when you take it off its little shelf, your heart thumps in your chest. Hard. This must be one of the items the shaman was looking for. \n\nYou pocket the comb.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 0
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Add To Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "518d7674643431b03f0041ab"
+          }
+          args {
+            string_value: "c08_FetishCount"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "c08-s2_Fetish2"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

@@ -1,0 +1,402 @@
+idRef {
+  id: "d035870e6233313c0a006b3f"
+}
+ui_name: "c15-s2_LabRun_Files"
+nodes {
+  idRef {
+    id: "d035b1fc6233313c0a006b45"
+  }
+  index: 0
+  text: "This terminal has been left unlocked with root access."
+  branches {
+    responseText: "{{GM}}Dig through the files.{{/GM}}"
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "{{GM}}Walk away from the terminal.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+  sourceInSceneRef {
+    id: "d037f49c6233313c0a006b4a"
+  }
+}
+nodes {
+  idRef {
+    id: "d036638c6233313c0a006b48"
+  }
+  index: 1
+  text: "There are some log files that were recently accessed, and an encrypted research database."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+  sourceInSceneRef {
+    id: "d037f49c6233313c0a006b4a"
+  }
+}
+nodes {
+  idRef {
+    id: "045bc82c6233316c19002d2e"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "{{GM}}Open Log BAS\\12-4-2053{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "File1Read"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "File1Read"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "{{GM}}Open Log BAS\\1-24-2054{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "File2Read"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "File2Read"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 6
+  }
+  branches {
+    responseText: "{{GM}}Open Log BAS\\3-12-2054{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "File3Read"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "File3Read"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 8
+  }
+  branches {
+    responseText: "{{CC}}Decking: 6{{/CC}}{{GM}}Download all of the research data.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 5
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 6
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add Item to Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c15-s2_LabRun_Research"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    onlyOnce: true
+    idRef {
+      id: "51f81d4f623331cc10000156"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Walk away from the terminal.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+  sourceInSceneRef {
+    id: "d037f49c6233313c0a006b4a"
+  }
+}
+nodes {
+  idRef {
+    id: "045bdf516233316c19002d3b"
+  }
+  index: 3
+  text: "[12-4-2053]\nWe got the shipment of the sentries in from Shaanxi today. Eight of them, all told. They\'re all medicated daily with a sedative that prevents their gaze from affecting us, and they don\'t try to escape or bite the equipment, either. We\'ll have to keep adjusting the doses so that we can get valuable combat data out of them. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "045bdf516233316c19002d3e"
+  }
+  index: 4
+  text: "Having something this deadly in the lab always gets me on edge. One wrong dose of those meds and someone will lose an arm. That or the guys upstairs will just lock the doors and let the damn things eat us."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "045bdf516233316c19002d41"
+  }
+  index: 5
+  text: "The Awakened Security Sentries were in varying condition when they arrived. Their general health is noted below:\nSubject 1: Good\nSubject 2: Average\nSubject 3: Average\nSubject 4: Excellent\nSubject 5: Poor"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "045beccc6233316c19002d4e"
+  }
+  index: 6
+  text: "[1-24-2054]\nWeek two of the reaction test trials finished today. Several of the subjects have an uncanny intelligence, and have had no problem solving logic puzzles ahead of schedule."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "045beccc6233316c19002d51"
+  }
+  index: 7
+  text: "Subject 4 continues to be the stand-out performer in these experiments. Her sensory reaction time and problem solving skills rival that of chimpanzees. Our benefactors will be pleased if we can begin a breeding program based on her specific traits. I have already taken a sample of her DNA in advance of beginning the live combat trials, just in case something goes wrong."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "045c08656233316c19002d69"
+  }
+  index: 8
+  text: "[3-12-2054]\nThe Awakened Security Sentries project has reached final testing stages. Preliminary human experiments will begin within the next six months. I have already discussed the matter with the Tir."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "045c08656233316c19002d6c"
+  }
+  index: 9
+  text: "The notes for the previous round of reaction testing on the Awakened Security Sentries subjects are as follows:\nSubject 1: Good\nSubject 2: Poor\nSubject 3: Average\nSubject 4: Excellent\nSubject 5: Poor"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "047016156233318c12001900"
+  }
+  index: 10
+  text: "Transfer complete."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

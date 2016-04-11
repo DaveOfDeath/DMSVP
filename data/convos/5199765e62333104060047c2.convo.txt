@@ -1,0 +1,198 @@
+idRef {
+  id: "5199765e62333104060047c2"
+}
+ui_name: "c03-s1_Barrens_JohnPaul"
+nodes {
+  idRef {
+    id: "5199766762333104060047c8"
+  }
+  index: 0
+  text: "Whoa, uncle, uncle! I was just playin\' with you. I\'ll call off the rest of the Halloweeners, Jake! Call it even, yeah?"
+  branches {
+    responseText: "What do you think, Jake?"
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "Dirtbags like you don\'t need second chances."
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasRejectedJohnPaul"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "Then lower your weapon and walk away."
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Actor Unkillable"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "5196e7eb623331141000428c"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51997a5f62333104060047d6"
+  }
+  index: 1
+  text: "{{GM}}He smirks.{{/GM}} Hey, I\'m already at \"shoot on sight\" status with these guys. Killing John Paul means one less \'Weener to shoot me in the back while I\'m buying smokes. Hell - they\'ll be doing the same to you as soon as there\'s a profit in it."
+  branches {
+    responseText: "You\'re right. Let\'s finish this."
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasRejectedJohnPaul"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "I want him to tell his friends what happened here."
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "a99a7ac5623331441b003061"
+  }
+}
+nodes {
+  idRef {
+    id: "51997c6762333104060047da"
+  }
+  index: 2
+  text: "How naive. Ah, well... maybe it\'ll be worth it to see him running off with his tail between his legs."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "a99a7ac5623331441b003061"
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasSparedJohnPaul"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "5199770962333104060047d1"
+  }
+  index: 3
+  text: "Hold on, $(l.name). Think about this."
+  branches {
+    responseText: "You\'re right. Let\'s finish this."
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasRejectedJohnPaul"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+  }
+  branches {
+    responseText: "No. I want him to tell his friends what happened here."
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "a99a7ac5623331441b003061"
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

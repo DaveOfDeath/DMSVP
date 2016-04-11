@@ -1,0 +1,67 @@
+idRef {
+  id: "51a12e38623331642400391b"
+}
+ui_name: "c08-s2_Planeyard_DroneVent"
+nodes {
+  idRef {
+    id: "51a12e776233316424003921"
+  }
+  index: 0
+  text: "There\'s an open vent on this wall. It\'s too small for you to fit through... but you might be able to send a drone through to open the door from the other side."
+  branches {
+    responseText: "{{GM}}Send your drone through the hole.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "EventDroneTeleport"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasSentDroneAround"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "{{GM}}Leave the vent.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51a12f2d6233316424003925"
+  }
+  index: 1
+  text: "Your drone fits through the hole, buzzes to the left and activates the locked door from the inside."
+  nodeType: ConversationNodeType_GM_Voice
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

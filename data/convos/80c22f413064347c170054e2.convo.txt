@@ -1,0 +1,89 @@
+idRef {
+  id: "80c22f413064347c170054e2"
+}
+ui_name: "c05-s2_PikePlace_Patrick"
+nodes {
+  idRef {
+    id: "80c25cf03064347c170054e8"
+  }
+  index: 0
+  text: "{{GM}}The handsome young man turns away from the crowd and fixes you with his full, completely undivided attention.{{/GM}}\n\n$+(l.sir), you are a beautiful $(l.race) ... but you could be SO much MORE!"
+  branches {
+    responseText: "What\'re you selling?"
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "That sounds GREAT! Tell me MORE!"
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "Uh huh. I\'ll be going now."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "80c34df13064347c170054ed"
+  }
+  index: 1
+  text: "I\'M not selling anything! WE are giving away the SECRETS to a more fulfilling, happy, and productive life!"
+  branches {
+    responseText: "Okay... I\'ll bite. What are the secrets to a more fulfilling, happy, and productive life?"
+    nextNodeIndex: 2
+  }
+  branches {
+    responseText: "Uh huh. I\'ll be going now."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "80c371e13064347c170054f0"
+  }
+  index: 2
+  text: "The FIRST step is to simply come and listen. Tomorrow night, Lynn Telestrian will be speaking about \342\200\234The Importance of Family in the Sixth World\342\200\235. Please join us tomorrow... and the secrets to a better life shall be revealed to you!\n\n{{GM}}He smiles, and turns back to the crowd.{{/GM}}"
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasSpokenToAcolyte"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "80c40e093064347c170054f4"
+  }
+  index: 3
+  text: "WONDERFUL! The Universal Brotherhood is a family encompassing ALL metahumans, sexes, and sexualities. We all strive to be the very BEST we can, to live more fulfilled, happy, and productive lives, and to support each other in doing so."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

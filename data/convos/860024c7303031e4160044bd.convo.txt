@@ -1,0 +1,1225 @@
+idRef {
+  id: "860024c7303031e4160044bd"
+}
+ui_name: "c07-s1_BrunoConvo"
+nodes {
+  idRef {
+    id: "860087f6303031e4160044c3"
+  }
+  index: 0
+  text: "{{GM}}$(s.name) is busy talking on his commlink, checking his heads-up display, and motioning to a runner standing nearby - all at the same time. He\'s an intense little man. You get the sense that he likes to look busy.{{/GM}}\n\nI\'m $(s.name). Make it quick. Biz is good. \n\nTalk to me."
+  branches {
+    responseText: "Mrs. Kubota said you\342\200\231re a Fixer."
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "I do street work. Got anything for me?"
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Nevermind. Sorry to bother you."
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToBrunoBeforeDelilah"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ae79bd6233319c230030ca"
+  }
+  index: 1
+  text: "{{GM}}He still hasn\342\200\231t looked at you. He\342\200\231s going a mile a minute.{{/GM}}\n\nNothing for you tonight. Sorry.\n\nI\'m doing a thing right now. Important thing.\n\nTalk to you later."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae79e16233319c230030cd"
+  }
+  index: 2
+  text: "Oh, hey $(l.guy). One more thing.\n\n{{GM}}He covers his commlink for a moment. Tilts his head your way but you can see he\342\200\231s still staring at his HUD.{{/GM}}\n\nI\'m a fence too. If you got anything you need to unload, come see me."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae7aad6233319c230030d8"
+  }
+  index: 3
+  text: "Hey $(l.guy)! Wait a minute.\n\n{{GM}}He covers his commlink for a moment. Tilts his head your way but you can see he\342\200\231s still staring at his HUD.{{/GM}}\n\nI\'m a fence. If you got anything you need to unload, you come see me."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8624003e303031e4160044e5"
+  }
+  index: 4
+  text: "I need to finish this call perhaps another time?"
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae7dd26233319c23003206"
+  }
+  index: 5
+  text: "{{GM}}$(s.name) is busy talking on his commlink, checking his heads-up display, and motioning to a runner standing nearby - all at the same time. He\'s an intense little man. You get the sense that he likes to look busy.{{/GM}}\n\nI\'m $(s.name). Make it quick. Biz is good. \n\nTalk to me."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae7e3d6233319c2300320d"
+  }
+  index: 6
+  text: "{{GM}}$(s.name) is fiddling with his cyber-eye while noodling on his PDA.{{/GM}}\n\nYou\342\200\231re back. Still busy. What\342\200\231s your story?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae7e5f6233319c23003210"
+  }
+  index: 7
+  text: ""
+  branches {
+    responseText: "We have some pretty things to sell. You\'ll want to see them."
+    nextNodeIndex: 8
+  }
+  branches {
+    responseText: "We need to fence some stones. You the right guy?"
+    nextNodeIndex: 21
+  }
+  branches {
+    responseText: "{{CC}}Charisma: 3{{/CC}} I can see you\342\200\231re a busy man."
+    conditions {
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 3
+        }
+      }
+    }
+    nextNodeIndex: 22
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae7e9a6233319c2300321b"
+  }
+  index: 8
+  text: "I have a fondness for pretty things. Lemme see."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae7ef56233319c23003225"
+  }
+  index: 9
+  text: "{{GM}}You hear the servos in $(s.name)\342\200\231s cyber-eye whirr as a magnifying lens slips into position. He bends his head over the stones for two seconds. Maybe less.{{/GM}}\n\nHmph. Where\'d you get this drek? A gumball machine? I\342\200\231ll give you a thousand for them."
+  branches {
+    responseText: "Sounds good. Pay me."
+    nextNodeIndex: 10
+  }
+  branches {
+    responseText: "I\342\200\231ll think about it."
+    nextNodeIndex: 11
+  }
+  branches {
+    responseText: "{{CC}}Charisma: 5{{/CC}} I thought you said you were a busy man?"
+    conditions {
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 5
+        }
+      }
+    }
+    nextNodeIndex: 12
+  }
+  branches {
+    responseText: "{{CC}}Strength: 6{{/CC}} Look into my eyes, $(l.name)."
+    conditions {
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 6
+        }
+      }
+    }
+    nextNodeIndex: 15
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Academic{{/CC}} Did the software in your HUD appraise the value of the stones?"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 19
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 18
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "valueOfStones"
+          }
+        }
+      }
+      args {
+        int_value: 1000
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ae7f876233319c2300322e"
+  }
+  index: 10
+  text: "Done. Gimme your credstick."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Nuyen"
+      args {
+        int_value: 1000
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasFencedStones"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ae7f8e6233319c23003230"
+  }
+  index: 11
+  text: "Suit yourself."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasStoppedBrunoNegotation"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ae7f946233319c23003232"
+  }
+  index: 12
+  text: "I am."
+  branches {
+    responseText: "Then why are you wasting our time with this little dance?"
+    nextNodeIndex: 13
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae7fa36233319c23003235"
+  }
+  index: 13
+  text: "Fifteen hundred and it\342\200\231s done."
+  branches {
+    responseText: "You got a deal."
+    nextNodeIndex: 14
+  }
+  branches {
+    responseText: "I\342\200\231ll think about it."
+    nextNodeIndex: 11
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "valueOfStones"
+          }
+        }
+      }
+      args {
+        int_value: 1500
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ae87ac6233319c230032e0"
+  }
+  index: 14
+  text: "Done. Gimme your credstick."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Nuyen"
+      args {
+        int_value: 1500
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasFencedStones"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ae80a96233319c2300323a"
+  }
+  index: 15
+  text: "{{GM}}He\342\200\231s puzzled. He looks. You look back - the \342\200\234I-can-make-you-feel-a special-kind-of-pain\342\200\235 look. You see it register.{{/GM}}\n\nUh, okay, I\342\200\231m lookin\342\200\231."
+  branches {
+    responseText: "Good. Make me a better offer."
+    nextNodeIndex: 16
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae845d6233319c23003285"
+  }
+  index: 16
+  text: "Eighteen hundred and it\342\200\231s done."
+  branches {
+    responseText: "You got a deal."
+    nextNodeIndex: 17
+  }
+  branches {
+    responseText: "I\'ll think about it."
+    nextNodeIndex: 11
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "valueOfStones"
+          }
+        }
+      }
+      args {
+        int_value: 1800
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ae87e66233319c230032e4"
+  }
+  index: 17
+  text: "Gimme your credstick."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Nuyen"
+      args {
+        int_value: 1800
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasFencedStones"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ae80ff6233319c2300327d"
+  }
+  index: 18
+  text: "{{GM}}He looks amused.{{/GM}}\n\nCould be."
+  branches {
+    responseText: "We both know that the International Gemological Institute will set the price far higher than your offer."
+    nextNodeIndex: 19
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae83096233319c23003280"
+  }
+  index: 19
+  text: "It\342\200\231ll take time for you to get top nuyen for it. Let\342\200\231s call it two thousand."
+  branches {
+    responseText: "You got a deal."
+    nextNodeIndex: 20
+  }
+  branches {
+    responseText: "I\'ll think about it."
+    nextNodeIndex: 11
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "valueOfStones"
+          }
+        }
+      }
+      args {
+        int_value: 2000
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ae88156233319c230032ef"
+  }
+  index: 20
+  text: "Done. Gimme your credstick."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Nuyen"
+      args {
+        int_value: 2000
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasFencedStones"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ae7e9b6233319c2300321d"
+  }
+  index: 21
+  text: "Stones? I dunno. I might be. Lemme see \'em."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae7e9d6233319c2300321f"
+  }
+  index: 22
+  text: "{{GM}}He nods his head.{{/GM}}\n \nThat\342\200\231s right and...?"
+  branches {
+    responseText: "So, I wouldn\342\200\231t bother you if I hadn\342\200\231t come into possession of these rare stones."
+    nextNodeIndex: 23
+  }
+}
+nodes {
+  idRef {
+    id: "51ae7ed26233319c23003222"
+  }
+  index: 23
+  text: "{{GM}}You have his attention.{{/GM}}\n\nRare stones, huh? Let\342\200\231s see these rare stones."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8a6fd50d30303110070043cf"
+  }
+  index: 24
+  text: "{{GM}}$(s.name) nods. His cyber-eye whirrs.{{/GM}}\n\nReady to unload those stones?"
+  branches {
+    responseText: "Yes."
+    nextNodeIndex: 25
+  }
+  branches {
+    responseText: "Not yet."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae8e21623331481d0039b0"
+  }
+  index: 25
+  text: "Okay. Gimme your credstick."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Nuyen"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "valueOfStones"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasFencedStones"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToDelilah"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToBrunoBeforeDelilah"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+  hideIfUnavailable: true
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToBrunoBeforeDelilah"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToDelilah"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 4
+  hideIfUnavailable: true
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToDelilah"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasStoppedBrunoNegotation"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToBrunoBeforeDelilah"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 5
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToDelilah"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasStoppedBrunoNegotation"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToBrunoBeforeDelilah"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 6
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasStoppedBrunoNegotation"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToDelilah"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 24
+}

@@ -1,0 +1,199 @@
+idRef {
+  id: "51d48bb46233319c10005d04"
+}
+ui_name: "c17-s0_Seamstress_KubotaFence"
+nodes {
+  idRef {
+    id: "51d48bbd6233319c10005d0a"
+  }
+  index: 0
+  text: "Was there something else, omae?"
+  branches {
+    responseText: "I found this list in a data-store at Mercy Mental."
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: "It\'s nothing, nevermind."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "No Effect"
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d48c666233319c10005d0f"
+  }
+  index: 1
+  text: "Oh, my... this is... unspeakable. Murder was not enough for this person? Selling patients as bunraku slaves! \n\nThank you for bringing this to me. I know you are still hot on the trail of your friend Sam\'s killer. I will contact some runners to liberate these poor souls from the buyers in this list."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Clear Waypoint from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "51d2ff0e623331b00f000751"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "c12-s1_PayData"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "51d2ff0e623331b00f000751"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Add Actor Karma"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Find Someone to Give the Mercy Mental Data"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d494de623331dc1900453f"
+  }
+  index: 2
+  text: "You have done much good here, today. The hand of the Ripper was more of a monster than anyone could have known."
+  branches {
+    responseText: "No problem. Good luck, Mrs. Kubota."
+    nextNodeIndex: 3
+  }
+  branches {
+    responseText: "What, no reward?"
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "Let me know if I can do anything else."
+    nextNodeIndex: 5
+  }
+}
+nodes {
+  idRef {
+    id: "51d494de623331dc19004542"
+  }
+  index: 3
+  text: "To you as well."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d494de623331dc19004545"
+  }
+  index: 4
+  text: "No."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d494de623331dc19004548"
+  }
+  index: 5
+  text: "I will. Goodbye, for now."
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

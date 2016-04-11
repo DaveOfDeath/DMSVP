@@ -1,0 +1,387 @@
+idRef {
+  id: "51d08b363236646019001e5e"
+}
+ui_name: "c17-s0_DocStore"
+nodes {
+  idRef {
+    id: "51d08c803236646019001f31"
+  }
+  index: 0
+  text: "{{GM}}Doc Castle looks to be better rested and in better spirits than the last time you saw her. She\'s also clearly had a shower and a change of clothes, maybe even some sleep. Her eyes are sharp when they turn up from her work to greet you.{{/GM}}\n\nWelcome back, $(l.name)."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countDoctorVisits"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d0aec3323664601900248a"
+  }
+  index: 1
+  text: "Still all in one piece, I see. More\'s the pity for me, but I\'ll still take your money. Perhaps a full physical is in order?  Or we can call it a medical consultation. That\'s where I roughly determine the odds of your survival based on your professional... proclivities?  It comes with a lollipop."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d0af66323664601900248d"
+  }
+  index: 2
+  text: "So what will it be?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d0afae3236646019002494"
+  }
+  index: 3
+  text: ""
+  branches {
+    responseText: "Actually, I\'m curious how many patients you\'ve lost over the years."
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d0cb6c3236646019002ab3"
+    }
+  }
+  branches {
+    responseText: "Can I see your medical supplies?"
+    actions {
+      ops {
+        functionName: "Open Store Screen From Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "8c5128bf3030313417004385"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I\'d like to browse your cyberware."
+    actions {
+      ops {
+        functionName: "Open Cyberware Screen From Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "8c5128bf3030313417004385"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Nevermind."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d0b035323664601900249c"
+  }
+  index: 4
+  text: "{{GM}}Doctor Castle sets down her work and fixes you with a hard look. Her expression normally falls on an axis of varying degrees of indifference, depending on her level of tiredness. But now, it has shifted over to something decidedly darker.{{/GM}}\n\nIs this morbid curiosity?"
+  branches {
+    responseText: "Call it professional curiosity."
+    nextNodeIndex: 5
+  }
+  branches {
+    responseText: "A person ought to know the track record of their doctor."
+    nextNodeIndex: 12
+  }
+  branches {
+    responseText: "I didn\'t mean to upset you."
+    nextNodeIndex: 13
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d0b12732366460190024a1"
+  }
+  index: 5
+  text: "Then I suppose I should be equally professional and answer without judging you for asking. And I should not let it bias me the next time you fall under my knife."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d0b15732366460190024a4"
+  }
+  index: 6
+  text: "To give you a hard number is difficult. There are many who I would have considered patients that never made it home. And so I suppose one could say they died while under my care, though not as a result of it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d0b18932366460190024a7"
+  }
+  index: 7
+  text: "But the number I think you want is the number of patients who died on my table.\n\nAnd that number is six."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+  }
+}
+nodes {
+  idRef {
+    id: "51d0b1ad32366460190024aa"
+  }
+  index: 8
+  text: "Six who I was unable to save, spread across a thirteen year career. And I remember each and every one, down to the smallest detail, including the moment where I realized I could do nothing more for them."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+  }
+}
+nodes {
+  idRef {
+    id: "51d0b21b32366460190024ad"
+  }
+  index: 9
+  text: "I would argue that four of those six were beyond helping from the moment they passed through my door. The fifth died as a result of complications while installing a stolen piece of experimental cyberware, which I had cautioned against using."
+  branches {
+    responseText: "And the sixth?"
+    nextNodeIndex: 10
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d0b27832366460190024b0"
+  }
+  index: 10
+  text: "Entirely my fault. I made a mistake. I can\'t claim I was overtired, or inexperienced, or distracted. I simply made the wrong decision, and a young man died as a result."
+  branches {
+    responseText: "We all make mistakes, and hopefully we learn from them."
+    nextNodeIndex: 11
+  }
+  branches {
+    responseText: "Still sounds like a pretty stellar track record, doc."
+    nextNodeIndex: 11
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I\'m sorry, Dr. Castle."
+    nextNodeIndex: 11
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d0b7073236646019002510"
+  }
+  index: 11
+  text: "{{GM}}She picks up her tablet and resumes her work.{{/GM}}\n\nYes, well, will there be anything else?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d0b770323664601900255e"
+  }
+  index: 12
+  text: "I suppose that would be prudent."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d0b77b3236646019002562"
+  }
+  index: 13
+  text: "It\'s fine. And I have no reservations about answering the question."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d08c823236646019001f33"
+  }
+  index: 14
+  text: "Have you reconsidered that physical?  If you do well enough, I might be able to pass along a discount for a Doc Wagon contract.\n\nWhat will it be?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countDoctorVisits"
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d08c843236646019001f35"
+  }
+  index: 15
+  text: "How can I help you?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countDoctorVisits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  nextNodeIndex: 0
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countDoctorVisits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  nextNodeIndex: 14
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "countDoctorVisits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+  }
+  nextNodeIndex: 15
+}

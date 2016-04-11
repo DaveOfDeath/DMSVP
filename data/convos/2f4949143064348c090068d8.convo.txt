@@ -1,0 +1,373 @@
+idRef {
+  id: "2f4949143064348c090068d8"
+}
+ui_name: "c02-s1_Morgue_BodyBag"
+nodes {
+  idRef {
+    id: "a53874356233311c0a004aa9"
+  }
+  index: 0
+  text: "Sam\'s body is half covered by a sterile surgical sheet, his face an ashen white - for the first time without a smirk on it. Below the chest there\'s a small, pencil thin incision covered in dried blood. Beyond that, the corpse is immaculate. It would seem that the killer knew exactly what they wanted from him, and took it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "a53874366233311c0a004aac"
+  }
+  index: 1
+  text: "Next to Sam are several plastic envelopes containing the evidence found on his body. You can examine evidence through the bag without spoiling it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "a53874366233311c0a004aaf"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "{{GM}}Look at the business card.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countSamEvidence"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51c3a35a623331601d0026c5"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Look at the credstick.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "BodyBagOption02"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "{{GM}}Look at the purple shirt.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countSamEvidence"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b00c6e623331f022000211"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Look at the handwritten note.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countSamEvidence"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 7
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51c3a395623331601d0026c6"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Put down evidence bag.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a53874366233311c0a004ab2"
+  }
+  index: 3
+  text: "Moving things around, you can make out that it\'s a card from a place called \"The Seamstresses Union\". There is something handwritten on the back, but blood has made it illegible."
+  branches {
+    responseText: ""
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "LookedAtCard"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "a53874366233311c0a004ab8"
+  }
+  index: 4
+  text: "It\'s a standard cheap unsecured credstick. No way of knowing what\342\200\231s on it without slotting it."
+  branches {
+    responseText: "{{GM}}Take the credstick.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countSamEvidence"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 5
+  }
+  branches {
+    responseText: "{{GM}}Leave the credstick in the evidence bag.{{/GM}}"
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "a53874366233311c0a004abb"
+  }
+  index: 5
+  text: "You slot the credstick into your PDA. 300\302\245 is added to your account."
+  branches {
+    responseText: ""
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "BodyBagOption02"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "PickedUpStick"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Add Nuyen"
+      args {
+        int_value: 300
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "a53fd2046233311c0a004af4"
+  }
+  index: 6
+  text: "It\'s Sam\'s shirt. Several of the buttons are missing, and blood has thoroughly soaked it. The bag sloshes a bit in your hand."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "a53874366233311c0a004ac4"
+  }
+  index: 7
+  text: "{{GM}}You can only see part of the note, given the torn-off bits and bloodstains.{{/GM}} \n\nSam,\nI feel terrible that we arg --- - - - - - - - - -. We have been - - - - long. - - - - to say I\342\200\231m sor- - - -. See you there, Love Jessica."
+  branches {
+    responseText: ""
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "BodyBagOption03"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "518d7674643431b03f0041ab"
+          }
+          args {
+            string_value: "c02_hasSeenJessicaNote"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

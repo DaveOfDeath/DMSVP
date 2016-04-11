@@ -1,0 +1,138 @@
+idRef {
+  id: "6c42c0d830643438150072da"
+}
+ui_name: "c03-s1_Barrens_Sally"
+nodes {
+  idRef {
+    id: "6c42f28430643438150072e0"
+  }
+  index: 0
+  text: "{{GM}}The dwarf merchant is packing up her stand for the night.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "6c4336b630643438150072e3"
+  }
+  index: 1
+  text: "I\342\200\231m closed. Come back tomorrow."
+  branches {
+    responseText: "Nevermind. I\'ll be going now."
+    nextNodeIndex: 2
+  }
+  branches {
+    responseText: "You\342\200\231ve got a great view of that alley across the street... don\'t suppose you saw the murder that happened there?"
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b7c4fb396163b007001847"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "6c44449730643438150072ea"
+  }
+  index: 2
+  text: "Sure, whatever."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b214de623331400b004de3"
+  }
+  index: 3
+  text: "{{GM}}She grunts.{{/GM}} Sure... I was closing up when I heard a series of explosions from behind the Union. Couple seconds later, this guy comes out, runs across the street. Didn\'t get a good look at him. Then all the lights in the alley exploded all of a sudden. Things got pretty quiet after that."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasTalkedToSally"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51b214de623331400b004de6"
+  }
+  index: 4
+  text: ""
+  branches {
+    responseText: "And let me guess... you didn\'t go running over to see if that guy was okay."
+    nextNodeIndex: 5
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b7c505396163b007001848"
+    }
+  }
+  branches {
+    responseText: "You\'re not much help."
+    nextNodeIndex: 6
+  }
+  branches {
+    responseText: "Thank you for your time."
+    nextNodeIndex: 7
+  }
+}
+nodes {
+  idRef {
+    id: "51b214de623331400b004de9"
+  }
+  index: 5
+  text: "Hell no. \'Round here, that kind of thing gets you killed."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b214de623331400b004def"
+  }
+  index: 6
+  text: "That\'s not my problem."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51b214de623331400b004df2"
+  }
+  index: 7
+  text: "Uh huh. No problem."
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

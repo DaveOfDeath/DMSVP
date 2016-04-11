@@ -1,0 +1,438 @@
+idRef {
+  id: "7bafc8583064665422005e1e"
+}
+ui_name: "c06-s2_Coyote"
+nodes {
+  idRef {
+    id: "51a15b346233319423001904"
+  }
+  index: 0
+  text: "Coyote is badly injured, but she\'s managing to hold it together."
+  branches {
+    responseText: "You Coyote?"
+    conditions {
+      ops {
+        functionName: "Comparison (Actor)"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (Actor)"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+  }
+  nodeType: ConversationNodeType_GM_Speaker_Voice
+}
+nodes {
+  idRef {
+    id: "51a15b6e6233319423001907"
+  }
+  index: 1
+  text: "No time to talk.\n\n{{GM}}Coyote kneels and picks up the fallen guard\'s shotgun.{{/GM}}\n\nIt\342\200\231s time to finish this."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Wipe out the Gang"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eventCoyoteJoins"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ed78da6233317c11001717"
+  }
+  index: 2
+  text: "Are you alright?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "3e1c634a3064664406007bcb"
+  }
+}
+nodes {
+  idRef {
+    id: "c39ecd87306466cc09006876"
+  }
+  index: 3
+  text: "\'Bout time you got here, Paco. Who\'s your friend?"
+  branches {
+    responseText: "Just another professional. I need to ask you some questions."
+    nextNodeIndex: 4
+  }
+  branches {
+    responseText: "Right now, I\'m the $(s.guy) who\'s saving your ass."
+    nextNodeIndex: 10
+  }
+  branches {
+    responseText: "I\'m $(s.name) - I\'m here to rescue you!"
+    nextNodeIndex: 11
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae69b1396163c818001a55"
+  }
+  index: 4
+  text: "{{GM}}Paco glares.{{/GM}} Not now. Coyote, we need to get you back to the Union. Mrs. Kubota has that med-lab in the basement..."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "3e1c634a3064664406007bcb"
+  }
+}
+nodes {
+  idRef {
+    id: "51ae69b1396163c818001a58"
+  }
+  index: 5
+  text: "No... {{GM}}Coyote speaks through gritted teeth.{{/GM}}\n\nNo. I need to finish the other thing I came here for... I need to find something for Mr. Delilah first. A stash of gems."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae69b1396163c818001a5b"
+  }
+  index: 6
+  text: "Delilah? I thought you said you\'d never do another deal with that man."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "3e1c634a3064664406007bcb"
+  }
+}
+nodes {
+  idRef {
+    id: "51ae69b1396163c818001a5e"
+  }
+  index: 7
+  text: "Look... Paco... I needed an excuse to come back here and settle some debts. Figured... figured I might as well get paid for it.\n\n{{GM}}Her voice is strong still, but her body\'s beginning to shake.{{/GM}}"
+  branches {
+    responseText: "Coyote, you need medical attention. Forget the job - let\'s get out of here."
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasTakenEarlyExit"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
+  }
+  branches {
+    responseText: "Paco, help her back to the Union. I\'ll find those gems for you, then meet you there."
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasAcceptedJewelMission"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Set Goal Status"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Find Stevie\'s Stash"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "c716a87b306466bc09006da1"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "b84c8fd63064667c2300168c"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51ae6b19396163c818001a95"
+  }
+  index: 8
+  text: "{{GM}}Coyote looks as though she\'s about to argue... but says nothing.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae6d19396163c818001a98"
+  }
+  index: 9
+  text: "Come on Coyote... let\'s go."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "3e1c634a3064664406007bcb"
+  }
+}
+nodes {
+  idRef {
+    id: "51ae69b1396163c818001a63"
+  }
+  index: 10
+  text: "I can see that. And... I appreciate it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae69b1396163c818001a67"
+  }
+  index: 11
+  text: "Yeah? And who said I needed rescuing? \n\n... guess it turns out I did, though. Thanks."
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ae6a2b396163c818001a6b"
+  }
+  index: 12
+  text: "Coyote, we need to get you back to the Union. Mrs. Kubota has that med-lab in the basement..."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "3e1c634a3064664406007bcb"
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Evaluate Turn Mode"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TurnBasedOrFreeMove"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Evaluate Turn Mode"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TurnBasedOrFreeMove"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 3
+}

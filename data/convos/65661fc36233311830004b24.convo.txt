@@ -1,0 +1,287 @@
+idRef {
+  id: "65661fc36233311830004b24"
+}
+ui_name: "c08-s2_Planeyard_Shoes"
+nodes {
+  idRef {
+    id: "6aadb513623331ec1c0072fa"
+  }
+  index: 0
+  text: "{{GM}}There is a large pile of old shoes on the ground next to the airplane seats. They could be discarded luggage, or possibly the shoes worn by the occupants of the plane at the time of the crash.{{/GM}}"
+  branches {
+    responseText: "{{GM}}Dig through the shoe pile.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Actor Attribute"
+            args {
+              call_value {
+                functionName: "Active Actor"
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "BaseOrCurrent"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "ActorAttributes"
+                }
+                args {
+                  int_value: 4
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 3
+        }
+      }
+    }
+    nextNodeIndex: 1
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "{{GM}}Dig through the shoe pile.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Actor Attribute"
+            args {
+              call_value {
+                functionName: "Active Actor"
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "BaseOrCurrent"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "ActorAttributes"
+                }
+                args {
+                  int_value: 4
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 4
+            }
+          }
+        }
+        args {
+          int_value: 3
+        }
+      }
+    }
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+  }
+  branches {
+    responseText: "{{GM}}Walk away.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "6aafac29623331ec1c0072ff"
+  }
+  index: 1
+  text: "{{GM}}Sorting through the shoes, you realize that there are three shoes with no matching pair. A left blue sneaker, a right red high-heel pump, and a left black dress shoe.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "6abc4ee2623331ec1c00736f"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "{{GM}}Inspect the dress shoe.{{/GM}}"
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b00aa5396163d00c0047c0"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Inspect the high-heel pump.{{/GM}}"
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b00aa8396163d00c0047c1"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Inspect the sneaker.{{/GM}}"
+    nextNodeIndex: 5
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ae64f9396163c81800180d"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Leave the shoe pile.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "6abd6b0b623331ec1c007381"
+  }
+  index: 3
+  text: "{{GM}}The dress shoe is a black lace-up with a rubber sole.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "6abd82ae623331ec1c007389"
+  }
+  index: 4
+  text: "{{GM}}The pump is a department store knock-off of an Italian brand. It is otherwise unremarkable.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "6abe65c8623331ec1c00739a"
+  }
+  index: 5
+  text: "{{GM}}The sneaker is a child\'s and has musty, sweaty smell. Oddly, you get a sort of shock, as if from static electricity, when you touch it. This must be one of the items the shaman was looking for. \n\nYou take the shoe.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Add To Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "seattle"
+          }
+          args {
+            string_value: "c08_FetishCount"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "c08-s2_Fetish3"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "6ab589c7623331ec1c007332"
+  }
+  index: 6
+  text: "{{GM}}You find nothing interesting about the shoes in the pile.{{/GM}}"
+  branches {
+    responseText: "{{GM}}Walk away.{{/GM}}"
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

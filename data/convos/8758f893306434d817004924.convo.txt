@@ -1,0 +1,429 @@
+idRef {
+  id: "8758f893306434d817004924"
+}
+ui_name: "c05-s2_PikePlace_Aguirre"
+nodes {
+  idRef {
+    id: "87592bba306434d81700492a"
+  }
+  index: 0
+  text: "{{GM}}The plain-clothes Lone Star officer before you sports a tacky hat and a crooked grin to match.{{/GM}}\n\nSo you\'re the one who\'s working for the dead man, eh? McKlusky warned us you might be sniffing around after the Ripper. Lucky for you, I got here before McKlusky. I\'m Officer Aguirre, pleased to meet\'ya. Now, seeing as this crime scene is going nowhere fast... what can I do for you?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasSpokenToSergeant"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51a6c9263961638011004e0b"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "What can you tell me about the murder that took place here?"
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b00843396163d00c0046c6"
+    }
+  }
+  branches {
+    responseText: "I take it you and McKlusky don\'t exactly see eye-to-eye?"
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b00846396163d00c0046c7"
+    }
+  }
+  branches {
+    responseText: "Do you have any leads on the Ripper that I should know about?"
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b00848396163d00c0046c8"
+    }
+  }
+  branches {
+    responseText: "Thanks for your time, Officer."
+    nextNodeIndex: 5
+  }
+  branches {
+    responseText: "Thanks for nothing."
+    nextNodeIndex: 17
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a6c9263961638011004e0e"
+  }
+  index: 2
+  text: "Not much, really. We know it was about three hours ago, and we know that her eyes have been surgically removed. Didn\'t need Dresden to figure that much out. He\'s been looking at the body though, so he might have more. Me, I\'ve been scanning the rest of the scene and looking for witnesses, but no luck so far. Damn Ripper might as well be a ghost."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a6c9263961638011004e11"
+  }
+  index: 3
+  text: "Let\'s just say McKlusky and I have... conflicting interests."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a6c9263961638011004e14"
+  }
+  index: 4
+  text: "Ha! Plenty, if you ask McKlusky. But the truth is, we\'re as clueless as you probably are."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a6c9db3961638011004e2d"
+  }
+  index: 5
+  text: "Hey, hold on a minute there. You haven\'t put in a donation for the Lonely Orphans Fund!"
+  branches {
+    responseText: "The Lonely Orphans Fund?"
+    nextNodeIndex: 6
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a6cc5d3961638011004e36"
+  }
+  index: 6
+  text: "Yeah, see... you make a contribution to the fund, I put you on a list and let you know the next time we find any... orphans... that you might be interested in."
+  branches {
+    responseText: "Well, I\'m always interested in finding out about any new... orphans... you discover."
+    nextNodeIndex: 7
+  }
+  branches {
+    responseText: "I see. So... you want a bribe."
+    nextNodeIndex: 13
+  }
+  branches {
+    responseText: "You\'ve lost me."
+    nextNodeIndex: 16
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a6cd3e3961638011004e3b"
+  }
+  index: 7
+  text: "Excellent! Shall we say, 300 nuyen?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a6d1023961638011004e51"
+  }
+  index: 8
+  text: ""
+  branches {
+    responseText: "Even 100 nuyen would make a big difference for an orphan, these days."
+    nextNodeIndex: 9
+  }
+  branches {
+    responseText: "{{CC}}\302\245300{{/CC}} Alright, you\'ve got a deal. {{GM}}Give Officer Aguirre the nuyen and your commlink code.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 300
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Nuyen"
+        args {
+          int_value: 300
+        }
+      }
+    }
+    nextNodeIndex: 12
+  }
+  branches {
+    responseText: "I can\'t afford that. Count me out."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a6d1323961638011004e54"
+  }
+  index: 9
+  text: "{{GM}}He makes a face.{{/GM}} Yeah, well, some orphans have more expensive tastes than others. 200, you can take it or leave it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a6d4ac3961638011004ed2"
+  }
+  index: 10
+  text: ""
+  branches {
+    responseText: "{{CC}}\302\245200{{/CC}} Deal. {{GM}}Give Officer Aguirre the nuyen and your commlink code.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 200
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Nuyen"
+        args {
+          int_value: 200
+        }
+      }
+    }
+    nextNodeIndex: 12
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "It\'s 100 or nothing."
+    nextNodeIndex: 11
+  }
+}
+nodes {
+  idRef {
+    id: "51a6d4ac3961638011004ed8"
+  }
+  index: 11
+  text: "{{GM}}Aguirre shrugs.{{/GM}} Your loss, then."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a6d2a13961638011004e5b"
+  }
+  index: 12
+  text: "{{GM}}His face splits into a wide grin.{{/GM}} Excellent! I\'ll start an account for you. We get any useful new leads on the Ripper, I\'ll give you a call.\n\nNow... I\'d better get back to work before McKlusky shows up. See you around."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "seattle"
+          }
+          args {
+            string_value: "c06_BribedSergeant"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51a6cd543961638011004e3d"
+  }
+  index: 13
+  text: "{{GM}}He sighs.{{/GM}} Yes. Subtle. 300 nuyen and I\'ll slip you any new information we get on the Ripper case."
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a6d4593961638011004eb4"
+  }
+  index: 14
+  text: ""
+  branches {
+    responseText: "I\'ll give you 100, no more."
+    nextNodeIndex: 15
+  }
+  branches {
+    responseText: "{{CC}}\302\245300{{/CC}} Alright, you\'ve got a deal. {{GM}}Give Officer Aguirre the nuyen and your commlink code.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 300
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Nuyen"
+        args {
+          int_value: 300
+        }
+      }
+    }
+    nextNodeIndex: 12
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I can\'t afford that. Count me out."
+    nextNodeIndex: -1
+  }
+}
+nodes {
+  idRef {
+    id: "51a6d4823961638011004ec8"
+  }
+  index: 15
+  text: "Look, if I\'m going to stick my neck out, the carrot\'s gotta be juicy enough. 200."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a6cd9c3961638011004e3f"
+  }
+  index: 16
+  text: "{{GM}}He sighs.{{/GM}} Look, you pay me off, I slip you any new information we get on the Ripper case, get it? 1,000 nuyen."
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a6c9ef3961638011004e2f"
+  }
+  index: 17
+  text: "{{GM}}The officer\'s friendly demeanor falls away.{{/GM}} Hell, I shouldn\'t even be letting you set foot on this crime scene, let alone answering your damn questions. Frag off, then."
+  branches {
+    responseText: "Sorry, it\'s not your fault... I just wish I had some decent leads to go on here. The closest I\'ve got is the victim\'s bartender, and she\'s missing at that."
+    nextNodeIndex: 18
+  }
+  branches {
+    responseText: "Yeah, whatever."
+    nextNodeIndex: -1
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51a6cb453961638011004e33"
+  }
+  index: 18
+  text: "Well... I can understand that. Alright, tell you what. If you\'re interested, I can put you down for a donation to the Lonely Orphans Fund."
+  branches {
+    responseText: "The Lonely Orphans Fund?"
+    nextNodeIndex: 6
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

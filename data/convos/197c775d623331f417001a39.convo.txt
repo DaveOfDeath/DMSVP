@@ -1,0 +1,143 @@
+idRef {
+  id: "197c775d623331f417001a39"
+}
+ui_name: "c12-s1_MercyMental_InfirmaryArm"
+nodes {
+  idRef {
+    id: "197cacd0623331f417001a3f"
+  }
+  index: 0
+  text: "{{GM}}A severed arm lies next to the zipped body bag.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "8005e03d6236655c190069c9"
+  }
+  index: 1
+  text: "{{GM}}The arm looks human, and appears neatly severed at the elbow. There\'s a large gold ring on the index finger. Its owner is probably the occupant of the bag.{{/GM}}"
+  branches {
+    responseText: "{{GM}}Take the ring.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "seattle"
+            }
+            args {
+              string_value: "c12_TookSuperBrawlRing"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Add Item to Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c12-s1_SuperBrawlRing"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+  }
+  branches {
+    responseText: "{{GM}}Walk away.{{/GM}}"
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "8005e03e6236655c190069cc"
+  }
+  index: 2
+  text: "You slip the heavy ring off the cold finger and feel it\'s weight in your hand. Inside is an engraving. It reads, \"Screamers 2048\"."
+  nodeType: ConversationNodeType_GM_Voice
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "195e7e14623331f417001a33"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "8005e03e6236655c190069cf"
+  }
+  index: 3
+  text: "You step away from the scene."
+  nodeType: ConversationNodeType_GM_Voice
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+}

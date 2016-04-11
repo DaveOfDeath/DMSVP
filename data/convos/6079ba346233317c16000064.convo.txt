@@ -1,0 +1,343 @@
+idRef {
+  id: "6079ba346233317c16000064"
+}
+ui_name: "c08-s1_Planeyard_Guard"
+nodes {
+  idRef {
+    id: "6079fdad6233317c1600006a"
+  }
+  index: 0
+  text: "{{GM}}The guard looks bored. He toys with his gun absentmindedly, like he might shoot something on a whim just to watch it die.{{/GM}}\n\nHey, you\'re about to trespass on Corporate property. You looking to get dusted, street scum?"
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "518d7674643431b03f0041ab"
+            }
+            args {
+              string_value: "c06_BribedSergeant"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "518d7674643431b03f0041ab"
+            }
+            args {
+              string_value: "c06_BribedSergeant"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    onlyOnce: true
+    idRef {
+      id: "51c8bad8623331801c001bb6"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "60bf872b6233317c160000fd"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "I\'m working with Lone Star on the crime scene investigation in the NTSB warehouse."
+    nextNodeIndex: 2
+  }
+  branches {
+    responseText: "I\'m looking for my kitty cat. Here kitty!"
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I\'m the new maintenance guy. This is my first day. "
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Security{{/CC}} Officer Aguirre called me in. Needs me to rule out if the killer bypassed security, or if they were let in."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 14
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasBluffedGuard"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "60d741246233317c1600012a"
+  }
+  index: 2
+  text: "Sure you are. And I\'m Lofwyr, the King of Dragons. \n\nBeat it."
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "51d0a08a62333158070042b8"
+  }
+  index: 3
+  text: "Oh, uh, of course. I\'ll open the gate, Aguirre is just inside the warehouse. Definitely no holes in our security, here. Tip-top shape."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "60bff4b96233317c16000102"
+  }
+  index: 4
+  text: ""
+  branches {
+    responseText: "I\'m working with the coroner, bronze. Open the gate."
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I\'m here to see the body at the NTSB warehouse."
+    nextNodeIndex: 5
+  }
+  branches {
+    responseText: "I\'m the new maintenance guy. This is my first day. "
+    nextNodeIndex: 2
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Security{{/CC}} I\'m special assistant to the coroner. You met him, right? He needs me to get things off tall shelves for him."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 14
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasBluffedGuard"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "60d79f936233317c1600012c"
+  }
+  index: 5
+  text: "What, you like looking at dead bodies? Sicko. Get out of here before I call for backup."
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "51d0a0cc62333158070042be"
+  }
+  index: 6
+  text: "Oh, uh, of course. I\'ll open the gate, the response team is just inside the warehouse. Sorry for my rudeness."
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 0
+  onlyOnce: true
+  idRef {
+    id: "a854dff1623331fc29001985"
+  }
+}
