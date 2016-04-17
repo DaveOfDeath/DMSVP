@@ -7,16 +7,24 @@ nodes {
     id: "96158da66233318426002857"
   }
   index: 0
-  text: "The broken mirror was hiding a small safe."
+  text: "The broken mirror was hiding a small safe.\n\nEnter Code: $(scene.sSafeCode)"
   branches {
-    responseText: "{{GM}}Input the code found in Coyote\'s diary, 342436.{{/GM}}"
+    responseText: "342436"
     nextNodeIndex: 1
+    idRef {
+      id: "9615680d6233318426002851:5713d33c663136c010001b5c"
+    }
   }
   branches {
     responseText: "{{GM}}Leave the safe alone.{{/GM}}"
     nextNodeIndex: -1
+    idRef {
+      id: "9615680d6233318426002851:5713d33c663136c010001b5f"
+    }
+    inputBypass: true
   }
-  nodeType: ConversationNodeType_GM_Voice
+  nodeType: ConversationNodeType_InputNumpad
+  inputMaxLength: 6
 }
 nodes {
   idRef {
@@ -50,7 +58,111 @@ nodes {
     }
   }
 }
+nodes {
+  idRef {
+    id: "5713d4a0663136c010001bcb"
+  }
+  index: 2
+  text: "Cleverly hidden behind the mirror is a small secure wall safe.  \n\nIt has a keypad, awaiting your input."
+  branches {
+    responseText: "342436"
+    nextNodeIndex: 1
+    idRef {
+      id: "9615680d6233318426002851:5713d4e0663136c010001bcd"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{GM}}Leave the safe alone.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "9615680d6233318426002851:5713d4f4663136c010001bd2"
+    }
+  }
+  nodeType: ConversationNodeType_InputNumpad
+  inputMaxLength: 6
+}
 roots {
   responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "SeenStashReceipt"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
   nextNodeIndex: 0
+  idRef {
+    id: "9615680d6233318426002851:5713d33c663136c010001b59"
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "SeenStashReceipt"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 2
+  idRef {
+    id: "9615680d6233318426002851:5713d495663136c010001bc8"
+  }
 }
