@@ -9,6 +9,76 @@ nodes {
   index: 0
   text: "The cold storage drawer is labeled \342\200\234John Doe\342\200\235 but the internal thermostat is set to 21 degrees celsius."
   branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "a44b94b76233311c0a003d31:571404083966303820003709"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "57140408396630382000370c"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "{{CC}}Etiquette: Academic{{/CC}} Hey Doc, this drawer is busted, it isn\'t keeping anything cold enough to keep it from rotting."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 18
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "a44b94b76233311c0a003d31:5714034239663038200036f0"
+    }
+  }
+  branches {
     responseText: "{{GM}}Open the drawer.{{/GM}}"
     actions {
       ops {
@@ -23,23 +93,49 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 1
+    nextNodeIndex: 3
+    idRef {
+      id: "a44b94b76233311c0a003d31:5714032f39663038200036e5"
+    }
   }
   branches {
     responseText: "{{GM}}Walk away.{{/GM}}"
     nextNodeIndex: -1
+    idRef {
+      id: "a44b94b76233311c0a003d31:5714032f39663038200036ed"
+    }
   }
-  nodeType: ConversationNodeType_GM_Voice
+  nodeType: ConversationNodeType_Simple
+  comment: "Convo Loop Return"
+}
+nodes {
+  idRef {
+    id: "571404423966303820003716"
+  }
+  index: 2
+  text: "{{GM}}Dresden smiles over his shoulder{{/GM}}\n\nIs that so? Maybe just the temp gage is broken?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "a44b94b76233311c0a003d31:571404673966303820003718"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
     id: "a4501ed36233311c0a003d4c"
   }
-  index: 1
+  index: 3
   text: "The cold storage drawer opens to reveal the fully-clothed body of a man, arms folded across his chest. In addition to sporting some of the brightest orange hair you\342\200\231ve ever seen, the body seems to be in very good condition..."
   branches {
     responseText: ""
-    nextNodeIndex: 2
+    nextNodeIndex: 4
+    idRef {
+      id: "a44b94b76233311c0a003d31:5714032f39663038200036e8"
+    }
   }
   nodeType: ConversationNodeType_GM_Voice
 }
@@ -47,7 +143,7 @@ nodes {
   idRef {
     id: "a46e27476233311c0a003fac"
   }
-  index: 2
+  index: 4
   text: "Whoa! Easy there."
   branches {
     responseText: ""
@@ -87,10 +183,16 @@ nodes {
       }
     }
     nextNodeIndex: -1
+    idRef {
+      id: "a44b94b76233311c0a003d31:5714032f39663038200036eb"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
 roots {
   responseText: ""
   nextNodeIndex: 0
+  idRef {
+    id: "a44b94b76233311c0a003d31:5714032f39663038200036e2"
+  }
 }
