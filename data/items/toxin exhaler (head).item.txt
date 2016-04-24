@@ -1,0 +1,55 @@
+id: "Toxin Exhaler (Head)"
+type: ItemType_Cyberware
+uirep {
+  icon: "icon_bio_toxinexhaler"
+  name: "Toxin Exhaler"
+  description: "Bioware. Implants a genetically tailored toxin sac above the larynx. Popular among assassins. Grants a close-range poison attack. 10 DMG, 4 ongoing."
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_Body
+coreSkill: Skill_None
+coreSpecialization: Specialization_None
+forceRating: 1
+apCost: 1
+rangeModTable: 50
+rangeModTable: 40
+noiseLevel: 2
+noiseRounds: 1
+modelessAbilities: "Activate Toxin Exhaler"
+affectsFriendly: false
+affectsEnemy: true
+canTargetActor: true
+canTargetOccupiedGridPoint: false
+canTargetUnoccupiedGridPoint: false
+isDebuff: true
+effectDuration: 2
+fxrep {
+  preActionFxName: ""
+  actionFxName: "Berlin:ToxinExhalerAttackAction"
+  postActionFxName: ""
+  hitReactionFxName: "AcidHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_acidstream1"
+    name: "Toxin: HP -4 per RND"
+  }
+  stackingCategory: "Toxic"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -4
+  }
+  fxScript: "Berlin:ToxinPoisonStatus"
+  is_ignore_armor: true
+  is_debuff: true
+}
+equippedStatusEffects {
+  statMods {
+    attribute: Attribute_Magic_Essence
+    floatModValue: -0.5
+  }
+}
+cyberware_type: CyberwareType_Jack
+store_cost: 1500
+sorting_group: "CyberwareJack"

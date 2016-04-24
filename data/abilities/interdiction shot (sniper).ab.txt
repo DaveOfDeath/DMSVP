@@ -1,0 +1,48 @@
+id: "Interdiction Shot (Sniper)"
+uirep {
+  icon: "icon_sluground"
+  name: "Interdiction Shot"
+  description: "Fires a discarding-sabot HTI round that ignores armor completely."
+}
+anim_action: AnimAction_Attack
+apCostMod: 1
+hpDamageMod: 0
+apDamageMod: 0
+prereqStrings: "Item.FLAG.WEAPON_CUR_AMMO > 0"
+prereqStrings: "TAG.Eiger_SniperFocus_3_A EXISTS"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+ammoCost: 1
+cooldown: 5
+rpPenetrate: 10
+fxrep {
+  preActionFxName: ""
+  actionFxName: "Berlin:SniperRifleInterdictionFireAction"
+  postActionFxName: ""
+  hitReactionFxName: "GunHitReaction"
+  missReactionFxName: "GunMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"

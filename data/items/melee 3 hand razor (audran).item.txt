@@ -1,0 +1,41 @@
+id: "Melee 3 Hand Razor (Audran)"
+type: ItemType_Unarmed
+uirep {
+  icon: "icon_melee_razors"
+  name: "Hand Razors"
+  description: "Causes minor bleeding to target upon impact. Damage is your Strength + 2."
+}
+equipPrefabName: "Berlin:GlorysHandRazors"
+anim_type: AnimType_Melee1H
+coreAttribute: Attribute_Strength
+coreSkill: Skill_CloseCombat
+coreSpecialization: Specialization_CC_Unarmed
+apCost: 2
+maxAmmo: 0
+baseHPDamage: 2
+baseAPDamage: 0
+rangeModTable: 10
+noiseLevel: 0
+noiseRounds: 0
+abilityModes: "Wound (Hand Razors)"
+abilityModes: "Killing Hands (Unarmed)"
+abilityModes: "Killing Hands (Passive)"
+affectsEnemy: true
+canTargetActor: true
+effectDuration: 2
+activationStatusEffects {
+  uirep {
+    icon: "icon_acidstream1"
+    name: "Bleeding: HP -2 per RND"
+  }
+  stackingCategory: "Bleeding"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -2
+    damageType: VulnerabilityType_Bleed
+  }
+  fxScript: "Berlin:BleedingStatus"
+  is_ignore_armor: true
+  is_debuff: true
+}
+sorting_group: "Melee"

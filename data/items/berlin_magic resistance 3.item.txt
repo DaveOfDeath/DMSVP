@@ -1,0 +1,47 @@
+id: "Berlin_Magic Resistance 3"
+type: ItemType_Adept
+uirep {
+  icon: "icon_magicresistance3"
+  name: "Martial Defense II"
+  description: "Active: The adept gains a Medium Cover bonus against incoming attacks for 4 RNDs Cooldown: 6"
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_Willpower
+coreSkill: Skill_ChiCasting
+forceRating: 3
+apCost: 0
+prereqStrings: "Player.SKILL.Skill_ChiCasting >= 10"
+baseHPDamage: 0
+baseAPDamage: 0
+noiseLevel: 0
+noiseRounds: 0
+modelessAbilities: "Activate Magic Resistance (Medium)"
+affectsFriendly: false
+affectsEnemy: false
+canTargetSelf: true
+canTargetActor: false
+canTargetOccupiedGridPoint: false
+canTargetUnoccupiedGridPoint: false
+isBuff: true
+cooldown: 6
+isMagic: true
+effectDuration: 4
+fxrep {
+  preActionFxName: "GenericSpellPrepare"
+  actionFxName: "AdeptSpellBuffAction"
+  postActionFxName: ""
+  hitReactionFxName: "AdeptDefenseBuffHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_magicresistance3"
+    name: "Defense: Medium Cover"
+  }
+  stackingCategory: "Cover"
+  statusConditions: Condition_CoverMedium
+  fxScript: "AdeptDefenseBuffStatus"
+}
+store_cost: 1000
+sorting_group: "Chi Casting (Adept)"
+damageType: VulnerabilityType_Buff

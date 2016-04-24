@@ -1,0 +1,58 @@
+id: "Berlin_Auto-Injector (Hyper)"
+type: ItemType_Cyberware
+uirep {
+  icon: "icon_cyber_arm_autoinjector"
+  name: "Auto-Injector (Hyper)"
+  description: "When triggered, Accuracy is increased by 6%, and incoming DMG is increased by 3 for 3 RNDS of combat."
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_None
+coreSkill: Skill_None
+apCost: 0
+baseHPDamage: 0
+baseAPDamage: 0
+noiseLevel: 0
+noiseRounds: 0
+modelessAbilities: "Activate Auto-Injector (Hyper)"
+affectsFriendly: false
+affectsEnemy: false
+canTargetSelf: true
+canTargetActor: false
+canTargetOccupiedGridPoint: false
+canTargetUnoccupiedGridPoint: false
+isBuff: true
+cooldown: 8
+effectDuration: 3
+fxrep {
+  preActionFxName: "GenericSpellPrepare"
+  actionFxName: "Berlin:CyberwareInjectorAction"
+  postActionFxName: ""
+  hitReactionFxName: "GenericEmptyReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_nitro"
+    name: "Hyper: Accuracy +6%, Incoming DMG +3"
+  }
+  stackingCategory: "Hyper"
+  statMods {
+    attribute: Attribute_Damage_Reduction_Mod
+    intModValue: -3
+  }
+  statMods {
+    attribute: Attribute_Accuracy
+    intModValue: 6
+  }
+  is_buff: true
+}
+equippedStatusEffects {
+  statMods {
+    attribute: Attribute_Magic_Essence
+    floatModValue: -0.5
+  }
+}
+cyberware_type: CyberwareType_Arm
+store_cost: 2000
+sorting_group: "CyberwareArms"
+anim_group_override: ItemType_Adept

@@ -1,0 +1,45 @@
+id: "Berlin_Magic Resistance 1"
+type: ItemType_Adept
+uirep {
+  icon: "icon_magicresistance1"
+  name: "Magic Resistance"
+  description: "Passive: The adept gains a Medium Cover bonus to magic spells."
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_Willpower
+coreSkill: Skill_ChiCasting
+forceRating: 1
+apCost: 0
+prereqStrings: "Player.SKILL.Skill_ChiCasting >= 2"
+baseHPDamage: 0
+baseAPDamage: 0
+noiseLevel: 0
+noiseRounds: 0
+affectsFriendly: false
+affectsEnemy: false
+canTargetSelf: false
+canTargetActor: false
+canTargetOccupiedGridPoint: false
+canTargetUnoccupiedGridPoint: false
+isBuff: true
+isMagic: true
+effectDuration: 4
+fxrep {
+  preActionFxName: "GenericSpellPrepare"
+  actionFxName: "AdeptSpellBuffAction"
+  postActionFxName: ""
+  hitReactionFxName: "AdeptDefenseBuffHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+passiveStatusEffects {
+  uirep {
+    icon: "icon_magicresistance1"
+    name: "Resistance: Medium Cover from Spells"
+  }
+  stackingCategory: "Cover"
+  statusConditions: Condition_MagicCoverMedium
+  fxScript: "AdeptDefenseBuffStatus"
+}
+store_cost: 200
+sorting_group: "Chi Casting (Adept)"
+damageType: VulnerabilityType_Buff

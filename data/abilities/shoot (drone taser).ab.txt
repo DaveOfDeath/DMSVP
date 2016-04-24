@@ -1,0 +1,47 @@
+id: "Shoot (Drone Taser)"
+uirep {
+  icon: "icon_electrocurrent"
+  name: "Taser"
+  description: "Single target. On hit, electrifies the enemy and does AP damage."
+}
+anim_action: AnimAction_Attack
+apCostMod: 1
+hpDamageMod: -8
+apDamageMod: 4
+accuracyMod: -5
+prereqStrings: "Item.FLAG.WEAPON_CUR_AMMO > 0"
+damageBucket {
+  successEntries {
+    weight: 0.2
+    value: 2
+  }
+  successEntries {
+    weight: 0.2
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.6
+    value: 1
+  }
+  failureEntries {
+    weight: 0.8
+    value: 1
+  }
+  failureEntries {
+    weight: 0.2
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+ammoCost: 0
+cooldown: 4
+fxrep {
+  preActionFxName: "Berlin:TaserAiming"
+  actionFxName: "Berlin:TaserFireAction"
+  postActionFxName: ""
+  hitReactionFxName: "Berlin:TaserHitReaction"
+  missReactionFxName: "GunMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"

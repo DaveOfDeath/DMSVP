@@ -1,0 +1,62 @@
+id: "Eviscerate (Hand Razors)"
+uirep {
+  icon: "icon_razors_eviscerate"
+  name: "Eviscerate"
+  description: "Twist the razor a bit for more internal damage. -2 DMG, +5 stacking bleed DMG. Strips 2 Armor from target."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: -2
+apDamageMod: 0
+accuracyMod: 0
+prereqStrings: "Item.CORE_SPECIALIZATION >= 2"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+effectDuration: 2
+cooldown: 3
+rpReduce: 2
+fxrep {
+  preActionFxName: ""
+  actionFxName: "Berlin:HandRazorEviscerateAction"
+  postActionFxName: ""
+  hitReactionFxName: "Berlin:HandRazorHitReaction"
+  missReactionFxName: "UnarmedMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"
+activationStatusEffects {
+  uirep {
+    icon: "icon_acidstream1"
+    name: "Hemorrhaging: HP -5 per RND"
+  }
+  stackingCategory: "Eviscerate"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -5
+    damageType: VulnerabilityType_Bleed
+  }
+  fxScript: "Berlin:BleedingStatus"
+  is_debuff: true
+}

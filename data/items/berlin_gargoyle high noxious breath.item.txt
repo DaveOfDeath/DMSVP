@@ -1,0 +1,57 @@
+id: "Berlin_Gargoyle High Noxious Breath"
+type: ItemType_Spell
+uirep {
+  icon: "icon_fireball"
+  name: "Noxious Breath"
+  description: "A venom spray that does -14 HP DMG and does ongoing -1 AP DMG that lasts for 2 RNDS."
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_Willpower
+coreSkill: Skill_Spellcasting
+forceRating: 7
+apCost: 1
+baseHPDamage: 14
+baseAPDamage: 1
+rangeModTable: 10
+rangeModTable: 8
+rangeModTable: 6
+rangeModTable: 4
+rangeModTable: 2
+rangeModTable: 0
+rangeModTable: -2
+effectModTable: 1
+effectModTable: 0.5
+noiseLevel: 4
+noiseRounds: 1
+modelessAbilities: "Scorpyrine Ranged"
+affectsFriendly: false
+affectsEnemy: true
+canTargetActor: true
+canTargetOccupiedGridPoint: false
+canTargetUnoccupiedGridPoint: false
+cooldown: 2
+isMagic: false
+effectDuration: 2
+fxrep {
+  preActionFxName: ""
+  actionFxName: "Berlin:GargoyleNoxiousBreathAction"
+  postActionFxName: ""
+  hitReactionFxName: "Berlin:GargoyleNoxiousBreathHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_fireball"
+    name: "Noxious Breath: AP -1 per RND"
+  }
+  stackingCategory: "Noxious"
+  statMods {
+    attribute: Attribute_AP_Effect
+    intModValue: -1
+    damageType: VulnerabilityType_Bleed
+  }
+  fxScript: "AcidBurnStatus"
+  is_ignore_armor: true
+}
+sorting_group: "Critter Powers"
+damageType: VulnerabilityType_Bleed

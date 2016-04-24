@@ -1,0 +1,49 @@
+id: "FirePower Round II (Pistol)"
+uirep {
+  icon: "icon_fireball"
+  name: "HighEx Round"
+  description: "Loads a single HighEx round. Does an additional 2 DMG and pierces up to 2 Armor. Strips 3 Armor from the target."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 2
+apDamageMod: 0
+accuracyMod: 0
+prereqStrings: "Item.FLAG.WEAPON_CUR_AMMO > 0"
+prereqStrings: "TAG.DEBUG EXISTS"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+ammoCost: 1
+cooldown: 2
+rpPenetrate: 2
+fxrep {
+  preActionFxName: ""
+  actionFxName: "Berlin:FireRoundPistolFireAction"
+  postActionFxName: ""
+  hitReactionFxName: "FireHitReaction"
+  missReactionFxName: "GunMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"

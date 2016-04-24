@@ -1,0 +1,47 @@
+id: "Double Attack (Hand Razors)"
+uirep {
+  icon: "icon_razors_doubleattack"
+  name: "Compound Attack"
+  description: "A slash followed up by a kick. Pierces up to 1 Armor. May do AP DMG."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 1
+accuracyMod: 0
+prereqStrings: "TAG.Glory_RazorFocus_1_A EXISTS"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+cooldown: 2
+rpPenetrate: 1
+fxrep {
+  preActionFxName: ""
+  actionFxName: "Berlin:HandRazorClawKickAction"
+  postActionFxName: ""
+  hitReactionFxName: "Berlin:HandRazorHitReaction"
+  missReactionFxName: "UnarmedMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"

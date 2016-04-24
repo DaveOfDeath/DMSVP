@@ -1,0 +1,75 @@
+id: "Designate Target"
+uirep {
+  icon: "icon_headshot"
+  name: "Designate Target"
+  description: "Marks a target with reflected laser light, making it easier to hit."
+}
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+effectDuration: 1
+drainBucket {
+  successEntries {
+    weight: 0.66
+    value: 1
+  }
+  successEntries {
+    weight: 0.34
+    value: 0
+  }
+  failureEntries {
+    weight: 0.66
+    value: 0
+  }
+  failureEntries {
+    weight: 0.34
+    value: -1
+  }
+}
+cooldown: 2
+fxrep {
+  preActionFxName: ""
+  actionFxName: "InteractionAction"
+  postActionFxName: ""
+  hitReactionFxName: "GenericSpellDeBuffHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+toHitFunction: "actorMatrixAttackToHit"
+damageFunction: "buffTarget"
+activationStatusEffects {
+  uirep {
+    icon: "icon_disintegrate1"
+    name: "Marked Target"
+  }
+  stackingCategory: "ToHitRed"
+  statMods {
+    attribute: Attribute_Accuracy_Reduction_Mod
+    intModValue: -10
+  }
+  is_debuff: true
+}

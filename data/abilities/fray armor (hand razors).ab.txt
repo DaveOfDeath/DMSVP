@@ -1,0 +1,48 @@
+id: "Fray Armor (Hand Razors)"
+uirep {
+  icon: "icon_razors_frayarmor"
+  name: "Fray Armor"
+  description: "A two-hit combo with the hand-razors. Each hit strips 2 Armor from the target."
+}
+anim_action: AnimAction_Attack
+apCostMod: 1
+hpDamageMod: 0
+apDamageMod: -10
+accuracyMod: 0
+prereqStrings: "TAG.Glory_RazorFocus_3_A EXISTS"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+repetition: 2
+cooldown: 2
+rpReduce: 2
+fxrep {
+  preActionFxName: ""
+  actionFxName: "Berlin:HandRazorDoubleSwipeAction"
+  postActionFxName: ""
+  hitReactionFxName: "Berlin:HandRazorHitReaction"
+  missReactionFxName: "UnarmedMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"

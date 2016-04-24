@@ -1,0 +1,56 @@
+id: "Berlin_Mystic Armor"
+type: ItemType_Adept
+uirep {
+  icon: "icon_mysticarmor"
+  name: "Mystic Armor"
+  description: "Passive: The adept has +2 Armor. Active: The adept gains a further +2 Armor for 3 RNDS."
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_Willpower
+coreSkill: Skill_ChiCasting
+forceRating: 6
+apCost: 1
+prereqStrings: "Player.SKILL.Skill_ChiCasting >= 8"
+baseHPDamage: 0
+baseAPDamage: 0
+noiseLevel: 0
+noiseRounds: 0
+modelessAbilities: "Activate Mystic Armor"
+affectsFriendly: false
+affectsEnemy: false
+canTargetSelf: true
+canTargetActor: false
+canTargetOccupiedGridPoint: false
+canTargetUnoccupiedGridPoint: false
+isBuff: true
+cooldown: 4
+isMagic: true
+effectDuration: 3
+fxrep {
+  preActionFxName: "GenericSpellPrepare"
+  actionFxName: "AdeptSpellBuffAction"
+  postActionFxName: ""
+  hitReactionFxName: "AdeptDefenseBuffHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_mysticarmor"
+    name: "Mystic Armor: Armor +4"
+  }
+  stackingCategory: "MysticArmor"
+  statMods {
+    attribute: Attribute_Armor
+    intModValue: 2
+  }
+  fxScript: "AdeptDefenseBuffStatus"
+}
+passiveStatusEffects {
+  statMods {
+    attribute: Attribute_Armor
+    intModValue: 2
+  }
+}
+store_cost: 1200
+sorting_group: "Chi Casting (Adept)"
+damageType: VulnerabilityType_Buff

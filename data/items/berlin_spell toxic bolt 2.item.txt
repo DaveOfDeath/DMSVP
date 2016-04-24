@@ -1,0 +1,72 @@
+id: "Berlin_Spell Toxic Bolt 2"
+type: ItemType_AttackSpell
+uirep {
+  icon: "icon_acidbolt2"
+  name: "Acid Bolt II"
+  description: "A conjurer\'s intermediate acid bolt. Does damage over time to the target."
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_Charisma
+coreSkill: Skill_Conjuring
+forceRating: 4
+apCost: 1
+prereqStrings: "Player.SKILL.Skill_Conjuring >= 3"
+maxAmmo: 0
+baseHPDamage: 8
+baseAPDamage: 0
+rangeModTable: 8
+rangeModTable: 8
+rangeModTable: 8
+rangeModTable: 6
+rangeModTable: 4
+rangeModTable: 2
+rangeModTable: 0
+rangeModTable: -2
+rangeModTable: -4
+rangeModTable: -6
+rangeModTable: -8
+rangeModTable: -10
+rangeModTable: -12
+rangeModTable: -14
+rangeModTable: -16
+rangeModTable: -18
+rangeModTable: -20
+rangeModTable: -22
+rangeModTable: -24
+rangeModTable: -26
+rangeModTable: -28
+rangeModTable: -30
+rangeModTable: -32
+rangeModTable: -34
+rangeModTable: -36
+noiseLevel: 4
+noiseRounds: 1
+modelessAbilities: "Acidbolt"
+affectsEnemy: true
+canTargetActor: true
+isMagic: false
+effectDuration: 2
+fxrep {
+  preActionFxName: "AcidSpellPrepare"
+  actionFxName: "Berlin:ToxicBoltThrowAction"
+  postActionFxName: ""
+  hitReactionFxName: "AcidHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_acidstream1"
+    name: "Acid: HP -3 per RND"
+  }
+  stackingCategory: "Acid"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -3
+    damageType: VulnerabilityType_Poison
+  }
+  fxScript: "AcidBurnStatus"
+  is_debuff: true
+}
+store_cost: 600
+sorting_group: "Conjuring (Shaman)"
+damageType: VulnerabilityType_Poison

@@ -1,0 +1,42 @@
+id: "Berlin_Fist 1 Spiked Fist"
+type: ItemType_Unarmed
+uirep {
+  icon: "icon_melee_spikedfist"
+  name: "Spiked Fist"
+  description: "Unarmed: Causes minor bleeding to target on impact, with DMG of your Strength + 1. May do AP DMG on critical hits."
+}
+anim_type: AnimType_Unarmed
+coreAttribute: Attribute_Strength
+coreSkill: Skill_CloseCombat
+coreSpecialization: Specialization_CC_Unarmed
+apCost: 1
+prereqStrings: "Player.SKILL.Skill_CloseCombat >= 2"
+maxAmmo: 0
+baseHPDamage: 1
+baseAPDamage: 0
+rangeModTable: 12
+noiseLevel: 0
+noiseRounds: 0
+abilityModes: "DC Wound (Unarmed)"
+abilityModes: "DC Killing Hands (Unarmed)"
+abilityModes: "DC Killing Hands (Passive)"
+affectsEnemy: true
+canTargetActor: true
+effectDuration: 2
+activationStatusEffects {
+  uirep {
+    icon: "icon_acidstream1"
+    name: "Bleeding: HP -1 per RND"
+  }
+  stackingCategory: "Bleeding"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -1
+    damageType: VulnerabilityType_Bleed
+  }
+  fxScript: "Berlin:BleedingStatus"
+  is_ignore_armor: true
+  is_debuff: true
+}
+store_cost: 350
+sorting_group: "Melee"

@@ -1,0 +1,42 @@
+id: "Fist 2 Spiked Fist (Pummelo)"
+type: ItemType_Unarmed
+uirep {
+  icon: "icon_melee_spikedfist"
+  name: "Spiked Fist"
+  description: "Causes moderate bleeding to target upon impact. Damage is your Strength + 1. May do AP DMG on a critical hit."
+}
+anim_type: AnimType_Unarmed
+coreAttribute: Attribute_Strength
+coreSkill: Skill_CloseCombat
+coreSpecialization: Specialization_CC_Unarmed
+apCost: 1
+prereqStrings: "Player.SKILL.Skill_CloseCombat >= 4"
+maxAmmo: 0
+baseHPDamage: 1
+baseAPDamage: 0
+rangeModTable: 12
+noiseLevel: 0
+noiseRounds: 0
+abilityModes: "DC Wound (Unarmed)"
+abilityModes: "DC Killing Hands (Unarmed)"
+abilityModes: "DC Killing Hands (Passive)"
+affectsEnemy: true
+canTargetActor: true
+effectDuration: 2
+activationStatusEffects {
+  uirep {
+    icon: "icon_acidstream1"
+    name: "Bleeding: HP -2 per RND"
+  }
+  stackingCategory: "Bleeding"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -2
+    damageType: VulnerabilityType_Bleed
+  }
+  fxScript: "Berlin:BleedingStatus"
+  is_ignore_armor: true
+  is_debuff: true
+}
+store_cost: 1250
+sorting_group: "Melee"

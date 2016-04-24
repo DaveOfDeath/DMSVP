@@ -1,0 +1,190 @@
+// Solider AI, actors with guns and standard consumables.
+
+{str,VERSION,0.1c}
+{number,MAX_ATTACKS,1}
+{number,DEFAULT_LOOPS,1}
+{number,SLAVE_SPIRIT_AP,3}
+{number,CAN_COMBAT_SHOVE,0}
+{number,CAN_SAY,0}
+{actor,FLANKED_ATTACKER} //user var holds the flanked attacker from hurt self event
+{method,OVERRIDE} //our override user method
+{number,PREFER_ARMOR_REDUCED,15}
+
+[@DECIDE_MINOR]
+? EVALUATE HAS_MOVETO
+	RETURN true
+RETURN false
+ 
+ 
+[DECIDE_MAJOR]
+? IS SELF ~(in_combat) 
+	RETURN FALSE
+? EVALUATE HAS_MOVETO
+	RETURN true
+? IS ENEMY $(alive)
+	RETURN true
+RETURN false
+ 
+[MAJOR_START]
+RUN MAJOR_ACTIVE
+? IS AP>0
+    LOOP
+RETURN
+ 
+[MAJOR_ACTIVE]
+? RUN DO_MOVETO
+:? RUN NORMAL
+:? RUN SEARCHER
+RETURN
+ 
+[MINOR_START]
+RUN DO_MOVETO
+? IS AP>0
+    LOOP
+RETURN
+ 
+[SLEEP_START]
+RETURN
+ 
+[MAJOR_INTERRUPT_ON]
+RETURN
+ 
+[MAJOR_INTERRUPT_OFF]
+RETURN
+ 
+[MAJOR_END]
+RETURN
+ 
+[SEE_FRIENDLY]
+RETURN
+ 
+[SEE_ENEMY]
+RETURN
+ 
+[HURT_SELF]
+//Have I been hit by someone who has flanked me?
+? IS LATEST_ATTACKER $(self_flanked)
+	SET FLANKED_ATTACKER LATEST_ATTACKER
+	SET OVERRIDE TAKE_COVER_FROM_FLANKED_ATTACKER
+RETURN
+ 
+[HURT_FRIENDLY]
+RETURN
+ 
+[CAN_ENGAGE]
+RETURN ENEMY $(in_range, in_sight)
+
+[NORMAL]
+@gate=CAN_ENGAGE
+@loops=1
+REPORT ENEMY 
+RUN CHECK_OVERRIDE
+SELECT ENEMY $(alive, in_range, in_sight)
+? IS SELF AP >= 2
+	? IS SELF 100*hp/maxhp>55 
+		DEBUG "Chose to flank"
+		DEBUG ACTOR_SELECTION 
+			? IS ENEMY $(alive, in_range, in_sight, flanked)
+				SELECT ENEMY $(alive, in_range, in_sight, flanked)
+				DEBUG "passed found in open"
+				DO $(attack, ranged) && ~(aoe)
+			:?	MOVEONLY ACTOR_SELECTION flanked
+				DEBUG "passed moved to flanking position"
+				DO $(attack, ranged) && ~(aoe)
+			:
+				DEBUG "just attack"
+				DO $(attack, ranged) && ~(aoe)
+			RETURN
+		ELSE
+			MOVE ACTOR_SELECTION self_cover, flanked, sweet_range
+				? IS ACTOR_SELECTION $(self_cover,flanked)
+					DO $(attack, ranged) && ~(aoe)
+				ELSE
+					DO $(attack, ranged) && ~(aoe)
+			RETURN
+	LOOP
+
+[CHECK_NEAR_FLANKED]
+? SELECT ENEMY $(alive, in_range, in_sight) && (dist <= 6)
+	DEBUG ACTOR_SELECTION
+		MOVE ACTOR_SELECTION self_cover, sweet_range
+		RETURN
+RETURN
+
+[TAKE_COVER]
+CLEAR OVERRIDE
+DEBUG ACTOR_SELECTION
+SELECT ENEMY $(alive, in_sight)
+? MOVEONLY ACTOR_SELECTION self_cover, sweet_range
+:? MOVE ACTOR_SELECTION self_cover, sweet_range
+RETURN
+
+
+[CHECK_FOR_AOE]
+? SELECT ENEMY $(alive, in_range, in_sight, is_grouped)
+	? DO $(attack, aoe)
+		SET OVERRIDE TAKE_COVER
+RETURN
+ 
+[CHECK_OVERRIDE]
+? HAS OVERRIDE
+	RUN OVERRIDE
+RETURN
+
+[SCAN_FOR_EXPOSED]
+? IS random > 50
+	? SELECT ENEMY $(alive, in_range, in_sight, flanked)
+		DO $(attack, ranged) && ~(aoe)
+RETURN
+
+
+
+[CHECK_AMMO]
+? IS ammo <= maxammo*18/100 AND $(in_cover)
+	RELOAD
+	DO $(attack, ranged)
+	RETURN
+:? IS SELF ammo = 0 
+	MOVE in_cover, sweet_range
+	RETURN
+RETURN
+
+[CHECK_HEAL]
+? SELECT INVENTORY $(heal)
+	? IS SELF hp < maxhp*4/10 AND $(in_cover)
+		SELECT SELF
+			DO $(heal)
+			RETURN
+	:? IS SELF hp < maxhp*4/10 
+			SELECT ENEMY $(alive, in_range, in_sight)
+			MOVE in_cover, sweet_range
+			RETURN
+
+			
+[TAKE_COVER_FROM_FLANKED_ATTACKER]
+CLEAR OVERRIDE
+? IS FLANKED_ATTACKER $(self_flanked)
+	MOVE FLANKED_ATTACKER self_cover, sweet_range
+? IS FLANKED_ATTACKER $(self_flanked)
+	MOVE FLANKED_ATTACKER self_cover, sweet_range
+RETURN
+
+[SEARCHER]
+@loops=3
+? SELECT ENEMY $(alive)
+LOOK ACTOR_SELECTION
+? MOVEONLY ACTOR_SELECTION self_cover, in_sight, in_range, forward, sideways, two_ap
+:? MOVE ACTOR_SELECTION in_sight, in_range
+? SELECT ENEMY $(alive, in_range, in_sight) // now i can see an enemy
+	RETURN
+LOOP
+  
+[HAS_MOVETO]
+RETURN SELF $(moveto)
+
+[DO_MOVETO]
+@gate=HAS_MOVETO
+@loops=3
+MOVE moveto
+
+RETURN

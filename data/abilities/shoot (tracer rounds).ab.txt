@@ -1,0 +1,60 @@
+id: "Shoot (Tracer Rounds)"
+uirep {
+  icon: "icon_thrownblade_aimed"
+  name: "Tracer Shot"
+  description: "One bullet. Single target. Marks the enemy for 1 RND, making them easier to hit."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+prereqStrings: "Item.FLAG.WEAPON_CUR_AMMO > 0"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+ammoCost: 1
+effectDuration: 1
+cooldown: 2
+fxrep {
+  preActionFxName: ""
+  actionFxName: "GunSingleFireAction"
+  postActionFxName: ""
+  hitReactionFxName: "GunHitReaction"
+  missReactionFxName: "GunMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"
+activationStatusEffects {
+  uirep {
+    icon: "icon_disintegrate1"
+    name: "Tracer Rounds"
+  }
+  stackingCategory: "ToHitRed_Tracer"
+  statMods {
+    attribute: Attribute_Accuracy_Reduction_Mod
+    intModValue: -10
+  }
+  is_debuff: true
+}

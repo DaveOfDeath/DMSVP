@@ -1,0 +1,49 @@
+id: "AOE (Hand Razors)"
+uirep {
+  icon: "icon_razors_aoe"
+  name: "Twin Slash"
+  description: "A dual-hand razor attack that can hit adjacent targets."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: -10
+accuracyMod: 0
+prereqStrings: "Item.CORE_SPECIALIZATION >= 1"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+cooldown: 1
+spreadAngle: 55
+effectModTable: 1
+effectModTable: 0.5
+fxrep {
+  preActionFxName: ""
+  actionFxName: "Berlin:HandRazorAOEAction"
+  postActionFxName: ""
+  hitReactionFxName: "Berlin:HandRazorHitReaction"
+  missReactionFxName: "UnarmedMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"

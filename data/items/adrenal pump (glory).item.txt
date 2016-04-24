@@ -1,0 +1,57 @@
+id: "Adrenal Pump (Glory)"
+type: ItemType_Cyberware
+uirep {
+  icon: "icon_cyber_wiredreflexes"
+  name: "Adrenal Pump"
+  description: "When triggered, gain +1 AP. Lasts 3 RNDS."
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_None
+coreSkill: Skill_None
+apCost: 1
+baseHPDamage: 0
+baseAPDamage: 0
+rangeModTable: 0
+noiseLevel: 0
+noiseRounds: 0
+modelessAbilities: "Activate Adrenal Pump (Glory)"
+modelessAbilities: "Activate Adrenal Revive (Glory)"
+affectsFriendly: false
+affectsEnemy: false
+canTargetSelf: true
+canTargetActor: false
+canTargetOccupiedGridPoint: false
+canTargetUnoccupiedGridPoint: false
+isBuff: true
+effectDuration: 3
+fxrep {
+  preActionFxName: "GenericSpellPrepare"
+  actionFxName: "Berlin:CyberwareBuffAction"
+  postActionFxName: ""
+  hitReactionFxName: "GenericEmptyReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_haste1"
+    name: "Adrenal Pump: AP +1"
+  }
+  stackingCategory: "Adrenaline"
+  statMods {
+    attribute: Attribute_AP
+    intModValue: 1
+  }
+  fxScript: "AdeptOffenseBuffStatus"
+  is_buff: true
+}
+equippedStatusEffects {
+  statMods {
+    attribute: Attribute_Magic_Essence
+    floatModValue: -1
+  }
+}
+cyberware_type: CyberwareType_Body
+store_cost: 5000
+sorting_group: "CyberwareBody"
+damageType: VulnerabilityType_ActionPoints
+anim_group_override: ItemType_Adept

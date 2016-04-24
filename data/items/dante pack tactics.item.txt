@@ -1,0 +1,55 @@
+id: "Dante Pack Tactics"
+type: ItemType_ShamanTotem
+uirep {
+  icon: "icon_packtactics"
+  name: "Pack Tactics"
+  description: "Dante leads the pack! Allies within a range of 3 gain +1 Movement. Lasts 2 RND."
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_Charisma
+coreSkill: Skill_Conjuring
+forceRating: 1
+apCost: 1
+baseHPDamage: 0
+baseAPDamage: 0
+rangeModTable: 1
+rangeModTable: 1
+rangeModTable: 1
+effectModTable: 1
+effectModTable: 1
+effectModTable: 1
+noiseLevel: 3
+noiseRounds: 1
+modelessAbilities: "Totem Buff"
+affectsFriendly: true
+affectsEnemy: false
+canTargetSelf: true
+canTargetActor: false
+canTargetOccupiedGridPoint: false
+canTargetUnoccupiedGridPoint: false
+isBuff: true
+cooldown: 8
+isMagic: true
+effectDuration: 1
+effectRadius: 3
+fxrep {
+  preActionFxName: "GenericSpellPrepare"
+  actionFxName: "RacoonTotemCastAction"
+  postActionFxName: ""
+  hitReactionFxName: "GenericSpellBuffHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_packtactics"
+    name: "Pack Tactics: Movement +1"
+  }
+  stackingCategory: "PackTactics"
+  statMods {
+    attribute: Attribute_Move_Speed
+    intModValue: 1
+  }
+  fxScript: "GenericSpellStatus"
+}
+sorting_group: "Critter Powers"
+damageType: VulnerabilityType_MoveRange

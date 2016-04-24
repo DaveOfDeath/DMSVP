@@ -1,0 +1,38 @@
+id: "Activate Adrenal Revive (Glory)"
+uirep {
+  icon: "icon_docwagon"
+  name: "Adrenal Injection"
+  description: "Glory can use her adrenal pump on a downed ally to revive them."
+}
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+prereqStrings: "TAG.Glory_AdrenalFocus_4_B EXISTS"
+attackRatingMod: 0
+effectDuration: 999
+cooldown: 6
+cooldown_category: "adrenal"
+fxrep {
+  preActionFxName: ""
+  actionFxName: "DocWagonAction"
+  postActionFxName: ""
+  hitReactionFxName: "GenericEmptyReaction"
+  missReactionFxName: ""
+}
+toHitFunction: "autoHitUnconciousActorInRange"
+damageFunction: "buffTarget"
+override_item_targetting: true
+affectsFriendly: true
+affectsEnemy: false
+canTargetSelf: false
+canTargetActor: true
+activationStatusEffects {
+  uirep {
+    icon: "icon_docwagon"
+    name: "Adrenal Revive"
+  }
+  stackingCategory: "DocWagon"
+  statusConditions: Condition_BuMoNABasic
+  fxScript: "DocWagonBeaconStatus"
+}

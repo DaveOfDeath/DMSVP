@@ -1,0 +1,38 @@
+id: "Berlin_Ghoul Low Melee"
+type: ItemType_Unarmed
+uirep {
+  icon: "icon_melee"
+  name: "Poisoned Ghoul Fist"
+  description: "A poison fist that does DMG and then causes -2 HP for 1 RND."
+}
+anim_type: AnimType_Unarmed
+coreAttribute: Attribute_Strength
+coreSkill: Skill_CloseCombat
+coreSpecialization: Specialization_CC_Unarmed
+apCost: 1
+maxAmmo: 0
+baseHPDamage: 0
+baseAPDamage: 0
+rangeModTable: 2
+noiseLevel: 0
+noiseRounds: 0
+modelessAbilities: "Ghoul Melee"
+affectsEnemy: true
+canTargetActor: true
+effectDuration: 1
+activationStatusEffects {
+  uirep {
+    icon: "icon_melee"
+    name: "Infection: HP -2 per RND"
+  }
+  stackingCategory: "Acid"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -2
+    damageType: VulnerabilityType_Bleed
+  }
+  fxScript: "AcidBurnStatus"
+  is_ignore_armor: true
+}
+sorting_group: "Critter Powers"
+damageType: VulnerabilityType_Normal

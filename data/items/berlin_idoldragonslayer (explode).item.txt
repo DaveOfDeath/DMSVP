@@ -1,0 +1,55 @@
+id: "Berlin_IdolDragonslayer (Explode)"
+type: ItemType_ShamanTotem
+uirep {
+  icon: "icon_dragonslayeridol_wrath"
+  name: "Dragonslayer\'s Wrath"
+  description: "The Dragonslayer harms all foes within 3 tiles for 16 DMG. On subsequent RNDs, targets take 5 HP DMG and 1 AP DMG. Lasts 3 RNDS."
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_Charisma
+coreSkill: Skill_Conjuring
+forceRating: 1
+apCost: 1
+baseHPDamage: 16
+baseAPDamage: 0
+effectModTable: 1
+effectModTable: 1
+effectModTable: 1
+noiseLevel: 5
+noiseRounds: 1
+modelessAbilities: "Totem Offensive"
+affectsFriendly: false
+affectsEnemy: true
+canTargetSelf: true
+canTargetActor: false
+canTargetOccupiedGridPoint: false
+canTargetUnoccupiedGridPoint: false
+cooldown: 2
+isMagic: true
+effectDuration: 3
+fxrep {
+  preActionFxName: "GenericSpellPrepare"
+  actionFxName: "Berlin:DragonslayerTotemCastAction"
+  postActionFxName: ""
+  hitReactionFxName: "LightningHitReaction"
+  missReactionFxName: ""
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_balllightning1"
+    name: "Lightning: HP -5, AP -1 per RND"
+  }
+  stackingCategory: "Lightning"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -5
+    damageType: VulnerabilityType_Shock
+  }
+  statMods {
+    attribute: Attribute_AP_Effect
+    intModValue: -1
+  }
+  fxScript: "LightningStatus"
+}
+sorting_group: "Totems"
+damageType: VulnerabilityType_Shock
