@@ -113,7 +113,7 @@ triggers {
         }
       }
       args {
-        int_value: 200
+        int_value: 130
       }
     }
     ops {
@@ -202,7 +202,7 @@ triggers {
         }
       }
       args {
-        int_value: 200
+        int_value: 130
       }
     }
   }
@@ -3774,6 +3774,370 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: " "
+  events {
+  }
+  conditions {
+  }
+  actions {
+  }
+  isActive: false
+  idRef {
+    id: "5738d240663136200d003838"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "<!-- Stuffer Shack -->"
+  events {
+  }
+  conditions {
+  }
+  actions {
+  }
+  isActive: true
+  idRef {
+    id: "5738d248663136200d003839"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Shack.Enter"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5c699e52616634b01400021a"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eStufferShack_Enter"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Fade Camera Out"
+      args {
+        float_value: 1
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eStufferShack_Enter"
+          }
+        }
+      }
+      args {
+        float_value: 1.5
+      }
+    }
+    ops {
+      functionName: "Trigger: Wait Until Triggered Again"
+    }
+    ops {
+      functionName: "Teleport Actor to Area Around Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "5738d1fe663136200d003836"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eStufferShack_Enter"
+          }
+        }
+      }
+      args {
+        float_value: 1.5
+      }
+    }
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+    }
+    ops {
+      functionName: "Trigger: Wait Until Triggered Again"
+    }
+    ops {
+      functionName: "Fade Camera In"
+      args {
+        float_value: 1
+      }
+      args {
+        float_value: 0
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5738d253663136200d00383a"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Shack.Exit"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5738b42c6631362c130014f3"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eStufferShack_Exit"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Fade Camera Out"
+      args {
+        float_value: 1
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eStufferShack_Exit"
+          }
+        }
+      }
+      args {
+        float_value: 1.5
+      }
+    }
+    ops {
+      functionName: "Trigger: Wait Until Triggered Again"
+    }
+    ops {
+      functionName: "Teleport Actor to Area Around Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "5738d21f663136200d003837"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 6
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 130
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eStufferShack_Exit"
+          }
+        }
+      }
+      args {
+        float_value: 1.5
+      }
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+    }
+    ops {
+      functionName: "Trigger: Wait Until Triggered Again"
+    }
+    ops {
+      functionName: "Fade Camera In"
+      args {
+        float_value: 1
+      }
+      args {
+        float_value: 0
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5738d32b663136200d00383b"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
 regions {
   name: "NPC1"
   position {
@@ -4761,7 +5125,7 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "Camera Region"
+  name: "cPikesPlace"
   position {
     x: -110
     y: -26
@@ -4802,20 +5166,20 @@ regions {
     a: 1
   }
   ambience_template: "downtown-night"
-  combat_music: "Seattle-Set5-Combat"
-  default_music: "Seattle-Set6-Legwork"
+  combat_music: "HongKong-Combat-Generic-Int1"
+  default_music: "HongKong-Legwork-Generic"
   loop_combat_music: true
   loop_default_music: true
   no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
+  combat_intense_music: "HongKong-Combat-Generic-Int2"
+  combat_wrapup_music: "HongKong-Combat-Generic-WrapUp"
   loop_combat_intense_music: true
   loop_combat_wrapup_music: true
   combat_intense_threshold: 5
   combat_wrapup_threshold: 2
   combat_fade_interval: 2
-  combat_intro_stinger: ""
-  combat_outro_stinger: ""
+  combat_intro_stinger: "HongKong-Combat-Stinger-Start"
+  combat_outro_stinger: "HongKong-Combat-Stinger-End"
   vfx_fill_prefab_name: ""
 }
 regions {
@@ -5282,14 +5646,130 @@ regions {
   combat_outro_stinger: ""
   vfx_fill_prefab_name: "MatrixDataLinesEnvironment"
 }
+regions {
+  name: "rShack_Enter"
+  position {
+    x: 60
+    y: 109
+    width: 2
+    height: 4
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "5738d1fe663136200d003836"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "rShack_Exit"
+  position {
+    x: -77
+    y: 45
+    width: 2
+    height: 2
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "5738d21f663136200d003837"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
 characters {
   name: "system_spawner_playerSpawner"
   gridPoint {
-    x: 31
+    x: -13
     y: 0
-    z: 121
+    z: 41
   }
-  orientation: ORIENTATION_N
+  orientation: ORIENTATION_W
   idRef {
     id: "80812c6630643454080045c6"
   }
@@ -6789,7 +7269,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Core/OrkMale"
+    prefab_name: "Seattle:Core/OrkMale"
     character_sheet_id: "BaseCivilian"
     character_mod {
       stats {
@@ -6803,7 +7283,10 @@ characters {
         hp: 0
         ap: 0
         morale: 24
+        discipline: 0
         awareness: 24
+        perception: 0
+        authority: 0
         protect_tether_range: 5
         move_speed: 6
       }
@@ -6812,14 +7295,17 @@ characters {
       specializations {
       }
       archetypeName: "Non-Combatant"
+      vulnerabilities {
+      }
     }
     equipment {
-      prefab_name: "Outfit_Maintenance"
+      prefab_name: "Tsang Disguise"
     }
-    team_id: "Civilians"
+    team_id: "StufferShackEMP"
     char_name: "Frank"
     pc_spawn_number: -1
     uninjurable: true
+    portrait_code_override: "s5h4c4b9c4t0"
     karma: 6
     is_prop_character: true
   }
@@ -7233,42 +7719,6 @@ characters {
     karma: 48
   }
 }
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: 30
-    y: 0
-    z: 123
-  }
-  orientation: ORIENTATION_S
-  idRef {
-    id: "5738c7ed6631363c0a005e16"
-  }
-  lod: 0
-  character_instance {
-    character_mod {
-      stats {
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-      }
-      skills {
-      }
-      specializations {
-      }
-      archetypeName: "Non-Combatant"
-      vulnerabilities {
-      }
-    }
-    team_id: "Gangers"
-    char_name: "New Actor"
-    pc_spawn_number: -1
-  }
-}
 variables {
   bool_value: false
   variableref_value {
@@ -7397,8 +7847,18 @@ variables {
     typeName: "string"
   }
 }
+variables {
+  bool_value: false
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "bAllowedInShack"
+    typeName: "bool"
+  }
+}
 mapEvents: "eventCrimeSceneInvestigated"
 mapEvents: "eventUpdateInvestigation"
+mapEvents: "eStufferShack_Enter"
+mapEvents: "eStufferShack_Exit"
 goals {
   name: "Find Coyote\'s Boyfriend Paco"
   type: GoalType_Primary
@@ -7471,6 +7931,7 @@ team_affiliations {
   affiliation: 1
   affiliation: 0
   affiliation: 0
+  affiliation: 0
 }
 team_affiliations {
   team_name: "Gangers"
@@ -7478,9 +7939,11 @@ team_affiliations {
   affiliation: 0
   affiliation: 0
   affiliation: 0
+  affiliation: 0
 }
 team_affiliations {
   team_name: "LoneStar"
+  affiliation: 0
   affiliation: 0
   affiliation: 0
   affiliation: 0
@@ -7492,13 +7955,20 @@ team_affiliations {
   affiliation: 0
   affiliation: 0
   affiliation: 0
+  affiliation: 0
+}
+team_affiliations {
+  team_name: "StufferShackEMP"
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
 }
 scene_dimensions {
   dimension_name: "Default"
 }
 combat_music: "Seattle-Set6-Combat"
-character_roster {
-}
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
   prereq_description: ""

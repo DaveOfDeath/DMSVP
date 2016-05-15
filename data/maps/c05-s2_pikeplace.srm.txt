@@ -33920,8 +33920,50 @@ props {
     z: 45
   }
   orientation: ORIENTATION_S
+  displayName: "obj_EnterStufferShack"
   idRef {
     id: "5c699e52616634b01400021a"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 2
+    prerequisites {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bAllowedInShack"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Warp
+    interaction_info_text: "Enter Stuffer Shack?"
   }
   lod: 0
 }
@@ -40398,12 +40440,6 @@ props {
   idRef {
     id: "5738b42c6631362c13001372"
   }
-  interactionRoot {
-    isEnabled: false
-    interactionRadius: 1
-    dummyInteraciton {
-    }
-  }
   lod: 0
   light {
     range: 6
@@ -42793,9 +42829,10 @@ props {
     doorPoint {
       doorState: false
       aiOnlyDoor: false
-      doorSound: ""
-      doorSoundBundle: ""
+      doorSound: "DoorSwing"
+      doorSoundBundle: "HongKong:props"
     }
+    interaction_info_text: "Open break room door?"
   }
   lod: 0
 }
@@ -42968,14 +43005,6 @@ props {
   displayName: "Light"
   idRef {
     id: "5738b42c6631362c13001435"
-  }
-  interactionRoot {
-    isEnabled: true
-    interactionRadius: 1
-    pickupItem {
-      itemName: "Player_AdeptNinja"
-      destroyOnPickup: false
-    }
   }
   lod: 0
 }
@@ -43429,49 +43458,6 @@ props {
   idRef {
     id: "5738b42c6631362c1300145b"
   }
-  interactionRoot {
-    isEnabled: true
-    interactionRadius: 1
-    prerequisites {
-      ops {
-        functionName: "Comparison (bool)"
-        args {
-          call_value {
-            functionName: "Get Variable (bool)"
-            args {
-              string_value: "Escape"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "IsOrIsNot"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-      }
-    }
-    transitionPoint {
-      scene_name: "Back to the Shack"
-      confirmation_text: "You slip out the back door, careful to stay away from the motorcycles and squad cars."
-    }
-  }
   lod: 0
 }
 props {
@@ -43578,13 +43564,14 @@ props {
   }
   interactionRoot {
     isEnabled: true
-    interactionRadius: 3
+    interactionRadius: 5
     inspectInteraction {
-      dispalyTime: 5
+      dispalyTime: 10
       fadeTime: 1
-      inspectText: "It\'s not just soykaf... it\'s StarKaf."
-      disableAfterInteracting: false
+      inspectText: "{{00FF00}}It\'s not just soykaf... it\'s StarKaf.{{-}}"
+      disableAfterInteracting: true
     }
+    interaction_info_text: "Examine sign?"
   }
   lod: 0
 }
@@ -43888,264 +43875,6 @@ props {
   displayName: "Magic Case"
   idRef {
     id: "5738b42c6631362c13001475"
-  }
-  interactionRoot {
-    isEnabled: true
-    interactionRadius: 1
-    prerequisites {
-      ops {
-        functionName: "Compare Actor Skill"
-        args {
-          call_value {
-            functionName: "Triggering Actor"
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "BaseOrCurrent"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "ActorSkills"
-            }
-            args {
-              int_value: 4
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "Comparison Ops"
-            }
-            args {
-              int_value: 3
-            }
-          }
-        }
-        args {
-          int_value: 1
-        }
-      }
-      ops {
-        functionName: "OR"
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-      }
-      ops {
-        functionName: "Compare Actor Skill"
-        args {
-          call_value {
-            functionName: "Triggering Actor"
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "BaseOrCurrent"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "ActorSkills"
-            }
-            args {
-              int_value: 7
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "Comparison Ops"
-            }
-            args {
-              int_value: 3
-            }
-          }
-        }
-        args {
-          int_value: 1
-        }
-      }
-      ops {
-        functionName: "OR"
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-      }
-      ops {
-        functionName: "Compare Actor Skill"
-        args {
-          call_value {
-            functionName: "Triggering Actor"
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "BaseOrCurrent"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "ActorSkills"
-            }
-            args {
-              int_value: 3
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "Comparison Ops"
-            }
-            args {
-              int_value: 3
-            }
-          }
-        }
-        args {
-          int_value: 1
-        }
-      }
-      ops {
-        functionName: "OR"
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-      }
-      ops {
-        functionName: "Compare Actor Skill"
-        args {
-          call_value {
-            functionName: "Triggering Actor"
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "BaseOrCurrent"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "ActorSkills"
-            }
-            args {
-              int_value: 8
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "Comparison Ops"
-            }
-            args {
-              int_value: 3
-            }
-          }
-        }
-        args {
-          int_value: 1
-        }
-      }
-    }
-    interactionIcon: InteractionIcon_Generic
   }
   lod: 0
 }
@@ -44765,18 +44494,7 @@ props {
         }
         args {
           call_value {
-            functionName: "Evaluate Turn Mode"
-            args {
-              call_value {
-                functionName: "Get Preset Value (int)"
-                args {
-                  string_value: "TurnBasedOrFreeMove"
-                }
-                args {
-                  int_value: 0
-                }
-              }
-            }
+            functionName: "No Condition"
           }
         }
       }
@@ -44784,9 +44502,10 @@ props {
     doorPoint {
       doorState: false
       aiOnlyDoor: false
-      doorSound: "DoorSlide"
-      doorSoundBundle: "props"
+      doorSound: "HeavyBolt_Unlock"
+      doorSoundBundle: "HongKong:props"
     }
+    interaction_info_text: ""
   }
   lod: 0
 }
@@ -44905,93 +44624,6 @@ props {
   displayName: "Register1"
   idRef {
     id: "5738b42c6631362c130014b3"
-  }
-  interactionRoot {
-    isEnabled: true
-    interactionRadius: 1
-    prerequisites {
-      ops {
-        functionName: "Compare Actor Skill"
-        args {
-          call_value {
-            functionName: "Triggering Actor"
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "BaseOrCurrent"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "ActorSkills"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "Comparison Ops"
-            }
-            args {
-              int_value: 3
-            }
-          }
-        }
-        args {
-          int_value: 2
-        }
-      }
-      ops {
-        functionName: "Evaluate Goal"
-        args {
-          call_value {
-            functionName: "Get Map Item (Goal)"
-            args {
-              string_value: "Get Stuffers!"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "GoalStatus"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "IsOrIsNot"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-      }
-    }
-    pickupItem {
-      itemName: "Sh 1 Benelli Raffaello"
-      destroyOnPickup: false
-    }
   }
   lod: 0
 }
@@ -45825,7 +45457,7 @@ props {
   }
   orientation: ORIENTATION_S
   GeneralTags: "Exit"
-  displayName: "obj_FrontDoor"
+  displayName: "obj_StufferShackExit"
   idRef {
     id: "5738b42c6631362c130014f3"
   }
@@ -46119,14 +45751,6 @@ props {
   displayName: "Employee PanicButton"
   idRef {
     id: "5738b42d6631362c13001504"
-  }
-  interactionRoot {
-    isEnabled: true
-    interactionRadius: 1
-    conversationPoint {
-      conversationID: "520071df6131317405005e76"
-      turnToFace: false
-    }
   }
   lod: 0
 }
@@ -46738,50 +46362,6 @@ props {
   idRef {
     id: "5738b42d6631362c13001521"
   }
-  interactionRoot {
-    isEnabled: true
-    interactionRadius: 1
-    prerequisites {
-      ops {
-        functionName: "Evaluate If Actor Has Item"
-        args {
-          call_value {
-            functionName: "Specific Actor"
-            args {
-              call_value {
-                functionName: "Triggering Actor"
-              }
-            }
-            args {
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "HasOrHasNot"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Map Item (Item)"
-            args {
-              string_value: "Stuffers"
-            }
-          }
-        }
-      }
-    }
-    pickupItem {
-      itemName: "Stuffers"
-      destroyOnPickup: false
-    }
-  }
   lod: 0
 }
 props {
@@ -46986,14 +46566,6 @@ props {
   idRef {
     id: "5738b42d6631362c13001534"
   }
-  interactionRoot {
-    isEnabled: true
-    interactionRadius: 1
-    conversationPoint {
-      conversationID: "5212f81b613131e412004ae2"
-      turnToFace: false
-    }
-  }
   tablet_optional: true
   lod: 0
 }
@@ -47008,14 +46580,6 @@ props {
   displayName: "Computer Tech Desk"
   idRef {
     id: "5738b42d6631362c13001535"
-  }
-  interactionRoot {
-    isEnabled: true
-    interactionRadius: 1
-    conversationPoint {
-      conversationID: "520087426131317405005edd"
-      turnToFace: false
-    }
   }
   lod: 0
 }
@@ -47571,50 +47135,6 @@ props {
   idRef {
     id: "5738b42d6631362c13001567"
   }
-  interactionRoot {
-    isEnabled: true
-    interactionRadius: 1
-    prerequisites {
-      ops {
-        functionName: "Evaluate If Actor Has Item"
-        args {
-          call_value {
-            functionName: "Specific Actor"
-            args {
-              call_value {
-                functionName: "Triggering Actor"
-              }
-            }
-            args {
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "HasOrHasNot"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Map Item (Item)"
-            args {
-              string_value: "Pi 1 Fichetti Security 500"
-            }
-          }
-        }
-      }
-    }
-    pickupItem {
-      itemName: "Pi 1 Fichetti Security 500"
-      destroyOnPickup: false
-    }
-  }
   lod: 0
 }
 props {
@@ -47978,8 +47498,9 @@ props {
       doorState: false
       aiOnlyDoor: false
       doorSound: "DoorSwing"
-      doorSoundBundle: "props"
+      doorSoundBundle: "HongKong:props"
     }
+    interaction_info_text: ""
   }
   lod: 0
 }
@@ -48179,18 +47700,12 @@ props {
   name: "system_gizmo_lightbulb"
   gridPoint {
     x: 35.1
-    y: 2.55
+    y: 0
     z: 107.6
   }
   orientation: ORIENTATION_S
   idRef {
     id: "5738b42d6631362c13001594"
-  }
-  interactionRoot {
-    isEnabled: false
-    interactionRadius: 1
-    dummyInteraciton {
-    }
   }
   lod: 0
   light {
@@ -48768,53 +48283,6 @@ props {
   orientation: ORIENTATION_S
   idRef {
     id: "5738b42d6631362c130015c4"
-  }
-  interactionRoot {
-    isEnabled: true
-    interactionRadius: 1
-    prerequisites {
-      ops {
-        functionName: "Evaluate If Actor Has Item"
-        args {
-          call_value {
-            functionName: "Specific Actor"
-            args {
-              call_value {
-                functionName: "Get Map Item (Player)"
-                args {
-                  int_value: 0
-                }
-              }
-            }
-            args {
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "HasOrHasNot"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Map Item (Item)"
-            args {
-              string_value: "Stuffers"
-            }
-          }
-        }
-      }
-    }
-    pickupItem {
-      itemName: "Stuffers"
-      destroyOnPickup: false
-    }
   }
   lod: 0
 }
@@ -49912,18 +49380,12 @@ props {
   name: "system_gizmo_lightbulb"
   gridPoint {
     x: 34.9
-    y: 1.45
+    y: 0
     z: 104.1
   }
   orientation: ORIENTATION_S
   idRef {
     id: "5738b42d6631362c1300162d"
-  }
-  interactionRoot {
-    isEnabled: false
-    interactionRadius: 1
-    dummyInteraciton {
-    }
   }
   lod: 0
   light {
