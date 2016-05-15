@@ -7,7 +7,66 @@ nodes {
     id: "51aa6b60623331c4010015a4"
   }
   index: 0
-  text: "There is a mid-grade security panel attached to the nearby door. It\'s set to require a password for entry."
+  text: "There is a mid-grade security panel attached to the nearby door. It\'s set to require a pass code for entry."
+  branches {
+    responseText: "113894"
+    actions {
+      ops {
+        functionName: "Play Sound"
+        args {
+          call_value {
+            functionName: "Get Map Item (Sound)"
+            args {
+              string_value: "HongKong:ui"
+            }
+            args {
+              string_value: "puzzlesuccess"
+            }
+          }
+        }
+        args {
+          float_value: 1
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasUnlockedBonusRoom"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "51aa6b53623331c40100159e:5738521f66313618130064f9"
+    }
+  }
   branches {
     responseText: "{{CC}}Decking: 2{{/CC}} {{GM}}Hack the panel.{{/GM}}"
     conditions {
@@ -82,12 +141,151 @@ nodes {
           }
         }
       }
+      ops {
+        functionName: "Play Sound"
+        args {
+          call_value {
+            functionName: "Get Map Item (Sound)"
+            args {
+              string_value: "HongKong:decker"
+            }
+            args {
+              string_value: "Matrix_NodeHackSuccess"
+            }
+          }
+        }
+        args {
+          float_value: 1
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
     }
     nextNodeIndex: -1
     hideIfUnavailable: true
     idRef {
       id: "51aa6b53623331c40100159e:5713f9d0663136c010001fdd"
     }
+    inputBypass: true
+  }
+  branches {
+    responseText: "{{CC}}Drone Control: 2{{/CC}} Bypass the MagLock."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 10
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 2
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasUnlockedBonusRoom"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Play Sound"
+        args {
+          call_value {
+            functionName: "Get Map Item (Sound)"
+            args {
+              string_value: "HongKong:rigger"
+            }
+            args {
+              string_value: "RigJackIn"
+            }
+          }
+        }
+        args {
+          float_value: 1
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    hideIfUnavailable: true
+    idRef {
+      id: "51aa6b53623331c40100159e:5738531766313618130064fb"
+    }
+    inputBypass: true
   }
   branches {
     responseText: "{{GM}}Mash the buttons.{{/GM}}"
@@ -145,6 +343,7 @@ nodes {
     idRef {
       id: "51aa6b53623331c40100159e:5713f9dd663136c010001fe2"
     }
+    inputBypass: true
   }
   branches {
     responseText: "{{GM}}Leave the panel alone.{{/GM}}"
@@ -153,7 +352,9 @@ nodes {
       id: "51aa6b53623331c40100159e:5713f9d0663136c010001fdf"
     }
   }
-  nodeType: ConversationNodeType_GM_Voice
+  nodeType: ConversationNodeType_InputNumpad
+  inputMaxLength: 6
+  speaker_override_id: "57384e3566313618130064b2"
 }
 nodes {
   idRef {
@@ -162,6 +363,37 @@ nodes {
   index: 1
   text: "The door console emits a number of odd sounding beeps, but doesn\'t unlock the door."
   nodeType: ConversationNodeType_Simple
+  speaker_override_id: "57384e3566313618130064b2"
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:ui"
+          }
+          args {
+            string_value: "badpassword"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
 }
 roots {
   responseText: ""

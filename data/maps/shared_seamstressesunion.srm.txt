@@ -11638,6 +11638,7 @@ props {
     z: -77
   }
   orientation: ORIENTATION_S
+  displayName: "Door_EntertainmentChamber"
   idRef {
     id: "34d63e54616634601800498b"
   }
@@ -12015,6 +12016,7 @@ props {
     z: -86
   }
   orientation: ORIENTATION_E
+  displayName: "Door_BonusRoom"
   idRef {
     id: "34d63e5d61663460180049a8"
   }
@@ -12630,6 +12632,7 @@ props {
     z: -86
   }
   orientation: ORIENTATION_E
+  displayName: "Door_UnoccupiedRoom"
   idRef {
     id: "34d63e6a61663460180049d6"
   }
@@ -13223,6 +13226,7 @@ props {
     z: -86
   }
   orientation: ORIENTATION_E
+  displayName: "Door_Coyote"
   idRef {
     id: "34d63e7c6166346018004a0d"
   }
@@ -13335,8 +13339,15 @@ props {
     z: -89
   }
   orientation: ORIENTATION_S
+  displayName: "Unused_HoleInWall"
   idRef {
     id: "34d63e7f6166346018004a15"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    interactionIcon: InteractionIcon_Inspect
+    interaction_info_text: "Search wall?"
   }
   lod: 0
 }
@@ -13374,8 +13385,15 @@ props {
     z: -91
   }
   orientation: ORIENTATION_S
+  displayName: "Unused_Basket"
   idRef {
     id: "34d63e806166346018004a18"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    interactionIcon: InteractionIcon_Inspect
+    interaction_info_text: "Search basket?"
   }
   lod: 0
 }
@@ -13458,12 +13476,48 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Get in to Coyote\'s Computer"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
     inspectInteraction {
       dispalyTime: 0
       fadeTime: 0
       inspectText: "Looks like Coyote keeps her clothes in boxes on the floor."
-      disableAfterInteracting: false
+      disableAfterInteracting: true
     }
+    interaction_info_text: "Rummage through boxes?"
   }
   lod: 0
 }
@@ -13501,8 +13555,15 @@ props {
     z: -97.8
   }
   orientation: ORIENTATION_E
+  displayName: "Unused_Bathroom"
   idRef {
     id: "34d63e836166346018004a22"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    interactionIcon: InteractionIcon_Inspect
+    interaction_info_text: "Search bathroom?"
   }
   lod: 0
 }
@@ -13540,8 +13601,15 @@ props {
     z: -95.9
   }
   orientation: ORIENTATION_E
+  displayName: "Unused_Desk"
   idRef {
     id: "34d63e836166346018004a25"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    interactionIcon: InteractionIcon_Inspect
+    interaction_info_text: "Search desk?"
   }
   lod: 0
 }
@@ -13691,34 +13759,88 @@ props {
     interactionRadius: 1
     prerequisites {
       ops {
-        functionName: "Comparison (bool)"
+        functionName: "OR"
         args {
           call_value {
-            functionName: "Get Variable (bool)"
+            functionName: "Compare Actor Skill"
             args {
-              string_value: "SeenStashReceipt"
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "BaseOrCurrent"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "ActorSkills"
+                }
+                args {
+                  int_value: 14
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 2
+                }
+              }
+            }
+            args {
+              int_value: 0
             }
           }
         }
         args {
           call_value {
-            functionName: "Get Preset Value (int)"
+            functionName: "Comparison (bool)"
             args {
-              string_value: "IsOrIsNot"
+              call_value {
+                functionName: "Get Variable (bool)"
+                args {
+                  string_value: "SeenStashReceipt"
+                }
+              }
             }
             args {
-              int_value: 1
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "IsOrIsNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
             }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
             args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 1
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "bool"
+                }
+                args {
+                  int_value: 1
+                }
+              }
             }
           }
         }
@@ -13757,12 +13879,8 @@ props {
         }
       }
     }
-    inspectInteraction {
-      dispalyTime: 0
-      fadeTime: 0
-      inspectText: ""
-      disableAfterInteracting: false
-    }
+    interactionIcon: InteractionIcon_Inspect
+    interaction_info_text: "Examine Mirror?"
   }
   lod: 0
 }
@@ -13876,12 +13994,48 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Get in to Coyote\'s Computer"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
     inspectInteraction {
       dispalyTime: 0
       fadeTime: 0
       inspectText: "The stand is littered with action movies and cigarette butts."
       disableAfterInteracting: false
     }
+    interaction_info_text: "Search stand?"
   }
   lod: 0
 }
@@ -13932,6 +14086,7 @@ props {
     z: -94.5
   }
   orientation: ORIENTATION_S
+  displayName: "Coyote_Diary"
   idRef {
     id: "34d63e8c6166346018004a41"
   }
@@ -13964,6 +14119,8 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Read Diary?"
   }
   lod: 0
 }
@@ -18310,6 +18467,7 @@ props {
       itemName: "Grenade 1 (Frag)"
       destroyOnPickup: true
     }
+    interaction_info_text: "Empty safe?"
   }
   lod: 0
 }
@@ -18327,12 +18485,48 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 4
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Get in to Coyote\'s Computer"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
     inspectInteraction {
       dispalyTime: 0
       fadeTime: 0
       inspectText: "A framed painting of the Chicago skyline, done in stylized silhouette."
       disableAfterInteracting: false
     }
+    interaction_info_text: "Examine painting?"
   }
   lod: 0
 }
@@ -23950,8 +24144,15 @@ props {
     z: -93.4
   }
   orientation: ORIENTATION_S
+  displayName: "Unused_Vanity"
   idRef {
     id: "51a58af5616634f419001540"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    interactionIcon: InteractionIcon_Inspect
+    interaction_info_text: "Search vanity?"
   }
   lod: 0
 }
@@ -24895,6 +25096,7 @@ props {
     z: -84.9
   }
   orientation: ORIENTATION_E
+  displayName: "BonusRoom_Terminal"
   idRef {
     id: "51aa693b623331c401001598"
   }
@@ -24937,6 +25139,7 @@ props {
       }
     }
     interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Examine MagLock?"
   }
   lod: 0
 }
