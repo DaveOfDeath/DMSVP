@@ -20760,13 +20760,9 @@ props {
     id: "5738ea91663136fc0d006056"
   }
   interactionRoot {
-    isEnabled: true
+    isEnabled: false
     interactionRadius: 10
-    inspectInteraction {
-      dispalyTime: 10
-      fadeTime: 0
-      inspectText: "What a mess.   Glad you don\'t have to clean this one up."
-      disableAfterInteracting: true
+    dummyInteraciton {
     }
     interaction_info_text: "Examine container?"
   }
@@ -20790,20 +20786,26 @@ props {
     interactionRadius: 30
     prerequisites {
       ops {
-        functionName: "OR"
+        functionName: "Evaluate If Actor is Inside Region"
         args {
           call_value {
-            functionName: "Compare Actor Skill"
+            functionName: "All Actors on Team"
             args {
               call_value {
-                functionName: "Triggering Actor"
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 2
+                }
               }
             }
             args {
               call_value {
                 functionName: "Get Preset Value (int)"
                 args {
-                  string_value: "BaseOrCurrent"
+                  string_value: "AllOrAny"
                 }
                 args {
                   int_value: 1
@@ -20812,81 +20814,62 @@ props {
             }
             args {
               call_value {
-                functionName: "Get Preset Value (int)"
+                functionName: "Get Map Item (SceneDimension)"
                 args {
-                  string_value: "ActorSkills"
-                }
-                args {
-                  int_value: 5
+                  string_value: "Default"
                 }
               }
-            }
-            args {
-              call_value {
-                functionName: "Get Preset Value (int)"
-                args {
-                  string_value: "Comparison Ops"
-                }
-                args {
-                  int_value: 2
-                }
-              }
-            }
-            args {
-              int_value: 0
             }
           }
         }
         args {
           call_value {
-            functionName: "Compare Actor Skill"
+            functionName: "Get Preset Value (int)"
             args {
-              call_value {
-                functionName: "Triggering Actor"
-              }
+              string_value: "AreOrAreNot"
             }
             args {
-              call_value {
-                functionName: "Get Preset Value (int)"
-                args {
-                  string_value: "BaseOrCurrent"
-                }
-                args {
-                  int_value: 1
-                }
-              }
+              int_value: 1
             }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Region)"
             args {
-              call_value {
-                functionName: "Get Preset Value (int)"
-                args {
-                  string_value: "ActorSkills"
-                }
-                args {
-                  int_value: 10
-                }
-              }
-            }
-            args {
-              call_value {
-                functionName: "Get Preset Value (int)"
-                args {
-                  string_value: "Comparison Ops"
-                }
-                args {
-                  int_value: 2
-                }
-              }
-            }
-            args {
-              int_value: 0
+              string_value: "a1470a613064348014004aac"
             }
           }
         }
       }
+      ops {
+        functionName: "Comparison (string)"
+        args {
+          call_value {
+            functionName: "Get Variable (string)"
+            args {
+              string_value: "sSkill"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          string_value: "NA"
+        }
+      }
     }
     interactionIcon: InteractionIcon_Explosion
-    interaction_info_text: "Disable magnetic anchors?"
+    interaction_info_text: "$(scene.sSkill) magnetic anchors?"
   }
   lod: 0
 }
