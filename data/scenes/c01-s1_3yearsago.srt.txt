@@ -1097,6 +1097,47 @@ triggers {
         float_value: 2
       }
     }
+    ops {
+      functionName: "Set Prop Visible by Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isDropped"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        call_value {
+          functionName: "Everywhere"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DoesOrDoesNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -2413,75 +2454,23 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Order Actor to Move To (Region)"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "8a9b3031306434ec1000483e"
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Region)"
-          args {
-            string_value: "a1470a613064348014004aac"
-          }
-        }
-      }
+      functionName: "Enable/Disable Interactable Object"
       args {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "FacingDirection"
+            string_value: "EnableOrDisable"
           }
           args {
             int_value: 0
           }
         }
       }
-    }
-    ops {
-      functionName: "Order Actor to Move To (Region)"
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "Get Map Item (InteractableObject)"
           args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "8a9b3572306434ec1000483f"
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Region)"
-          args {
-            string_value: "a1470a613064348014004aac"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "FacingDirection"
-          }
-          args {
-            int_value: 0
+            string_value: "5738e75b663136fc0d00604a"
           }
         }
       }
@@ -4041,6 +4030,28 @@ triggers {
       }
     }
     ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5738e75b663136fc0d00604a"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Kill Actor"
       args {
         call_value {
@@ -4463,6 +4474,262 @@ triggers {
   isActive: true
   idRef {
     id: "5738087c6631365807007ec8"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Container.Drop"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5738e75b663136fc0d00604a"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eDropContainer"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Move Prop with Speed"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "5738e75b663136fc0d00604a"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specified Point (3D)"
+          args {
+            float_value: 5
+          }
+          args {
+            float_value: 0
+          }
+          args {
+            float_value: -26
+          }
+        }
+      }
+      args {
+        float_value: 9
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eDropContainer"
+          }
+        }
+      }
+      args {
+        float_value: 0.25
+      }
+    }
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors Within Area"
+          args {
+            call_value {
+              functionName: "Area: Region"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Region)"
+                  args {
+                    string_value: "a1470a613064348014004aac"
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "HeavyBolt_Unlock"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Trigger: Wait Until Triggered Again"
+    }
+    ops {
+      functionName: "Apply Camera Shake"
+      args {
+        float_value: 5
+      }
+      args {
+        float_value: 1.75
+      }
+    }
+    ops {
+      functionName: "Set Prop Visible by Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isDropped"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        call_value {
+          functionName: "Everywhere"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DoesOrDoesNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "5738ea91663136fc0d006056"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Prop"
+          args {
+            call_value {
+              functionName: "Get Map Item (Prop)"
+              args {
+                string_value: "5738e75b663136fc0d00604a"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Delete Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "5738e75b663136fc0d00604a"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5738e8e2663136fc0d006054"
   }
   elseActions {
   }
@@ -8446,6 +8713,95 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: " "
+  events {
+  }
+  conditions {
+  }
+  actions {
+  }
+  isActive: false
+  idRef {
+    id: "5738e06e663136fc1600427a"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "<!-- DEV Comments -->"
+  events {
+  }
+  conditions {
+  }
+  actions {
+  }
+  isActive: false
+  idRef {
+    id: "5738e06e663136fc1600427b"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "DEV.Introduction"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5738de6e663136fc1600425d"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Start Conversation"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "5738dea4663136fc1600425e"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5738e07a663136fc1600427c"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
 regions {
   name: "Wave01MoveTo"
   position {
@@ -8507,10 +8863,10 @@ regions {
 regions {
   name: "Wave02MoveTo"
   position {
-    x: 3
-    y: -21
-    width: 10
-    height: 4
+    x: 5
+    y: -26
+    width: 6
+    height: 2
   }
   enabledAtStart: true
   is_camera_region: false
@@ -8521,8 +8877,8 @@ regions {
   }
   highlight_color {
     r: 0
-    g: 0
-    b: 0
+    g: 1
+    b: 1
     a: 1
   }
   visible_at_start: false
@@ -9597,9 +9953,9 @@ characters {
 characters {
   name: "system_spawner_playerSpawner"
   gridPoint {
-    x: -51
+    x: -52
     y: 0
-    z: -87
+    z: -86
   }
   orientation: ORIENTATION_S
   idRef {
@@ -10993,6 +11349,7 @@ mapEvents: "eventTakeAwayItems"
 mapEvents: "eventCleanUpActors"
 mapEvents: "SendInHelp"
 mapEvents: "ReturnToApartment"
+mapEvents: "eDropContainer"
 senseTags: "Wave02"
 senseTags: "Wave03"
 goals {
