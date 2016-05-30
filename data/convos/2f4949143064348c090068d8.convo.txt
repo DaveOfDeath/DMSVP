@@ -7,10 +7,13 @@ nodes {
     id: "a53874356233311c0a004aa9"
   }
   index: 0
-  text: "Sam\'s body is half covered by a sterile surgical sheet, his face an ashen white - for the first time without a smirk on it. Below the chest there\'s a small, pencil thin incision covered in dried blood. Beyond that, the corpse is immaculate. It would seem that the killer knew exactly what they wanted from him, and took it."
+  text: "Sam\'s body is half-covered by a surgical sheet, his face an ashen white - the first time you\'ve seen it without that smirk on it. He doesn\'t look peaceful, just dead. Below the ribcage on his right side, there\'s a small pencil thin incision covered in dried blood. Beyond that, the corpse is immaculate. It would seem that the killer knew exactly what they wanted from him, and took it."
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "2f4949143064348c090068d8:574bd2b83966300826005f39"
+    }
   }
   nodeType: ConversationNodeType_GM_Voice
 }
@@ -23,6 +26,9 @@ nodes {
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "2f4949143064348c090068d8:574bd2b83966300826005f3c"
+    }
   }
   nodeType: ConversationNodeType_GM_Voice
 }
@@ -96,9 +102,12 @@ nodes {
     }
     nextNodeIndex: 4
     hideIfUnavailable: true
+    idRef {
+      id: "2f4949143064348c090068d8:574bd2b83966300826005f44"
+    }
   }
   branches {
-    responseText: "{{GM}}Look at the purple shirt.{{/GM}}"
+    responseText: "{{GM}}Look at Sam\'s clothes.{{/GM}}"
     actions {
       ops {
         functionName: "Add To Variable (int)"
@@ -148,8 +157,69 @@ nodes {
     }
   }
   branches {
+    responseText: "{{CC}}Academic{{/CC}} {{GM}}Make a Closer Examination of Sam\'s corpse.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 18
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 8
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "2f4949143064348c090068d8:574bd6f33966300826005f99"
+    }
+  }
+  branches {
     responseText: "{{GM}}Put down evidence bag.{{/GM}}"
     nextNodeIndex: -1
+    idRef {
+      id: "2f4949143064348c090068d8:574bd2b83966300826005f5a"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -158,7 +228,7 @@ nodes {
     id: "a53874366233311c0a004ab2"
   }
   index: 3
-  text: "Moving things around, you can make out that it\'s a card from a place called \"The Seamstresses Union\". There is something handwritten on the back, but blood has made it illegible."
+  text: "Moving things around, you can make out that it\'s a card from a place called \"The Seamstresses Union\". The card is plastic, but has seen a lot of wear and tear- Sam has apparently had it for a while. There was something handwritten on the back, but blood and time has rendered it illegible."
   branches {
     responseText: ""
     actions {
@@ -186,6 +256,9 @@ nodes {
       }
     }
     nextNodeIndex: 2
+    idRef {
+      id: "2f4949143064348c090068d8:574bd2b83966300826005f41"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Voice
@@ -195,7 +268,7 @@ nodes {
     id: "a53874366233311c0a004ab8"
   }
   index: 4
-  text: "It\'s a standard cheap unsecured credstick. No way of knowing what\342\200\231s on it without slotting it."
+  text: "It\'s a standard cheap black unsecured credstick. No way of knowing what\342\200\231s on it without slotting it."
   branches {
     responseText: "{{GM}}Take the credstick.{{/GM}}"
     actions {
@@ -215,10 +288,16 @@ nodes {
       }
     }
     nextNodeIndex: 5
+    idRef {
+      id: "2f4949143064348c090068d8:574bd2b83966300826005f47"
+    }
   }
   branches {
     responseText: "{{GM}}Leave the credstick in the evidence bag.{{/GM}}"
     nextNodeIndex: 2
+    idRef {
+      id: "2f4949143064348c090068d8:574bd2b83966300826005f4d"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Voice
@@ -228,7 +307,7 @@ nodes {
     id: "a53874366233311c0a004abb"
   }
   index: 5
-  text: "You slot the credstick into your PDA. 300\302\245 is added to your account."
+  text: "You slot the credstick into your PDA. You have a copy of Sam\'s very bad fake SIN, and you add 300\302\245 to your account.\n\nThank you, Doctor Dirk Dingleberry, for your generous donation."
   branches {
     responseText: ""
     actions {
@@ -256,6 +335,9 @@ nodes {
       }
     }
     nextNodeIndex: 2
+    idRef {
+      id: "2f4949143064348c090068d8:574bd2b83966300826005f4a"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Voice
@@ -295,10 +377,13 @@ nodes {
     id: "a53fd2046233311c0a004af4"
   }
   index: 6
-  text: "It\'s Sam\'s shirt. Several of the buttons are missing, and blood has thoroughly soaked it. The bag sloshes a bit in your hand."
+  text: "It\'s Sam\'s shirt. Purple, or maybe it was before it was a blood-soaked rag. Sam always did have a taste for good clothes. \nSeveral of the buttons are missing, and blood has thoroughly coated all the items. The bag sloshes a bit in your hand."
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "2f4949143064348c090068d8:574bd2b83966300826005f52"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Voice
@@ -308,7 +393,7 @@ nodes {
     id: "a53874366233311c0a004ac4"
   }
   index: 7
-  text: "{{GM}}You can only see part of the note, given the torn-off bits and bloodstains.{{/GM}} \n\nSam,\nI feel terrible that we arg --- - - - - - - - - -. We have been - - - - long. - - - - to say I\342\200\231m sor- - - -. See you there, Love Jessica."
+  text: "{{GM}}You can only see part of the note, given the torn-off bits and bloodstains.{{/GM}} \n\nSam,\nI feel terrible that we arg --- - - - - - - - - -. \nWe have been - - - - - - - - - - - - - - - - - -\nso long. - - - - - - - - - - - - - - - - - - - - - - -\nto say I\342\200\231m sor- - - - - - - - - - - - - - - - - - - \nWe\'ll see you there. \nLove, Jessica."
   branches {
     responseText: ""
     actions {
@@ -336,6 +421,9 @@ nodes {
       }
     }
     nextNodeIndex: 2
+    idRef {
+      id: "2f4949143064348c090068d8:574bd2b83966300826005f57"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Voice
@@ -367,7 +455,26 @@ nodes {
     }
   }
 }
+nodes {
+  idRef {
+    id: "2f4949143064348c090068d8:574bd75f3966300826005f9b"
+  }
+  index: 8
+  text: "Sam has bruises on his knuckles, like he normally would. He has the jaundiced yellow eyes of someone with liver failure. Given Sam\'s plan to drink himself to death, that makes sense.\n\nWhat doesn\'t make sense are the puncture wounds on his neck, or how clean the incision is given that Sam died after the organ was extracted.\nProbing briefly, you confirm that Sam\'s liver is gone."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "2f4949143064348c090068d8:574bd75f3966300826005f9d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
 roots {
   responseText: ""
   nextNodeIndex: 0
+  idRef {
+    id: "2f4949143064348c090068d8:574bd2b83966300826005f36"
+  }
 }
