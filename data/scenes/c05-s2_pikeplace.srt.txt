@@ -4237,6 +4237,33 @@ triggers {
   }
   conditions {
     ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Evaluate If Actor Has Item"
       args {
         call_value {
@@ -4276,6 +4303,43 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Tsang Disguise"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Display Text at Screen Position"
       args {
         call_value {
@@ -4289,7 +4353,7 @@ triggers {
         }
       }
       args {
-        string_value: "Upon exiting the Stuffer Shack, you discard the greasy uniform."
+        string_value: "Upon exiting the Stuffer Shack, you discard the greasy Stuffer Shack uniform."
       }
       args {
         float_value: 0
@@ -4377,43 +4441,6 @@ triggers {
     }
     ops {
       functionName: "Trigger: Wait Until Triggered Again"
-    }
-    ops {
-      functionName: "Remove Item from Actor"
-      args {
-        call_value {
-          functionName: "Get Map Item (Item)"
-          args {
-            string_value: "Tsang Disguise"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Player)"
-              args {
-                int_value: 0
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
     }
     ops {
       functionName: "Teleport Actor to Area Around Point"
@@ -6421,6 +6448,187 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "Shack.Greeting"
+  events {
+    ops {
+      functionName: "On Region Exit"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "5738d1fe663136200d003836"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Display Text over Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "574c7a60663136b813004e61"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        string_value: "Welcome to the Stuffer Shack, $+(l.sir)."
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 7
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 1
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "574c7b37663136b813004e62"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Shack.Hostility"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eHostility"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "574c7cbe663136b813004e63"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "574c7cbe663136b813004e63"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "574c80ad663136b813004e8c"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
 regions {
   name: "NPC1"
   position {
@@ -8106,7 +8314,7 @@ regions {
 characters {
   name: "system_spawner_playerSpawner"
   gridPoint {
-    x: 30
+    x: 40
     y: 0
     z: 105
   }
@@ -9521,7 +9729,6 @@ characters {
     z: 43
   }
   orientation: ORIENTATION_W
-  GeneralTags: "isPassive"
   displayName: "SS Employee"
   idRef {
     id: "8bdf6c18306434d80c000a08"
@@ -9645,7 +9852,6 @@ characters {
     }
     team_id: "StufferShackEMP"
     char_name: "Frank"
-    GeneralTags: "isPassive"
     pc_spawn_number: -1
     uninjurable: true
     portrait {
@@ -10121,6 +10327,206 @@ characters {
     blocker_ic_panel_incorrect_password_yellow_alert_modifier_override: 5
   }
 }
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: 29.6
+    y: 0
+    z: 102
+  }
+  orientation: ORIENTATION_E
+  displayName: "SS Employee"
+  idRef {
+    id: "574c7a60663136b813004e61"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Core/ElfFemale"
+    character_sheet_id: "BaseCivilian"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Non-Combatant"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    equipment {
+      prefab_name: "Tsang Disguise"
+    }
+    team_id: "StufferShackEMP"
+    char_name: "Kayla"
+    pc_spawn_number: -1
+    portrait {
+      filename: "backer_elffemale_ericclough"
+    }
+    portrait_code_override: "s5h2c11b0t0"
+    karma: 6
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: 39
+    y: 0
+    z: 104
+  }
+  orientation: ORIENTATION_N
+  GeneralTags: "isMendoza"
+  displayName: "Thug"
+  idRef {
+    id: "574c7cbe663136b813004e63"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    conversationPoint {
+      conversationID: "574c7f7c663136b813004e65"
+      turnToFace: true
+    }
+    interactionIcon: InteractionIcon_Conversation
+    interaction_info_text: "Talk to irate man?"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Core/HumanMale"
+    character_sheet_id: "Lonestar_Lv2_Ork_Shotgun"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 2
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "gumbo_Soldier"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    equipment {
+      prefab_name: "NPC_HK_Combat_SecureTrench"
+    }
+    equipment {
+      prefab_name: "Sh 1 Street Sweeper"
+    }
+    equipment {
+      prefab_name: "Grenade (Smoke)"
+    }
+    team_id: "Civilians"
+    char_name: "Mendoza"
+    GeneralTags: "isMendoza"
+    pc_spawn_number: -1
+    portrait {
+      filename: "pc_humanmale_elpolodelacroix"
+    }
+    portrait_code_override: "s4h21c6b4c6t0"
+    karma: 41
+  }
+}
 variables {
   bool_value: false
   variableref_value {
@@ -10295,6 +10701,9 @@ mapEvents: "eStufferShack_Enter"
 mapEvents: "eStufferShack_Exit"
 mapEvents: "eColorSpray"
 mapEvents: "eFrankGoesInside"
+mapEvents: "eHostility"
+mapEvents: "ePacify"
+mapEvents: "eReason"
 senseTags: "isTarget"
 goals {
   name: "Find Coyote\'s Boyfriend Paco"
