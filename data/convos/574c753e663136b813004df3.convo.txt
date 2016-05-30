@@ -1,0 +1,177 @@
+idRef {
+  id: "574c753e663136b813004df3"
+}
+ui_name: "c05-s1_PikePlace_StufferShackUniform"
+nodes {
+  idRef {
+    id: "574c7581663136b813004dff"
+  }
+  index: 0
+  text: "A shelf of slightly folded uniforms.   Most of them are filthy.   Apparently the Stuffer Shack\'s employees aren\'t real big on personal hygiene.\n\nDo you want to take a uniform?"
+  branches {
+    responseText: "{{CC}}Yes{{/CC}}"
+    actions {
+      ops {
+        functionName: "Add Item to Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "Tsang Disguise"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "574c753e663136b813004df3:574c75fb663136b813004e01"
+    }
+  }
+  branches {
+    responseText: "{{CC}}No{{/CC}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "574c753e663136b813004df3:574c75fc663136b813004e03"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "574c764c663136b813004e0b"
+  }
+  index: 1
+  text: "You are already wearing one of the filthy uniforms."
+  nodeType: ConversationNodeType_GM_Voice
+}
+roots {
+  conditions {
+    ops {
+      functionName: "Evaluate If Actor Has Item"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Tsang Disguise"
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+  idRef {
+    id: "574c753e663136b813004df3:574c753e663136b813004df7"
+  }
+  comment: "Does not have Uniforms"
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Evaluate If Actor Has Item"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Tsang Disguise"
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 1
+  idRef {
+    id: "574c753e663136b813004df3:574c7632663136b813004e08"
+  }
+  comment: "Already has uniform"
+}
