@@ -69,7 +69,7 @@ nodes {
     id: "32403c043064349417006797"
   }
   index: 2
-  text: "Just... Fascinating!\n\nDetective Mitch McKlusky isn\'t interested in anything but Team McKlusky. He\'d throw his own mother in the slammer, if it meant a bonus in his next paycheck. Plus, he\'s on the take, and whoever has him on a leash has a loyal lapdog. {{GM}}Dresden pauses, considering.{{/GM}}\n\nYou have honor, after a fashion. I try to honor the dead in my work, so we have that in common. "
+  text: "Just... Fascinating!\n\nDetective McKlusky isn\'t interested in anything but himself. He\'d throw his own mother in the slammer, if it meant a bonus in his next paycheck. Plus, he\'s on the take, whatever that means to you. {{GM}}Dresden pauses, considering.{{/GM}}\n\nYou have honor, after a fashion. I try to honor the dead in my work, so we have that in common. "
   branches {
     responseText: ""
     nextNodeIndex: 3
@@ -101,26 +101,15 @@ nodes {
   index: 4
   text: ""
   branches {
-    responseText: "On the take? Who\'s paying to hold his leash?"
-    conditions {
+    responseText: "Tell me more about Detective McKlusky."
+    actions {
       ops {
-        functionName: "Comparison (bool)"
+        functionName: "Set Variable (bool)"
         args {
           call_value {
             functionName: "Get Variable (bool)"
             args {
-              string_value: "DresdenOption01"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "IsOrIsNot"
-            }
-            args {
-              int_value: 1
+              string_value: "bMcKluskyInvestigate"
             }
           }
         }
@@ -131,21 +120,13 @@ nodes {
               string_value: "bool"
             }
             args {
-              int_value: 0
+              int_value: 1
             }
           }
         }
       }
     }
     nextNodeIndex: 5
-    hideIfUnavailable: true
-    idRef {
-      id: "2f883ec53064348c09006b90:574c04dc3966300826006359"
-    }
-  }
-  branches {
-    responseText: "Tell me more about Detective McKlusky."
-    nextNodeIndex: 6
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -189,10 +170,112 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 7
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bMcKluskyInvestigate"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
     hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "2f883ec53064348c09006b90:574c04dc396630082600635f"
+    }
+  }
+  branches {
+    responseText: "McKlusky is on the take? Who\'s paying to hold his leash?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "DresdenOption01"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bMcKluskyInvestigate"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "2f883ec53064348c09006b90:574c04dc3966300826006359"
+    }
+  }
+  branches {
+    responseText: "Can you tell me more about the Ripper Killer?"
+    nextNodeIndex: 9
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "2f883ec53064348c09006b90:574c080839663008260063d7"
     }
   }
   branches {
@@ -232,19 +315,11 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 9
-    hideIfUnavailable: true
-    idRef {
-      id: "2f883ec53064348c09006b90:574c04dc396630082600636e"
-    }
-  }
-  branches {
-    responseText: "Can you tell me one more thing about the Ripper Killer?"
-    nextNodeIndex: 10
+    nextNodeIndex: 12
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
-      id: "2f883ec53064348c09006b90:574c080839663008260063d7"
+      id: "2f883ec53064348c09006b90:574c04dc396630082600636e"
     }
   }
   branches {
@@ -284,7 +359,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 12
+    nextNodeIndex: 13
     hideIfUnavailable: true
     idRef {
       id: "2f883ec53064348c09006b90:574c04dc3966300826006374"
@@ -360,7 +435,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 13
+    nextNodeIndex: 14
     hideIfUnavailable: true
     idRef {
       id: "2f883ec53064348c09006b90:574c04dc396630082600637a"
@@ -368,7 +443,7 @@ nodes {
   }
   branches {
     responseText: "I just need to know one more thing. Where was Sam killed?"
-    nextNodeIndex: 14
+    nextNodeIndex: 15
     idRef {
       id: "2f883ec53064348c09006b90:574c04dc3966300826006380"
     }
@@ -378,9 +453,96 @@ nodes {
 }
 nodes {
   idRef {
-    id: "a4fa7e526233311c0a0048c1"
+    id: "574c05c8396630082600638c"
   }
   index: 5
+  text: "What\'s there to be said that hasn\'t already been written on a bathroom stall? McKlusky blows goats.\n\n{{GM}}Dresden laughs, the grin coming back suddenly.{{/GM}}\n\nNo, that\'s just what I\'ve heard. He\'s looking out for Numero Uno, and in his book that\'s whoever pays Mitch McKlusky the most. I\'ve presided over a dozen questionable deaths that he\'s been involved in. If I were you, I would stay out of his way. Whoever pays for his suits has got pull, the kind of pull that fixes reports and gets nosy partners \'transferred.\'"
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "2f883ec53064348c09006b90:574c0653396630082600638e"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a4fa7e526233311c0a0048c7"
+  }
+  index: 6
+  text: "Melinda Watts. The official report, if you looked it up, is that she committed suicide about a year ago."
+  branches {
+    responseText: "Aren\342\200\231t you the \"official\" in that sentence?"
+    nextNodeIndex: 7
+    idRef {
+      id: "2f883ec53064348c09006b90:574c04dc3966300826006362"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "You don\'t buy that?"
+    nextNodeIndex: 7
+    idRef {
+      id: "2f883ec53064348c09006b90:574c04dc3966300826006365"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Sounds like you disagreed with the findings."
+    nextNodeIndex: 7
+    idRef {
+      id: "2f883ec53064348c09006b90:574c04dc3966300826006368"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a4fa7e526233311c0a0048d0"
+  }
+  index: 7
+  text: "My name\342\200\231s on the report, but my findings left some... doubts. I can\342\200\231t say that it wasn\342\200\231t suicide, but there were unusual bruises on her upper arms, and she didn\342\200\231t use her dominant hand to pull the trigger.\n\nI was told to drop it in unsubtle threatening tones, so I dropped it. "
+  branches {
+    responseText: ""
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "DresdenOption02"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    idRef {
+      id: "2f883ec53064348c09006b90:574c04dc396630082600636b"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a4fa7e526233311c0a0048c1"
+  }
+  index: 8
   text: "I don\342\200\231t know, but someone with some major pull has been looking out for McKlusky\342\200\231s career. \n\nAnd wallet. "
   branches {
     responseText: ""
@@ -418,86 +580,45 @@ nodes {
 }
 nodes {
   idRef {
-    id: "574c05c8396630082600638c"
+    id: "574c081d39663008260063da"
   }
-  index: 6
-  text: "What\'s there to be said that hasn\'t already been written on a bathroom stall? McKlusky blows goats.\n\n{{GM}}Dresden laughs, the grin coming back suddenly.{{/GM}}\n\nNo, that\'s just what I\'ve heard. He\'s looking out for Numero Uno, and in his book that\'s whoever pays Mitch McKlusky the most. I\'ve presided over a dozen questionable deaths that he\'s been involved in. If I were you, I would stay out of his way. Whoever pays for his suite has got pull, the kind of pull that fixes reports and gets nosy partners \"transferred.\""
+  index: 9
+  text: "He or she doesn\'t fit into \'classic\' serial killer tropes. I hate that serial killer tropes are a thing now, but they are. First victim, pretty standard stuff. Cut organs, cleaned body. No tissue under fingernails to identify the perp. So we have a careful killer."
   branches {
     responseText: ""
-    nextNodeIndex: 4
+    nextNodeIndex: 10
     idRef {
-      id: "2f883ec53064348c09006b90:574c0653396630082600638e"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "a4fa7e526233311c0a0048c7"
-  }
-  index: 7
-  text: "Melinda Watts. The official report, if you looked it up, is that she committed suicide about a year ago."
-  branches {
-    responseText: "Aren\342\200\231t you the \"official\" in that sentence?"
-    nextNodeIndex: 8
-    idRef {
-      id: "2f883ec53064348c09006b90:574c04dc3966300826006362"
-    }
-    auxiliaryLink: true
-  }
-  branches {
-    responseText: "You don\'t buy that?"
-    nextNodeIndex: 8
-    idRef {
-      id: "2f883ec53064348c09006b90:574c04dc3966300826006365"
-    }
-    auxiliaryLink: true
-  }
-  branches {
-    responseText: "Sounds like you disagreed with the findings."
-    nextNodeIndex: 8
-    idRef {
-      id: "2f883ec53064348c09006b90:574c04dc3966300826006368"
+      id: "2f883ec53064348c09006b90:574fa730613131d43b003a91"
     }
   }
   nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
-    id: "a4fa7e526233311c0a0048d0"
+    id: "574fa730613131d43b003a94"
   }
-  index: 8
-  text: "My name\342\200\231s on the report, but my findings left some... doubts. I can\342\200\231t say that it wasn\342\200\231t suicide, but there were unusual bruises on her upper arms, and she didn\342\200\231t use her dominant hand to pull the trigger.\n\nI was told to drop it in unsubtle threatening tones, so I dropped it."
+  index: 10
+  text: "The dismemberment, that\342\200\231s classic Jack the Ripper, of course. But the cleanliness is weird. The Black Dahlia\342\200\231s body was cleaned. Ted Bundy would sometimes go back and prettify his corpses. A lot of times, killers either walk away from the corpse and leave it in ruins, or they keep it for themselves for their own purposes. Cleaning it and leaving it\342\200\224that\342\200\231s weird."
   branches {
     responseText: ""
-    actions {
-      ops {
-        functionName: "Set Variable (bool)"
-        args {
-          call_value {
-            functionName: "Get Variable (bool)"
-            args {
-              string_value: "DresdenOption02"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-      }
+    nextNodeIndex: 11
+    idRef {
+      id: "2f883ec53064348c09006b90:574c082639663008260063dc"
     }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "574c082639663008260063df"
+  }
+  index: 11
+  text: "Not the weirdest part, though. All of the first three victims were cut and then dumped. Sam is the first victim to be found at the scene of death, with his clothes no less, although the Ripper was still particular about cleaning the area around the organ extraction. \n\nWe may be looking at an escalation- the killer is getting away with it, so he or she is looking for more danger to up the thrill. That\'s got me worried. Or Sam\'s murder could be unrelated- but I really doubt you\'re that lucky."
+  branches {
+    responseText: ""
     nextNodeIndex: 4
     idRef {
-      id: "2f883ec53064348c09006b90:574c04dc396630082600636b"
+      id: "2f883ec53064348c09006b90:574c087539663008260063e1"
     }
     auxiliaryLink: true
   }
@@ -507,8 +628,8 @@ nodes {
   idRef {
     id: "a4fa7e526233311c0a0048d6"
   }
-  index: 9
-  text: "Individual organs? Not much, with all the cyber and vat-grown stuff. But if you have a whole healthy body can be worth a bunch of nuyen, especially to black markets.\n\nWe here at Organ Grinders only deal in the recently deceased. If a body is beyond ischemic tissue death, there\'s no reason for me to chop them apart. But with Nightengales, organleggers, or the gangs, there are plenty of other chop shops that aren\342\200\231t as picky - and they don\'t care where the bodies come from, either. "
+  index: 12
+  text: "Individual organs? Not much, with all the cyber and vat-grown stuff. But if you have a whole healthy body can be worth a big pile of nuyen, especially on the black markets.\n\nWe here at Organ Grinders only deal in the recently deceased and fully legal organs. If a body is beyond ischemic tissue death, there\'s no reason for me to chop them apart. But with others: Nightengales, Tanamous, or the organlegger gangs, not to mention the independant chop shops aren\342\200\231t as picky - and they don\'t care where the bodies come from, either. "
   branches {
     responseText: ""
     actions {
@@ -545,40 +666,9 @@ nodes {
 }
 nodes {
   idRef {
-    id: "574c081d39663008260063da"
-  }
-  index: 10
-  text: "He or she doesn\'t fit into \'classic\' serial killer tropes. I hate that\'s a thing now, but it is, and if you don\'t believe me check out MurderBlog, the newest way to humblebrag your latest kill."
-  branches {
-    responseText: ""
-    nextNodeIndex: 11
-    idRef {
-      id: "2f883ec53064348c09006b90:574c082639663008260063dc"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "574c082639663008260063df"
-  }
-  index: 11
-  text: "The dismemberment, that\342\200\231s classic Jack the Ripper, of course. But the cleanliness is weird. The Black Dahlia\342\200\231s body was cleaned. Ted Bundy would sometimes go back and prettify his corpses. A lot of times, killers either walk away from the corpse and leave it in ruins, or they keep it for themselves for their own purposes. Cleaning it and leaving it\342\200\224that\342\200\231s weird."
-  branches {
-    responseText: ""
-    nextNodeIndex: 4
-    idRef {
-      id: "2f883ec53064348c09006b90:574c087539663008260063e1"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
     id: "a4fa7e526233311c0a0048dc"
   }
-  index: 12
+  index: 13
   text: "Doctors still learn how to use them in their first year of medical school - as do coroners - but neither profession uses them much any more. It\'s possible some of the slimier chop shops still use scalpels, I suppose, but I wouldn\'t know where to look."
   branches {
     responseText: ""
@@ -618,7 +708,7 @@ nodes {
   idRef {
     id: "a4fa7e536233311c0a0048e2"
   }
-  index: 13
+  index: 14
   text: "It\342\200\231s a nearby club in the Barrens that attracts sleazy lowlifes. You\'d probably love it there. \n\nMe, I\'m not really the going-out type. Always too much to be done around here. Plus, the dead are just easier to get along with: keep to themselves, don\'t worry about my personal business."
   branches {
     responseText: ""
@@ -658,8 +748,8 @@ nodes {
   idRef {
     id: "a4fa7e536233311c0a0048e8"
   }
-  index: 14
-  text: "{{GM}}Dresden looks up at you intently for a moment before speaking.{{/GM}} You know, I might be able to do you one better. \n\nWhy don\342\200\231t you poke around those body lockers in the back and see if you find anything... useful."
+  index: 15
+  text: "{{GM}}Dresden looks up at you intently for a moment before speaking, a smile growing on his face.{{/GM}} \nYou know, $+(l.name), I might be able to do you one better. \n\nWhy don\342\200\231t you poke around those body lockers in the back and see if you find anything... useful."
   branches {
     responseText: "Umm.... okay then. I\342\200\231ll go... do that."
     actions {
@@ -704,7 +794,7 @@ nodes {
   }
   branches {
     responseText: "Do you know where the murder site is or not?"
-    nextNodeIndex: 15
+    nextNodeIndex: 16
     idRef {
       id: "2f883ec53064348c09006b90:574c04dc3966300826006385"
     }
@@ -894,8 +984,8 @@ nodes {
   idRef {
     id: "a4fa7e536233311c0a0048ec"
   }
-  index: 15
-  text: "Dresden says nothing. A sly smile plays across his face as he turns back to his work, whistling a tune."
+  index: 16
+  text: "{{GM}}Dresden says nothing. A sly smile plays across his face as he turns back to his work, whistling a tune.{{/GM}}"
   nodeType: ConversationNodeType_GM_Speaker_Voice
   actions {
     ops {

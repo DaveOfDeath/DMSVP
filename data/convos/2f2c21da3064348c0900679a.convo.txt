@@ -7,7 +7,7 @@ nodes {
     id: "2f2c2a163064348c090067a0"
   }
   index: 0
-  text: "Sam is my ...uhh.. second Emerald City Ripper victim. The third one was downtown. "
+  text: "Sam is my ...uhh.. second Emerald City Ripper victim. The other ones have been scattered around the city. "
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -34,6 +34,8 @@ nodes {
   branches {
     responseText: "Sounds grisly."
     nextNodeIndex: 2
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "2f2c21da3064348c0900679a:574bf8b2396630082600611e"
     }
@@ -47,6 +49,65 @@ nodes {
   }
   branches {
     responseText: "Who was the first victim?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bFirstVictim"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bFirstVictim"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 9
     hideIfUnavailable: true
     onlyOnce: true
@@ -56,6 +117,41 @@ nodes {
   }
   branches {
     responseText: "What did the Ripper take from the first victim?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bFirstVictim"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 10
     hideIfUnavailable: true
     onlyOnce: true
@@ -65,6 +161,65 @@ nodes {
   }
   branches {
     responseText: "Who was the second victim?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bSecondVictim"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bSecondVictim"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 11
     hideIfUnavailable: true
     onlyOnce: true
@@ -73,15 +228,157 @@ nodes {
     }
   }
   branches {
-    responseText: "Who was the third victim?"
+    responseText: "Do you know what organ the second victim lost?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bSecondVictim"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 12
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "2f2c21da3064348c0900679a:574fa357613131d43b003a0b"
+    }
+  }
+  branches {
+    responseText: "Who was the third victim?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bThirdVictim"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bThirdVictim"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 13
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "2f2c21da3064348c0900679a:574c02b43966300826006233"
     }
   }
   branches {
     responseText: "What did the Ripper take from the third victim?"
-    nextNodeIndex: 13
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bThirdVictim"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 14
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "2f2c21da3064348c0900679a:574c02d83966300826006237"
     }
@@ -110,7 +407,7 @@ nodes {
     id: "2f2d19f13064348c090067a5"
   }
   index: 3
-  text: "{{GM}}Dresden sighs.{{/GM}} I know, right? They couldn\'t come up with something more original? That\342\200\231s what the Seattle screamsheets and bloodhounds have insisted on calling the latest and greatest serial killer in the Seattle Metroplex. \n\nAll I know is that like the original Jack, our Ripper knows how to handle a scalpel. But this one\342\200\231s even more twisted... he or she always removes an internal organ from the victim."
+  text: "{{GM}}Dresden sighs.{{/GM}} I know, right? They couldn\'t come up with something more original? That\342\200\231s what the Seattle screamsheets and bloodhounds have insisted on calling the latest and greatest serial killer in the Seattle Metroplex. \n\nAll I know is that like the original Jack, our Ripper knows how to handle a scalpel. But this one\342\200\231s even more twisted... he or she always removes an internal organ as a trophy from the victim."
   branches {
     responseText: ""
     nextNodeIndex: 4
@@ -193,7 +490,7 @@ nodes {
     auxiliaryLink: true
   }
   branches {
-    responseText: "Delicious. A trophy hunter. What was it?"
+    responseText: "Delicious. A trophy hunter. What trophy did the Ripper take from Sam?"
     nextNodeIndex: 6
     idRef {
       id: "2f2c21da3064348c0900679a:574bf8b23966300826006127"
@@ -430,7 +727,7 @@ nodes {
     id: "2f2c21da3064348c0900679a:574bfbe239663008260061af"
   }
   index: 9
-  text: "Eisen, I think? It wasn\'t that long ago. She showed up on my slab, cleaned and cut on."
+  text: "{{GM}}Dresden bumps his chin with the first knuckle of his blue-gloved fist, careful not to get any gunk too close to his mouth.{{/GM}}\nEisen, I think? It wasn\'t that long ago. She got dumped locally, and showed up on my slab already cleaned and dead. \n\nThat\'s a hell of a story, but maybe another time."
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -462,7 +759,7 @@ nodes {
     id: "574c0337396630082600623a"
   }
   index: 11
-  text: "I didn\'t work the second victim, they were downtown. Czech, or Cech? Something like that.  From what I heard, the MO was the same as the first body, though.\n\nOperated, organ extracted, dumped naked and clean afterward."
+  text: "{{GM}}Dresden looks distant for a moment, thinking about something unpleasant.{{/GM}}\nI didn\'t work the second victim, they were downtown. Czech, or Cech? Something like that.  From what I heard, the MO was the same as the first body, though.\n\nOperated, organ extracted, dumped clean and naked afterward."
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -475,10 +772,26 @@ nodes {
 }
 nodes {
   idRef {
-    id: "574c039c3966300826006290"
+    id: "2f2c21da3064348c0900679a:574fa391613131d43b003a0d"
   }
   index: 12
-  text: "Bolden, I think the name was. Cut down, dumped into Lake Washington."
+  text: "Second victim... pancreas? I\'m not completely sure."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "2f2c21da3064348c0900679a:574fa391613131d43b003a0f"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "574c039c3966300826006290"
+  }
+  index: 13
+  text: "Bolden, I think the name was. Cut down, dumped on the edge of Lake Washington.\n\nCaused quite a fuss up in Bellvue, which is when this Ripper nonsense really started."
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -493,8 +806,8 @@ nodes {
   idRef {
     id: "574c03c43966300826006293"
   }
-  index: 13
-  text: "Kidney, I think. Er- Both of them, if I remember correctly."
+  index: 14
+  text: "Kidney, I think. Er- Maybe both kidneys?  I\'d have to review my notes to remember all the little details."
   branches {
     responseText: ""
     nextNodeIndex: 1
