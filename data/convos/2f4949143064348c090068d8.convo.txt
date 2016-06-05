@@ -39,6 +39,88 @@ nodes {
   index: 2
   text: ""
   branches {
+    responseText: "{{CC}}Biotech: 2{{/CC}} Check Sam\'s body and autopsy records."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 11
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 2
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bBiotech"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "2f4949143064348c090068d8:5753d8d5396630fc04001560"
+    }
+  }
+  branches {
     responseText: "{{CC}}Academic{{/CC}} {{GM}}Make a closer examination of Sam\'s corpse.{{/GM}}"
     conditions {
       ops {
@@ -89,7 +171,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 3
+    nextNodeIndex: 5
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -114,7 +196,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 4
+    nextNodeIndex: 6
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -158,7 +240,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 5
+    nextNodeIndex: 7
     hideIfUnavailable: true
     idRef {
       id: "2f4949143064348c090068d8:574bd2b83966300826005f44"
@@ -182,7 +264,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 7
+    nextNodeIndex: 9
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -207,7 +289,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 8
+    nextNodeIndex: 10
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -222,12 +304,44 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  comment: "Sam\'s Corpse Convo"
+}
+nodes {
+  idRef {
+    id: "5753d9d7396630fc04001563"
+  }
+  index: 3
+  text: "You check Sam\'s corpse, and other than the area around the incision, he\'s just as dirty as you remember. \n\nSam has the jaundiced yellow eyes of someone with liver failure. Sam has all sorts of scars from previous surgeries and stitches. His body is a road map from a life of abuse. There are puncture wounds over his external jugular vein,, which is a risky injection to attempt on an unwilling patient. There\'s bruising around his neck that shows perhaps someone much larger than him held him by the neck and injected him. \n\nProbing briefly, you confirm that Sam\'s liver is gone."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "2f4949143064348c090068d8:5753dc77396630fc04001565"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5753dc7b396630fc04001568"
+  }
+  index: 4
+  text: "Dresden\'s autopsy reads like Sam\'s wrap sheet. Numerous surgeries, from that shootout on the docks three years ago, to the time he called a woman a hooker and she attacked him with a bottle. The autopsy mentions some extra scar tissue around the missing liver, damage to the bile ducts for at least a year before Sam died, and there\'s a blood workup. \n\nThe blood work says that Sam was injected with Succinylcholine, it\'s a paralytic that allows the patient to experience pain without being able to scream for help or fight back. Rough stuff."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "2f4949143064348c090068d8:5753dd09396630fc0400156a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
     id: "2f4949143064348c090068d8:574bd75f3966300826005f9b"
   }
-  index: 3
+  index: 5
   text: "Sam has bruises on his knuckles, like he normally would. He has the jaundiced yellow eyes of someone with liver failure. Given Sam\'s plan to drink himself to death, that makes sense.\n\nWhat doesn\'t make sense are the puncture wounds on his neck, or how clean the incision is given that Sam died after the organ was extracted.\nProbing briefly, you confirm that Sam\'s liver is gone."
   branches {
     responseText: ""
@@ -243,7 +357,7 @@ nodes {
   idRef {
     id: "a53874366233311c0a004ab2"
   }
-  index: 4
+  index: 6
   text: "Moving things around, you can make out that it\'s a card from a place called \"The Seamstresses Union\". The card is plastic, but has seen a lot of wear and tear- Sam has apparently had it for a while. There was something handwritten on the back, but blood and time has rendered it illegible."
   branches {
     responseText: ""
@@ -283,7 +397,7 @@ nodes {
   idRef {
     id: "a53874366233311c0a004ab8"
   }
-  index: 5
+  index: 7
   text: "It\'s a standard cheap black unsecured credstick. No way of knowing what\342\200\231s on it without slotting it."
   branches {
     responseText: "{{GM}}Take the credstick.{{/GM}}"
@@ -303,7 +417,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 6
+    nextNodeIndex: 8
     idRef {
       id: "2f4949143064348c090068d8:574bd2b83966300826005f47"
     }
@@ -322,7 +436,7 @@ nodes {
   idRef {
     id: "a53874366233311c0a004abb"
   }
-  index: 6
+  index: 8
   text: "You slot the credstick into your PDA. You have a copy of Sam\'s very bad fake SIN, and you add 300\302\245 to your account.\n\nThank you, Doctor Dirk Dingleberry, for your generous donation."
   branches {
     responseText: ""
@@ -392,7 +506,7 @@ nodes {
   idRef {
     id: "a53fd2046233311c0a004af4"
   }
-  index: 7
+  index: 9
   text: "It\'s Sam\'s shirt. Purple, or maybe it was before it was a blood-soaked rag. Sam always did have a taste for good clothes. \nSeveral of the buttons are missing, and blood has thoroughly coated all the items. The bag sloshes a bit in your hand."
   branches {
     responseText: ""
@@ -408,7 +522,7 @@ nodes {
   idRef {
     id: "a53874366233311c0a004ac4"
   }
-  index: 8
+  index: 10
   text: "{{GM}}You can only see part of the note, given the torn-off bits and bloodstains.{{/GM}} \n\nSam,\nI feel terrible that we arg --- - - - - - - - - -. \nWe have been - - - - - - - - - - - - - - - - - -\nso long. - - - - - - - - - - - - - - - - - - - - - - -\nto say I\342\200\231m sor- - - - - - - - - - - - - - - - - - - \nWe\'ll see you there. \nLove, Jessica."
   branches {
     responseText: ""
