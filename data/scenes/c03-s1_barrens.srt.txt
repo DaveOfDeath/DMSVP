@@ -51,7 +51,7 @@ triggers {
             string_value: "WithOrWithout"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
@@ -336,6 +336,7 @@ triggers {
         float_value: 0
       }
       args {
+        float_value: 0
       }
     }
     ops {
@@ -393,25 +394,6 @@ triggers {
         }
       }
     }
-    ops {
-      functionName: "Attach Region to Actor"
-      args {
-        call_value {
-          functionName: "Get Map Item (Region)"
-          args {
-            string_value: "51eedfa6623331a01b00767e"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Player)"
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
   }
   isActive: true
   idRef {
@@ -439,6 +421,34 @@ triggers {
   conditions {
   }
   actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "wretching"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
     ops {
       functionName: "Move Prop"
       args {
@@ -593,6 +603,7 @@ triggers {
         float_value: 0
       }
       args {
+        float_value: 0
       }
     }
   }
@@ -698,6 +709,7 @@ triggers {
         float_value: 0
       }
       args {
+        float_value: 0
       }
     }
   }
@@ -803,6 +815,7 @@ triggers {
         float_value: 0
       }
       args {
+        float_value: 0
       }
     }
   }
@@ -885,12 +898,27 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Activate Actor Spawner"
+      functionName: "Remove Item from Actor"
       args {
         call_value {
-          functionName: "Get Map Item (Actor Reference)"
+          functionName: "Get Map Item (Item)"
           args {
-            string_value: "a99748bc623331441b00305f"
+            string_value: "c02_s1_Jakes_Safe_MagCard"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
           }
         }
       }
@@ -907,12 +935,38 @@ triggers {
       }
     }
     ops {
-      functionName: "Activate Actor Spawner"
+      functionName: "Teleport Actor to Area Around Point"
       args {
         call_value {
-          functionName: "Get Map Item (Actor Reference)"
+          functionName: "Specific Actor"
           args {
-            string_value: "a9979870623331441b003060"
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "a9979870623331441b003060"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Prop"
+          args {
+            call_value {
+              functionName: "Get Map Item (Prop)"
+              args {
+                string_value: "5753d48a663136ac07001505"
+              }
+            }
           }
         }
       }
@@ -920,7 +974,77 @@ triggers {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "WithOrWithout"
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Actor to Area Around Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "a99748bc623331441b00305f"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Prop"
+          args {
+            call_value {
+              functionName: "Get Map Item (Prop)"
+              args {
+                string_value: "5753d47c663136ac07001502"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
           }
           args {
             int_value: 0
@@ -1016,50 +1140,13 @@ triggers {
         }
       }
       args {
-        int_value: 2
+        int_value: 1
       }
       args {
         call_value {
           functionName: "Get Map Item (SceneDimension)"
           args {
             string_value: "Default"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Remove Item from Actor"
-      args {
-        call_value {
-          functionName: "Get Map Item (Item)"
-          args {
-            string_value: "c02_s1_Jakes_Safe_MagCard"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Player)"
-              args {
-                int_value: 0
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 1
           }
         }
       }
@@ -1120,6 +1207,46 @@ triggers {
   actions {
     ops {
       functionName: "Clear Camera Points of Interest"
+    }
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "Mugger"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Nothing Selected"
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
     }
     ops {
       functionName: "Add Camera Point of Interest (Actors)"
@@ -1185,32 +1312,6 @@ triggers {
         float_value: 0
       }
       args {
-      }
-    }
-    ops {
-      functionName: "Order Actor to Protect (Region)"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "a9979870623331441b003060"
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Region)"
-          args {
-            string_value: "a9742a40623331341700491e"
-          }
-        }
       }
     }
   }
@@ -1343,6 +1444,7 @@ triggers {
         float_value: 0
       }
       args {
+        float_value: 0
       }
     }
   }
@@ -5061,7 +5163,7 @@ triggers {
       functionName: "Trigger: Wait Until Triggered Again"
     }
     ops {
-      functionName: "Send Event"
+      functionName: "Send Event After Delay"
       args {
         call_value {
           functionName: "Get Map Item (Event)"
@@ -5069,6 +5171,9 @@ triggers {
             string_value: "EventMuggersKilled"
           }
         }
+      }
+      args {
+        float_value: 3
       }
     }
   }
@@ -5078,10 +5183,10 @@ triggers {
   }
   elseActions {
   }
-  is_oneshot: true
+  is_oneshot: false
 }
 triggers {
-  name: "AllMuggersKilled"
+  name: "PostMuggingConversate"
   events {
     ops {
       functionName: "Get Map Item (Event)"
@@ -5091,308 +5196,6 @@ triggers {
     }
   }
   conditions {
-    ops {
-      functionName: "Evaluate If Actor is Inside Region"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Player)"
-              args {
-                int_value: 0
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "AreOrAreNot"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Region)"
-          args {
-            string_value: "51eedfa6623331a01b00767e"
-          }
-        }
-      }
-    }
-  }
-  actions {
-    ops {
-      functionName: "Change Actor Team"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Player)"
-              args {
-                int_value: 1
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (string)"
-          args {
-            string_value: "FactionList"
-          }
-          args {
-            int_value: 4
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (SceneDimension)"
-          args {
-            string_value: "Default"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "End Current Team Round"
-    }
-    ops {
-      functionName: "Suspend Team\'s Turn"
-      args {
-        call_value {
-          functionName: "Get Preset Value (string)"
-          args {
-            string_value: "FactionList"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        int_value: 2
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (SceneDimension)"
-          args {
-            string_value: "Default"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Change Actor Control"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Player)"
-              args {
-                int_value: 1
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "PlayerOrAI"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Order Actor to Move To (Actor)"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Player)"
-              args {
-                int_value: 1
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Player)"
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "FacingDirection"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Set Variable (bool)"
-      args {
-        call_value {
-          functionName: "Get Variable (bool)"
-          args {
-            string_value: "isJakeMoving"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-  }
-  isActive: true
-  idRef {
-    id: "a9cc0e5f623331441b003083"
-  }
-  elseActions {
-  }
-  is_oneshot: true
-}
-triggers {
-  name: "PostMuggingConversate_NotClose"
-  events {
-    ops {
-      functionName: "On Actor Movement Finished"
-    }
-  }
-  conditions {
-    ops {
-      functionName: "Comparison (Actor)"
-      args {
-        call_value {
-          functionName: "Triggering Actor"
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "IsOrIsNot"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Player)"
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Comparison (bool)"
-      args {
-        call_value {
-          functionName: "Get Variable (bool)"
-          args {
-            string_value: "isJakeMoving"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "IsOrIsNot"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Comparison (bool)"
-      args {
-        call_value {
-          functionName: "Get Variable (bool)"
-          args {
-            string_value: "hasFoundStash"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "IsOrIsNot"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
   }
   actions {
     ops {
@@ -5431,94 +5234,6 @@ triggers {
             int_value: 1
           }
         }
-      }
-    }
-  }
-  isActive: true
-  idRef {
-    id: "a9dca6bf623331441b003085"
-  }
-  elseActions {
-  }
-  is_oneshot: true
-}
-triggers {
-  name: "PostMuggingConversate_AlreadyClose"
-  events {
-    ops {
-      functionName: "Get Map Item (Event)"
-      args {
-        string_value: "EventMuggersKilled"
-      }
-    }
-  }
-  conditions {
-    ops {
-      functionName: "Evaluate If Actor is Inside Region"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Player)"
-              args {
-                int_value: 0
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "AreOrAreNot"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Region)"
-          args {
-            string_value: "51eedfa6623331a01b00767e"
-          }
-        }
-      }
-    }
-  }
-  actions {
-    ops {
-      functionName: "Start Conversation Between Actors"
-      args {
-        call_value {
-          functionName: "Get Map Item (Conversation)"
-          args {
-            string_value: "a9de94d4623331441b003086"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Player)"
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Player)"
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
       }
     }
   }
@@ -6740,6 +6455,12 @@ triggers {
         }
       }
       args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
       }
     }
     ops {
@@ -6771,6 +6492,12 @@ triggers {
         }
       }
       args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
       }
     }
     ops {
@@ -13396,19 +13123,19 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "CloseToJake"
+  name: "rHoldingPen"
   position {
-    x: 11
-    y: -3
+    x: 0
+    y: -50
     width: 3
     height: 3
   }
   enabledAtStart: true
-  is_camera_region: false
+  is_camera_region: true
   is_matrix_node: false
   is_vfx_fill_region: false
   idRef {
-    id: "51eedfa6623331a01b00767e"
+    id: "5753d558663136ac07001506"
   }
   highlight_color {
     r: 0
@@ -13599,10 +13326,8 @@ characters {
         armor: 0
         force: 0
         morale: 0
-        discipline: 0
         awareness: -80
         perception: 0
-        authority: 0
         protect_tether_range: -4
         move_speed: 0
       }
@@ -13639,8 +13364,6 @@ characters {
       }
       archetypeName: "Non-Combatant"
       attitude: AttitudeCautious
-      vulnerabilities {
-      }
     }
     team_id: "Civilians"
     char_name: "Hooker"
@@ -13975,7 +13698,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Seattle:Standard/DwarfFemaleAdept"
+    prefab_name: "Homeless/HumanFemaleHomelessJacketBundle"
     character_sheet_id: "BaseCivilian"
     character_mod {
       stats {
@@ -13992,10 +13715,8 @@ characters {
         armor: 0
         force: 0
         morale: 0
-        discipline: 0
         awareness: 0
         perception: 0
-        authority: 0
         protect_tether_range: 0
         move_speed: 0
       }
@@ -14032,14 +13753,12 @@ characters {
       }
       archetypeName: "Non-Combatant"
       attitude: AttitudeAggressive
-      vulnerabilities {
-      }
     }
     team_id: "Civilians"
     char_name: "Sarah"
     pc_spawn_number: -1
     portrait {
-      filename: "npc_dwarffemale_maliit"
+      filename: ""
     }
     karma: 6
     is_prop_character: true
@@ -14356,8 +14075,6 @@ characters {
       }
       archetypeName: "Guard - Seek And Destroy"
       attitude: AttitudeAggressive
-      vulnerabilities {
-      }
     }
     equipment {
       prefab_name: "Sh 1 Ganger Shotgun"
@@ -14777,7 +14494,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Seattle:Story/ThaddeusRyker"
+    prefab_name: "Gangers/HumanMaleGangerBanditMask"
     character_sheet_id: "Lonestar_Lv2_Ork_Shotgun"
     character_mod {
       stats {
@@ -14794,10 +14511,8 @@ characters {
         armor: 0
         force: 0
         morale: 0
-        discipline: 0
         awareness: 0
         perception: 0
-        authority: 0
         protect_tether_range: 0
         move_speed: 0
       }
@@ -14834,8 +14549,6 @@ characters {
       }
       archetypeName: "Guard - Seek And Destroy"
       attitude: AttitudeAggressive
-      vulnerabilities {
-      }
     }
     equipment {
       prefab_name: "Sh 1 Ganger Shotgun"
@@ -15109,7 +14822,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Seattle:Homeless/HumanFemaleHomelessPoncho"
+    prefab_name: "Homeless/HumanFemaleHomelessPoncho"
     character_sheet_id: "BaseCivilian"
     character_mod {
       stats {
@@ -15126,10 +14839,8 @@ characters {
         armor: 0
         force: 0
         morale: 0
-        discipline: 0
         awareness: 0
         perception: 0
-        authority: 0
         protect_tether_range: 0
         move_speed: 0
       }
@@ -15166,8 +14877,6 @@ characters {
       }
       archetypeName: "Non-Combatant"
       attitude: AttitudeCautious
-      vulnerabilities {
-      }
     }
     team_id: "Civilians"
     char_name: "Mrs. James"
@@ -15175,7 +14884,7 @@ characters {
     ai_ignores: true
     unkillable: true
     portrait {
-      filename: "npc_humanfemale_kami"
+      filename: ""
     }
     karma: 6
     is_prop_character: false
@@ -15566,10 +15275,8 @@ characters {
         armor: 0
         force: 0
         morale: 0
-        discipline: 0
         awareness: 0
         perception: 0
-        authority: 0
         protect_tether_range: 0
         move_speed: 0
       }
@@ -15606,8 +15313,6 @@ characters {
       }
       archetypeName: "Non-Combatant"
       attitude: AttitudeAggressive
-      vulnerabilities {
-      }
     }
     team_id: "Civilians"
     char_name: "Officer Kuprik"
@@ -15930,9 +15635,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -19
+    x: 0
     y: 0
-    z: -3
+    z: -48
   }
   orientation: ORIENTATION_S
   GeneralTags: "Mugger"
@@ -15961,11 +15666,12 @@ characters {
       }
       specializations {
       }
+      archetypeName: "gumbo_MeleeSoldier"
     }
-    team_id: "Gangers"
+    team_id: "Civilians"
     char_name: "Street Thug"
     GeneralTags: "Mugger"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -15976,9 +15682,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -18
+    x: 1
     y: 0
-    z: -3
+    z: -49
   }
   orientation: ORIENTATION_S
   GeneralTags: "Mugger"
@@ -16007,11 +15713,12 @@ characters {
       }
       specializations {
       }
+      archetypeName: "gumbo_Soldier"
     }
-    team_id: "Gangers"
+    team_id: "Civilians"
     char_name: "Mugger"
     GeneralTags: "Mugger"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -16232,8 +15939,6 @@ characters {
       }
       archetypeName: "Guard - Seek And Destroy"
       attitude: AttitudeAggressive
-      vulnerabilities {
-      }
     }
     equipment {
       prefab_name: "Sword 1 Machete"
@@ -16815,8 +16520,6 @@ scene_dimensions {
 }
 ambience_template: "barrens-night"
 combat_music: "Seattle-Set6-Combat"
-character_roster {
-}
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
   prereq_description: ""
