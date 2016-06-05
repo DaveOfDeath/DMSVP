@@ -22,7 +22,7 @@ nodes {
     id: "6cfb6414623665a82a0060bc"
   }
   index: 1
-  text: "Sorry bolshoi, didn\'t expect any visitors at this hour. Some asshole at corporate took my receptionist, said I didn\'t need her at 3am. \nWhat can I do for you, $(l.Sir)?"
+  text: "Sorry Bolshoi, didn\'t expect any visitors at this hour. \n\n{{GM}}The doctor grunts to himself, zipping open a bodybag on his table, and continues talking to himself.{{/GM}}\n\nSome asshole at corporate took my receptionist, said I didn\'t need her at 3am. Said no one ever visits at 3am, and now here I am...\n\nWhat can I do for you, $(l.Sir)?"
   branches {
     responseText: ""
     nextNodeIndex: 2
@@ -38,15 +38,26 @@ nodes {
   index: 2
   text: ""
   branches {
-    responseText: "Are you the coroner?"
+    responseText: "Bolshoi?"
     nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "254028ef306434dc1000129c:5753d495396630e40900687c"
+    }
+  }
+  branches {
+    responseText: "Are you the coroner?"
+    nextNodeIndex: 4
     idRef {
       id: "254028ef306434dc1000129c:574bdf013966300826006012"
     }
   }
   branches {
     responseText: "You seem a little too happy there, Doc, do I need to come back later?"
-    nextNodeIndex: 10
+    nextNodeIndex: 11
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "254028ef306434dc1000129c:574be780396630082600604c"
     }
@@ -56,27 +67,43 @@ nodes {
 }
 nodes {
   idRef {
-    id: "6cfb6414623665a82a0060bf"
+    id: "5753d4a4396630e4090068b3"
   }
   index: 3
+  text: "{{GM}}The doctor squints at you, the smile never fading, perhaps looking you over for the first time.{{/GM}}\n\nRussian for \'big,\' means \'buddy\' or \'pal.\' Friend of mine used to use it all the time when he came by, now it\'s stuck in my head."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "254028ef306434dc1000129c:5753d52c396630e4090068b5"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "6cfb6414623665a82a0060bf"
+  }
+  index: 4
   text: "I\342\200\231m John Dresden, the Organ Grinders Branch Manager here. So yeah, that makes me the defacto area coroner, too. \n\nI haven\'t had the pleasure... you are?"
   branches {
     responseText: "$(s.name). I\'m here about Sam Watts."
-    nextNodeIndex: 4
+    nextNodeIndex: 5
     idRef {
       id: "254028ef306434dc1000129c:574bdf013966300826006015"
     }
   }
   branches {
-    responseText: "$(s.lastname). I represent a man named Sam Watts, and I\'m here to look into his murder."
-    nextNodeIndex: 5
+    responseText: "$+(s.lastname). I represent a man named Sam Watts, and I\'m here to look into his murder."
+    nextNodeIndex: 6
     idRef {
       id: "254028ef306434dc1000129c:574bdf01396630082600601b"
     }
   }
   branches {
     responseText: "No one you\'ve ever heard of. Now tell me about Sam Watts."
-    nextNodeIndex: 6
+    nextNodeIndex: 7
     idRef {
       id: "254028ef306434dc1000129c:574bdf013966300826006021"
     }
@@ -87,11 +114,11 @@ nodes {
   idRef {
     id: "51995fbe396163e80d006936"
   }
-  index: 4
+  index: 5
   text: "{{GM}}His grin fades.{{/GM}} And on Earth what makes you think I know anything about that?"
   branches {
     responseText: "Sam had a locator chip embedded in his skull. I followed it here."
-    nextNodeIndex: 7
+    nextNodeIndex: 8
     idRef {
       id: "254028ef306434dc1000129c:574bdf013966300826006018"
     }
@@ -103,11 +130,11 @@ nodes {
   idRef {
     id: "51996340396163e80d0069f8"
   }
-  index: 5
+  index: 6
   text: "{{GM}}He frowns.{{/GM}} Interesting. A dead man makes for a strange client. Perhaps the best kind of client, the kind that pays you up front?\n\nBut I digress, what makes you think he\'s here?"
   branches {
     responseText: "Sam had a locator chip embedded in his skull. I followed it here."
-    nextNodeIndex: 7
+    nextNodeIndex: 8
     idRef {
       id: "254028ef306434dc1000129c:574bdf01396630082600601e"
     }
@@ -119,11 +146,11 @@ nodes {
   idRef {
     id: "6cfb6414623665a82a0060c8"
   }
-  index: 6
+  index: 7
   text: "{{GM}}He fixes you with a hard gaze.{{/GM}} Careful, friend. I have a lot of chummers in the Star, I can have an HTR squad here in 2 minutes. \n\nNow, what makes you think I\'d know anything about Sam Watts?"
   branches {
     responseText: "Sam had a locator chip embedded in his skull. I followed it here."
-    nextNodeIndex: 7
+    nextNodeIndex: 8
     idRef {
       id: "254028ef306434dc1000129c:574bdf013966300826006024"
     }
@@ -134,11 +161,11 @@ nodes {
   idRef {
     id: "6cfb6414623665a82a0060ce"
   }
-  index: 7
+  index: 8
   text: "I see. Well, you are correct, he\'s right over there in the back room. Not too many people know about the murder yet, though... the press haven\'t caught wind of it yet, what with the murder being all the way out here in Touristville."
   branches {
     responseText: ""
-    nextNodeIndex: 8
+    nextNodeIndex: 9
     idRef {
       id: "254028ef306434dc1000129c:574bdf013966300826006027"
     }
@@ -149,11 +176,11 @@ nodes {
   idRef {
     id: "51996aa3396163e80d006a87"
   }
-  index: 8
+  index: 9
   text: "Who was it that told you Watts was dead?"
   branches {
     responseText: "Sam did. When his heart stopped, \302\245100,000 was wired to a secure account in my name. I find the killer, I get paid."
-    nextNodeIndex: 9
+    nextNodeIndex: 10
     idRef {
       id: "254028ef306434dc1000129c:574bdf01396630082600602a"
     }
@@ -161,7 +188,7 @@ nodes {
   }
   branches {
     responseText: "Sam has a digital ghost. When his heart stopped, I got a recorded message asking me to bring his killer to justice. Guess he had a hunch."
-    nextNodeIndex: 9
+    nextNodeIndex: 10
     idRef {
       id: "254028ef306434dc1000129c:574bdf01396630082600602d"
     }
@@ -171,8 +198,8 @@ nodes {
   idRef {
     id: "51996aa3396163e80d006a8d"
   }
-  index: 9
-  text: "{{GM}}The dwarf raises his eyebrows, a smile wiping the suspicion from his face.{{/GM}} A dead man\'s switch, eh? Fascinating!\n\nI was working on him earlier. He\342\200\231s over there.\n{{GM}}Dresden gestures to the room east of you"
+  index: 10
+  text: "{{GM}}The dwarf raises his eyebrows, a smile wiping the suspicion from his face.{{/GM}} \n\nA dead man\'s switch, eh? Fascinating stuff! I was working on Sam earlier. He\342\200\231s on the table back there.\n\n{{GM}}Dresden gestures to the room east of you.{{/GM}}"
   nodeType: ConversationNodeType_Simple
   actions {
     ops {
@@ -240,8 +267,8 @@ nodes {
   idRef {
     id: "574be7f4396630082600606b"
   }
-  index: 10
-  text: "{{GM}}The Doctor continues grinning at you.{{/GM}}\n\nDon\'t fuss on my account, she\'s not going anywhere soon. What can I do for you?"
+  index: 11
+  text: "{{GM}}The Doctor continues grinning at you.{{/GM}}\n\nDon\'t fuss on my account, this miss is pretty patient, and she\'s not going anywhere soon. What can I do for you?"
   branches {
     responseText: ""
     nextNodeIndex: 2
