@@ -7,23 +7,38 @@ nodes {
     id: "51abda4f356164f81000309f"
   }
   index: 0
-  text: "Your notebook - calendar, contacts, that kind of thing."
+  text: "You open the low-tech datapad with your thumbprint. This isn\'t new tech- it doesn\'t even have Matrix access.\n\nIt has your basic notebook functions: calendar, contacts, that kind of thing."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "51abda40356164f810003099:575765f16131319832004e38"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "575765f16131319832004e3b"
+  }
+  index: 1
+  text: ""
   branches {
     responseText: "{{GM}}View your list of contacts.{{/GM}}"
-    nextNodeIndex: 1
+    nextNodeIndex: 2
     idRef {
       id: "51abda40356164f810003099:5714227539663090260018e1"
     }
   }
   branches {
     responseText: "{{GM}}View your personal calendar.{{/GM}}"
-    nextNodeIndex: 13
+    nextNodeIndex: 14
     idRef {
       id: "51abda40356164f810003099:5714227539663090260018ea"
     }
   }
   branches {
-    responseText: "{{GM}}Put down your notebook.{{/GM}}"
+    responseText: "{{GM}}Put down your datapad.{{/GM}}"
     actions {
       ops {
         functionName: "Set Variable (bool)"
@@ -47,23 +62,65 @@ nodes {
           }
         }
       }
+      ops {
+        functionName: "Set Prop Visible by Tag"
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "glow"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          float_value: -1
+        }
+        args {
+          call_value {
+            functionName: "Everywhere"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "DoesOrDoesNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
     }
     nextNodeIndex: -1
     idRef {
       id: "51abda40356164f810003099:5714227539663090260018f0"
     }
   }
-  nodeType: ConversationNodeType_GM_Voice
+  nodeType: ConversationNodeType_Simple
+  comment: "Datapadloop"
 }
 nodes {
   idRef {
     id: "51abda97356164f8100030a4"
   }
-  index: 1
+  index: 2
   text: "The list is sad, dried up. \n\nCarter Detroit - Fixer - no response to messages\nDowd - Runner - dead\nFelton Nash - Fixer - missing since Feb. \nNew Larry - Runner - dead\nAwiin Johansonn - Europe somewhere (deep cover)\nSam Watts - Runner  - ??? probably in a gutter somewhere\nSangoma  - Runner - dead\nHalf Jack - Dealer - retired or dead"
   branches {
     responseText: ""
-    nextNodeIndex: 2
+    nextNodeIndex: 3
     idRef {
       id: "51abda40356164f810003099:571428cb39663090260018f7"
     }
@@ -74,11 +131,11 @@ nodes {
   idRef {
     id: "571428cb39663090260018fa"
   }
-  index: 2
+  index: 3
   text: ""
   branches {
     responseText: "Carter Detroit"
-    nextNodeIndex: 3
+    nextNodeIndex: 4
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -87,7 +144,7 @@ nodes {
   }
   branches {
     responseText: "Dowd"
-    nextNodeIndex: 4
+    nextNodeIndex: 5
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -96,7 +153,7 @@ nodes {
   }
   branches {
     responseText: "Felton Nash"
-    nextNodeIndex: 5
+    nextNodeIndex: 6
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -105,7 +162,7 @@ nodes {
   }
   branches {
     responseText: "Larry"
-    nextNodeIndex: 6
+    nextNodeIndex: 7
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -114,7 +171,7 @@ nodes {
   }
   branches {
     responseText: "New Larry"
-    nextNodeIndex: 7
+    nextNodeIndex: 8
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -123,7 +180,7 @@ nodes {
   }
   branches {
     responseText: "Awiin Johansson"
-    nextNodeIndex: 8
+    nextNodeIndex: 9
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -132,7 +189,7 @@ nodes {
   }
   branches {
     responseText: "Sam Watts"
-    nextNodeIndex: 9
+    nextNodeIndex: 10
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -141,7 +198,7 @@ nodes {
   }
   branches {
     responseText: "Sangoma"
-    nextNodeIndex: 10
+    nextNodeIndex: 11
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -150,7 +207,7 @@ nodes {
   }
   branches {
     responseText: "Half Jack"
-    nextNodeIndex: 11
+    nextNodeIndex: 12
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -159,7 +216,7 @@ nodes {
   }
   branches {
     responseText: "{{CC}}Close List of Contacts{{/CC}}"
-    nextNodeIndex: 12
+    nextNodeIndex: 13
     idRef {
       id: "51abda40356164f810003099:57142934396630902600190e"
     }
@@ -171,11 +228,11 @@ nodes {
   idRef {
     id: "5714298e3966309026001963"
   }
-  index: 3
+  index: 4
   text: "Race: Human\nSex: Male\nOccupation: Fixer\nNotes: UCAS native, rabidly loyal to Detroit, ARES, and the Detroit Nightmares Urban Brawl team.\n{{GM}}You have six calls to him, with no response.{{/GM}}"
   branches {
     responseText: ""
-    nextNodeIndex: 2
+    nextNodeIndex: 3
     idRef {
       id: "51abda40356164f810003099:571429973966309026001965"
     }
@@ -190,11 +247,11 @@ nodes {
   idRef {
     id: "51abda40356164f810003099:57142a13396630902600196b"
   }
-  index: 4
+  index: 5
   text: "Race: Dwarf\nSex: Male\nOccupation: Fixer\nNotes: UCAS Chicago native. Expert on shadows and vampires.\nDead (Renraku run, three years ago)"
   branches {
     responseText: ""
-    nextNodeIndex: 2
+    nextNodeIndex: 3
     idRef {
       id: "51abda40356164f810003099:57142a13396630902600196d"
     }
@@ -209,11 +266,11 @@ nodes {
   idRef {
     id: "51abda40356164f810003099:57142a1a3966309026001974"
   }
-  index: 5
+  index: 6
   text: "Race: Troll\nSex: Male\nOccupation: Fixer/Fence\nNotes: CAS native, loves to talk about Nashville Sprawl and his adventures in Texas. \nMissing Since February"
   branches {
     responseText: ""
-    nextNodeIndex: 2
+    nextNodeIndex: 3
     idRef {
       id: "51abda40356164f810003099:573826176631361015002c2f"
     }
@@ -228,11 +285,11 @@ nodes {
   idRef {
     id: "51abda40356164f810003099:57142a283966309026001992"
   }
-  index: 6
+  index: 7
   text: "Race: Ork\nSex: Female\nOccupation: Street Mage\nNotes:\n   Drummer in her OrkPunk Band, Girls with Knives.  \n   Real name was Larissa, went by Larry.\n\n   Dead on the Mitsuhama run, a little over three years ago.\n"
   branches {
     responseText: ""
-    nextNodeIndex: 2
+    nextNodeIndex: 3
     idRef {
       id: "51abda40356164f810003099:57142a283966309026001994"
     }
@@ -247,11 +304,11 @@ nodes {
   idRef {
     id: "51abda40356164f810003099:57142a26396630902600198c"
   }
-  index: 7
+  index: 8
   text: "Race: Human\nSex: Male\nOccupation: Runner, Mage\nNotes: Smart Mage, stupid tattoo. \n\nVery dead."
   branches {
     responseText: ""
-    nextNodeIndex: 2
+    nextNodeIndex: 3
     idRef {
       id: "51abda40356164f810003099:57142a26396630902600198e"
     }
@@ -266,11 +323,11 @@ nodes {
   idRef {
     id: "51abda40356164f810003099:571430d0396630902600199a"
   }
-  index: 8
+  index: 9
   text: "Race: Human\nSex: Male\nOccupation: Runner, Decker Face\nNotes: \n   Swede Decker, deep-cover infiltrations. \n\n   Somewhere in Europe?  Maybe?"
   branches {
     responseText: ""
-    nextNodeIndex: 2
+    nextNodeIndex: 3
     idRef {
       id: "51abda40356164f810003099:571430d0396630902600199c"
     }
@@ -285,11 +342,11 @@ nodes {
   idRef {
     id: "51abda40356164f810003099:57142a243966309026001986"
   }
-  index: 9
+  index: 10
   text: "Race: Human\nSex: Male\nOccupation: Runner\nNotes: Seattle native, runner; alcoholic, chip-user last you heard from him. Too many bad habits to list here.\nYou haven\'t talked to him in quite a while."
   branches {
     responseText: ""
-    nextNodeIndex: 2
+    nextNodeIndex: 3
     idRef {
       id: "51abda40356164f810003099:57142a243966309026001988"
     }
@@ -304,11 +361,11 @@ nodes {
   idRef {
     id: "51abda40356164f810003099:57142a223966309026001980"
   }
-  index: 10
+  index: 11
   text: "Race: Ork\nSex: Female\nOccupation: Street Shaman\nNotes: Maybe from Salish Sidhe?\n\nProbably dead."
   branches {
     responseText: ""
-    nextNodeIndex: 2
+    nextNodeIndex: 3
     idRef {
       id: "51abda40356164f810003099:57142a223966309026001982"
     }
@@ -323,11 +380,11 @@ nodes {
   idRef {
     id: "51abda40356164f810003099:57142a20396630902600197a"
   }
-  index: 11
+  index: 12
   text: "Race: Dwarf\nSex: Male\nOccupation: Decker/Dealer\nNotes: Always dealing something- info, drugs, and tech. Been thinking about cashing out for a while.\n\nBeen missing for a few weeks; maybe left, maybe dead."
   branches {
     responseText: ""
-    nextNodeIndex: 2
+    nextNodeIndex: 3
     idRef {
       id: "51abda40356164f810003099:57142a20396630902600197c"
     }
@@ -342,11 +399,11 @@ nodes {
   idRef {
     id: "571429453966309026001911"
   }
-  index: 12
+  index: 13
   text: "They\'re all dead ends, or just plain dead."
   branches {
     responseText: ""
-    nextNodeIndex: 0
+    nextNodeIndex: 1
     idRef {
       id: "51abda40356164f810003099:5714295b3966309026001913"
     }
@@ -358,11 +415,11 @@ nodes {
   idRef {
     id: "51abdab0356164f8100030a9"
   }
-  index: 13
-  text: "It\342\200\231s empty. Nothing to do."
+  index: 14
+  text: "There\'s a reminder to call your mother, set by the geniuses at ARES Cupertino. It\'s set as a default, and can\'t be disabled.\n\nSo, really, it\342\200\231s empty. Nothing to do."
   branches {
     responseText: ""
-    nextNodeIndex: 0
+    nextNodeIndex: 1
     idRef {
       id: "51abda40356164f810003099:5714227539663090260018ed"
     }
