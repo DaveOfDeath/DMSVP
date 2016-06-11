@@ -11396,10 +11396,42 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "EventCrashpadEnter"
+      }
+    }
   }
   conditions {
   }
   actions {
+    ops {
+      functionName: "Fade Camera Out"
+      args {
+        float_value: 0.25
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "EventCrashpadEnter"
+          }
+        }
+      }
+      args {
+        float_value: 0.3
+      }
+    }
+    ops {
+      functionName: "Trigger: Wait Until Triggered Again"
+    }
     ops {
       functionName: "Teleport Actor to Area Around Point"
       args {
@@ -11464,6 +11496,15 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Fade Camera In"
+      args {
+        float_value: 0.25
+      }
+      args {
+        float_value: 1
+      }
+    }
   }
   isActive: true
   idRef {
@@ -11487,10 +11528,42 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "EventCrashpadExit"
+      }
+    }
   }
   conditions {
   }
   actions {
+    ops {
+      functionName: "Fade Camera Out"
+      args {
+        float_value: 0.25
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "EventCrashpadExit"
+          }
+        }
+      }
+      args {
+        float_value: 0.3
+      }
+    }
+    ops {
+      functionName: "Trigger: Wait Until Triggered Again"
+    }
     ops {
       functionName: "Teleport Actor to Area Around Point"
       args {
@@ -11555,10 +11628,19 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Fade Camera In"
+      args {
+        float_value: 0.25
+      }
+      args {
+        float_value: 1
+      }
+    }
   }
   isActive: true
   idRef {
-    id: "575c77bb663136b812004e65"
+    id: "575c80ed6631368c02007e28"
   }
   elseActions {
   }
@@ -11578,6 +11660,12 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "EventCoffinMotelEnter"
+      }
+    }
   }
   conditions {
   }
@@ -11590,6 +11678,23 @@ triggers {
       args {
         float_value: 0
       }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "EventCoffinMotelEnter"
+          }
+        }
+      }
+      args {
+        float_value: 0.3
+      }
+    }
+    ops {
+      functionName: "Trigger: Wait Until Triggered Again"
     }
     ops {
       functionName: "Teleport Actor to Area Around Point"
@@ -11678,7 +11783,7 @@ triggers {
         float_value: 0.25
       }
       args {
-        float_value: 2
+        float_value: 1
       }
     }
   }
@@ -11704,6 +11809,12 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "EventCoffinMotelExit"
+      }
+    }
   }
   conditions {
   }
@@ -11716,6 +11827,23 @@ triggers {
       args {
         float_value: 0
       }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "EventCoffinMotelExit"
+          }
+        }
+      }
+      args {
+        float_value: 0.3
+      }
+    }
+    ops {
+      functionName: "Trigger: Wait Until Triggered Again"
     }
     ops {
       functionName: "Teleport Actor to Area Around Point"
@@ -11804,7 +11932,7 @@ triggers {
         float_value: 0.25
       }
       args {
-        float_value: 2
+        float_value: 1
       }
     }
   }
@@ -17299,6 +17427,10 @@ mapEvents: "EventMarketThugsTricked"
 mapEvents: "EventMarketThugKilled"
 mapEvents: "EventHalloweenersKilled"
 mapEvents: "EventInvestigationCounted"
+mapEvents: "EventCoffinMotelEnter"
+mapEvents: "EventCoffinMotelExit"
+mapEvents: "EventCrashpadEnter"
+mapEvents: "EventCrashpadExit"
 senseTags: "TrickedThug"
 senseTags: "MarketThug"
 senseTags: "BulliedThug"
@@ -17429,6 +17561,8 @@ scene_dimensions {
 }
 ambience_template: "barrens-night"
 combat_music: "Seattle-Set6-Combat"
+character_roster {
+}
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
   prereq_description: ""
