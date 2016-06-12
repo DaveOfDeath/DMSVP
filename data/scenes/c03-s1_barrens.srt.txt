@@ -11301,6 +11301,105 @@ triggers {
   is_oneshot: true
 }
 triggers {
+  name: "Coffin.Event_Sam\'s Crash Pad"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "Event_SamsCrashpad"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bSamsPad"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Waypoint on Prop"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PrimaryOrSecondary"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "575cb0586631365813000d7f"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Investigate Sam\'s bunk"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "575d027f396630f8020082e7"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
   name: "DEV.CoffinMotel"
   events {
     ops {
@@ -15089,7 +15188,7 @@ characters {
     enabled_at_start: true
     pc_spawn_number: -1
     portrait {
-      filename: ""
+      filename: "backer_elfmale_andygoolsby"
     }
     karma: 41
   }
@@ -15117,7 +15216,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Gangers/HumanMaleGanger_Halloweener"
+    prefab_name: "Seattle:Gangers/HumanMaleGanger_Halloweener"
     character_sheet_id: "Lonestar_Lv1_Human_Pistol"
     equipment_sheet_id: "Lonestar_Pistol_Low"
     character_mod {
@@ -15175,6 +15274,8 @@ characters {
       }
       archetypeName: "gumbo_Soldier"
       attitude: AttitudeAggressive
+      vulnerabilities {
+      }
     }
     team_id: "Civilians"
     char_name: "Halloweener Sentry"
@@ -15182,7 +15283,7 @@ characters {
     enabled_at_start: true
     pc_spawn_number: -1
     portrait {
-      filename: ""
+      filename: "backerpc_humanmale_ryandurand"
     }
     karma: 32
   }
@@ -15279,7 +15380,7 @@ characters {
     enabled_at_start: true
     pc_spawn_number: -1
     portrait {
-      filename: ""
+      filename: "backerpc_elffemale_elenanamira"
     }
     karma: 43
   }
@@ -16028,7 +16129,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Standard/DwarfFemaleAdept"
+    prefab_name: "Seattle:Standard/DwarfFemaleAdept"
     character_sheet_id: "BaseCivilian"
     character_mod {
       stats {
@@ -16045,8 +16146,10 @@ characters {
         armor: 0
         force: 0
         morale: 0
+        discipline: 0
         awareness: 0
         perception: 0
+        authority: 0
         protect_tether_range: 0
         move_speed: 0
       }
@@ -16083,12 +16186,14 @@ characters {
       }
       archetypeName: "Non-Combatant"
       attitude: AttitudeCautious
+      vulnerabilities {
+      }
     }
     team_id: "Civilians"
     char_name: "Sally"
     pc_spawn_number: -1
     portrait {
-      filename: ""
+      filename: "npc_dwarffemale_mira"
     }
     karma: 6
     is_prop_character: true
@@ -16200,8 +16305,10 @@ characters {
         armor: 0
         force: 0
         morale: 0
+        discipline: 0
         awareness: 0
         perception: 0
+        authority: 0
         protect_tether_range: 0
         move_speed: 0
       }
@@ -16238,6 +16345,8 @@ characters {
       }
       archetypeName: "Non-Combatant"
       attitude: AttitudeAggressive
+      vulnerabilities {
+      }
     }
     team_id: "Civilians"
     char_name: "Officer Kuprik"
@@ -16527,7 +16636,7 @@ characters {
     ai_ignores: true
     unkillable: true
     portrait {
-      filename: ""
+      filename: "npc_trollmale_docks_nightjar"
     }
     portrait_code_override: "s4h6c2b10c2t2"
     karma: 6
@@ -17334,6 +17443,14 @@ variables {
     typeName: "bool"
   }
 }
+variables {
+  bool_value: false
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "bSamsPad"
+    typeName: "bool"
+  }
+}
 mapEvents: "EventMuggerAmbush"
 mapEvents: "EventMuggersKilled"
 mapEvents: "EventJakeAfterMuggersDone"
@@ -17345,6 +17462,7 @@ mapEvents: "EventCoffinMotelEnter"
 mapEvents: "EventCoffinMotelExit"
 mapEvents: "EventCrashpadEnter"
 mapEvents: "EventCrashpadExit"
+mapEvents: "Event_SamsCrashpad"
 senseTags: "TrickedThug"
 senseTags: "MarketThug"
 senseTags: "BulliedThug"
@@ -17398,6 +17516,12 @@ goals {
   name: "Find Coyote at the Seamstresses Union"
   type: GoalType_Primary
   status: GoalStatus_Hidden
+}
+goals {
+  name: "Investigate Sam\'s bunk"
+  type: GoalType_Secondary
+  status: GoalStatus_Hidden
+  description: "Jake mentioned that Sam bunked in a Coffin Motel on the south side of Touristville. Bunk C-4, if Jake understood him correctly."
 }
 worldMapLocation {
   filename: ""
@@ -17475,6 +17599,8 @@ scene_dimensions {
 }
 ambience_template: "barrens-night"
 combat_music: "Seattle-Set6-Combat"
+character_roster {
+}
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
   prereq_description: ""

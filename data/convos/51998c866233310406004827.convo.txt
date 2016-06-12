@@ -7,10 +7,13 @@ nodes {
     id: "51998cde623331040600482d"
   }
   index: 0
-  text: "{{GM}}As you approach the scene of Sam\'s murder, Jake spies the flashing red and blue lights up ahead.{{/GM}}\n\nWhoa, hold up a minute. Lone Star isn\'t above collecting on a corp issued bounty, and the one on my head isn\'t going away any time soon. \n\n{{GM}}He sighs.{{/GM}}"
+  text: "{{GM}}As you approach the alleyway scene of Sam\'s murder, Jake spies the flashing red and blue lights up ahead, and the several Lonestar officers gathered.{{/GM}}\n\nWhoa, hold up a minute omae. Lonestar isn\'t above collecting on a corp issued bounty, even for a rival like Renraku, and the one on my head isn\'t going away any time soon.\n\n{{GM}}He sighs.{{/GM}}"
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "51998c866233310406004827:575d039c396630f802008349"
+    }
   }
   nodeType: ConversationNodeType_Simple
   actions {
@@ -43,7 +46,7 @@ nodes {
     id: "51aec48d396163ac28002f04"
   }
   index: 1
-  text: "Sorry friend... I think this is where our paths diverge. \n\nThanks again for the help with those Halloweeners. Here\'s your payment - they don\'t take nuyen where I\'m going, and you look like you could use the funds. "
+  text: "I\'m sorry, but I think this is where our paths diverge. \n\nThanks again for the help with those Halloweeners. Here\'s your payment - they don\'t take nuyen where I\'m going, and you look like you could use the funds. \n\nStay frosty out there."
   branches {
     responseText: ""
     conditions {
@@ -93,6 +96,9 @@ nodes {
       }
     }
     nextNodeIndex: 2
+    idRef {
+      id: "51998c866233310406004827:575d039c396630f80200834c"
+    }
   }
   branches {
     responseText: ""
@@ -143,6 +149,9 @@ nodes {
       }
     }
     nextNodeIndex: 2
+    idRef {
+      id: "51998c866233310406004827:575d039c396630f80200836a"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -154,32 +163,275 @@ nodes {
   index: 2
   text: ""
   branches {
-    responseText: "Good luck out there."
+    responseText: "Wait, you said that you knew Sam? How well did you know him?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bSamsPad"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "a9de94d4623331441b003086:575d0398396630f802008314"
+    }
+  }
+  branches {
+    responseText: "Good luck out there, Jake."
+    nextNodeIndex: 10
+    idRef {
+      id: "51998c866233310406004827:575d039c396630f80200834f"
+    }
   }
   branches {
     responseText: "What, you want a hug or something?"
-    nextNodeIndex: 4
+    nextNodeIndex: 11
+    idRef {
+      id: "51998c866233310406004827:575d039c396630f802008355"
+    }
   }
   branches {
     responseText: "Likewise, Jake. Give me a call when you\'re in the clear."
-    nextNodeIndex: 5
+    nextNodeIndex: 12
+    idRef {
+      id: "51998c866233310406004827:575d039c396630f80200835b"
+    }
   }
   branches {
     responseText: "Sure you don\'t want to stick around? I could use the backup..."
-    nextNodeIndex: 8
+    nextNodeIndex: 15
+    idRef {
+      id: "51998c866233310406004827:575d039c396630f802008364"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Jake_Exit Loop"
+}
+nodes {
+  idRef {
+    id: "a9de94d4623331441b003086:575d0398396630f802008316"
+  }
+  index: 3
+  text: "{{GM}}Jake sighs.{{/GM}}\n\nYeah, I was hoping to put this off a little longer. I knew Sam. I hate to say it, but your friend was a drek-head.\n\nA drek-head, yes, but also one of my drinking buddies. That makes you my friend-of-a-friend."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "a9de94d4623331441b003086:575d0398396630f802008318"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
+    id: "a9de94d4623331441b003086:575d0398396630f80200831a"
+  }
+  index: 4
+  text: ""
+  branches {
+    responseText: "Even Sam knew he had it coming."
+    nextNodeIndex: 5
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "a9de94d4623331441b003086:575d0398396630f80200831c"
+    }
+  }
+  branches {
+    responseText: "Did Sam have enemies?"
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "a9de94d4623331441b003086:575d0398396630f802008324"
+    }
+  }
+  branches {
+    responseText: "Did Sam have any friends, anyone he trusted?"
+    nextNodeIndex: 7
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "a9de94d4623331441b003086:575d0398396630f80200832c"
+    }
+  }
+  branches {
+    responseText: "Did Sam have any family?"
+    nextNodeIndex: 8
+    idRef {
+      id: "a9de94d4623331441b003086:575d0398396630f802008334"
+    }
+  }
+  branches {
+    responseText: "Where did Sam crash?"
+    nextNodeIndex: 9
+    idRef {
+      id: "a9de94d4623331441b003086:575d0398396630f80200833c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Jake Investigate Loop"
+}
+nodes {
+  idRef {
+    id: "a9de94d4623331441b003086:575d0398396630f80200831e"
+  }
+  index: 5
+  text: "{{GM}}Jake shakes his head.{{/GM}}\n\nHell of a thing, that Dead Man\'s Switch. I can\'t believe I would ever be desperate enough to have one set up. When I die, I want to leave my enemies looking over their shoulders, wondering if I\'ll come back to finish them."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "a9de94d4623331441b003086:575d0398396630f802008320"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a9de94d4623331441b003086:575d0398396630f802008326"
+  }
+  index: 6
+  text: "{{GM}}Jake guffaws, laughing so hard that he chokes.{{/GM}}\n\nOh, DOG, you\'re serious? Didn\'t I just say he was a drek-head-- and I\'m one of the few that considers him a close personal friend. Of course your chummer had enemies, everyone who has ever stood for anything has earned an enemy. I think maybe his biggest enemy was internal; the kind you silence with cheap synth-whiskey, chips, and a consenting partner."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "a9de94d4623331441b003086:575d0398396630f802008328"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a9de94d4623331441b003086:575d0398396630f80200832e"
+  }
+  index: 7
+  text: "{{GM}}Jake shrugs, looking at the neon lighting the pollution above you.{{/GM}}\n\nI honestly couldn\'t tell you. I considered him a drinking buddy, but a friend?\n\n{{GM}}Jake shakes his head.{{/GM}}\n\nI don\'t know that there\'s more than a handful of people Sam trusted. If he sent you the message when he kicked, I think you might be the only name on that list."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "a9de94d4623331441b003086:575d0398396630f802008330"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a9de94d4623331441b003086:575d0398396630f802008336"
+  }
+  index: 8
+  text: "{{GM}}Jake shakes his head.{{/GM}}\n\nI don\'t know, omae, other than a sister who was missing."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "a9de94d4623331441b003086:575d0398396630f802008338"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "a9de94d4623331441b003086:575d0398396630f80200833e"
+  }
+  index: 9
+  text: "{{GM}}Jake points vaguely south.{{/GM}}\n\nSam had a bunk in the Coffin Motel off 2nd. You think my place was a dump, wait \'til you see where he slept. I remember he used to joke that he only felt safe wrapped in C-4. I thought he meant the explosive, but that may have been his bunk. You\'ll have to check it out."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "a9de94d4623331441b003086:575d0398396630f802008340"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bSamsPad"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event_SamsCrashpad"
+          }
+        }
+      }
+      args {
+        float_value: 3
+      }
+    }
+  }
+}
+nodes {
+  idRef {
     id: "51aec6f8396163ac28002f16"
   }
-  index: 3
+  index: 10
   text: "Yeah, you too. \n\n{{GM}}He starts to leave, then tilts his head back.{{/GM}}"
   branches {
     responseText: ""
-    nextNodeIndex: 6
+    nextNodeIndex: 13
+    idRef {
+      id: "51998c866233310406004827:575d039c396630f802008352"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -188,11 +440,14 @@ nodes {
   idRef {
     id: "51aec6f5396163ac28002f14"
   }
-  index: 4
-  text: "Hah.\n\n{{GM}}He starts to leave, then tilts his head back.{{/GM}}"
+  index: 11
+  text: "{{GM}}Jake laughs.{{/GM}}\n\nNo, you\'re not a hugger? Too bad. I always liked being the little spoon.\n\n{{GM}}He starts to leave, then tilts his head back.{{/GM}}"
   branches {
     responseText: ""
-    nextNodeIndex: 6
+    nextNodeIndex: 13
+    idRef {
+      id: "51998c866233310406004827:575d039c396630f802008358"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -201,11 +456,14 @@ nodes {
   idRef {
     id: "51aec4d6396163ac28002f0f"
   }
-  index: 5
+  index: 12
   text: "Yeah, sure. \n\n{{GM}}He starts to leave, then tilts his head back.{{/GM}}"
   branches {
     responseText: ""
-    nextNodeIndex: 6
+    nextNodeIndex: 13
+    idRef {
+      id: "51998c866233310406004827:575d039c396630f80200835e"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -213,11 +471,14 @@ nodes {
   idRef {
     id: "51aec553396163ac28002f12"
   }
-  index: 6
-  text: "Hey, one more thing. When you\'re done checking out your pal\'s crime scene, pop in to the Seamstresses Union. It\'s just down the street. You need gear, information, or just a damned stiff drink, that\'s the place to be. Best dive this side of Chicago. I used that place as a base of operations for years, back in the day. \n\nMake the right friends there and I\'m sure you\'ll get to the bottom of this Ripper business."
+  index: 13
+  text: "Hey, one more thing. When you\'re done checking out your pal\'s crime scene, pop in to the Seamstresses Union. It\'s just down the street. You need gear, information, or just a damned stiff drink, that\'s the place to be. Kubota is chill, and it\'s the best dive this side of Chicago. I used that place as a base of operations for a long time.\n\nMake the right friends there, keep your ear to the ground, and I\'m sure you\'ll get to the bottom of this Ripper business."
   branches {
     responseText: ""
-    nextNodeIndex: 7
+    nextNodeIndex: 14
+    idRef {
+      id: "51998c866233310406004827:575d039c396630f802008361"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -225,7 +486,7 @@ nodes {
   idRef {
     id: "51afc0d23961633828004e6e"
   }
-  index: 7
+  index: 14
   text: "Well - nice knowin\' ya.\n\n{{GM}}Jake turns, and disappears into shadowy depths of the Redmond Barrens.{{/GM}}"
   nodeType: ConversationNodeType_Simple
 }
@@ -233,11 +494,14 @@ nodes {
   idRef {
     id: "51aec8ca396163ac28002f35"
   }
-  index: 8
-  text: "Sorry chummer, not my style. Besides - you seem like you can take care of yourself.\n\n{{GM}}He takes a step, then tilts his head back.{{/GM}}"
+  index: 15
+  text: "Sorry chummer, but I\'m nobody\'s sidekick. Not my style. Besides - you seem like you can take care of yourself.\n\n{{GM}}He takes a step, then tilts his head back.{{/GM}}"
   branches {
     responseText: ""
-    nextNodeIndex: 6
+    nextNodeIndex: 13
+    idRef {
+      id: "51998c866233310406004827:575d039c396630f802008367"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -245,4 +509,7 @@ nodes {
 roots {
   responseText: ""
   nextNodeIndex: 0
+  idRef {
+    id: "51998c866233310406004827:575d039c396630f802008346"
+  }
 }
