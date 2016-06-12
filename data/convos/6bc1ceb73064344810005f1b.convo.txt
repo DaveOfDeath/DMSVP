@@ -7,10 +7,13 @@ nodes {
     id: "6bc2b4373064344810005f21"
   }
   index: 0
-  text: "The smell of fried food, powdered sugar, and slightly-burned soykaf is almost enough to overpower the dusty sewage stench of Redmond\'s streets. The troll working the stand is covered in food stains older than he is."
+  text: "The smell of fried food, powdered sugar, and slightly-burned soykaf is almost enough to overpower the dusty radioactive sewage stench of Redmond\'s streets. The young troll working the stand is covered in food stains older than he is."
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "6bc1ceb73064344810005f1b:575cd144396630e027001c68"
+    }
   }
   nodeType: ConversationNodeType_GM_Voice
 }
@@ -23,6 +26,9 @@ nodes {
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "6bc1ceb73064344810005f1b:575cd144396630e027001c6b"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -33,17 +39,8 @@ nodes {
   index: 2
   text: ""
   branches {
-    responseText: "Did you see the murder in the alley across the way?"
+    responseText: "What can you tell me about Redmond?"
     nextNodeIndex: 3
-    hideIfUnavailable: true
-    onlyOnce: true
-    idRef {
-      id: "51b2200a6233313413004e8d"
-    }
-  }
-  branches {
-    responseText: "What can you tell me about the Barrens?"
-    nextNodeIndex: 4
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -116,8 +113,64 @@ nodes {
         }
       }
     }
+    nextNodeIndex: 5
+    hideIfUnavailable: true
+    idRef {
+      id: "6bc1ceb73064344810005f1b:575cd144396630e027001c7b"
+    }
+  }
+  branches {
+    responseText: "Did you see the murder in the alley across the way?"
     nextNodeIndex: 6
     hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b2200a6233313413004e8d"
+    }
+  }
+  branches {
+    responseText: "Who is Glint?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "b_GlintIntroduced"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "6bc1ceb73064344810005f1b:575cd255396630e027001c92"
+    }
   }
   branches {
     responseText: "You sell some donuts to a troll wearing scrubs last night?"
@@ -156,7 +209,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 7
+    nextNodeIndex: 9
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -166,30 +219,24 @@ nodes {
   branches {
     responseText: "I\'ll see you around."
     nextNodeIndex: -1
+    idRef {
+      id: "6bc1ceb73064344810005f1b:575cd144396630e027001c86"
+    }
   }
-}
-nodes {
-  idRef {
-    id: "519948e76233316401004846"
-  }
-  index: 3
-  text: "Nope... I was closed when it happened. But hey, it\'s the Barrens - a back-alley killing\'s nothing new around here. The only reason the cops are making a big deal \'bout this Ripper business is that some of the victims are REAL people... you know, folks with SINs."
-  branches {
-    responseText: ""
-    nextNodeIndex: 2
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
+  comment: "Donut Loop"
 }
 nodes {
   idRef {
     id: "519948e7623331640100484a"
   }
-  index: 4
+  index: 3
   text: "The Barrens? Hell, if you have to ask, you probably shouldn\'t be out here. This stretch we\'re on is called Touristville though, and I suppose it\'s the closest thing around here to respectable. Fewer muggings, and you might even survive drinkin\' the water if you\'re lucky. Wouldn\'t recommend it, though. \n\n{{GM}}He scratches his armpit.{{/GM}}"
   branches {
     responseText: ""
-    nextNodeIndex: 5
+    nextNodeIndex: 4
+    idRef {
+      id: "6bc1ceb73064344810005f1b:575cd144396630e027001c75"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -197,11 +244,14 @@ nodes {
   idRef {
     id: "51ae8658396163c818001f98"
   }
-  index: 5
-  text: "Now behind me... that\'s the Seamstresses Union. You want drinks, drugs, favors or information \'round here... the Union\'s your spot. Hell, that place is the reason I\342\200\231m in business. Folks get the munchies when they party. Mrs. Kubota owns the joint, and she\'s quality - a hard woman, but fair."
+  index: 4
+  text: "Now behind me... that\'s the Seamstresses Union. You want drinks, drugs, favors or information \'round here... the Union\'s your spot. Hell, that place is the reason I\342\200\231m in business. Folks get the munchies when they party, and Seamstress Union don\'t do food. \n\nMrs. Kubota owns the joint, and she\'s quality - a hard woman, but fair to everyone."
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "6bc1ceb73064344810005f1b:575cd144396630e027001c78"
+    }
     auxiliaryLink: true
   }
 }
@@ -209,11 +259,14 @@ nodes {
   idRef {
     id: "519948e7623331640100484e"
   }
-  index: 6
+  index: 5
   text: "Enjoy."
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "6bc1ceb73064344810005f1b:575cd144396630e027001c7e"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -254,18 +307,103 @@ nodes {
           }
         }
       }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
     }
   }
 }
 nodes {
   idRef {
-    id: "51e078656233316816003c39"
+    id: "519948e76233316401004846"
+  }
+  index: 6
+  text: "I didn\'t see nuthin\'... I was closed when it happened. But hey, it\'s the Barrens - a back-alley killing is nothing new around here. The only reason the cops are making a big deal \'bout this Ripper business is that some of the victims are REAL people... you know, folks with SINs.\n\nIf The Ripper had kept killing us SINless folk, Lonestar could give two frags."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "6bc1ceb73064344810005f1b:575cd1ef396630e027001c8b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "575cd1ef396630e027001c8e"
   }
   index: 7
+  text: "We got our own, though. Glint is looking into the killings. I bet she finds what\'s going down long before fraggin Loanstar lifts a finger to help us."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "6bc1ceb73064344810005f1b:575cd144396630e027001c70"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "b_GlintIntroduced"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "575cd277396630e027001c95"
+  }
+  index: 8
+  text: ""
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "6bc1ceb73064344810005f1b:575cd334396630e027001cc7"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51e078656233316816003c39"
+  }
+  index: 9
   text: "Maybe. What\'s it to you? I sell a lot of donuts, to a lot of people. I know how Lone Star profiles metahumans. I tell \'em about a troll that bought donuts from me right before a murder, they\'ll haul him in just to see if anyone will pay the bail. Not today, my friend."
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "6bc1ceb73064344810005f1b:575cd144396630e027001c83"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -273,4 +411,7 @@ nodes {
 roots {
   responseText: ""
   nextNodeIndex: 0
+  idRef {
+    id: "6bc1ceb73064344810005f1b:575cd144396630e027001c65"
+  }
 }
