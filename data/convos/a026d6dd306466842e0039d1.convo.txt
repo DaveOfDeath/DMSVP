@@ -11,6 +11,9 @@ nodes {
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "a026d6dd306466842e0039d1:575d0c5d6631363c0b001b53"
+    }
   }
   nodeType: ConversationNodeType_GM_Voice
 }
@@ -23,16 +26,28 @@ nodes {
   branches {
     responseText: "I know who you are. You\'re the guy I\'m gonna kill."
     nextNodeIndex: -1
+    idRef {
+      id: "a026d6dd306466842e0039d1:575d0c5d6631363c0b001b56"
+    }
   }
   branches {
     responseText: "Who are you? Don\'t you want to know who I am?"
     nextNodeIndex: -1
+    idRef {
+      id: "a026d6dd306466842e0039d1:575d0c5d6631363c0b001b58"
+    }
   }
   branches {
     responseText: "You\'re the guy who needs to shut up."
     nextNodeIndex: -1
+    idRef {
+      id: "a026d6dd306466842e0039d1:575d0c5d6631363c0b001b5a"
+    }
   }
   nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "575d0cf16631363c0b001b6a"
+  }
 }
 nodes {
   idRef {
@@ -40,18 +55,168 @@ nodes {
   }
   index: 2
   text: "But... no... I can\'t...\n\n{{GM}}And with a bloody gurgle, Stevie J is no more.{{/GM}}"
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isCoyote"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    idRef {
+      id: "a026d6dd306466842e0039d1:575d0d336631363c0b001b84"
+    }
+    comment: "Coyote Recruited"
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isCoyote"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    hideIfUnavailable: true
+    idRef {
+      id: "a026d6dd306466842e0039d1:575d0d8e6631363c0b001b89"
+    }
+    comment: "Coyote Not Recruited"
+  }
   nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "575d0cf16631363c0b001b6a"
+  }
+}
+nodes {
+  idRef {
+    id: "575d0d686631363c0b001b87"
+  }
+  index: 3
+  text: "{{GM}}She spits on the floor.{{/GM}}\n\nAbout time someone did that."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "575cfbbf6631363c0b001a54"
+  }
 }
 roots {
   responseText: ""
   conditions {
     ops {
-      functionName: "Comparison (int)"
+      functionName: "Comparison (bool)"
       args {
         call_value {
-          functionName: "Get Variable (int)"
+          functionName: "Get Variable (bool)"
           args {
-            string_value: "StevieCombatRound"
+            string_value: "bTalkedToSteveJ"
           }
         }
       }
@@ -59,24 +224,10 @@ roots {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "Comparison Ops"
+            string_value: "IsOrIsNot"
           }
           args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        int_value: 0
-      }
-    }
-    ops {
-      functionName: "Comparison (int)"
-      args {
-        call_value {
-          functionName: "Get Variable (int)"
-          args {
-            string_value: "Death_Littlefinger"
+            int_value: 1
           }
         }
       }
@@ -84,50 +235,56 @@ roots {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "Comparison Ops"
+            string_value: "bool"
           }
           args {
             int_value: 0
           }
         }
-      }
-      args {
-        int_value: 0
       }
     }
   }
   actions {
     ops {
-      functionName: "Add To Variable (int)"
+      functionName: "Set Variable (bool)"
       args {
         call_value {
-          functionName: "Get Variable (int)"
+          functionName: "Get Variable (bool)"
           args {
-            string_value: "StevieCombatRound"
+            string_value: "bTalkedToSteveJ"
           }
         }
       }
       args {
-        int_value: 1
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
       }
     }
   }
   nextNodeIndex: 0
-  onlyOnce: true
+  hideIfUnavailable: true
   idRef {
     id: "519eafe86233317c17004115"
   }
+  comment: "Initial PA Convo"
 }
 roots {
   responseText: ""
   conditions {
     ops {
-      functionName: "Comparison (int)"
+      functionName: "Comparison (bool)"
       args {
         call_value {
-          functionName: "Get Variable (int)"
+          functionName: "Get Variable (bool)"
           args {
-            string_value: "Death_Littlefinger"
+            string_value: "bTalkedToSteveJ"
           }
         }
       }
@@ -135,37 +292,30 @@ roots {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "Comparison Ops"
+            string_value: "IsOrIsNot"
           }
           args {
-            int_value: 0
+            int_value: 1
           }
         }
       }
-      args {
-        int_value: 1
-      }
-    }
-  }
-  actions {
-    ops {
-      functionName: "Set Variable (int)"
       args {
         call_value {
-          functionName: "Get Variable (int)"
+          functionName: "Get Preset Value (int)"
           args {
-            string_value: "Death_Littlefinger"
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
           }
         }
-      }
-      args {
-        int_value: 2
       }
     }
   }
   nextNodeIndex: 2
-  onlyOnce: true
+  hideIfUnavailable: true
   idRef {
     id: "51a16bdc6233319423001bd4"
   }
+  comment: "Stevie J Killed"
 }
