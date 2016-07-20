@@ -1,0 +1,275 @@
+idRef {
+  id: "578f1934613131e024000779"
+}
+ui_name: "c03-s1_Barrens_Violet\'sMatrixHookup"
+nodes {
+  idRef {
+    id: "578f1949613131e024000781"
+  }
+  index: 0
+  text: "{{GM}}The tech vendor, whoever they are, have supplied you with a matrix dataport.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "578f1934613131e024000779:578f1a89613131e024000795"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "578f1a89613131e024000798"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "{{CC}}Decking 1{{/CC}} Jack In."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Is Decker"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    idRef {
+      id: "578f1934613131e024000779:578f1962613131e024000783"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Armitage{{/CC}} Have Jake Deck the system"
+    conditions {
+      ops {
+        functionName: "Actor is Player Controlled"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Actor)"
+                args {
+                  string_value: "a99a7ac5623331441b003061"
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    idRef {
+      id: "578f1934613131e024000779:578f1962613131e024000785"
+    }
+  }
+  branches {
+    responseText: "Check System"
+    nextNodeIndex: -1
+    idRef {
+      id: "578f1934613131e024000779:578f1963613131e024000787"
+    }
+  }
+  branches {
+    responseText: "Leave System Alone {{CC}}Leave{{/CC}}."
+    nextNodeIndex: -1
+    idRef {
+      id: "578f1934613131e024000779:578f1963613131e024000789"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Violet\'s Matrix Access Loop"
+}
+nodes {
+  idRef {
+    id: "578f1a7d613131e02400078e"
+  }
+  index: 2
+  text: "Matrix Jack-in scripting"
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "578f1a9c613131e0240007a0"
+  }
+  index: 3
+  text: "{{GM}}Jake shakes his head, putting up his hands.{{/GM}}\n\nI\'ve got a problem there, boss. I had a deck- a nice deck, fitted the way that I wanted, full of custom programs to make Steelflight drool, but it\'s in bits at the Renraku Arcology."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "578f1934613131e024000779:578f1aa3613131e0240007a2"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "a99a7ac5623331441b003061"
+  }
+}
+nodes {
+  idRef {
+    id: "578f1aa3613131e0240007a5"
+  }
+  index: 4
+  text: ""
+  branches {
+    responseText: "I need to know what\'s in that system, Jake."
+    nextNodeIndex: 5
+    idRef {
+      id: "578f1934613131e024000779:578f1b86613131e0240007bd"
+    }
+  }
+  branches {
+    responseText: "Use my cyberdeck!"
+    conditions {
+      ops {
+        functionName: "Evaluate If Team Has Cyberdeck"
+        args {
+          call_value {
+            functionName: "Get Preset Value (string)"
+            args {
+              string_value: "FactionList"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    idRef {
+      id: "578f1934613131e024000779:578f1af4613131e0240007a7"
+    }
+  }
+  branches {
+    responseText: "Don\'t worry about it."
+    nextNodeIndex: 7
+    idRef {
+      id: "578f1934613131e024000779:578f1b67613131e0240007b3"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "a99a7ac5623331441b003061"
+  }
+  comment: "Jake Loop"
+}
+nodes {
+  idRef {
+    id: "578f1b98613131e0240007c0"
+  }
+  index: 5
+  text: "{{GM}}Jake rolls his eyes at your \'need.\'{{/GM}}\n\nMight I suggest, and don\'t take this the wrong way: get your own cyberdeck, go to Little Chiba and get a datajack installed, and deck it your own damn self."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "578f1934613131e024000779:578f1bd1613131e0240007c2"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "a99a7ac5623331441b003061"
+  }
+}
+nodes {
+  idRef {
+    id: "578f1b14613131e0240007aa"
+  }
+  index: 6
+  text: "{{GM}}Jake shakes his head \'no\' again.{{/GM}}\n\nThat would be like wearing someone else\'s underwear. You might be into it, but it\'s not for me. I\'ll have to take a pass on this one, until I can get my own deck together and write some fresh programs. Dog won\'t like it, but I gotta keep breathing."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "578f1934613131e024000779:578f1b1a613131e0240007ac"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "a99a7ac5623331441b003061"
+  }
+}
+nodes {
+  idRef {
+    id: "578f1be3613131e0240007d8"
+  }
+  index: 7
+  text: "Thanks, $(l.name), I appreciate it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "578f1934613131e024000779:578f1c06613131e0240007da"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "a99a7ac5623331441b003061"
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "578f1934613131e024000779:578f1934613131e02400077d"
+  }
+}

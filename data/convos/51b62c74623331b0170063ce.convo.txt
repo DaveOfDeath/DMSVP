@@ -9,6 +9,21 @@ nodes {
   index: 0
   text: "Heyyyy, chummer. I got some tasty morsels just for you. Just what every well-dressed shadowrunner should have in $(l.his) back pocket."
   branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "51b62c74623331b0170063ce:578f2191613131e024000850"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "578f2191613131e024000853"
+  }
+  index: 1
+  text: ""
+  branches {
     responseText: "Let me see what you have."
     actions {
       ops {
@@ -29,8 +44,85 @@ nodes {
     }
   }
   branches {
+    responseText: "Do you know Sam Watts?"
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b62c74623331b0170063ce:578f2185613131e02400084a"
+    }
+  }
+  branches {
+    responseText: "Know anything about the murder around the corner?"
+    nextNodeIndex: 8
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b62c74623331b0170063ce:578f21d2613131e024000861"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Lighter{{/CC}} Ever seen this lighter before?"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c02-s1_JakesLighter"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 9
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b62c74623331b0170063ce:578f21ef613131e024000863"
+    }
+  }
+  branches {
+    responseText: "{{CC}}BTL Chip{{/CC}} Tell me this isn\'t your CalHot BTL?"
+    nextNodeIndex: -1
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b62c74623331b0170063ce:578f29bd613131e02400091d"
+    }
+  }
+  branches {
     responseText: "Get bent."
     nextNodeIndex: -1
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "51b62c74623331b0170063ce:575cf4fc396630f802008001"
     }
@@ -41,6 +133,211 @@ nodes {
     idRef {
       id: "51b62c74623331b0170063ce:575cf4c0396630f802007ffe"
     }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Dealer Loop"
+}
+nodes {
+  idRef {
+    id: "578f219d613131e02400085a"
+  }
+  index: 2
+  text: "{{GM}}The drug dealer doesn\'t flinch, and takes great pains to keep his face unreadable. By this, you can tell that he lies easily to your face.{{/GM}}\n\nNever heard of the man."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "51b62c74623331b0170063ce:578f21a7613131e02400085c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "578f21aa613131e02400085f"
+  }
+  index: 3
+  text: ""
+  branches {
+    responseText: "I never said Sam Watts was a man."
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b62c74623331b0170063ce:578f224f613131e024000878"
+    }
+  }
+  branches {
+    responseText: "He\'s dead, do you think he cares what you say about him now?"
+    nextNodeIndex: 5
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b62c74623331b0170063ce:578f225f613131e02400087a"
+    }
+  }
+  branches {
+    responseText: "Be straight with me, do you know Sam Watts?"
+    nextNodeIndex: 5
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b62c74623331b0170063ce:578f2271613131e02400087c"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Str 3{{/CC}} Maybe I should beat some answers out of you."
+    conditions {
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 3
+        }
+      }
+    }
+    nextNodeIndex: 6
+    onlyOnce: true
+    idRef {
+      id: "51b62c74623331b0170063ce:578f2274613131e02400087e"
+    }
+  }
+  branches {
+    responseText: "Nevermind, you\'re not worth it."
+    nextNodeIndex: 7
+    idRef {
+      id: "51b62c74623331b0170063ce:578f2274613131e024000880"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Dealer/Sam Loop"
+}
+nodes {
+  idRef {
+    id: "578f2296613131e0240008ad"
+  }
+  index: 4
+  text: "{{GM}}The dealer hesitates, then shrugs.{{/GM}}\n\nIt was a fifty-fifty shot, man or a woman. What happened to your friend?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "51b62c74623331b0170063ce:578f22ad613131e0240008af"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "578f22b3613131e0240008c9"
+  }
+  index: 5
+  text: "{{GM}}The dealer looks over your shoulder at the street traffic.{{/GM}}\n\nIt ain\'t about you, shadowrunner. It\'s about my client\303\250le, and them not wanting me to talk about them or their personal business."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "51b62c74623331b0170063ce:578f2308613131e0240008cb"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "578f23a7613131e0240008d7"
+  }
+  index: 6
+  text: "{{GM}}You have the dealer\'s full attention now.{{/GM}}\n\nWhoa, whoa, whoa, who said anything about needing to beat me?"
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "578f2280613131e024000883"
+  }
+  index: 7
+  text: "Now you\'ve got the spirit!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "51b62c74623331b0170063ce:578f228a613131e024000885"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "578f246b613131e024000917"
+  }
+  index: 8
+  text: "{{GM}}The dealer looks straight ahead, avoiding your eye.{{/GM}}\n\nNothing worth getting killed over, that\'s for sure."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "51b62c74623331b0170063ce:578f248a613131e024000919"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "578f2240613131e024000876"
+  }
+  index: 9
+  text: "{{GM}}The dealer looks over the golden lighter, and shakes his head \'no.\'{{/GM}}\n\nI\'ve never seen that lighter before. Honestly, I sell more chips than pharmaceuticals."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "51b62c74623331b0170063ce:578f241f613131e0240008d9"
+    }
+    auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
 }
