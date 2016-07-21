@@ -16,6 +16,56 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "c02-s1_JakesLighter"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -50,6 +100,45 @@ nodes {
   }
   branches {
     responseText: "Put the lighter back down. {{CC}}Leave{{/CC}}"
+    actions {
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c02-s1_JakesLighter"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: -1
     idRef {
       id: "576d78613966301007005297:576d789c39663010070052a3"
@@ -63,7 +152,7 @@ nodes {
     id: "576d78d139663010070052b3"
   }
   index: 2
-  text: "{{GM}}The old lighter is gold-plated, and has seen much use. It\'s unusually warm in your hands.\n\nIt\'s nicked and dented a hundred times over, but two initials are carved into the side of it: JA{{/GM}}"
+  text: "{{GM}}The old lighter is gold-plated, and has seen much use. It\'s unusually warm in your hands.\n\nIt\'s nicked and dented a hundred times over, but two letters are carved into the side of it: JA{{/GM}}"
   branches {
     responseText: ""
     nextNodeIndex: 1
