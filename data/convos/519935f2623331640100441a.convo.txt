@@ -9,8 +9,23 @@ nodes {
   index: 0
   text: "This looks like the coat and blanket that the old man was trying to get back."
   branches {
-    responseText: "{{GM}}Examine the area for evidence.{{/GM}}"
+    responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "519935f2623331640100441a:5793f966613131dc24005eff"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "5793f966613131dc24005f02"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "{{GM}}Examine the area for evidence.{{/GM}}"
+    nextNodeIndex: 2
     idRef {
       id: "519935f2623331640100441a:575cf50e396630f802008010"
     }
@@ -67,25 +82,240 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 2
+    nextNodeIndex: 3
     idRef {
       id: "519935f2623331640100441a:575cf50e396630f802008017"
     }
   }
   branches {
-    responseText: "{{GM}}Leave them as they are.{{/GM}}"
+    responseText: "{{CC}}Golden Lighter{{/CC}} Fuego, what can you tell me about this?"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c02-s1_JakesLighter"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "519935f2623331640100441a:5793f983613131dc24005f0b"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Astral Perception{{/CC}} Examine Area."
+    conditions {
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "OR"
+            args {
+              call_value {
+                functionName: "Compare Actor Skill"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "BaseOrCurrent"
+                    }
+                    args {
+                      int_value: 1
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "ActorSkills"
+                    }
+                    args {
+                      int_value: 7
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "Comparison Ops"
+                    }
+                    args {
+                      int_value: 2
+                    }
+                  }
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Compare Actor Skill"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "BaseOrCurrent"
+                    }
+                    args {
+                      int_value: 1
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "ActorSkills"
+                    }
+                    args {
+                      int_value: 3
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "Comparison Ops"
+                    }
+                    args {
+                      int_value: 2
+                    }
+                  }
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Compare Actor Skill"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "BaseOrCurrent"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "ActorSkills"
+                }
+                args {
+                  int_value: 8
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 2
+                }
+              }
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 12
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "519935f2623331640100441a:5793fa34613131dc24005f33"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Leave the coat and blanket as they are.{{/GM}}"
     nextNodeIndex: -1
     idRef {
       id: "519935f2623331640100441a:575cf50e396630f80200801a"
     }
   }
-  nodeType: ConversationNodeType_GM_Voice
+  nodeType: ConversationNodeType_Simple
+  comment: "Coat Evidence Loop"
 }
 nodes {
   idRef {
     id: "51993677623331640100442b"
   }
-  index: 1
+  index: 2
   text: "As you shuffle the bundle of cloth to the side, a printed receipt falls out from beneath the folds of the blanket. It\'s a bar tab receipt from the Seamstresses Union, dated two days ago at 3:02 AM - right around the coroner\'s reported time of death. The customer: you\'d know that alias anywhere. This was a bar tab for one Sam Watts.\n\nThe server\'s name is listed as Coyote."
   branches {
     responseText: "{{GM}}Pick up the coat and blankets.{{/GM}}"
@@ -243,7 +473,7 @@ nodes {
   idRef {
     id: "5199367b623331640100442d"
   }
-  index: 2
+  index: 3
   text: "As you pick up the bundle of cloth, a printed receipt falls out from beneath the folds of the blanket. It\'s a bar tab receipt from the Seamstresses Union, dated two days ago at 3:02 AM - right around the coroner\'s reported time of death.  The customer: you\'d know that alias anywhere. This was a bar tab for one Sam Watts.\n\nThe server\'s name is listed as Coyote."
   nodeType: ConversationNodeType_GM_Voice
   actions {
@@ -332,6 +562,327 @@ nodes {
       }
     }
   }
+}
+nodes {
+  idRef {
+    id: "5793f9b6613131dc24005f10"
+  }
+  index: 4
+  text: "{{GM}}A spark appears before you, giving off a fair amount of heat. You hear the spirit\'s voice echo hollowly from the Astral plane.{{/GM}}\n\nThis is a homestead, a hearth. It is not any threat to you."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "519935f2623331640100441a:5793fdbd613131dc24006057"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "576d776d3966301007005296"
+  }
+}
+nodes {
+  idRef {
+    id: "5793fdbd613131dc2400605a"
+  }
+  index: 5
+  text: ""
+  branches {
+    responseText: "Tell me about this area."
+    nextNodeIndex: 6
+    idRef {
+      id: "519935f2623331640100441a:5793fa22613131dc24005f12"
+    }
+  }
+  branches {
+    responseText: "What can you tell me about the victim?"
+    nextNodeIndex: 7
+    idRef {
+      id: "519935f2623331640100441a:5793fde6613131dc2400605e"
+    }
+  }
+  branches {
+    responseText: "What can you tell me about the attackers?"
+    nextNodeIndex: 9
+    idRef {
+      id: "519935f2623331640100441a:5793fde6613131dc24006060"
+    }
+  }
+  branches {
+    responseText: "Does the sickness of this place affect what you see?"
+    nextNodeIndex: 10
+    idRef {
+      id: "519935f2623331640100441a:5793fe65613131dc24006097"
+    }
+  }
+  branches {
+    responseText: "Thank you, Fuego {{CC}}Put Lighter Away{{/CC}}."
+    nextNodeIndex: 11
+    idRef {
+      id: "519935f2623331640100441a:5793fe05613131dc24006064"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "576d776d3966301007005296"
+  }
+  comment: "Fuego Investigate Loop"
+}
+nodes {
+  idRef {
+    id: "5793fe24613131dc24006082"
+  }
+  index: 6
+  text: "{{GM}}The spark bobs along, dancing around you once.{{/GM}}\n\nAs I have revealed, this is a place of sickness. A man was killed here."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "519935f2623331640100441a:5793fe5a613131dc24006084"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "576d776d3966301007005296"
+  }
+}
+nodes {
+  idRef {
+    id: "5793fe6f613131dc2400609a"
+  }
+  index: 7
+  text: "{{GM}}The spark dances around the outline of Sam\'s prone form, briefly touching down in the blood.{{/GM}}\n\nYour friend is dead. He was surprised, and then afraid, but finally accepted. I sense... humor at him leaving the world."
+  branches {
+    responseText: "Humor?"
+    nextNodeIndex: 8
+    idRef {
+      id: "519935f2623331640100441a:5793fead613131dc2400609c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "576d776d3966301007005296"
+  }
+}
+nodes {
+  idRef {
+    id: "5793feb4613131dc2400609f"
+  }
+  index: 8
+  text: "{{GM}}The spark bobs fitfully, frustrated.{{/GM}}\n\nIt-- he felt as though a great joke would be played. I cannot explain better."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "519935f2623331640100441a:5793ff04613131dc240060a1"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "576d776d3966301007005296"
+  }
+}
+nodes {
+  idRef {
+    id: "5793ff0e613131dc240060a6"
+  }
+  index: 9
+  text: "{{GM}}The spark bobs fitfully, slowly as if becoming drowsy.{{/GM}}\n\nThere were- have been many murders here. This land is soaked in sickness and death.\nThe attackers... they did not hate the victim, they were curious about him. They did not rejoice in his death."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "519935f2623331640100441a:5793ff63613131dc240060a8"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "576d776d3966301007005296"
+  }
+}
+nodes {
+  idRef {
+    id: "5793ff7e613131dc240060ad"
+  }
+  index: 10
+  text: "{{GM}}The spark dances up and down. You get the impression of a nod.{{/GM}}\n\nI am drowning in perceptions of death and hopelessness. It must be a strong emotion to penetrate that fog."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "519935f2623331640100441a:5793ffee613131dc240060af"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "576d776d3966301007005296"
+  }
+}
+nodes {
+  idRef {
+    id: "5794004f613131dc24006111"
+  }
+  index: 11
+  text: "You are welcome, mortal soul.\n\n{{GM}}The spark dances, and then fades.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: -1
+    idRef {
+      id: "519935f2623331640100441a:57940068613131dc24006113"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793fa5d613131dc24005f36"
+  }
+  index: 12
+  text: "{{GM}}This small tent and pile of blankets is the basics of a homestead. If the homeless man lives here the rest of his life, he has a good chance of attracting a hearth spirit.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "519935f2623331640100441a:5793fa8a613131dc24005f38"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "519935f2623331640100441a:57940070613131dc24006115"
+  }
+  index: 13
+  text: ""
+  branches {
+    responseText: "Read the auras of the area."
+    nextNodeIndex: 14
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "519935f2623331640100441a:57940070613131dc24006117"
+    }
+  }
+  branches {
+    responseText: "Assense the chalk outline where Sam\'s body was found."
+    nextNodeIndex: 15
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "519935f2623331640100441a:57940070613131dc2400611f"
+    }
+  }
+  branches {
+    responseText: "Take some of Sam\'s blood."
+    nextNodeIndex: 16
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "519935f2623331640100441a:579400d5613131dc24006157"
+    }
+  }
+  branches {
+    responseText: "Attempt to read the astral signature of the killer."
+    nextNodeIndex: 17
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "519935f2623331640100441a:57940070613131dc2400612b"
+    }
+  }
+  branches {
+    responseText: "Close your astral vision and return to the world."
+    nextNodeIndex: 18
+    idRef {
+      id: "519935f2623331640100441a:57940070613131dc2400613b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Astral Perception"
+}
+nodes {
+  idRef {
+    id: "519935f2623331640100441a:57940070613131dc24006119"
+  }
+  index: 14
+  text: "{{GM}}The general hopelessness and dog-eat-dog attitude of the Barrens are not kind to the astral energy flowing through this area. Any spirits summoned would likely become violent if they broke free.{{/GM}}\n\n{{GM}}Even without the chalk outline, you could tell that Sam was here. His soul made an impact on the astral when he died.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "519935f2623331640100441a:57940070613131dc2400611b"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "519935f2623331640100441a:57940070613131dc24006121"
+  }
+  index: 15
+  text: "{{GM}}The \'astral crater\' where Sam\'s spirit hit. He was terrified, surprised, and then afraid, but finally accepted. Sam\'s final thoughts were an internal laughter, like this was a joke that no one else would get. It was a smug emotion that suited him.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "519935f2623331640100441a:57940371613131dc240061d3"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57940114613131dc2400615a"
+  }
+  index: 16
+  text: "{{GM}}Sam\'s blood would be a useful ritual link if he was still alive-- and hadn\'t sat out in the corrosive rain until now; or if Lonestar techs hadn\'t contaminated the sample already.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "519935f2623331640100441a:57940154613131dc2400618c"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "519935f2623331640100441a:57940070613131dc2400612d"
+  }
+  index: 17
+  text: "{{GM}}There is a deep miasma of despair in the Barrens. There have been many murders here, the land is soaked in sickness, despair, and death.\nThe attackers... It\'s difficult to see the killer in so much background \'static\'. He- they- did not hate the victim, they were curious about him. They did not rejoice in his death, but he did enjoy the killing.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "519935f2623331640100441a:57940070613131dc2400612f"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "519935f2623331640100441a:57940070613131dc2400613d"
+  }
+  index: 18
+  text: "{{GM}}You silence the perception of astral space, and you view the cold gray of the mundane world with detached sadness. How can people live like this, only seeing one bit of the whole of existence?{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "519935f2623331640100441a:57940070613131dc2400613f"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
 }
 roots {
   responseText: ""

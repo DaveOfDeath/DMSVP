@@ -4214,11 +4214,11 @@ props {
 props {
   name: "barrens_street_bikeCart01"
   gridPoint {
-    x: -89
+    x: -89.9
     y: 0
     z: 18.9
   }
-  orientation: ORIENTATION_E
+  orientation: ORIENTATION_S
   lod: 0
 }
 props {
@@ -32655,6 +32655,7 @@ props {
     z: 34.3
   }
   orientation: ORIENTATION_N
+  GeneralTags: "Halloweener"
   displayName: "Halloweeners Motorcycle05"
   idRef {
     id: "39b25879616634801b003e55"
@@ -40548,20 +40549,6 @@ props {
   lod: 0
 }
 props {
-  name: "vfx_fx_fallingsparks"
-  gridPoint {
-    x: -67.3
-    y: 1.8
-    z: 20
-  }
-  orientation: ORIENTATION_S
-  properties {
-    property_id: "fxScript"
-    string_value: "SparksEnvironment"
-  }
-  lod: 0
-}
-props {
   name: "vfx_fx_fallingwater"
   gridPoint {
     x: -36.4
@@ -41280,7 +41267,7 @@ props {
 props {
   name: "vfx_fx_firebarrel"
   gridPoint {
-    x: -19
+    x: -19.5
     y: 0
     z: -4.5
   }
@@ -42139,40 +42126,6 @@ props {
 props {
   name: "vfx_fx_watersplashes"
   gridPoint {
-    x: -70.7
-    y: 0.10000001
-    z: 20.999998
-  }
-  orientation: ORIENTATION_S
-  properties {
-    property_id: "fxScript"
-    string_value: "EnvironmentLoopWaterSplashes"
-  }
-  idRef {
-    id: "51ae66ce616634bc0f0066cd"
-  }
-  lod: 0
-}
-props {
-  name: "vfx_fx_fallingwater"
-  gridPoint {
-    x: -70.4
-    y: 2.5
-    z: 21.299997
-  }
-  orientation: ORIENTATION_S
-  properties {
-    property_id: "fxScript"
-    string_value: "EnvironmentLoopFallingWater"
-  }
-  idRef {
-    id: "51ae66ce616634bc0f0066ce"
-  }
-  lod: 0
-}
-props {
-  name: "vfx_fx_watersplashes"
-  gridPoint {
     x: -70
     y: 0.10000001
     z: 21.199997
@@ -42184,23 +42137,6 @@ props {
   }
   idRef {
     id: "51ae66d8616634bc0f0066cf"
-  }
-  lod: 0
-}
-props {
-  name: "vfx_fx_fallingwater"
-  gridPoint {
-    x: -69.700005
-    y: 2.5
-    z: 21.499996
-  }
-  orientation: ORIENTATION_S
-  properties {
-    property_id: "fxScript"
-    string_value: "EnvironmentLoopFallingWater"
-  }
-  idRef {
-    id: "51ae66d8616634bc0f0066d0"
   }
   lod: 0
 }
@@ -42555,20 +42491,6 @@ props {
 props {
   name: "vfx_fx_dustyWind"
   gridPoint {
-    x: -86
-    y: 0
-    z: 23
-  }
-  orientation: ORIENTATION_S
-  properties {
-    property_id: "fxScript"
-    string_value: "EnvironmentLoopDustyWind"
-  }
-  lod: 2
-}
-props {
-  name: "vfx_fx_dustyWind"
-  gridPoint {
     x: -59
     y: 0
     z: 45
@@ -42667,24 +42589,6 @@ props {
   lod: 0
 }
 props {
-  name: "vfx_fx_dustDevil"
-  gridPoint {
-    x: -84
-    y: 0
-    z: 17
-  }
-  orientation: ORIENTATION_S
-  properties {
-    property_id: "fxScript"
-    string_value: "EnvironmentLoopDustDevil"
-  }
-  GeneralTags: "magic"
-  idRef {
-    id: "576d75b5396630100700528d"
-  }
-  lod: 2
-}
-props {
   name: "vfx_fx_dustyWind"
   gridPoint {
     x: -49
@@ -42770,20 +42674,6 @@ props {
     string_value: "EnvironmentLoopDustyWind"
   }
   lod: 0
-}
-props {
-  name: "vfx_fx_dustyWind"
-  gridPoint {
-    x: -92
-    y: 0
-    z: 19
-  }
-  orientation: ORIENTATION_S
-  properties {
-    property_id: "fxScript"
-    string_value: "EnvironmentLoopDustyWind"
-  }
-  lod: 2
 }
 props {
   name: "vfx_fx_dustyWind"
@@ -47899,6 +47789,150 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "AND"
+        args {
+          call_value {
+            functionName: "Evaluate Turn Mode in Dimension"
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "TurnBasedOrFreeMove"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "OR"
+            args {
+              call_value {
+                functionName: "Comparison (bool)"
+                args {
+                  call_value {
+                    functionName: "Get Variable (bool)"
+                    args {
+                      string_value: "hasBulliedMarketThugs"
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "IsOrIsNot"
+                    }
+                    args {
+                      int_value: 1
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "bool"
+                    }
+                    args {
+                      int_value: 1
+                    }
+                  }
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "OR"
+                args {
+                  call_value {
+                    functionName: "Comparison (bool)"
+                    args {
+                      call_value {
+                        functionName: "Get Variable (bool)"
+                        args {
+                          string_value: "hasKilledMarketThugs"
+                        }
+                      }
+                    }
+                    args {
+                      call_value {
+                        functionName: "Get Preset Value (int)"
+                        args {
+                          string_value: "IsOrIsNot"
+                        }
+                        args {
+                          int_value: 1
+                        }
+                      }
+                    }
+                    args {
+                      call_value {
+                        functionName: "Get Preset Value (int)"
+                        args {
+                          string_value: "bool"
+                        }
+                        args {
+                          int_value: 1
+                        }
+                      }
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Comparison (bool)"
+                    args {
+                      call_value {
+                        functionName: "Get Variable (bool)"
+                        args {
+                          string_value: "hasDealtWithThugs"
+                        }
+                      }
+                    }
+                    args {
+                      call_value {
+                        functionName: "Get Preset Value (int)"
+                        args {
+                          string_value: "IsOrIsNot"
+                        }
+                        args {
+                          int_value: 1
+                        }
+                      }
+                    }
+                    args {
+                      call_value {
+                        functionName: "Get Preset Value (int)"
+                        args {
+                          string_value: "bool"
+                        }
+                        args {
+                          int_value: 1
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
     interactionIcon: InteractionIcon_Matrix
     interaction_info_text: "This tech vendor is wired up for matrix access."
   }
@@ -49730,11 +49764,11 @@ props {
 props {
   name: "asylum_appliance_cagedTVBack"
   gridPoint {
-    x: 12.6
+    x: 13
     y: -0.70000005
-    z: 111.2
+    z: 110.8
   }
-  orientation: ORIENTATION_E
+  orientation: ORIENTATION_S
   idRef {
     id: "575bc16561313194390067fa"
   }
@@ -55831,6 +55865,45 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c02-s1_JakesLighter"
+            }
+          }
+        }
+      }
+    }
     interactionIcon: InteractionIcon_Inspect
     interaction_info_text: "Inspect Shiny Object?"
   }
@@ -57331,5 +57404,264 @@ props {
     z: 32
   }
   orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "sleekOffice_tech_terminal01"
+  gridPoint {
+    x: 43.8
+    y: 1
+    z: 82.5
+  }
+  orientation: ORIENTATION_E
+  displayName: "Coffin_Terminal"
+  idRef {
+    id: "57938d8e613131dc240027af"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    interactionIcon: InteractionIcon_Inspect
+    interaction_info_text: "Coffin Motel Terminal"
+  }
+  lod: 0
+}
+props {
+  name: "mitte_wallDecoration_graffiti11"
+  gridPoint {
+    x: 0.90000534
+    y: 0.3
+    z: 14.400002
+  }
+  orientation: ORIENTATION_W
+  idRef {
+    id: "57938f26613131dc240027ec"
+  }
+  lod: 0
+}
+props {
+  name: "pikePlace_signs_CoffinMotel"
+  gridPoint {
+    x: 0.99999619
+    y: 1.9000001
+    z: 15.099998
+  }
+  orientation: ORIENTATION_W
+  idRef {
+    id: "57938f26613131dc240027ed"
+  }
+  lod: 0
+}
+props {
+  name: "haven_wallDecoration_graffiti05"
+  gridPoint {
+    x: 2.5
+    y: 0.1
+    z: 12
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "57938f26613131dc240027ee"
+  }
+  lod: 0
+}
+props {
+  name: "tenements_clutter_piecesOfTrash02"
+  gridPoint {
+    x: 14
+    y: 0
+    z: 112
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "tenements_clutter_piecesOfTrash03"
+  gridPoint {
+    x: 13.8
+    y: 0
+    z: 111.7
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "tenements_clutter_piecesOfTrash06"
+  gridPoint {
+    x: 13.5
+    y: 0
+    z: 114.1
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "tenements_clutter_piecesOfTrash05"
+  gridPoint {
+    x: 14
+    y: 0
+    z: 112.3
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "tenements_clutter_piecesOfTrash02"
+  gridPoint {
+    x: 14.2
+    y: 0
+    z: 111.2
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "secretLab_appliance_smallFridge"
+  gridPoint {
+    x: 14.2
+    y: 0
+    z: 110.8
+  }
+  orientation: ORIENTATION_E
+  lod: 0
+}
+props {
+  name: "diveBar_clutter_wineGlass01"
+  gridPoint {
+    x: 13.5
+    y: -1
+    z: 111
+  }
+  orientation: ORIENTATION_E
+  lod: 0
+}
+props {
+  name: "hub_clutter_magazineStack01"
+  gridPoint {
+    x: 13.2
+    y: 0.4
+    z: 114.5
+  }
+  orientation: ORIENTATION_E
+  displayName: "Coffin_Porno"
+  idRef {
+    id: "57939153613131dc240027f0"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    interactionIcon: InteractionIcon_Inspect
+    interaction_info_text: "Look at pile of digital media?"
+  }
+  lod: 0
+}
+props {
+  name: "kowloon_prop_dustPile01"
+  gridPoint {
+    x: 12
+    y: 0
+    z: 111.3
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "secretLab_clutter_wallSpeaker"
+  gridPoint {
+    x: 12.2
+    y: -0.1
+    z: 113.9
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "tenements_clutter_cigarettePile"
+  gridPoint {
+    x: 13.1
+    y: 0.4
+    z: 111.1
+  }
+  orientation: ORIENTATION_S
+  displayName: "Coffin_Habits"
+  idRef {
+    id: "5793937d613131dc240027f5"
+  }
+  interactionRoot {
+    isEnabled: false
+    interactionRadius: 1
+    interactionIcon: InteractionIcon_Inspect
+    interaction_info_text: "Look through drinks and smoggers?"
+  }
+  lod: 0
+}
+props {
+  name: "tenements_clutter_dirtyPlate"
+  gridPoint {
+    x: 14.3
+    y: 0
+    z: 112
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "haven_floorDecoration_grunge01"
+  gridPoint {
+    x: 14.6
+    y: 0
+    z: 111.6
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "haven_floorDecoration_grunge01"
+  gridPoint {
+    x: 14.4
+    y: 0
+    z: 112.4
+  }
+  orientation: ORIENTATION_E
+  lod: 0
+}
+props {
+  name: "haven_floorDecoration_grunge03"
+  gridPoint {
+    x: 13
+    y: 0
+    z: 111
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "haven_floorDecoration_grunge03"
+  gridPoint {
+    x: 14
+    y: 0
+    z: 113
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "factory_clutter_magnifikerAmulet"
+  gridPoint {
+    x: 13.9
+    y: 0
+    z: 111
+  }
+  orientation: ORIENTATION_S
+  displayName: "BTL Chip"
+  idRef {
+    id: "5793933d613131dc240027f3"
+  }
+  interactionRoot {
+    isEnabled: false
+    interactionRadius: 1
+    interactionIcon: InteractionIcon_Inspect
+    interaction_info_text: "Look through the trash"
+  }
   lod: 0
 }

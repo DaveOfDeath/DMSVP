@@ -60,7 +60,7 @@ nodes {
             string_value: "WithOrWithout"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
@@ -86,13 +86,36 @@ nodes {
     responseText: "Enjoy the warmth of the lighter."
     nextNodeIndex: 3
     hideIfUnavailable: true
-    onlyOnce: true
     idRef {
       id: "576d78613966301007005297:576d78ad39663010070052a5"
     }
   }
   branches {
-    responseText: "Pocket the lighter."
+    responseText: "Pocket the lighter. {{CC}}Leave.{{/CC}}"
+    actions {
+      ops {
+        functionName: "Enable/Disable Interactable Object"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (InteractableObject)"
+            args {
+              string_value: "576d76683966301007005293"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: -1
     idRef {
       id: "576d78613966301007005297:576d78da39663010070052b5"
@@ -188,14 +211,2105 @@ nodes {
   index: 4
   text: ""
   branches {
-    responseText: ""
-    nextNodeIndex: -1
+    responseText: "\'Sup, Sparky?"
+    nextNodeIndex: 5
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "576d78613966301007005297:576d79d139663010070052cb"
     }
   }
+  branches {
+    responseText: "Who are you?"
+    nextNodeIndex: 38
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793dcf2613131dc24004df2"
+    }
+  }
+  branches {
+    responseText: "Greetings, Fire-kin."
+    nextNodeIndex: 39
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793dcf1613131dc24004dec"
+    }
+  }
+  branches {
+    responseText: "Hi."
+    nextNodeIndex: 40
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793dcf1613131dc24004dee"
+    }
+  }
+  branches {
+    responseText: "What makes you think we\'re friends?"
+    nextNodeIndex: 41
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793dcf1613131dc24004df0"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Shaman{{/CC}} Greetings, Sister of Flames."
+    conditions {
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "Compare Actor Skill"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "BaseOrCurrent"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "ActorSkills"
+                }
+                args {
+                  int_value: 7
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 3
+                }
+              }
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Compare Actor Skill"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "BaseOrCurrent"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "ActorSkills"
+                }
+                args {
+                  int_value: 8
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 3
+                }
+              }
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 42
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793ddc6613131dc24004e23"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Hermetic Mage{{/CC}} I don\'t have much experience with spirits, but allow me to introduce myself. I am $(l.name)."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 43
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793ddc6613131dc24004e25"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Physical Adept{{/CC}} Greetings."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 4
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 44
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793dde5613131dc24004e27"
+    }
+  }
+  branches {
+    responseText: "No. Very No."
+    nextNodeIndex: 45
+    idRef {
+      id: "576d78613966301007005297:5793dcf2613131dc24004df4"
+    }
+  }
+  branches {
+    responseText: "I\'m going to leave now. {{CC}}Leave.{{/CC}}"
+    nextNodeIndex: 45
+    idRef {
+      id: "576d78613966301007005297:5793defb613131dc24004e47"
+    }
+    auxiliaryLink: true
+  }
   nodeType: ConversationNodeType_Simple
   comment: "Fuego Loop"
+}
+nodes {
+  idRef {
+    id: "5793ddba613131dc24004e21"
+  }
+  index: 5
+  text: "{{GM}}The flame spirit crackles and spits as it watches you.{{/GM}}\n\nI am unfamiliar with the name \'Sparky\', but for our purposes it will suffice."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "576d78613966301007005297:5793df35613131dc24004e49"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793df38613131dc24004e4c"
+  }
+  index: 6
+  text: ""
+  branches {
+    responseText: "Your name is Fuego?"
+    nextNodeIndex: 7
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793e285613131dc24004f50"
+    }
+  }
+  branches {
+    responseText: "\'Fuego\' as in in Spanish for fire?"
+    nextNodeIndex: 8
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793e292613131dc24004f52"
+    }
+  }
+  branches {
+    responseText: "What brings you to our plane of existence?"
+    nextNodeIndex: 9
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793df80613131dc24004e51"
+    }
+  }
+  branches {
+    responseText: "How are we talking right now? "
+    nextNodeIndex: 10
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793e412613131dc24004f6b"
+    }
+  }
+  branches {
+    responseText: "How are you here? I thought spirits disappeared after they performed a service?"
+    nextNodeIndex: 14
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793df80613131dc24004e53"
+    }
+  }
+  branches {
+    responseText: "Can you tell me about what happened here?"
+    conditions {
+      ops {
+        functionName: "AND"
+        args {
+          call_value {
+            functionName: "AND"
+            args {
+              call_value {
+                functionName: "Compare Actor Skill"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "BaseOrCurrent"
+                    }
+                    args {
+                      int_value: 1
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "ActorSkills"
+                    }
+                    args {
+                      int_value: 4
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "Comparison Ops"
+                    }
+                    args {
+                      int_value: 4
+                    }
+                  }
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Compare Actor Skill"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "BaseOrCurrent"
+                    }
+                    args {
+                      int_value: 1
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "ActorSkills"
+                    }
+                    args {
+                      int_value: 7
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "Comparison Ops"
+                    }
+                    args {
+                      int_value: 4
+                    }
+                  }
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "AND"
+            args {
+              call_value {
+                functionName: "Compare Actor Skill"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "BaseOrCurrent"
+                    }
+                    args {
+                      int_value: 1
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "ActorSkills"
+                    }
+                    args {
+                      int_value: 3
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "Comparison Ops"
+                    }
+                    args {
+                      int_value: 4
+                    }
+                  }
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Compare Actor Skill"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "BaseOrCurrent"
+                    }
+                    args {
+                      int_value: 1
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "ActorSkills"
+                    }
+                    args {
+                      int_value: 8
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "Comparison Ops"
+                    }
+                    args {
+                      int_value: 4
+                    }
+                  }
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 15
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793df81613131dc24004e55"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Magic{{/CC}} I don\'t have a lot of experience with spirits."
+    conditions {
+      ops {
+        functionName: "AND"
+        args {
+          call_value {
+            functionName: "OR"
+            args {
+              call_value {
+                functionName: "Compare Actor Skill"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "BaseOrCurrent"
+                    }
+                    args {
+                      int_value: 1
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "ActorSkills"
+                    }
+                    args {
+                      int_value: 3
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "Comparison Ops"
+                    }
+                    args {
+                      int_value: 3
+                    }
+                  }
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Compare Actor Skill"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "BaseOrCurrent"
+                    }
+                    args {
+                      int_value: 1
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "ActorSkills"
+                    }
+                    args {
+                      int_value: 4
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "Comparison Ops"
+                    }
+                    args {
+                      int_value: 3
+                    }
+                  }
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "AND"
+            args {
+              call_value {
+                functionName: "Compare Actor Skill"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "BaseOrCurrent"
+                    }
+                    args {
+                      int_value: 1
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "ActorSkills"
+                    }
+                    args {
+                      int_value: 7
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "Comparison Ops"
+                    }
+                    args {
+                      int_value: 4
+                    }
+                  }
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Compare Actor Skill"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "BaseOrCurrent"
+                    }
+                    args {
+                      int_value: 1
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "ActorSkills"
+                    }
+                    args {
+                      int_value: 8
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "Comparison Ops"
+                    }
+                    args {
+                      int_value: 4
+                    }
+                  }
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 21
+    idRef {
+      id: "576d78613966301007005297:5793e1d7613131dc24004f0d"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Shaman{{/CC}} What can you tell me about who summoned you?"
+    conditions {
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "Compare Actor Skill"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "BaseOrCurrent"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "ActorSkills"
+                }
+                args {
+                  int_value: 7
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 3
+                }
+              }
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Compare Actor Skill"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "BaseOrCurrent"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "ActorSkills"
+                }
+                args {
+                  int_value: 8
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 3
+                }
+              }
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 22
+    hideIfUnavailable: true
+    idRef {
+      id: "576d78613966301007005297:5793e227613131dc24004f11"
+    }
+  }
+  branches {
+    responseText: "I\'m going to leave now."
+    nextNodeIndex: 37
+    idRef {
+      id: "576d78613966301007005297:5793e1d7613131dc24004f0f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Spirit Intro Loop"
+}
+nodes {
+  idRef {
+    id: "5793e423613131dc24004f71"
+  }
+  index: 7
+  text: "{{GM}}The spirit pulses, shaking its head \'no\' with a flash of heat.{{/GM}}\n\nI am not named Fuego, but that is a name that some have taken to calling me. \nNames have power, however much the souls of your kind may not believe it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "576d78613966301007005297:5793e46a613131dc24004f73"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793e3e6613131dc24004f55"
+  }
+  index: 8
+  text: "{{GM}}The spirit stirs for a moment, and then continues.{{/GM}}\n\nYes, it was amusing to one of your kind who first summoned me, many years ago."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "576d78613966301007005297:5793e415613131dc24004f6d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793e482613131dc24004fbe"
+  }
+  index: 9
+  text: "{{GM}}The flame spirit crackles and spits as it watches you.{{/GM}}\n\nI was summoned by one with the power to request service of me."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "576d78613966301007005297:5793e4ee613131dc24004fc6"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793e74f613131dc240051e1"
+  }
+  index: 10
+  text: "{{GM}}The flame spirit crackles and spits as it watches you.{{/GM}}\n\nI do not understand."
+  branches {
+    responseText: "Where did you learn English?"
+    nextNodeIndex: 11
+    idRef {
+      id: "576d78613966301007005297:5793e763613131dc240051e3"
+    }
+  }
+  branches {
+    responseText: "Are we speaking on the Astral plane?"
+    nextNodeIndex: 12
+    idRef {
+      id: "576d78613966301007005297:5793e763613131dc240051e5"
+    }
+  }
+  branches {
+    responseText: "Are you beaming thoughts into my brain?"
+    nextNodeIndex: 13
+    idRef {
+      id: "576d78613966301007005297:5793e763613131dc240051e7"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793e78f613131dc240051ea"
+  }
+  index: 11
+  text: "{{GM}}The flame spirit crackles with amusement.{{/GM}}\n\nI am not speaking English. All beings that have astral energy within them- what you call mana, they all have the ability to communicate."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "576d78613966301007005297:5793e7bf613131dc240051ec"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793e7d1613131dc24005236"
+  }
+  index: 12
+  text: "{{GM}}The spirit inclines slightly toward you.{{/GM}}\n\nPartially. As much as I am able, I am pushing to the physical plane, so that we may converse."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "576d78613966301007005297:5793e806613131dc24005238"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793e80d613131dc2400523d"
+  }
+  index: 13
+  text: "{{GM}}The flame spirit crackles with amusement.{{/GM}}\n\nTiny soul; yes, and at the same time it is far more complicated than that."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "576d78613966301007005297:5793e83d613131dc2400523f"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793e4a4613131dc24004fc1"
+  }
+  index: 14
+  text: "{{GM}}The flame spirit crackles and spits as it watches you.{{/GM}}\n\nThere is more nuance than that."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "576d78613966301007005297:5793e4f3613131dc24004fc9"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793e4df613131dc24004fc4"
+  }
+  index: 15
+  text: "{{GM}}The flame spirit crackles and spits as it watches you.{{/GM}}\n\nI may tell you some, as my strength allows it. Perhaps we will converse more on the subject at a later point."
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+    idRef {
+      id: "576d78613966301007005297:5793e883613131dc24005245"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793e885613131dc24005248"
+  }
+  index: 16
+  text: ""
+  branches {
+    responseText: "What happened here?"
+    nextNodeIndex: 17
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793ea57613131dc24005327"
+    }
+  }
+  branches {
+    responseText: "There is not much evidence of a battle."
+    nextNodeIndex: 18
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793eac3613131dc2400532f"
+    }
+  }
+  branches {
+    responseText: "What happened to the dead?"
+    nextNodeIndex: 19
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793eae4613131dc24005331"
+    }
+  }
+  branches {
+    responseText: "What happened across the alleyway?"
+    nextNodeIndex: 20
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793ebc8613131dc24005435"
+    }
+  }
+  branches {
+    responseText: "That\'s enough questions for now."
+    nextNodeIndex: 6
+    idRef {
+      id: "576d78613966301007005297:5793ec38613131dc2400543e"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Norm-Spirit Questions"
+}
+nodes {
+  idRef {
+    id: "5793ea62613131dc2400532a"
+  }
+  index: 17
+  text: "{{GM}}The flame spirit crackles and spits as it watches you.{{/GM}}\n\nThere was a short battle. I was summoned and set loose on the foes of my summoner. \nSix of his enemies perished."
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+    idRef {
+      id: "576d78613966301007005297:5793eabb613131dc2400532c"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793eb09613131dc24005334"
+  }
+  index: 18
+  text: "{{GM}}The flame spirit gutters momentarily. You\'re not sure if it was a laugh or not.{{/GM}}\n\nI was tasked with remaining here and disposing of the remains. What ash there was has washed away in the rain."
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+    idRef {
+      id: "576d78613966301007005297:5793eb4f613131dc24005336"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793eb5f613131dc240053a8"
+  }
+  index: 19
+  text: "{{GM}}The flame spirit crackles and spits as it watches you.{{/GM}}\n\nThey have been consumed. The mana of their souls now fuels my power."
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+    idRef {
+      id: "576d78613966301007005297:5793eb7d613131dc240053aa"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793ebd8613131dc24005438"
+  }
+  index: 20
+  text: "{{GM}}The flame spirit crackles looks in the direction that you indicate.{{/GM}}\n\nYour world follows flawed rules. I am unable to perceive that area, as it is a different domain."
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+    idRef {
+      id: "576d78613966301007005297:5793ec2f613131dc2400543a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793e95d613131dc24005250"
+  }
+  index: 21
+  text: "{{GM}}The flame spirit crackles and spits as it watches you.{{/GM}}\n\nYou have experience dealing with mana flow, and that is enough of a place to start."
+  branches {
+    responseText: ""
+    nextNodeIndex: 23
+    idRef {
+      id: "576d78613966301007005297:5793e97f613131dc24005254"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793e555613131dc24004fce"
+  }
+  index: 22
+  text: "{{GM}}The flame spirit crackles and spits with what you might term amusement.{{/GM}}\n\nThe one who summoned me is an enigma, trapped on the razor\'s edge between two worlds. \nHe owes his life to a higher power, and yet refuses to recognize it.\nHis loyalty will be his undoing."
+  branches {
+    responseText: ""
+    nextNodeIndex: 23
+    idRef {
+      id: "576d78613966301007005297:5793e899613131dc2400524a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "576d78613966301007005297:5793ed70613131dc24005620"
+  }
+  index: 23
+  text: ""
+  branches {
+    responseText: "What happened here?"
+    nextNodeIndex: 24
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793ed70613131dc24005622"
+    }
+  }
+  branches {
+    responseText: "What can you tell me about the enemies?"
+    nextNodeIndex: 25
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793efe0613131dc240057f5"
+    }
+  }
+  branches {
+    responseText: "What can you tell me about this area?"
+    nextNodeIndex: 26
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793eff7613131dc240057f7"
+    }
+  }
+  branches {
+    responseText: "There is not much evidence of a battle."
+    nextNodeIndex: 27
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793ed70613131dc24005628"
+    }
+  }
+  branches {
+    responseText: "What happened to the dead?"
+    nextNodeIndex: 28
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793ed70613131dc2400562e"
+    }
+  }
+  branches {
+    responseText: "What happened across the alleyway?"
+    nextNodeIndex: 29
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793ed70613131dc24005636"
+    }
+  }
+  branches {
+    responseText: "Can you do anything to enhance my magic?"
+    conditions {
+      ops {
+        functionName: "AND"
+        args {
+          call_value {
+            functionName: "OR"
+            args {
+              call_value {
+                functionName: "Compare Actor Skill"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "BaseOrCurrent"
+                    }
+                    args {
+                      int_value: 1
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "ActorSkills"
+                    }
+                    args {
+                      int_value: 3
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "Comparison Ops"
+                    }
+                    args {
+                      int_value: 3
+                    }
+                  }
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Compare Actor Skill"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "BaseOrCurrent"
+                    }
+                    args {
+                      int_value: 1
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "ActorSkills"
+                    }
+                    args {
+                      int_value: 4
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "Comparison Ops"
+                    }
+                    args {
+                      int_value: 3
+                    }
+                  }
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "AND"
+            args {
+              call_value {
+                functionName: "Compare Actor Skill"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "BaseOrCurrent"
+                    }
+                    args {
+                      int_value: 1
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "ActorSkills"
+                    }
+                    args {
+                      int_value: 7
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "Comparison Ops"
+                    }
+                    args {
+                      int_value: 4
+                    }
+                  }
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Compare Actor Skill"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "BaseOrCurrent"
+                    }
+                    args {
+                      int_value: 1
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "ActorSkills"
+                    }
+                    args {
+                      int_value: 8
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "Comparison Ops"
+                    }
+                    args {
+                      int_value: 4
+                    }
+                  }
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 30
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793f0f8613131dc240058cb"
+    }
+  }
+  branches {
+    responseText: "What can you do for me?"
+    conditions {
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "Compare Actor Skill"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "BaseOrCurrent"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "ActorSkills"
+                }
+                args {
+                  int_value: 7
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 3
+                }
+              }
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Compare Actor Skill"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "BaseOrCurrent"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "ActorSkills"
+                }
+                args {
+                  int_value: 8
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 3
+                }
+              }
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 31
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793f0e9613131dc240058c9"
+    }
+    comment: "Shaman"
+  }
+  branches {
+    responseText: "What can you do for me?"
+    conditions {
+      ops {
+        functionName: "AND"
+        args {
+          call_value {
+            functionName: "Compare Actor Skill"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "BaseOrCurrent"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "ActorSkills"
+                }
+                args {
+                  int_value: 7
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 5
+                }
+              }
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Compare Actor Skill"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "BaseOrCurrent"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "ActorSkills"
+                }
+                args {
+                  int_value: 8
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Comparison Ops"
+                }
+                args {
+                  int_value: 5
+                }
+              }
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 32
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "576d78613966301007005297:5793f15c613131dc240058cd"
+    }
+    comment: "Non-Shaman"
+  }
+  branches {
+    responseText: "Thank you, spirit, those are enough questions for now."
+    nextNodeIndex: 6
+    idRef {
+      id: "576d78613966301007005297:5793ed70613131dc2400563e"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Mana-Spirit Questions"
+}
+nodes {
+  idRef {
+    id: "576d78613966301007005297:5793ed70613131dc24005624"
+  }
+  index: 24
+  text: "{{GM}}The flame spirit crackles and spits as it watches you.{{/GM}}\n\nThere was a short battle. I was summoned and set loose on the foes of my summoner. \nSix of his enemies perished. Others escaped."
+  branches {
+    responseText: ""
+    nextNodeIndex: 23
+    idRef {
+      id: "576d78613966301007005297:5793ed70613131dc24005626"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793f079613131dc2400582e"
+  }
+  index: 25
+  text: "{{GM}}The flame spirit sputters a spirit-version of a laugh.{{/GM}}\n\nThey had no one experienced with mana; the only ones who survived were the ones that fled."
+  branches {
+    responseText: ""
+    nextNodeIndex: 23
+    idRef {
+      id: "576d78613966301007005297:5793f09e613131dc24005830"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793f013613131dc240057fa"
+  }
+  index: 26
+  text: "{{GM}}The flame spirit dims briefly, considering the alleyway and Touristville.{{/GM}}\n\nThis place is a miasma, a place of unclean that will cause a sort if not tended. Dismal, but not hopeless."
+  branches {
+    responseText: ""
+    nextNodeIndex: 23
+    idRef {
+      id: "576d78613966301007005297:5793f070613131dc240057fc"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "576d78613966301007005297:5793ed70613131dc2400562a"
+  }
+  index: 27
+  text: "{{GM}}The flame spirit gutters momentarily. You\'re not sure if it was a laugh or not.{{/GM}}\n\nI was tasked with remaining here and disposing of the remains. What ash there was has washed away in the rain."
+  branches {
+    responseText: ""
+    nextNodeIndex: 23
+    idRef {
+      id: "576d78613966301007005297:5793ed70613131dc2400562c"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "576d78613966301007005297:5793ed70613131dc24005630"
+  }
+  index: 28
+  text: "{{GM}}The flame spirit crackles and spits as it watches you.{{/GM}}\n\nThey have been consumed. The bones burned, the plastics and metals melted."
+  branches {
+    responseText: ""
+    nextNodeIndex: 23
+    idRef {
+      id: "576d78613966301007005297:5793ed70613131dc24005632"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "576d78613966301007005297:5793ed70613131dc24005638"
+  }
+  index: 29
+  text: "{{GM}}The flame spirit crackles looks in the direction that you indicate.{{/GM}}\n\nYour world follows flawed rules. I am unable to perceive that area, as it is a different domain."
+  branches {
+    responseText: ""
+    nextNodeIndex: 23
+    idRef {
+      id: "576d78613966301007005297:5793ed70613131dc2400563a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793f18b613131dc240058d1"
+  }
+  index: 30
+  text: "{{GM}}The flame spirit sputters and crackes, watching you closely for a few seconds.{{/GM}}\n\nThere is little that I can do to aid your function of magic, but there is great magic nearby."
+  branches {
+    responseText: ""
+    nextNodeIndex: 23
+    idRef {
+      id: "576d78613966301007005297:5793f1b7613131dc240058d3"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793f1f1613131dc240059ae"
+  }
+  index: 31
+  text: "{{GM}}The heat from the flame spirit increases as it examines you closely.{{/GM}}\n\nI am bound to this object at the moment, If you carry it, I can read the astral auras of things. You may even be able to summon me, in time."
+  branches {
+    responseText: ""
+    nextNodeIndex: 23
+    idRef {
+      id: "576d78613966301007005297:5793f233613131dc240059b0"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793f250613131dc240059b4"
+  }
+  index: 32
+  text: "{{GM}}The heat from the flame spirit increases as it examines you closely.{{/GM}}\n\nI am bound to this object at the moment, If you carry it, I can read the astral auras of things. I am unsure what other aid I may give you at this time."
+  branches {
+    responseText: ""
+    nextNodeIndex: 33
+    idRef {
+      id: "576d78613966301007005297:5793f268613131dc240059b6"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793f26e613131dc240059b9"
+  }
+  index: 33
+  text: "{{GM}}The heat from the flame spirit increases as it examines you closely.{{/GM}}\n\nI will require a bargain from you. Agreed?"
+  branches {
+    responseText: "Agreed."
+    nextNodeIndex: 34
+    idRef {
+      id: "576d78613966301007005297:5793f287613131dc240059bd"
+    }
+  }
+  branches {
+    responseText: "I will give you my name: $(l.name)."
+    nextNodeIndex: 35
+    idRef {
+      id: "576d78613966301007005297:5793f287613131dc240059bb"
+    }
+  }
+  branches {
+    responseText: "I think I\'ll pass."
+    nextNodeIndex: 36
+    idRef {
+      id: "576d78613966301007005297:5793f287613131dc240059bf"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793f2aa613131dc240059c2"
+  }
+  index: 34
+  text: "{{GM}}The heat from the spirit fades as it sinks back into the astral plane.{{/GM}}\n\nThus our pact is made..."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "576d78613966301007005297:5793f2e3613131dc240059c4"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793f2f1613131dc24005b00"
+  }
+  index: 35
+  text: "{{GM}}The spirit freezes in place, flames fluttering.{{/GM}}\n\n{{GM}}You imagine that the spirit is repeating the name, memorizing it. The heat from the spirit fades as it sinks back into the astral plane.{{/GM}}\n\nYou have give me a worthy boon; I will assure that my service is equal to your cost."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "576d78613966301007005297:5793f35e613131dc24005b02"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793f37c613131dc24005bad"
+  }
+  index: 36
+  text: "{{GM}}The heat from the spirit fades as it sinks back into the astral plane.{{/GM}}\n\nAs you wish, mortal soul..."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "576d78613966301007005297:5793f38b613131dc24005baf"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793e5b6613131dc2400506a"
+  }
+  index: 37
+  text: "{{GM}}The flame spirit crackles and spits as it watches you.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "576d78613966301007005297:5793e5b9613131dc2400506c"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793df41613131dc24004e4f"
+  }
+  index: 38
+  text: "{{GM}}The flame spirit crackles and spits as it watches you.{{/GM}}\n\nNames have a real power that you may be unfamilar with, but I am not. For now, you may call me Fuego."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "576d78613966301007005297:5793dfb3613131dc24004e6c"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793df8a613131dc24004e60"
+  }
+  index: 39
+  text: "{{GM}}The flame spirit crackles and spits as it watches you.{{/GM}}\n\nSomeone on this plane of existence has been taught respect- that is well. You may call me Fuego."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "576d78613966301007005297:5793df8d613131dc24004e62"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793df92613131dc24004e66"
+  }
+  index: 40
+  text: "{{GM}}The flame spirit crackles and spits as it watches you.{{/GM}}\n\nHello."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "576d78613966301007005297:5793df96613131dc24004e68"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793dfdb613131dc24004e71"
+  }
+  index: 41
+  text: "{{GM}}The flame spirit crackles and spits as it watches you.{{/GM}}\n\nPerhaps friend is not the right word.\nYou wear the imprint on your aura of one familiar to me. As you are an ally of his, I am an ally of yours."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "576d78613966301007005297:5793e00b613131dc24004e73"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793e015613131dc24004e78"
+  }
+  index: 42
+  text: "{{GM}}The fire spirit bows in recognition of your skills.{{/GM}}\n\nGreetings, Summoner. Few on this plane are able to perceive my gender."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "576d78613966301007005297:5793e099613131dc24004e7a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793e09e613131dc24004e7f"
+  }
+  index: 43
+  text: "{{GM}}The flame spirit crackles and spits as it watches you.{{/GM}}\n\nGreetings, $(l.name). You may call me Fuego."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "576d78613966301007005297:5793e155613131dc24004ec4"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793e0a0613131dc24004e82"
+  }
+  index: 44
+  text: "{{GM}}The flame spirit crackles and spits as it watches you.{{/GM}}\n\nGreetings, soul of magic. You may call me Fuego."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "576d78613966301007005297:5793e160613131dc24004ecf"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5793dd3e613131dc24004e19"
+  }
+  index: 45
+  text: "{{GM}}The spirit watches you silently, half in the astral plane and half in real life. The spirit says nothing.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "576d78613966301007005297:5793dd42613131dc24004e1d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
 }
 roots {
   nextNodeIndex: 0
