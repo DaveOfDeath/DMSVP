@@ -7,7 +7,7 @@ nodes {
     id: "51b62c7e623331b0170063d4"
   }
   index: 0
-  text: "Heyyyy, chummer. I got some tasty morsels just for you. Just what every well-dressed shadowrunner should have in $(l.his) back pocket."
+  text: "Heyyyy, chummer. I got some tasty morsels just for you. Just what every well-dressed shadowrunner should have in $(l.his) back pocket.\n\nYou want chips, patches, smoggers, and zippers? I got whatcha need."
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -111,9 +111,47 @@ nodes {
   }
   branches {
     responseText: "{{CC}}BTL Chip{{/CC}} Tell me this isn\'t your CalHot BTL?"
-    nextNodeIndex: -1
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "Sam\'s BTL chip"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
     hideIfUnavailable: true
-    onlyOnce: true
     idRef {
       id: "51b62c74623331b0170063ce:578f29bd613131e02400091d"
     }
@@ -121,8 +159,6 @@ nodes {
   branches {
     responseText: "Get bent."
     nextNodeIndex: -1
-    hideIfUnavailable: true
-    onlyOnce: true
     idRef {
       id: "51b62c74623331b0170063ce:575cf4fc396630f802008001"
     }
@@ -344,6 +380,586 @@ nodes {
     nextNodeIndex: 1
     idRef {
       id: "51b62c74623331b0170063ce:578f241f613131e0240008d9"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57ac01b83966301403007767"
+  }
+  index: 10
+  text: "{{GM}}Bobby eyes the chip carefully for a moment before answering.{{/GM}}\n\nI ain\'t saying that chip is mine, but if it\'s for sale, what do you want for it?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac0259396630140300777a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57ac0259396630140300777d"
+  }
+  index: 11
+  text: ""
+  branches {
+    responseText: "{{CC}}Ganger{{/CC}} BTLs are only worth 50\302\245 a pop, even for best-sellers. What\'s on this one that\'s got you jonseing for it so bad?"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 15
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 12
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac024c3966301403007773"
+    }
+  }
+  branches {
+    responseText: "What\'s the going rate for BTL chips?"
+    nextNodeIndex: 16
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac024b396630140300776b"
+    }
+  }
+  branches {
+    responseText: "What\'s on it? The title says CalFree Fornication."
+    nextNodeIndex: 17
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac024b396630140300776d"
+    }
+  }
+  branches {
+    responseText: "I\'ll trade you the chip for answers."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "Sam\'s BTL chip"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 18
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac024c396630140300776f"
+    }
+  }
+  branches {
+    responseText: "I\'ll sell you the chip, but I want answers."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "Sam\'s BTL chip"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add Nuyen"
+        args {
+          int_value: 200
+        }
+      }
+    }
+    nextNodeIndex: 18
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac024c3966301403007771"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Not for sale. Make me a better offer."
+    nextNodeIndex: -1
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac04d739663014030077a0"
+    }
+  }
+  branches {
+    responseText: "Not interested."
+    nextNodeIndex: -1
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac08673966301403007873"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "BTL loop"
+}
+nodes {
+  idRef {
+    id: "57ac051939663014030077a3"
+  }
+  index: 12
+  text: "{{GM}}Bobby takes off his cap, runs a hand over his hair to smooth it before replacing the cap.{{/GM}}\n\nLook, ($.man), I need the chip back. I\'m offering cold hard digital nuyen for it. Do you want to sell it, or not?"
+  branches {
+    responseText: "Sure, I\'ll sell it, but for 300\302\245."
+    nextNodeIndex: 13
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac059739663014030077dd"
+    }
+  }
+  branches {
+    responseText: "There\'s more to this. Spill."
+    nextNodeIndex: 14
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac05a339663014030077df"
+    }
+  }
+  branches {
+    responseText: "No deal."
+    nextNodeIndex: 15
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac05a939663014030077e1"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57ac060239663014030077e4"
+  }
+  index: 13
+  text: "{{GM}}Bobby sputters at the price, grumbling to himself quietly, before nodding. He holds out a credstick to you, with his other hand open to accept the chip.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac060539663014030077e6"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57ac0667396630140300780e"
+  }
+  index: 14
+  text: "{{GM}}Bobby wipes his face and looks around to make sure no one is paying attention.{{/GM}}\n\nOkay, I\'ll tell you, but you seriously have to keep it to yourself, okay? The chip had a little extra on it- the decker who stole the feed put a little extra encrypted bit on it. I didn\'t realize that Sam had grabbed it until after he\'d wandered away for the night, and with him dead I was afraid the cops would take it off his corpse."
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac06d03966301403007810"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57ac06dd3966301403007815"
+  }
+  index: 15
+  text: "{{GM}}Bobby sputters, pulling a credstick out of his pocket and trying to give it to you.{{/GM}}\n\nCOME ON, $++(l.man)! I need that chip back!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac07113966301403007817"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57ac02623966301403007785"
+  }
+  index: 16
+  text: "{{GM}}Bobby avoids looking at you, keeping the chip in sight.{{/GM}}\n\nChips are cheap silicon- the one thing that matters is the programming on them. People will pay millions for the right story. A typical BTL runs 50\302\245. This one? Ill pay you 200\302\245 for it. Deal?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac04273966301403007787"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57ac0459396630140300779b"
+  }
+  index: 17
+  text: "{{GM}}Bobby shrugs{{/GM}}\n\nI\'m not one to judge, it\'s a pretty hardcore orgy at a mansion in CalFree. It\'s one of my best sellers. Seriously, 200\302\245 for it. Deal?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac07c23966301403007861"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57ac04ae396630140300779e"
+  }
+  index: 18
+  text: "{{GM}}Bobby nods, breaking into a grin.{{/GM}}\n\nYou then, my friend, have just purchased my uncharacteristic honesty. You\'ll get the truth, the whole truth, and nothing but the truth. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac07f63966301403007864"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57ac07fd3966301403007867"
+  }
+  index: 19
+  text: ""
+  branches {
+    responseText: "Where do you get your chip supplies?"
+    nextNodeIndex: 20
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac08713966301403007875"
+    }
+  }
+  branches {
+    responseText: "Was Sam one of your clients?"
+    nextNodeIndex: 21
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac08723966301403007877"
+    }
+  }
+  branches {
+    responseText: "Do you know anything about Sam\'s murder?"
+    nextNodeIndex: 27
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac08723966301403007879"
+    }
+  }
+  branches {
+    responseText: "Why do you really want this chip so bad?"
+    nextNodeIndex: 28
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac0872396630140300787b"
+    }
+  }
+  branches {
+    responseText: "Someone said something about a sister?"
+    nextNodeIndex: 29
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac0872396630140300787f"
+    }
+  }
+  branches {
+    responseText: "Thanks."
+    nextNodeIndex: -1
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac0a173966301403007886"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Truth Loop"
+}
+nodes {
+  idRef {
+    id: "57ac08a43966301403007882"
+  }
+  index: 20
+  text: "{{GM}}Bobby gestures to the southeast.{{/GM}}\n\nYakuza bunraku parlour. They gouge me, and I pass the prices on to you!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac0a1a3966301403007888"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57ac0a3339663014030078a3"
+  }
+  index: 21
+  text: "{{GM}}Bobby nods.{{/GM}}\n\nSam was one of my best clients. He would never get more than a couple hundred nuyen before he\'d come see me to pick the right spice to get him out of his mind. I saw him probably four nights a week."
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac0a7739663014030078ab"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57ac0a7739663014030078ae"
+  }
+  index: 22
+  text: ""
+  branches {
+    responseText: "Did Sam have any friends?"
+    nextNodeIndex: 23
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac0a6a39663014030078a5"
+    }
+  }
+  branches {
+    responseText: "What do you know about Sam\'s murder?"
+    nextNodeIndex: 24
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac0a8139663014030078b4"
+    }
+  }
+  branches {
+    responseText: "Did Sam have any enemies? Anyone hold a grudge against him?"
+    nextNodeIndex: 25
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac0a8139663014030078b2"
+    }
+  }
+  branches {
+    responseText: "If you knew Sam so well, tell me. Where does a worthless Shadowrunner get money for a four-night-a-week BTL and drug habit?"
+    nextNodeIndex: 26
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac0a8239663014030078b6"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Sam Truth"
+}
+nodes {
+  idRef {
+    id: "57ac0adb39663014030078b9"
+  }
+  index: 23
+  text: "{{GM}}Bobby shakes his head \'no.\'{{/GM}}\n\nSam kept to himself mostly, talked about his buddy, this one $(l.guy) who had saved his life once. Or maybe he saved theirs. I was never clear on that."
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac0b1739663014030078bb"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57ac0b2f39663014030078cd"
+  }
+  index: 24
+  text: "{{GM}}Bobby sighs{{/GM}}\n\nI honestly don\'t know anything. I was sleeping off my own bender at the place of this elf co-ed from Seattle U. I only heard about it an hour or so ago."
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac0b7639663014030078cf"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57ac0b8039663014030078e7"
+  }
+  index: 25
+  text: "{{GM}}Bobby nods, \'yes\'.{{/GM}}\n\nSure, Sam had enemies. Bookies, loan sharks, people who loaned him money. Do you think maybe he knew he would never have to pay them back?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac0bc439663014030078e9"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57ac0bdc39663014030078ee"
+  }
+  index: 26
+  text: "{{GM}}Bobby rubs at his chin as he answers.{{/GM}}\n\nSam wasn\'t working much as a runner- but he wasn\'t worthless. He had mad a next egg, and was proud of it. He said his \'family connections\' had come through for him, and he had enough to keep going."
+  branches {
+    responseText: ""
+    nextNodeIndex: 26
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac0c5139663014030078f2"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57ac0c5c39663014030078f6"
+  }
+  index: 27
+  text: "{{GM}}Bobby looks off in the direction of the murder site.{{/GM}}\n\nNo, but I wish I did. People are too scared to spend money while they\'re worrying about someone might break in and steal their organs. It\'s bad for business."
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac0c9b39663014030078f8"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57ac0cb1396630140300793e"
+  }
+  index: 28
+  text: "{{GM}}Bobby crosses his arms over his chest, and makes a clucking noise at you.{{/GM}}\n\nFirst rule of negotiation, my $(l.man), never lead with what you\'re worth. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac0cf33966301403007940"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57ac0d173966301403007945"
+  }
+  index: 29
+  text: "{{GM}}Bobby takes off his cap, scratching his scalp while answering,{{/GM}}\n\nSam mentioned it once or twice, but I didn\'t think anything of it. From what I gathered, he didn\'t have a happy home life."
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "51b62c74623331b0170063ce:57ac0d563966301403007947"
     }
     auxiliaryLink: true
   }
