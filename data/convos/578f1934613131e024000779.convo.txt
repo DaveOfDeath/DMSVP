@@ -1215,36 +1215,156 @@ nodes {
   index: 40
   text: "{{GM}}You\'ve found the wireless signal router. It has four independent pings, looks like someone set up a camera network to keep an eye on the street market.{{/GM}}"
   branches {
+    responseText: ""
+    nextNodeIndex: 41
+    idRef {
+      id: "578f1934613131e024000779:57bbe55061313148050082cc"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57bbe55061313148050082cf"
+  }
+  index: 41
+  text: ""
+  branches {
     responseText: "Check the first camera."
-    nextNodeIndex: -1
+    nextNodeIndex: 42
     idRef {
       id: "578f1934613131e024000779:57afb16e613131001c008b27"
     }
+    comment: "Street Market Halloweeners"
   }
   branches {
     responseText: "Check the second camera."
-    nextNodeIndex: -1
+    nextNodeIndex: 43
     idRef {
       id: "578f1934613131e024000779:57afb16e613131001c008b29"
     }
+    comment: "Street Market South"
   }
   branches {
     responseText: "Check the third camera."
-    nextNodeIndex: -1
+    nextNodeIndex: 44
+    onlyOnce: true
     idRef {
       id: "578f1934613131e024000779:57afb186613131001c008b2d"
     }
+    comment: "Inactive (street market above jackpoint)"
   }
   branches {
-    responseText: "Check the fourth camera."
-    nextNodeIndex: -1
+    responseText: "Trace the fourth ping"
+    nextNodeIndex: 45
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
-      id: "578f1934613131e024000779:57afb16e613131001c008b2b"
+      id: "578f1934613131e024000779:57bbe53861313148050082c3"
     }
   }
   branches {
     responseText: "{{CC}}Rigging 1{{/CC}} Slave the camera signals to your commlink."
-    nextNodeIndex: -1
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 10
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add Item to Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "Slave_Cameras"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 46
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -1253,16 +1373,183 @@ nodes {
   }
   branches {
     responseText: "{{CC}}Disable{{/CC}} Disable the camera link, stop the "
-    nextNodeIndex: -1
+    actions {
+      ops {
+        functionName: "Add Item to Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "Disabled_Cameras"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Enable/Disable Interactable Object"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (InteractableObject)"
+            args {
+              string_value: "57bbe2fe613131480500811a"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 47
     idRef {
       id: "578f1934613131e024000779:57afb187613131001c008b31"
     }
   }
   branches {
+    responseText: "{{CC}}Log Off{{/CC}} Disconnect from camera feeds."
+    nextNodeIndex: -1
+    idRef {
+      id: "578f1934613131e024000779:57bbe1196131314805008084"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Camera Loop"
+}
+nodes {
+  idRef {
+    id: "57bbe55d61313148050082d9"
+  }
+  index: 42
+  text: ""
+  branches {
+    responseText: ""
+    nextNodeIndex: 41
+    idRef {
+      id: "578f1934613131e024000779:57bbe56261313148050082db"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57bbe56a61313148050082f3"
+  }
+  index: 43
+  text: ""
+  branches {
+    responseText: ""
+    nextNodeIndex: 41
+    idRef {
+      id: "578f1934613131e024000779:57bbe56d61313148050082f5"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57bbe57761313148050082fa"
+  }
+  index: 44
+  text: "The third camera is broken- shot out by someone feeling zippy.\nRewinding the footage to shortly before the camera was destroyed, you see the street market you\'re currently crouched in."
+  branches {
+    responseText: ""
+    nextNodeIndex: 41
+    idRef {
+      id: "578f1934613131e024000779:57bbe57a61313148050082fc"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57bbe5856131314805008301"
+  }
+  index: 45
+  text: "The weak signal bounces off an old dish antenna, to a relay a few buildings over, and then disappears. \nCould just be someone watching the feed."
+  branches {
+    responseText: ""
+    nextNodeIndex: 41
+    idRef {
+      id: "578f1934613131e024000779:57bbe5876131314805008303"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57bbe63d6131314805008308"
+  }
+  index: 46
+  text: "You slave the camera feed to your commlink, re-encrypting the channel to keep others out."
+  branches {
     responseText: ""
     nextNodeIndex: -1
     idRef {
-      id: "578f1934613131e024000779:57afbebd613131001c008c4b"
+      id: "578f1934613131e024000779:57bbe652613131480500830a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57bbe65b613131480500830d"
+  }
+  index: 47
+  text: "You re-encrypt the camera feed to lock everyone out, and then set the encryption to random. \n\nThere, now no one gets to watch over your shoulder while you work."
+  branches {
+    responseText: ""
+    nextNodeIndex: -1
+    idRef {
+      id: "578f1934613131e024000779:57bbe687613131480500830f"
     }
   }
   nodeType: ConversationNodeType_Simple
