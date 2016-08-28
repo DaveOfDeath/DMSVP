@@ -57,23 +57,6 @@ triggers {
       }
     }
     ops {
-      functionName: "Set Environmental Effect Amount"
-      args {
-        call_value {
-          functionName: "Get Preset Value (string)"
-          args {
-            string_value: "EnvironmentalEffects"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        int_value: 150
-      }
-    }
-    ops {
       functionName: "Set Actor In Passive Mode"
       args {
         call_value {
@@ -12006,7 +11989,7 @@ triggers {
   is_oneshot: false
 }
 triggers {
-  name: "Jake\'s Lighter"
+  name: "interact.JakesLighter"
   events {
     ops {
       functionName: "On Item Interaction"
@@ -12068,7 +12051,7 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "Violet\'s Matrix Access"
+  name: "interact.violetMatrix.access"
   events {
     ops {
       functionName: "On Item Interaction"
@@ -12161,7 +12144,7 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "Violet\'s (Return) Matrix Access"
+  name: "interact.violetMatrix.access2nd"
   events {
     ops {
       functionName: "On Item Interaction"
@@ -13051,6 +13034,116 @@ triggers {
   isActive: true
   idRef {
     id: "57bbe3ca613131480500811c"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "OnCameraStreet.Rain"
+  events {
+    ops {
+      functionName: "On Camera Region Activated"
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "5db0834b306434701b0042fa"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 150
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "57c0f236346265381100793d"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "OnCameraMatrix.NoRain"
+  events {
+    ops {
+      functionName: "On Camera Region Activated"
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "57af84c5613131001c007ff6"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "On Camera Region Activated"
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "575c5fe6663136b812004e26"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "On Camera Region Activated"
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "575c658a663136b812004e30"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "57c0f26d346265381100793e"
   }
   elseActions {
   }
@@ -15149,8 +15242,8 @@ regions {
   position {
     x: 12
     y: 110
-    width: 3
-    height: 5
+    width: 4
+    height: 6
   }
   enabledAtStart: true
   is_camera_region: true
@@ -15319,12 +15412,12 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "r_VioletMatrix"
+  name: "camera_VioletMatrix"
   position {
-    x: -79
-    y: -65
-    width: 27
-    height: 14
+    x: -115
+    y: 92
+    width: 34
+    height: 24
   }
   enabledAtStart: true
   is_camera_region: true
@@ -15364,6 +15457,64 @@ regions {
   default_music: "HongKong-Legwork-Hacking"
   loop_combat_music: true
   loop_default_music: true
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "rgnVioletMatrix"
+  position {
+    x: -114
+    y: 93
+    width: 33
+    height: 18
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: true
+  is_vfx_fill_region: false
+  idRef {
+    id: "57c03a0e34626538190073e9"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
   no_fow_in_region: false
   combat_intense_music: ""
   combat_wrapup_music: ""
@@ -19092,6 +19243,14 @@ team_affiliations {
 }
 scene_dimensions {
   dimension_name: "Default"
+}
+scene_dimensions {
+  dimension_name: "Matrix"
+  initial_alarm_state: 0
+  turns_per_round: 3
+  is_matrix: true
+  max_alarm_value: 50
+  heat_response_rating: 0
 }
 ambience_template: "barrens-night"
 combat_music: "Seattle-Set6-Combat"
