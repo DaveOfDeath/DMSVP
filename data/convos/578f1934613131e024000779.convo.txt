@@ -1249,6 +1249,54 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isCamera"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -1258,6 +1306,22 @@ nodes {
   text: ""
   branches {
     responseText: "Check the first camera."
+    actions {
+      ops {
+        functionName: "Clear Camera Points of Interest"
+      }
+      ops {
+        functionName: "Teleport Camera To Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "578f1ecc613131e02400083d"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 41
     idRef {
       id: "578f1934613131e024000779:57afb16e613131001c008b27"
@@ -1266,6 +1330,22 @@ nodes {
   }
   branches {
     responseText: "Check the second camera."
+    actions {
+      ops {
+        functionName: "Clear Camera Points of Interest"
+      }
+      ops {
+        functionName: "Teleport Camera To Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "57cdce48346265bc10004060"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 42
     idRef {
       id: "578f1934613131e024000779:57afb16e613131001c008b29"
@@ -1275,6 +1355,7 @@ nodes {
   branches {
     responseText: "Check the third camera."
     nextNodeIndex: 43
+    hideIfUnavailable: true
     onlyOnce: true
     idRef {
       id: "578f1934613131e024000779:57afb186613131001c008b2d"
@@ -1390,16 +1471,61 @@ nodes {
           }
         }
       }
+      ops {
+        functionName: "Change Actor Team"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isCamera"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (string)"
+            args {
+              string_value: "FactionList"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
     }
     nextNodeIndex: 45
-    hideIfUnavailable: true
     onlyOnce: true
     idRef {
       id: "578f1934613131e024000779:57afb186613131001c008b2f"
     }
   }
   branches {
-    responseText: "{{CC}}Disable{{/CC}} Disable the camera link, stop the "
+    responseText: "{{GM}}Disable{{/GM}} Disable the camera link."
     actions {
       ops {
         functionName: "Add Item to Actor"
@@ -1471,6 +1597,66 @@ nodes {
           }
         }
       }
+      ops {
+        functionName: "Kill Actor"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isCamera"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "DeathMethod"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "FacingDirection"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
     }
     nextNodeIndex: 46
     idRef {
@@ -1479,6 +1665,54 @@ nodes {
   }
   branches {
     responseText: "{{GM}}Exit.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Change Actor Team"
+        args {
+          call_value {
+            functionName: "All Actors With Tag"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isCamera"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (string)"
+            args {
+              string_value: "FactionList"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: -1
     idRef {
       id: "578f1934613131e024000779:57bbe1196131314805008084"
@@ -1492,9 +1726,22 @@ nodes {
     id: "57bbe55d61313148050082d9"
   }
   index: 41
-  text: ""
+  text: "{{GM}}The feed shows another part of the Barrens, somewhere nearby from the looks of it.{{/GM}}"
   branches {
-    responseText: ""
+    responseText: "{{GM}}Back.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Clear Camera Points of Interest"
+      }
+      ops {
+        functionName: "Teleport Camera To Actor"
+        args {
+          call_value {
+            functionName: "Active Actor"
+          }
+        }
+      }
+    }
     nextNodeIndex: 40
     idRef {
       id: "578f1934613131e024000779:57bbe56261313148050082db"
@@ -1508,9 +1755,22 @@ nodes {
     id: "57bbe56a61313148050082f3"
   }
   index: 42
-  text: ""
+  text: "{{GM}}The feed shows another part of the Barrens, somewhere nearby from the looks of it.{{/GM}}"
   branches {
-    responseText: ""
+    responseText: "{{GM}}Back.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Clear Camera Points of Interest"
+      }
+      ops {
+        functionName: "Teleport Camera To Actor"
+        args {
+          call_value {
+            functionName: "Active Actor"
+          }
+        }
+      }
+    }
     nextNodeIndex: 40
     idRef {
       id: "578f1934613131e024000779:57bbe56d61313148050082f5"
@@ -1559,6 +1819,30 @@ nodes {
   text: "You slave the camera feed to your commlink, re-encrypting the channel to keep others out."
   branches {
     responseText: "{{GM}}Exit.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Enable/Disable Interactable Object"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "EnableOrDisable"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (InteractableObject)"
+            args {
+              string_value: "57bbe2fe613131480500811a"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: -1
     idRef {
       id: "578f1934613131e024000779:57bbe652613131480500830a"
