@@ -99,19 +99,39 @@ nodes {
     responseText: "{{CC}}Armitage{{/CC}} Have Jake Jack In."
     conditions {
       ops {
-        functionName: "Evaluate If Actor Is Downed"
+        functionName: "Evaluate Tag for Actor"
         args {
           call_value {
-            functionName: "Specific Actor"
+            functionName: "All Actors on Team"
             args {
               call_value {
-                functionName: "Get Map Item (Player)"
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
                 args {
                   int_value: 1
                 }
               }
             }
             args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
             }
           }
         }
@@ -119,10 +139,18 @@ nodes {
           call_value {
             functionName: "Get Preset Value (int)"
             args {
-              string_value: "IsOrIsNot"
+              string_value: "HasOrHasNot"
             }
             args {
-              int_value: 0
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Tag From String"
+            args {
+              string_value: "isJake"
             }
           }
         }
@@ -412,7 +440,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 18
+    nextNodeIndex: 21
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -470,7 +498,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 19
+    nextNodeIndex: 22
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -528,7 +556,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 20
+    nextNodeIndex: 23
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -537,7 +565,7 @@ nodes {
   }
   branches {
     responseText: "View code logs."
-    nextNodeIndex: 22
+    nextNodeIndex: 25
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -576,38 +604,81 @@ nodes {
   index: 12
   text: "{{GM}}Search Coding Projects{{/GM}}"
   branches {
-    responseText: "Shadowrun Identity"
+    responseText: ""
     nextNodeIndex: 13
+    idRef {
+      id: "578f1934613131e024000779:57e75f6e663136201a0093a2"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57e75f6e663136201a0093a5"
+  }
+  index: 13
+  text: ""
+  branches {
+    responseText: "Shadowrun Identity Project"
+    nextNodeIndex: 14
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "578f1934613131e024000779:57af9802613131001c008868"
     }
   }
   branches {
     responseText: "Preying for Keeps"
-    nextNodeIndex: 14
+    nextNodeIndex: 15
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "578f1934613131e024000779:57af9824613131001c00886a"
     }
   }
   branches {
+    responseText: "SNES"
+    nextNodeIndex: 16
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "578f1934613131e024000779:57e75ef5663136201a009382"
+    }
+  }
+  branches {
     responseText: "Chicago"
-    nextNodeIndex: 15
+    nextNodeIndex: 17
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "578f1934613131e024000779:57af9824613131001c00886c"
     }
   }
   branches {
     responseText: "Jet Black"
-    nextNodeIndex: 16
+    nextNodeIndex: 18
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "578f1934613131e024000779:57af9824613131001c00886e"
     }
   }
   branches {
     responseText: "Mercurial"
-    nextNodeIndex: 17
+    nextNodeIndex: 19
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "578f1934613131e024000779:57af9824613131001c008870"
+    }
+  }
+  branches {
+    responseText: "Stuffer Shack"
+    nextNodeIndex: 20
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "578f1934613131e024000779:57e75fd4663136201a0093ff"
     }
   }
   branches {
@@ -619,17 +690,18 @@ nodes {
     inputBypass: true
     auxiliaryLink: true
   }
-  nodeType: ConversationNodeType_InputKeyboard
+  nodeType: ConversationNodeType_Simple
+  comment: "Project Search"
 }
 nodes {
   idRef {
     id: "57af982b613131001c008875"
   }
-  index: 13
+  index: 14
   text: "{{GM}}An old bit of code comes up on the register, but it\'s pre-Crash trash. A note appended to the code reads:{{/GM}}\n\n{{CC}}These were some good people, see if we can update it to current protocols and re-release it. - Captain Chaos{{/CC}}"
   branches {
     responseText: ""
-    nextNodeIndex: 10
+    nextNodeIndex: 13
     idRef {
       id: "578f1934613131e024000779:57af986f613131001c008877"
     }
@@ -641,11 +713,11 @@ nodes {
   idRef {
     id: "57af989f613131001c0088ab"
   }
-  index: 14
+  index: 15
   text: "{{GM}}This coding entry is barely started, and someone named Jack Skater is always asking for an update.{{/GM}}"
   branches {
     responseText: ""
-    nextNodeIndex: 10
+    nextNodeIndex: 13
     idRef {
       id: "578f1934613131e024000779:57af98b2613131001c0088ad"
     }
@@ -655,9 +727,25 @@ nodes {
 }
 nodes {
   idRef {
+    id: "57e75f03663136201a009385"
+  }
+  index: 16
+  text: "{{GM}}This file is both huge, and ancient.   It appears to have fairly regular updates going back for years.  Seems like it\'s pretty far along, and likely still under development.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "578f1934613131e024000779:57e75f8c663136201a0093f7"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
     id: "57af98bd613131001c0088b2"
   }
-  index: 15
+  index: 17
   text: "{{GM}}An immersive hot-sim experience from the pre-Crash band awaits download.{{/GM}}"
   branches {
     responseText: ""
@@ -673,11 +761,11 @@ nodes {
   idRef {
     id: "57af98f4613131001c0088b9"
   }
-  index: 16
+  index: 18
   text: "{{GM}}There\'s a program here to seed the matrix with hundreds of Jet Black sightings a year, and to respond with random usernames to any threads that mention Jet Black sightings as hoaxes or frauds.{{/GM}}"
   branches {
     responseText: ""
-    nextNodeIndex: 10
+    nextNodeIndex: 13
     idRef {
       id: "578f1934613131e024000779:57af998b613131001c0088bb"
     }
@@ -689,11 +777,11 @@ nodes {
   idRef {
     id: "57af9993613131001c0088c0"
   }
-  index: 17
+  index: 19
   text: "{{GM}}Maria Mercurial, the Silver Lady{{/GM}}\n\nMaria\'s entire discography is collected here, and there\'s a crudely programmed semi-autonomous knowbot scouring the matrix for any mention of Maria Mercurial, Puyallup\'s street market, Shadowrunners based out of Puyallup in 2051, New Horizons Construction, police informants from Puyallup in 2051, someone named Snout, a troll named Mateo, and someone named Roberto Carlos De La Virgen Campeche de Sanchez.\n\nSomeone really wants to find out something about Maria Mercurial."
   branches {
     responseText: ""
-    nextNodeIndex: 10
+    nextNodeIndex: 13
     idRef {
       id: "578f1934613131e024000779:57afa7e7613131001c0088c2"
     }
@@ -703,9 +791,25 @@ nodes {
 }
 nodes {
   idRef {
+    id: "57e75fe2663136201a009402"
+  }
+  index: 20
+  text: "{{GM}}This project looks mostly complete, if a bit simple.   Seems that system updates have likely rendered it all but inoperable at this point.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "578f1934613131e024000779:57e76007663136201a009404"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
     id: "57af94c6613131001c008796"
   }
-  index: 18
+  index: 21
   text: "{{GM}}You search for inaccessible drive, and are unsurprised when one is present.{{/GM}}\n\n{{GM}}A note from Chuckles reads:{{/GM}}\n{{CC}}I\'m surprised you finally thought to look for this, Violet. Here\'s a reward to buy yourself something nice.{{/CC}}"
   branches {
     responseText: ""
@@ -732,7 +836,7 @@ nodes {
   idRef {
     id: "57afa8a9613131001c008939"
   }
-  index: 19
+  index: 22
   text: "{{GM}}A search for basic hidden files yeilds a single result:{{/GM}}\n\n{{CC}}.nicetryViolet//but I can do better than old pre-crash protocols.{{/CC}}"
   branches {
     responseText: ""
@@ -751,11 +855,11 @@ nodes {
   idRef {
     id: "57afa8b0613131001c008940"
   }
-  index: 20
+  index: 23
   text: "{{GM}}There are several files with countdowns on them- some set to go off in a few days, others every six months unless reset.{{/GM}}\n\n{{GM}}Whoever set up this node has a lot of triggers to pull.{{/GM}}\n\n{{GM}}One in particular reads \"DON\'T TOUCH THESE\" as a filename.{{/GM}}"
   branches {
     responseText: ""
-    nextNodeIndex: 21
+    nextNodeIndex: 24
     idRef {
       id: "578f1934613131e024000779:57afa905613131001c008948"
     }
@@ -766,7 +870,7 @@ nodes {
   idRef {
     id: "57afa905613131001c00894b"
   }
-  index: 21
+  index: 24
   text: "Chuckles comments: Violet, these are to keep other failsafes from triggering. Don\'t mess with them.\n\n{{GM}}The file notifies Gavilan Ventures, an unknown dropbox in Germany, and someone named \'Buddy\' here in Seattle with the same message: Employee: Webb, Charles - Deceased.{{/GM}}"
   branches {
     responseText: ""
@@ -785,11 +889,11 @@ nodes {
   idRef {
     id: "57af95b3613131001c0087ec"
   }
-  index: 22
+  index: 25
   text: "{{GM}}There are thousands of bits of stolen code.{{/GM}}"
   branches {
     responseText: ""
-    nextNodeIndex: 23
+    nextNodeIndex: 26
     idRef {
       id: "578f1934613131e024000779:57af9601613131001c008807"
     }
@@ -800,11 +904,11 @@ nodes {
   idRef {
     id: "57af9601613131001c00880a"
   }
-  index: 23
+  index: 26
   text: "{{GM}}The two main areas of coders are \"Chuckles\" and \"UV\".{{/GM}}\n\n{{GM}}A comment from UV reads:{{/GM}}\nChuckles, I finally cracked the encryption and decompiled that psychotropic IC. Looks like it was written in Chiba, and seeded into the software of the CalFree Sim publisher. I don\'t think they even know that they\'re spreading the megacorp brand loyalty. Should we warn Virtual World Disney, or just go after the source?"
   branches {
     responseText: ""
-    nextNodeIndex: 24
+    nextNodeIndex: 27
     idRef {
       id: "578f1934613131e024000779:57cfafad613131200d006051"
     }
@@ -815,7 +919,7 @@ nodes {
   idRef {
     id: "57cfafad613131200d006054"
   }
-  index: 24
+  index: 27
   text: "{{GM}}Chuckles\' response:{{/GM}}\nWhen you have a toothache, is the pain in your mouth or in your brain?"
   branches {
     responseText: ""
@@ -834,11 +938,11 @@ nodes {
   idRef {
     id: "57d1552134626514070014d8"
   }
-  index: 25
+  index: 28
   text: "{{GM}}A gruff ork answers as if responding to a call.{{/GM}}\n\nWhat\'s going on, Chuckles?"
   branches {
     responseText: ""
-    nextNodeIndex: 26
+    nextNodeIndex: 29
     idRef {
       id: "578f1934613131e024000779:57d158883462651407001770"
     }
@@ -852,7 +956,7 @@ nodes {
   idRef {
     id: "57d1588a3462651407001773"
   }
-  index: 26
+  index: 29
   text: "{{GM}}He recognizes that you\'re not whoever he was expecting with a short grunt.{{/GM}}\n\nA stranger calling from this line can only mean my friend is dead. We\'ll be sending some hard hitters up from the Underground to get Fourth World on the perpetrators.\n\nWonder what they\'ll do if they find someone snooping in our business?\n\n{{GM}}The line disconnects.{{/GM}}"
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
@@ -863,11 +967,11 @@ nodes {
   idRef {
     id: "57af93b2613131001c008780"
   }
-  index: 27
+  index: 30
   text: "{{GM}}You\'ve found the wireless signal router. It has four independent pings, looks like someone set up a camera network to keep an eye on the street market.{{/GM}}"
   branches {
     responseText: ""
-    nextNodeIndex: 28
+    nextNodeIndex: 31
     idRef {
       id: "578f1934613131e024000779:57bbe55061313148050082cc"
     }
@@ -926,7 +1030,7 @@ nodes {
   idRef {
     id: "57bbe55061313148050082cf"
   }
-  index: 28
+  index: 31
   text: ""
   branches {
     responseText: "Check the first camera."
@@ -946,7 +1050,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 29
+    nextNodeIndex: 32
     idRef {
       id: "578f1934613131e024000779:57afb16e613131001c008b27"
     }
@@ -970,7 +1074,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 30
+    nextNodeIndex: 33
     idRef {
       id: "578f1934613131e024000779:57afb16e613131001c008b29"
     }
@@ -978,7 +1082,7 @@ nodes {
   }
   branches {
     responseText: "Check the third camera."
-    nextNodeIndex: 31
+    nextNodeIndex: 34
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -988,7 +1092,7 @@ nodes {
   }
   branches {
     responseText: "Trace the fourth ping"
-    nextNodeIndex: 32
+    nextNodeIndex: 35
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -1033,7 +1137,7 @@ nodes {
               call_value {
                 functionName: "Get Map Item (Item)"
                 args {
-                  string_value: "Slave_Cameras"
+                  string_value: "c03-s1_CameraSlaved"
                 }
               }
             }
@@ -1072,7 +1176,7 @@ nodes {
               call_value {
                 functionName: "Get Map Item (Item)"
                 args {
-                  string_value: "Disabled_Cameras"
+                  string_value: "c03-s1_CameraDisabled"
                 }
               }
             }
@@ -1087,7 +1191,7 @@ nodes {
           call_value {
             functionName: "Get Map Item (Item)"
             args {
-              string_value: "Slave_Cameras"
+              string_value: "c03-s1_CameraSlaved"
             }
           }
         }
@@ -1176,7 +1280,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 33
+    nextNodeIndex: 36
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -1221,7 +1325,7 @@ nodes {
               call_value {
                 functionName: "Get Map Item (Item)"
                 args {
-                  string_value: "Slave_Cameras"
+                  string_value: "c03-s1_CameraSlaved"
                 }
               }
             }
@@ -1260,7 +1364,7 @@ nodes {
               call_value {
                 functionName: "Get Map Item (Item)"
                 args {
-                  string_value: "Disabled_Cameras"
+                  string_value: "c03-s1_CameraDisabled"
                 }
               }
             }
@@ -1275,7 +1379,7 @@ nodes {
           call_value {
             functionName: "Get Map Item (Item)"
             args {
-              string_value: "Disabled_Cameras"
+              string_value: "c03-s1_CameraDisabled"
             }
           }
         }
@@ -1378,7 +1482,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 34
+    nextNodeIndex: 37
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -1447,7 +1551,7 @@ nodes {
   idRef {
     id: "57bbe55d61313148050082d9"
   }
-  index: 29
+  index: 32
   text: "{{GM}}The feed shows another street market, this one trashed by a local go-gang. Orange and black pumpkins decorate the area.{{/GM}}"
   branches {
     responseText: "{{GM}}Back.{{/GM}}"
@@ -1464,7 +1568,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 28
+    nextNodeIndex: 31
     idRef {
       id: "578f1934613131e024000779:57bbe56261313148050082db"
     }
@@ -1476,7 +1580,7 @@ nodes {
   idRef {
     id: "57bbe56a61313148050082f3"
   }
-  index: 30
+  index: 33
   text: "{{GM}}This camera shows a south-looking view of the street market, with several motorcycles and gangers wandering the area.{{/GM}}"
   branches {
     responseText: "{{GM}}Back.{{/GM}}"
@@ -1493,7 +1597,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 28
+    nextNodeIndex: 31
     idRef {
       id: "578f1934613131e024000779:57bbe56d61313148050082f5"
     }
@@ -1505,11 +1609,11 @@ nodes {
   idRef {
     id: "57bbe57761313148050082fa"
   }
-  index: 31
+  index: 34
   text: "{{GM}}The third camera feed returns a no signal error. Rewinding the footage to shortly before the camera was destroyed, you see the street market you\'re currently crouched in.{{/GM}}"
   branches {
     responseText: ""
-    nextNodeIndex: 28
+    nextNodeIndex: 31
     idRef {
       id: "578f1934613131e024000779:57bbe57a61313148050082fc"
     }
@@ -1521,11 +1625,11 @@ nodes {
   idRef {
     id: "57bbe5856131314805008301"
   }
-  index: 32
+  index: 35
   text: "The weak signal bounces off an old dish antenna, to a relay a few buildings over, and then disappears. \nCould just be someone watching the feed."
   branches {
     responseText: ""
-    nextNodeIndex: 28
+    nextNodeIndex: 31
     idRef {
       id: "578f1934613131e024000779:57bbe5876131314805008303"
     }
@@ -1537,7 +1641,7 @@ nodes {
   idRef {
     id: "57bbe63d6131314805008308"
   }
-  index: 33
+  index: 36
   text: "You slave the camera feed to your commlink, re-encrypting the channel to keep others out."
   branches {
     responseText: "{{GM}}Exit.{{/GM}}"
@@ -1552,7 +1656,7 @@ nodes {
   idRef {
     id: "57bbe65b613131480500830d"
   }
-  index: 34
+  index: 37
   text: "You re-encrypt the camera feed to lock everyone out, and then set the encryption to random. \n\nThere, now no one gets to watch over your shoulder while you work."
   branches {
     responseText: "{{GM}}Exit.{{/GM}}"
@@ -1567,11 +1671,11 @@ nodes {
   idRef {
     id: "57af8e36613131001c008661"
   }
-  index: 35
+  index: 38
   text: "{{GM}}A gruff ork answers as if responding to a Telecom call.{{/GM}}\n\nThis is Two-Feathers, Chuckles, what\'s going on? "
   branches {
     responseText: ""
-    nextNodeIndex: 36
+    nextNodeIndex: 39
     idRef {
       id: "578f1934613131e024000779:57af8e5e613131001c008663"
     }
@@ -1585,11 +1689,11 @@ nodes {
   idRef {
     id: "57af8e60613131001c008666"
   }
-  index: 36
+  index: 39
   text: "{{GM}}The ork seems to recognize that you\'re not whoever he was expecting.{{/GM}}\n\nWait-- you\'re not-- who are you?"
   branches {
     responseText: ""
-    nextNodeIndex: 37
+    nextNodeIndex: 40
     idRef {
       id: "578f1934613131e024000779:57af8e8b613131001c008668"
     }
@@ -1603,11 +1707,11 @@ nodes {
   idRef {
     id: "57af8e8d613131001c00866b"
   }
-  index: 37
+  index: 40
   text: ""
   branches {
     responseText: "I\'m \'Chuckles,\' don\'t you recognize me?"
-    nextNodeIndex: 38
+    nextNodeIndex: 41
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -1616,7 +1720,7 @@ nodes {
   }
   branches {
     responseText: "This line has been compromised."
-    nextNodeIndex: 39
+    nextNodeIndex: 42
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -1700,7 +1804,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 46
+    nextNodeIndex: 49
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -1758,7 +1862,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 47
+    nextNodeIndex: 50
     hideIfUnavailable: true
     idRef {
       id: "578f1934613131e024000779:57af92e6613131001c00870f"
@@ -1766,7 +1870,7 @@ nodes {
   }
   branches {
     responseText: "I just found a matrix connection and was poking around."
-    nextNodeIndex: 48
+    nextNodeIndex: 51
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -1775,7 +1879,7 @@ nodes {
   }
   branches {
     responseText: "Sorry, wrong number."
-    nextNodeIndex: 49
+    nextNodeIndex: 52
     idRef {
       id: "578f1934613131e024000779:57af8e9d613131001c008675"
     }
@@ -1790,11 +1894,11 @@ nodes {
   idRef {
     id: "57af8f2e613131001c00868c"
   }
-  index: 38
+  index: 41
   text: "{{GM}}The ork cocks an eyebrow in disbelief.{{/GM}}\n\nChuckles isn\'t above changing his avatar, or sending UV to deliver a message, but you\'re not him. Who are you?"
   branches {
     responseText: ""
-    nextNodeIndex: 37
+    nextNodeIndex: 40
     idRef {
       id: "578f1934613131e024000779:57af8f73613131001c0086ae"
     }
@@ -1809,11 +1913,11 @@ nodes {
   idRef {
     id: "57af8ec4613131001c008678"
   }
-  index: 39
+  index: 42
   text: "{{GM}}The ork squints into the screen, as if looking at your avatar could tell him any secrets.{{/GM}}\n\nCompromised? By whom? We heard gunshots, but assumed it was just random ganger violence."
   branches {
     responseText: ""
-    nextNodeIndex: 40
+    nextNodeIndex: 43
     idRef {
       id: "578f1934613131e024000779:57af8f0b613131001c00867a"
     }
@@ -1827,11 +1931,11 @@ nodes {
   idRef {
     id: "57af8f0e613131001c00867d"
   }
-  index: 40
+  index: 43
   text: ""
   branches {
     responseText: "By me, mostly."
-    nextNodeIndex: 41
+    nextNodeIndex: 44
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -1840,7 +1944,7 @@ nodes {
   }
   branches {
     responseText: "I\'m $+(s.name)."
-    nextNodeIndex: 42
+    nextNodeIndex: 45
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -1849,7 +1953,7 @@ nodes {
   }
   branches {
     responseText: "You mean, \'by who\'."
-    nextNodeIndex: 43
+    nextNodeIndex: 46
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -1858,7 +1962,7 @@ nodes {
   }
   branches {
     responseText: "Pretty much anyone with a deck could have cracked open this node."
-    nextNodeIndex: 44
+    nextNodeIndex: 47
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -1867,7 +1971,7 @@ nodes {
   }
   branches {
     responseText: "Shhh... it\'s a secret."
-    nextNodeIndex: 45
+    nextNodeIndex: 48
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -1917,11 +2021,11 @@ nodes {
   idRef {
     id: "57afafe1613131001c008a21"
   }
-  index: 41
+  index: 44
   text: "{{GM}}The ork nods.{{/GM}}\n\nWhich begs the question, who are you?"
   branches {
     responseText: ""
-    nextNodeIndex: 40
+    nextNodeIndex: 43
     idRef {
       id: "578f1934613131e024000779:57afb05c613131001c008a23"
     }
@@ -1936,11 +2040,11 @@ nodes {
   idRef {
     id: "57afb075613131001c008a45"
   }
-  index: 42
+  index: 45
   text: "{{GM}}The ork nods slowly, looking at you to take your measure.{{/GM}}\n\nPleasure to meet you, $+(l.name). "
   branches {
     responseText: ""
-    nextNodeIndex: 40
+    nextNodeIndex: 43
     idRef {
       id: "578f1934613131e024000779:57afb0a6613131001c008a47"
     }
@@ -1955,11 +2059,11 @@ nodes {
   idRef {
     id: "57af8f80613131001c0086b2"
   }
-  index: 43
+  index: 46
   text: "{{GM}}The ork peers at you in confusion.{{/GM}}\n\nWhat? No- it\'s whom when it\'s the object of a sentence. That\'s not important. Who are YOU?"
   branches {
     responseText: ""
-    nextNodeIndex: 40
+    nextNodeIndex: 43
     idRef {
       id: "578f1934613131e024000779:57af8fa4613131001c0086b4"
     }
@@ -1974,11 +2078,11 @@ nodes {
   idRef {
     id: "57afafa6613131001c0089c7"
   }
-  index: 44
+  index: 47
   text: "{{GM}}The ork shakes his head.{{/GM}}\n\nChuckles is many things, but he is not lazy. I doubt any but the most talented deckers could disable his safety protocols."
   branches {
     responseText: ""
-    nextNodeIndex: 40
+    nextNodeIndex: 43
     idRef {
       id: "578f1934613131e024000779:57afafcf613131001c0089c9"
     }
@@ -1993,11 +2097,11 @@ nodes {
   idRef {
     id: "57afb0ec613131001c008acd"
   }
-  index: 45
+  index: 48
   text: "{{GM}}The orks seems bewildered.{{/GM}}\n\nYou called me."
   branches {
     responseText: ""
-    nextNodeIndex: 37
+    nextNodeIndex: 40
     idRef {
       id: "578f1934613131e024000779:57afb10a613131001c008b1b"
     }
@@ -2012,11 +2116,11 @@ nodes {
   idRef {
     id: "57af928b613131001c00870a"
   }
-  index: 46
+  index: 49
   text: "{{GM}}Joseph Two-Feathers clears his throat awkwardly.{{/GM}}\n\nYes, uh-- yes. I am."
   branches {
     responseText: ""
-    nextNodeIndex: 37
+    nextNodeIndex: 40
     idRef {
       id: "578f1934613131e024000779:57afaf6d613131001c0089c4"
     }
@@ -2054,11 +2158,11 @@ nodes {
   idRef {
     id: "57af9354613131001c008712"
   }
-  index: 47
+  index: 50
   text: "{{GM}}The ork seems surprised by this information, or perhaps just its source.{{/GM}}\n\nWe are more secure underground than those people in the street market. I heard the Halloweeners are giving the area holy hell."
   branches {
     responseText: ""
-    nextNodeIndex: 37
+    nextNodeIndex: 40
     idRef {
       id: "578f1934613131e024000779:57af9389613131001c008714"
     }
@@ -2073,11 +2177,11 @@ nodes {
   idRef {
     id: "57afb12e613131001c008b21"
   }
-  index: 48
+  index: 51
   text: "{{GM}}The ork seems incredulous.{{/GM}}\n\nYou just \'stumbled\' on the secure host used by the local tech guru, and used it to call me?"
   branches {
     responseText: ""
-    nextNodeIndex: 37
+    nextNodeIndex: 40
     idRef {
       id: "578f1934613131e024000779:57afb15f613131001c008b23"
     }
@@ -2092,7 +2196,7 @@ nodes {
   idRef {
     id: "57af92c5613131001c00870d"
   }
-  index: 49
+  index: 52
   text: "{{GM}}The ork\'s face looks surprised as you disconnect.{{/GM}}"
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
@@ -2410,7 +2514,7 @@ roots {
       }
     }
   }
-  nextNodeIndex: 25
+  nextNodeIndex: 28
   idRef {
     id: "578f1934613131e024000779:57d154e634626514070014d5"
   }
@@ -2445,7 +2549,7 @@ roots {
       }
     }
   }
-  nextNodeIndex: 27
+  nextNodeIndex: 30
   hideIfUnavailable: true
   idRef {
     id: "578f1934613131e024000779:57af8ad5613131001c00865c"
@@ -2540,7 +2644,7 @@ roots {
       }
     }
   }
-  nextNodeIndex: 35
+  nextNodeIndex: 38
   hideIfUnavailable: true
   idRef {
     id: "578f1934613131e024000779:57af8ad5613131001c00865a"
