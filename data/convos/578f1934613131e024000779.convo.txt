@@ -99,12 +99,19 @@ nodes {
     responseText: "{{CC}}Armitage{{/CC}} Have Jake Jack In."
     conditions {
       ops {
-        functionName: "Comparison (Actor)"
+        functionName: "Evaluate If Actor Is Downed"
         args {
           call_value {
-            functionName: "Get Map Item (Actor)"
+            functionName: "Specific Actor"
             args {
-              string_value: "a99a7ac5623331441b003061"
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
             }
           }
         }
@@ -115,15 +122,7 @@ nodes {
               string_value: "IsOrIsNot"
             }
             args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Map Item (Player)"
-            args {
-              int_value: 1
+              int_value: 0
             }
           }
         }
