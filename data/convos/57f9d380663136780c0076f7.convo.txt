@@ -1,0 +1,114 @@
+idRef {
+  id: "57f9d380663136780c0076f7"
+}
+ui_name: "c06-s2_SteviesJDoorCode"
+nodes {
+  idRef {
+    id: "57f9d39b663136780c0076ff"
+  }
+  index: 0
+  text: "{{GM}}An old school off-grid security panel protects this room from unauthorized entry.{{/GM}}\n\n{{CC}}Enter Access Code:{{/CC}}\n\n$(scene.sCodeObtained)"
+  branches {
+    responseText: "3795"
+    nextNodeIndex: 1
+    idRef {
+      id: "57f9d380663136780c0076f7:57f9d401663136780c007701"
+    }
+  }
+  nodeType: ConversationNodeType_InputNumpad
+  inputMaxLength: 4
+  speaker_override_id: "57384e3566313618130064b2"
+}
+nodes {
+  idRef {
+    id: "57f9d433663136780c00770a"
+  }
+  index: 1
+  text: "{{GM}}Access Granted.{{/GM}}"
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "57384e3566313618130064b2"
+  actions {
+    ops {
+      functionName: "Delete Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "c716a87b306466bc09006da1"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "DoorSlide"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "575cfbbf6631363c0b001a65"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "57f9d380663136780c0076f7:57f9d380663136780c0076fb"
+  }
+}

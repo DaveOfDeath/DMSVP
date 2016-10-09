@@ -1,0 +1,408 @@
+idRef {
+  id: "57f9f5e2663136780c007996"
+}
+ui_name: "c06-s2_CoyoteFightOver"
+nodes {
+  idRef {
+    id: "57f9f5ee663136780c00799e"
+  }
+  index: 0
+  text: "Alright... Now we can go.   Remember, $(l.name)... I need those stones to settle up with Deliliah."
+  branches {
+    responseText: "I got it."
+    nextNodeIndex: 1
+    idRef {
+      id: "57f9f5e2663136780c007996:57f9f63e663136780c0079a2"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I\'ll see what I can do."
+    nextNodeIndex: 1
+    idRef {
+      id: "57f9f5e2663136780c007996:57f9f63f663136780c0079a4"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "575cfbbf6631363c0b001a54"
+  }
+}
+nodes {
+  idRef {
+    id: "57f9f654663136780c0079a7"
+  }
+  index: 1
+  text: "Thanks $(l.name)."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "57f9f5e2663136780c007996:57f9f65f663136780c0079ab"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "575cfbbf6631363c0b001a54"
+  }
+  comment: "Walkoff"
+}
+nodes {
+  idRef {
+    id: "57f9f65f663136780c0079ae"
+  }
+  index: 2
+  text: "Paco and Coyote stagger out of the building, leaving you alone on the floor."
+  nodeType: ConversationNodeType_GM_Voice
+  sourceInSceneRef {
+    id: "575cfbbf6631363c0b001a54"
+  }
+  actions {
+    ops {
+      functionName: "Teleport Actor to Area Around Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "575cfbbf6631363c0b001a54"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "575cfbbf6631363c0b001a59"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Actor to Area Around Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "575cfbbf6631363c0b001a59"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Detain Actor"
+      args {
+        call_value {
+          functionName: "All Actors Within Area"
+          args {
+            call_value {
+              functionName: "Area: Region"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Region)"
+                  args {
+                    string_value: "575cfbbf6631363c0b001a59"
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Nothing Selected"
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DetainMethod"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "57f9f716663136780c0079b8"
+  }
+  index: 3
+  text: "Look, $(l.name)...\n\n{{GM}}Her face contorts hideously as the pain shoots up her ruined arm.{{/GM}}\n\nI need to find Stevies stash.   Got to settle up with Mr. Deliliah."
+  branches {
+    responseText: "Sorry Coyote.  You\'re not gonna last long enough to toss this place.   We\'ve got to get you back patched up."
+    nextNodeIndex: 4
+    idRef {
+      id: "57f9f5e2663136780c007996:57f9f764663136780c0079ba"
+    }
+  }
+  branches {
+    responseText: "Alright, I\'ll look around.   But you two need to head out and get her stabilized.  Settling up doesn\'t help corpses."
+    nextNodeIndex: 1
+    idRef {
+      id: "57f9f5e2663136780c007996:57f9f764663136780c0079bc"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "575cfbbf6631363c0b001a54"
+  }
+}
+nodes {
+  idRef {
+    id: "57f9f7be663136780c0079bf"
+  }
+  index: 4
+  text: "It\'s important."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "57f9f5e2663136780c007996:57f9f7d0663136780c0079c1"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "575cfbbf6631363c0b001a54"
+  }
+}
+nodes {
+  idRef {
+    id: "57f9f7d0663136780c0079c4"
+  }
+  index: 5
+  text: "More important than you?   I don\'t think so, Coyote.   Maybe you can take a look around, $(l.name)?   I\'ve got to get her put back together before...\n\n{{GM}}He swallows hard.{{/GM}}"
+  branches {
+    responseText: "I got it kid.   Head out, I\'ll look for them."
+    nextNodeIndex: 1
+    idRef {
+      id: "57f9f5e2663136780c007996:57f9f7e6663136780c0079c6"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "We\'re done here.   Lets go."
+    nextNodeIndex: 2
+    idRef {
+      id: "57f9f5e2663136780c007996:57f9f812663136780c0079c8"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "575cfc7c6631363c0b001a71"
+  }
+}
+roots {
+  conditions {
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Find Stevie\'s Stash"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+  idRef {
+    id: "57f9f5e2663136780c007996:57f9f5e2663136780c00799a"
+  }
+  comment: "GOAL: Stash Known"
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Find Stevie\'s Stash"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Find Stevie\'s Stash"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 3
+  idRef {
+    id: "57f9f5e2663136780c007996:57f9f5f1663136780c0079a0"
+  }
+  comment: "GOAL: Stash Unknown"
+}

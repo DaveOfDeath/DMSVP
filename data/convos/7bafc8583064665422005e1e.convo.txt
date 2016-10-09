@@ -131,7 +131,7 @@ nodes {
         call_value {
           functionName: "Get Map Item (Event)"
           args {
-            string_value: "eventCoyoteJoins"
+            string_value: "Event.CoyoteJoinsIn"
           }
         }
       }
@@ -162,7 +162,7 @@ nodes {
     id: "c39ecd87306466cc09006876"
   }
   index: 3
-  text: "\'Bout time you got here, Paco. Who\'s your friend?"
+  text: "{{GM}}She bends, gritting her teeth and grabs the fallen guards shotgun.{{/GM}}\n\n\'Bout time you got here, Paco. Who\'s your friend?"
   branches {
     responseText: "Just another professional. I need to ask you some questions."
     nextNodeIndex: 4
@@ -485,25 +485,59 @@ roots {
   responseText: ""
   conditions {
     ops {
-      functionName: "Evaluate Turn Mode in Dimension"
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Wipe out the Gang"
+          }
+        }
+      }
       args {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "TurnBasedOrFreeMove"
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
           }
           args {
             int_value: 0
           }
         }
       }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Remove Status Effect from Actor"
       args {
         call_value {
-          functionName: "Get Map Item (SceneDimension)"
+          functionName: "Specific Actor"
           args {
-            string_value: "Default"
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "575cfbbf6631363c0b001a54"
+              }
+            }
+          }
+          args {
           }
         }
+      }
+      args {
+        string_value: "Prisoner"
       }
     }
   }
@@ -516,25 +550,59 @@ roots {
   responseText: ""
   conditions {
     ops {
-      functionName: "Evaluate Turn Mode in Dimension"
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Wipe out the Gang"
+          }
+        }
+      }
       args {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "TurnBasedOrFreeMove"
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
           }
           args {
             int_value: 1
           }
         }
       }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Remove Status Effect from Actor"
       args {
         call_value {
-          functionName: "Get Map Item (SceneDimension)"
+          functionName: "Specific Actor"
           args {
-            string_value: "Default"
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "575cfbbf6631363c0b001a54"
+              }
+            }
+          }
+          args {
           }
         }
+      }
+      args {
+        string_value: "Prisoner"
       }
     }
   }

@@ -1,0 +1,222 @@
+idRef {
+  id: "57f9f179663136780c007952"
+}
+ui_name: "c06-s2_CoyoteFreed"
+nodes {
+  idRef {
+    id: "57f9f185663136780c00795a"
+  }
+  index: 0
+  text: "Just who the hell are you?  Paco?  This a friend of yours?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "57f9f179663136780c007952:57f9f198663136780c00795c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "575cfbbf6631363c0b001a54"
+  }
+}
+nodes {
+  idRef {
+    id: "57f9f19a663136780c00795f"
+  }
+  index: 1
+  text: "Yeah.   This is $(l.name).   Came looking for you and whe..."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "57f9f179663136780c007952:57f9f1be663136780c007961"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "575cfc7c6631363c0b001a71"
+  }
+}
+nodes {
+  idRef {
+    id: "57f9f1be663136780c007964"
+  }
+  index: 2
+  text: "Later, Paco.   Lets get out of here first.   Then we can chat.   \n\n{{GM}}She grabs a wooden chair leg from the debris pile next to the door.{{/GM}}\n\nI need to find what Mr. Delilah sent me here for.  I can\'t go back empty-handed.  "
+  branches {
+    responseText: "What exactly are you looking for?"
+    nextNodeIndex: 3
+    idRef {
+      id: "57f9f179663136780c007952:57f9f24d663136780c007966"
+    }
+  }
+  branches {
+    responseText: "No time.  We just got to sneak out."
+    nextNodeIndex: -1
+    idRef {
+      id: "57f9f179663136780c007952:57f9f24d663136780c007968"
+    }
+  }
+  branches {
+    responseText: "If we get a chance, sure."
+    nextNodeIndex: -1
+    idRef {
+      id: "57f9f179663136780c007952:57f9f24e663136780c00796a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "575cfbbf6631363c0b001a54"
+  }
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Sword 1 Baseball Bat"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "575cfbbf6631363c0b001a54"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "Event.CoyoteJoinsIn"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "57f9f285663136780c00796d"
+  }
+  index: 3
+  text: "{{GM}}She grits her teeth as her arm begins to spasm uncontrollably.{{/GM}}\n\nIt\'s a pouch of gems.  It\'s here somewhere.  Gotta find them... "
+  branches {
+    responseText: "Alright, Paco... You take her and head back.  I\'ll find the stones and bring them along."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event.Fight"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "57f9f179663136780c007952:57f9f2e0663136780c00796f"
+    }
+  }
+  branches {
+    responseText: "You are my priority.   We\'re out of here."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event.Fight"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "57f9f179663136780c007952:57f9f2e0663136780c007971"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Find Stevie\'s Stash"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "57f9f179663136780c007952:57f9f179663136780c007956"
+  }
+}
