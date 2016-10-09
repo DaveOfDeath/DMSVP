@@ -48,9 +48,49 @@ nodes {
           }
         }
       }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c06-s1_BTL-Recording"
+            }
+          }
+        }
+      }
     }
     nextNodeIndex: 1
     hideIfUnavailable: true
+    idRef {
+      id: "51a568cc623331d023006df3:57f9fe97663136780c007c3d"
+    }
   }
   branches {
     responseText: "{{GM}}Show him the BTL chip.{{/GM}}"
@@ -92,20 +132,20 @@ nodes {
           }
         }
       }
-    }
-    nextNodeIndex: 3
-    hideIfUnavailable: true
-  }
-  branches {
-    responseText: "{{GM}}Attack him.{{/GM}}"
-    actions {
       ops {
-        functionName: "Set Variable (bool)"
+        functionName: "Evaluate If Actor Has Item"
         args {
           call_value {
-            functionName: "Get Variable (bool)"
+            functionName: "Specific Actor"
             args {
-              string_value: "hasAttackedBTLGuard"
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
             }
           }
         }
@@ -113,20 +153,55 @@ nodes {
           call_value {
             functionName: "Get Preset Value (int)"
             args {
-              string_value: "bool"
+              string_value: "HasOrHasNot"
             }
             args {
               int_value: 1
             }
           }
         }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c06-s1_BTL-Recording"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    idRef {
+      id: "51a568cc623331d023006df3:57f9fe97663136780c007c49"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Attack him.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "Event.Fight"
+            }
+          }
+        }
       }
     }
     nextNodeIndex: -1
+    idRef {
+      id: "51a568cc623331d023006df3:57f9fe97663136780c007c55"
+    }
   }
   branches {
     responseText: "Take me to Stevie, lowly manservant."
     nextNodeIndex: 5
+    idRef {
+      id: "51a568cc623331d023006df3:57f9fe97663136780c007c57"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -139,16 +214,25 @@ nodes {
   branches {
     responseText: "So I had better feed it to them before I go in?"
     nextNodeIndex: 2
+    idRef {
+      id: "51a568cc623331d023006df3:57f9fe97663136780c007c40"
+    }
     auxiliaryLink: true
   }
   branches {
     responseText: "What if I am looking for a pair of new hell hound slippers?"
     nextNodeIndex: 2
+    idRef {
+      id: "51a568cc623331d023006df3:57f9fe97663136780c007c43"
+    }
     auxiliaryLink: true
   }
   branches {
     responseText: "Fork over the meat and get to the prisoner got it."
     nextNodeIndex: 2
+    idRef {
+      id: "51a568cc623331d023006df3:57f9fe97663136780c007c46"
+    }
   }
   nodeType: ConversationNodeType_Simple
   actions {
@@ -193,16 +277,25 @@ nodes {
   branches {
     responseText: "So I had better feed it to them before I go in?"
     nextNodeIndex: 2
+    idRef {
+      id: "51a568cc623331d023006df3:57f9fe97663136780c007c4c"
+    }
     auxiliaryLink: true
   }
   branches {
     responseText: "What if I am looking for a pair of new hell hound slippers?"
     nextNodeIndex: 2
+    idRef {
+      id: "51a568cc623331d023006df3:57f9fe97663136780c007c4f"
+    }
     auxiliaryLink: true
   }
   branches {
     responseText: "Fork over the meat and get to the prisoner got it."
     nextNodeIndex: 4
+    idRef {
+      id: "51a568cc623331d023006df3:57f9fe97663136780c007c52"
+    }
   }
   nodeType: ConversationNodeType_Simple
   actions {
@@ -239,25 +332,14 @@ nodes {
           }
         }
       }
-    }
-    ops {
-      functionName: "Enable/Disable Trigger"
       args {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "EnableOrDisable"
+            string_value: "WithOrWithout"
           }
           args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Trigger)"
-          args {
-            string_value: "51e6d3bf30303124040049ba"
+            int_value: 1
           }
         }
       }
@@ -283,4 +365,7 @@ nodes {
 roots {
   responseText: ""
   nextNodeIndex: 0
+  idRef {
+    id: "51a568cc623331d023006df3:57f9fe97663136780c007c3a"
+  }
 }
