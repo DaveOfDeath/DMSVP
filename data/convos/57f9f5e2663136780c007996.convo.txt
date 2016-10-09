@@ -23,6 +23,14 @@ nodes {
       id: "57f9f5e2663136780c007996:57f9f63f663136780c0079a4"
     }
   }
+  branches {
+    responseText: "No time.   We\'ve got to get you to a doctor, now."
+    nextNodeIndex: 6
+    idRef {
+      id: "57f9f5e2663136780c007996:57f9fb9d663136780c007a95"
+    }
+    auxiliaryLink: true
+  }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
     id: "575cfbbf6631363c0b001a54"
@@ -196,7 +204,13 @@ nodes {
           }
           args {
             call_value {
-              functionName: "Nothing Selected"
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
             }
           }
         }
@@ -206,6 +220,72 @@ nodes {
           functionName: "Get Preset Value (int)"
           args {
             string_value: "DetainMethod"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Keep Coyote Alive"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Keep Paco Alive"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
           }
           args {
             int_value: 1
@@ -235,6 +315,13 @@ nodes {
       id: "57f9f5e2663136780c007996:57f9f764663136780c0079bc"
     }
     auxiliaryLink: true
+  }
+  branches {
+    responseText: "No dice.   We\'ve got to get you to a doctor now!"
+    nextNodeIndex: 6
+    idRef {
+      id: "57f9f5e2663136780c007996:57f9fbb9663136780c007a97"
+    }
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
@@ -280,6 +367,55 @@ nodes {
       id: "57f9f5e2663136780c007996:57f9f812663136780c0079c8"
     }
     auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "575cfc7c6631363c0b001a71"
+  }
+}
+nodes {
+  idRef {
+    id: "57f9fbce663136780c007a9a"
+  }
+  index: 6
+  text: "{{GM}}Coyotes face falls, but she says nothing.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "57f9f5e2663136780c007996:57f9fbe6663136780c007a9e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "575cfbbf6631363c0b001a54"
+  }
+}
+nodes {
+  idRef {
+    id: "57f9fbe6663136780c007aa1"
+  }
+  index: 7
+  text: "Let\'s get outta here..."
+  branches {
+    responseText: ""
+    actions {
+      ops {
+        functionName: "Open Scene"
+        args {
+          call_value {
+            functionName: "Get Map Item (Scene)"
+            args {
+              string_value: "c07-s1_seamstress"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "57f9f5e2663136780c007996:57f9fd23663136780c007ae4"
+    }
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
