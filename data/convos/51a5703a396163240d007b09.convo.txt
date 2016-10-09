@@ -7,7 +7,7 @@ nodes {
     id: "51a5704d396163240d007b13"
   }
   index: 0
-  text: "You scan the ground near Lucy\'s body and spot a small wooden object, mostly hidden beneath the dead woman\'s hair. This must be the necklace Frank was talking about. A thin broken cord trails off to one side - it must have snapped during the struggle."
+  text: "{{GM}}You scan the ground near Lucy\'s body and spot a small wooden object, mostly hidden beneath the dead woman\'s hair. This must be the necklace Frank was talking about. A thin broken cord trails off to one side - it must have snapped during the struggle.{{/GM}}"
   branches {
     responseText: "{{CC}}Quickness: 4{{/CC}} {{GM}}Pretend to drop your PDA, then quickly pocket the necklace while bending down to retrieve it.{{/GM}}"
     conditions {
@@ -60,11 +60,70 @@ nodes {
       }
     }
     nextNodeIndex: 4
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51a5703a396163240d007b09:57f9f8cc396630e816008333"
+    }
     auxiliaryLink: true
   }
   branches {
     responseText: "{{GM}}Lean down to pick up the necklace.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 4
+            }
+          }
+        }
+        args {
+          int_value: 4
+        }
+      }
+    }
     nextNodeIndex: 1
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51a5703a396163240d007b09:57f9f8cc396630e816008336"
+    }
   }
   branches {
     responseText: "{{GM}}Catch the attention of the nearby Officer Aguirre.{{/GM}}"
@@ -108,6 +167,9 @@ nodes {
     }
     nextNodeIndex: 6
     hideIfUnavailable: true
+    idRef {
+      id: "51a5703a396163240d007b09:57f9f8cc396630e816008348"
+    }
   }
   nodeType: ConversationNodeType_GM_Voice
 }
@@ -116,13 +178,16 @@ nodes {
     id: "51a57342396163240d007b1c"
   }
   index: 1
-  text: "{{GM}}As you start to reach for the necklace, a slim black Lone Star boot slams down on the pavement.{{/GM}}\n\nAnd what do you think you\'re doing?"
+  text: "{{GM}}As you start to reach for the necklace, a slim black Lone Star boot slams down on the pavement too close to your fingers.{{/GM}}\n\nWhat exactly do you think you\'re doing?"
   branches {
     responseText: "Just... tying my shoe. I\'ll be leaving now."
     nextNodeIndex: 2
+    idRef {
+      id: "51a5703a396163240d007b09:57f9f8cc396630e816008339"
+    }
   }
   branches {
-    responseText: "{{CC}}\302\24550{{/CC}}Just... reaching for my wallet. I\'d like to make a contribution to the Lone Star, um, morale fund."
+    responseText: "{{CC}}\302\24550{{/CC}} Just... reaching for my wallet. I\'d like to make a contribution to the Lone Star, um, morale fund."
     conditions {
       ops {
         functionName: "Evaluate Nuyen"
@@ -151,6 +216,9 @@ nodes {
       }
     }
     nextNodeIndex: 3
+    idRef {
+      id: "51a5703a396163240d007b09:57f9f8cc396630e81600833c"
+    }
   }
   branches {
     responseText: "{{CC}}Spirit Summoning: 2{{/CC}} This carving is a powerful Shamanic summoning fetish. If there was any magic involved in this woman\'s death, the latent magical energies in this necklace could have become EXTREMELY unstable. I need to get it away from here, NOW.\n"
@@ -204,6 +272,11 @@ nodes {
       }
     }
     nextNodeIndex: 5
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51a5703a396163240d007b09:57f9f8cc396630e816008342"
+    }
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
@@ -230,6 +303,9 @@ nodes {
   branches {
     responseText: "{{GM}}Lean down to pick up the necklace.{{/GM}}"
     nextNodeIndex: 4
+    idRef {
+      id: "51a5703a396163240d007b09:57f9f8cc396630e81600833f"
+    }
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
@@ -302,6 +378,17 @@ nodes {
           }
         }
       }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
     }
   }
 }
@@ -310,10 +397,13 @@ nodes {
     id: "51a577c0396163240d007b46"
   }
   index: 5
-  text: "{{GM}}You see uncertainty spread across the young officer\'s face.{{/GM}} Well... you seem to know what you\'re doing. But bring that right back once it\'s safe. That could be important evidence."
+  text: "{{GM}}You see uncertainty spread across the young officer\'s face.{{/GM}} \n\nYou seem to know what you\'re doing-- but bring that right back once it\'s safe. It needs to be logged as evidence."
   branches {
     responseText: "You bet. {{GM}}Lean down to pick up the necklace.{{/GM}}"
     nextNodeIndex: 4
+    idRef {
+      id: "51a5703a396163240d007b09:57f9f8cc396630e816008345"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -326,10 +416,13 @@ nodes {
     id: "51a5732e396163240d007b1a"
   }
   index: 6
-  text: "Hello again. Can I help you?"
+  text: "{{GM}}Aguirre taps his brim in greeting.{{/GM}}\n\nHello again. What can I help my favorite philanthropist with?"
   branches {
     responseText: "I need to take the victim\'s necklace with me. It may help in my investigation."
     nextNodeIndex: 7
+    idRef {
+      id: "51a5703a396163240d007b09:57f9f8cc396630e81600834b"
+    }
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
@@ -341,10 +434,13 @@ nodes {
     id: "51a57972396163240d007b63"
   }
   index: 7
-  text: "Well, if it\'ll help you, that means it wont be helping McKlusky. {{GM}}Officer Aguirre reaches down, picks up the necklace, and hands it to you.{{/GM}}"
+  text: "Well, if it\'ll help you, that means it wont be helping McKlusky. \n\n{{GM}}Officer Aguirre reaches down, picks up the necklace, and hands it to you.{{/GM}}"
   branches {
     responseText: "Thanks, Officer."
     nextNodeIndex: 8
+    idRef {
+      id: "51a5703a396163240d007b09:57f9f8cc396630e81600834e"
+    }
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
@@ -409,6 +505,17 @@ nodes {
           }
         }
       }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
     }
   }
 }
@@ -417,7 +524,7 @@ nodes {
     id: "51a579db396163240d007b66"
   }
   index: 8
-  text: "Yeah, sure thing. Good luck out there."
+  text: "{{GM}}Aguirre smiles.{{/GM}}\n\nEveryone wins."
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
     id: "870e92d4306434e806003104"
@@ -426,4 +533,7 @@ nodes {
 roots {
   responseText: ""
   nextNodeIndex: 0
+  idRef {
+    id: "51a5703a396163240d007b09:57f9f8cc396630e816008330"
+  }
 }

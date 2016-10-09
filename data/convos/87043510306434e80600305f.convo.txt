@@ -7,15 +7,21 @@ nodes {
     id: "51a6bb133961638011004a38"
   }
   index: 0
-  text: "So, what brings you out here? Hot on the trail of the dead man\'s killer?"
+  text: "{{GM}}Dresden looks up from making notes on a datapad.{{/GM}}\n\nGreetings, my esteemed fellow servant of the dead. What brings you out here? Fresh fish? Hot on the trail of the dead man\'s killer?"
   branches {
     responseText: "Coincidence, believe it or not. I take it I\'ve stumbled across another Ripper murder?"
     nextNodeIndex: 1
+    idRef {
+      id: "87043510306434e80600305f:57f9e022396630e816007d68"
+    }
     auxiliaryLink: true
   }
   branches {
     responseText: "Hardly. She another Ripper victim?"
     nextNodeIndex: 1
+    idRef {
+      id: "87043510306434e80600305f:57f9e022396630e816007d6b"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -28,6 +34,9 @@ nodes {
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "87043510306434e80600305f:57f9e022396630e816007d6e"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -47,7 +56,7 @@ nodes {
     }
   }
   branches {
-    responseText: "Can you tell if she was subdued in some way, before her eyes were removed?"
+    responseText: "Can you tell if she was subdued in any way before her eyes were removed?"
     nextNodeIndex: 4
     hideIfUnavailable: true
     onlyOnce: true
@@ -157,7 +166,7 @@ nodes {
     }
   }
   branches {
-    responseText: "So... the Ripper takes Sam Watt\'s liver, and this woman\'s eyes. Any theories?"
+    responseText: "So... the Ripper takes Sam Watt\'s liver, and this woman\'s eyes. Different organs from other victims. Any theories?"
     nextNodeIndex: 8
     hideIfUnavailable: true
     onlyOnce: true
@@ -257,6 +266,53 @@ nodes {
     }
   }
   branches {
+    responseText: "Do you know anything about a reporter looking into the Ripper Murders?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "seattle"
+            }
+            args {
+              string_value: "c06_BribedSergeant"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 13
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "87043510306434e80600305f:57f9e4a5396630e816007ebb"
+    }
+  }
+  branches {
     responseText: "That\'s enough questions. Thanks, Dresden."
     conditions {
       ops {
@@ -317,8 +373,11 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 13
+    nextNodeIndex: 19
     hideIfUnavailable: true
+    idRef {
+      id: "87043510306434e80600305f:57f9e022396630e816007da2"
+    }
   }
   branches {
     responseText: "That\'s enough questions. Thanks, Dresden."
@@ -357,20 +416,34 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 14
+    nextNodeIndex: 20
     hideIfUnavailable: true
+    idRef {
+      id: "87043510306434e80600305f:57f9e022396630e816007da5"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: -1
+    idRef {
+      id: "87043510306434e80600305f:57f9e4a5396630e816007ebd"
+    }
   }
   nodeType: ConversationNodeType_Simple
+  comment: "Dresden Loop"
 }
 nodes {
   idRef {
     id: "51a6bb133961638011004a44"
   }
   index: 3
-  text: "Well, not much. {{GM}}Dresden scratches his head absentmindedly, probably breaking some sort of sanitation protocol.{{/GM}}\n\nShe\'s been dead for about three hours. Her name was Lucy Warden, worked at the Stuffer Shack just around the corner. Looks like she was just leaving work when it happened."
+  text: "{{GM}}Dresden scratches his head absentmindedly, probably breaking some sort of sanitation protocol.{{/GM}}\n\nI can tell you some, not much.\n\nOur latest victim has been dead for about three hours based on liver temperature. ID has her as SINner Lucy Warden, emigrated from the NAN, and worked at the Stuffer Shack just up the block. \nLooks like she was just leaving work when it happened."
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "87043510306434e80600305f:57f9e022396630e816007d73"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -383,10 +456,13 @@ nodes {
     id: "51a6bb133961638011004a4a"
   }
   index: 4
-  text: "That\'s the strange thing. There don\'t seem to be any signs of a struggle. Not a single bruise on her body. Yet, she was clearly alive when the eyes were taken... died of blood-loss shortly thereafter. As to what knocked her out, I won\342\200\231t know until I can run some tests back at the lab."
+  text: "Yeah, she shows no signs of a struggle. Two major injections, but no bruising. Body was cleaned, and yet she was clearly alive when the eyes were taken... she died of shock and blood-loss shortly thereafter. \n\nAs to what knocked her out, I won\342\200\231t know until I can run her toxicology back at base. \nIf I had my guess, though, she\'s been dosed with the same Succinylcholine mixture used on the others."
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "87043510306434e80600305f:57f9e022396630e816007d78"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -396,10 +472,13 @@ nodes {
     id: "51a6bb133961638011004a50"
   }
   index: 5
-  text: "Yeah, well, I don\'t really mind the change of scenery. {{GM}}Dresden laughs.{{/GM}}\n\nThe coroner for the downtown branch is out on maternity, so I told management that I\'d cover for her on this one. Plus, I want this sicko caught."
+  text: "{{GM}}Dresden laughs.{{/GM}}\n\nAs much as I love the squalor of Touristville, I don\'t mind the change of scenery.\n\nMy colleague, the coroner for the downtown branch is out on maternity, so I told management that I\'d cover for her on this one. Plus, I want this sicko caught."
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "87043510306434e80600305f:57f9e022396630e816007d7d"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -409,10 +488,13 @@ nodes {
     id: "51a6bb133961638011004a5c"
   }
   index: 6
-  text: "Ah! Completely unrelated. It appears some wild dogs dragged the body out here from the alley, some time after her death."
+  text: "{{GM}}Dresden gives you a genuine smile.{{/GM}}\n\nWe\'ve got a thinker!\n\nSadly, the bite marks are unrelated. It appears some wild animals dragged the body out here from the alley. Based on the bite pattern, I\'d say dogs, not ghouls. That all happened post-mortem."
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "87043510306434e80600305f:57f9e022396630e816007d82"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -422,10 +504,13 @@ nodes {
     id: "51a6bb133961638011004a56"
   }
   index: 7
-  text: "Now there\'s an interesting thought. No, nothing obvious though. I\'m sure when McKlusky shows up he\'ll call in a full magical forensics team though, just to be sure."
+  text: "{{GM}}Dresden taps his lips, leaving a smear of something dark.{{/GM}}\n\nNow there\'s an interesting thought. No, nothing obvious though. The transfer to McKlusky\'s unit is a mage, I heard. Carter, or something? I don\'t know her, and I don\'t trust people I don\'t know. I\'ll get McKlusky to call in full forensics."
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "87043510306434e80600305f:57f9e022396630e816007d87"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -435,10 +520,13 @@ nodes {
     id: "51a6bb133961638011004a62"
   }
   index: 8
-  text: "Trophies of some sort, I suppose? Probably of some symbolic significance to the killer. Beyond that, I couldn\'t speculate."
+  text: "{{GM}}Dresden seems distracted, but keeps talking.{{/GM}}\n\nTrophies of some sort? Maybe he or she prescribes to the belief that eating the organ of your enemies gains you power? \n\nProbably of some twisted symbolic significance to the killer. Beyond that, I couldn\'t speculate."
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "87043510306434e80600305f:57f9e022396630e816007d8c"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -448,14 +536,20 @@ nodes {
     id: "51a6bbdb3961638011004a9f"
   }
   index: 9
-  text: "Huh? Where? {{GM}}Dresden scans the spectators surrounding the crime scene.{{/GM}}"
+  text: "{{GM}}Dresden quickly scans the spectators surrounding the crime scene.{{/GM}}\n\nHuh? Where? "
   branches {
-    responseText: "He\'s gone now... but he was asking about the body. Wondering which Organ Grinders facility it will be taken to. "
+    responseText: "He\'s gone now... but he was asking about the body. Wondering which facility it will be taken to. "
     nextNodeIndex: 10
+    idRef {
+      id: "87043510306434e80600305f:57f9e022396630e816007d91"
+    }
   }
   branches {
     responseText: "Nevermind, it\'s probably nothing. Can I ask you about something else?"
     nextNodeIndex: 11
+    idRef {
+      id: "87043510306434e80600305f:57f9e022396630e816007d97"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -464,10 +558,13 @@ nodes {
     id: "51a6bd573961638011004ad5"
   }
   index: 10
-  text: "Interesting. Well... there\'s those who might be interested in purchasing some of her parts, sure, but that\'s pretty poor form to inquire at the site of a murder. An ugly elf, eh? I\'ll keep an eye out. Shouldn\'t be hard to spot if he comes back around."
+  text: "{{GM}}Dresden\'s brow furrows.{{/GM}}\n\nInteresting. Well... there\'s some who may be interested in purchasing some of her parts, sure, but that\'s pretty poor form to inquire at the site of a murder. An ugly elf, eh? I\'ll keep an eye out. I can\'t say I\'ve seen too many ugly elves, he shouldn\'t be hard to spot if he comes back around."
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "87043510306434e80600305f:57f9e022396630e816007d94"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -481,6 +578,9 @@ nodes {
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "87043510306434e80600305f:57f9e022396630e816007d9a"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -490,10 +590,135 @@ nodes {
     id: "51a6bef13961638011004b4c"
   }
   index: 12
-  text: "{{GM}}He chuckles.{{/GM}} Yeah, that sounds about right. Any opportunity to get in McKlusky\'s way, he\'ll take it. A bit sleazy, sure, but I\'d take Aguirre over McKlusky any day of the week."
+  text: "{{GM}}Dresden chuckles.{{/GM}} \n\nFriendly sounds about right. Any opportunity to get in Mitch McKlusky\'s way, Aguirre will take it. He can be a bit sleazy, sure, but I\'d take Aguirre over McKlusky any day of the week."
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "87043510306434e80600305f:57f9e022396630e816007d9f"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57f9e4bf396630e816007ec0"
+  }
+  index: 13
+  text: "{{GM}}Dresden glances at you out of the corner of his eye.{{/GM}}\n\nWho\'s that?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "87043510306434e80600305f:57f9e614396630e816007ece"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57f9e614396630e816007ed1"
+  }
+  index: 14
+  text: ""
+  branches {
+    responseText: "Younger woman, human named Glint."
+    nextNodeIndex: 15
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "87043510306434e80600305f:57f9e60b396630e816007ec2"
+    }
+  }
+  branches {
+    responseText: "Marrow, a freelance muckracker."
+    nextNodeIndex: 16
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "87043510306434e80600305f:57f9e60b396630e816007ec4"
+    }
+  }
+  branches {
+    responseText: "Aguirre didn\'t say, just said someone declared this a Ripper Killing."
+    nextNodeIndex: 17
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "87043510306434e80600305f:57f9e60b396630e816007ec6"
+    }
+  }
+  branches {
+    responseText: "Sounds like a dead end."
+    nextNodeIndex: 18
+    idRef {
+      id: "87043510306434e80600305f:57f9e610396630e816007ec8"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Reporter loop"
+}
+nodes {
+  idRef {
+    id: "57f9e683396630e816007f4a"
+  }
+  index: 15
+  text: "{{GM}}Dresden nods, still studiously looking at his notes.{{/GM}}\n\nYeah, I heard a couple people in Touristville mention her. I don\'t know her, though. Point her out, if you see her?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "87043510306434e80600305f:57f9e6b4396630e816007f4c"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57f9e76e396630e816007f6b"
+  }
+  index: 16
+  text: "{{GM}}Dresden sighs, tapping his tablet against his other hand, talking to himself instead of you.{{/GM}}\n\nYeah, it would be him, wouldn\'t it?\n\nMarrow is a freelance reporter-- he works for money to burn chips, and that\'s about as far as it goes. Once a story stops paying, he moves on to another hot topic. If I were you, I would avoid him."
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "87043510306434e80600305f:57f9e7ee396630e816007f6d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57f9e6c5396630e816007f64"
+  }
+  index: 17
+  text: "{{GM}}Dresden looks up from his tablet, and you\'re surprised at the heat in his glare.{{/GM}}\n\nThere are a lot of fraggin\' reporters attaching themselves to the Ripper story, much in the way and for the same reason that McKlusky is. They\'re sucking blood to get themselves rich and famous.\n\n{{GM}}Dresden pauses to scratch his chin with the back of his wrist, then he sighs.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "87043510306434e80600305f:57f9e769396630e816007f66"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "57f9e65a396630e816007ed8"
+  }
+  index: 18
+  text: "{{GM}}Dresden shrugs, looking over his notes and adding to them.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "87043510306434e80600305f:57f9e66c396630e816007eda"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -502,27 +727,30 @@ nodes {
   idRef {
     id: "51a6beae3961638011004b4a"
   }
-  index: 13
-  text: "Hey, I figure if I help you out, there\'s a better chance to get this scumbag off the streets a little sooner. McKlusky wants the Ripper in a cell, sure, but he couldn\'t care less if it takes another dozen murders. Good luck out there eh? {{GM}}Dresden starts to turn back to the body, then stops.{{/GM}}\n\nSpeaking of McKlusky... you should probably get going soon, before he shows up."
+  index: 19
+  text: "{{GM}}Dresden nods, a mixture of emotions showing on his face. Pride? Fear?{{/GM}}\n\nI figure if I help you out, I settle some karmic debts, and there\'s a better chance to get this scumbag off the streets. McKlusky wants someone is a cell to blame the murders on, sure, but he couldn\'t care less if it takes another dozen murders. Good luck out there eh? \n\n{{GM}}Dresden starts to turn back to the body, then stops.{{/GM}}\n\nSpeaking of McKlusky... you should probably get going soon, before he shows up."
   nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
     id: "51a6c0803961638011004b80"
   }
-  index: 14
-  text: "Anytime."
+  index: 20
+  text: "{{GM}}Dresden waves you off absent-mindedly, scanning the crowd.{{/GM}}\n\nAnytime."
   nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
     id: "51a6bb203961638011004a6d"
   }
-  index: 15
-  text: "{{GM}}Dresden looks up, and a grin spreads across his face.{{/GM}} Need something else? Any fascinating new leads?"
+  index: 21
+  text: "{{GM}}Dresden looks up, and a grin spreads across his face.{{/GM}} \n\nNeed something else? Any fascinating new leads I should know about?"
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "87043510306434e80600305f:57f9e022396630e816007dab"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -565,6 +793,9 @@ roots {
     }
   }
   nextNodeIndex: 0
+  idRef {
+    id: "87043510306434e80600305f:57f9e022396630e816007d65"
+  }
 }
 roots {
   responseText: ""
@@ -603,5 +834,8 @@ roots {
       }
     }
   }
-  nextNodeIndex: 15
+  nextNodeIndex: 21
+  idRef {
+    id: "87043510306434e80600305f:57f9e022396630e816007da8"
+  }
 }

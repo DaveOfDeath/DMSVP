@@ -7,10 +7,13 @@ nodes {
     id: "80f56298306434341e003066"
   }
   index: 0
-  text: "The small meat stand presents an enormous diversity of dead animals - from cow and canine to the exotic and paranormal. The pictures on the back of the stand feature a much older version of the man in front of you."
+  text: "{{GM}}The small meat stand presents an enormous diversity of dead animals - from cow and canine to the exotic and paranormal. \n\nThe sign reads \"Maury\'s\".\n\nThe pictures on the back of the stand feature a much older version of the man in front of you.{{/GM}}"
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e816008108"
+    }
   }
   nodeType: ConversationNodeType_GM_Voice
   actions {
@@ -35,6 +38,17 @@ nodes {
           }
         }
       }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
     }
   }
 }
@@ -43,10 +57,13 @@ nodes {
     id: "80f5fa83306434341e00306c"
   }
   index: 1
-  text: "{{GM}}As soon as he notices Paco, the proprietor\'s eyes become hard and angry.{{/GM}} What do you want? You know we can\342\200\231t afford more!"
+  text: "{{GM}}As soon as he notices Paco, the young proprietor\'s eyes become hard and angry.{{/GM}} \n\nWhat do you want? You know we can\342\200\231t afford more!"
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e81600810b"
+    }
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
@@ -58,14 +75,20 @@ nodes {
     id: "80f80ff8306434341e0030de"
   }
   index: 2
-  text: "Relax, man. My friend just has a question."
+  text: "Relax, hombre, mi amigo here just has some questions."
   branches {
     responseText: "Everything cool here?"
     nextNodeIndex: 3
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e81600810e"
+    }
   }
   branches {
     responseText: "You must be Maury."
     nextNodeIndex: 4
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e816008114"
+    }
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
@@ -77,10 +100,13 @@ nodes {
     id: "80f90581306434341e0030e5"
   }
   index: 3
-  text: "Yeah... everything\'s swell. {{GM}}Manny continues to stare daggers in Paco\'s direction.{{/GM}}\n\nThe name\'s Manny. Now what do you want?"
+  text: "Yeah... everything\'s swell. {{GM}}Manny continues to stare daggers in Paco\'s direction.{{/GM}}\n\nMy name\'s Manny. Who are you, and what do you want?"
   branches {
     responseText: ""
     nextNodeIndex: 5
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e816008111"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -93,10 +119,13 @@ nodes {
     id: "80fa65f1306434341e0030ed"
   }
   index: 4
-  text: "Do I look like a fat old man to you? I\'m Manny. Maury\'s my dad. Now what do you want?"
+  text: "{{GM}}Manny gestures to himself, and then at the picture hanging inside the stall.{{/GM}}\n\nDo I look like a fat old man to you? I\'m Manny. Maury is my dad. Now what do you want?"
   branches {
     responseText: ""
     nextNodeIndex: 5
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e816008117"
+    }
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
@@ -109,6 +138,31 @@ nodes {
   }
   index: 5
   text: ""
+  branches {
+    responseText: "What\'s your deal with Paco?"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countMannyQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51b22702623331501c0032a7"
+    }
+  }
   branches {
     responseText: "What would someone want to buy zebra meat for?"
     actions {
@@ -127,7 +181,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 6
+    nextNodeIndex: 13
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -152,7 +206,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 9
+    nextNodeIndex: 16
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -212,9 +266,20 @@ nodes {
             }
           }
         }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
       }
     }
-    nextNodeIndex: 10
+    nextNodeIndex: 17
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -222,33 +287,11 @@ nodes {
     }
   }
   branches {
-    responseText: "What\'s your problem with Paco?"
-    actions {
-      ops {
-        functionName: "Add To Variable (int)"
-        args {
-          call_value {
-            functionName: "Get Variable (int)"
-            args {
-              string_value: "countMannyQuestions"
-            }
-          }
-        }
-        args {
-          int_value: 1
-        }
-      }
-    }
-    nextNodeIndex: 11
-    hideIfUnavailable: true
-    onlyOnce: true
-    idRef {
-      id: "51b22702623331501c0032a7"
-    }
-  }
-  branches {
     responseText: "I\'ll be leaving now."
     nextNodeIndex: -1
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e816008148"
+    }
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
@@ -278,16 +321,154 @@ nodes {
       }
     }
   }
+  comment: "Manny"
+}
+nodes {
+  idRef {
+    id: "81015dd4306434341e0031c4"
+  }
+  index: 6
+  text: "{{GM}}Manny stares daggers at Paco.{{/GM}}\n\nYou should ask your buddy here."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e816008131"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "80f44e28306434341e00305f"
+  }
+}
+nodes {
+  idRef {
+    id: "810173b6306434341e0031c7"
+  }
+  index: 7
+  text: "{{GM}}Paco huffs out his chest, tapping his bat against the cart.{{/GM}}\n\nWhat the hell is that supposed to mean?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e816008134"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "808167a130643454080045c7"
+  }
+}
+nodes {
+  idRef {
+    id: "8101fd0a306434341e0031ca"
+  }
+  index: 8
+  text: "{{GM}}Manny jumps, but doesn\'t back down.{{/GM}}\n\nIt means that you and your gang likes to stroll through here and relieve us merchants of our hard-earned nuyen. \nMy dad made the mistake of reasoning with them, so later they came back and beat it out of him. He\342\200\231s still in the hospital."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e816008137"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "80f44e28306434341e00305f"
+  }
+}
+nodes {
+  idRef {
+    id: "51a174ac3961638813007cfe"
+  }
+  index: 9
+  text: "{{GM}}Paco backs off hurriedly, ducking his head and avoiding looking at either one of you.{{/GM}}\n\nLook, Manuel, there\'s nothing I can do about that. I\'m at the very bottom of the Cutter ranks- I can\'t make that my problem."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e81600813a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "808167a130643454080045c7"
+  }
+}
+nodes {
+  idRef {
+    id: "51a175753961638813007d03"
+  }
+  index: 10
+  text: "{{GM}}Manny crosses his arms over his chest.{{/GM}}\n\nTell that to my dad."
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e81600813d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "80f44e28306434341e00305f"
+  }
+}
+nodes {
+  idRef {
+    id: "51a175873961638813007d08"
+  }
+  index: 11
+  text: "{{GM}}Paco turns to you.{{/GM}}\n\nWe don\'t have time for this drek. I need to find Coyote. "
+  branches {
+    responseText: "You\'re right, Paco. Let\'s get going."
+    nextNodeIndex: -1
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e816008140"
+    }
+  }
+  branches {
+    responseText: "We will, in a minute. I still have some questions."
+    nextNodeIndex: 12
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e816008142"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "808167a130643454080045c7"
+  }
+}
+nodes {
+  idRef {
+    id: "51a17c323961638813007fd5"
+  }
+  index: 12
+  text: "{{GM}}Manny smirks at the now-cowed Paco.{{/GM}}\n\nWhatever. Happy to help."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e816008145"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "80f44e28306434341e00305f"
+  }
 }
 nodes {
   idRef {
     id: "80fe7344306434341e00318b"
   }
-  index: 6
-  text: "Some people eat it... but I wouldn\'t recommend that. Tough as nails. We mostly sell it to corp security teams who use it to reward their Hellhounds. The flamers go crazy for the stuff for some reason."
+  index: 13
+  text: "{{GM}}Manny shrugs.{{/GM}}\n\nSome people eat it it\'s a delicacy in Africa... but I wouldn\'t recommend it. Tough as nails. We mostly sell it to corp security teams who use it to reward their Hellhounds. The flamers go crazy for the stuff for some reason."
   branches {
     responseText: ""
-    nextNodeIndex: 7
+    nextNodeIndex: 14
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e81600811c"
+    }
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
@@ -298,11 +479,14 @@ nodes {
   idRef {
     id: "51a173493961638813007caf"
   }
-  index: 7
-  text: "Oh.. drek! THAT\'s why Coyote wanted zebra meat. Everyone talks about the pet Hellhounds Stevie J keeps locked up somewhere in the Royale. And if she never picked it up..."
+  index: 14
+  text: "{{GM}}Paco\'s eyes light up, and he strikes the side of his shaved head.{{/GM}}\n\nOh.. FRAG! THAT\'s why Coyote wanted zebra meat. Everyone talks about the pet Hellhounds Stevie J keeps locked up in the Royale. And if she never picked it up..."
   branches {
     responseText: ""
-    nextNodeIndex: 8
+    nextNodeIndex: 15
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e81600811f"
+    }
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
@@ -313,11 +497,14 @@ nodes {
   idRef {
     id: "51a17c023961638813007fce"
   }
-  index: 8
-  text: "Whatever. Anything else?"
+  index: 15
+  text: "{{GM}}Manny grows more sullen, angry at having given Paco anything.{{/GM}}\n\nWhatever. Anything else?"
   branches {
     responseText: ""
     nextNodeIndex: 5
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e816008122"
+    }
     auxiliaryLink: true
   }
   sourceInSceneRef {
@@ -328,11 +515,14 @@ nodes {
   idRef {
     id: "80fea214306434341e00318f"
   }
-  index: 9
-  text: "Nope. I don\'t go in much for that Shaman stuff."
+  index: 16
+  text: "{{GM}}Manny shakes his head \'no.\'{{/GM}}\n\nNope. I don\'t go in much for that Shaman stuff."
   branches {
     responseText: ""
     nextNodeIndex: 5
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e816008127"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -344,121 +534,14 @@ nodes {
   idRef {
     id: "80fedda6306434341e003193"
   }
-  index: 10
-  text: "I\342\200\231ll look it up...\n\nYeah, got it right here. Two days past the pickup time, didn\'t think anyone was going to come for it. Here - it\'s all yours now."
-  branches {
-    responseText: ""
-    nextNodeIndex: 5
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-  sourceInSceneRef {
-    id: "80f44e28306434341e00305f"
-  }
-}
-nodes {
-  idRef {
-    id: "81015dd4306434341e0031c4"
-  }
-  index: 11
-  text: "Why don\'t you ask him. "
-  branches {
-    responseText: ""
-    nextNodeIndex: 12
-  }
-  nodeType: ConversationNodeType_Simple
-  sourceInSceneRef {
-    id: "80f44e28306434341e00305f"
-  }
-}
-nodes {
-  idRef {
-    id: "810173b6306434341e0031c7"
-  }
-  index: 12
-  text: "What the hell is that supposed to mean?"
-  branches {
-    responseText: ""
-    nextNodeIndex: 13
-  }
-  nodeType: ConversationNodeType_Simple
-  sourceInSceneRef {
-    id: "808167a130643454080045c7"
-  }
-}
-nodes {
-  idRef {
-    id: "8101fd0a306434341e0031ca"
-  }
-  index: 13
-  text: "It means that your gang likes to stroll through here and relieve us merchants of our nuyen. My dad stood up to them... and he\342\200\231s still in the hospital."
-  branches {
-    responseText: ""
-    nextNodeIndex: 14
-  }
-  nodeType: ConversationNodeType_Simple
-  sourceInSceneRef {
-    id: "80f44e28306434341e00305f"
-  }
-}
-nodes {
-  idRef {
-    id: "51a174ac3961638813007cfe"
-  }
-  index: 14
-  text: "Look, that\'s not my problem. I\'m at the bottom of the Cutter ranks anyway - I couldn\'t do drek about that even if I wanted to."
-  branches {
-    responseText: ""
-    nextNodeIndex: 15
-  }
-  nodeType: ConversationNodeType_Simple
-  sourceInSceneRef {
-    id: "808167a130643454080045c7"
-  }
-}
-nodes {
-  idRef {
-    id: "51a175753961638813007d03"
-  }
-  index: 15
-  text: "Tell that to my dad."
-  branches {
-    responseText: ""
-    nextNodeIndex: 16
-  }
-  nodeType: ConversationNodeType_Simple
-  sourceInSceneRef {
-    id: "80f44e28306434341e00305f"
-  }
-}
-nodes {
-  idRef {
-    id: "51a175873961638813007d08"
-  }
-  index: 16
-  text: "I don\'t have time for this. We need to find Coyote. "
-  branches {
-    responseText: "You\'re right, Paco. Let\'s get going."
-    nextNodeIndex: -1
-  }
-  branches {
-    responseText: "We will, in a minute. I still have some questions."
-    nextNodeIndex: 17
-  }
-  nodeType: ConversationNodeType_Simple
-  sourceInSceneRef {
-    id: "808167a130643454080045c7"
-  }
-}
-nodes {
-  idRef {
-    id: "51a17c323961638813007fd5"
-  }
   index: 17
-  text: "Whatever. Make it quick."
+  text: "{{GM}}Manny shrugs, and takes the receipt.{{/GM}}\n\nLet me look it up...\n\nYeah, got it right here. Two days past the pickup time, I didn\'t think anyone was going to come for it, but it was paid in advance. Here - it\'s all yours now."
   branches {
     responseText: ""
     nextNodeIndex: 5
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e81600812c"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -471,10 +554,13 @@ nodes {
     id: "51b226a2623331501c003271"
   }
   index: 18
-  text: "Yeah, what now?"
+  text: "{{GM}}Manny glares at your companion, Paco.{{/GM}}\n\nYeah, what now?"
   branches {
     responseText: ""
     nextNodeIndex: 5
+    idRef {
+      id: "80f55d22306434341e003060:57f9ecc7396630e81600814d"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -517,6 +603,9 @@ roots {
     }
   }
   nextNodeIndex: 0
+  idRef {
+    id: "80f55d22306434341e003060:57f9ecc7396630e816008105"
+  }
 }
 roots {
   responseText: ""
@@ -556,4 +645,7 @@ roots {
     }
   }
   nextNodeIndex: 18
+  idRef {
+    id: "80f55d22306434341e003060:57f9ecc7396630e81600814a"
+  }
 }
