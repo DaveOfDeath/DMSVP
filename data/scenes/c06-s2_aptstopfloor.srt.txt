@@ -544,6 +544,28 @@ triggers {
         int_value: 3
       }
     }
+    ops {
+      functionName: "Enable/Disable Manual Turn Mode in Dimension"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -2549,6 +2571,28 @@ triggers {
           }
           args {
             int_value: 3
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Manual Turn Mode in Dimension"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
           }
         }
       }
@@ -5414,9 +5458,6 @@ triggers {
         string_value: "Event.Loot"
       }
     }
-    ops {
-      functionName: "On Camera Fade Out"
-    }
   }
   conditions {
     ops {
@@ -5444,6 +5485,43 @@ triggers {
         int_value: 4
       }
     }
+    ops {
+      functionName: "Evaluate If Actor Has Item"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "c06_Stones"
+          }
+        }
+      }
+    }
   }
   actions {
     ops {
@@ -5468,7 +5546,7 @@ triggers {
         }
       }
       args {
-        string_value: "Guess that\'s it.   Time to bolt."
+        string_value: "Guess that\'s it. Time to bolt."
       }
       args {
         float_value: 0
@@ -5489,30 +5567,7 @@ triggers {
         float_value: 3
       }
       args {
-        float_value: 4
-      }
-    }
-    ops {
-      functionName: "Fade Camera Out"
-      args {
-        float_value: 5
-      }
-      args {
-        float_value: 5
-      }
-    }
-    ops {
-      functionName: "Trigger: Wait Until Triggered Again"
-    }
-    ops {
-      functionName: "Open Scene"
-      args {
-        call_value {
-          functionName: "Get Map Item (Scene)"
-          args {
-            string_value: "c07-s1_seamstress"
-          }
-        }
+        float_value: 0
       }
     }
   }
