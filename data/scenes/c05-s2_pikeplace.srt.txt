@@ -2491,6 +2491,15 @@ triggers {
         }
       }
       args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
       }
     }
   }
@@ -3353,7 +3362,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "51a79e19623331dc24008294"
   }
@@ -4141,13 +4150,36 @@ triggers {
       functionName: "Teleport Actor to Area Around Point"
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "All Actors on Team"
           args {
             call_value {
-              functionName: "Triggering Actor"
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
             }
           }
           args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
           }
         }
       }
@@ -4479,13 +4511,36 @@ triggers {
       functionName: "Teleport Actor to Area Around Point"
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "All Actors on Team"
           args {
             call_value {
-              functionName: "Triggering Actor"
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
             }
           }
           args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
           }
         }
       }
@@ -4871,7 +4926,7 @@ triggers {
   is_oneshot: false
 }
 triggers {
-  name: "Shack.AresCrate"
+  name: "Shack.AresCrate [Examine]"
   events {
     ops {
       functionName: "On Item Interaction"
@@ -4924,7 +4979,7 @@ triggers {
     ops {
       functionName: "Display Text In Popup"
       args {
-        string_value: "SHIP TO: Stuffer Shack #2509\nFROM: Ares International\n\nATTN:  Jeffrey Wade\n\nCONTENTS: {{FF8000}}[REDACTED]{{-}}\n\nA note attached to the shipping manifest:\n\n\"Not sure who this Wade character is, or why he got a crate from Ares... but it\'s not supposed to be here.  Ship it back on the next outbound load.  And don\'t fraggin\' touch it.\n\n-Robin\""
+        string_value: "SHIP TO: Stuffer Shack #2509\nFROM: Ares International; Tacoma Facility\n\nATTN:  Jeffrey Wade\n\nCONTENTS: {{FF8000}}[REDACTED]{{-}}\n\nA note attached to the shipping manifest:\n\n\"Not sure who this Wade character is, or why he got a crate from Ares... but it\'s not supposed to be here.  Ship it back on the next outbound load.  And don\'t fraggin\' touch it.\n\n-Robin\""
       }
       args {
         call_value {
@@ -4977,31 +5032,125 @@ triggers {
         string_value: "{{FF8000}}Loot{{-}}"
       }
     }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "580263c7663136140d003593"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "574bea1c6631368410005994"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
     id: "574bea1c6631368410005994"
   }
   elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Shack.AresCrate [Open]"
+  events {
     ops {
-      functionName: "Add Item to Actor"
+      functionName: "On Item Interaction"
       args {
         call_value {
-          functionName: "Get Map Item (Item)"
+          functionName: "Get Map Item (InteractableObject)"
           args {
-            string_value: "SMG 1 Uzi III (Silencer)"
+            string_value: "574bea166631368410005993"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bCheckedCrate"
           }
         }
       }
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "Get Preset Value (int)"
           args {
-            call_value {
-              functionName: "Triggering Actor"
-            }
+            string_value: "IsOrIsNot"
           }
           args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Start Conversation"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "5802647f663136140d003594"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
           }
         }
       }
@@ -5016,40 +5165,13 @@ triggers {
           }
         }
       }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
     }
-    ops {
-      functionName: "Enable/Disable Interactable Object"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (InteractableObject)"
-          args {
-            string_value: "574bea166631368410005993"
-          }
-        }
-      }
-    }
+  }
+  isActive: false
+  idRef {
+    id: "580263c7663136140d003593"
+  }
+  elseActions {
   }
   is_oneshot: false
 }
@@ -6657,6 +6779,229 @@ triggers {
   isActive: true
   idRef {
     id: "574c80ad663136b813004e8c"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Debugger"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "_DEBUGGER"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Teleport Actor to Area Around Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Prop"
+          args {
+            call_value {
+              functionName: "Get Map Item (Prop)"
+              args {
+                string_value: "58026b47663136140d00360d"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Prop Visible by Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isAmbush"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        call_value {
+          functionName: "Everywhere"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DoesOrDoesNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5802666e663136140d0035c3"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "NewTrigger"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "58026b79663136140d003611"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Prop Visible by Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isAmbush"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        call_value {
+          functionName: "Everywhere"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DoesOrDoesNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "58026bfe663136140d003616"
   }
   elseActions {
   }
@@ -9101,6 +9446,7 @@ characters {
     z: 1
   }
   orientation: ORIENTATION_S
+  displayName: "LoneStar"
   idRef {
     id: "86cdf227306434e40c003061"
   }
@@ -9149,7 +9495,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Seattle:Lonestar/HumanFemaleLonestarCaptain"
+    prefab_name: "Seattle:Core/ElfFemale"
     character_sheet_id: "BaseCivilian"
     character_mod {
       stats {
@@ -9178,6 +9524,9 @@ characters {
       vulnerabilities {
       }
     }
+    equipment {
+      prefab_name: "Sabot_Vest Lv1"
+    }
     team_id: "Civilians"
     char_name: "Officer Carter"
     pc_spawn_number: -1
@@ -9185,6 +9534,7 @@ characters {
     portrait {
       filename: "backer_elffemale_ericclough"
     }
+    portrait_code_override: "s6h2c11c0t0"
     karma: 6
   }
 }
@@ -10767,6 +11117,14 @@ variables {
     scope: TsVariableScope_Scene
     name: "iSprayColor"
     typeName: "int"
+  }
+}
+variables {
+  bool_value: false
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "bAskedFrankForPayout"
+    typeName: "bool"
   }
 }
 mapEvents: "eventCrimeSceneInvestigated"

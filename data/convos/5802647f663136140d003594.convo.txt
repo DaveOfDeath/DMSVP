@@ -1,0 +1,234 @@
+idRef {
+  id: "5802647f663136140d003594"
+}
+ui_name: "c05-s1_PikePlace_AresCrate"
+nodes {
+  idRef {
+    id: "5802649f663136140d00359c"
+  }
+  index: 0
+  text: "The hardened security crate has a simple keypad, awaiting a code:"
+  branches {
+    responseText: "2509"
+    nextNodeIndex: 1
+    idRef {
+      id: "5802647f663136140d003594:580264f9663136140d0035a8"
+    }
+  }
+  branches {
+    responseText: "{{CC}}DECKING - 2{{/CC}} Run decryption sequence."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 5
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 2
+        }
+      }
+    }
+    nextNodeIndex: 1
+    hideIfUnavailable: true
+    idRef {
+      id: "5802647f663136140d003594:580264f9663136140d0035aa"
+    }
+    inputBypass: true
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}DRONE CONTROL - 2{{/CC}} Bypass MagLock"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 10
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 2
+        }
+      }
+    }
+    nextNodeIndex: 1
+    hideIfUnavailable: true
+    idRef {
+      id: "5802647f663136140d003594:580264f9663136140d0035ac"
+    }
+    inputBypass: true
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Leave crate alone."
+    nextNodeIndex: -1
+    idRef {
+      id: "5802647f663136140d003594:58026583663136140d0035b1"
+    }
+    inputBypass: true
+  }
+  nodeType: ConversationNodeType_InputNumpad
+  inputMaxLength: 4
+  speaker_override_id: "57384e3566313618130064b2"
+}
+nodes {
+  idRef {
+    id: "58026500663136140d0035af"
+  }
+  index: 1
+  text: "Identity confirmed, Mr. Wade.\n\nEnclosed is the requested hardware to complete your assignment.  Discard upon completion."
+  nodeType: ConversationNodeType_GM_Voice
+  speaker_override_id: "57384e3566313618130064b2"
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Sh 1 Benelli Raffaello (Smartlink)"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "574bea166631368410005993"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "5802647f663136140d003594:5802647f663136140d003598"
+  }
+}
