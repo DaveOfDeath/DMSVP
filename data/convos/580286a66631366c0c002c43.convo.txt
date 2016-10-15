@@ -1,0 +1,625 @@
+idRef {
+  id: "580286a66631366c0c002c43"
+}
+ui_name: "c05-s1_PikePlace_DaveTheTrucker"
+nodes {
+  idRef {
+    id: "580286c76631366c0c002c4b"
+  }
+  index: 0
+  text: "{{GM}}The obviously flustered ork keeps looking around angrily.{{/GM}}\n\nI\'d be gone, once one of you miserable bastards would sign this fraggin\' paperwork!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "580286a66631366c0c002c43:580286f86631366c0c002c4f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "580286f86631366c0c002c52"
+  }
+  index: 1
+  text: "{{GM}}Glances over casually.{{/GM}}\n\nSorry.  I\'m on a break."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "580286a66631366c0c002c43:580288446631366c0c002c88"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "8bdf6c18306434d80c000a08"
+  }
+}
+nodes {
+  idRef {
+    id: "580288446631366c0c002c8b"
+  }
+  index: 2
+  text: ""
+  branches {
+    responseText: "{{GM}}Sign paperwork{{/GM}} There you go!"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "Tsang Disguise"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "580286a66631366c0c002c43:580287126631366c0c002c54"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Sign paperwork{{/GM}} I\'ll sign it."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "Tsang Disguise"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "580286a66631366c0c002c43:580289ff6631366c0c002d4b"
+    }
+  }
+  branches {
+    responseText: "What\'s the paperwork for?"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "iDaveChat"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 4
+            }
+          }
+        }
+        args {
+          int_value: 3
+        }
+      }
+    }
+    nextNodeIndex: 5
+    hideIfUnavailable: true
+    idRef {
+      id: "580286a66631366c0c002c43:580287126631366c0c002c56"
+    }
+  }
+  branches {
+    responseText: "Good luck with that, brother."
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bTalkedToDave"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 11
+    hideIfUnavailable: true
+    idRef {
+      id: "580286a66631366c0c002c43:580287136631366c0c002c58"
+    }
+  }
+  branches {
+    responseText: "Talk to you later."
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bTalkedToDave"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 12
+    hideIfUnavailable: true
+    idRef {
+      id: "580286a66631366c0c002c43:580293036631366c0c002f45"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "MainLoop"
+}
+nodes {
+  idRef {
+    id: "5802875e6631366c0c002c5b"
+  }
+  index: 3
+  text: "Thank you!   \n\nAbout time I got outta this hellhole.   You know these places are like a magnet for violence?   Almost like someone has a stake in keeping them in peoples memories..."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bSignedDavesPaperwork"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "58028a3c6631366c0c002d4e"
+  }
+  index: 4
+  text: "As much as I\'d like to get out of here... Getting paid is better.   Gotta be a stuffer shack employee."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "580286a66631366c0c002c43:58028a536631366c0c002d50"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "580287c16631366c0c002c5e"
+  }
+  index: 5
+  text: "Regular delivery.   Keep trying to get me to pick up that crate over there.   I\'m not touching it though."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "580286a66631366c0c002c43:580287df6631366c0c002c63"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "580287df6631366c0c002c66"
+  }
+  index: 6
+  text: ""
+  branches {
+    responseText: "Crate?"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "iDaveChat"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 7
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "580286a66631366c0c002c43:580287dc6631366c0c002c60"
+    }
+  }
+  branches {
+    responseText: "What\'d you deliver?"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "iDaveChat"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 8
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "580286a66631366c0c002c43:5802882e6631366c0c002c77"
+    }
+  }
+  branches {
+    responseText: "You look familiar... Didn\'t you get punched in the face and robbed a couple years ago outside Yoshiro\'s?"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "iDaveChat"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 9
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "580286a66631366c0c002c43:580288a66631366c0c002cba"
+    }
+  }
+  branches {
+    responseText: "Guess that\'s it for now."
+    nextNodeIndex: 10
+    idRef {
+      id: "580286a66631366c0c002c43:580288346631366c0c002c79"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Convo Loop"
+}
+nodes {
+  idRef {
+    id: "580287f06631366c0c002c6a"
+  }
+  index: 7
+  text: "{{GM}}He looks at you, as if you\'re sprouting a horn from your forehead.{{/GM}}\n\nBig orange box?  Says ARES on it?  How do you survive if you don\'t pay attention?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "580286a66631366c0c002c43:580288246631366c0c002c6c"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "580288706631366c0c002cb8"
+  }
+  index: 8
+  text: "Some shelf stuffers, parts for some broken coffee machine, and a load of some weird smelling burgers.\n\nPretty standard stuff."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "580286a66631366c0c002c43:58028cd26631366c0c002dcc"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "580288dd6631366c0c002cbd"
+  }
+  index: 9
+  text: "{{GM}}He sighs heavily.{{/GM}}\n\nNot my finest hour.   But I guess people gotta vent frustration somewhere."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "580286a66631366c0c002c43:5802892f6631366c0c002cd5"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5802893c6631366c0c002cd9"
+  }
+  index: 10
+  text: "Fair enough.  Anything else?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "580286a66631366c0c002c43:580289476631366c0c002cdb"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "580289ae6631366c0c002d09"
+  }
+  index: 11
+  text: "Yeah.  Thanks."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5802930e6631366c0c002f48"
+  }
+  index: 12
+  text: "Later."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "580290846631366c0c002e61"
+  }
+  index: 13
+  text: "Yeah?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "580286a66631366c0c002c43:580290906631366c0c002e63"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "580284436631366c0c002c40"
+  }
+}
+roots {
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bTalkedToDave"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bTalkedToDave"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+  idRef {
+    id: "580286a66631366c0c002c43:580286a66631366c0c002c47"
+  }
+  comment: "1st Conversation"
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bTalkedToDave"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 13
+  idRef {
+    id: "580286a66631366c0c002c43:5802903c6631366c0c002e5e"
+  }
+  comment: "2nd Conversation"
+}
