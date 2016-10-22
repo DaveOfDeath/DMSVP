@@ -1302,6 +1302,45 @@ nodes {
   text: "{{GM}}Frank looks up as you approach.{{/GM}}\n\nWere you able to find Lucy\'s necklace?"
   branches {
     responseText: "I\'ve got it right here, Frank. You can send this to her family now. {{GM}}Give Frank the necklace.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c05-s1_LucyNecklace"
+            }
+          }
+        }
+      }
+    }
     actions {
       ops {
         functionName: "Remove Item from Actor"
@@ -1375,6 +1414,8 @@ nodes {
       }
     }
     nextNodeIndex: 38
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "8bd56dda306434d80c00096d:5800726d6131317837005cfd"
     }
@@ -1411,6 +1452,43 @@ nodes {
             }
             args {
               int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c05-s1_LucyNecklace"
             }
           }
         }
@@ -1459,6 +1537,43 @@ nodes {
           }
         }
       }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c05-s1_LucyNecklace"
+            }
+          }
+        }
+      }
     }
     nextNodeIndex: 40
     hideIfUnavailable: true
@@ -1467,31 +1582,14 @@ nodes {
       id: "8bd56dda306434d80c00096d:5800726d6131317837005d05"
     }
   }
-  nodeType: ConversationNodeType_Simple
-  actions {
-    ops {
-      functionName: "Enable/Disable Interactable Object"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (InteractableObject)"
-          args {
-            string_value: "8bdf6c18306434d80c000a08"
-          }
-        }
-      }
+  branches {
+    responseText: "Not yet."
+    nextNodeIndex: 43
+    idRef {
+      id: "8bd56dda306434d80c00096d:580bbd85663136180f0001ff"
     }
   }
+  nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
@@ -1646,28 +1744,14 @@ nodes {
   index: 42
   text: "What-- really? Wow... You\'re a real piece of drek."
   nodeType: ConversationNodeType_Simple
-}
-roots {
-  responseText: ""
-  conditions {
+  actions {
     ops {
-      functionName: "Comparison (bool)"
+      functionName: "Set Variable (bool)"
       args {
         call_value {
           functionName: "Get Variable (bool)"
           args {
-            string_value: "hasRetrievedNecklace"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "IsOrIsNot"
-          }
-          args {
-            int_value: 1
+            string_value: "bFrankAngry"
           }
         }
       }
@@ -1678,7 +1762,157 @@ roots {
             string_value: "bool"
           }
           args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Recover Lucy\342\200\231s Necklace from the Pike Place Crime Scene"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "580bbd8d663136180f000202"
+  }
+  index: 43
+  text: "Please, I\'d like to send it back to her family."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "580bc388663136180f000323"
+  }
+  index: 44
+  text: "Hey.   Good to see you.  Thanks again for your help, I\'m sure it\'ll mean alot to Lucy\'s folks."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "8bdf6c18306434d80c000a08"
+  }
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "8bdf6c18306434d80c000a08"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "580bc3a7663136180f000326"
+  }
+  index: 45
+  text: "I got nothing to say to you.   Go bother someone else."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "8bdf6c18306434d80c000a08"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Evaluate If Actor is Inside Region"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "8bdf6c18306434d80c000a08"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "AreOrAreNot"
+          }
+          args {
             int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "58029cea6631366c0c002f77"
           }
         }
       }
@@ -1695,39 +1929,6 @@ roots {
   responseText: ""
   conditions {
     ops {
-      functionName: "Comparison (bool)"
-      args {
-        call_value {
-          functionName: "Get Variable (bool)"
-          args {
-            string_value: "hasRetrievedNecklace"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "IsOrIsNot"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-    ops {
       functionName: "Evaluate If Actor is Inside Region"
       args {
         call_value {
@@ -1736,7 +1937,7 @@ roots {
             call_value {
               functionName: "Get Map Item (Actor)"
               args {
-                string_value: "574c7cbe663136b813004e63"
+                string_value: "8bdf6c18306434d80c000a08"
               }
             }
           }
@@ -1759,7 +1960,40 @@ roots {
         call_value {
           functionName: "Get Map Item (Region)"
           args {
-            string_value: "5738b55b6631362c13001712"
+            string_value: "58029cea6631366c0c002f77"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bHostilitiesInitiated"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
           }
         }
       }
@@ -1781,7 +2015,263 @@ roots {
         call_value {
           functionName: "Get Variable (bool)"
           args {
-            string_value: "hasRetrievedNecklace"
+            string_value: "bHostilitiesInitiated"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Evaluate If Actor is Inside Region"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "8bdf6c18306434d80c000a08"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "AreOrAreNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "58029cea6631366c0c002f77"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Recover Lucy\342\200\231s Necklace from the Pike Place Crime Scene"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 37
+  hideIfUnavailable: true
+  idRef {
+    id: "8bd56dda306434d80c00096d:5800726d6131317837005cf9"
+  }
+  comment: "Stuffer Shack - Cleared"
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Recover Lucy\342\200\231s Necklace from the Pike Place Crime Scene"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bFrankAngry"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bHostilitiesInitiated"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 44
+  idRef {
+    id: "8bd56dda306434d80c00096d:580bc20a663136180f00031e"
+  }
+  comment: "Frank, Happy"
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Recover Lucy\342\200\231s Necklace from the Pike Place Crime Scene"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bFrankAngry"
           }
         }
       }
@@ -1809,19 +2299,12 @@ roots {
       }
     }
     ops {
-      functionName: "Evaluate If Actor is Inside Region"
+      functionName: "Comparison (bool)"
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "Get Variable (bool)"
           args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "574c7cbe663136b813004e63"
-              }
-            }
-          }
-          args {
+            string_value: "bHostilitiesInitiated"
           }
         }
       }
@@ -1829,27 +2312,29 @@ roots {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "AreOrAreNot"
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
           }
           args {
             int_value: 0
           }
         }
       }
-      args {
-        call_value {
-          functionName: "Get Map Item (Region)"
-          args {
-            string_value: "5738b55b6631362c13001712"
-          }
-        }
-      }
     }
   }
-  nextNodeIndex: 37
-  hideIfUnavailable: true
+  nextNodeIndex: 45
   idRef {
-    id: "8bd56dda306434d80c00096d:5800726d6131317837005cf9"
+    id: "8bd56dda306434d80c00096d:580bc20f663136180f000320"
   }
-  comment: "Stuffer Shack - Cleared"
+  comment: "Frank, Angry"
 }

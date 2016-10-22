@@ -1,0 +1,275 @@
+idRef {
+  id: "580bce9b663136180f0005fd"
+}
+ui_name: "c05-s1_PikePlace_SS_Ambush"
+nodes {
+  idRef {
+    id: "580bcebd663136180f000607"
+  }
+  index: 0
+  text: "HALT!   LONESTAR!   IDENTIFY YOURSELF!"
+  branches {
+    responseText: "A madman attacked in ther..."
+    nextNodeIndex: 1
+    idRef {
+      id: "580bce9b663136180f0005fd:580bcf49663136180f00060c"
+    }
+  }
+  branches {
+    responseText: "$(l.name).   There was a guy in..."
+    nextNodeIndex: 1
+    idRef {
+      id: "580bce9b663136180f0005fd:580bcf4a663136180f00060e"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "580bcae0663136180f0005f9"
+  }
+}
+nodes {
+  idRef {
+    id: "580bcfcf663136180f000615"
+  }
+  index: 1
+  text: "{{GM}}Clearly not buying it, the officer screams out.{{/GM}}\n\nOPEN FIRE!"
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "580bcae0663136180f0005f9"
+  }
+}
+nodes {
+  idRef {
+    id: "580bced1663136180f00060a"
+  }
+  index: 2
+  text: "WHO THE HELL ARE YOU?   WHAT\'S GOING ON IN THERE?"
+  branches {
+    responseText: "I just managed to escape!   Please, the guys in there might follow me out any second!"
+    nextNodeIndex: 3
+    idRef {
+      id: "580bce9b663136180f0005fd:580bcf89663136180f000610"
+    }
+  }
+  branches {
+    responseText: "I\'m Frank.   I work the overnight shift.   Just trying to get away with my neck still supporting this lump I\'ve grown quite attached to."
+    nextNodeIndex: 4
+    idRef {
+      id: "580bce9b663136180f0005fd:580bcfa3663136180f000612"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "580bcae0663136180f0005f9"
+  }
+}
+nodes {
+  idRef {
+    id: "580bd037663136180f00061b"
+  }
+  index: 3
+  text: "Move to cover, but stay here.  We\'ll need a statement from you.\n\n{{GM}}Gestures over his shoulder, but remains in place covering the store with is gun.{{/GM}}"
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "580bcae0663136180f0005f9"
+  }
+  actions {
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isLoneStarRRT"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "580bcae0663136180f0005f9"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_aiming_smg"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "580bcb34663136180f0005fa"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_aiming_pistol"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "580bd07d663136180f00061e"
+  }
+  index: 4
+  text: "That scans, Sarge.   I got a Frank Debouski on the employee database."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "580bce9b663136180f0005fd:580bd12b663136180f000624"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "580bcb34663136180f0005fa"
+  }
+}
+roots {
+  conditions {
+    ops {
+      functionName: "Evaluate If Actor Has Item"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Tsang Disguise"
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+  idRef {
+    id: "580bce9b663136180f0005fd:580bce9b663136180f000601"
+  }
+  comment: "No disguise"
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Evaluate If Actor Has Item"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Tsang Disguise"
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 2
+  idRef {
+    id: "580bce9b663136180f0005fd:580bceaf663136180f000604"
+  }
+  comment: "Disguised"
+}
