@@ -275,6 +275,28 @@ nodes {
       ops {
         functionName: "Clear Camera Points of Interest"
       }
+      ops {
+        functionName: "Set Waypoint on Prop"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "PrimaryOrSecondary"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Prop)"
+            args {
+              string_value: "574a84a0663136180d004dfd"
+            }
+          }
+        }
+      }
     }
     nextNodeIndex: -1
     idRef {
@@ -869,6 +891,28 @@ nodes {
         }
       }
     }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "574c7cbe663136b813004e63"
+          }
+        }
+      }
+    }
   }
 }
 nodes {
@@ -1029,6 +1073,125 @@ nodes {
     id: "574c7cbe663136b813004e63"
   }
 }
+nodes {
+  idRef {
+    id: "580c5b23663136280f003797"
+  }
+  index: 18
+  text: "What\'s the verdict?"
+  branches {
+    responseText: "Still working on it."
+    nextNodeIndex: 19
+    idRef {
+      id: "574c7f7c663136b813004e65:580c5b36663136280f003799"
+    }
+  }
+  branches {
+    responseText: "It\'s locked up tight, I can\'t get in."
+    nextNodeIndex: 20
+    idRef {
+      id: "574c7f7c663136b813004e65:580c5b38663136280f00379b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "574c7cbe663136b813004e63"
+  }
+}
+nodes {
+  idRef {
+    id: "580c5b7c663136280f0037a1"
+  }
+  index: 19
+  text: "Patience is wearing pretty thin.   Hurry up."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "574c7cbe663136b813004e63"
+  }
+}
+nodes {
+  idRef {
+    id: "580c5b4b663136280f00379e"
+  }
+  index: 20
+  text: "That\'s unfortunate for her.\n\n{{GM}}He gestures with his shotgun at the scared clerk{{/GM}}\n\nSure it\'s locked up too tight?"
+  branches {
+    responseText: "{{GM}}ATTACK{{/GM}}"
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bAttackKayla"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "eHostility"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Clear Waypoint from Prop"
+        args {
+          call_value {
+            functionName: "Get Map Item (Prop)"
+            args {
+              string_value: "574a84a0663136180d004dfd"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Clear Waypoint from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "574c7cbe663136b813004e63"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "574c7f7c663136b813004e65:580c5b99663136280f0037a3"
+    }
+  }
+  branches {
+    responseText: "Give me another minute."
+    nextNodeIndex: 19
+    idRef {
+      id: "574c7f7c663136b813004e65:580c5b9a663136280f0037a5"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "574c7cbe663136b813004e63"
+  }
+}
 roots {
   conditions {
     ops {
@@ -1075,6 +1238,39 @@ roots {
           functionName: "Get Variable (bool)"
           args {
             string_value: "bMGRUnlocked"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bHostilitiesInitiated"
           }
         }
       }
@@ -1156,6 +1352,39 @@ roots {
           functionName: "Get Variable (bool)"
           args {
             string_value: "bMGRUnlocked"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bHostilitiesInitiated"
           }
         }
       }
@@ -1340,4 +1569,80 @@ roots {
   idRef {
     id: "574c7f7c663136b813004e65:5803edaa663136cc0f004c75"
   }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bHostilitiesInitiated"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bMGRUnlocked"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 18
+  idRef {
+    id: "574c7f7c663136b813004e65:580c5af8663136280f003794"
+  }
+  comment: "OFFICE CLOSED"
 }

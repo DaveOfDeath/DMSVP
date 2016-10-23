@@ -4300,9 +4300,9 @@ triggers {
       functionName: "Display Text over Actor"
       args {
         call_value {
-          functionName: "Get Map Item (Player)"
+          functionName: "Get Map Item (Actor)"
           args {
-            int_value: 1
+            string_value: "808167a130643454080045c7"
           }
         }
       }
@@ -4339,7 +4339,7 @@ triggers {
         float_value: 3
       }
       args {
-        float_value: 4
+        float_value: 2
       }
     }
   }
@@ -7097,49 +7097,23 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Display Text over Prop"
+      functionName: "Display Text In Popup"
       args {
-        call_value {
-          functionName: "Get Map Item (Prop)"
-          args {
-            string_value: "5738b42d6631362c13001618"
-          }
-        }
+        string_value: "A crumpled hand written note under the desk blotter reads:\n\n\"Oh, I see you ate one too.\"\n\n{{55FFFF}}[You take the note.]{{-}}"
       }
       args {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "TextPopupStyle"
+            string_value: "PopupType"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
       args {
-        string_value: "A note under the desk blotter reads:\n\n\"Oh, I see you ate one too.\"\n\n[You take the note.]"
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 20
-      }
-      args {
-        float_value: 3
-      }
-      args {
-        float_value: 0
+        string_value: " Hand Written Note"
       }
     }
     ops {
@@ -7449,12 +7423,12 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Current Location of Prop"
+          functionName: "Center of Region"
           args {
             call_value {
-              functionName: "Get Map Item (Prop)"
+              functionName: "Get Map Item (Region)"
               args {
-                string_value: "58026b47663136140d00360d"
+                string_value: "5738d1fe663136200d003836"
               }
             }
           }
@@ -8399,6 +8373,17 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Clear Waypoint from Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "574a84a0663136180d004dfd"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Play Sound"
       args {
         call_value {
@@ -8886,6 +8871,17 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Clear Waypoint from Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "574a84a0663136180d004dfd"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -9213,6 +9209,17 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Delete Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "574c6cfe6631367003001385"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -9508,17 +9515,17 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Get Map Item (Player)"
+          functionName: "Get Map Item (Actor)"
           args {
-            int_value: 0
+            string_value: "580bcae0663136180f0005f9"
           }
         }
       }
       args {
         call_value {
-          functionName: "Get Map Item (Actor)"
+          functionName: "Get Map Item (Player)"
           args {
-            string_value: "580bcae0663136180f0005f9"
+            int_value: 0
           }
         }
       }
@@ -9542,6 +9549,808 @@ triggers {
   elseActions {
   }
   is_oneshot: false
+}
+triggers {
+  name: "SSE.MatrixHeat"
+  events {
+    ops {
+      functionName: "On Dimension Heat Threshold"
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Matrix"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Activate Actor Spawner By Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isMatrixResponse"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Hunt And Destroy (Team)"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isMatrixResponse"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Matrix"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Display Text over Actor"
+      args {
+        call_value {
+          functionName: "Get Actor\'s Persona"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        string_value: "Damn that\'s some old IC."
+      }
+      args {
+        float_value: 85
+      }
+      args {
+        float_value: 255
+      }
+      args {
+        float_value: 255
+      }
+      args {
+        float_value: 128
+      }
+      args {
+        float_value: 10
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 0
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "580c485c663136280f003672"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: " "
+  events {
+  }
+  conditions {
+  }
+  actions {
+  }
+  isActive: false
+  idRef {
+    id: "580c5699663136280f00374f"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "<!-- Stuffer Shack Lockers-->"
+  events {
+  }
+  conditions {
+  }
+  actions {
+  }
+  isActive: false
+  idRef {
+    id: "580c5699663136280f003750"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Locker.Adept"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5738b42c6631362c1300137c"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Berlin_Fist 1 Spiked Fist"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Triggering Prop (Interactable)"
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "580c56a3663136280f003751"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Locker.Decker"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5738b42c6631362c130013ea"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Berlin_ESP Shield"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Triggering Prop (Interactable)"
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "580c5719663136280f003752"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Locker.Mage"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5738b42d6631362c1300158e"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Berlin_Spell Heal Wound"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Triggering Prop (Interactable)"
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "580c574c663136280f003753"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Locker.None"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5738d9b3663136200d003854"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Add Nuyen"
+      args {
+        call_value {
+          functionName: "Random (int)"
+          args {
+            int_value: 45
+          }
+          args {
+            int_value: 100
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Triggering Prop (Interactable)"
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "580c581b663136280f003754"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Locker.Rigger"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5738b42d6631362c1300150f"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "DroneRepairKit_med"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Triggering Prop (Interactable)"
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "580c5850663136280f003755"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Locker.Shaman"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5738b42c6631362c13001405"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Berlin_Bound Air Spirit 1"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Triggering Prop (Interactable)"
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "580c587b663136280f003756"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Locker.StreetSam"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5738c19a663136e00a005e15"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Berlin_Grenade 1 (Frag)"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Triggering Prop (Interactable)"
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "580c58b3663136280f003757"
+  }
+  elseActions {
+  }
+  is_oneshot: true
 }
 regions {
   name: "NPC1"
@@ -11110,64 +11919,6 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "MatrixNode_Entrance"
-  position {
-    x: -39
-    y: 97
-    width: 24
-    height: 21
-  }
-  enabledAtStart: true
-  is_camera_region: false
-  is_matrix_node: true
-  is_vfx_fill_region: false
-  idRef {
-    id: "574c63b1663136f8130035ff"
-  }
-  highlight_color {
-    r: 0
-    g: 0
-    b: 0
-    a: 1
-  }
-  visible_at_start: false
-  is_closet: false
-  is_teleporter_region: false
-  directional_light_dir {
-    x: -0.5
-    y: -1
-    z: -0.75
-  }
-  directional_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 1
-  }
-  ambient_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 1
-  }
-  ambience_template: ""
-  combat_music: ""
-  default_music: ""
-  loop_combat_music: true
-  loop_default_music: false
-  no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
-  loop_combat_intense_music: true
-  loop_combat_wrapup_music: true
-  combat_intense_threshold: 5
-  combat_wrapup_threshold: 2
-  combat_fade_interval: 2
-  combat_intro_stinger: ""
-  combat_outro_stinger: ""
-  vfx_fill_prefab_name: ""
-}
-regions {
   name: "CameraRegion_Matrix"
   position {
     x: -39
@@ -11177,7 +11928,7 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: true
-  is_matrix_node: false
+  is_matrix_node: true
   is_vfx_fill_region: false
   idRef {
     id: "574c63b1663136f8130036eb"
@@ -11515,6 +12266,79 @@ regions {
   combat_outro_stinger: ""
   vfx_fill_prefab_name: ""
 }
+patrolRoutes {
+  name: "WatcherRails"
+  pathType: 0
+  nodes {
+    position {
+      x: -26
+      z: 109
+    }
+    index: 0
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: 2
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: -26
+      z: 104
+    }
+    index: 1
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: 4
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: -28
+      z: 104
+    }
+    index: 2
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: 6
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: -28
+      z: 109
+    }
+    index: 3
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: 0
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: -26
+      z: 109
+    }
+    index: 4
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: 2
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  can_move_beyond_node: false
+  is_rail: true
+  rail_speed: 2
+  rail_rotation_time: 1
+  idRef {
+    id: "580c46f7663136280f00366f"
+  }
+  rail_draw_segments: true
+  rail_draw_nodes: true
+}
 characters {
   name: "system_spawner_playerSpawner"
   gridPoint {
@@ -11653,6 +12477,8 @@ characters {
       }
       archetypeName: "Guard - Seek And Destroy"
       attitude: AttitudeAggressive
+      vulnerabilities {
+      }
     }
     team_id: "Civilians"
     char_name: "Paco"
@@ -13614,34 +14440,74 @@ characters {
     interactionRadius: 1
     prerequisites {
       ops {
-        functionName: "Comparison (bool)"
+        functionName: "OR"
         args {
           call_value {
-            functionName: "Get Variable (bool)"
+            functionName: "Comparison (bool)"
             args {
-              string_value: "bMGRUnlocked"
+              call_value {
+                functionName: "Get Variable (bool)"
+                args {
+                  string_value: "bMGRUnlocked"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "IsOrIsNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "bool"
+                }
+                args {
+                  int_value: 1
+                }
+              }
             }
           }
         }
         args {
           call_value {
-            functionName: "Get Preset Value (int)"
+            functionName: "Comparison (bool)"
             args {
-              string_value: "IsOrIsNot"
+              call_value {
+                functionName: "Get Variable (bool)"
+                args {
+                  string_value: "bHostilitiesInitiated"
+                }
+              }
             }
             args {
-              int_value: 1
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "IsOrIsNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
             }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
             args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 1
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "bool"
+                }
+                args {
+                  int_value: 1
+                }
+              }
             }
           }
         }
@@ -14098,7 +14964,7 @@ characters {
     equipment_sheet_id: "Turret_Burst_Low"
     character_mod {
       stats {
-        body: -3
+        body: -2
         quickness: 0
         strength: 0
         charisma: 0
@@ -14165,6 +15031,287 @@ characters {
     portrait {
       filename: ""
     }
+    karma: 32
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -26
+    y: 0
+    z: 108
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isIC"
+  displayName: "WatcherRails"
+  idRef {
+    id: "580c46f1663136280f00366e"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Matrix/MatrixIC_Watcher"
+    character_sheet_id: "IC_Lv1_Watcher"
+    equipment_sheet_id: "IC White Ranged Low"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "gumbo_G_WatcherIC"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "Gangers"
+    char_name: "Watcher IC"
+    GeneralTags: "isIC"
+    patrolRoute: "WatcherRails"
+    pc_spawn_number: -1
+    spawn_type: SpawnType_WatcherIC
+    hiring_type: HiringType_None
+    dimension_name: "Matrix"
+    karma: 31
+    hiring_cost_override: 1000
+    scale_character_sheet: true
+    has_fist: false
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -33
+    y: 0
+    z: 114
+  }
+  orientation: ORIENTATION_W
+  GeneralTags: "isIC"
+  GeneralTags: "isMatrixResponse"
+  displayName: "IC"
+  idRef {
+    id: "580c47b8663136280f003670"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Matrix/MatrixICE_white_melee"
+    character_sheet_id: "IC_Lv1_White_Melee"
+    equipment_sheet_id: "IC White Melee Low"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "gumbo_IC_Soldier"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "Gangers"
+    char_name: "IC"
+    GeneralTags: "isIC"
+    GeneralTags: "isMatrixResponse"
+    enabled_at_start: false
+    pc_spawn_number: -1
+    portrait {
+      filename: ""
+    }
+    dimension_name: "Matrix"
+    karma: 29
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -27
+    y: 0
+    z: 99
+  }
+  orientation: ORIENTATION_E
+  GeneralTags: "isIC"
+  GeneralTags: "isMatrixResponse"
+  displayName: "IC2"
+  idRef {
+    id: "580c4808663136280f003671"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Matrix/MatrixICE_white_range"
+    character_sheet_id: "IC_Lv1_White_Ranged"
+    equipment_sheet_id: "IC White Ranged Low"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "gumbo_IC_Soldier"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "Gangers"
+    char_name: "IC"
+    GeneralTags: "isIC"
+    GeneralTags: "isMatrixResponse"
+    enabled_at_start: false
+    pc_spawn_number: -1
+    portrait {
+      filename: ""
+    }
+    dimension_name: "Matrix"
     karma: 29
   }
 }
@@ -14560,11 +15707,11 @@ scene_dimensions {
 }
 scene_dimensions {
   dimension_name: "Matrix"
-  initial_alarm_state: 5
+  initial_alarm_state: 0
   turns_per_round: 3
   is_matrix: true
   max_alarm_value: 50
-  heat_response_rating: 0
+  heat_response_rating: 1
 }
 combat_music: "Seattle-Set6-Combat"
 character_roster {
