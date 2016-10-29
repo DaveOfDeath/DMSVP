@@ -801,6 +801,17 @@ triggers {
           }
         }
       }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
     }
   }
   isActive: true
@@ -907,6 +918,17 @@ triggers {
             }
           }
           args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
           }
         }
       }
@@ -1936,6 +1958,17 @@ triggers {
           }
         }
       }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
     }
     ops {
       functionName: "Order Actor to Move To (Region)"
@@ -2119,6 +2152,19 @@ triggers {
           functionName: "Get Preset Value (int)"
           args {
             string_value: "DeathMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
           }
           args {
             int_value: 0
@@ -3317,6 +3363,86 @@ triggers {
         float_value: 4
       }
     }
+    ops {
+      functionName: "Set Actor In Passive Mode"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "519fb655623331301e001003"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "519fb655623331301e001003"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "5814e819663136e8150013d4"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Trigger: Wait for Rounds"
+      args {
+        int_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -3327,7 +3453,7 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "NewTrigger"
+  name: "CoyoteCalls"
   events {
     ops {
       functionName: "On Item Interaction"
@@ -3440,7 +3566,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Scene)"
           args {
-            string_value: "c09-s1_Tweakers"
+            string_value: "c09-s1_tweakers"
           }
         }
       }
@@ -3457,11 +3583,130 @@ triggers {
         call_value {
           functionName: "Get Map Item (Scene)"
           args {
-            string_value: "c08-s3_Seamstress"
+            string_value: "c08-s3_seamstress"
           }
         }
       }
     }
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "PitsMoveAlong"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "5814e819663136e8150013d4"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "519fb655623331301e001003"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "519fb655623331301e001003"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle_bouncer"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Display Text over Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "519fb655623331301e001003"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        string_value: "Move along, Citizen."
+      }
+      args {
+        float_value: 128
+      }
+      args {
+        float_value: 128
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 128
+      }
+      args {
+        float_value: 7
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 0
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5814e84e663136e8150013d5"
+  }
+  elseActions {
   }
   is_oneshot: true
 }
@@ -3475,6 +3720,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: true
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "5fdf07e6623331ac03004998"
   }
@@ -3485,6 +3732,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -3508,6 +3756,17 @@ regions {
   default_music: "Seattle-Set8-Legwork"
   loop_combat_music: true
   loop_default_music: true
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 regions {
   name: "SecondRoomTripwire"
@@ -3519,6 +3778,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "6568f8436233311830004b2e"
   }
@@ -3529,6 +3790,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -3552,6 +3814,17 @@ regions {
   default_music: ""
   loop_combat_music: true
   loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 regions {
   name: "McKluskyStation"
@@ -3563,6 +3836,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "656b63846233311830004b2f"
   }
@@ -3573,6 +3848,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -3596,6 +3872,17 @@ regions {
   default_music: ""
   loop_combat_music: true
   loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 regions {
   name: "SergeantStation"
@@ -3607,6 +3894,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "656b82bc6233311830004b30"
   }
@@ -3617,6 +3906,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -3640,6 +3930,17 @@ regions {
   default_music: ""
   loop_combat_music: true
   loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 regions {
   name: "SergeantComment"
@@ -3651,6 +3952,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "65f8af43623331800c006df3"
   }
@@ -3661,6 +3964,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -3684,6 +3988,17 @@ regions {
   default_music: ""
   loop_combat_music: true
   loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 regions {
   name: "VentExit"
@@ -3695,6 +4010,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "6ff3ca106233314017000119"
   }
@@ -3705,6 +4022,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -3728,6 +4046,17 @@ regions {
   default_music: ""
   loop_combat_music: true
   loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 regions {
   name: "NearDresden"
@@ -3739,6 +4068,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "519fafa7623331301e000f8a"
   }
@@ -3749,6 +4080,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -3772,6 +4104,17 @@ regions {
   default_music: ""
   loop_combat_music: true
   loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 regions {
   name: "PlayerTargetTeleport"
@@ -3783,6 +4126,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "51af76d1623331601c007b47"
   }
@@ -3793,6 +4138,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -3816,6 +4162,17 @@ regions {
   default_music: ""
   loop_combat_music: true
   loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 regions {
   name: "ShamanTargetTeleport"
@@ -3827,6 +4184,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "51af76d8623331601c007b48"
   }
@@ -3837,6 +4196,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -3860,6 +4220,17 @@ regions {
   default_music: ""
   loop_combat_music: true
   loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 regions {
   name: "McKluskyConfrontStation"
@@ -3871,6 +4242,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "51afb86f623331900e001c2f"
   }
@@ -3881,6 +4254,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -3904,6 +4278,17 @@ regions {
   default_music: ""
   loop_combat_music: true
   loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 regions {
   name: "SergeantConfrontStation"
@@ -3915,6 +4300,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "51afb873623331900e001c30"
   }
@@ -3925,6 +4312,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -3948,6 +4336,17 @@ regions {
   default_music: ""
   loop_combat_music: true
   loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 regions {
   name: "McKluskyStation2"
@@ -3959,6 +4358,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "51afbc49623331900e001cf0"
   }
@@ -3969,6 +4370,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -3992,6 +4394,17 @@ regions {
   default_music: ""
   loop_combat_music: true
   loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 regions {
   name: "CloseToBarricade"
@@ -4003,6 +4416,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "51ca0d326233315c1d006e5e"
   }
@@ -4013,6 +4428,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -4036,6 +4452,75 @@ regions {
   default_music: ""
   loop_combat_music: true
   loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "rMovePitsToMoveAlong"
+  position {
+    x: -9
+    y: -34
+    width: -1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "5814e819663136e8150013d4"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 0.88235295
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 characters {
   name: "chars_icon_playerIcon"
@@ -4132,7 +4617,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "OrkLoneStarCaptain"
+    prefab_name: "HongKong:Security Guards/OrkMaleSecurityGuard"
     character_sheet_id: "Lonestar_Lv1_Ork_Shotgun"
     equipment_sheet_id: "Lonestar_Shotgun_Low"
     character_mod {
@@ -4149,6 +4634,8 @@ characters {
       }
       specializations {
       }
+      vulnerabilities {
+      }
     }
     team_id: "LoneStar"
     char_name: "Lonestar Enforcer"
@@ -4156,6 +4643,7 @@ characters {
     portrait {
       filename: ""
     }
+    karma: 33
   }
 }
 characters {
@@ -4663,7 +5151,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Lonestar/TrollMaleLonestarSecurityGuard"
+    prefab_name: "HongKong:Security Guards/TrollMaleSecurityGuard"
     character_sheet_id: "Lonestar_Lv1_Human_Pistol"
     character_mod {
       stats {
@@ -4679,14 +5167,20 @@ characters {
       }
       specializations {
       }
+      vulnerabilities {
+      }
+    }
+    equipment {
+      prefab_name: "NPC_HK_TailoredSuit"
     }
     team_id: "LoneStar"
-    char_name: "Lonestar Guard"
+    char_name: "Officer Pits"
     pc_spawn_number: -1
     portrait {
       filename: ""
     }
-    karma: 31
+    portrait_code_override: "s4h10c2b6c2t7"
+    karma: 30
   }
 }
 characters {
@@ -5145,3 +5639,8 @@ use_hiring_cost_warning: false
 hiring_average_cost: 0
 override_hiring_average_cost: false
 show_equip_screen_on_scene_load: false
+is_persistant: false
+is_persistant_has_value: false
+can_move_outside_camera_regions: true
+can_start_before_triggers: true
+can_use_team_advancement: false
