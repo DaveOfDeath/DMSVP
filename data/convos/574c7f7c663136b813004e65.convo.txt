@@ -75,14 +75,93 @@ nodes {
   }
   branches {
     responseText: "Look man, let\'s talk..."
+    conditions {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 5
+    hideIfUnavailable: true
     idRef {
       id: "574c7f7c663136b813004e65:574c8007663136b813004e75"
     }
   }
   branches {
-    responseText: "I\'m sure we can fix this... tell me what happened?"
+    responseText: "Look man, let\'s talk..."
+    conditions {
+      ops {
+        functionName: "Compare Actor Race"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Race"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 7
+    hideIfUnavailable: true
+    idRef {
+      id: "574c7f7c663136b813004e65:5815a403396630601e005f80"
+    }
+  }
+  branches {
+    responseText: "I\'m sure we can fix this... tell me what happened?"
+    nextNodeIndex: 8
     idRef {
       id: "574c7f7c663136b813004e65:574c8009663136b813004e77"
     }
@@ -142,7 +221,7 @@ nodes {
     id: "5802a1e86631366c0c002faf"
   }
   index: 4
-  text: "{{GM}}The human goon shakes his head \'no.\' {{/GM}}\n\nNot gonna happen. Open the door, and then we\'ll see if this ugly fragger\'s gray matter stays off the magazine rack."
+  text: "{{GM}}The human goon shakes his head \'no.\' {{/GM}}\n\nNot gonna happen. Open the door, and then we\'ll see if this slitch\'s gray matter stays off the magazine rack."
   branches {
     responseText: ""
     nextNodeIndex: 6
@@ -161,7 +240,7 @@ nodes {
     id: "574c807b663136b813004e7d"
   }
   index: 5
-  text: "Talk?   I\'m not here to fragging talk, chummer.   Can you open the door, or do I redecorate it with this slags head to jog your memory?\n\n{{GM}}He gestures his shotgun at the young girl behind the counter.{{/GM}}"
+  text: "{{GM}}The thug doesn\'t even look at you, continuing to grind his teeth. His shotgun trembles  inches from the face of the young girl behind the counter.{{/GM}}\n\nTalk? I\'m not here to fragging talk, chummer. Can you open the door, or do I redecorate it with this bint\'s head to jog your memory?"
   branches {
     responseText: ""
     nextNodeIndex: 6
@@ -311,20 +390,154 @@ nodes {
 }
 nodes {
   idRef {
-    id: "574c808e663136b813004e80"
+    id: "574c7f7c663136b813004e65:5815a403396630601e005f82"
   }
   index: 7
-  text: "If you\'ve got a key, and can open that door... then you can help.   Otherwise stay outta my way!"
+  text: "{{GM}}The thug doesn\'t even look at you, continuing to grind his teeth. His shotgun trembles  inches from the face of the young girl behind the counter.{{/GM}}\n\nNo die, $(l.race). You open the door, or I redecorate it with this slags head to jog your memory on how doors work."
+  branches {
+    responseText: "{{CC}}ATTACK{{/CC}} Picked the wrong place, Omae."
+    actions {
+      ops {
+        functionName: "Clear Camera Points of Interest"
+      }
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bHostilitiesInitiated"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bAttackKayla"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "eHostility"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "574c7f7c663136b813004e65:5815a403396630601e005f88"
+    }
+  }
+  branches {
+    responseText: "Alright, let me try the door."
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bHostilitiesInitiated"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Clear Camera Points of Interest"
+      }
+      ops {
+        functionName: "Set Waypoint on Prop"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "PrimaryOrSecondary"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Prop)"
+            args {
+              string_value: "574a84a0663136180d004dfd"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "574c7f7c663136b813004e65:5815a403396630601e005f8a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "574c7cbe663136b813004e63"
+  }
+}
+nodes {
+  idRef {
+    id: "574c808e663136b813004e80"
+  }
+  index: 8
+  text: "{{GM}}The thug shouts at you through clenched teeth.{{/GM}}\n\nIf you\'ve got the key, and can open that door... do it. Otherwise stay the frag outta my way!"
   branches {
     responseText: "That\'s it? Open the door or you start spraying?"
-    nextNodeIndex: 8
+    nextNodeIndex: 9
     idRef {
       id: "574c7f7c663136b813004e65:5802a2bf6631366c0c002fe7"
     }
   }
   branches {
-    responseText: "Easy pal.  Think this through... Theres a police crime scene half a block away.   You really wanna do this dance?"
-    nextNodeIndex: 9
+    responseText: "Easy pal. There\'s an active crime scene half a block away. Do you want do this dance, right here and now?"
+    nextNodeIndex: 10
     idRef {
       id: "574c7f7c663136b813004e65:5802a2bf6631366c0c002fe9"
     }
@@ -338,8 +551,8 @@ nodes {
   idRef {
     id: "5802a34a6631366c0c002ff8"
   }
-  index: 8
-  text: "You must be the brightest specker in here.   That\'s exactly right.   Now you gonna open this door?  Or are we gonna see how much buckshot this little filly can hold?"
+  index: 9
+  text: "{{GM}}The thug nods, keeping his shotgun trained on the clerk.{{/GM}}\n\nYou must be the brightest specker in here. That\'s exactly right. Now you gonna open this goddamn door.\nOr are we gonna see how much slugs this little filly can hold? My bet is one and a half."
   branches {
     responseText: ""
     nextNodeIndex: 6
@@ -357,8 +570,8 @@ nodes {
   idRef {
     id: "5802a3066631366c0c002fec"
   }
-  index: 9
-  text: "You think a couple of wage-slave boot licking cops bother me?  I\'ve killed dozens.   I need access to that room.   How messy it gets is up to all of you."
+  index: 10
+  text: "{{GM}}The thug guffaws.{{/GM}}\n\nYou think wage-slave rent-a-cops bother me? I\'ve killed dozens. I need access to that room.\nHow messy it gets is all up to you."
   branches {
     responseText: ""
     nextNodeIndex: 6
@@ -376,8 +589,8 @@ nodes {
   idRef {
     id: "580072166131317837005c95"
   }
-  index: 10
-  text: "You!  You got keys to the managers office?  Or are you as worthless as the rest of them?"
+  index: 11
+  text: "{{GM}}The human with blood-shot eyes is literally grinding his teeth, making the veins in his neck stand out. He\'s jumpy, and holding the shotgun tightly pointed at the clerk behind the counter.{{/GM}}\n\nYou got keys to the managers office? Or are you as worthless as the rest of these half-wits?"
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -435,11 +648,11 @@ nodes {
   idRef {
     id: "5803c9f7663136cc0f004a49"
   }
-  index: 11
-  text: "About time!"
+  index: 12
+  text: "{{GM}}The thug looks at the clerk for a long couple of seconds before lowering his shotgun.{{/GM}}\n\nAbout fraggin\' time! What took so long?"
   branches {
     responseText: ""
-    nextNodeIndex: 12
+    nextNodeIndex: 13
     idRef {
       id: "574c7f7c663136b813004e65:5803ea1d663136cc0f004bdf"
     }
@@ -488,11 +701,11 @@ nodes {
   idRef {
     id: "5803ea1d663136cc0f004be2"
   }
-  index: 12
-  text: "You wouldn\'t happen to know anything about computers, would you?   We can end this pretty quickly if you get me the information I need from the servers."
+  index: 13
+  text: "{{GM}}Shouldering his shotgun, the thug turns to you.{{/GM}}\n\nTell you what- you wouldn\'t happen to know anything about matrix systems, would you?\nWe can end this pretty quickly if you can wipe the information I need from the servers."
   branches {
     responseText: ""
-    nextNodeIndex: 13
+    nextNodeIndex: 14
     idRef {
       id: "574c7f7c663136b813004e65:5803ea8a663136cc0f004beb"
     }
@@ -506,7 +719,7 @@ nodes {
   idRef {
     id: "5803ea8a663136cc0f004bee"
   }
-  index: 13
+  index: 14
   text: ""
   branches {
     responseText: "{{CC}}DECKING{{/CC}} Yeah, I know my way around a computer.   Let me see what I can do."
@@ -686,14 +899,14 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 14
+    nextNodeIndex: 15
     idRef {
       id: "574c7f7c663136b813004e65:5803ea6c663136cc0f004be6"
     }
   }
   branches {
     responseText: "Whats in it for me?"
-    nextNodeIndex: 15
+    nextNodeIndex: 16
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -701,7 +914,7 @@ nodes {
     }
   }
   branches {
-    responseText: "{{CC}}PAYDATA: Stuffer Shack{{/CC}}  Here\'s the file."
+    responseText: "{{CC}}PAYDATA: Stuffer Shack{{/CC}}  Here\'s the file, Mendoza."
     conditions {
       ops {
         functionName: "Evaluate If Actor Has Item"
@@ -813,7 +1026,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 16
+    nextNodeIndex: 17
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -876,7 +1089,7 @@ nodes {
   idRef {
     id: "5803f080663136cc0f004dec"
   }
-  index: 14
+  index: 15
   text: "Back to plan \'A\'.   You all can leave."
   nodeType: ConversationNodeType_Simple
   actions {
@@ -919,11 +1132,11 @@ nodes {
   idRef {
     id: "5803eb1f663136cc0f004c22"
   }
-  index: 15
-  text: "Your life.  Isn\'t that a good enough bargaining chip?"
+  index: 16
+  text: "{{GM}}Mendoza drums his fingers on the shotgun for emphasis.{{/GM}}\n\nThe lives of these employees. Your life. Isn\'t that a good enough bargaining chip?"
   branches {
     responseText: ""
-    nextNodeIndex: 13
+    nextNodeIndex: 14
     idRef {
       id: "574c7f7c663136b813004e65:5803eb6c663136cc0f004c28"
     }
@@ -938,8 +1151,8 @@ nodes {
   idRef {
     id: "5803ec9b663136cc0f004c3c"
   }
-  index: 16
-  text: "Nice work!  Get out of here."
+  index: 17
+  text: "{{GM}}Mendoza slides the chip into his pocket, and shoulders the shotgun.{{/GM}}\n\nThanks, chump. Pleasure doing business with you, now get outta of here."
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
     id: "574c7cbe663136b813004e63"
@@ -1058,11 +1271,11 @@ nodes {
   idRef {
     id: "5803edca663136cc0f004c78"
   }
-  index: 17
-  text: "Quit wasting my time!  You got my file or not?"
+  index: 18
+  text: "{{GM}}The thug continues grinding his teeth, holding his shotgun six inches away from the sobbing clerk\'s head.{{/GM}}\n\nQuit wasting my time! You got my files wiped yet?"
   branches {
     responseText: ""
-    nextNodeIndex: 13
+    nextNodeIndex: 14
     idRef {
       id: "574c7f7c663136b813004e65:5803ede3663136cc0f004c7a"
     }
@@ -1077,18 +1290,18 @@ nodes {
   idRef {
     id: "580c5b23663136280f003797"
   }
-  index: 18
-  text: "What\'s the verdict?"
+  index: 19
+  text: "{{GM}}The thug eyes you warily, holding his shotgun easily center-mass on the woman.{{/GM}}\n\nWhat\'s the verdict?"
   branches {
     responseText: "Still working on it."
-    nextNodeIndex: 19
+    nextNodeIndex: 20
     idRef {
       id: "574c7f7c663136b813004e65:580c5b36663136280f003799"
     }
   }
   branches {
     responseText: "It\'s locked up tight, I can\'t get in."
-    nextNodeIndex: 20
+    nextNodeIndex: 21
     idRef {
       id: "574c7f7c663136b813004e65:580c5b38663136280f00379b"
     }
@@ -1102,8 +1315,8 @@ nodes {
   idRef {
     id: "580c5b7c663136280f0037a1"
   }
-  index: 19
-  text: "Patience is wearing pretty thin.   Hurry up."
+  index: 20
+  text: "{{GM}}Mendoza grunts, holding the shotgun steadily at the scared clerks face.{{/GM}}\n\nPatience is wearing thin. My trigger finger is getting itchy, hurry up before I need to scratch it."
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
     id: "574c7cbe663136b813004e63"
@@ -1113,8 +1326,8 @@ nodes {
   idRef {
     id: "580c5b4b663136280f00379e"
   }
-  index: 20
-  text: "That\'s unfortunate for her.\n\n{{GM}}He gestures with his shotgun at the scared clerk{{/GM}}\n\nSure it\'s locked up too tight?"
+  index: 21
+  text: "{{GM}}He gestures with his shotgun at the scared clerk.{{/GM}}\n\nThat\'s unfortunate for her.\nAre you absolutely sure it\'s locked up tight? Is that your final answer?"
   branches {
     responseText: "{{GM}}ATTACK{{/GM}}"
     actions {
@@ -1181,7 +1394,7 @@ nodes {
   }
   branches {
     responseText: "Give me another minute."
-    nextNodeIndex: 19
+    nextNodeIndex: 20
     idRef {
       id: "574c7f7c663136b813004e65:580c5b9a663136280f0037a5"
     }
@@ -1412,7 +1625,7 @@ roots {
       }
     }
   }
-  nextNodeIndex: 10
+  nextNodeIndex: 11
   hideIfUnavailable: true
   idRef {
     id: "574c7f7c663136b813004e65:580071bf6131317837005c86"
@@ -1489,7 +1702,7 @@ roots {
       }
     }
   }
-  nextNodeIndex: 11
+  nextNodeIndex: 12
   idRef {
     id: "574c7f7c663136b813004e65:5803c9ed663136cc0f004a46"
   }
@@ -1565,7 +1778,7 @@ roots {
       }
     }
   }
-  nextNodeIndex: 17
+  nextNodeIndex: 18
   idRef {
     id: "574c7f7c663136b813004e65:5803edaa663136cc0f004c75"
   }
@@ -1640,7 +1853,7 @@ roots {
       }
     }
   }
-  nextNodeIndex: 18
+  nextNodeIndex: 19
   idRef {
     id: "574c7f7c663136b813004e65:580c5af8663136280f003794"
   }
