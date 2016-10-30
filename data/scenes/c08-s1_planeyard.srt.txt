@@ -22,7 +22,7 @@ triggers {
         }
       }
       args {
-        int_value: 10000
+        int_value: 150
       }
     }
     ops {
@@ -137,6 +137,44 @@ triggers {
           }
           args {
             int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "581599766631367c05002ced"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle_lookaround"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "8e1b21ef623331403c004d55"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/sitting_idle_attitude"
           }
         }
       }
@@ -756,6 +794,28 @@ triggers {
   conditions {
   }
   actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "601fb7c3623331ec0c00192b"
+          }
+        }
+      }
+    }
     ops {
       functionName: "Suspend Team\'s Turn"
       args {
@@ -2334,7 +2394,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "HumanFemaleProstitute"
+    prefab_name: "Seattle:Extras/HumanFemaleProstitute"
     character_sheet_id: "Generic_Lv1_Human_Melee"
     character_mod {
       stats {
@@ -2350,13 +2410,16 @@ characters {
       }
       specializations {
       }
+      vulnerabilities {
+      }
     }
     team_id: "Gangers"
     char_name: "Streetwalker"
     pc_spawn_number: -1
     portrait {
-      filename: ""
+      filename: "backer_elffemale_joshualawford_wren"
     }
+    karma: 28
   }
 }
 characters {
@@ -2372,7 +2435,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Homeless/HumanMaleHomelessBeard"
+    prefab_name: "Seattle:Homeless/HumanFemaleHomelessPonchoBundle"
     character_sheet_id: "Generic_Lv1_Human_Melee"
     character_mod {
       stats {
@@ -2388,12 +2451,14 @@ characters {
       }
       specializations {
       }
+      vulnerabilities {
+      }
     }
     team_id: "Gangers"
-    char_name: "Homeless Man"
+    char_name: "Homeless Woman"
     pc_spawn_number: -1
     portrait {
-      filename: ""
+      filename: "npc_humanfemale_feuerschwinge"
     }
     karma: 28
   }
@@ -2401,17 +2466,18 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -9
+    x: -10
     y: 0
-    z: 45
+    z: 44
   }
   orientation: ORIENTATION_E
+  displayName: "MinorNPC"
   idRef {
     id: "8e1b21ef623331403c004d55"
   }
   lod: 0
   character_instance {
-    prefab_name: "Homeless/DwarfMaleHomelessJacket"
+    prefab_name: "Seattle:Homeless/DwarfMaleHomelessJacket"
     character_sheet_id: "Generic_Lv1_Human_Melee"
     character_mod {
       stats {
@@ -2427,13 +2493,18 @@ characters {
       }
       specializations {
       }
+      archetypeName: "Non-Combatant"
+      vulnerabilities {
+      }
     }
-    team_id: "Gangers"
-    char_name: "Homeless"
+    team_id: "Civilians"
+    char_name: "Homeless Dwarf"
     pc_spawn_number: -1
     portrait {
       filename: ""
     }
+    karma: 28
+    is_prop_character: true
   }
 }
 characters {
@@ -2455,6 +2526,94 @@ characters {
     team_id: "Shadowrunners"
     char_name: "New Actor"
     pc_spawn_number: 0
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: 5
+    y: 0
+    z: 59
+  }
+  orientation: ORIENTATION_W
+  displayName: "MinorNPC"
+  idRef {
+    id: "581599766631367c05002ced"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Businessman/HumanMaleBusinessmanAsian"
+    character_sheet_id: "BaseCivilian"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Guard - Protect"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "Civilians"
+    char_name: "Irate Man"
+    pc_spawn_number: -1
+    portrait {
+      filename: "npc_humanmale_hub_shyu"
+    }
+    karma: 6
+    is_prop_character: true
   }
 }
 variables {
