@@ -1564,7 +1564,7 @@ triggers {
         }
       }
       args {
-        int_value: 2
+        int_value: 1
       }
       args {
         call_value {
@@ -1778,6 +1778,28 @@ triggers {
           }
           args {
             int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Manual Turn Mode in Dimension"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
           }
         }
       }
@@ -2470,6 +2492,28 @@ triggers {
       }
     }
     ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5738e75b663136fc0d00604a"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Teleport Actor to Area Around Point"
       args {
         call_value {
@@ -2490,7 +2534,7 @@ triggers {
         int_value: 0
       }
       args {
-        int_value: 0
+        int_value: 3
       }
       args {
         call_value {
@@ -2499,7 +2543,7 @@ triggers {
             call_value {
               functionName: "Get Map Item (Prop)"
               args {
-                string_value: "5738113e6631365807007ee0"
+                string_value: "5818e3ef393066840a002fde"
               }
             }
           }
@@ -2549,7 +2593,7 @@ triggers {
         int_value: 0
       }
       args {
-        int_value: 0
+        int_value: 3
       }
       args {
         call_value {
@@ -2558,7 +2602,7 @@ triggers {
             call_value {
               functionName: "Get Map Item (Prop)"
               args {
-                string_value: "57380fdb6631365807007ed9"
+                string_value: "5818e3ef393066840a002fde"
               }
             }
           }
@@ -2588,23 +2632,75 @@ triggers {
       }
     }
     ops {
-      functionName: "Enable/Disable Interactable Object"
+      functionName: "Order Actor to Move To (Prop)"
       args {
         call_value {
-          functionName: "Get Preset Value (int)"
+          functionName: "Specific Actor"
           args {
-            string_value: "EnableOrDisable"
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "8a9b3031306434ec1000483e"
+              }
+            }
           }
           args {
-            int_value: 0
           }
         }
       }
       args {
         call_value {
-          functionName: "Get Map Item (InteractableObject)"
+          functionName: "Get Map Item (Prop)"
           args {
-            string_value: "5738e75b663136fc0d00604a"
+            string_value: "5738113e6631365807007ee0"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Prop)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "8a9b3572306434ec1000483f"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "57380fdb6631365807007ed9"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 2
           }
         }
       }
@@ -2814,6 +2910,28 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Enable/Disable Manual Turn Mode in Dimension"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Start Conversation Between Actors"
       args {
         call_value {
@@ -2840,6 +2958,15 @@ triggers {
         }
       }
       args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
       }
     }
     ops {
@@ -4421,6 +4548,34 @@ triggers {
       }
     }
     ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:spellcasting"
+          }
+          args {
+            string_value: "FireboltExplosion"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Apply Camera Shake"
       args {
         float_value: 4
@@ -5728,6 +5883,232 @@ triggers {
   elseActions {
   }
   is_oneshot: true
+}
+triggers {
+  name: "Container.DelayMages"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "a1470a613064348014004aac"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "Wave03"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Add Camera Point of Interest (Actors)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        float_value: 2
+      }
+    }
+    ops {
+      functionName: "Display Text over Actor"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        string_value: "This should be over by now."
+      }
+      args {
+        float_value: 255
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 128
+      }
+      args {
+        float_value: 8
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Trigger: Wait Until Triggered Again"
+    }
+    ops {
+      functionName: "Trigger: Wait for Motion"
+    }
+    ops {
+      functionName: "Display Text over Actor"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        string_value: "Call it in.   Send in the support team."
+      }
+      args {
+        float_value: 255
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 128
+      }
+      args {
+        float_value: 8
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Apply Condition Status Effect to Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "Wave03"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "StatusCondition"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        string_value: "StayPut"
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "BuffDebuffType"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5818e418393066840a002fdf"
+  }
+  elseActions {
+  }
+  is_oneshot: false
 }
 triggers {
   name: " "
