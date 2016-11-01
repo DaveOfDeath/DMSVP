@@ -2,7 +2,7 @@ triggers {
   name: "MapStart"
   events {
     ops {
-      functionName: "On Actor Start Turn"
+      functionName: "On Map Start"
     }
   }
   conditions {
@@ -382,10 +382,10 @@ triggers {
       }
     }
     ops {
-      functionName: "Display Text over Actor"
+      functionName: "Display Text over Prop"
       args {
         call_value {
-          functionName: "Triggering Actor"
+          functionName: "Triggering Prop"
         }
       }
       args {
@@ -421,6 +421,7 @@ triggers {
         float_value: 0
       }
       args {
+        float_value: 0
       }
     }
     ops {
@@ -452,10 +453,10 @@ triggers {
   }
   elseActions {
     ops {
-      functionName: "Display Text over Actor"
+      functionName: "Display Text over Prop"
       args {
         call_value {
-          functionName: "Triggering Actor"
+          functionName: "Triggering Prop"
         }
       }
       args {
@@ -491,6 +492,7 @@ triggers {
         float_value: 0
       }
       args {
+        float_value: 0
       }
     }
   }
@@ -766,6 +768,7 @@ triggers {
         float_value: 0
       }
       args {
+        float_value: 0
       }
     }
     ops {
@@ -808,7 +811,7 @@ triggers {
             string_value: "WithOrWithout"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
@@ -880,6 +883,7 @@ triggers {
         float_value: 0
       }
       args {
+        float_value: 0
       }
     }
     ops {
@@ -939,7 +943,7 @@ triggers {
             string_value: "WithOrWithout"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
@@ -1263,7 +1267,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "6ff71ed5623331401700011c"
   }
@@ -1403,6 +1407,12 @@ triggers {
         }
       }
       args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
       }
     }
     ops {
@@ -1649,7 +1659,7 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Teleport Actor"
+      functionName: "Teleport Actor to Area Around Point"
       args {
         call_value {
           functionName: "Specific Actor"
@@ -1677,6 +1687,12 @@ triggers {
           args {
           }
         }
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        int_value: 0
       }
       args {
         call_value {
@@ -2154,11 +2170,20 @@ triggers {
             string_value: "DeathMethod"
           }
           args {
-            int_value: 0
+            int_value: 3
           }
         }
       }
       args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
       }
       args {
         call_value {
@@ -2536,7 +2561,7 @@ triggers {
       }
     }
     ops {
-      functionName: "Teleport Actor"
+      functionName: "Teleport Actor to Area Around Point"
       args {
         call_value {
           functionName: "Specific Actor"
@@ -2551,6 +2576,12 @@ triggers {
           args {
           }
         }
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        int_value: 0
       }
       args {
         call_value {
@@ -2589,7 +2620,7 @@ triggers {
       }
     }
     ops {
-      functionName: "Teleport Actor"
+      functionName: "Teleport Actor to Area Around Point"
       args {
         call_value {
           functionName: "Specific Actor"
@@ -2604,6 +2635,12 @@ triggers {
           args {
           }
         }
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        int_value: 0
       }
       args {
         call_value {
@@ -2845,7 +2882,7 @@ triggers {
       }
     }
     ops {
-      functionName: "Teleport Actor"
+      functionName: "Teleport Actor to Area Around Point"
       args {
         call_value {
           functionName: "Specific Actor"
@@ -2860,6 +2897,12 @@ triggers {
           args {
           }
         }
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        int_value: 0
       }
       args {
         call_value {
@@ -2898,7 +2941,7 @@ triggers {
       }
     }
     ops {
-      functionName: "Teleport Actor"
+      functionName: "Teleport Actor to Area Around Point"
       args {
         call_value {
           functionName: "Specific Actor"
@@ -2913,6 +2956,12 @@ triggers {
           args {
           }
         }
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        int_value: 0
       }
       args {
         call_value {
@@ -3453,6 +3502,125 @@ triggers {
   is_oneshot: true
 }
 triggers {
+  name: "PitsMoveAlong"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "5814e819663136e8150013d4"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "519fb655623331301e001003"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "519fb655623331301e001003"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle_bouncer"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Display Text over Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "519fb655623331301e001003"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        string_value: "Move along, Citizen."
+      }
+      args {
+        float_value: 128
+      }
+      args {
+        float_value: 128
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 128
+      }
+      args {
+        float_value: 7
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 0
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5814e84e663136e8150013d5"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
   name: "CoyoteCalls"
   events {
     ops {
@@ -3588,125 +3756,6 @@ triggers {
         }
       }
     }
-  }
-  is_oneshot: true
-}
-triggers {
-  name: "PitsMoveAlong"
-  events {
-    ops {
-      functionName: "On Region Enter"
-      args {
-        call_value {
-          functionName: "Get Map Item (Region)"
-          args {
-            string_value: "5814e819663136e8150013d4"
-          }
-        }
-      }
-    }
-  }
-  conditions {
-    ops {
-      functionName: "Comparison (Actor)"
-      args {
-        call_value {
-          functionName: "Triggering Actor"
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "IsOrIsNot"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Actor)"
-          args {
-            string_value: "519fb655623331301e001003"
-          }
-        }
-      }
-    }
-  }
-  actions {
-    ops {
-      functionName: "Play Animation From Manifest"
-      args {
-        call_value {
-          functionName: "Get Map Item (Actor)"
-          args {
-            string_value: "519fb655623331301e001003"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Animation)"
-          args {
-            string_value: "HongKong:General/standing_idle_bouncer"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Display Text over Actor"
-      args {
-        call_value {
-          functionName: "Get Map Item (Actor)"
-          args {
-            string_value: "519fb655623331301e001003"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "TextPopupStyle"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        string_value: "Move along, Citizen."
-      }
-      args {
-        float_value: 128
-      }
-      args {
-        float_value: 128
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 128
-      }
-      args {
-        float_value: 7
-      }
-      args {
-        float_value: 3
-      }
-      args {
-        float_value: 0
-      }
-    }
-  }
-  isActive: true
-  idRef {
-    id: "5814e84e663136e8150013d5"
-  }
-  elseActions {
   }
   is_oneshot: true
 }
@@ -5378,7 +5427,7 @@ characters {
   lod: 0
   character_instance {
     prefab_name: "Seattle:Story/CoyoteUgly"
-    character_sheet_id: "Lonestar_Lv1_Human_Pistol"
+    character_sheet_id: "BaseCivilian"
     character_mod {
       stats {
         body: 0
@@ -5400,6 +5449,9 @@ characters {
         authority: 0
         protect_tether_range: 0
         move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
       }
       skills {
         ranged_combat: 0
@@ -5420,6 +5472,7 @@ characters {
         etiquette_shadowrunner: 0
         etiquette_street: 0
         etiquette_academic: 0
+        cyberware_affinity: 0
       }
       specializations {
         pistol: 0
@@ -5443,7 +5496,7 @@ characters {
     portrait {
       filename: "NPC_HumanFemale_CoyoteHealed"
     }
-    karma: 30
+    karma: 6
   }
 }
 variables {
