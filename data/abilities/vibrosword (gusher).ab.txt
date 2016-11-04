@@ -1,0 +1,61 @@
+id: "Vibrosword (Gusher)"
+uirep {
+  icon: "icon_razors_eviscerate"
+  name: "Gusher"
+  description: "A melee attack that does 10 Bleeding DMG for 2 RNDs."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+prereqStrings: "TAG.Bartlett_Burnout_1 EXISTS"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+effectDuration: 2
+cooldown: 3
+fxrep {
+  preActionFxName: ""
+  actionFxName: "SwordSwingAction"
+  postActionFxName: ""
+  hitReactionFxName: "SwordHitReaction"
+  missReactionFxName: "SwordMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"
+activationStatusEffects {
+  uirep {
+    icon: "icon_acidstream1"
+    name: "Hemorrhaging: HP -10 per RND"
+  }
+  stackingCategory: "Gusher"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -10
+    damageType: VulnerabilityType_Bleed
+  }
+  fxScript: "Berlin:BleedingStatus"
+  is_debuff: true
+}

@@ -1,0 +1,65 @@
+id: "Banhammer 4 (Violet)"
+uirep {
+  icon: "icon_airspirit_4"
+  name: "Hammer Matrix Attack"
+  description: "Cleaving attack program to destroy IC integrity."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 1
+apDamageMod: 0
+accuracyMod: 2
+prereqStrings: "TAG.Violet_Brawler_3 EXISTS"
+prereqStrings: "Player.CONDITION.Condition_MatrixCharge1 == 1"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+spreadAngle: 75
+effectModTable: 1
+effectModTable: 1
+ammoCost: 0
+fxrep {
+  preActionFxName: ""
+  actionFxName: "HongKong:SamuraiWhirlwindSlashAction"
+  postActionFxName: ""
+  hitReactionFxName: "MatrixSpellHitReaction"
+  missReactionFxName: "MatrixSpellMissReaction"
+}
+toHitFunction: "actorMatrixAttackToHit"
+damageFunction: "matrixDamage"
+onCritTargetStatusEffects {
+  uirep {
+    icon: "icon_erosion"
+    name: "Erosion: IP -50 per RND"
+  }
+  stackingCategory: "Acid"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -50
+  }
+  fxScript: "MatrixErosionStatus"
+  durationFxScript: "MatrixErosionStatusHitReaction"
+  is_debuff: true
+}
+oncrit_target_effect_duration: 2

@@ -1,0 +1,67 @@
+id: "Laser Taser (Violet)"
+uirep {
+  icon: "icon_thrownblade_aimed"
+  name: "Laser Output"
+  description: "Single Target. No AP Damage."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 20
+apDamageMod: -10
+accuracyMod: 0
+prereqStrings: "Item.FLAG.WEAPON_CUR_AMMO > 1"
+prereqStrings: "TAG.Violet_Meatspace_1 NOT_EXISTS"
+prereqStrings: "TAG.Violet_Meatspace_5 EXISTS"
+damageBucket {
+  successEntries {
+    weight: 0.3
+    value: 2
+  }
+  successEntries {
+    weight: 0.3
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.4
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+ammoCost: 2
+cooldown: 2
+rpPenetrate: 2
+fxrep {
+  preActionFxName: ""
+  actionFxName: "HongKong:DroneLaserFireAction"
+  postActionFxName: ""
+  hitReactionFxName: "ShotgunHitReaction"
+  missReactionFxName: "ShotgunMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"
+onCritTargetStatusEffects {
+  uirep {
+    icon: "icon_fireball1"
+    name: "On Fire: HP -5 per RND"
+  }
+  stackingCategory: "Fire"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -5
+    damageType: VulnerabilityType_Fire
+  }
+  fxScript: "BurningStatus"
+  durationFxScript: "BurningStatusHitReaction"
+  is_debuff: true
+}
+oncrit_target_effect_duration: 1
+

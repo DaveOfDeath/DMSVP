@@ -1,0 +1,57 @@
+id: "Weaponfocus (Hamstring)"
+uirep {
+  icon: "icon_thrownblade_pinning"
+  name: "Hamstring"
+  description: "An attack that prevents the target from moving for 2 RNDs."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+prereqStrings: "TAG.Bartlett_Return_1 EXISTS"
+prereqStrings: "TAG.Bartlett_Return_5 NOT_EXISTS"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+effectDuration: 2
+cooldown: 2
+fxrep {
+  preActionFxName: ""
+  actionFxName: "SwordSwingAction"
+  postActionFxName: ""
+  hitReactionFxName: "SwordHitReaction"
+  missReactionFxName: "SwordMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"
+activationStatusEffects {
+  uirep {
+    icon: "icon_glue"
+    name: "Hamstrung: Cannot Move"
+  }
+  stackingCategory: "Move"
+  statusConditions: Condition_Rooted
+  is_debuff: true
+}

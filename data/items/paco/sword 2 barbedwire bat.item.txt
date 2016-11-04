@@ -1,0 +1,43 @@
+id: "Sword 2 Barbedwire Bat"
+type: ItemType_Melee1H
+uirep {
+  icon: "icon_melee_Baseballbat"
+  name: "Barbed Wire-Wrapped Bat"
+  description: "Melee. Brutally effective if you know where to strike. May do AP DMG on a critical hit."
+}
+equipPrefabName: "Bat"
+anim_type: AnimType_Melee1H
+coreAttribute: Attribute_Strength
+coreSkill: Skill_CloseCombat
+coreSpecialization: Specialization_CC_Edged
+apCost: 1
+prereqStrings: "Player.RACE != RACE.DRONE"
+prereqStrings: "Player.RACE != RACE.FREEDRONE"
+maxAmmo: 0
+baseHPDamage: 3
+baseAPDamage: -1
+rangeModTable: 10
+noiseLevel: 0
+noiseRounds: 0
+abilityModes: "DC Melee (Paco)"
+affectsEnemy: true
+canTargetActor: true
+store_cost: 50
+sorting_group: "crewWeapon"
+maim_crit: true
+onCritTargetStatusEffects {
+  uirep {
+    icon: "icon_fireball1"
+    name: "Bleeding: HP -2 per RND"
+  }
+  stackingCategory: "Bleeding"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -2
+    damageType: VulnerabilityType_Bleed
+  }
+  fxScript: "Berlin:BleedingStatus"
+  is_ignore_armor: true
+  is_debuff: true
+}
+oncrit_target_effect_duration: 1

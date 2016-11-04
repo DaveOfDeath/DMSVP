@@ -1,0 +1,47 @@
+id: "Aspect (Predator)"
+uirep {
+  icon: "icon_spiritmelee"
+  name: "Predator Aspect"
+  description: "Both critical chance and critical multiplier are raised. However, Dodge is reduced by 2 and she takes 10 additional points of damage from attacks."
+}
+apCostMod: -10
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+prereqStrings: "TAG.Coyote_Grizzled_5 EXISTS"
+attackRatingMod: 0
+effectDuration: 3
+cooldown: 1
+cooldown_category: "aspect"
+fxrep {
+  preActionFxName: ""
+  actionFxName: "HongKong:SamuraiStanceChangeNormToCrit"
+  postActionFxName: ""
+  hitReactionFxName: "GenericEmptyReaction"
+  missReactionFxName: ""
+}
+toHitFunction: "autoHitActor"
+damageFunction: "buffTarget"
+override_item_targetting: true
+affectsFriendly: true
+affectsEnemy: false
+canTargetSelf: true
+activationStatusEffects {
+  uirep {
+    icon: "icon_ability_gaichu_stanceChangeCritical"
+    name: "Predator Aspect"
+  }
+  stackingCategory: "Stance"
+  statMods {
+    skill: Skill_Dodge
+    intModValue: -2
+  }
+  statMods {
+    attribute: Attribute_Damage_Reduction_Mod
+    intModValue: -10
+  }
+  statusConditions: Condition_StanceCritical1
+  fxScript: "KillingHandsStatus"
+}
+send_event_on_activation: true
+instantAction: true

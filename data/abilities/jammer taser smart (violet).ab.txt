@@ -1,0 +1,60 @@
+id: "Jammer Taser Smart (Violet)"
+uirep {
+  icon: "icon_thrownblade_distract"
+  name: "Biofeedback Jammer"
+  description: "Completely shuts down one target."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: -2
+accuracyMod: 5
+prereqStrings: "Item.FLAG.WEAPON_CUR_AMMO > 0"
+prereqStrings: "TAG.Violet_Meatspace_1 EXISTS"
+prereqStrings: "TAG.Violet_Meatspace_3 EXISTS"
+damageBucket {
+  successEntries {
+    weight: 0.2
+    value: 2
+  }
+  successEntries {
+    weight: 0.2
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.6
+    value: 1
+  }
+  failureEntries {
+    weight: 0.8
+    value: 1
+  }
+  failureEntries {
+    weight: 0.2
+    value: 1
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+ammoCost: 1
+effectDuration: 2
+cooldown: 6
+fxrep {
+  preActionFxName: "Berlin:TaserAiming"
+  actionFxName: "Berlin:TaserFireAction"
+  postActionFxName: ""
+  hitReactionFxName: "Berlin:TaserHitReaction"
+  missReactionFxName: "GunMissReaction"
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_petrify"
+    name: "Biofeedback: All AP Lost"
+  }
+  stackingCategory: "AP"
+  statusConditions: Condition_Petrified
+  is_debuff: true
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"
+damageType: VulnerabilityType_Shock

@@ -1,0 +1,39 @@
+id: "Aspect (Ambusher)"
+uirep {
+  icon: "icon_packtactics"
+  name: "Ambusher Aspect"
+  description: "Coyote's attacks have an improved accuracy, but also cost an additional AP."
+}
+apCostMod: -10
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+prereqStrings: "TAG.Coyote_Grizzled_3 EXISTS"
+attackRatingMod: 0
+effectDuration: 3
+cooldown: 1
+cooldown_category: "aspect"
+fxrep {
+  preActionFxName: ""
+  actionFxName: "HongKong:SamuraiStanceChangeNormToDef"
+  postActionFxName: ""
+  hitReactionFxName: "GenericEmptyReaction"
+  missReactionFxName: ""
+}
+toHitFunction: "autoHitActor"
+damageFunction: "buffTarget"
+override_item_targetting: true
+affectsFriendly: true
+affectsEnemy: false
+canTargetSelf: true
+activationStatusEffects {
+  uirep {
+    icon: "icon_ability_gaichu_stanceChangeDefense"
+    name: "Ambusher Aspect"
+  }
+  stackingCategory: "Stance"
+  statusConditions: Condition_StanceDefense2
+  fxScript: "HongKong:SamuraiDefenseBoostStatus"
+}
+send_event_on_activation: true
+instantAction: true

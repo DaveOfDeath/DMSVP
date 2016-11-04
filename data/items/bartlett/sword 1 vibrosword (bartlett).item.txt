@@ -1,0 +1,74 @@
+id: "Sword 1 Vibrosword (Bartlett)"
+type: ItemType_Melee1H
+uirep {
+  icon: "icon_weapon_serrated_Machete"
+  name: "Hi-Tech Vibrosowrd"
+  description: "Melee: A brutally crafted blade that strips 1 Armor on hit. May do AP DMG on a critical hit."
+}
+equipPrefabName: "Machete"
+anim_type: AnimType_Melee1H
+coreAttribute: Attribute_Strength
+coreSkill: Skill_CloseCombat
+coreSpecialization: Specialization_CC_Edged
+apCost: 1
+maxAmmo: 0
+baseHPDamage: 3
+baseAPDamage: -1
+rangeModTable: 10
+noiseLevel: 0
+noiseRounds: 0
+abilityModes: "DC Melee (Vibrosword)"
+rpReduce: 1
+affectsEnemy: true
+canTargetActor: true
+effectDuration: 2
+activationStatusEffects {
+  uirep {
+    icon: "icon_fireball1"
+    name: "Bleeding: HP -3 per RND"
+  }
+  stackingCategory: "SerratedBladeCrit"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -3
+    damageType: VulnerabilityType_Bleed
+  }
+  fxScript: "Berlin:BleedingStatus"
+  is_ignore_armor: true
+  is_debuff: true
+  activation_status_effect_weight: 0.1
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_fireball1"
+    name: "Bleeding: HP -2 per RND"
+  }
+  stackingCategory: "Bleeding"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -2
+    damageType: VulnerabilityType_Bleed
+  }
+  fxScript: "Berlin:BleedingStatus"
+  is_ignore_armor: true
+  is_debuff: true
+  activation_status_effect_weight: 0.3
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_fireball1"
+    name: "Bleeding: HP -1 per RND"
+  }
+  stackingCategory: "Bleeding"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -1
+    damageType: VulnerabilityType_Bleed
+  }
+  fxScript: "Berlin:BleedingStatus"
+  is_ignore_armor: true
+  is_debuff: true
+  activation_status_effect_weight: 0.6
+}
+sorting_group: "crewWeapon"
+maim_crit: true

@@ -1,0 +1,54 @@
+id: "(Leg) Hydraulic Jack (Bartlett Left)"
+type: ItemType_Cyberware
+uirep {
+  icon: "icon_cyber_legjacks"
+  name: "SpinRad Pied Hydraulique"
+  description: "Part of SpinRad\'s Shinning Knight cyberware suite designed specially for mercenaries. When triggered, adds +3 Movement. Lasts 1 RND. Cost: 0 AP. Cooldown: 6."
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_None
+coreSkill: Skill_None
+apCost: 0
+baseHPDamage: 0
+baseAPDamage: 0
+noiseLevel: 0
+noiseRounds: 0
+modelessAbilities: "Activate Hydraulic Jack"
+affectsFriendly: false
+affectsEnemy: false
+canTargetSelf: true
+canTargetActor: false
+canTargetOccupiedGridPoint: false
+canTargetUnoccupiedGridPoint: false
+isBuff: true
+cooldown: 6
+effectDuration: 1
+fxrep {
+  preActionFxName: "GenericSpellPrepare"
+  actionFxName: "Berlin:CyberwarePneumaticBuffAction"
+  postActionFxName: ""
+  hitReactionFxName: "GenericEmptyReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_distancestrike"
+    name: "Hydraulic Jack: Movement +3"
+  }
+  stackingCategory: "CyberwareMove"
+  statMods {
+    attribute: Attribute_Move_Speed
+    intModValue: 3
+  }
+  fxScript: "AdeptOffenseBuffStatus"
+  is_buff: true
+}
+equippedStatusEffects {
+  statMods {
+    attribute: Attribute_Magic_Essence
+    floatModValue: -1
+  }
+}
+cyberware_type: CyberwareType_Leg
+store_cost: 2250
+sorting_group: "CyberwareLegs"

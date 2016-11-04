@@ -1,0 +1,38 @@
+id: "Servo Tuning 1 (Glove)"
+uirep {
+  icon: "icon_racter_augment_koschei_speed"
+  name: "Servo Tuning"
+  description: "Tunes the drone\'s servos, increasing Quickness and Strength for 1 RND."
+}
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+attackRatingMod: 0
+effectDuration: 1
+cooldown: 0
+fxrep {
+  preActionFxName: ""
+  actionFxName: "DeckerSpellCastAction"
+  postActionFxName: ""
+  hitReactionFxName: "Berlin:TaserHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+toHitFunction: "autoHitDroneActorInRange"
+damageFunction: "buffTarget"
+activationStatusEffects {
+  uirep {
+    icon: "icon_aim2"
+    name: "Tuned Servos: Quickness +1, Strength +2"
+  }
+  stackingCategory: "Servos"
+  statMods {
+    attribute: Attribute_Quickness
+    intModValue: 1
+  }
+  statMods {
+    attribute: Attribute_Strength
+    intModValue: 2
+  }
+  is_buff: true
+}

@@ -1,0 +1,45 @@
+id: "Smart Mine (Planchada)"
+type: ItemType_Thrown
+uirep {
+  icon: "icon_smart_proximity_mine"
+  name: "Smart Proximity Mine"
+  description: "Adheres a smart proximity mine at the target location. The mine will explode when hostiles enter the area."
+}
+coreAttribute: Attribute_Strength
+coreSkill: Skill_ThrowingWeapons
+forceRating: 1
+apCost: 2
+prereqStrings: "Player.RACE != RACE.CREATURE"
+maxAmmo: 0
+baseHPDamage: 0
+baseAPDamage: 0
+rangeModTable: 0
+noiseLevel: 10
+noiseRounds: 1
+abilityModes: "Throw (Prox Grenade)"
+affectsFriendly: true
+affectsEnemy: true
+canTargetOccupiedGridPoint: true
+canTargetUnoccupiedGridPoint: true
+isBuff: true
+effectDuration: 99999
+effectRadius: 2
+effectOnTile: true
+activationStatusEffects {
+  stackingCategory: "Grenade"
+  fxScript: "DocWagonBeaconStatus"
+  create_dummy_actor: true
+  destroy_dummy_on_expiration: true
+  dummy_equipment: "Detonator (5x5)"
+  is_totem: true
+  send_event_on_collision: true
+  collision_on_friendly: false
+  collision_on_enemy: true
+  collision_event_tag: "detonate"
+  destroy_on_event: true
+  listen_event_string: "detonate"
+}
+store_cost: 50
+sorting_group: "Grenades"
+is_consumable: true
+damageType: VulnerabilityType_ActionPoints

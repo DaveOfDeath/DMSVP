@@ -1,0 +1,44 @@
+id: "Heat Purge (Planchada)"
+uirep {
+  icon: "icon_heatwave"
+  name: "Heat Purge"
+  description: "Vents hot gas, making the target 5% harder to hit for 1 RND."
+}
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+damageBucket {
+  successEntries {
+    weight: 1
+    value: 1
+  }
+}
+attackRatingMod: 0
+effectDuration: 1
+spreadAngle: 75
+effectModTable: 1
+effectModTable: 1
+effectModTable: 1
+fxrep {
+  preActionFxName: ""
+  actionFxName: "HeatWaveCastAction"
+  postActionFxName: ""
+  hitReactionFxName: "GenericSpellBuffHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+toHitFunction: "autoMagicActorInRange"
+damageFunction: "buffTarget"
+activationStatusEffects {
+  uirep {
+    icon: "icon_heatwave"
+    name: "Blur: To be hit -5%"
+  }
+  stackingCategory: "Blur"
+  statMods {
+    attribute: Attribute_Accuracy_Reduction_Mod
+    intModValue: 5
+  }
+  fxScript: "HeatWaveStatus"
+  is_buff: true
+}

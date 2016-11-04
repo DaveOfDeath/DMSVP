@@ -1,0 +1,60 @@
+id: "Taser Grenade (Violet)"
+uirep {
+  icon: "icon_ability_ranged_stundart"
+  name: "Battery Grenade"
+  description: "This can never work..."
+}
+anim_action: AnimAction_Throw
+apCostMod: 1
+hpDamageMod: 0
+apDamageMod: 2
+accuracyMod: 0
+prereqStrings: "TAG.Violet_Meatspace_4 EXISTS"
+damageBucket {
+  successEntries {
+    weight: 0.2
+    value: 2
+  }
+  successEntries {
+    weight: 0.2
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.6
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+effectDuration: 1
+cooldown: 4
+fxrep {
+  preActionFxName: ""
+  actionFxName: "Berlin:ShockGrenadeThrowAction"
+  postActionFxName: ""
+  hitReactionFxName: "GunHitReaction"
+  missReactionFxName: "GenericMissReaction"
+}
+toHitFunction: "locationWeaponToHit"
+damageFunction: "weaponDamage"
+activationStatusEffects {
+  uirep {
+    icon: "icon_stunball2"
+    name: "Stun: AP -2 per RND"
+  }
+  stackingCategory: "AP"
+  statMods {
+    attribute: Attribute_AP_Effect
+    intModValue: -2
+  }
+  fxScript: "GenericSpellStatus"
+  is_debuff: true
+}

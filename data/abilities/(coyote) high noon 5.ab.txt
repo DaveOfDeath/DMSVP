@@ -1,0 +1,61 @@
+id: "(Coyote) High Noon 5"
+uirep {
+  icon: "icon_chainshot"
+  name: "High Noon 4th"
+  description: "Subsequent attacks cost 0ap until you miss."
+}
+anim_action: AnimAction_Attack
+apCostMod: -10
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: -20
+prereqStrings: "Item.FLAG.WEAPON_CUR_AMMO > 0"
+prereqStrings: "TAG.Coyote_Eye_5 EXISTS"
+prereqStrings: "Player.CONDITION.Condition_StanceCritical2 == 1"
+prereqStrings: "Player.CONDITION.Condition_StanceCritical3 != 1"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+ammoCost: 1
+cooldown: 6
+fxrep {
+  preActionFxName: ""
+  actionFxName: "GunChainFireAction"
+  postActionFxName: ""
+  hitReactionFxName: "GunHitReaction"
+  missReactionFxName: "GunMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"
+successCasterStatusEffects {
+  uirep {
+    icon: "icon_stride"
+    name: "High Noon"
+  }
+  stackingCategory: "Noon"
+  statusConditions: Condition_StanceCritical3
+  fxScript: "AdeptOffenseBuffStatus"
+  is_buff: true
+}
+success_caster_effect_duration: 1

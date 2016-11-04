@@ -1,0 +1,45 @@
+id: "Double Barrel (Single)"
+uirep {
+  icon: "icon_doubletap"
+  name: "Double Barrel"
+  description: "Fire both chambers at the same time. Increased DMG and Critial chance."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 5
+apDamageMod: 0
+accuracyMod: 0
+prereqStrings: "Item.FLAG.WEAPON_CUR_AMMO > 1"
+damageBucket {
+  successEntries {
+    weight: 0.3
+    value: 2
+  }
+  successEntries {
+    weight: 0.3
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.4
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+offensiveAbility: true
+ammoCost: 2
+fxrep {
+  preActionFxName: ""
+  actionFxName: "ShotgunFireAction"
+  postActionFxName: ""
+  hitReactionFxName: "GunHitReaction"
+  missReactionFxName: "GunMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"

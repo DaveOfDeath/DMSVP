@@ -1,0 +1,39 @@
+id: "Overclock 1 (Glove)"
+uirep {
+  icon: "icon_ability_overclock_1"
+  name: "Overclock"
+  description: "Overclocks the targeted drone, increasing its AP by 1 and Movement by 2 for 1 RND."
+}
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+attackRatingMod: 0
+effectDuration: 1
+cooldown: 4
+fxrep {
+  preActionFxName: ""
+  actionFxName: "DeckerSpellCastAction"
+  postActionFxName: ""
+  hitReactionFxName: "Berlin:TaserHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+toHitFunction: "autoHitDroneActorInRange"
+damageFunction: "buffTarget"
+activationStatusEffects {
+  uirep {
+    icon: "icon_nitro"
+    name: "Overclock: AP +1, Movement +2"
+  }
+  stackingCategory: "Adrenaline"
+  statMods {
+    attribute: Attribute_AP
+    intModValue: 1
+  }
+  statMods {
+    attribute: Attribute_Move_Speed
+    intModValue: 2
+  }
+  fxScript: "HongKong:DroneOverclockStatus"
+  is_buff: true
+}

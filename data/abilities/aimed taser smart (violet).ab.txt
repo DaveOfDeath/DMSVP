@@ -1,0 +1,51 @@
+id: "Aimed Taser Smart (Violet)"
+uirep {
+  icon: "icon_aim"
+  name: "Aimed Shot"
+  description: "Increases accuracy by 10%. Shares a cooldown with other Aim attack abilities."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 2
+accuracyMod: 20
+prereqStrings: "Item.FLAG.WEAPON_CUR_AMMO > 0"
+prereqStrings: "Item.CORE_SKILL > 2"
+prereqStrings: "TAG.Violet_Meatspace_1 EXISTS"
+damageBucket {
+  successEntries {
+    weight: 0.2
+    value: 2
+  }
+  successEntries {
+    weight: 0.2
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.6
+    value: 1
+  }
+  failureEntries {
+    weight: 0.8
+    value: 1
+  }
+  failureEntries {
+    weight: 0.2
+    value: 1
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+ammoCost: 1
+cooldown: 3
+cooldown_category: "weaponAimed"
+fxrep {
+  preActionFxName: "Berlin:TaserAiming"
+  actionFxName: "Berlin:TaserFireAction"
+  postActionFxName: ""
+  hitReactionFxName: "Berlin:TaserHitReaction"
+  missReactionFxName: "GunMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"
+damageType: VulnerabilityType_Shock

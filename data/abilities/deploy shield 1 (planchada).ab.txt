@@ -1,0 +1,49 @@
+id: "Deploy Shield 1 (Planchada)"
+uirep {
+  icon: "icon_guard"
+  name: "Deploy Shield"
+  description: "Deploy a riot shield. Provides Light Cover, disables drone movement. Lasts 1 RND."
+}
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+prereqStrings: "TAG.Paco_Smart_3 NOT_EXISTS"
+damageBucket {
+  successEntries {
+    weight: 1
+    value: 1
+  }
+}
+attackRatingMod: 0
+fxrep {
+  preActionFxName: ""
+  actionFxName: "HongKong:DroneRipTearAction"
+  postActionFxName: ""
+  hitReactionFxName: "GenericSpellBuffHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+toHitFunction: "autoHitActorSelf"
+damageFunction: "buffTarget"
+override_item_targetting: true
+affectsFriendly: true
+affectsEnemy: true
+canTargetSelf: true
+canTargetActor: false
+canTargetOccupiedGridPoint: false
+canTargetUnoccupiedGridPoint: false
+activationStatusEffects {
+  stackingCategory: "Riot"
+  statMods {
+    attribute: Attribute_Armor
+    intModValue: 2
+  }
+  statMods {
+    attribute: Attribute_Move_Speed
+    intModValue: -18
+  }
+  statusConditions: Condition_Rooted
+  statusConditions: Condition_CoverLight
+  fxScript: "HongKong:SamuraiCoverStatus"
+  durationFxScript: "BurningStatusHitReaction"
+}

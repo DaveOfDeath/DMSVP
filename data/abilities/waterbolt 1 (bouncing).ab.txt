@@ -1,0 +1,62 @@
+id: "Waterbolt 1 (Bouncing)"
+uirep {
+  icon: "icon_spirit_manaarc_1"
+  name: "Cast Waterbolt"
+  description: "Bouncing Waterbolt Attack"
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+damageBucket {
+  successEntries {
+    weight: 0.1
+    value: 2
+  }
+  successEntries {
+    weight: 0.3
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.6
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+drainBucket {
+  successEntries {
+    weight: 0.66
+    value: 1
+  }
+  successEntries {
+    weight: 0.34
+    value: 0
+  }
+  failureEntries {
+    weight: 0.66
+    value: 0
+  }
+  failureEntries {
+    weight: 0.34
+    value: -1
+  }
+}
+fxrep {
+  preActionFxName: "WaterSpellPrepare"
+  actionFxName: "LightningBoltThrowAction"
+  postActionFxName: ""
+  hitReactionFxName: "GenericSpellHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+toHitFunction: "actorSpellAttackToHit"
+damageFunction: "weaponDamage"

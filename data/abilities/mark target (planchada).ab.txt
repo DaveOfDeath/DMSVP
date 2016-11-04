@@ -1,0 +1,60 @@
+id: "Mark Target (Planchada)"
+uirep {
+  icon: "icon_ability_drone_marktarget"
+  name: "Mark Target"
+  description: "Marks enemy, causing them to become easier to hit. Strips 1 Armor."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: -99
+apDamageMod: 0
+accuracyMod: 0
+prereqStrings: "TAG.Paco_Smart_5 EXISTS"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 1
+  }
+  successEntries {
+    weight: 0.25
+    value: 1
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+effectDuration: 1
+cooldown: 1
+rpReduce: 1
+fxrep {
+  preActionFxName: ""
+  actionFxName: "GunSingleFireAction"
+  postActionFxName: ""
+  hitReactionFxName: "HongKong:DroneMarkTargetHitReaction"
+  missReactionFxName: "GunMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"
+activationStatusEffects {
+  uirep {
+    icon: "icon_disintegrate1"
+    name: "Marked Target"
+  }
+  stackingCategory: "ToHitRed"
+  statMods {
+    attribute: Attribute_Accuracy_Reduction_Mod
+    intModValue: -20
+  }
+  is_debuff: true
+}

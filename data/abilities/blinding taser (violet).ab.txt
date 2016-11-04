@@ -1,0 +1,59 @@
+id: "Blinding Taser (Violet)"
+uirep {
+  icon: "icon_selfdestruct"
+  name: "Infrared Overload"
+  description: "Temporarily overload a target\'s optic nerves."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: -10
+prereqStrings: "Item.FLAG.WEAPON_CUR_AMMO > 0"
+prereqStrings: "TAG.Violet_Meatspace_1 NOT_EXISTS"
+prereqStrings: "TAG.Violet_Meatspace_2 EXISTS"
+damageBucket {
+  successEntries {
+    weight: 0.2
+    value: 2
+  }
+  successEntries {
+    weight: 0.2
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.6
+    value: 1
+  }
+  failureEntries {
+    weight: 0.8
+    value: 1
+  }
+  failureEntries {
+    weight: 0.2
+    value: 1
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+ammoCost: 1
+effectDuration: 2
+cooldown: 6
+fxrep {
+  preActionFxName: "Berlin:TaserAiming"
+  actionFxName: "Berlin:TaserFireAction"
+  postActionFxName: ""
+  hitReactionFxName: "Berlin:TaserHitReaction"
+  missReactionFxName: "GunMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"
+activationStatusEffects {
+  uirep {
+    icon: "icon_blindness"
+    name: "Blinded"
+  }
+  stackingCategory: "AI"
+  statusConditions: Condition_Blind
+  is_debuff: true
+}

@@ -1,0 +1,64 @@
+id: "Shockbolt 2 (Bouncing)"
+uirep {
+  icon: "icon_spirit_venomsplash_2"
+  name: "Cast Shocking Waterbolt"
+  description: "Bouncing Shocking Attack"
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: -4
+apDamageMod: 1
+accuracyMod: 0
+prereqStrings: "TAG.River_Current_3 EXISTS"
+damageBucket {
+  successEntries {
+    weight: 0.1
+    value: 2
+  }
+  successEntries {
+    weight: 0.3
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.6
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+cooldown: 2
+drainBucket {
+  successEntries {
+    weight: 0.66
+    value: 1
+  }
+  successEntries {
+    weight: 0.34
+    value: 0
+  }
+  failureEntries {
+    weight: 0.66
+    value: 0
+  }
+  failureEntries {
+    weight: 0.34
+    value: -1
+  }
+}
+fxrep {
+  preActionFxName: "LightningSpellPrepare"
+  actionFxName: "LightningBoltThrowAction"
+  postActionFxName: ""
+  hitReactionFxName: "LightningHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+toHitFunction: "actorSpellAttackToHit"
+damageFunction: "weaponDamage"

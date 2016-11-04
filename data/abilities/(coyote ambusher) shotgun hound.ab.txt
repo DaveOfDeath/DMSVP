@@ -1,0 +1,54 @@
+id: "(Coyote Ambusher) Shotgun Hound"
+uirep {
+  icon: "icon_wideload"
+  name: "Hounding Shot"
+  description: "One shot. Can hit adjacent targets at ranges of 3 or greater. Spread increases at 6."
+}
+anim_action: AnimAction_Attack
+apCostMod: 1
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 10
+prereqStrings: "Item.FLAG.WEAPON_CUR_AMMO > 0"
+prereqStrings: "Item.CORE_SPECIALIZATION >= 4"
+prereqStrings: "TAG.Coyote_Eye_4 EXISTS"
+prereqStrings: "Player.CONDITION.Condition_StanceDefense2 == 1"
+prereqStrings: "Player.CONDITION.Condition_StanceNormal1 != 1"
+prereqStrings: "Player.CONDITION.Condition_StanceDefense1 != 1"
+prereqStrings: "Player.CONDITION.Condition_StanceCritical1 != 1"
+damageBucket {
+  successEntries {
+    weight: 0.2
+    value: 2
+  }
+  successEntries {
+    weight: 0.2
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.6
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+ammoCost: 1
+spreadAngle: 19
+flushCover: true
+fxrep {
+  preActionFxName: ""
+  actionFxName: "ShotgunFireAction"
+  postActionFxName: ""
+  hitReactionFxName: "ShotgunHitReaction"
+  missReactionFxName: "ShotgunMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"

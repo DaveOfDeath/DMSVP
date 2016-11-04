@@ -1,0 +1,62 @@
+id: "(Body) Wired Reflexes (Bartlett)"
+type: ItemType_Cyberware
+uirep {
+  icon: "icon_cyber_wiredreflexes"
+  name: "SpinRad Wired Reflexes"
+  description: "A network of neural boosters and adrenal stimulators that effectively supercharge a user\'s reflexes. Passive: +1 Movement. When triggered, gain +1 AP. Lasts 2 RNDS. Cost: 0 AP. Cooldown: 4."
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_None
+coreSkill: Skill_None
+apCost: 0
+baseHPDamage: 0
+baseAPDamage: 0
+noiseLevel: 0
+noiseRounds: 0
+modelessAbilities: "Activate Wired Reflexes"
+affectsFriendly: false
+affectsEnemy: false
+canTargetSelf: true
+canTargetActor: false
+canTargetOccupiedGridPoint: false
+canTargetUnoccupiedGridPoint: false
+isBuff: true
+cooldown: 4
+effectDuration: 2
+fxrep {
+  preActionFxName: "GenericSpellPrepare"
+  actionFxName: "Berlin:CyberwareBuffAction"
+  postActionFxName: ""
+  hitReactionFxName: "GenericEmptyReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_haste1"
+    name: "Wired Reflexes: AP +1"
+  }
+  stackingCategory: "WiredReflexes"
+  statMods {
+    attribute: Attribute_AP
+    intModValue: 1
+  }
+  fxScript: "AdeptOffenseBuffStatus"
+  is_buff: true
+  is_from_cyberware: true
+}
+equippedStatusEffects {
+  statMods {
+    attribute: Attribute_Magic_Essence
+    floatModValue: -1
+  }
+  statMods {
+    attribute: Attribute_Move_Speed
+    intModValue: 1
+  }
+  is_from_cyberware: true
+}
+cyberware_type: CyberwareType_Body
+store_cost: 2950
+sorting_group: "CyberwareBody"
+damageType: VulnerabilityType_ActionPoints
+anim_group_override: ItemType_Adept

@@ -1,0 +1,65 @@
+id: "Weaponfocus (Syphonstrike Cleave)"
+uirep {
+  icon: "icon_painresistance"
+  name: "Syphon Strike"
+  description: "A cleaving attack that regenerates the attacker for 12 HP over 2 RNDs."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 0
+prereqStrings: "TAG.Bartlett_Return_3 EXISTS"
+prereqStrings: "TAG.Bartlett_Return_5 EXISTS"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+cooldown: 4
+spreadAngle: 55
+effectModTable: 1
+effectModTable: 1
+fxrep {
+  preActionFxName: ""
+  actionFxName: "SwordCleaveAction"
+  postActionFxName: ""
+  hitReactionFxName: "SwordHitReaction"
+  missReactionFxName: "SwordMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"
+successCasterStatusEffects {
+  uirep {
+    icon: "icon_manaball2"
+    name: "Syphoning: 6 HP per RND"
+  }
+  stackingCategory: "Syphoning"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: 6
+  }
+  fxScript: "GenericSpellStatus"
+  is_ignore_armor: true
+  is_buff: true
+}
+success_caster_effect_duration: 2

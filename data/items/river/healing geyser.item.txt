@@ -1,0 +1,68 @@
+id: "Healing Geyser"
+type: ItemType_Shaman
+uirep {
+  icon: "icon_spirit_areaheal"
+  name: "Healing Geyser"
+  description: "Set 1 Light Cover barrier that last 3 RNDS. Anyone that enters regains 5 HP."
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_Charisma
+coreSkill: Skill_SpiritSummoning
+forceRating: 2
+apCost: 1
+baseHPDamage: 0
+baseAPDamage: 0
+rangeModTable: 10
+rangeModTable: 9
+rangeModTable: 8
+rangeModTable: 7
+rangeModTable: 6
+rangeModTable: 5
+rangeModTable: 4
+rangeModTable: 3
+rangeModTable: 2
+rangeModTable: 1
+rangeModTable: 0
+rangeModTable: -1
+rangeModTable: -2
+rangeModTable: -3
+rangeModTable: -4
+rangeModTable: -5
+rangeModTable: -6
+rangeModTable: -7
+rangeModTable: -8
+rangeModTable: -9
+noiseLevel: 5
+noiseRounds: 1
+modelessAbilities: "Conjure"
+affectsFriendly: true
+affectsEnemy: true
+canTargetOccupiedGridPoint: false
+canTargetUnoccupiedGridPoint: true
+additionalTargets: 0
+cooldown: 4
+isMagic: true
+effectDuration: 3
+effectRadius: 0
+effectOnTile: true
+fxrep {
+  preActionFxName: "GenericSpellPrepare"
+  actionFxName: "ConjureAirBarrierAction"
+  postActionFxName: ""
+  hitReactionFxName: "HongKong:Qian1HealSpellHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+activationStatusEffects {
+  stackingCategory: "Heal"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: 5
+    damageType: VulnerabilityType_Heal
+  }
+  statusConditions: Condition_CoverLight
+  fxScript: "AirBarrierStatus"
+  durationFxScript: "GenericStatusHitReaction"
+}
+store_cost: 200
+sorting_group: "Barriers"
+damageType: VulnerabilityType_Heal

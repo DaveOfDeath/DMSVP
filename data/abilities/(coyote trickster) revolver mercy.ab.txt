@@ -1,0 +1,54 @@
+id: "(Coyote Trickster) Revolver Mercy"
+uirep {
+  icon: "icon_ability_ranged_mercykill_1"
+  name: "Head Shot"
+  description: "+15 DMG, +10% accuracy, pierces up to 3 Armor. Can only attack stunned targets."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: 10
+prereqStrings: "Item.FLAG.WEAPON_CUR_AMMO > 0"
+prereqStrings: "TAG.Coyote_Eye_3 EXISTS"
+prereqStrings: "Player.CONDITION.Condition_StanceDefense1 == 1"
+prereqStrings: "Player.CONDITION.Condition_StanceNormal1 != 1"
+prereqStrings: "Player.CONDITION.Condition_StanceDefense2 != 1"
+prereqStrings: "Player.CONDITION.Condition_StanceCritical1 != 1"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.75
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+cooldown: 3
+cooldown_category: "weaponMercy"
+rpPenetrate: 3
+ammoCost: 1
+fxrep {
+  preActionFxName: ""
+  actionFxName: "GunSingleFireAction"
+  postActionFxName: ""
+  hitReactionFxName: "GunHitReaction"
+  missReactionFxName: "GunMissReaction"
+}
+toHitFunction: "actorAttackStunnedTargetWeaponToHit"
+damageFunction: "weaponDamage"

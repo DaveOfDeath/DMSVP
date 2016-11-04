@@ -1,0 +1,60 @@
+id: "Matrix Attack 2 (Violet)"
+uirep {
+  icon: "icon_devil_rat_spirit_2"
+  name: "Basic Matrix Attack"
+  description: "Simple attack program to destroy IC integrity."
+}
+apCostMod: 0
+hpDamageMod: 1
+apDamageMod: 0
+accuracyMod: 2
+prereqStrings: "TAG.Violet_Brawler_3 NOT_EXISTS"
+prereqStrings: "Player.CONDITION.Condition_MatrixCharge1 == 1"
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: false
+ammoCost: 0
+fxrep {
+  preActionFxName: ""
+  actionFxName: "BluntWeaponSwingAction"
+  postActionFxName: ""
+  hitReactionFxName: "MatrixSpellHitReaction"
+  missReactionFxName: "MatrixSpellMissReaction"
+}
+toHitFunction: "actorMatrixAttackToHit"
+damageFunction: "matrixDamage"
+onCritTargetStatusEffects {
+  uirep {
+    icon: "icon_erosion"
+    name: "Erosion: IP -25 per RND"
+  }
+  stackingCategory: "Acid"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -25
+  }
+  fxScript: "MatrixErosionStatus"
+  durationFxScript: "MatrixErosionStatusHitReaction"
+  is_debuff: true
+}

@@ -1,0 +1,36 @@
+id: "TotemDolphin (Return)"
+type: ItemType_ShamanTotem
+uirep {
+  icon: "icon_totem_fish"
+  name: "Dolphin Totem"
+  description: "Passive: When incoming grenades target the shaman, they are automatically flung back to their source."
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_Charisma
+coreSkill: Skill_Conjuring
+forceRating: 1
+apCost: 0
+baseHPDamage: 0
+baseAPDamage: 0
+noiseLevel: 5
+noiseRounds: 1
+affectsFriendly: true
+affectsEnemy: false
+isBuff: true
+isMagic: true
+fxrep {
+  preActionFxName: "GenericSpellPrepare"
+  actionFxName: "Berlin:DragonslayerTotemCastAction"
+  postActionFxName: ""
+  hitReactionFxName: "GenericSpellBuffHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+passiveStatusEffects {
+  statusConditions: Condition_GrenadeReflect
+  statMods {
+    attribute: Attribute_HP
+    intModValue: 15
+  }
+}
+sorting_group: "Totems"
+damageType: VulnerabilityType_Buff
