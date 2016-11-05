@@ -7,7 +7,7 @@ nodes {
     id: "404b6286306434d028005912"
   }
   index: 0
-  text: "Sorry, I got interrupted. "
+  text: "{{GM}}The perky redhead flashes you another dazzling smile, brushing off her last conversation. She seems to have forgotten about your drink.{{/GM}}\n\nSorry, I got interrupted. "
   branches {
     responseText: "I heard. He\342\200\231s got the strength of the righteous, doesn\342\200\231t he?"
     nextNodeIndex: 1
@@ -27,6 +27,64 @@ nodes {
     nextNodeIndex: 3
     idRef {
       id: "404b3771306434d02800590c:58029303396630201b0061be"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Academic{{/GM}} I heard you mention Seattle U? Do you have any classes with Findley, Odom, Charrette? Smedman?"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 18
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 8
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "404b3771306434d02800590c:581d9f9339663028180044e5"
     }
   }
   nodeType: ConversationNodeType_Simple
@@ -52,7 +110,7 @@ nodes {
     id: "519944ba62366508090003c7"
   }
   index: 2
-  text: "{{GM}}Her pretty eyes narrow.{{/GM}} \n\nSomething like that."
+  text: "{{GM}}Her pretty eyes narrow.{{/GM}} \n\nHe found something like that."
   branches {
     responseText: ""
     nextNodeIndex: 4
@@ -83,7 +141,7 @@ nodes {
     id: "519953b16236650809000522"
   }
   index: 4
-  text: "You\342\200\231ve got a look that says you\342\200\231re not just here for the entertainment. Are you a badge?"
+  text: "{{GM}}Cherry polishes the counter with a rag, looking at you slyly.{{/GM}}\n\nYou\342\200\231ve got a look that says you\342\200\231re not here for the entertainment. Are you a badge?"
   branches {
     responseText: "Do I look like a cop?"
     nextNodeIndex: 5
@@ -139,7 +197,7 @@ nodes {
   text: "{{GM}}She flutters her eyelashes.{{/GM}} \n\nNo, baby. You look like someone who knows the shadows. We\342\200\231re trained to spot a bronze the minute they walk in here. Something I can help you with?"
   branches {
     responseText: "I have a few questions."
-    nextNodeIndex: 8
+    nextNodeIndex: 9
     idRef {
       id: "404b3771306434d02800590c:58029303396630201b0061c7"
     }
@@ -159,10 +217,10 @@ nodes {
     id: "519953e46236650809000529"
   }
   index: 6
-  text: "I didn\342\200\231t think so. You look like a runner to me. We\342\200\231re trained to spot a bronze the minute they walk in here. Something I can help you with?"
+  text: "{{GM}}Cherry nods, making a decision of some kind.{{/GM}}\n\nI didn\342\200\231t think so. You look like a runner to me. We\342\200\231re trained to spot a bronze the minute they walk in here. Something I can help you with?"
   branches {
     responseText: "I have a few questions."
-    nextNodeIndex: 8
+    nextNodeIndex: 9
     idRef {
       id: "404b3771306434d02800590c:58029303396630201b0061cf"
     }
@@ -182,10 +240,10 @@ nodes {
     id: "51995401623665080900052b"
   }
   index: 7
-  text: "{{GM}}She regards you with a smirk.{{/GM}} \n\nMmm hmm. I do. You\342\200\231re... independent. We\342\200\231re trained to spot a bronze the minute they walk in here. Something I can help you with?"
+  text: "{{GM}}She regards you with a smirk.{{/GM}} \n\nMmm hmm. I do. You\342\200\231re... unaffiliated. We\342\200\231re trained to spot a bronze the minute they walk in here. Something I can help you with?"
   branches {
     responseText: "I have a few questions. "
-    nextNodeIndex: 8
+    nextNodeIndex: 9
     idRef {
       id: "404b3771306434d02800590c:58029303396630201b0061d7"
     }
@@ -202,13 +260,29 @@ nodes {
 }
 nodes {
   idRef {
-    id: "40543370306434d0280059e4"
+    id: "581da0293966302818004508"
   }
   index: 8
-  text: "Ask away."
+  text: "{{GM}}Cherry looks at you surprised, but it fades after a moment.{{/GM}}\n\nNo, I\'m on sabbatical. But... be careful who you eavesdrop on in this part of town, it can get you killed."
   branches {
     responseText: ""
-    nextNodeIndex: 9
+    nextNodeIndex: 4
+    idRef {
+      id: "404b3771306434d02800590c:581da05e396630281800450a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "40543370306434d0280059e4"
+  }
+  index: 9
+  text: "{{GM}}Cherry gives you a sly smile.{{/GM}}\n\nAsk away."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
     idRef {
       id: "404b3771306434d02800590c:58029303396630201b0061df"
     }
@@ -219,7 +293,7 @@ nodes {
   idRef {
     id: "51acb5796233314c18003ec7"
   }
-  index: 9
+  index: 10
   text: ""
   branches {
     responseText: "Tell me about this place. "
@@ -239,11 +313,94 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 10
+    nextNodeIndex: 11
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
       id: "51b0c3d5623331a00f000153"
+    }
+  }
+  branches {
+    responseText: "How about that drink?"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countCherryQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 12
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "404b3771306434d02800590c:581da3023966302818004606"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Academic{{/GM}} Okay, so I have to know. How did an academic end up here?"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 18
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 13
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "404b3771306434d02800590c:581da3bd3966302818004665"
     }
   }
   branches {
@@ -264,7 +421,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 11
+    nextNodeIndex: 14
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -332,7 +489,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 12
+    nextNodeIndex: 15
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -357,11 +514,139 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 15
+    nextNodeIndex: 18
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
       id: "51acb7bf6233314c18004000"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Golden Lighter{{/GM}} Seen this lighter before?"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c02-s1_JakesLighter"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countCherryQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 20
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "404b3771306434d02800590c:581da48b39663028180046df"
+    }
+  }
+  branches {
+    responseText: "{{GM}}BTL Chip{{/GM}} Seen one of these?"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "Sam\'s BTL chip"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countCherryQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 21
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "404b3771306434d02800590c:581da14c3966302818004556"
     }
   }
   branches {
@@ -382,11 +667,137 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 17
+    nextNodeIndex: 22
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
       id: "51b0c570623331a00f0001e1"
+    }
+  }
+  branches {
+    responseText: "Someone mentioned Glint? Can you tell me about her?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "bHeardOfGlint"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countCherryQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 25
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "404b3771306434d02800590c:581da20639663028180045a6"
+    }
+  }
+  branches {
+    responseText: "Is there a reporter named Marrow around?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "bHeardOfMarrow"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countCherryQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 27
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "404b3771306434d02800590c:581da26c39663028180045a8"
     }
   }
   branches {
@@ -397,16 +808,17 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  comment: "Cherry Loop"
 }
 nodes {
   idRef {
     id: "51acb5796233314c18003eca"
   }
-  index: 10
-  text: "Some come here for booze. Some for companionship. Others are looking for something they can\342\200\231t get anywhere else. If it\342\200\231s illegal or immoral and it can be bought, sold, rented, or consumed you can probably find it here. The Union seems to attract people like you."
+  index: 11
+  text: "{{GM}}Cherry smiles up at the rafters, taking in the neon, booze, and stink of the Seamstress Union before meeting your eye.{{/GM}}\n\nSome come here for booze. Some for companionship. Others are looking for something they can\342\200\231t get anywhere else. If it\342\200\231s illegal or immoral and it can be bought, sold, rented, or consumed you can probably find it here. The Union seems to attract people like you."
   branches {
     responseText: ""
-    nextNodeIndex: 9
+    nextNodeIndex: 10
     idRef {
       id: "404b3771306434d02800590c:58029303396630201b0061e4"
     }
@@ -416,13 +828,45 @@ nodes {
 }
 nodes {
   idRef {
-    id: "51acb5796233314c18003ed0"
+    id: "581da30c3966302818004609"
   }
-  index: 11
-  text: "Shane. Old boyfriend. He used to work here. Then one day, he saw a billboard for the Universal Brotherhood and that was that. Went to a meeting, made new friends... moved in with them. I was happy for him, until he started coming around trying to recruit me. \n\nI don\342\200\231t need that drek."
+  index: 12
+  text: "{{GM}}Cherry Bomb sighs, leaning back, and looks over the crowd, ignoring your quip.{{/GM}}\n\nYeah, I could use a drink."
   branches {
     responseText: ""
-    nextNodeIndex: 9
+    nextNodeIndex: 10
+    idRef {
+      id: "404b3771306434d02800590c:581da338396630281800460b"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "581da3e13966302818004668"
+  }
+  index: 13
+  text: "{{GM}}Cherry laughs.{{/GM}}\n\nI could ask you the same thing, professor. I had Findley, and I loved Charrette, but Odom was after my time."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "404b3771306434d02800590c:581da428396630281800466a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51acb5796233314c18003ed0"
+  }
+  index: 14
+  text: "{{GM}}Cherry shrugs.{{/GM}}\n\nShane. Old boyfriend. He used to frequent the establishment. Then one day, he saw a billboard for the Universal Brotherhood and that was that. Went to a meeting, made new friends... moved in with them. I was happy for him to get out, until he started coming around trying to recruit me. \n\nI don\342\200\231t need that drek."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
     idRef {
       id: "404b3771306434d02800590c:58029303396630201b0061e9"
     }
@@ -434,11 +878,11 @@ nodes {
   idRef {
     id: "51acb5796233314c18003ed6"
   }
-  index: 12
+  index: 15
   text: "{{GM}}She looks worried.{{/GM}}\n\nNo. I think she\'s... away on business."
   branches {
     responseText: "Business, huh? Is she a shaman? With a name like \"Coyote\"..."
-    nextNodeIndex: 13
+    nextNodeIndex: 16
     idRef {
       id: "404b3771306434d02800590c:58029303396630201b0061ee"
     }
@@ -449,11 +893,11 @@ nodes {
   idRef {
     id: "51acb5796233314c18003ed9"
   }
-  index: 13
+  index: 16
   text: "{{GM}}She laughs.{{/GM}} \n\nNo. \n\nShe *shot* a coyote once, thinking it was a shaman who double-crossed her. We\342\200\231ve been calling her Coyote ever since."
   branches {
     responseText: ""
-    nextNodeIndex: 14
+    nextNodeIndex: 17
     idRef {
       id: "404b3771306434d02800590c:58029303396630201b0061f1"
     }
@@ -464,11 +908,11 @@ nodes {
   idRef {
     id: "51acb5796233314c18003edc"
   }
-  index: 14
+  index: 17
   text: "{{GM}}Her face falls.{{/GM}} \n\nShe\342\200\231s been missing for a couple of days, now. Some people think the Ripper got her, but I know her. Coyote can take care of herself. "
   branches {
     responseText: ""
-    nextNodeIndex: 9
+    nextNodeIndex: 10
     idRef {
       id: "404b3771306434d02800590c:58029303396630201b0061f4"
     }
@@ -479,11 +923,11 @@ nodes {
   idRef {
     id: "51acb5796233314c18003ee2"
   }
-  index: 15
+  index: 18
   text: "{{GM}}She nods.{{/GM}} \n\nSam was a regular customer and a regular pain in the ass for as long as I\342\200\231ve been here. Talked a big game but he was always broke. As soon as he got any money in his pocket, it went straight to his head - chips, drugs, or booze. \n\nCoyote had a soft spot for him, though."
   branches {
     responseText: "Did you see Sam on the night he died?"
-    nextNodeIndex: 16
+    nextNodeIndex: 19
     idRef {
       id: "404b3771306434d02800590c:58029303396630201b0061f9"
     }
@@ -494,11 +938,11 @@ nodes {
   idRef {
     id: "51acb5796233314c18003ee5"
   }
-  index: 16
-  text: "No. That was Coyote\342\200\231s shift."
+  index: 19
+  text: "{{GM}}Cherry shakes her head.{{/GM}}\n\nNo. That was Coyote\342\200\231s shift."
   branches {
     responseText: ""
-    nextNodeIndex: 9
+    nextNodeIndex: 10
     idRef {
       id: "404b3771306434d02800590c:58029303396630201b0061fc"
     }
@@ -508,20 +952,52 @@ nodes {
 }
 nodes {
   idRef {
+    id: "581dabc3396630281800483d"
+  }
+  index: 20
+  text: "{{GM}}Cherry leans over and examines the lighter before shaking her head.{{/GM}}\n\nNo, it doesn\'t look familiar, but Kubota usually makes customers take smoggers and coffin nails outside."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "404b3771306434d02800590c:581dabf9396630281800483f"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "581da1a83966302818004559"
+  }
+  index: 21
+  text: "{{GM}}Cherry\'s mouth hardens to a line. When she replies, she spits venom.{{/GM}}\n\nTwo things the Seamstress Union don\'t do-- food and beetles. You want mind benders, 2XS, dreamchips, or CalHots? Be elsewhere.\nIf you want an honest drink and dishonest companionship? You\'re in the right place."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "404b3771306434d02800590c:581da1f539663028180045a3"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
     id: "51acb5796233314c18003eeb"
   }
-  index: 17
+  index: 22
   text: "That\'d be Mrs. Kubota. She\342\200\231s in the back room. You can\'t miss her."
   branches {
     responseText: "Wiz."
-    nextNodeIndex: 18
+    nextNodeIndex: 23
     idRef {
       id: "404b3771306434d02800590c:58029303396630201b006201"
     }
   }
   branches {
     responseText: "Thanks for the intel. I appreciate the help. "
-    nextNodeIndex: 19
+    nextNodeIndex: 24
     idRef {
       id: "404b3771306434d02800590c:58029303396630201b006207"
     }
@@ -532,11 +1008,11 @@ nodes {
   idRef {
     id: "51acb5796233314c18003ef4"
   }
-  index: 18
+  index: 23
   text: "Nil sweat."
   branches {
     responseText: ""
-    nextNodeIndex: 9
+    nextNodeIndex: 10
     idRef {
       id: "404b3771306434d02800590c:58029303396630201b006204"
     }
@@ -548,13 +1024,60 @@ nodes {
   idRef {
     id: "51acb5796233314c18003efa"
   }
-  index: 19
+  index: 24
   text: "Gutterpunks have to stick together. "
   branches {
     responseText: ""
-    nextNodeIndex: 9
+    nextNodeIndex: 10
     idRef {
       id: "404b3771306434d02800590c:58029303396630201b00620a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "581da2e13966302818004604"
+  }
+  index: 25
+  text: "{{GM}}Cherry looks at you through her lashes while she pours a drink for one of her regulars.{{/GM}}\n\nShe used to have one of the apartments upstairs, she\'s been looking into the Ripper thing, giving street kids hope."
+  branches {
+    responseText: ""
+    nextNodeIndex: 26
+    idRef {
+      id: "404b3771306434d02800590c:581da45b39663028180046d6"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "581da45d39663028180046d9"
+  }
+  index: 26
+  text: "{{GM}}Cherry doesn\'t meet your eye, and wipes the glass before serving it.{{/GM}}\n\nHope can be dangerous."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "404b3771306434d02800590c:581da47f39663028180046db"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "581da29939663028180045ab"
+  }
+  index: 27
+  text: "{{GM}}Cherry shakes her head no, the unasked question clear in her eyes.{{/GM}}\n\nMarrow hasn\'t been in for a few days, since the first body dropped- he\'s been on the Ripper thing ever since."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "404b3771306434d02800590c:581da2cf39663028180045ad"
     }
     auxiliaryLink: true
   }
@@ -639,7 +1162,7 @@ roots {
       }
     }
   }
-  nextNodeIndex: 8
+  nextNodeIndex: 9
   idRef {
     id: "404b3771306434d02800590c:58029303396630201b0061dc"
   }
