@@ -7,10 +7,13 @@ nodes {
     id: "57ec0cb0306434000d004bb0"
   }
   index: 0
-  text: "How can I help you?"
+  text: "{{GM}}Kubota gives you a mokurei, a nod-bow.{{/GM}}\n\nDoshita, how can I help you?"
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "57ebe4fa306434000d004baa:581e1cfe396630cc1600314f"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -65,6 +68,54 @@ nodes {
     }
   }
   branches {
+    responseText: "{{GM}}BTL{{/GM}} Have you seen one of these?"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "Sam\'s BTL chip"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "57ebe4fa306434000d004baa:581e20fc396630cc1600331c"
+    }
+  }
+  branches {
     responseText: "Have you heard of Maury\342\200\231s Meat Emporium?"
     conditions {
       ops {
@@ -101,7 +152,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 3
+    nextNodeIndex: 4
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -145,7 +196,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 4
+    nextNodeIndex: 5
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -222,8 +273,11 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 5
+    nextNodeIndex: 6
     hideIfUnavailable: true
+    idRef {
+      id: "57ebe4fa306434000d004baa:581e1cfe396630cc16003161"
+    }
   }
   branches {
     responseText: "Do you know Coyote\'s favorite band?"
@@ -295,8 +349,11 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 6
+    nextNodeIndex: 7
     hideIfUnavailable: true
+    idRef {
+      id: "57ebe4fa306434000d004baa:581e1cfe396630cc16003167"
+    }
   }
   branches {
     responseText: "Do you know what city Coyote is from?"
@@ -368,8 +425,11 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 7
+    nextNodeIndex: 8
     hideIfUnavailable: true
+    idRef {
+      id: "57ebe4fa306434000d004baa:581e1cfe396630cc1600316d"
+    }
   }
   branches {
     responseText: "Coyote has a date with Paco at Pike Place Market in the next half hour."
@@ -408,7 +468,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 8
+    nextNodeIndex: 9
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -416,20 +476,137 @@ nodes {
     }
   }
   branches {
+    responseText: "Who is Glint?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "bHeardOfGlint"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "57ebe4fa306434000d004baa:581e20fa396630cc16003318"
+    }
+  }
+  branches {
+    responseText: "Who is Marrow?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "bHeardOfMarrow"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 12
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "57ebe4fa306434000d004baa:581e20fb396630cc1600331a"
+    }
+  }
+  branches {
     responseText: "I\'ll see you around."
     nextNodeIndex: -1
+    idRef {
+      id: "57ebe4fa306434000d004baa:581e1cfe396630cc16003175"
+    }
   }
   nodeType: ConversationNodeType_Simple
+  comment: "Kubota Info Loop"
 }
 nodes {
   idRef {
     id: "90579435623331100c0030cb"
   }
   index: 2
-  text: "He\'s a ganger. A member of the Cutters. He is a good kid in a nasty line of work. I warned Coyote against getting too attached to that type - they don\342\200\231t live long."
+  text: "{{GM}}Kubota\'s smile fades away.{{/GM}}\n\nPaco is a ganger. A member of the Cutters. He is a good kid in a nasty line of work, and Coyote\'s on-again off-again boyfriend. I warned Coyote against getting too attached to that type - they don\342\200\231t have a tendency to live long."
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "57ebe4fa306434000d004baa:581e1cfe396630cc16003154"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "581e2188396630cc1600331f"
+  }
+  index: 3
+  text: "{{GM}}Madame Kubota\'s face hardens, and her smile disappears.{{/GM}}\n\nGet that filth out of my place. If you continue waving that around like a dabo, I\'ll have Mister Klewe ask you to leave."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "57ebe4fa306434000d004baa:581e21f1396630cc16003321"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -438,11 +615,14 @@ nodes {
   idRef {
     id: "90579435623331100c0030d1"
   }
-  index: 3
-  text: "{{GM}}Her face twists in disgust.{{/GM}} No. I am a vegetarian."
+  index: 4
+  text: "{{GM}}Her face twists in disgust.{{/GM}} \n\nGe -- No. I am a vegetarian."
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "57ebe4fa306434000d004baa:581e1cfe396630cc16003159"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -451,11 +631,14 @@ nodes {
   idRef {
     id: "90579435623331100c0030d7"
   }
-  index: 4
-  text: "I\'d be more surprised if she hadn\'t. Bouncers can deal with most of the troublemakers, but around here you need a gun just to take trash out to the dumpster."
+  index: 5
+  text: "{{GM}}Kubota shrugs.{{/GM}}\n\nI would be more surprised if she hadn\'t. Bouncers can deal with most of the troublemakers, but this is Redmond. Around here you need a gun just to take trash out to the dumpster."
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "57ebe4fa306434000d004baa:581e1cfe396630cc1600315e"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -464,11 +647,14 @@ nodes {
   idRef {
     id: "95c3ed86623331782b0027d3"
   }
-  index: 5
-  text: "I never ask about the past. None of us do. Coyote\'s real name is Gina. That is the most personal information I have about her."
+  index: 6
+  text: "{{GM}}Kubota shakes her head \'No.\'{{/GM}}\n\nI never ask my people about the past. None of us do. Coyote\'s real name is Gina, but that is the most personal information I have about her."
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "57ebe4fa306434000d004baa:581e1cfe396630cc16003164"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -477,11 +663,14 @@ nodes {
   idRef {
     id: "95c436e5623331782b0027d5"
   }
-  index: 6
-  text: "Indeed I do. She plays her Starfire records so loud you can hear them down here. I\'ve told Mr. Kluwe to have her turn that drek down more than once."
+  index: 7
+  text: "{{GM}}Kubota makes an amused sound.{{/GM}}\n\nGlint has been missing for a couple weeks, so when Coyote moved into the apartment, she played her Starfire records so loud you can hear them down here. I\'ve told Mr. Kluwe to have her turn that drek down more than once."
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "57ebe4fa306434000d004baa:581e1cfe396630cc1600316a"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -490,11 +679,14 @@ nodes {
   idRef {
     id: "95c52851623331782b0027d7"
   }
-  index: 7
-  text: "Not to sound like I don\'t care about the girl, but I never thought to ask. Just assumed she was from around here."
+  index: 8
+  text: "{{GM}}Kubota shrugs.{{/GM}}\n\nNot to sound like I don\'t care about the girl, but I never asked; I just assumed she was from around here."
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "57ebe4fa306434000d004baa:581e1cfe396630cc16003170"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -503,8 +695,8 @@ nodes {
   idRef {
     id: "a5f59056623331d40a006b6c"
   }
-  index: 8
-  text: "If you would go down there, it might bring me peace of mind. I\'ll call a cab for you - it should be able to get you there in time. Gambatte Kudasai. Good luck."
+  index: 9
+  text: "{{GM}}Kubota give you a more formal senrei bow.{{/GM}}\n \nIf you would go down there, it might bring me peace of mind. I will call a cab for you - it should be able to get you there in time. \nGambatte Kudasai. Good luck."
   nodeType: ConversationNodeType_Simple
   actions {
     ops {
@@ -572,6 +764,17 @@ nodes {
           }
         }
       }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
     }
     ops {
       functionName: "Set Goal Status"
@@ -591,6 +794,17 @@ nodes {
           }
           args {
             int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
           }
         }
       }
@@ -619,7 +833,84 @@ nodes {
     }
   }
 }
+nodes {
+  idRef {
+    id: "581e22ff396630cc1600345f"
+  }
+  index: 10
+  text: "{{GM}}Kubota\'s mouth settles on a hard line, and she sighs.{{/GM}}\n\nGlint is one of our local girls. She\'s in here for drinks or fun most nights when she has cash. She was in here when Marrow and Dresden were talking about the early Ripper murders, and she got it in her head that she was going to stop the Ripper. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "57ebe4fa306434000d004baa:581e23ce396630cc160034ac"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "bHeardOfMarrow"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "581e23ce396630cc160034af"
+  }
+  index: 11
+  text: "{{GM}}Kubota shakes her head.{{/GM}}\n\nIt was foolish, it made people feel safe and gave the kids hope, but she\'s been missing for more than a week. I assume she\'s dead."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "57ebe4fa306434000d004baa:581e2382396630cc160034a7"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "581e2410396630cc160034b4"
+  }
+  index: 12
+  text: "{{GM}}Kubota scans the room before answering.{{/GM}}\n\nMarrow is a freelance reporter- the kind who digs into a story like a tic, and sucks blood until someone cuts him out. He\'s an addict, and he\'s around here most nights, looking for runners bragging about their latest exploits or a \'human interest\' story he can squeeze a few nuyen out of."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "57ebe4fa306434000d004baa:581e2499396630cc16003506"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
 roots {
   responseText: ""
   nextNodeIndex: 0
+  idRef {
+    id: "57ebe4fa306434000d004baa:581e1cfe396630cc1600314c"
+  }
 }

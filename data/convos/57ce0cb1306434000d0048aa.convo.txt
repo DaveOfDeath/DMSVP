@@ -186,7 +186,7 @@ nodes {
     }
   }
   branches {
-    responseText: "Teddy."
+    responseText: "Nate."
     nextNodeIndex: 4
     idRef {
       id: "57ce0cb1306434000d0048aa:5713f4d5663136c010001e8f"
@@ -657,7 +657,7 @@ nodes {
     id: "905da0ce623331100c003226"
   }
   index: 10
-  text: "The computer has a basic list of applications."
+  text: "{{GM}}The computer has a basic list of applications.{{/GM}}"
   branches {
     responseText: ""
     nextNodeIndex: 11
@@ -714,6 +714,13 @@ nodes {
     }
   }
   branches {
+    responseText: "{{GM}}Check the computer for hidden files{{/GM}}"
+    nextNodeIndex: 15
+    idRef {
+      id: "57ce0cb1306434000d0048aa:581e24d6396630cc1600358b"
+    }
+  }
+  branches {
     responseText: "{{GM}}Leave the computer.{{/GM}}"
     actions {
       ops {
@@ -737,13 +744,14 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  comment: "Coyote_System Loop"
 }
 nodes {
   idRef {
     id: "a419c2276233311c0a003cc0"
   }
   index: 12
-  text: "Three days ago: \342\200\234Meet with Delilah about gig.\342\200\235\n\nToday: \342\200\234Meet Paco for date at Pike Place Market. Due in 30 minutes.\342\200\235"
+  text: "Four days ago: \"Favor for M. Sinful.\"\nThree days ago: \342\200\234Meet with Delilah about gig.\342\200\235\n\nToday: \342\200\234Meet Paco for date at Pike Place Market.\" This event is due in 30 minutes."
   branches {
     responseText: ""
     nextNodeIndex: 11
@@ -776,6 +784,28 @@ nodes {
         }
       }
     }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "b_KubotaFavor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
 }
 nodes {
@@ -783,7 +813,7 @@ nodes {
     id: "a419c2276233311c0a003cc6"
   }
   index: 13
-  text: "{{GM}}Coyote\'s contact list has exactly one entry - someone named Paco. There is no commlink number or other contact information for him available. \n\nThis does not seem like a very useful list of contacts.{{/GM}}"
+  text: "{{GM}}Coyote\'s contact list has exactly one entry - someone named Paco. There is a deleted commlink number, and no other contact information available. \n\nThis does not seem like a very useful list of contacts, but who are you to judge?{{/GM}}"
   branches {
     responseText: ""
     nextNodeIndex: 11
@@ -823,7 +853,7 @@ nodes {
     id: "a419c2276233311c0a003ccc"
   }
   index: 14
-  text: "{{GM}}A quick scan of her recent searches shows that Coyote has been reading a great deal about hellhounds. It also suggests more than a casual interest in vintage action figures.{{/GM}}"
+  text: "{{GM}}A quick scan of her recent search history shows that Coyote has been reading a great deal about hellhounds. It also suggests more than a casual interest in vintage action figures and action movies.{{/GM}}"
   branches {
     responseText: ""
     nextNodeIndex: 11
@@ -841,6 +871,41 @@ nodes {
           functionName: "Get Variable (bool)"
           args {
             string_value: "Computer03"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "581e24ec396630cc160035ac"
+  }
+  index: 15
+  text: "{{GM}}The computer doesn\'t have any hidden files, but it does have some old deleted files. \n\nSomeone named \'Glint\' created a smartframe to search for murders and deaths connected to Redmond. The smartframe only searched for a few hours, and there are literally millions of entries. There\'s even a complete matrix host called \'MurderBlog,\' where you can anonymously post to brag about people you\'ve killed, and dead bodies you\'ve stumbled upon.{{/GM}}"
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "bHeardOfGlint"
           }
         }
       }

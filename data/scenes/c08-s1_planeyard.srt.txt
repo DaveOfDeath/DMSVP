@@ -1781,78 +1781,188 @@ triggers {
   }
   is_oneshot: true
 }
-regions {
-  name: "CameraBounds"
-  position {
-    x: -29
-    y: 58
-    width: 61
-    height: -81
+triggers {
+  name: "River\'s Shouting Match"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "581e28e2396630cc16003604"
+          }
+        }
+      }
+    }
   }
-  enabledAtStart: true
-  is_camera_region: true
-  is_matrix_node: false
-  is_vfx_fill_region: false
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Display Text over Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "581599766631367c05002ced"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        string_value: "Why don\'t you get one of your daisy-eater buddies to get it for you?"
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 5
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Display Text over Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "581e27d9396630cc16003601"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        string_value: "Fragging dwarf! I need those files!"
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 5
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 5
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "601e2d98623331ec0c001927"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
   idRef {
-    id: "6025d6d8623331ec0c00193f"
+    id: "581e28e8396630cc1600360d"
   }
-  highlight_color {
-    r: 0
-    g: 0
-    b: 0
-    a: 1
+  elseActions {
   }
-  visible_at_start: false
-  is_closet: false
-  is_teleporter_region: false
-  directional_light_dir {
-    x: -0.9
-    y: -0.7
-    z: -0.5
-  }
-  directional_light_color {
-    r: 0.59215689
-    g: 0.61960787
-    b: 1
-    a: 1
-  }
-  ambient_light_color {
-    r: 0.67843139
-    g: 0.43529412
-    b: 0.26274511
-    a: 0.88235295
-  }
-  ambience_template: "docks-day"
-  combat_music: "Seattle-Set6-Combat"
-  default_music: "HongKong-Hub-Exterior"
-  loop_combat_music: true
-  loop_default_music: true
-  no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
-  loop_combat_intense_music: true
-  loop_combat_wrapup_music: true
-  combat_intense_threshold: 5
-  combat_wrapup_threshold: 2
-  combat_fade_interval: 2
-  combat_intro_stinger: ""
-  combat_outro_stinger: ""
-  vfx_fill_prefab_name: ""
+  is_oneshot: true
 }
 regions {
-  name: "HideProps"
+  name: "River Argues"
   position {
-    x: -55
-    y: 53
-    width: 1
-    height: 1
+    x: 4
+    y: 54
+    width: 0
+    height: 0
   }
   enabledAtStart: true
   is_camera_region: false
   is_matrix_node: false
   is_vfx_fill_region: false
   idRef {
-    id: "6047a5166233317c16000030"
+    id: "581e28e2396630cc16003604"
   }
   highlight_color {
     r: 0
@@ -1878,7 +1988,7 @@ regions {
     r: 0.50196081
     g: 0.50196081
     b: 0.50196081
-    a: 0.88235295
+    a: 1
   }
   ambience_template: ""
   combat_music: ""
@@ -1898,19 +2008,19 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "ClimbedFence"
+  name: "rWaterFill"
   position {
-    x: -4
-    y: 29
-    width: 1
-    height: 1
+    x: -67
+    y: -64
+    width: 135
+    height: 116
   }
   enabledAtStart: true
   is_camera_region: false
   is_matrix_node: false
-  is_vfx_fill_region: false
+  is_vfx_fill_region: true
   idRef {
-    id: "6049837a6233317c16000033"
+    id: "581e28e2396630cc16003605"
   }
   highlight_color {
     r: 0
@@ -1936,7 +2046,7 @@ regions {
     r: 0.50196081
     g: 0.50196081
     b: 0.50196081
-    a: 0.88235295
+    a: 1
   }
   ambience_template: ""
   combat_music: ""
@@ -1953,71 +2063,13 @@ regions {
   combat_fade_interval: 2
   combat_intro_stinger: ""
   combat_outro_stinger: ""
-  vfx_fill_prefab_name: ""
+  vfx_fill_prefab_name: "DefaultWaterFill"
 }
 regions {
-  name: "GuardSpeech"
+  name: "CrawledThrough"
   position {
-    x: 0
-    y: 31
-    width: 15
-    height: 4
-  }
-  enabledAtStart: true
-  is_camera_region: false
-  is_matrix_node: false
-  is_vfx_fill_region: false
-  idRef {
-    id: "604c0f776233317c16000034"
-  }
-  highlight_color {
-    r: 0
-    g: 0
-    b: 0
-    a: 1
-  }
-  visible_at_start: false
-  is_closet: false
-  is_teleporter_region: false
-  directional_light_dir {
-    x: -0.5
-    y: -1
-    z: -0.75
-  }
-  directional_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 1
-  }
-  ambient_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 0.88235295
-  }
-  ambience_template: ""
-  combat_music: ""
-  default_music: ""
-  loop_combat_music: true
-  loop_default_music: false
-  no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
-  loop_combat_intense_music: true
-  loop_combat_wrapup_music: true
-  combat_intense_threshold: 5
-  combat_wrapup_threshold: 2
-  combat_fade_interval: 2
-  combat_intro_stinger: ""
-  combat_outro_stinger: ""
-  vfx_fill_prefab_name: ""
-}
-regions {
-  name: "LadyGoal"
-  position {
-    x: 13
-    y: 31
+    x: -17
+    y: 24
     width: 1
     height: 1
   }
@@ -2026,7 +2078,7 @@ regions {
   is_matrix_node: false
   is_vfx_fill_region: false
   idRef {
-    id: "6b1e3dae623331ec1b004845"
+    id: "581e28e2396630cc16003606"
   }
   highlight_color {
     r: 0
@@ -2084,7 +2136,7 @@ regions {
   is_matrix_node: false
   is_vfx_fill_region: false
   idRef {
-    id: "a8581893623331fc290019b4"
+    id: "581e28e2396630cc16003607"
   }
   highlight_color {
     r: 0
@@ -2130,10 +2182,10 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "CrawledThrough"
+  name: "LadyGoal"
   position {
-    x: -17
-    y: 24
+    x: 13
+    y: 31
     width: 1
     height: 1
   }
@@ -2142,7 +2194,7 @@ regions {
   is_matrix_node: false
   is_vfx_fill_region: false
   idRef {
-    id: "51d0a61c6233313c0f003250"
+    id: "581e28e2396630cc16003608"
   }
   highlight_color {
     r: 0
@@ -2188,19 +2240,19 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "rWaterFill"
+  name: "GuardSpeech"
   position {
-    x: -67
-    y: -64
-    width: 135
-    height: 116
+    x: 0
+    y: 31
+    width: 15
+    height: 4
   }
   enabledAtStart: true
   is_camera_region: false
   is_matrix_node: false
-  is_vfx_fill_region: true
+  is_vfx_fill_region: false
   idRef {
-    id: "5814f484663136e8150014a6"
+    id: "581e28e2396630cc16003609"
   }
   highlight_color {
     r: 0
@@ -2226,7 +2278,7 @@ regions {
     r: 0.50196081
     g: 0.50196081
     b: 0.50196081
-    a: 1
+    a: 0.88235295
   }
   ambience_template: ""
   combat_music: ""
@@ -2243,7 +2295,181 @@ regions {
   combat_fade_interval: 2
   combat_intro_stinger: ""
   combat_outro_stinger: ""
-  vfx_fill_prefab_name: "DefaultWaterFill"
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "ClimbedFence"
+  position {
+    x: -4
+    y: 29
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "581e28e2396630cc1600360a"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 0.88235295
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "HideProps"
+  position {
+    x: -55
+    y: 53
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "581e28e2396630cc1600360b"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 0.88235295
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "CameraBounds"
+  position {
+    x: -29
+    y: 58
+    width: 61
+    height: -81
+  }
+  enabledAtStart: true
+  is_camera_region: true
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "581e28e2396630cc1600360c"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.9
+    y: -0.7
+    z: -0.5
+  }
+  directional_light_color {
+    r: 0.59215689
+    g: 0.61960787
+    b: 1
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.67843139
+    g: 0.43529412
+    b: 0.26274511
+    a: 0.88235295
+  }
+  ambience_template: "docks-day"
+  combat_music: "Seattle-Set6-Combat"
+  default_music: "HongKong-Hub-Exterior"
+  loop_combat_music: true
+  loop_default_music: true
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 characters {
   name: "chars_icon_playerIcon"
@@ -2574,13 +2800,13 @@ characters {
     z: 59
   }
   orientation: ORIENTATION_W
-  displayName: "MinorNPC"
+  displayName: "Halloweener Dwarf"
   idRef {
     id: "581599766631367c05002ced"
   }
   lod: 0
   character_instance {
-    prefab_name: "HongKong:Businessman/HumanMaleBusinessmanAsian"
+    prefab_name: "Seattle:Gangers/DwarfMaleGangerMohawk"
     character_sheet_id: "BaseCivilian"
     character_mod {
       stats {
@@ -2648,10 +2874,84 @@ characters {
     char_name: "Irate Man"
     pc_spawn_number: -1
     portrait {
-      filename: "npc_humanmale_hub_shyu"
+      filename: "backerpc_dwarfmale_adrianlaforest"
     }
     karma: 6
     is_prop_character: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: 5
+    y: 0
+    z: 56
+  }
+  orientation: ORIENTATION_E
+  displayName: "River"
+  idRef {
+    id: "581e27d9396630cc16003601"
+  }
+  interactionRoot {
+    isEnabled: false
+    interactionRadius: 1
+    conversationPoint {
+      conversationID: ""
+      turnToFace: true
+    }
+    interactionIcon: InteractionIcon_Conversation
+    interaction_info_text: "Talk to Elf"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Triads/ElfFemaleTriad1"
+    character_sheet_id: "AGChemie_Cyberzombie_Lv1"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        dodge: 0
+      }
+      specializations {
+        rifle: 0
+        edged: 0
+        unarmed: 0
+      }
+      vulnerabilities {
+      }
+    }
+    team_id: "Civilians"
+    char_name: "Irate Elf Woman"
+    pc_spawn_number: -1
+    ai_ignores: true
+    uninjurable: true
+    portrait {
+      filename: "STORY_elffemale_River"
+    }
+    portrait_code_override: "s2h3b4t6"
+    karma: 174
   }
 }
 variables {
