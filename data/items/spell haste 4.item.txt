@@ -2,15 +2,16 @@ id: "Spell Haste 4"
 type: ItemType_Shaman
 uirep {
   icon: "icon_haste4"
-  name: "Haste 4"
-  description: "Increases the friendly target\'s AP by 2 for 3 RNDS."
+  name: "Haste IV"
+  description: "Increases the friendly target\'s AP by 1 for 4 RNDS. Has a chance to increase AP by 2. Shares a cooldown with other Haste spells."
 }
 anim_type: AnimType_Spell
 coreAttribute: Attribute_Charisma
 coreSkill: Skill_Conjuring
 forceRating: 10
-apCost: 3
-prereqStrings: "Player.SKILL.Skill_Conjuring >= 6"
+apCost: 2
+prereqStrings: "Player.SKILL.Skill_Conjuring >= 7"
+prereqStrings: "Player.ATTRIBUTE.Attribute_Quickness >= 6"
 baseHPDamage: 0
 baseAPDamage: 0
 rangeModTable: 10
@@ -44,14 +45,29 @@ canTargetOccupiedGridPoint: false
 canTargetUnoccupiedGridPoint: false
 isBuff: true
 cooldown: 4
+cooldown_category: "haste"
 isMagic: true
-effectDuration: 3
+effectDuration: 4
 fxrep {
   preActionFxName: "GenericSpellPrepare"
   actionFxName: "GenericSpellCastAction"
   postActionFxName: ""
-  hitReactionFxName: "GenericSpellBuffHitReaction"
+  hitReactionFxName: "GenericSpellHaste3HitReaction"
   missReactionFxName: "GenericSpellMissReaction"
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_haste4"
+    name: "Haste: AP +1"
+  }
+  stackingCategory: "Haste"
+  statMods {
+    attribute: Attribute_AP
+    intModValue: 1
+  }
+  fxScript: "HongKong:GenericSpeedStatus"
+  is_buff: true
+  activation_status_effect_weight: 0.7
 }
 activationStatusEffects {
   uirep {
@@ -63,8 +79,10 @@ activationStatusEffects {
     attribute: Attribute_AP
     intModValue: 2
   }
-  fxScript: "GenericSpellStatus"
+  fxScript: "HongKong:GenericSpeedStatus"
+  is_buff: true
+  activation_status_effect_weight: 0.3
 }
-store_cost: 1000
+store_cost: 2000
 sorting_group: "Conjuring (Shaman)"
 damageType: VulnerabilityType_ActionPoints

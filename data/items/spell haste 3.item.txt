@@ -2,15 +2,15 @@ id: "Spell Haste 3"
 type: ItemType_Shaman
 uirep {
   icon: "icon_haste3"
-  name: "Haste 3"
-  description: "Increases the friendly target\'s AP by 1 for 4 RNDS."
+  name: "Haste III"
+  description: "Increases the friendly target\'s AP by 1 for 4 RNDS. Shares a cooldown with other Haste spells."
 }
 anim_type: AnimType_Spell
 coreAttribute: Attribute_Charisma
 coreSkill: Skill_Conjuring
 forceRating: 8
 apCost: 2
-prereqStrings: "Player.SKILL.Skill_Conjuring >= 4"
+prereqStrings: "Player.SKILL.Skill_Conjuring >= 6"
 baseHPDamage: 0
 baseAPDamage: 0
 rangeModTable: 10
@@ -44,13 +44,14 @@ canTargetOccupiedGridPoint: false
 canTargetUnoccupiedGridPoint: false
 isBuff: true
 cooldown: 4
+cooldown_category: "haste"
 isMagic: true
 effectDuration: 4
 fxrep {
   preActionFxName: "GenericSpellPrepare"
   actionFxName: "GenericSpellCastAction"
   postActionFxName: ""
-  hitReactionFxName: "GenericSpellBuffHitReaction"
+  hitReactionFxName: "GenericSpellHaste3HitReaction"
   missReactionFxName: "GenericSpellMissReaction"
 }
 activationStatusEffects {
@@ -63,8 +64,9 @@ activationStatusEffects {
     attribute: Attribute_AP
     intModValue: 1
   }
-  fxScript: "GenericSpellStatus"
+  fxScript: "HongKong:GenericSpeedStatus"
+  is_buff: true
 }
-store_cost: 800
+store_cost: 1000
 sorting_group: "Conjuring (Shaman)"
 damageType: VulnerabilityType_ActionPoints
