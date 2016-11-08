@@ -26,6 +26,28 @@ triggers {
       }
     }
     ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eLightning"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Random (float)"
+          args {
+            float_value: 10
+          }
+          args {
+            float_value: 20
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Set Environmental Effect Amount"
       args {
         call_value {
@@ -1827,6 +1849,71 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bHeardArgument"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Waypoint on Actor"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PrimaryOrSecondary"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "581e27d9396630cc16003601"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Add Camera Point of Interest (Actors)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "581e27d9396630cc16003601"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        float_value: 4
+      }
+    }
+    ops {
       functionName: "Display Text over Actor"
       args {
         call_value {
@@ -1918,28 +2005,6 @@ triggers {
         float_value: 5
       }
     }
-    ops {
-      functionName: "Enable/Disable Interactable Object"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (InteractableObject)"
-          args {
-            string_value: "601e2d98623331ec0c001927"
-          }
-        }
-      }
-    }
   }
   isActive: true
   idRef {
@@ -1949,13 +2014,545 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "TalkToRiver"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "581e27d9396630cc16003601"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Start Conversation Between Actors"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "581e2a41396630cc16003610"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "581e27d9396630cc16003601"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "58212bec663136340a006a19"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: " "
+  events {
+  }
+  conditions {
+  }
+  actions {
+  }
+  isActive: false
+  idRef {
+    id: "582123be663136340a006a11"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "<!-- Lightning Storm -->"
+  events {
+  }
+  conditions {
+  }
+  actions {
+  }
+  isActive: true
+  idRef {
+    id: "582123c6663136340a006a12"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Lightning.Preflash"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eLightning"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iNumberOfForks"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Random (int)"
+          args {
+            int_value: 1
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (float)"
+      args {
+        call_value {
+          functionName: "Get Variable (float)"
+          args {
+            string_value: "fThunderSound"
+          }
+        }
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Set Directional Light Color"
+      args {
+        float_value: 1
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0.2
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "581e28e2396630cc1600360c"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eFlash"
+          }
+        }
+      }
+      args {
+        float_value: 0.2
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "582123d3663136340a006a13"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Lightning.Flash"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eFlash"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (float)"
+      args {
+        call_value {
+          functionName: "Get Variable (float)"
+          args {
+            string_value: "fThunderSound"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Arithmetic (float)"
+          args {
+            call_value {
+              functionName: "Get Variable (float)"
+              args {
+                string_value: "fThunderSound"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Arithmetic Ops"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            float_value: 0.12
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:ambient_VicHarbor"
+          }
+          args {
+            string_value: "thunder1"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Arithmetic (float)"
+          args {
+            float_value: 1
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Arithmetic Ops"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Variable (float)"
+              args {
+                string_value: "fThunderSound"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Directional Light Color"
+      args {
+        float_value: 1
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0.2
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "581e28e2396630cc1600360c"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eFade"
+          }
+        }
+      }
+      args {
+        float_value: 0.2
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "582124db663136340a006a15"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Lightning.Fade"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eFade"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iNumberOfForks"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Add To Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iNumberOfForks"
+          }
+        }
+      }
+      args {
+        int_value: -1
+      }
+    }
+    ops {
+      functionName: "Set Directional Light Color"
+      args {
+        float_value: 151
+      }
+      args {
+        float_value: 158
+      }
+      args {
+        float_value: 255
+      }
+      args {
+        float_value: 255
+      }
+      args {
+        float_value: -0.9
+      }
+      args {
+        float_value: -0.7
+      }
+      args {
+        float_value: -0.5
+      }
+      args {
+        float_value: 0.2
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "581e28e2396630cc1600360c"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eFlash"
+          }
+        }
+      }
+      args {
+        float_value: 0.2
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5821253f663136340a006a16"
+  }
+  elseActions {
+    ops {
+      functionName: "Set Directional Light Color"
+      args {
+        float_value: 151
+      }
+      args {
+        float_value: 158
+      }
+      args {
+        float_value: 255
+      }
+      args {
+        float_value: 255
+      }
+      args {
+        float_value: -0.9
+      }
+      args {
+        float_value: -0.7
+      }
+      args {
+        float_value: -0.5
+      }
+      args {
+        float_value: 0.5
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "581e28e2396630cc1600360c"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eLightning"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Random (float)"
+          args {
+            float_value: 10
+          }
+          args {
+            float_value: 30
+          }
+        }
+      }
+    }
+  }
+  is_oneshot: false
+}
 regions {
   name: "River Argues"
   position {
-    x: 4
-    y: 54
-    width: 0
-    height: 0
+    x: -1
+    y: 42
+    width: 12
+    height: 16
   }
   enabledAtStart: true
   is_camera_region: false
@@ -2456,7 +3053,7 @@ regions {
   }
   ambience_template: "docks-day"
   combat_music: "Seattle-Set6-Combat"
-  default_music: "HongKong-Hub-Exterior"
+  default_music: "HongKong-Legwork-Museum"
   loop_combat_music: true
   loop_default_music: true
   no_fow_in_region: false
@@ -2865,14 +3462,15 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "Guard - Protect"
+      archetypeName: "Non-Combatant"
       attitude: AttitudeAggressive
       vulnerabilities {
       }
     }
     team_id: "Civilians"
-    char_name: "Irate Man"
+    char_name: "Irate Dwarf"
     pc_spawn_number: -1
+    ai_ignores: true
     portrait {
       filename: "backerpc_dwarfmale_adrianlaforest"
     }
@@ -2893,11 +3491,42 @@ characters {
     id: "581e27d9396630cc16003601"
   }
   interactionRoot {
-    isEnabled: false
+    isEnabled: true
     interactionRadius: 1
-    conversationPoint {
-      conversationID: ""
-      turnToFace: true
+    prerequisites {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bHeardArgument"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
     }
     interactionIcon: InteractionIcon_Conversation
     interaction_info_text: "Talk to Elf"
@@ -2905,7 +3534,7 @@ characters {
   lod: 0
   character_instance {
     prefab_name: "HongKong:Triads/ElfFemaleTriad1"
-    character_sheet_id: "AGChemie_Cyberzombie_Lv1"
+    character_sheet_id: "BaseCivilian"
     character_mod {
       stats {
         body: 0
@@ -2939,6 +3568,7 @@ characters {
         edged: 0
         unarmed: 0
       }
+      archetypeName: "Non-Combatant"
       vulnerabilities {
       }
     }
@@ -3010,7 +3640,42 @@ variables {
     typeName: "bool"
   }
 }
+variables {
+  int_value: 0
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "iNumberOfForks"
+    typeName: "int"
+  }
+}
+variables {
+  float_value: 0
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "fThunderSound"
+    typeName: "float"
+  }
+}
+variables {
+  bool_value: false
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "bHeardArgument"
+    typeName: "bool"
+  }
+}
+variables {
+  bool_value: false
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "bTalkedToRiver"
+    typeName: "bool"
+  }
+}
 mapEvents: "HiredLady"
+mapEvents: "eLightning"
+mapEvents: "eFlash"
+mapEvents: "eFade"
 goals {
   name: "Get to the NTSB Warehouse"
   type: GoalType_Primary
