@@ -30,10 +30,46 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
-    transitionPoint {
-      scene_name: "c08-s2_Planeyard"
-      open_hiring_screen: false
+    prerequisites {
+      ops {
+        functionName: "Evaluate Goal"
+        args {
+          call_value {
+            functionName: "Get Map Item (Goal)"
+            args {
+              string_value: "Recover the Flight Data"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "GoalStatus"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
     }
+    transitionPoint {
+      scene_name: "c08-s2_planeyard"
+      confirmation_text: "Enter the NTSB warehouse?"
+    }
+    interaction_info_text: "Enter NTSB Warehouse"
   }
   lod: 0
 }
@@ -4178,6 +4214,7 @@ props {
     z: -20
   }
   orientation: ORIENTATION_S
+  displayName: "obj_Helo"
   idRef {
     id: "51ad688761663474150003cf"
   }
@@ -27158,19 +27195,6 @@ props {
 props {
   name: "system_invisible_solidProp"
   gridPoint {
-    x: 7
-    y: 0
-    z: 64
-  }
-  orientation: ORIENTATION_S
-  idRef {
-    id: "581597766631367c05002c74"
-  }
-  lod: 0
-}
-props {
-  name: "system_invisible_solidProp"
-  gridPoint {
     x: 6
     y: 0
     z: 64
@@ -28890,5 +28914,75 @@ props {
     z: 43.2
   }
   orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: 0
+    y: 0
+    z: 32
+  }
+  orientation: ORIENTATION_S
+  displayName: "DEST_RiverMoveTo"
+  idRef {
+    id: "582139c8663136340a0056dd"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    dummyInteraciton {
+    }
+    interaction_info_text: "Talk to Elf"
+  }
+  lod: 0
+}
+props {
+  name: "docks_floor_3x3panel15"
+  gridPoint {
+    x: 5
+    y: 0
+    z: 61
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "58213c02663136340a0056df"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_solidProp"
+  gridPoint {
+    x: 7
+    y: 0
+    z: 64
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "58213c55663136340a0056e4"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -2
+    y: 0
+    z: -17
+  }
+  orientation: ORIENTATION_S
+  displayName: "obj_LogBooks"
+  idRef {
+    id: "58214be5663136f413005782"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    pickupItem {
+      itemName: "c08-s1_FlightLogs"
+      destroyOnPickup: true
+    }
+    interaction_info_text: "Seach Helicopter"
+  }
   lod: 0
 }
