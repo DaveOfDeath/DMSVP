@@ -2,7 +2,7 @@ triggers {
   name: "CoyoteStartConversation"
   events {
     ops {
-      functionName: "On Map Start"
+      functionName: "On Map Setup"
     }
   }
   conditions {
@@ -49,6 +49,12 @@ triggers {
         }
       }
     }
+  }
+  isActive: true
+  idRef {
+    id: "51d215a035616484120004ee"
+  }
+  elseActions {
     ops {
       functionName: "Start Conversation"
       args {
@@ -79,12 +85,101 @@ triggers {
         }
       }
     }
-  }
-  isActive: true
-  idRef {
-    id: "51d215a035616484120004ee"
-  }
-  elseActions {
+    ops {
+      functionName: "Force-Use Interactable Object (with Actor)"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5823dcc16631361c0b002367"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "582287e9663136cc0e006252"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Actor\'s Persona"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "582287e9663136cc0e006252"
+                  }
+                }
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Control"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Actor\'s Persona"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "582287e9663136cc0e006252"
+                  }
+                }
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PlayerOrAI"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   is_oneshot: true
 }
@@ -1513,9 +1608,6 @@ triggers {
           }
         }
       }
-    }
-    ops {
-      functionName: "No Effect"
     }
   }
   isActive: true
@@ -6537,7 +6629,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Region)"
           args {
-            string_value: "51d3a4dc396365b81e000175"
+            string_value: "582296e4663136cc0e006401"
           }
         }
       }
@@ -6572,25 +6664,6 @@ triggers {
     }
   }
   actions {
-    ops {
-      functionName: "Add Camera Point of Interest (Point)"
-      args {
-        call_value {
-          functionName: "Current Location of Prop"
-          args {
-            call_value {
-              functionName: "Get Map Item (Prop)"
-              args {
-                string_value: "51d3a5b0396365b81e00017b"
-              }
-            }
-          }
-        }
-      }
-      args {
-        float_value: 3
-      }
-    }
     ops {
       functionName: "Activate Actor Spawner"
       args {
@@ -6664,7 +6737,7 @@ triggers {
             string_value: "FacingDirection"
           }
           args {
-            int_value: 7
+            int_value: 5
           }
         }
       }
@@ -6718,78 +6791,6 @@ triggers {
       }
       args {
         float_value: 0
-      }
-    }
-    ops {
-      functionName: "Order Actor to Hunt And Destroy (ThreatType)"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Actor\'s Persona"
-              args {
-                call_value {
-                  functionName: "Get Map Item (Actor)"
-                  args {
-                    string_value: "51d34f4f3561642408000134"
-                  }
-                }
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "ThreatType"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Order Actor to Hunt And Destroy (ThreatType)"
-      args {
-        call_value {
-          functionName: "All Actors With Tag"
-          args {
-            call_value {
-              functionName: "Get Map Item (SenseTagList)"
-              args {
-                string_value: "isIC"
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Preset Value (int)"
-              args {
-                string_value: "AllOrAny"
-              }
-              args {
-                int_value: 0
-              }
-            }
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "ThreatType"
-          }
-          args {
-            int_value: 0
-          }
-        }
       }
     }
   }
@@ -8287,7 +8288,7 @@ triggers {
             call_value {
               functionName: "Get Map Item (Prop)"
               args {
-                string_value: "51d3a5b0396365b81e00017b"
+                string_value: "5823ec1b6631361c0b0023fb"
               }
             }
           }
@@ -8340,7 +8341,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (InteractableObject)"
           args {
-            string_value: "51d3a5b0396365b81e00017b"
+            string_value: "5823ec1b6631361c0b0023fb"
           }
         }
       }
@@ -8361,10 +8362,7 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Get Map Item (Actor)"
-          args {
-            string_value: "582287e9663136cc0e006252"
-          }
+          functionName: "Triggering Actor"
         }
       }
       args {
@@ -8432,7 +8430,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (InteractableObject)"
           args {
-            string_value: "51d3a5b0396365b81e00017b"
+            string_value: "5823ec1b6631361c0b0023fb"
           }
         }
       }
@@ -8879,7 +8877,7 @@ triggers {
             string_value: "WithOrWithout"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
@@ -9296,7 +9294,7 @@ triggers {
             string_value: "WithOrWithout"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
@@ -13191,10 +13189,10 @@ regions {
 regions {
   name: "MatrixRegion"
   position {
-    x: 68
-    y: 1
-    width: 28
-    height: 37
+    x: 53
+    y: 53
+    width: 27
+    height: 18
   }
   enabledAtStart: true
   is_camera_region: true
@@ -13218,15 +13216,15 @@ regions {
     z: -0.75
   }
   directional_light_color {
-    r: 0.50196081
+    r: 0.19607843
     g: 0.50196081
-    b: 0.50196081
+    b: 0.16470589
     a: 1
   }
   ambient_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
+    r: 0.26274511
+    g: 0.23921569
+    b: 0.93333334
     a: 1
   }
   ambience_template: ""
@@ -13234,64 +13232,6 @@ regions {
   default_music: "HongKong-Legwork-Hacking"
   loop_combat_music: true
   loop_default_music: true
-  no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
-  loop_combat_intense_music: true
-  loop_combat_wrapup_music: true
-  combat_intense_threshold: 5
-  combat_wrapup_threshold: 2
-  combat_fade_interval: 2
-  combat_intro_stinger: ""
-  combat_outro_stinger: ""
-  vfx_fill_prefab_name: ""
-}
-regions {
-  name: "MatrixArrival"
-  position {
-    x: 72
-    y: 11
-    width: 20
-    height: 2
-  }
-  enabledAtStart: true
-  is_camera_region: false
-  is_matrix_node: false
-  is_vfx_fill_region: false
-  idRef {
-    id: "51d3a4dc396365b81e000175"
-  }
-  highlight_color {
-    r: 0
-    g: 0
-    b: 0
-    a: 1
-  }
-  visible_at_start: false
-  is_closet: false
-  is_teleporter_region: false
-  directional_light_dir {
-    x: -0.5
-    y: -1
-    z: -0.75
-  }
-  directional_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 1
-  }
-  ambient_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 1
-  }
-  ambience_template: ""
-  combat_music: ""
-  default_music: ""
-  loop_combat_music: true
-  loop_default_music: false
   no_fow_in_region: false
   combat_intense_music: ""
   combat_wrapup_music: ""
@@ -13539,10 +13479,10 @@ regions {
 regions {
   name: "MatrixArrival"
   position {
-    x: 72
-    y: 11
-    width: 20
-    height: 2
+    x: 67
+    y: 53
+    width: 2
+    height: 16
   }
   enabledAtStart: true
   is_camera_region: false
@@ -13576,6 +13516,64 @@ regions {
     g: 0.50196081
     b: 0.50196081
     a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "rVioletStart"
+  position {
+    x: 71
+    y: -38
+    width: 4
+    height: 4
+  }
+  enabledAtStart: true
+  is_camera_region: true
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "5823dbdf6631361c0b00234f"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  }
+  ambient_light_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 0
   }
   ambience_template: ""
   combat_music: ""
@@ -15214,11 +15212,11 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 83
+    x: 65
     y: 0
-    z: 21
+    z: 57
   }
-  orientation: ORIENTATION_W
+  orientation: ORIENTATION_E
   GeneralTags: "isIC"
   displayName: "IC_Ranged_1"
   idRef {
@@ -15265,9 +15263,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 80
+    x: 65
     y: 0
-    z: 21
+    z: 66
   }
   orientation: ORIENTATION_W
   GeneralTags: "isIC"
@@ -15277,7 +15275,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "HongKong:Matrix/MatrixIC_Support"
+    prefab_name: "HongKong:Matrix/MatrixIC_Melee"
     character_sheet_id: "IC_Lv2_White_Ranged"
     equipment_sheet_id: "IC White Melee Low"
     character_mod {
@@ -15449,11 +15447,11 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 81
+    x: 67
     y: 0
-    z: 17
+    z: 63
   }
-  orientation: ORIENTATION_E
+  orientation: ORIENTATION_N
   displayName: "BlackIC_Ranged"
   idRef {
     id: "51db8604396365582400305f"
@@ -15513,7 +15511,7 @@ characters {
         edged: 0
         unarmed: 0
         spirit_control: 0
-        esp_control: 0
+        esp_control: 2
         drone_combat: 0
       }
       archetypeName: "gumbo_IC_Soldier"
@@ -15526,7 +15524,7 @@ characters {
     enabled_at_start: false
     pc_spawn_number: -1
     dimension_name: "Matrix"
-    karma: 36
+    karma: 39
   }
 }
 characters {
@@ -15632,11 +15630,11 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 81
+    x: 72
     y: 0
-    z: 6
+    z: -37
   }
-  orientation: ORIENTATION_E
+  orientation: ORIENTATION_S
   displayName: "Crew"
   idRef {
     id: "582287e9663136cc0e006252"
@@ -15702,22 +15700,23 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "Player"
+      archetypeName: "Non-Combatant"
       attitude: AttitudeAggressive
       vulnerabilities {
       }
     }
-    team_id: "Shadowrunners"
+    team_id: "Civilians"
     char_name: "Violet"
     GeneralTags: "isViolet"
     pc_spawn_number: -1
-    spawn_type: SpawnType_Avatar
+    spawn_type: SpawnType_Normal
     hiring_type: HiringType_Hireable
     portrait {
       filename: "pc_orkfemale_excl_oni"
     }
     description_bio: "A street kid with street muscle who brings her unusal style to the Matrix."
     portrait_code_override: "s6h12c1b0t9"
+    dimension_name: "Default"
     karma: 1
     hiring_cost_override: 0
     hiring_tag: "Crew: Decker"
@@ -15728,14 +15727,14 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 81
+    x: 59
     y: 0
-    z: 24
+    z: 62
   }
-  orientation: ORIENTATION_W
-  displayName: "BLOCKERIC"
+  orientation: ORIENTATION_S
+  displayName: "BTL_Wall"
   idRef {
-    id: "5822970d663136cc0e006405"
+    id: "5823f2f76631361c0b00243e"
   }
   interactionRoot {
     isEnabled: true
@@ -15746,8 +15745,7 @@ characters {
   lod: 0
   character_instance {
     prefab_name: "HongKong:Matrix/MatrixIC_Blocker"
-    character_sheet_id: "IC_Lv2_White_Blocker"
-    equipment_sheet_id: "IC White Blocker Lv2 Gear"
+    character_sheet_id: "BaseCivilian"
     character_mod {
       stats {
         morale: 0
@@ -15763,23 +15761,21 @@ characters {
       specializations {
       }
       archetypeName: "gumbo_G_BlockerIC"
-      attitude: AttitudeAggressive
       vulnerabilities {
       }
     }
-    team_id: "LoneStar"
-    char_name: "Blocker IC"
+    team_id: "Civilians"
+    char_name: "BTL Blocker IC"
     pc_spawn_number: -1
     spawn_type: SpawnType_BlockerIC
-    hiring_type: HiringType_None
-    portrait {
-      filename: ""
-    }
     dimension_name: "Matrix"
-    karma: 31
-    hiring_cost_override: 1000
-    scale_character_sheet: true
-    blocker_ic_panel_bypass_code: "fragface"
+    karma: 6
+    scale_character_sheet: false
+    blocker_ic_panel_scale_override: 3
+    blocker_ic_panel_force_override: 50
+    blocker_ic_panel_bypass_code: "admin"
+    blocker_ic_panel_fail_yellow_alert_modifier_override: 15
+    blocker_ic_panel_incorrect_password_yellow_alert_modifier_override: 10
   }
 }
 variables {
@@ -15989,7 +15985,7 @@ scene_subtitle: ""
 scene_synopsis: "The cluster of dilapidated buildings where Coyote told you to meet her appears to be the remnants of a public-housing project. The buildings look like a cesspool filled with human debris. \n\nYou find her standing with Paco on a street corner, eyeing the roofs, the doorways, the windows. Despite his attempts to engage her, Coyote barely says a word as the three of you weave your way through the tenements. She walks purposefully, her new cyber hand flexing open and closed with each step. It\342\200\231s unclear whether the action is voluntary or not.\n\nYou circle around the back of a building and Coyote jumps up, grabs the bottom rung of a fire escape ladder, and pulls it down. Without a signal, she starts her climb towards the roof. Paco looks at you worriedly and starts up the ladder."
 scene_image: "loadingImage_c09-s1"
 scene_continue_button_skip: false
-scene_restore_runner_health: false
+scene_restore_runner_health: true
 directional_light_dir {
   x: 0
   y: -1
@@ -16039,8 +16035,10 @@ scene_dimensions {
 }
 scene_dimensions {
   dimension_name: "Matrix"
-  initial_alarm_state: 0
+  initial_alarm_state: 15
   turns_per_round: 3
+  is_matrix: true
+  max_alarm_value: 50
 }
 character_roster {
 }
