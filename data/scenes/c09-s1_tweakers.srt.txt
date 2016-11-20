@@ -151,77 +151,20 @@ triggers {
       }
     }
     ops {
-      functionName: "Change Actor Team"
+      functionName: "Force-Use Interactable Object (with Actor)"
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "Get Map Item (InteractableObject)"
           args {
-            call_value {
-              functionName: "Get Actor\'s Persona"
-              args {
-                call_value {
-                  functionName: "Get Map Item (Actor)"
-                  args {
-                    string_value: "582287e9663136cc0e006252"
-                  }
-                }
-              }
-            }
-          }
-          args {
+            string_value: "5823dcc16631361c0b002367"
           }
         }
       }
       args {
         call_value {
-          functionName: "Get Preset Value (string)"
+          functionName: "Get Map Item (Actor)"
           args {
-            string_value: "FactionList"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (SceneDimension)"
-          args {
-            string_value: "Default"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Change Actor Control"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Actor\'s Persona"
-              args {
-                call_value {
-                  functionName: "Get Map Item (Actor)"
-                  args {
-                    string_value: "582287e9663136cc0e006252"
-                  }
-                }
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "PlayerOrAI"
-          }
-          args {
-            int_value: 0
+            string_value: "582287e9663136cc0e006252"
           }
         }
       }
@@ -406,10 +349,10 @@ triggers {
         call_value {
           functionName: "Get Map Item (Sound)"
           args {
-            string_value: "HongKong:decker"
+            string_value: "HongKong:props"
           }
           args {
-            string_value: "Matrix_NodeHackSuccess"
+            string_value: "HeavyBolt_Unlock"
           }
         }
       }
@@ -520,10 +463,127 @@ triggers {
   is_oneshot: true
 }
 triggers {
+  name: "Bridge.AutoSave"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "51c4ccc96434318f02e83dd7"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isEntryGuy"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Autosave Game"
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5831e8846631362c1000793b"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
   name: "PlayerDeath"
   events {
     ops {
-      functionName: "On Actor Downed"
+      functionName: "On Actor Death"
     }
   }
   conditions {
@@ -1213,6 +1273,47 @@ triggers {
           functionName: "Get Map Item (Actor)"
           args {
             string_value: "51d34f4f3561642408000134"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Actor\'s Persona"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "582287e9663136cc0e006252"
+                  }
+                }
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Get Actor\'s Persona"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "51d34f4f3561642408000134"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -2010,6 +2111,47 @@ triggers {
       }
     }
     ops {
+      functionName: "Order Actor to Face Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Actor\'s Persona"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "582287e9663136cc0e006252"
+                  }
+                }
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Get Actor\'s Persona"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "51d34f4f3561642408000134"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Display Text over Actor"
       args {
         call_value {
@@ -2373,7 +2515,7 @@ triggers {
         }
       }
       args {
-        int_value: 15
+        int_value: 40
       }
       args {
         call_value {
@@ -2591,261 +2733,6 @@ triggers {
   isActive: true
   idRef {
     id: "51bd0633356164580b00173c"
-  }
-  elseActions {
-  }
-  is_oneshot: true
-}
-triggers {
-  name: "Crows01"
-  events {
-    ops {
-      functionName: "On Region Enter"
-      args {
-        call_value {
-          functionName: "Get Map Item (Region)"
-          args {
-            string_value: "51c4cadf6434318f02e83dd3"
-          }
-        }
-      }
-    }
-  }
-  conditions {
-  }
-  actions {
-    ops {
-      functionName: "Play FX at Point"
-      args {
-        string_value: "EnvironmentCrowFlyAway"
-      }
-      args {
-        call_value {
-          functionName: "Center of Region"
-          args {
-            call_value {
-              functionName: "Get Map Item (Region)"
-              args {
-                string_value: "51c4cadf6434318f02e83dd3"
-              }
-            }
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Delete Prop"
-      args {
-        call_value {
-          functionName: "Get Map Item (Prop)"
-          args {
-            string_value: "51c4c9896434318f02e83dce"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Play Sound"
-      args {
-        call_value {
-          functionName: "Get Map Item (Sound)"
-          args {
-            string_value: "ambient_graveyard"
-          }
-          args {
-            string_value: "Raven"
-          }
-        }
-      }
-      args {
-        float_value: 1
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-  }
-  isActive: false
-  idRef {
-    id: "51b8c3b8656337c415004826"
-  }
-  elseActions {
-  }
-  is_oneshot: true
-}
-triggers {
-  name: "Crows02"
-  events {
-    ops {
-      functionName: "On Region Enter"
-      args {
-        call_value {
-          functionName: "Get Map Item (Region)"
-          args {
-            string_value: "51c4ccc96434318f02e83dd7"
-          }
-        }
-      }
-    }
-  }
-  conditions {
-  }
-  actions {
-    ops {
-      functionName: "Play FX at Point"
-      args {
-        string_value: "EnvironmentCrowFlyAway"
-      }
-      args {
-        call_value {
-          functionName: "Current Location of Prop"
-          args {
-            call_value {
-              functionName: "Get Map Item (Prop)"
-              args {
-                string_value: "51c4ccc66434318f02e83dd6"
-              }
-            }
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Delete Prop"
-      args {
-        call_value {
-          functionName: "Get Map Item (Prop)"
-          args {
-            string_value: "51c4ccc66434318f02e83dd6"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Play Sound"
-      args {
-        call_value {
-          functionName: "Get Map Item (Sound)"
-          args {
-            string_value: "ambient_graveyard"
-          }
-          args {
-            string_value: "Raven"
-          }
-        }
-      }
-      args {
-        float_value: 1
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-  }
-  isActive: false
-  idRef {
-    id: "51c63541356164a80c000125"
-  }
-  elseActions {
-  }
-  is_oneshot: true
-}
-triggers {
-  name: "Crows03"
-  events {
-    ops {
-      functionName: "On Region Enter"
-      args {
-        call_value {
-          functionName: "Get Map Item (Region)"
-          args {
-            string_value: "51c4cca56434318f02e83dd4"
-          }
-        }
-      }
-    }
-  }
-  conditions {
-  }
-  actions {
-    ops {
-      functionName: "Play FX at Point"
-      args {
-        string_value: "EnvironmentCrowFlyAway"
-      }
-      args {
-        call_value {
-          functionName: "Center of Region"
-          args {
-            call_value {
-              functionName: "Get Map Item (Region)"
-              args {
-                string_value: "51c4cca56434318f02e83dd4"
-              }
-            }
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Delete Prop"
-      args {
-        call_value {
-          functionName: "Get Map Item (Prop)"
-          args {
-            string_value: "51eefce6623331f81c002224"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Play Sound"
-      args {
-        call_value {
-          functionName: "Get Map Item (Sound)"
-          args {
-            string_value: "ambient_graveyard"
-          }
-          args {
-            string_value: "Raven"
-          }
-        }
-      }
-      args {
-        float_value: 1
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-  }
-  isActive: false
-  idRef {
-    id: "51c6354f356164a80c000126"
   }
   elseActions {
   }
@@ -3797,35 +3684,6 @@ triggers {
           functionName: "Get Preset Value (int)"
           args {
             string_value: "bool"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Detain Actor"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "582287e9663136cc0e006252"
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "DetainMethod"
           }
           args {
             int_value: 0
@@ -5441,6 +5299,72 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bVioletKnockedOut"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bChipheads_Disabled"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   actions {
     ops {
@@ -5461,28 +5385,6 @@ triggers {
           functionName: "Get Map Item (InteractableObject)"
           args {
             string_value: "51d34e5b3561642408000130"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Enable/Disable Interactable Object"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (InteractableObject)"
-          args {
-            string_value: "51bd128a356164580b001786"
           }
         }
       }
@@ -5608,6 +5510,28 @@ triggers {
       }
     }
     ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "51bd128a356164580b001786"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Set Waypoint on Prop"
       args {
         call_value {
@@ -5643,6 +5567,12 @@ triggers {
   events {
     ops {
       functionName: "On Actor Death"
+    }
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eDisableViolet"
+      }
     }
   }
   conditions {
@@ -5776,14 +5706,74 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Display Text over Actor"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        string_value: "This is MY domain now, Chiphead!"
+      }
+      args {
+        float_value: 90
+      }
+      args {
+        float_value: 255
+      }
+      args {
+        float_value: 255
+      }
+      args {
+        float_value: 128
+      }
+      args {
+        float_value: 8
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eDisableViolet"
+          }
+        }
+      }
+      args {
+        float_value: 5
+      }
+    }
+    ops {
+      functionName: "Trigger: Wait Until Triggered Again"
+    }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "51d449013963653c1f00014c"
   }
   elseActions {
   }
-  is_oneshot: true
+  is_oneshot: false
 }
 triggers {
   name: "MatrixSpawn"
@@ -5874,88 +5864,28 @@ triggers {
       }
     }
     ops {
-      functionName: "Order Actor to Face Direction"
+      functionName: "Suspend Team\'s Turn"
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "Get Preset Value (string)"
           args {
-            call_value {
-              functionName: "Get Actor\'s Persona"
-              args {
-                call_value {
-                  functionName: "Get Map Item (Actor)"
-                  args {
-                    string_value: "51d34f4f3561642408000134"
-                  }
-                }
-              }
-            }
+            string_value: "FactionList"
           }
           args {
+            int_value: 2
           }
         }
       }
       args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "FacingDirection"
-          }
-          args {
-            int_value: 5
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Display Text over Actor"
-      args {
-        call_value {
-          functionName: "Get Actor\'s Persona"
-          args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "51d34f4f3561642408000134"
-              }
-            }
-          }
-        }
+        int_value: 1
       }
       args {
         call_value {
-          functionName: "Get Preset Value (int)"
+          functionName: "Get Map Item (SceneDimension)"
           args {
-            string_value: "TextPopupStyle"
-          }
-          args {
-            int_value: 0
+            string_value: "Matrix"
           }
         }
-      }
-      args {
-        string_value: "You\'re in my domain now!"
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 3
-      }
-      args {
-        float_value: 3
-      }
-      args {
-        float_value: 0
       }
     }
   }
@@ -6138,28 +6068,6 @@ triggers {
       }
     }
     ops {
-      functionName: "Enable/Disable Interactable Object"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (InteractableObject)"
-          args {
-            string_value: "51d4c1bd3963655423003061"
-          }
-        }
-      }
-    }
-    ops {
       functionName: "Cause Damage"
       args {
         call_value {
@@ -6329,7 +6237,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "51bd1802356164580b00178b"
   }
@@ -6605,28 +6513,6 @@ triggers {
       }
     }
     ops {
-      functionName: "Enable/Disable Interactable Object"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (InteractableObject)"
-          args {
-            string_value: "51d4c1bd3963655423003061"
-          }
-        }
-      }
-    }
-    ops {
       functionName: "Order Actor to Move To (Region)"
       args {
         call_value {
@@ -6700,7 +6586,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "51d3a8ec396365b81e000190"
   }
@@ -6866,7 +6752,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "51d3d6c23963658c0c007035"
   }
@@ -7344,7 +7230,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "51d3bf62396365b81e00022d"
   }
@@ -7597,7 +7483,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "344c2ec63030319816004e58"
   }
@@ -7623,6 +7509,34 @@ triggers {
   conditions {
   }
   actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "decker"
+          }
+          args {
+            string_value: "Matrix_NodeHackSuccess"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
     ops {
       functionName: "Start Conversation Between Actors"
       args {
@@ -7659,34 +7573,6 @@ triggers {
           functionName: "Get Preset Value (int)"
           args {
             string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Play Sound"
-      args {
-        call_value {
-          functionName: "Get Map Item (Sound)"
-          args {
-            string_value: "decker"
-          }
-          args {
-            string_value: "Matrix_NodeHackSuccess"
-          }
-        }
-      }
-      args {
-        float_value: 1
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
           }
           args {
             int_value: 0
@@ -7994,12 +7880,6 @@ triggers {
 triggers {
   name: "FightIsOver-NoMatrix1"
   events {
-    ops {
-      functionName: "Get Map Item (Event)"
-      args {
-        string_value: "DeactivateChipheads"
-      }
-    }
     ops {
       functionName: "On Actor Death"
     }
@@ -8391,12 +8271,6 @@ triggers {
   events {
     ops {
       functionName: "On Actor Death"
-    }
-    ops {
-      functionName: "Get Map Item (Event)"
-      args {
-        string_value: "DeactivateChipheads"
-      }
     }
   }
   conditions {
@@ -9017,49 +8891,6 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Detain Actor"
-      args {
-        call_value {
-          functionName: "All Actors Within Area"
-          args {
-            call_value {
-              functionName: "Area: Region"
-              args {
-                call_value {
-                  functionName: "Get Map Item (Region)"
-                  args {
-                    string_value: "51d34cc23561642408000129"
-                  }
-                }
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Preset Value (int)"
-              args {
-                string_value: "AllOrAny"
-              }
-              args {
-                int_value: 0
-              }
-            }
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "DetainMethod"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-    ops {
       functionName: "Set Variable (bool)"
       args {
         call_value {
@@ -9528,12 +9359,6 @@ triggers {
   name: "FightIsOver-ChipheadKillerA"
   events {
     ops {
-      functionName: "Get Map Item (Event)"
-      args {
-        string_value: "DeactivateChipheads"
-      }
-    }
-    ops {
       functionName: "On Actor Death"
     }
   }
@@ -9886,12 +9711,6 @@ triggers {
   events {
     ops {
       functionName: "On Actor Death"
-    }
-    ops {
-      functionName: "Get Map Item (Event)"
-      args {
-        string_value: "DeactivateChipheads"
-      }
     }
   }
   conditions {
@@ -10428,7 +10247,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "51db4d7c396365040b001456"
   }
@@ -10500,166 +10319,6 @@ triggers {
   elseActions {
   }
   is_oneshot: true
-}
-triggers {
-  name: "SignalAMP.Update"
-  events {
-    ops {
-      functionName: "Get Map Item (Event)"
-      args {
-        string_value: "eUpdateTaps"
-      }
-    }
-  }
-  conditions {
-    ops {
-      functionName: "Comparison (int)"
-      args {
-        call_value {
-          functionName: "Get Variable (int)"
-          args {
-            string_value: "iSignalStrength"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "Comparison Ops"
-          }
-          args {
-            int_value: 4
-          }
-        }
-      }
-      args {
-        int_value: 3
-      }
-    }
-  }
-  actions {
-    ops {
-      functionName: "Set Screen Label Progress Bar (int)"
-      args {
-        string_value: "SignalStrength"
-      }
-      args {
-        string_value: "Signal Strength:"
-      }
-      args {
-        call_value {
-          functionName: "Get Variable (int)"
-          args {
-            string_value: "iSignalStrength"
-          }
-        }
-      }
-      args {
-        int_value: 3
-      }
-    }
-  }
-  isActive: true
-  idRef {
-    id: "58216173663136cc02007f6a"
-  }
-  elseActions {
-    ops {
-      functionName: "Remove Screen Label"
-      args {
-        string_value: "SignalStrength"
-      }
-    }
-    ops {
-      functionName: "Set Goal Status"
-      args {
-        call_value {
-          functionName: "Get Map Item (Goal)"
-          args {
-            string_value: "Install Violets Matrix Amps"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "GoalStatus"
-          }
-          args {
-            int_value: 2
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Delete Props by Tag"
-      args {
-        call_value {
-          functionName: "Get Map Item (SenseTagList)"
-          args {
-            string_value: "isAMPInstalled"
-          }
-        }
-      }
-      args {
-        float_value: -1
-      }
-      args {
-        call_value {
-          functionName: "Everywhere"
-        }
-      }
-    }
-    ops {
-      functionName: "Force-Use Interactable Object (with Actor)"
-      args {
-        call_value {
-          functionName: "Get Map Item (InteractableObject)"
-          args {
-            string_value: "5823dcc16631361c0b002367"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Actor)"
-          args {
-            string_value: "582287e9663136cc0e006252"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Teleport Camera To Actor"
-      args {
-        call_value {
-          functionName: "Get Actor\'s Persona"
-          args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "582287e9663136cc0e006252"
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  is_oneshot: false
 }
 triggers {
   name: "SignalAMP.InstallAMP"
@@ -10846,6 +10505,142 @@ triggers {
     id: "58216205663136cc02007f6b"
   }
   elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "SignalAMP.Update"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eUpdateTaps"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iSignalStrength"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+      args {
+        int_value: 3
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Screen Label Progress Bar (int)"
+      args {
+        string_value: "SignalStrength"
+      }
+      args {
+        string_value: "Signal Strength:"
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iSignalStrength"
+          }
+        }
+      }
+      args {
+        int_value: 3
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "58216173663136cc02007f6a"
+  }
+  elseActions {
+    ops {
+      functionName: "Remove Screen Label"
+      args {
+        string_value: "SignalStrength"
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Install Violets Matrix Amps"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Delete Props by Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isAMPInstalled"
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        call_value {
+          functionName: "Everywhere"
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eSwitchToViolet"
+          }
+        }
+      }
+    }
   }
   is_oneshot: false
 }
@@ -11297,7 +11092,7 @@ triggers {
         }
       }
       args {
-        string_value: "After a brief struggle, the door is pried open with the crowbar.   The key snaps off in the door during the struggle."
+        string_value: "After a brief struggle, the door is opened with the key."
       }
       args {
         float_value: 0
@@ -13908,72 +13703,18 @@ triggers {
   is_oneshot: false
 }
 triggers {
-  name: "Violet.MatrixDataLines [ENTER]"
+  name: "Violet.SwitchToViolet"
   events {
     ops {
-      functionName: "On Region Enter"
+      functionName: "Get Map Item (Event)"
       args {
-        call_value {
-          functionName: "Get Map Item (Region)"
-          args {
-            string_value: "51d34cc23561642408000129"
-          }
-        }
+        string_value: "eSwitchToViolet"
       }
     }
   }
   conditions {
-    ops {
-      functionName: "Comparison (Actor)"
-      args {
-        call_value {
-          functionName: "Triggering Actor"
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "IsOrIsNot"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Actor\'s Persona"
-          args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "582287e9663136cc0e006252"
-              }
-            }
-          }
-        }
-      }
-    }
   }
   actions {
-    ops {
-      functionName: "Set Environmental Effect Amount"
-      args {
-        call_value {
-          functionName: "Get Preset Value (string)"
-          args {
-            string_value: "EnvironmentalEffects"
-          }
-          args {
-            int_value: 5
-          }
-        }
-      }
-      args {
-        int_value: 30
-      }
-    }
     ops {
       functionName: "Change Actor Team"
       args {
@@ -14051,17 +13792,34 @@ triggers {
       }
     }
     ops {
-      functionName: "Teleport Camera To Actor"
+      functionName: "Enable/Disable Team\'s Turn"
       args {
         call_value {
-          functionName: "Get Actor\'s Persona"
+          functionName: "Get Preset Value (string)"
           args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "582287e9663136cc0e006252"
-              }
-            }
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Matrix"
           }
         }
       }
@@ -14095,6 +13853,22 @@ triggers {
           functionName: "Get Map Item (SceneDimension)"
           args {
             string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Get Actor\'s Persona"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "582287e9663136cc0e006252"
+              }
+            }
           }
         }
       }
@@ -14123,19 +13897,8 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "Violet.MatrixDataLines [EXIT]"
+  name: "Violet.ReturnToPlayer"
   events {
-    ops {
-      functionName: "On Camera Region Activated"
-      args {
-        call_value {
-          functionName: "Get Map Item (CameraRegion)"
-          args {
-            string_value: "51bfb4ef3561646c0f00421b"
-          }
-        }
-      }
-    }
     ops {
       functionName: "Get Map Item (Event)"
       args {
@@ -14146,196 +13909,6 @@ triggers {
   conditions {
   }
   actions {
-    ops {
-      functionName: "Set Environmental Effect Amount"
-      args {
-        call_value {
-          functionName: "Get Preset Value (string)"
-          args {
-            string_value: "EnvironmentalEffects"
-          }
-          args {
-            int_value: 5
-          }
-        }
-      }
-      args {
-        int_value: 0
-      }
-    }
-    ops {
-      functionName: "Detain Actor"
-      args {
-        call_value {
-          functionName: "All Actors Within Area"
-          args {
-            call_value {
-              functionName: "Area: Region"
-              args {
-                call_value {
-                  functionName: "Get Map Item (Region)"
-                  args {
-                    string_value: "51bfb4ef3561646c0f00421b"
-                  }
-                }
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Preset Value (int)"
-              args {
-                string_value: "AllOrAny"
-              }
-              args {
-                int_value: 0
-              }
-            }
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "DetainMethod"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Teleport Camera To Actor"
-      args {
-        call_value {
-          functionName: "Get Map Item (Player)"
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Detain Actor"
-      args {
-        call_value {
-          functionName: "All Actors Within Area"
-          args {
-            call_value {
-              functionName: "Area: Region"
-              args {
-                call_value {
-                  functionName: "Get Map Item (Region)"
-                  args {
-                    string_value: "51d34cc23561642408000129"
-                  }
-                }
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Preset Value (int)"
-              args {
-                string_value: "AllOrAny"
-              }
-              args {
-                int_value: 0
-              }
-            }
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "DetainMethod"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Change Actor Team"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Actor\'s Persona"
-              args {
-                call_value {
-                  functionName: "Get Map Item (Actor)"
-                  args {
-                    string_value: "582287e9663136cc0e006252"
-                  }
-                }
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (string)"
-          args {
-            string_value: "FactionList"
-          }
-          args {
-            int_value: 3
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (SceneDimension)"
-          args {
-            string_value: "Default"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Change Actor Control"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Actor\'s Persona"
-              args {
-                call_value {
-                  functionName: "Get Map Item (Actor)"
-                  args {
-                    string_value: "582287e9663136cc0e006252"
-                  }
-                }
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "PlayerOrAI"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
     ops {
       functionName: "Enable/Disable Team\'s Turn"
       args {
@@ -14365,6 +13938,134 @@ triggers {
           functionName: "Get Map Item (SceneDimension)"
           args {
             string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isTeam"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Control"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isTeam"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PlayerOrAI"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Team\'s Turn"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Matrix"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
           }
         }
       }
@@ -14454,31 +14155,6 @@ triggers {
             int_value: 3
           }
         }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (SceneDimension)"
-          args {
-            string_value: "Default"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Suspend Team\'s Turn"
-      args {
-        call_value {
-          functionName: "Get Preset Value (string)"
-          args {
-            string_value: "FactionList"
-          }
-          args {
-            int_value: 3
-          }
-        }
-      }
-      args {
-        int_value: -1
       }
       args {
         call_value {
@@ -14657,12 +14333,77 @@ triggers {
       }
     }
     ops {
-      functionName: "Send Event"
+      functionName: "Set Actor Ignored by AI"
       args {
         call_value {
-          functionName: "Get Map Item (Event)"
+          functionName: "All Actors With Tag"
           args {
-            string_value: "eReturnToPlayer"
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "Chiphead"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Actor Ignored by AI"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isGino"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 0
           }
         }
       }
@@ -14730,26 +14471,77 @@ triggers {
       }
     }
     ops {
-      functionName: "Suspend Team\'s Turn"
+      functionName: "Set Actor Ignored by AI"
       args {
         call_value {
-          functionName: "Get Preset Value (string)"
+          functionName: "All Actors With Tag"
           args {
-            string_value: "FactionList"
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "Chiphead"
+              }
+            }
           }
           args {
-            int_value: 3
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
           }
         }
       }
       args {
-        int_value: -1
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Actor Ignored by AI"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isGino"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
       }
       args {
         call_value {
-          functionName: "Get Map Item (SceneDimension)"
+          functionName: "Get Preset Value (int)"
           args {
-            string_value: "Default"
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 0
           }
         }
       }
@@ -14854,17 +14646,6 @@ triggers {
           functionName: "Get Map Item (InteractableObject)"
           args {
             string_value: "5823ec1b6631361c0b0023fb"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Send Event"
-      args {
-        call_value {
-          functionName: "Get Map Item (Event)"
-          args {
-            string_value: "eReturnToPlayer"
           }
         }
       }
@@ -15073,6 +14854,186 @@ triggers {
   isActive: true
   idRef {
     id: "583137bd66313648170058ea"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Violet.DeckerBattle"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "51d34cc23561642408000129"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Actor\'s Persona"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "51d34f4f3561642408000134"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Enable/Disable Team\'s Turn"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Matrix"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5831f6a66631362c10007959"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Violet.RegionDataLines [ON]"
+  events {
+    ops {
+      functionName: "On Camera Region Activated"
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "51d34cc23561642408000129"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+      args {
+        int_value: 30
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5831f71c6631362c1000795a"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Violet.RegionDataLines [OFF]"
+  events {
+    ops {
+      functionName: "On Camera Region Activated"
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "51bfb4ef3561646c0f00421b"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5831f7566631362c1000795b"
   }
   elseActions {
   }
@@ -15891,12 +15852,12 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "crows02"
+  name: "rAutoSave"
   position {
     x: -21
-    y: -33
+    y: -34
     width: 4
-    height: 6
+    height: 2
   }
   enabledAtStart: true
   is_camera_region: false
@@ -16594,6 +16555,7 @@ characters {
     z: -10
   }
   orientation: ORIENTATION_E
+  GeneralTags: "isEntryGuy"
   idRef {
     id: "fe5c9c493064342c170018c5"
   }
@@ -16669,6 +16631,7 @@ characters {
     }
     team_id: "Civilians"
     char_name: "Concerned Woman"
+    GeneralTags: "isEntryGuy"
     enabled_at_start: true
     pc_spawn_number: -1
     portrait {
@@ -16685,6 +16648,7 @@ characters {
     z: 9
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isEntryGuy"
   idRef {
     id: "fe6122963064342c170018c8"
   }
@@ -16766,6 +16730,7 @@ characters {
     }
     team_id: "Civilians"
     char_name: "BTL Clocker"
+    GeneralTags: "isEntryGuy"
     enabled_at_start: true
     pc_spawn_number: -1
     portrait {
@@ -16783,6 +16748,7 @@ characters {
     z: -16
   }
   orientation: ORIENTATION_E
+  GeneralTags: "isEntryGuy"
   idRef {
     id: "36e09591306434fc04000a51"
   }
@@ -16862,6 +16828,7 @@ characters {
     }
     team_id: "Civilians"
     char_name: "Dwarf Muscle"
+    GeneralTags: "isEntryGuy"
     enabled_at_start: true
     pc_spawn_number: -1
     karma: 40
@@ -16875,6 +16842,7 @@ characters {
     z: -13
   }
   orientation: ORIENTATION_N
+  GeneralTags: "isEntryGuy"
   idRef {
     id: "36e9a056306434fc04000a90"
   }
@@ -16951,6 +16919,7 @@ characters {
     }
     team_id: "Civilians"
     char_name: "Elf Muscle"
+    GeneralTags: "isEntryGuy"
     enabled_at_start: true
     pc_spawn_number: -1
     karma: 61
@@ -16964,6 +16933,7 @@ characters {
     z: -2
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isEntryGuy"
   idRef {
     id: "3709dba2306434fc04000b12"
   }
@@ -17042,6 +17012,7 @@ characters {
     }
     team_id: "Civilians"
     char_name: "Jamal"
+    GeneralTags: "isEntryGuy"
     enabled_at_start: true
     pc_spawn_number: -1
     portrait {
@@ -17612,6 +17583,7 @@ characters {
   }
   orientation: ORIENTATION_W
   GeneralTags: "isPlayer"
+  GeneralTags: "isTeam"
   idRef {
     id: "51b7990a356164b81500440f"
   }
@@ -17623,6 +17595,7 @@ characters {
     team_id: "Shadowrunners"
     char_name: "New Actor"
     GeneralTags: "isPlayer"
+    GeneralTags: "isTeam"
     pc_spawn_number: 0
     spawn_type: SpawnType_Normal
     dimension_name: "Default"
@@ -17636,6 +17609,7 @@ characters {
     z: -7
   }
   orientation: ORIENTATION_E
+  GeneralTags: "isEntryGuy"
   idRef {
     id: "51bcef44356164580b0016ec"
   }
@@ -17712,6 +17686,7 @@ characters {
     }
     team_id: "Civilians"
     char_name: "Charlie"
+    GeneralTags: "isEntryGuy"
     pc_spawn_number: -1
     portrait {
       filename: "pc_orkmale_03a_baldtrouble"
@@ -18837,8 +18812,8 @@ characters {
   lod: 0
   character_instance {
     prefab_name: "Seattle:Core/ElfFemale"
-    character_sheet_id: "Adept_Lv3_Melee"
-    equipment_sheet_id: "Adept_Lv3_Melee_Gear"
+    character_sheet_id: "Adept_Lv1_Melee"
+    equipment_sheet_id: "Adept_Lv1_Melee_Gear"
     character_mod {
       stats {
         body: 0
@@ -18896,7 +18871,7 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "gumbo_MeleeSoldier"
+      archetypeName: "Guard - Seek And Destroy"
       attitude: AttitudeAggressive
       vulnerabilities {
       }
@@ -18911,7 +18886,7 @@ characters {
       filename: "backerpc_elffemale_jamesyoon"
     }
     portrait_code_override: "s5h16c10b0t0"
-    karma: 105
+    karma: 67
     has_fist: false
   }
 }
@@ -18930,8 +18905,8 @@ characters {
   lod: 0
   character_instance {
     prefab_name: "Seattle:Core/HumanMale"
-    character_sheet_id: "Errant_Lv3_Heavy_Explosive"
-    equipment_sheet_id: "Errant_Lv3_Explosive"
+    character_sheet_id: "Errant_Lv1_Heavy_Explosive"
+    equipment_sheet_id: "Errant_Lv1_Explosive"
     character_mod {
       stats {
         body: 0
@@ -18989,7 +18964,7 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "gumbo_Soldier"
+      archetypeName: "Guard - Seek And Destroy"
       attitude: AttitudeAggressive
       vulnerabilities {
       }
@@ -19004,7 +18979,7 @@ characters {
       filename: "backer_humanmale_denniscochise"
     }
     portrait_code_override: "s5h1c1b10c1"
-    karma: 69
+    karma: 47
     has_fist: false
   }
 }
@@ -19334,6 +19309,8 @@ mapEvents: "eActivateGino"
 mapEvents: "eEvalGino"
 mapEvents: "eMatrixBridge"
 mapEvents: "eReturnToPlayer"
+mapEvents: "eDisableViolet"
+mapEvents: "eSwitchToViolet"
 senseTags: "isIC"
 senseTags: "isPacoDrone"
 senseTags: "isGinoNoticed"
