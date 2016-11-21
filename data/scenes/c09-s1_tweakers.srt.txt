@@ -13752,7 +13752,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (SceneDimension)"
           args {
-            string_value: "Default"
+            string_value: "Matrix"
           }
         }
       }
@@ -13792,7 +13792,31 @@ triggers {
       }
     }
     ops {
-      functionName: "Enable/Disable Team\'s Turn"
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isTeam"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
       args {
         call_value {
           functionName: "Get Preset Value (string)"
@@ -13800,51 +13824,7 @@ triggers {
             string_value: "FactionList"
           }
           args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (SceneDimension)"
-          args {
-            string_value: "Matrix"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Enable/Disable Team\'s Turn"
-      args {
-        call_value {
-          functionName: "Get Preset Value (string)"
-          args {
-            string_value: "FactionList"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 1
+            int_value: 3
           }
         }
       }
@@ -13853,6 +13833,44 @@ triggers {
           functionName: "Get Map Item (SceneDimension)"
           args {
             string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Control"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isTeam"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PlayerOrAI"
+          }
+          args {
+            int_value: 1
           }
         }
       }
@@ -13894,7 +13912,7 @@ triggers {
   }
   elseActions {
   }
-  is_oneshot: true
+  is_oneshot: false
 }
 triggers {
   name: "Violet.ReturnToPlayer"
@@ -13909,39 +13927,6 @@ triggers {
   conditions {
   }
   actions {
-    ops {
-      functionName: "Enable/Disable Team\'s Turn"
-      args {
-        call_value {
-          functionName: "Get Preset Value (string)"
-          args {
-            string_value: "FactionList"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (SceneDimension)"
-          args {
-            string_value: "Default"
-          }
-        }
-      }
-    }
     ops {
       functionName: "Change Actor Team"
       args {
@@ -14027,7 +14012,27 @@ triggers {
       }
     }
     ops {
-      functionName: "Enable/Disable Team\'s Turn"
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Actor\'s Persona"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "582287e9663136cc0e006252"
+                  }
+                }
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
       args {
         call_value {
           functionName: "Get Preset Value (string)"
@@ -14035,18 +14040,7 @@ triggers {
             string_value: "FactionList"
           }
           args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 1
+            int_value: 3
           }
         }
       }
@@ -14055,6 +14049,40 @@ triggers {
           functionName: "Get Map Item (SceneDimension)"
           args {
             string_value: "Matrix"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Control"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Actor\'s Persona"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "582287e9663136cc0e006252"
+                  }
+                }
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PlayerOrAI"
+          }
+          args {
+            int_value: 1
           }
         }
       }
@@ -14073,7 +14101,7 @@ triggers {
   }
   isActive: true
   idRef {
-    id: "58312d8f66313648170058ba"
+    id: "58324322663136ec0b0023fd"
   }
   elseActions {
   }
@@ -14907,18 +14935,25 @@ triggers {
         }
       }
     }
-  }
-  actions {
     ops {
-      functionName: "Enable/Disable Team\'s Turn"
+      functionName: "Evaluate If Actor is Inside Region"
       args {
         call_value {
-          functionName: "Get Preset Value (string)"
+          functionName: "Specific Actor"
           args {
-            string_value: "FactionList"
+            call_value {
+              functionName: "Get Actor\'s Persona"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "582287e9663136cc0e006252"
+                  }
+                }
+              }
+            }
           }
           args {
-            int_value: 0
           }
         }
       }
@@ -14926,7 +14961,51 @@ triggers {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "EnableOrDisable"
+            string_value: "AreOrAreNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "51d34cc23561642408000129"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Actor\'s Persona"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "582287e9663136cc0e006252"
+                  }
+                }
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
           }
           args {
             int_value: 0
@@ -14942,10 +15021,342 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Change Actor Control"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Actor\'s Persona"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "582287e9663136cc0e006252"
+                  }
+                }
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PlayerOrAI"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Actor\'s Persona"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "51d34f4f3561642408000134"
+                  }
+                }
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Matrix"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Display Text over Actor"
+      args {
+        call_value {
+          functionName: "Get Actor\'s Persona"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "51d34f4f3561642408000134"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        string_value: "I should\'ve known.   This is my domain!"
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 8
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 1
+      }
+    }
   }
   isActive: true
   idRef {
     id: "5831f6a66631362c10007959"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Violet.DeckerKilled"
+  events {
+    ops {
+      functionName: "On Actor Death"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Actor\'s Persona"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "51d34f4f3561642408000134"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "51d34e5b3561642408000130"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "583121386631364817005769"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Cause Damage"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "51d34f4f3561642408000134"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 5
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HPOrAP"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Actor\'s Persona"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "582287e9663136cc0e006252"
+                  }
+                }
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5832480c663136ec0b002412"
   }
   elseActions {
   }
@@ -19424,8 +19835,6 @@ scene_dimensions {
   turns_per_round: 3
   is_matrix: true
   max_alarm_value: 50
-}
-character_roster {
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
