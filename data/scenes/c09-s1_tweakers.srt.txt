@@ -508,66 +508,6 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Kill Actor"
-      args {
-        call_value {
-          functionName: "All Actors With Tag"
-          args {
-            call_value {
-              functionName: "Get Map Item (SenseTagList)"
-              args {
-                string_value: "isEntryGuy"
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Preset Value (int)"
-              args {
-                string_value: "AllOrAny"
-              }
-              args {
-                int_value: 0
-              }
-            }
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "DeathMethod"
-          }
-          args {
-            int_value: 3
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "FacingDirection"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
       functionName: "Autosave Game"
     }
   }
@@ -923,6 +863,66 @@ triggers {
       }
       args {
         float_value: -1
+      }
+    }
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isEntryGuy"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
       }
     }
     ops {
@@ -5859,31 +5859,6 @@ triggers {
           }
           args {
             int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Suspend Team\'s Turn"
-      args {
-        call_value {
-          functionName: "Get Preset Value (string)"
-          args {
-            string_value: "FactionList"
-          }
-          args {
-            int_value: 2
-          }
-        }
-      }
-      args {
-        int_value: 1
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (SceneDimension)"
-          args {
-            string_value: "Matrix"
           }
         }
       }
@@ -13541,6 +13516,56 @@ triggers {
   is_oneshot: false
 }
 triggers {
+  name: "Violet.Bridge [Sound]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eMatrixBridge"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:ambient_subway"
+          }
+          args {
+            string_value: "SubwayArrive"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5832564d663136840500741a"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
   name: "Violet.MatrixTerminal"
   events {
     ops {
@@ -15098,6 +15123,31 @@ triggers {
       }
     }
     ops {
+      functionName: "Suspend Team\'s Turn"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Matrix"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Display Text over Actor"
       args {
         call_value {
@@ -15445,6 +15495,138 @@ triggers {
   isActive: true
   idRef {
     id: "5831f7566631362c1000795b"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: " "
+  events {
+  }
+  conditions {
+  }
+  actions {
+  }
+  isActive: false
+  idRef {
+    id: "58324f5266313684050073dd"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "DEV.TweakerDen"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "58324f0a66313684050073db"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Start Conversation"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "58324f9366313684050073e1"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "58324f5466313684050073de"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "DEV.VioletsMatrix"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "58324f3e66313684050073dc"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Start Conversation"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "5832508e66313684050073fa"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Actor\'s Persona"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "582287e9663136cc0e006252"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "583251686631368405007408"
   }
   elseActions {
   }
@@ -16729,7 +16911,7 @@ regions {
 regions {
   name: "MatrixArrival"
   position {
-    x: 67
+    x: 65
     y: 53
     width: 2
     height: 16
@@ -18444,7 +18626,7 @@ characters {
   gridPoint {
     x: 65
     y: 0
-    z: 57
+    z: 54
   }
   orientation: ORIENTATION_E
   GeneralTags: "isIC"
@@ -18455,11 +18637,22 @@ characters {
   lod: 0
   character_instance {
     prefab_name: "HongKong:Matrix/MatrixIC_Ranged"
-    character_sheet_id: "IC_Lv2_White_Ranged"
-    equipment_sheet_id: "IC White Melee Low"
+    character_sheet_id: "IC_Lv3_White_Ranged"
+    equipment_sheet_id: "IC White Ranged Lv3 Gear"
     character_mod {
       stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
         hp: 0
+        ap: 0
+        armor: 0
+        force: 0
         morale: 0
         discipline: 0
         awareness: 0
@@ -18467,12 +18660,43 @@ characters {
         authority: 0
         protect_tether_range: 0
         move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
       }
       skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
       }
       specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
       }
-      archetypeName: "gumbo_IC_Soldier"
+      archetypeName: "Guard - Seek And Destroy"
       attitude: AttitudeAggressive
       vulnerabilities {
       }
@@ -18482,22 +18706,22 @@ characters {
     GeneralTags: "isIC"
     enabled_at_start: false
     pc_spawn_number: -1
-    spawn_type: SpawnType_Matrix
+    spawn_type: SpawnType_Normal
     portrait {
       filename: ""
     }
     dimension_name: "Matrix"
-    karma: 31
+    karma: 33
   }
 }
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 65
+    x: 63
     y: 0
-    z: 66
+    z: 64
   }
-  orientation: ORIENTATION_W
+  orientation: ORIENTATION_S
   GeneralTags: "isIC"
   displayName: "IC_Ranged_2"
   idRef {
@@ -18506,11 +18730,22 @@ characters {
   lod: 0
   character_instance {
     prefab_name: "HongKong:Matrix/MatrixIC_Melee"
-    character_sheet_id: "IC_Lv2_White_Ranged"
-    equipment_sheet_id: "IC White Melee Low"
+    character_sheet_id: "IC_Lv3_White_Melee"
+    equipment_sheet_id: "IC White Melee Lv3 Gear"
     character_mod {
       stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
         hp: 0
+        ap: 0
+        armor: 0
+        force: 0
         morale: 0
         discipline: 0
         awareness: 0
@@ -18518,12 +18753,43 @@ characters {
         authority: 0
         protect_tether_range: 0
         move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
       }
       skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
       }
       specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
       }
-      archetypeName: "gumbo_IC_Soldier"
+      archetypeName: "Guard - Seek And Destroy"
       attitude: AttitudeAggressive
       vulnerabilities {
       }
@@ -18533,12 +18799,12 @@ characters {
     GeneralTags: "isIC"
     enabled_at_start: false
     pc_spawn_number: -1
-    spawn_type: SpawnType_Matrix
+    spawn_type: SpawnType_Normal
     portrait {
       filename: ""
     }
     dimension_name: "Matrix"
-    karma: 31
+    karma: 33
   }
 }
 characters {
@@ -18678,7 +18944,7 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 67
+    x: 69
     y: 0
     z: 63
   }
@@ -18689,9 +18955,9 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "HongKong:Matrix/MatrixIC_blackRanged"
-    character_sheet_id: "IC_Lv2_Black_Ranged"
-    equipment_sheet_id: "IC Black Ranged Mid"
+    prefab_name: "HongKong:Matrix/MatrixIC_goldLaser"
+    character_sheet_id: "IC_Lv4_White_Ranged"
+    equipment_sheet_id: "IC White Ranged Lv4 Gear"
     character_mod {
       stats {
         body: 0
@@ -18713,6 +18979,9 @@ characters {
         authority: 0
         protect_tether_range: 0
         move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
       }
       skills {
         ranged_combat: 0
@@ -18733,6 +19002,7 @@ characters {
         etiquette_shadowrunner: 0
         etiquette_street: 0
         etiquette_academic: 0
+        cyberware_affinity: 0
       }
       specializations {
         pistol: 0
@@ -18742,16 +19012,16 @@ characters {
         edged: 0
         unarmed: 0
         spirit_control: 0
-        esp_control: 2
+        esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "gumbo_IC_Soldier"
+      archetypeName: "Guard - Seek And Destroy"
       attitude: AttitudeAggressive
       vulnerabilities {
       }
     }
     team_id: "Yakuza"
-    char_name: "Black IC"
+    char_name: "Security IC"
     enabled_at_start: false
     pc_spawn_number: -1
     dimension_name: "Matrix"
@@ -19835,6 +20105,8 @@ scene_dimensions {
   turns_per_round: 3
   is_matrix: true
   max_alarm_value: 50
+}
+character_roster {
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
