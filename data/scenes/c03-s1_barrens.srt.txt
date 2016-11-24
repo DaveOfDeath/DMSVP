@@ -22,7 +22,7 @@ triggers {
         }
       }
       args {
-        int_value: 80
+        int_value: 150
       }
     }
     ops {
@@ -12951,7 +12951,7 @@ triggers {
         float_value: 0
       }
       args {
-        float_value: 10
+        float_value: 16
       }
       args {
         float_value: 3
@@ -12978,7 +12978,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (InteractableObject)"
           args {
-            string_value: "57bbe2736131314805008114"
+            string_value: "583767e56631363416006614"
           }
         }
       }
@@ -13120,7 +13120,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (InteractableObject)"
           args {
-            string_value: "57bbe2fe613131480500811a"
+            string_value: "5837686c6631363416006619"
           }
         }
       }
@@ -13190,7 +13190,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (InteractableObject)"
           args {
-            string_value: "57bbe2fe613131480500811a"
+            string_value: "5837686c6631363416006619"
           }
         }
       }
@@ -13239,6 +13239,23 @@ triggers {
         int_value: 150
       }
     }
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
   }
   isActive: true
   idRef {
@@ -13249,19 +13266,8 @@ triggers {
   is_oneshot: false
 }
 triggers {
-  name: "OnCameraMatrix.NoRain"
+  name: "OnCameraIndoors.NoRain"
   events {
-    ops {
-      functionName: "On Camera Region Activated"
-      args {
-        call_value {
-          functionName: "Get Map Item (CameraRegion)"
-          args {
-            string_value: "57af84c5613131001c007ff6"
-          }
-        }
-      }
-    }
     ops {
       functionName: "On Camera Region Activated"
       args {
@@ -13305,10 +13311,88 @@ triggers {
         int_value: 0
       }
     }
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
   }
   isActive: true
   idRef {
     id: "57c0f26d346265381100793e"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "OnCameraMatrix.DataLines"
+  events {
+    ops {
+      functionName: "On Camera Region Activated"
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "57af84c5613131001c007ff6"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 5
+          }
+        }
+      }
+      args {
+        int_value: 30
+      }
+    }
+    ops {
+      functionName: "Set Environmental Effect Amount"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "EnvironmentalEffects"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "583768a7663136341600661a"
   }
   elseActions {
   }
@@ -13605,7 +13689,7 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "CameraBounds"
+  name: "cMainCamera"
   position {
     x: -108
     y: -22
@@ -15577,7 +15661,7 @@ regions {
   vfx_fill_prefab_name: ""
 }
 regions {
-  name: "camera_VioletMatrix"
+  name: "cVioletsMatrix"
   position {
     x: -115
     y: 92
@@ -15586,7 +15670,7 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: true
-  is_matrix_node: false
+  is_matrix_node: true
   is_vfx_fill_region: false
   idRef {
     id: "57af84c5613131001c007ff6"
@@ -15622,64 +15706,6 @@ regions {
   default_music: "HongKong-Legwork-Hacking"
   loop_combat_music: true
   loop_default_music: true
-  no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
-  loop_combat_intense_music: true
-  loop_combat_wrapup_music: true
-  combat_intense_threshold: 5
-  combat_wrapup_threshold: 2
-  combat_fade_interval: 2
-  combat_intro_stinger: ""
-  combat_outro_stinger: ""
-  vfx_fill_prefab_name: ""
-}
-regions {
-  name: "rgnVioletMatrix"
-  position {
-    x: -114
-    y: 93
-    width: 33
-    height: 18
-  }
-  enabledAtStart: true
-  is_camera_region: false
-  is_matrix_node: true
-  is_vfx_fill_region: false
-  idRef {
-    id: "57c03a0e34626538190073e9"
-  }
-  highlight_color {
-    r: 0
-    g: 0
-    b: 0
-    a: 1
-  }
-  visible_at_start: false
-  is_closet: false
-  is_teleporter_region: false
-  directional_light_dir {
-    x: -0.5
-    y: -1
-    z: -0.75
-  }
-  directional_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 1
-  }
-  ambient_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 1
-  }
-  ambience_template: ""
-  combat_music: ""
-  default_music: ""
-  loop_combat_music: true
-  loop_default_music: false
   no_fow_in_region: false
   combat_intense_music: ""
   combat_wrapup_music: ""
