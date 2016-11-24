@@ -829,7 +829,7 @@ triggers {
         }
       }
       args {
-        string_value: "That\342\200\231s not how Coyote does it."
+        string_value: "Thassss not how Coyote doesssth it."
       }
       args {
         float_value: 0
@@ -1052,6 +1052,7 @@ triggers {
         float_value: 0
       }
       args {
+        float_value: 0
       }
     }
   }
@@ -1221,7 +1222,7 @@ triggers {
         }
       }
       args {
-        string_value: "The Ripper is a lie!"
+        string_value: "This place is awfully crowded today."
       }
       args {
         float_value: 0
@@ -4396,6 +4397,132 @@ triggers {
   is_oneshot: true
 }
 triggers {
+  name: "Violet.QuestItemClear"
+  events {
+    ops {
+      functionName: "On Conversation Complete"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bTalkedToViolet"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "c03-s1_CameraDisabled"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "c03-s1_CameraSlaved"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "583753b7663136341600633b"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
   name: " "
   events {
   }
@@ -5796,7 +5923,7 @@ triggers {
         }
       }
       args {
-        string_value: "You tear into the hole, and find a credstick tucked into the wall."
+        string_value: "You enlarge the small tear into the wall, and find a credstick tucked inside."
       }
       args {
         float_value: 0
@@ -7717,18 +7844,19 @@ characters {
     z: 8
   }
   orientation: ORIENTATION_N
+  displayName: "Crew"
   idRef {
     id: "40703625306434d028005bcd"
   }
   interactionRoot {
-    isEnabled: false
+    isEnabled: true
     interactionRadius: 2
     conversationPoint {
       conversationID: "581d97453966302818004306"
       turnToFace: true
     }
     interactionIcon: InteractionIcon_Conversation
-    interaction_info_text: "Talk to Decker?"
+    interaction_info_text: "Talk to troll?"
   }
   lod: 0
   character_instance {
@@ -7799,7 +7927,7 @@ characters {
       prefab_name: "CyberdeckVirtuaX"
     }
     team_id: "Civilians"
-    char_name: "Guest02"
+    char_name: "Troll Decker"
     pc_spawn_number: -1
     portrait {
       filename: "pc_orkfemale_excl_oni"
@@ -7807,6 +7935,8 @@ characters {
     portrait_code_override: "s6h12c1b0t9"
     karma: 6
     is_prop_character: true
+    first_name: "Violet"
+    last_name: "Hendrix"
   }
 }
 characters {
@@ -7817,6 +7947,7 @@ characters {
     z: 8
   }
   orientation: ORIENTATION_S
+  displayName: "Crew"
   idRef {
     id: "40703c88306434d028005bce"
   }
@@ -7883,13 +8014,15 @@ characters {
       }
     }
     team_id: "Civilians"
-    char_name: "Guest03"
+    char_name: "Human Mercenary"
     pc_spawn_number: -1
     portrait {
       filename: "Backer_HumanMale_JonathanBartlett_JonBartlett_Tribute"
     }
     karma: 6
     is_prop_character: true
+    first_name: "Jon"
+    last_name: "Bartlett"
   }
 }
 characters {
@@ -9401,7 +9534,7 @@ characters {
   lod: 0
   character_instance {
     prefab_name: "HongKong:Businessman/HumanMaleBusinessmanAsian"
-    character_sheet_id: "AGChemie_Cyberzombie_Lv1"
+    character_sheet_id: "BaseCivilian"
     character_mod {
       stats {
         body: 0
@@ -9411,9 +9544,11 @@ characters {
         intelligence: 0
         willpower: 0
         essence: 0
+        magic: 0
         hp: 0
         ap: 0
         armor: 0
+        force: 0
         morale: 0
         discipline: 0
         awareness: 0
@@ -9428,13 +9563,36 @@ characters {
       skills {
         ranged_combat: 0
         close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
         dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
       }
       specializations {
+        pistol: 0
         rifle: 0
+        shotgun: 0
+        smg: 0
         edged: 0
         unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
       }
+      attitude: AttitudeAggressive
       vulnerabilities {
       }
     }
@@ -9442,9 +9600,9 @@ characters {
     char_name: "New Actor"
     pc_spawn_number: -1
     portrait {
-      filename: "NPC_TrollMale_CyberZombie"
+      filename: ""
     }
-    karma: 174
+    karma: 6
   }
 }
 variables {
@@ -9720,7 +9878,7 @@ variables {
   }
 }
 variables {
-  string_value: "{{00FF00}}3-4-2-4-3-6{{-}}"
+  string_value: "{{ADFF2F}}3-4-2-4-3-6{{-}}"
   variableref_value {
     scope: TsVariableScope_Scene
     name: "sSafeCode"
@@ -9732,6 +9890,14 @@ variables {
   variableref_value {
     scope: TsVariableScope_Scene
     name: "b_KubotaFavor"
+    typeName: "bool"
+  }
+}
+variables {
+  bool_value: false
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "bTalkedToViolet"
     typeName: "bool"
   }
 }

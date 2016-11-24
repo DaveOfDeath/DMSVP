@@ -130,7 +130,7 @@ nodes {
     }
   }
   branches {
-    responseText: "I think I have something that belongs to you."
+    responseText: "{{CC}}Slaved Cameras{{/CC}} I think I have something that belongs to you."
     conditions {
       ops {
         functionName: "Evaluate If Actor Has Item"
@@ -164,7 +164,7 @@ nodes {
           call_value {
             functionName: "Get Map Item (Item)"
             args {
-              string_value: "Slave_Cameras"
+              string_value: "c03-s1_CameraSlaved"
             }
           }
         }
@@ -178,7 +178,7 @@ nodes {
     }
   }
   branches {
-    responseText: "Sorry about that, I didn\'t want anyone watching over my shoulder."
+    responseText: "{{CC}}Disabled Cameras{{/CC}} Sorry about that, I didn\'t want anyone watching over my shoulder."
     conditions {
       ops {
         functionName: "Evaluate If Actor Has Item"
@@ -212,7 +212,7 @@ nodes {
           call_value {
             functionName: "Get Map Item (Item)"
             args {
-              string_value: "Disabled_Cameras"
+              string_value: "c03-s1_CameraDisabled"
             }
           }
         }
@@ -272,7 +272,7 @@ nodes {
     id: "581d9abb396630281800433c"
   }
   index: 6
-  text: "{{GM}}The troll woman doesn\'t look up from her display.{{/GM}}\n\nBuzz. I\'m not on the menu."
+  text: "{{GM}}The troll woman doesn\'t look up from her display.{{/GM}}\n\nBuzz off. I\'m not on the menu."
   branches {
     responseText: ""
     nextNodeIndex: 3
@@ -552,13 +552,31 @@ nodes {
   }
   index: 16
   text: "{{GM}}The troll woman looks at you, dumbfounded.{{/GM}}\n\nI... uh, I think people might want to know what goes on around these streets."
+  branches {
+    responseText: ""
+    nextNodeIndex: 17
+    idRef {
+      id: "581d97453966302818004306:5837553f663136341600637b"
+    }
+  }
   nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5837553f663136341600637e"
+  }
+  index: 17
+  text: "Guess that explains the blackout."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "40703c88306434d028005bce"
+  }
 }
 nodes {
   idRef {
     id: "581d9e093966302818004407"
   }
-  index: 17
+  index: 18
   text: "{{GM}}The large troll woman obsesses over a small digital screen, as she tries program after program to recover the cameras that someone crashed.{{/GM}}\n\nThey crashed the camera network-- zero current subscribers, but randomized the security key so I can\'t log in and reopen them. I can\'t get a feed on what\'s going on with the street market."
   branches {
     responseText: ""
@@ -574,8 +592,15 @@ nodes {
   idRef {
     id: "581d97723966302818004312"
   }
-  index: 18
-  text: "{{GM}}Violet looks at you with surprising disdain.{{/GM}}\n\nYou really shouldn\'t be talking to me, omae."
+  index: 19
+  text: "{{GM}}She looks at you with surprising disdain.{{/GM}}\n\nYou really shouldn\'t be talking to me, omae."
+  branches {
+    responseText: ""
+    nextNodeIndex: 20
+    idRef {
+      id: "581d97453966302818004306:583753296631363416006247"
+    }
+  }
   nodeType: ConversationNodeType_Simple
   actions {
     ops {
@@ -600,6 +625,17 @@ nodes {
         }
       }
     }
+  }
+}
+nodes {
+  idRef {
+    id: "58375329663136341600624a"
+  }
+  index: 20
+  text: "C\'mon girl... You gotta play nice."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "40703c88306434d028005bce"
   }
 }
 roots {
@@ -636,7 +672,53 @@ roots {
         call_value {
           functionName: "Get Map Item (Item)"
           args {
-            string_value: "Slave_Cameras"
+            string_value: "c03-s1_CameraSlaved"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bTalkedToViolet"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "40703625306434d028005bcd"
           }
         }
       }
@@ -684,13 +766,59 @@ roots {
         call_value {
           functionName: "Get Map Item (Item)"
           args {
-            string_value: "Disabled_Cameras"
+            string_value: "c03-s1_CameraDisabled"
           }
         }
       }
     }
   }
-  nextNodeIndex: 17
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bTalkedToViolet"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "40703625306434d028005bcd"
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 18
   hideIfUnavailable: true
   idRef {
     id: "581d97453966302818004306:581d9763396630281800430d"
@@ -732,7 +860,7 @@ roots {
         call_value {
           functionName: "Get Map Item (Item)"
           args {
-            string_value: "Disabled_Cameras"
+            string_value: "c03-s1_CameraDisabled"
           }
         }
       }
@@ -769,13 +897,37 @@ roots {
         call_value {
           functionName: "Get Map Item (Item)"
           args {
-            string_value: "Slave_Cameras"
+            string_value: "c03-s1_CameraSlaved"
           }
         }
       }
     }
   }
-  nextNodeIndex: 18
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bTalkedToViolet"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 19
   hideIfUnavailable: true
   idRef {
     id: "581d97453966302818004306:581d9766396630281800430f"
