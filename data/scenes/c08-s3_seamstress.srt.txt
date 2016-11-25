@@ -9,6 +9,31 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Advancement_Available"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Set Goal Status"
       args {
         call_value {
@@ -94,6 +119,39 @@ triggers {
           functionName: "Get Map Item (Actor)"
           args {
             string_value: "51ae9966303031c014003109"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (AnimationModifiers)"
+          args {
+            string_value: "bouncer"
+          }
+          args {
+            string_value: "bouncer"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Animation State Of Actor To Animation Modifier"
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "AnimationState"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "80aa604530303184100041cf"
           }
         }
       }
@@ -212,203 +270,47 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "SceneInit_Coyote"
-  events {
-    ops {
-      functionName: "On Map Start"
-    }
-  }
-  conditions {
-    ops {
-      functionName: "OR"
-      args {
-        call_value {
-          functionName: "Comparison (bool)"
-          args {
-            call_value {
-              functionName: "Get Story Variable (bool)"
-              args {
-                string_value: "518d7674643431b03f0041ab"
-              }
-              args {
-                string_value: "c09_GinoAlive"
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Preset Value (int)"
-              args {
-                string_value: "IsOrIsNot"
-              }
-              args {
-                int_value: 1
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Preset Value (int)"
-              args {
-                string_value: "bool"
-              }
-              args {
-                int_value: 1
-              }
-            }
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Comparison (bool)"
-          args {
-            call_value {
-              functionName: "Get Story Variable (bool)"
-              args {
-                string_value: "518d7674643431b03f0041ab"
-              }
-              args {
-                string_value: "c09_GinoDead"
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Preset Value (int)"
-              args {
-                string_value: "IsOrIsNot"
-              }
-              args {
-                int_value: 1
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Preset Value (int)"
-              args {
-                string_value: "bool"
-              }
-              args {
-                int_value: 1
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  actions {
-    ops {
-      functionName: "Activate Actor Spawner"
-      args {
-        call_value {
-          functionName: "Get Map Item (Actor Reference)"
-          args {
-            string_value: "801ee54b30303184100041bd"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-  }
-  isActive: true
-  idRef {
-    id: "51d32b13623331f8190010e1"
-  }
-  elseActions {
-  }
-  is_oneshot: true
-}
-triggers {
   name: "LevelLoad_NewsUpdate"
   events {
     ops {
-      functionName: "On Map Start"
+      functionName: "On Map Setup"
     }
   }
   conditions {
   }
   actions {
     ops {
-      functionName: "Move Prop"
+      functionName: "Set Variable (string)"
       args {
         call_value {
-          functionName: "Get Map Item (Prop)"
+          functionName: "Get Story Variable (string)"
           args {
-            string_value: "51c8f48c623331bc13004417"
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "SeamstessUnionTickerTapeA"
           }
         }
       }
       args {
-        call_value {
-          functionName: "Current Location of Prop"
-          args {
-            call_value {
-              functionName: "Get Map Item (Prop)"
-              args {
-                string_value: "51a6a9a4616634c41b000f41"
-              }
-            }
-          }
-        }
+        string_value: "                                                    {{000000}}Breaking News:{{-}} Sioux airbus crashes near Crater Lake. Current reports indicate that engine failure caused the crash. There were no survivors.                                                "
       }
     }
     ops {
-      functionName: "Move Prop"
+      functionName: "Set Variable (string)"
       args {
         call_value {
-          functionName: "Get Map Item (Prop)"
+          functionName: "Get Story Variable (string)"
           args {
-            string_value: "51c8f48c623331bc13004418"
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "SeamstessUnionTickerTapeB"
           }
         }
       }
       args {
-        call_value {
-          functionName: "Current Location of Prop"
-          args {
-            call_value {
-              functionName: "Get Map Item (Prop)"
-              args {
-                string_value: "51a6a98e616634c41b000f3f"
-              }
-            }
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Delete Prop"
-      args {
-        call_value {
-          functionName: "Get Map Item (Prop)"
-          args {
-            string_value: "51a6a9a4616634c41b000f41"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Delete Prop"
-      args {
-        call_value {
-          functionName: "Get Map Item (Prop)"
-          args {
-            string_value: "51a6a98e616634c41b000f3f"
-          }
-        }
+        string_value: "                                                    {{00FF00}}Local News:{{-}} A shooting occurred near the 600 block of 4th Avenue West. Sources say a group of armed assailants burst in and attacked an apparent BTL Lab. Police investigators on scene refused to comment about the BTL vigilantes.                                                     "
       }
     }
   }
@@ -1566,6 +1468,122 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "DEBUG"
+  events {
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Recruited_Jon"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Recruited_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Recruited_Violet"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Recruited_Seamus"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837e541663136c0030075ee"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "LowerLevelTarget"
   position {
@@ -1839,7 +1857,7 @@ regions {
     b: 0.50196081
     a: 0.88235295
   }
-  ambience_template: "bar-busy"
+  ambience_template: "bar-quiet"
   combat_music: ""
   default_music: "HongKong-Hub-Club88-MainRoom"
   loop_combat_music: true
@@ -1897,9 +1915,9 @@ regions {
     b: 0.50196081
     a: 0.88235295
   }
-  ambience_template: "bar-quiet"
+  ambience_template: "darklab-quiet"
   combat_music: ""
-  default_music: "Seattle-Bar22"
+  default_music: "HongKong-Hub-Club88-ThroughWalls"
   loop_combat_music: true
   loop_default_music: true
   no_fow_in_region: false
@@ -2117,6 +2135,7 @@ characters {
     z: -15
   }
   orientation: ORIENTATION_N
+  GeneralTags: "isCoyote"
   displayName: "Coyote"
   idRef {
     id: "801ee54b30303184100041bd"
@@ -2131,7 +2150,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Story/CoyoteUgly"
+    prefab_name: "Seattle:Story/CoyoteUgly"
     character_sheet_id: "Lonestar_Lv1_Human_Pistol"
     character_mod {
       stats {
@@ -2188,10 +2207,13 @@ characters {
       }
       archetypeName: "Guard - Protect"
       attitude: AttitudeAggressive
+      vulnerabilities {
+      }
     }
     team_id: "Civilians"
     char_name: "Coyote"
-    enabled_at_start: false
+    GeneralTags: "isCoyote"
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: "NPC_HumanFemale_CoyoteHealed"
@@ -2556,11 +2578,11 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -7
+    x: -5
     y: 0
-    z: -10
+    z: -16
   }
-  orientation: ORIENTATION_W
+  orientation: ORIENTATION_N
   displayName: "Delilah Muscle"
   idRef {
     id: "80aa604530303184100041cf"
@@ -3103,6 +3125,8 @@ characters {
       }
       archetypeName: "Guard - Protect"
       attitude: AttitudeAggressive
+      vulnerabilities {
+      }
     }
     equipment {
       prefab_name: "SamuraiMilitary"
@@ -3522,6 +3546,7 @@ characters {
     z: 4
   }
   orientation: ORIENTATION_W
+  GeneralTags: "isBartlett"
   displayName: "Jon Bartlett"
   idRef {
     id: "51ae70e2303031a41400153e"
@@ -3536,7 +3561,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Story/JonathanBartlett"
+    prefab_name: "Seattle:Story/JonathanBartlett"
     character_sheet_id: "BaseCivilian"
     character_mod {
       stats {
@@ -3561,12 +3586,15 @@ characters {
       }
       specializations {
       }
+      vulnerabilities {
+      }
     }
     equipment {
-      prefab_name: "SamuraiMilitary"
+      prefab_name: "Bartlett_Armor Lv1"
     }
     team_id: "Civilians"
     char_name: "Jon Bartlett"
+    GeneralTags: "isBartlett"
     pc_spawn_number: -1
     portrait {
       filename: "Backer_HumanMale_JonathanBartlett_JonBartlett_Tribute"
@@ -3979,6 +4007,405 @@ characters {
     is_prop_character: true
   }
 }
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: 4
+    y: 0
+    z: 8
+  }
+  orientation: ORIENTATION_E
+  displayName: "Crew"
+  idRef {
+    id: "5837ec3f6631363414000c97"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Core/TrollFemale"
+    character_sheet_id: "Crew_Violet_Lv1"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Non-Combatant"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    equipment {
+      prefab_name: "Violet_Baggy Lv1"
+    }
+    equipment {
+      prefab_name: "CyberdeckViolet 1"
+    }
+    team_id: "Civilians"
+    char_name: "Violet"
+    GeneralTags: "isViolet"
+    pc_spawn_number: -1
+    hiring_type: HiringType_Hireable
+    portrait {
+      filename: "pc_orkfemale_excl_oni"
+    }
+    description_bio: "A street kid with street muscle who brings her unusal style to the Matrix."
+    portrait_code_override: "s6h12c1b0t9"
+    karma: 1
+    hiring_cost_override: 0
+    hiring_tag: "Crew: Decker"
+    id: "Crew_Lv1_Violet"
+    first_name: "Violet"
+    last_name: "Hendrix"
+    cyberware_head: "(Head) Datajack"
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: 9
+    y: 0
+    z: 2
+  }
+  orientation: ORIENTATION_S
+  displayName: "Crew"
+  idRef {
+    id: "5837ec656631363414000c98"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Core/DwarfMale"
+    character_sheet_id: "Crew_Seamus_Lv1"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Non-Combatant"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    equipment {
+      prefab_name: "Seamus_Jacket Lv1"
+    }
+    team_id: "Civilians"
+    char_name: "Seamus O\'Toole"
+    GeneralTags: "isSeamus"
+    pc_spawn_number: -1
+    hiring_type: HiringType_Hireable
+    portrait {
+      filename: "pc_dwarfmale_02b_beardie"
+    }
+    description_bio: "Seamus trusts in his body, mind, and magic - and in very little else. Well, and single malt whiskey, too."
+    portrait_code_override: "s5h10c13b5c13t0"
+    karma: 1
+    hiring_cost_override: 0
+    hiring_tag: "Crew: Mage"
+    id: "Crew_Lv1_Seamus"
+    first_name: "Seamus"
+    last_name: "O\'Toole"
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -21
+    y: 0
+    z: -9
+  }
+  orientation: ORIENTATION_S
+  displayName: "Crew"
+  idRef {
+    id: "5837ec936631363414000c99"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Triads/ElfFemaleTriad1"
+    character_sheet_id: "Crew_River_Lv1"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Non-Combatant"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    equipment {
+      prefab_name: "River_Vest Lv1"
+    }
+    team_id: "Civilians"
+    char_name: "River Daye"
+    GeneralTags: "isRiver"
+    pc_spawn_number: -1
+    hiring_type: HiringType_Hireable
+    portrait {
+      filename: "STORY_elffemale_River"
+    }
+    description_bio: "A shaman of Dolphin, River is as changeable as the sea, dealing death or returning those on the edge with ease."
+    portrait_code_override: "s3h3c1b0c0t0"
+    karma: 1
+    hiring_cost_override: 0
+    hiring_tag: "Crew: Shaman"
+    id: "Crew_Lv1_River"
+    first_name: "River"
+    last_name: "Daye"
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -93
+    y: 0
+    z: -12
+  }
+  orientation: ORIENTATION_E
+  displayName: "Crew"
+  idRef {
+    id: "5837eed06631363414000d23"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Story/Paco"
+    character_sheet_id: "Crew_Paco_Lv1"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Non-Combatant"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    equipment {
+      prefab_name: "Crew_Drone_Planchada_Low"
+    }
+    equipment {
+      prefab_name: "Paco_Colors Lv1"
+    }
+    team_id: "Civilians"
+    char_name: "Paco"
+    GeneralTags: "isPaco"
+    pc_spawn_number: -1
+    hiring_type: HiringType_Hireable
+    cyberware_left_arm: "Berlin_Induction Datajack"
+    portrait {
+      filename: "npc_humanmale_paco"
+    }
+    description_bio: "Ganger and lover, Paco is desperate to prove himself to Coyote and the world."
+    portrait_code_override: "s6h6c7b7c7"
+    karma: 1
+    hiring_cost_override: 0
+    hiring_tag: "Crew: Rigger"
+    has_fist: false
+    id: "Crew_Lv1_Paco"
+  }
+}
 variables {
   int_value: 0
   variableref_value {
@@ -4107,14 +4534,6 @@ variables {
     typeName: "bool"
   }
 }
-variables {
-  string_value: "                                                                         {{000000}}NEWS UPDATE:{{-}} Rumors have been circulating about a body discovered in a small NTSB facility earlier this afternoon.   Police have refused to comment.                                                                     "
-  variableref_value {
-    scope: TsVariableScope_Scene
-    name: "sText"
-    typeName: "string"
-  }
-}
 goals {
   name: "Talk to the Fixer, Mr. Delilah, About Hiring Runners"
   type: GoalType_Primary
@@ -4220,4 +4639,4 @@ is_persistant: false
 is_persistant_has_value: false
 can_move_outside_camera_regions: true
 can_start_before_triggers: true
-can_use_team_advancement: false
+can_use_team_advancement: true
