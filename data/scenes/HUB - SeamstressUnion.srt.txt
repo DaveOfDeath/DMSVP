@@ -387,7 +387,7 @@ triggers {
   is_oneshot: false
 }
 triggers {
-  name: "RND.StoolDweller"
+  name: "RND.StoolDweller/Stage"
   events {
   }
   conditions {
@@ -418,6 +418,25 @@ triggers {
     }
   }
   actions {
+    ops {
+      functionName: "Delete Props by Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isStageLight"
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        call_value {
+          functionName: "Everywhere"
+        }
+      }
+    }
     ops {
       functionName: "Set Prop Visible by Tag"
       args {
@@ -477,6 +496,25 @@ triggers {
   }
   elseActions {
     ops {
+      functionName: "Delete Props by Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isPianoNight"
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        call_value {
+          functionName: "Everywhere"
+        }
+      }
+    }
+    ops {
       functionName: "Set Prop Visible by Tag"
       args {
         call_value {
@@ -529,7 +567,7 @@ triggers {
       }
     }
   }
-  is_oneshot: true
+  is_oneshot: false
 }
 triggers {
   name: "RND.IdleAnimations"
@@ -544,6 +582,25 @@ triggers {
   conditions {
   }
   actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "54b62398306434c4120044e4"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle_bouncer"
+          }
+        }
+      }
+    }
     ops {
       functionName: "Play Animation From Manifest"
       args {
@@ -862,7 +919,163 @@ triggers {
   }
   elseActions {
   }
-  is_oneshot: true
+  is_oneshot: false
+}
+triggers {
+  name: "RND.Reset"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5837b26b663136341e006b8b"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "_DEBUGGER"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iPatron"
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+    ops {
+      functionName: "Teleport Actor to Area Around Point"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isPatron"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "5713ceda663136c010001b50"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eRNDNextPatron"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837b26f663136341e006b8c"
+  }
+  elseActions {
+  }
+  is_oneshot: false
 }
 triggers {
   name: " "
@@ -1242,6 +1455,101 @@ triggers {
   is_oneshot: false
 }
 triggers {
+  name: "GI.InteractPatrons [Waitress]"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "40726fab306434d028005bd0"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Add Tag to Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isSpeaker"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Triggering Prop"
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Triggering Prop (Interactable)"
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iConvo"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Random (int)"
+          args {
+            int_value: 15
+          }
+          args {
+            int_value: 20
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eGenerateConvo"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837b3a5663136341e006b8d"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
   name: "GI.Convo[1]"
   events {
     ops {
@@ -1351,7 +1659,7 @@ triggers {
         }
       }
       args {
-        string_value: "Sure been one helluva storm.  Going on a week?"
+        string_value: "Sure has been one helluva storm, eh Partner?  Going on what now... A week?"
       }
     }
   }
@@ -1966,7 +2274,7 @@ triggers {
         }
       }
       args {
-        string_value: "I\'m not leaving until Klune pitches me out into the alley."
+        string_value: "I\'m not leaving until I\'m so drunk I can\'t stand... and Kluwe pitches me out into the alley."
       }
     }
   }
@@ -2223,6 +2531,499 @@ triggers {
   is_oneshot: false
 }
 triggers {
+  name: "GI.Convo[15-M]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateConvo"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iConvo"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 15
+      }
+    }
+    ops {
+      functionName: "Compare Actor Gender"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Gender"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sTalker"
+          }
+        }
+      }
+      args {
+        string_value: "Sorry Buddy, I don\'t work the sheets."
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837b3e4663136341e006b8f"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "GI.Convo[15-F]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateConvo"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iConvo"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 15
+      }
+    }
+    ops {
+      functionName: "Compare Actor Gender"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Gender"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sTalker"
+          }
+        }
+      }
+      args {
+        string_value: "You\'re cute.   Ever thought of working here?"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837b41e663136341e006b95"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "GI.Convo[16]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateConvo"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iConvo"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 16
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sTalker"
+          }
+        }
+      }
+      args {
+        string_value: "Another hour and I\'m off."
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837b3e4663136341e006b90"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "GI.Convo[17]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateConvo"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iConvo"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 17
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sTalker"
+          }
+        }
+      }
+      args {
+        string_value: "Kyle can help you with your drinks."
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837b3e4663136341e006b91"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "GI.Convo[18]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateConvo"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iConvo"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 18
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sTalker"
+          }
+        }
+      }
+      args {
+        string_value: "I can\'t remember what I was doing.  I really hope I can go home soon."
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837b3e4663136341e006b92"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "GI.Convo[19]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateConvo"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iConvo"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 19
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sTalker"
+          }
+        }
+      }
+      args {
+        string_value: "If one more Casanova wanna be hits on me tonight..."
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837b3e4663136341e006b93"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "GI.Convo[20]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateConvo"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iConvo"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 20
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sTalker"
+          }
+        }
+      }
+      args {
+        string_value: "It\'s been a long night... My feet hurt.  What is it that you need, Darling?"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837b3ff663136341e006b94"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
   name: "GI.Speak"
   events {
     ops {
@@ -2330,6 +3131,1220 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "DEV - SU HUB"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5837b682663136341e006b96"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Start Conversation"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "5837b6d1663136341e006b98"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837b817663136341e006bad"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: " "
+  events {
+  }
+  conditions {
+  }
+  actions {
+  }
+  isActive: false
+  idRef {
+    id: "5837ca73663136341e006cbd"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "<!-- Rumor Mill -->"
+  events {
+  }
+  conditions {
+  }
+  actions {
+  }
+  isActive: false
+  idRef {
+    id: "5837ca73663136341e006cbe"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Bartender.Rumor[1]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateRumor"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iRumor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sRumor"
+          }
+        }
+      }
+      args {
+        string_value: "Heard that a group of runners got caught trying to get break into some high-security dock facility.   Corp types will be hunting heads for the leak that led them there."
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sReturn"
+          }
+        }
+      }
+      args {
+        string_value: "That\'s what I\'ve heard, anyways.    Anything else I can getcha?"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837ca76663136341e006cbf"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Bartender.Rumor[2]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateRumor"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iRumor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sRumor"
+          }
+        }
+      }
+      args {
+        string_value: "You\'ve been reading too many old fantasy books, friend.   Most people these days just order their suds and move on.\n\nNot everybody is as chatting with the old bartenders as you are."
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sReturn"
+          }
+        }
+      }
+      args {
+        string_value: "Anything else I can getcha?"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837cafb663136341e006cc0"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Bartender.Rumor[3]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateRumor"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iRumor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 3
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sRumor"
+          }
+        }
+      }
+      args {
+        string_value: "Yeah, I have.   I heard that someone thrashed Stevie J\'s place a few days ago.  Rumor has it, same crew burned some Yak BTL facility to the ground a day or two later.\n\nKeep your head down, Chummer... Streets are gonna get bloody on this one."
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sReturn"
+          }
+        }
+      }
+      args {
+        string_value: "That\'s what the streets are saying.   Getcha anything else?"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837cb66663136341e006cd5"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Bartender.Rumor[4]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateRumor"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iRumor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 4
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sRumor"
+          }
+        }
+      }
+      args {
+        string_value: "Actually yeah, I have.   There is rumor of some high-end tech being moved across town in a civilian convoy.\n\nGood score, if someone could locate that bit of intelligence."
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sReturn"
+          }
+        }
+      }
+      args {
+        string_value: "Dunno how solid the intel is, but that\'s what they\'re saying.   Anything else?"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837cbbb663136341e006cd6"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Bartender.Rumor[5]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateRumor"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iRumor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 5
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sRumor"
+          }
+        }
+      }
+      args {
+        string_value: "Ever heard of a club called \"Underworld 93\"?   That big ol\' mascot robot thing they got... It\'s actually a spy station.  Got a direct link up to the Illumanati or the Corp Council or some drek."
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sReturn"
+          }
+        }
+      }
+      args {
+        string_value: "Sounds like a buncha tin-foil hat shit to me... but there it is.   Anything else?"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837cbbb663136341e006cd7"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Bartender.Rumor[6]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateRumor"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iRumor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 6
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sRumor"
+          }
+        }
+      }
+      args {
+        string_value: "I have it on good authority... There is a shipment of some serious military grade hardware sitting in a warehouse down in Tacoma.   \n\nHeard one team already tried to score it and got geeked."
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sReturn"
+          }
+        }
+      }
+      args {
+        string_value: "I can see your wheels turning... But I\'d pass on that.   Too much heat already.   Getcha anything else?"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837cbbb663136341e006cd8"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Bartender.Rumor[7]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateRumor"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iRumor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 7
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sRumor"
+          }
+        }
+      }
+      args {
+        string_value: "Rumor has it that Coyote got herself a major payday... How else could she have paid for that new cyberware she\'s sporting.\n\nKabota\'s doc ain\'t cheap..."
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sReturn"
+          }
+        }
+      }
+      args {
+        string_value: "You know these rumors though.   Probably got a rich uncle who kicked.  Need anything else?"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837cbbe663136341e006cd9"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Bartender.Rumor[8]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateRumor"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iRumor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 8
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sRumor"
+          }
+        }
+      }
+      args {
+        string_value: "Just a word of advice... Stay away from Stuffer Shacks.   \n\nI dunno what it is about those places, but they seem to be magnets for trouble.  Last one I visited had been shot up by some gangers every night for weeks, until some undercover cop busted the gang up."
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sReturn"
+          }
+        }
+      }
+      args {
+        string_value: "It\'s like someones got a thing for them or something.   Keeps bringing old stuff up.   Anywho... Need something else?"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837cbbe663136341e006cda"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Bartender.Rumor[9]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateRumor"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iRumor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 9
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sRumor"
+          }
+        }
+      }
+      args {
+        string_value: "There\'s been some seriously hinky stuff going on out on Lake Washington.   Boats going missing, bodies washing up on shore full of extra holes... but no official investigations.    \n\nThat scream Corp-Coverup to you?"
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sReturn"
+          }
+        }
+      }
+      args {
+        string_value: "I\'d steer clear...  And you didn\'t hear it from me.  Anything else?"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837cbbe663136341e006cdb"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Bartender.Rumor[10]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateRumor"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iRumor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 10
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sRumor"
+          }
+        }
+      }
+      args {
+        string_value: "Had a guy from Renraku stop in the other night.   Was asking about some crew from a dock-shootout a week or so ago. \n\nOffering big money for the crew\'s whereabouts."
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sReturn"
+          }
+        }
+      }
+      args {
+        string_value: "Get the feeling they\'re fishing.   Anything else ya need?"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837cbbe663136341e006cdc"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Bartender.Rumor[11]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateRumor"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iRumor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 11
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sRumor"
+          }
+        }
+      }
+      args {
+        string_value: "I heard that Kluwe used to play some professional sport down in the bay area.   Not sure if he was an urban brawler, or what..."
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sReturn"
+          }
+        }
+      }
+      args {
+        string_value: "How cool would that be?  You good?  Need something else?"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837cbbe663136341e006cdd"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Bartender.Rumor[12]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateRumor"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iRumor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 12
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sRumor"
+          }
+        }
+      }
+      args {
+        string_value: "Yakuza are searching around for someone who hit one of the new BTL dens.   Guess they lost their server in the process, so they don\'t have much to go on..."
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sReturn"
+          }
+        }
+      }
+      args {
+        string_value: "Seem pretty determined to find something.   Need something else?"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837cbbe663136341e006cde"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Bartender.Rumor[13]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateRumor"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iRumor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 13
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sRumor"
+          }
+        }
+      }
+      args {
+        string_value: "An NTSB helicopter pilot stopped in the other night.   Guess he lost his job recently when the flight logs got stolen out of his chopper.\n\nThat\'s one angry wage-slave, Omae.   Steer clear of that guy."
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sReturn"
+          }
+        }
+      }
+      args {
+        string_value: "That\'s what I\'ve heard, anyways.    Anything else I can getcha?"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837cbc8663136341e006cdf"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Bartender.Rumor[14]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateRumor"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iRumor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 14
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sRumor"
+          }
+        }
+      }
+      args {
+        string_value: "You hear about Mercy Hospital? Guess that Ripper cat was hiding there the whole time. Some seriously twisted nut-job doctor and some freak troll.\n\nWhy don\'t they keep lists of people like that?\n\nNot a problem anymore though. Someone purged that place like the fires of heaven themselves swept through. Good riddance."
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sReturn"
+          }
+        }
+      }
+      args {
+        string_value: "Anything else I can getcha?"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837cbc8663136341e006ce0"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Bartender.Rumor[15]"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eGenerateRumor"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iRumor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 15
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sRumor"
+          }
+        }
+      }
+      args {
+        string_value: "Heard that an NTSB warehouse was both the site of another Ripper killing, AND assaulted later the same night by not one, but TWO teams.  \n\nWhat kinda drek do you think that place had to warrant that kinda response?   Had to be some seriously hot tech or secrets in there."
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sReturn"
+          }
+        }
+      }
+      args {
+        string_value: "Seems a bit fishy to me.   Too much activity for a low-security gig.   Anyways... need something else?"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5837cbc8663136341e006ce1"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
 regions {
   name: "Cam.SeamstressUnion"
   position {
@@ -2360,20 +4375,20 @@ regions {
     z: -0.75
   }
   directional_light_color {
-    r: 0.93725491
-    g: 0.9254902
-    b: 0.53725493
+    r: 0.75686276
+    g: 0.74509805
+    b: 0.43137255
     a: 1
   }
   ambient_light_color {
-    r: 0.33725491
-    g: 0.16470589
-    b: 0.16470589
+    r: 0.26666668
+    g: 0.12941177
+    b: 0.12941177
     a: 1
   }
   ambience_template: "bar-quiet"
   combat_music: ""
-  default_music: "HongKong-Hub-SafeHouse"
+  default_music: ""
   loop_combat_music: false
   loop_default_music: true
   no_fow_in_region: false
@@ -2731,7 +4746,7 @@ characters {
       }
     }
     team_id: "Civilians"
-    char_name: "Mordacai"
+    char_name: "Kyle"
     pc_spawn_number: -1
     portrait {
       filename: "backerpc_elfmale_paulbounds"
@@ -2748,6 +4763,7 @@ characters {
     z: 8
   }
   orientation: ORIENTATION_S
+  displayName: "Crew"
   idRef {
     id: "40703c88306434d028005bce"
   }
@@ -2837,6 +4853,12 @@ characters {
   idRef {
     id: "40726fab306434d028005bd0"
   }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    interactionIcon: InteractionIcon_Conversation
+    interaction_info_text: "Talk to Waitress"
+  }
   lod: 0
   character_instance {
     prefab_name: "Seattle:Extras/ElfFemaleProstitute"
@@ -2914,6 +4936,7 @@ characters {
     z: -1.0000001
   }
   orientation: ORIENTATION_E
+  displayName: "Staff"
   idRef {
     id: "54b62398306434c4120044e4"
   }
@@ -3096,6 +5119,7 @@ characters {
   }
   orientation: ORIENTATION_W
   GeneralTags: "isPatron1"
+  GeneralTags: "isPatron"
   displayName: "GI"
   idRef {
     id: "5837299566313660110028fc"
@@ -3104,7 +5128,7 @@ characters {
     isEnabled: true
     interactionRadius: 1
     interactionIcon: InteractionIcon_Conversation
-    interaction_info_text: "Talk to Patron"
+    interaction_info_text: "$(scene.sPatronRollOver)"
   }
   lod: 0
   character_instance {
@@ -3175,6 +5199,7 @@ characters {
     team_id: "Civilians"
     char_name: "Bar Patron 1"
     GeneralTags: "isPatron1"
+    GeneralTags: "isPatron"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -3194,6 +5219,7 @@ characters {
   }
   orientation: ORIENTATION_W
   GeneralTags: "isPatron2"
+  GeneralTags: "isPatron"
   displayName: "GI"
   idRef {
     id: "58372e956631363416006035"
@@ -3202,7 +5228,7 @@ characters {
     isEnabled: true
     interactionRadius: 1
     interactionIcon: InteractionIcon_Conversation
-    interaction_info_text: "Talk to Patron"
+    interaction_info_text: "$(scene.sPatronRollOver)"
   }
   lod: 0
   character_instance {
@@ -3273,6 +5299,7 @@ characters {
     team_id: "Civilians"
     char_name: "Bar Patron 2"
     GeneralTags: "isPatron2"
+    GeneralTags: "isPatron"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -3292,6 +5319,7 @@ characters {
   }
   orientation: ORIENTATION_N
   GeneralTags: "isPatron6"
+  GeneralTags: "isPatron"
   displayName: "GI"
   idRef {
     id: "58372e986631363416006036"
@@ -3300,7 +5328,7 @@ characters {
     isEnabled: true
     interactionRadius: 1
     interactionIcon: InteractionIcon_Conversation
-    interaction_info_text: "Talk to Patron"
+    interaction_info_text: "$(scene.sPatronRollOver)"
   }
   lod: 0
   character_instance {
@@ -3371,6 +5399,7 @@ characters {
     team_id: "Civilians"
     char_name: "Bar Patron 6"
     GeneralTags: "isPatron6"
+    GeneralTags: "isPatron"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -3390,6 +5419,7 @@ characters {
   }
   orientation: ORIENTATION_E
   GeneralTags: "isPatron5"
+  GeneralTags: "isPatron"
   displayName: "GI"
   idRef {
     id: "58372e9a6631363416006037"
@@ -3398,7 +5428,7 @@ characters {
     isEnabled: true
     interactionRadius: 1
     interactionIcon: InteractionIcon_Conversation
-    interaction_info_text: "Talk to Patron"
+    interaction_info_text: "$(scene.sPatronRollOver)"
   }
   lod: 0
   character_instance {
@@ -3469,6 +5499,7 @@ characters {
     team_id: "Civilians"
     char_name: "Bar Patron 5"
     GeneralTags: "isPatron5"
+    GeneralTags: "isPatron"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -3488,6 +5519,7 @@ characters {
   }
   orientation: ORIENTATION_E
   GeneralTags: "isPatron7"
+  GeneralTags: "isPatron"
   displayName: "GI"
   idRef {
     id: "58372eae6631363416006038"
@@ -3496,7 +5528,7 @@ characters {
     isEnabled: true
     interactionRadius: 1
     interactionIcon: InteractionIcon_Conversation
-    interaction_info_text: "Talk to Patron"
+    interaction_info_text: "$(scene.sPatronRollOver)"
   }
   lod: 0
   character_instance {
@@ -3567,6 +5599,7 @@ characters {
     team_id: "Civilians"
     char_name: "Bar Patron 7"
     GeneralTags: "isPatron7"
+    GeneralTags: "isPatron"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -3586,6 +5619,7 @@ characters {
   }
   orientation: ORIENTATION_N
   GeneralTags: "isPatron3"
+  GeneralTags: "isPatron"
   displayName: "GI"
   idRef {
     id: "58372ed06631363416006039"
@@ -3594,7 +5628,7 @@ characters {
     isEnabled: true
     interactionRadius: 1
     interactionIcon: InteractionIcon_Conversation
-    interaction_info_text: "Talk to Patron"
+    interaction_info_text: "$(scene.sPatronRollOver)"
   }
   lod: 0
   character_instance {
@@ -3665,6 +5699,7 @@ characters {
     team_id: "Civilians"
     char_name: "Bar Patron 3"
     GeneralTags: "isPatron3"
+    GeneralTags: "isPatron"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -3684,6 +5719,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isPatron8"
+  GeneralTags: "isPatron"
   displayName: "GI"
   idRef {
     id: "58372f0a663136341600603a"
@@ -3692,7 +5728,7 @@ characters {
     isEnabled: true
     interactionRadius: 1
     interactionIcon: InteractionIcon_Conversation
-    interaction_info_text: "Talk to Patron"
+    interaction_info_text: "$(scene.sPatronRollOver)"
   }
   lod: 0
   character_instance {
@@ -3763,6 +5799,7 @@ characters {
     team_id: "Civilians"
     char_name: "Bar Patron 8"
     GeneralTags: "isPatron8"
+    GeneralTags: "isPatron"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -3782,6 +5819,7 @@ characters {
   }
   orientation: ORIENTATION_S
   GeneralTags: "isPatron4"
+  GeneralTags: "isPatron"
   displayName: "GI"
   idRef {
     id: "58372f0b663136341600603b"
@@ -3790,7 +5828,7 @@ characters {
     isEnabled: true
     interactionRadius: 1
     interactionIcon: InteractionIcon_Conversation
-    interaction_info_text: "Talk to Patron"
+    interaction_info_text: "$(scene.sPatronRollOver)"
   }
   lod: 0
   character_instance {
@@ -3861,6 +5899,7 @@ characters {
     team_id: "Civilians"
     char_name: "Bar Patron 4"
     GeneralTags: "isPatron4"
+    GeneralTags: "isPatron"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -3935,10 +5974,43 @@ variables {
     typeName: "int"
   }
 }
+variables {
+  string_value: "Talk to Patron"
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "sPatronRollOver"
+    typeName: "string"
+  }
+}
+variables {
+  int_value: 0
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "iRumor"
+    typeName: "int"
+  }
+}
+variables {
+  string_value: ""
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "sRumor"
+    typeName: "string"
+  }
+}
+variables {
+  string_value: "That\'s what I\'ve heard, anyways.    Anything else I can getcha?"
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "sReturn"
+    typeName: "string"
+  }
+}
 mapEvents: "eRNDPatronPlacement"
 mapEvents: "eRNDNextPatron"
 mapEvents: "eRNDIdleAnimations"
 mapEvents: "eGenerateConvo"
+mapEvents: "eGenerateRumor"
 senseTags: "isSpeaker"
 worldMapLocation {
   filename: ""
@@ -3951,7 +6023,7 @@ mapName: "HUB - SeamstressUnion"
 parentStory: ""
 scene_title: "THE SEAMSTRESSES UNION "
 scene_subtitle: ""
-scene_synopsis: "[PLACEHOLDER]\n\nHUB scene for launching loyalty quests."
+scene_synopsis: "[PLACEHOLDER]\n\nHUB scene for launching loyalty quests.\n\nTaxi- Setup, Asteticially, not functional.\nStage - Two options (Piano Night & Rockfest)\nRumor Mill - 15 rumors for the bartender\nGeneral Interaction - 20 Comments for the randomized bar patrons to discuss.\n\n-DH"
 scene_image: "loadingImage_c04-s1"
 scene_continue_button_skip: false
 scene_restore_runner_health: true
@@ -4001,8 +6073,6 @@ team_affiliations {
 }
 scene_dimensions {
   dimension_name: "Default"
-}
-character_roster {
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {

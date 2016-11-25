@@ -24,15 +24,215 @@ nodes {
   index: 1
   text: ""
   branches {
-    responseText: "No Cherry Bomb tonight?"
+    responseText: "What have you been hearing?"
+    actions {
+      ops {
+        functionName: "Set Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "iRumor"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Random (int)"
+            args {
+              int_value: 1
+            }
+            args {
+              int_value: 15
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "eGenerateRumor"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 2
     idRef {
-      id: "58372b0066313660110028fd:58372b176631366011002907"
+      id: "58372b0066313660110028fd:5837c94f663136341e006c6e"
     }
   }
   branches {
-    responseText: "{{CC}}Leave{{/CC}}"
-    nextNodeIndex: -1
+    responseText: "No Cherry Bomb tonight?"
+    conditions {
+      ops {
+        functionName: "Compare Actor Gender"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Gender"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    idRef {
+      id: "58372b0066313660110028fd:5837d5dc663136341e006d1f"
+    }
+    comment: "FEMALE"
+  }
+  branches {
+    responseText: "No Cherry Bomb tonight?"
+    conditions {
+      ops {
+        functionName: "Compare Actor Gender"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Gender"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    idRef {
+      id: "58372b0066313660110028fd:58372b176631366011002907"
+    }
+    comment: "MALE"
+  }
+  branches {
+    responseText: "{{CC}}5\302\245{{/CC}} Gimme a beer."
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 5
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Nuyen"
+        args {
+          int_value: 5
+        }
+      }
+      ops {
+        functionName: "Heal Actor"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          int_value: 10
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HPOrAP"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+    idRef {
+      id: "58372b0066313660110028fd:5837c94f663136341e006c6c"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Leave{{/CC}} No, Thanks."
+    nextNodeIndex: 6
     idRef {
       id: "58372b0066313660110028fd:58372b176631366011002909"
     }
@@ -42,10 +242,42 @@ nodes {
 }
 nodes {
   idRef {
-    id: "58372b276631366011002915"
+    id: "5837c9dc663136341e006c8b"
   }
   index: 2
-  text: "{{GM}}He shrugs.{{/GM}}\n\nSaid she needed some time off.   Something about an ex?"
+  text: "$(scene.sRumor)\n\n$(scene.sReturn)"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "58372b0066313660110028fd:5837ca30663136341e006c8d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5837d615663136341e006d22"
+  }
+  index: 3
+  text: "Sorry Darling.   Said she had something personal to take care of.   Something about an ex, if I recall correctly."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "58372b0066313660110028fd:5837d632663136341e006d24"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58372b276631366011002915"
+  }
+  index: 4
+  text: "{{GM}}He shrugs.{{/GM}}\n\nI dunno man...  Said she needed some time off.   Something about an ex?"
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -54,6 +286,30 @@ nodes {
     }
     auxiliaryLink: true
   }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5837c982663136341e006c71"
+  }
+  index: 5
+  text: "You got it, Pal.\n\nAnything else?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "58372b0066313660110028fd:5837c9c2663136341e006c73"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5837da22663136341e006daa"
+  }
+  index: 6
+  text: "No worries.   You know where to find me if ya need something else."
   nodeType: ConversationNodeType_Simple
 }
 roots {
