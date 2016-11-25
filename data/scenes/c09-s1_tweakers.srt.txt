@@ -2,7 +2,7 @@ triggers {
   name: "MapSetup.ConfigMap"
   events {
     ops {
-      functionName: "On Map Setup"
+      functionName: "On Map Start"
     }
   }
   conditions {
@@ -146,25 +146,6 @@ triggers {
           }
           args {
             int_value: 1
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Force-Use Interactable Object (with Actor)"
-      args {
-        call_value {
-          functionName: "Get Map Item (InteractableObject)"
-          args {
-            string_value: "5823dcc16631361c0b002367"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Actor)"
-          args {
-            string_value: "582287e9663136cc0e006252"
           }
         }
       }
@@ -5927,7 +5908,15 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Triggering Actor"
+          functionName: "Get Actor\'s Persona"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "582287e9663136cc0e006252"
+              }
+            }
+          }
         }
       }
       args {
@@ -7549,14 +7538,9 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Get Actor\'s Persona"
+          functionName: "Get Map Item (Actor)"
           args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "582287e9663136cc0e006252"
-              }
-            }
+            string_value: "582287e9663136cc0e006252"
           }
         }
       }
@@ -10377,65 +10361,6 @@ triggers {
   conditions {
   }
   actions {
-    ops {
-      functionName: "Teleport Actor to Area Around Point"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "5830f2236631364817004eb2"
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        int_value: 0
-      }
-      args {
-        int_value: 0
-      }
-      args {
-        call_value {
-          functionName: "Center of Region"
-          args {
-            call_value {
-              functionName: "Get Map Item (Region)"
-              args {
-                string_value: "5823dbdf6631361c0b00234f"
-              }
-            }
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "FacingDirection"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "TeleportMethod"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
     ops {
       functionName: "Clear Waypoint from Prop"
       args {
@@ -13705,14 +13630,9 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Get Actor\'s Persona"
+          functionName: "Get Map Item (Actor)"
           args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "582287e9663136cc0e006252"
-              }
-            }
+            string_value: "582287e9663136cc0e006252"
           }
         }
       }
@@ -13783,193 +13703,22 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Change Actor Team"
+      functionName: "Force-Use Interactable Object (with Actor)"
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "Get Map Item (InteractableObject)"
           args {
-            call_value {
-              functionName: "Get Actor\'s Persona"
-              args {
-                call_value {
-                  functionName: "Get Map Item (Actor)"
-                  args {
-                    string_value: "582287e9663136cc0e006252"
-                  }
-                }
-              }
-            }
-          }
-          args {
+            string_value: "5823dcc16631361c0b002367"
           }
         }
       }
       args {
         call_value {
-          functionName: "Get Preset Value (string)"
+          functionName: "Get Map Item (Actor)"
           args {
-            string_value: "FactionList"
-          }
-          args {
-            int_value: 0
+            string_value: "582287e9663136cc0e006252"
           }
         }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (SceneDimension)"
-          args {
-            string_value: "Matrix"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Change Actor Control"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Actor\'s Persona"
-              args {
-                call_value {
-                  functionName: "Get Map Item (Actor)"
-                  args {
-                    string_value: "582287e9663136cc0e006252"
-                  }
-                }
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "PlayerOrAI"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Change Actor Team"
-      args {
-        call_value {
-          functionName: "All Actors With Tag"
-          args {
-            call_value {
-              functionName: "Get Map Item (SenseTagList)"
-              args {
-                string_value: "isTeam"
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Preset Value (int)"
-              args {
-                string_value: "AllOrAny"
-              }
-              args {
-                int_value: 0
-              }
-            }
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (string)"
-          args {
-            string_value: "FactionList"
-          }
-          args {
-            int_value: 3
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (SceneDimension)"
-          args {
-            string_value: "Default"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Change Actor Control"
-      args {
-        call_value {
-          functionName: "All Actors With Tag"
-          args {
-            call_value {
-              functionName: "Get Map Item (SenseTagList)"
-              args {
-                string_value: "isTeam"
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Preset Value (int)"
-              args {
-                string_value: "AllOrAny"
-              }
-              args {
-                int_value: 0
-              }
-            }
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "PlayerOrAI"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Teleport Camera To Actor"
-      args {
-        call_value {
-          functionName: "Get Actor\'s Persona"
-          args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "582287e9663136cc0e006252"
-              }
-            }
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Send Event After Delay"
-      args {
-        call_value {
-          functionName: "Get Map Item (Event)"
-          args {
-            string_value: "eMatrixBridge"
-          }
-        }
-      }
-      args {
-        float_value: 1.5
       }
     }
   }
@@ -13995,133 +13744,7 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Change Actor Team"
-      args {
-        call_value {
-          functionName: "All Actors With Tag"
-          args {
-            call_value {
-              functionName: "Get Map Item (SenseTagList)"
-              args {
-                string_value: "isTeam"
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Preset Value (int)"
-              args {
-                string_value: "AllOrAny"
-              }
-              args {
-                int_value: 0
-              }
-            }
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (string)"
-          args {
-            string_value: "FactionList"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (SceneDimension)"
-          args {
-            string_value: "Default"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Change Actor Control"
-      args {
-        call_value {
-          functionName: "All Actors With Tag"
-          args {
-            call_value {
-              functionName: "Get Map Item (SenseTagList)"
-              args {
-                string_value: "isTeam"
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Preset Value (int)"
-              args {
-                string_value: "AllOrAny"
-              }
-              args {
-                int_value: 0
-              }
-            }
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "PlayerOrAI"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Change Actor Team"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Actor\'s Persona"
-              args {
-                call_value {
-                  functionName: "Get Map Item (Actor)"
-                  args {
-                    string_value: "582287e9663136cc0e006252"
-                  }
-                }
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (string)"
-          args {
-            string_value: "FactionList"
-          }
-          args {
-            int_value: 3
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (SceneDimension)"
-          args {
-            string_value: "Matrix"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Change Actor Control"
+      functionName: "Detain Actor"
       args {
         call_value {
           functionName: "Specific Actor"
@@ -14146,7 +13769,7 @@ triggers {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "PlayerOrAI"
+            string_value: "DetainMethod"
           }
           args {
             int_value: 1
@@ -14163,6 +13786,52 @@ triggers {
             int_value: 0
           }
         }
+      }
+    }
+    ops {
+      functionName: "Display Text over Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "582287e9663136cc0e006252"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        string_value: "Go on ahead... I\'ll see if there\'s anything more I can do here."
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 10
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 0
       }
     }
   }
@@ -14792,6 +14461,20 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Set Alarm State"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Kill Actor"
       args {
         call_value {
@@ -15009,14 +14692,9 @@ triggers {
           functionName: "Specific Actor"
           args {
             call_value {
-              functionName: "Get Actor\'s Persona"
+              functionName: "Get Map Item (Actor)"
               args {
-                call_value {
-                  functionName: "Get Map Item (Actor)"
-                  args {
-                    string_value: "582287e9663136cc0e006252"
-                  }
-                }
+                string_value: "582287e9663136cc0e006252"
               }
             }
           }
@@ -15047,49 +14725,7 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Change Actor Team"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Actor\'s Persona"
-              args {
-                call_value {
-                  functionName: "Get Map Item (Actor)"
-                  args {
-                    string_value: "582287e9663136cc0e006252"
-                  }
-                }
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (string)"
-          args {
-            string_value: "FactionList"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (SceneDimension)"
-          args {
-            string_value: "Matrix"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Change Actor Control"
+      functionName: "Detain Actor"
       args {
         call_value {
           functionName: "Specific Actor"
@@ -15114,7 +14750,7 @@ triggers {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "PlayerOrAI"
+            string_value: "DetainMethod"
           }
           args {
             int_value: 0
@@ -15292,6 +14928,73 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Change Actor Control"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isTeam"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PlayerOrAI"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Change Actor Control"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "582287e9663136cc0e006252"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PlayerOrAI"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Enable/Disable Interactable Object"
       args {
         call_value {
@@ -15309,6 +15012,17 @@ triggers {
           functionName: "Get Map Item (InteractableObject)"
           args {
             string_value: "51d34e5b3561642408000130"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
           }
         }
       }
@@ -15378,69 +15092,159 @@ triggers {
         }
       }
     }
+  }
+  isActive: true
+  idRef {
+    id: "5832480c663136ec0b002412"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Violet.NewRoundCombat"
+  events {
     ops {
-      functionName: "Kill Actor"
+      functionName: "On New Round"
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Matrix"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Team Survival Percentage"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+      args {
+        int_value: 100
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Matrix"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iICCount"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Count of Alive Actors"
           args {
             call_value {
-              functionName: "Get Actor\'s Persona"
+              functionName: "All Actors on Team"
               args {
                 call_value {
-                  functionName: "Get Map Item (Actor)"
+                  functionName: "Get Preset Value (string)"
                   args {
-                    string_value: "582287e9663136cc0e006252"
+                    string_value: "FactionList"
+                  }
+                  args {
+                    int_value: 2
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Map Item (SceneDimension)"
+                  args {
+                    string_value: "Matrix"
                   }
                 }
               }
             }
           }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "DeathMethod"
-          }
-          args {
-            int_value: 3
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "FacingDirection"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 0
-          }
         }
       }
     }
     ops {
-      functionName: "Teleport Camera To Actor"
+      functionName: "Modify Dimension Heat"
       args {
         call_value {
-          functionName: "Get Map Item (Player)"
+          functionName: "Get Map Item (SceneDimension)"
           args {
-            int_value: 0
+            string_value: "Matrix"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Arithmetic (float)"
+          args {
+            float_value: 5
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Arithmetic Ops"
+              }
+              args {
+                int_value: 2
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Convert (int) to (float)"
+              args {
+                call_value {
+                  functionName: "Get Variable (int)"
+                  args {
+                    string_value: "iICCount"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -15448,7 +15252,48 @@ triggers {
   }
   isActive: true
   idRef {
-    id: "5832480c663136ec0b002412"
+    id: "583809596631365403003f2d"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Violet.MatrixBridge"
+  events {
+    ops {
+      functionName: "On Camera Region Activated"
+      args {
+        call_value {
+          functionName: "Get Map Item (CameraRegion)"
+          args {
+            string_value: "51d34cc23561642408000129"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eMatrixBridge"
+          }
+        }
+      }
+      args {
+        float_value: 2
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "58381a746631365403003fea"
   }
   elseActions {
   }
@@ -15631,7 +15476,7 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Start Conversation"
+      functionName: "Start Conversation Between Actors"
       args {
         call_value {
           functionName: "Get Map Item (Conversation)"
@@ -15650,6 +15495,14 @@ triggers {
                 string_value: "582287e9663136cc0e006252"
               }
             }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "583800df6631365403003e9a"
           }
         }
       }
@@ -16399,7 +16252,7 @@ regions {
   }
   ambience_template: "tenement-quiet"
   combat_music: "HongKong-Combat-Generic-Int1"
-  default_music: "HongKong-loudmusic"
+  default_music: "HongKong-Legwork-Museum"
   loop_combat_music: true
   loop_default_music: true
   no_fow_in_region: false
@@ -17057,8 +16910,8 @@ regions {
   position {
     x: 71
     y: -38
-    width: 4
-    height: 4
+    width: 8
+    height: 9
   }
   enabledAtStart: true
   is_camera_region: true
@@ -17082,15 +16935,15 @@ regions {
     z: -0.75
   }
   directional_light_color {
-    r: 0
-    g: 0
-    b: 0
+    r: 0.654902
+    g: 0.20784314
+    b: 0.67058825
     a: 0
   }
   ambient_light_color {
-    r: 0
-    g: 0
-    b: 0
+    r: 0.29411766
+    g: 0.8509804
+    b: 0.81568629
     a: 0
   }
   ambience_template: ""
@@ -19217,11 +19070,11 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 72
+    x: 8
     y: 0
-    z: -37
+    z: 13
   }
-  orientation: ORIENTATION_S
+  orientation: ORIENTATION_N
   displayName: "Crew"
   idRef {
     id: "582287e9663136cc0e006252"
@@ -19287,14 +19140,15 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "Non-Combatant"
+      archetypeName: "Player"
       attitude: AttitudeAggressive
       vulnerabilities {
       }
     }
-    team_id: "Civilians"
+    team_id: "Shadowrunners"
     char_name: "Violet"
     GeneralTags: "isViolet"
+    enabled_at_start: true
     pc_spawn_number: -1
     spawn_type: SpawnType_Normal
     hiring_type: HiringType_Hireable
@@ -19307,7 +19161,10 @@ characters {
     karma: 1
     hiring_cost_override: 0
     hiring_tag: "Crew: Decker"
+    persistent_body: true
     id: "Crew_Lv1_Violet"
+    first_name: "Violet"
+    last_name: "Hendrix"
     cyberware_head: "(Head) Datajack"
   }
 }
@@ -19758,6 +19615,7 @@ characters {
     z: 8
   }
   orientation: ORIENTATION_E
+  GeneralTags: "isEntryGuy"
   displayName: "Story_RZ"
   idRef {
     id: "5830f2236631364817004eb2"
@@ -19830,11 +19688,101 @@ characters {
     }
     team_id: "Civilians"
     char_name: "Green Lucifer"
+    GeneralTags: "isEntryGuy"
     pc_spawn_number: -1
     portrait {
       filename: "npc_elfmale_greenlucifer"
     }
     karma: 68
+    is_prop_character: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: 91
+    y: 0
+    z: 67
+  }
+  orientation: ORIENTATION_W
+  displayName: "Watcher"
+  idRef {
+    id: "583800df6631365403003e9a"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Objects/InvisibleActor"
+    character_sheet_id: "BaseCivilian"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Non-Combatant"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "Civilians"
+    char_name: "DEVComment"
+    pc_spawn_number: -1
+    portrait {
+      filename: ""
+    }
+    dimension_name: "Matrix"
+    karma: 6
     is_prop_character: true
   }
 }
@@ -20070,6 +20018,14 @@ variables {
     typeName: "bool"
   }
 }
+variables {
+  int_value: 0
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "iICCount"
+    typeName: "int"
+  }
+}
 mapEvents: "DeactivateChipheads"
 mapEvents: "eUpdateTaps"
 mapEvents: "eActivateGino"
@@ -20187,12 +20143,10 @@ scene_dimensions {
 }
 scene_dimensions {
   dimension_name: "Matrix"
-  initial_alarm_state: 15
+  initial_alarm_state: 5
   turns_per_round: 3
   is_matrix: true
   max_alarm_value: 50
-}
-character_roster {
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
