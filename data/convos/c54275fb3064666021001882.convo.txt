@@ -7,29 +7,61 @@ nodes {
     id: "235212a9306466e0170018dc"
   }
   index: 0
-  text: "The Royale Apartments. What a hole. Can\'t imagine what it was like for Coyote, growing up here... {{GM}}Paco trails off.{{/GM}}\n"
+  text: "{{GM}}Paco stares at the warped walls and stained carpets.{{/GM}}\n\nThe Royale Apartments. What a hole. Can\'t imagine what it was like for Coyote, growing up here... {{GM}}Paco trails off.{{/GM}}\n"
   branches {
-    responseText: "We\'re here to take care of business. Let\'s get to it."
+    responseText: ""
     nextNodeIndex: 1
-  }
-  branches {
-    responseText: "A hellhole full of junkies. Looks like Stevie-J\'s gets their rent money AND their drug money."
-    nextNodeIndex: 1
-    auxiliaryLink: true
-  }
-  branches {
-    responseText: "These poor people. What a waste."
-    nextNodeIndex: 1
-    auxiliaryLink: true
+    idRef {
+      id: "c54275fb3064666021001882:583a0594396630cc02005796"
+    }
   }
   nodeType: ConversationNodeType_Simple
   autoFollowBranchDelay: ConversationAutoFollowType_None
 }
 nodes {
   idRef {
-    id: "235212a9306466e0170018df"
+    id: "583a0594396630cc02005799"
   }
   index: 1
+  text: ""
+  branches {
+    responseText: "We\'re here to take care of business. Let\'s get to it."
+    nextNodeIndex: 2
+    idRef {
+      id: "c54275fb3064666021001882:583a056f396630cc02005786"
+    }
+  }
+  branches {
+    responseText: "A hellhole full of junkies. Looks like Stevie-J\'s gets their rent money AND their drug money."
+    nextNodeIndex: 2
+    idRef {
+      id: "c54275fb3064666021001882:583a056f396630cc02005789"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "These poor people. What a waste."
+    nextNodeIndex: 2
+    idRef {
+      id: "c54275fb3064666021001882:583a056f396630cc0200578c"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I thought Coyote was from Chicago?"
+    nextNodeIndex: 3
+    idRef {
+      id: "c54275fb3064666021001882:583a05a2396630cc020057a1"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Paco Loop"
+}
+nodes {
+  idRef {
+    id: "235212a9306466e0170018df"
+  }
+  index: 2
   text: "If Coyote\'s here, we have to hurry. She\'s good but... well... these BTL guys pay to stay well informed. They may have known she was coming."
   nodeType: ConversationNodeType_Simple
   autoFollowBranchDelay: ConversationAutoFollowType_None
@@ -49,6 +81,17 @@ nodes {
           functionName: "Get Preset Value (int)"
           args {
             string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
           }
           args {
             int_value: 1
@@ -77,10 +120,101 @@ nodes {
           }
         }
       }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "c54275fb3064666021001882:583a05bb396630cc020057a3"
+  }
+  index: 3
+  text: "{{GM}}Paco shrugs, testing the grip of his bat.{{/GM}}\n\nI don\'t know- I met her after she left here. We\'ve got to be careful, these pendejos may have known she was coming."
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Find Coyote"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Keep Paco Alive"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
     }
   }
 }
 roots {
   responseText: ""
   nextNodeIndex: 0
+  idRef {
+    id: "c54275fb3064666021001882:583a056f396630cc02005783"
+  }
 }

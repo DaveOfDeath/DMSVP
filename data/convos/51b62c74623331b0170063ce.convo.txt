@@ -589,7 +589,48 @@ nodes {
   }
   branches {
     responseText: "Not for sale. Make me a better offer."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "Sam\'s BTL chip"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 31
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "51b62c74623331b0170063ce:57ac04d739663014030077a0"
     }
@@ -648,6 +689,51 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Nuyen"
+      args {
+        int_value: 300
+      }
+    }
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Sam\'s BTL chip"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -925,7 +1011,7 @@ nodes {
     id: "57ac0bdc39663014030078ee"
   }
   index: 26
-  text: "{{GM}}Bobby rubs at his chin as he answers.{{/GM}}\n\nSam wasn\'t working much as a runner- but he wasn\'t worthless. He had mad a next egg, and was proud of it. He said his \'family connections\' had come through for him, and he had enough to keep going."
+  text: "{{GM}}Bobby rubs at his chin as he answers.{{/GM}}\n\nSam wasn\'t working much as a runner- but he wasn\'t worthless. He had a mad nest egg, and was proud of it. He said his \'family connections\' had come through for him, and he had enough to keep going."
   branches {
     responseText: ""
     nextNodeIndex: 22

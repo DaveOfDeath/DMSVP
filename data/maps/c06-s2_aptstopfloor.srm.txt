@@ -94,9 +94,10 @@ props {
       }
     }
     transitionPoint {
-      scene_name: "c07-s1_Seamstress"
+      scene_name: "c07-s1_seamstress"
       confirmation_text: "Head back to the Seamstresses Union?"
     }
+    interaction_info_text: "Leave Royale?"
   }
   lod: 0
 }
@@ -8078,6 +8079,28 @@ props {
           }
         }
       }
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
     }
     interactionIcon: InteractionIcon_Door
     interaction_info_text: "Open door?"
@@ -9544,6 +9567,53 @@ props {
     z: 14.4
   }
   orientation: ORIENTATION_S
+  idRef {
+    id: "583a1ebf396630cc0200592d"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasAcceptedJewelMission"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    transitionPoint {
+      scene_name: "c07-s1_seamstress"
+      confirmation_text: "Travel to the Seamstress\' Union?"
+    }
+    interaction_info_text: "Leave Royale?"
+  }
   lod: 0
 }
 props {
@@ -10696,5 +10766,25 @@ props {
     }
     interaction_info_text: "Return to the Seamstress Union?"
   }
+  lod: 0
+}
+props {
+  name: "pikePlace_wallDecoration_genericGrafitti05"
+  gridPoint {
+    x: -23.8
+    y: -0.5
+    z: 24.4
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "haven_wallDecoration_graffiti33"
+  gridPoint {
+    x: -24
+    y: 1
+    z: 17.5
+  }
+  orientation: ORIENTATION_S
   lod: 0
 }
