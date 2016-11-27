@@ -535,6 +535,28 @@ triggers {
       }
     }
     ops {
+      functionName: "Enable/Disable Manual Turn Mode in Dimension"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Set Goal Status"
       args {
         call_value {
@@ -586,28 +608,6 @@ triggers {
       }
       args {
         int_value: 3
-      }
-    }
-    ops {
-      functionName: "Enable/Disable Manual Turn Mode in Dimension"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (SceneDimension)"
-          args {
-            string_value: "Default"
-          }
-        }
       }
     }
   }
@@ -3949,7 +3949,7 @@ triggers {
             string_value: "WithOrWithout"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
@@ -8551,9 +8551,9 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "Guard - Seek And Destroy"
+      archetypeName: "Guard - Hunt And Destroy"
       attitude: AttitudeBoss
-      attackRandom: AttackStyle_BestOnly
+      attackRandom: AttackStyle_RandomAll
       vulnerabilities {
       }
     }
@@ -9166,6 +9166,8 @@ scene_dimensions {
 }
 ambience_template: "tenement-quiet"
 combat_music: "Seattle-Set3-Combat"
+character_roster {
+}
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
   prereq_description: ""
