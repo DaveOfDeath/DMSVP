@@ -1,0 +1,92 @@
+idRef {
+  id: "5839c932346265502b001be5"
+}
+ui_name: "c16-s1_LabMoon_Greeter"
+nodes {
+  idRef {
+    id: "5839ca5d346265502b001bed"
+  }
+  index: 0
+  text: "{{GM}}The guard clicks through the docking program with an air of practiced boredom. Stifling an exaggerated yawn, he barely glances you over.{{/GM}}\n\nThis isn\'t a party cruise, you know. How many times do we have to tell you? It\'s not fucking show and tell for your buddies. {{GM}}He rubs the deep circles under his eyes.{{/GM}}"
+  branches {
+    responseText: "It won\'t happen again, promise."
+    nextNodeIndex: 1
+    idRef {
+      id: "5839c932346265502b001be5:5839cc79346265502b001bef"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "The cargo is extra heavy this time."
+    nextNodeIndex: 1
+    idRef {
+      id: "5839c932346265502b001be5:5839cc7a346265502b001bf1"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "583135ff346265c4250048a5"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle_talking"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "5839cd89346265502b001bf6"
+  }
+  index: 1
+  text: "I don\'t want to hear it. Just - {{GM}}Whatever he was about to say is cut short by a loud clang. The lights in the building begin to flicker.{{/GM}}\n\nOh for the love of! Just load up the trolley and get back in the sub. Don\'t go exploring! I\'ll be right back."
+  branches {
+    responseText: "Yes, sir."
+    nextNodeIndex: -1
+    idRef {
+      id: "5839c932346265502b001be5:5839ce64346265502b001bf8"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Nod.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "5839c932346265502b001be5:5839ce77346265502b001bfa"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "labPowerFlicker"
+          }
+        }
+      }
+      args {
+        float_value: 0.5
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "5839c932346265502b001be5:5839c932346265502b001be9"
+  }
+}

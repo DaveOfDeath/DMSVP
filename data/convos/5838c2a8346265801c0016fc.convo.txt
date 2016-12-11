@@ -1,0 +1,426 @@
+idRef {
+  id: "5838c2a8346265801c0016fc"
+}
+ui_name: "c16-s1_LabLv2_SpyVent"
+nodes {
+  idRef {
+    id: "5838c2a8346265801c0016fc:583a4d3e3462657022000b70"
+  }
+  index: 0
+  text: " While not large enough for a drone to fit inside, you can just see a small, crowded room through a tangle of wires and pipes on the other side of the vent. An expert shot might be able to put a bullet into the electrical transformer that thrums with power there, and cause a temporary surge in power."
+  branches {
+    responseText: "{{CC}}Ranged Combat 5{{/CC}} {{GM}}Take a shot at causing a short.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 4
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor Has Item Holstered"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "labLv2Explosion"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "5838c2a8346265801c0016fc:583a4d3e3462657022000b71"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Coyote{{/CC}} Think you can put a bullet into that transformer?"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isCoyote"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+    idRef {
+      id: "5838c2a8346265801c0016fc:583a4d3e3462657022000b72"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Walk away.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "5838c2a8346265801c0016fc:583a4d3e3462657022000b76"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "5838c2a8346265801c0016fc:583a4d3e3462657022000b73"
+  }
+  index: 1
+  text: "{{GM}}Coyote peers dubiously down the shaft into the blue lit room beyond. After chewing her lip a moment, she nods and readies her revolver.{{/GM}}\n\nI think I can hit that glowing blue thing, if that\'s the question. No idea if that will do anything other than make a gunshot ring off the walls, but it\'s your call."
+  branches {
+    responseText: "Take the shot, Coyote."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "labLv2Explosion"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "5838c2a8346265801c0016fc:583a4d3e3462657022000b74"
+    }
+  }
+  branches {
+    responseText: "Let\'s wait."
+    nextNodeIndex: -1
+    idRef {
+      id: "5838c2a8346265801c0016fc:583a4d3e3462657022000b75"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isCoyote"
+}
+nodes {
+  idRef {
+    id: "5838c2a8346265801c0016fc:583a4d3e3462657022000b78"
+  }
+  index: 2
+  text: " While not large enough for a drone to fit inside, you can just see a small, crowded room through a tangle of wires and pipes on the other side of the vent. An expert shot might be able to put a bullet into the electrical transformer that thrums with power there, and cause a temporary surge in power."
+  branches {
+    responseText: "{{CC}}Ranged Combat 5{{/CC}} {{GM}}Take a shot at causing a short.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 4
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor Has Item Holstered"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "labLv2Explosion"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "5838c2a8346265801c0016fc:583a4d3e3462657022000b79"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Coyote{{/CC}} Take the shot, Coyote."
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isCoyote"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "labLv2Explosion"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "5838c2a8346265801c0016fc:583a4d3e3462657022000b7a"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Walk away.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "5838c2a8346265801c0016fc:583a4d3e3462657022000b7b"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+roots {
+  nextNodeIndex: 0
+  hideIfUnavailable: true
+  onlyOnce: true
+  idRef {
+    id: "5838c2a8346265801c0016fc:583a4d3e3462657022000b6f"
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 2
+  idRef {
+    id: "5838c2a8346265801c0016fc:583a4d3e3462657022000b77"
+  }
+}

@@ -1,0 +1,616 @@
+idRef {
+  id: "583a36e03462657022000834"
+}
+ui_name: "c16-s1_LabEntrance_TrolleyControl"
+nodes {
+  idRef {
+    id: "583a36e03462657022000834:583a48583462657022000949"
+  }
+  index: 0
+  text: "{{GM}}River glances around nervously, bending towards you to whisper.{{/GM}} The pull is much stronger here... Dolphin is getting very excited.\n\n{{GM}}She stands straighter, but doesn\'t raise her voice.{{/GM}} Had a nasty flashback when we passed those mines in the sub. I was sure they were going to just blow us up like they... Like they did my old crew."
+  branches {
+    responseText: "Stay frosty, River."
+    nextNodeIndex: 1
+    idRef {
+      id: "583a36e03462657022000834:583a4858346265702200094a"
+    }
+  }
+  branches {
+    responseText: "We\'ll get revenge, don\'t worry."
+    nextNodeIndex: 2
+    idRef {
+      id: "583a36e03462657022000834:583a4858346265702200094d"
+    }
+  }
+  branches {
+    responseText: "Is Dolphin going to tell us what we\'re doing here?"
+    nextNodeIndex: 3
+    idRef {
+      id: "583a36e03462657022000834:583a48583462657022000951"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isRiver"
+}
+nodes {
+  idRef {
+    id: "583a36e03462657022000834:583a4858346265702200094b"
+  }
+  index: 1
+  text: "{{GM}}River nods and moves to watch the passageway while you turn to examine the console.\n\nThe screen dims and brightens with the flickering lights, but the panel indicates that the trolley rail has enough reserve power to activate the trolley.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "583a36e03462657022000834:583a4858346265702200094c"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "55897a5a613464581a001ad8"
+}
+nodes {
+  idRef {
+    id: "583a36e03462657022000834:583a4858346265702200094e"
+  }
+  index: 2
+  text: "It\'s not... {{GM}}Shrugging, she looks down the passage.{{/GM}} It\'s just... I don\'t want them to have died for nothing, you know?"
+  branches {
+    responseText: "I hear you."
+    nextNodeIndex: 1
+    idRef {
+      id: "583a36e03462657022000834:583a4858346265702200094f"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "We can\'t change the past."
+    nextNodeIndex: 1
+    idRef {
+      id: "583a36e03462657022000834:583a48583462657022000950"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isRiver"
+}
+nodes {
+  idRef {
+    id: "583a36e03462657022000834:583a48583462657022000952"
+  }
+  index: 3
+  text: "{{GM}}River smiles, but shakes her head.{{/GM}} Dolphin is a slippery one. Playful, sometimes helpful, but never straightforwards. Sorry."
+  branches {
+    responseText: "{{GM}}Sigh.{{/GM}} Figures."
+    nextNodeIndex: 1
+    idRef {
+      id: "583a36e03462657022000834:583a48583462657022000953"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isRiver"
+}
+nodes {
+  idRef {
+    id: "583a36e03462657022000834:583a48583462657022000955"
+  }
+  index: 4
+  text: "{{GM}}The screen dims and brightens with the flickering lights, but the panel indicates that the trolley rail has enough reserve power to activate the trolley.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "583a36e03462657022000834:583a48583462657022000956"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "55897a5a613464581a001ad8"
+}
+nodes {
+  idRef {
+    id: "583a36e03462657022000834:583a48583462657022000957"
+  }
+  index: 5
+  text: ""
+  branches {
+    responseText: "{{GM}}Talk with Jon.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isBartlett"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "583a36e03462657022000834:583a48583462657022000958"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Talk with Coyote.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isCoyote"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "583a36e03462657022000834:583a4858346265702200095b"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Talk with Seamus.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isSeamus"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "583a36e03462657022000834:583a4858346265702200095e"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Talk with Violet.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isViolet"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 9
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "583a36e03462657022000834:583a48583462657022000961"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Talk with Paco.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isPaco"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "583a36e03462657022000834:583a48583462657022000964"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Activate the trolley.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Play Sound"
+        args {
+          call_value {
+            functionName: "Get Map Item (Sound)"
+            args {
+              string_value: "HongKong:ambient_subway"
+            }
+            args {
+              string_value: "Tone"
+            }
+          }
+        }
+        args {
+          float_value: 0.5
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Send Event After Delay"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "labTrolleyStart"
+            }
+          }
+        }
+        args {
+          float_value: 0.5
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "583a36e03462657022000834:583a48583462657022000967"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Leave the console alone.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "583a36e03462657022000834:583a48583462657022000968"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Trolley Talk"
+}
+nodes {
+  idRef {
+    id: "583a36e03462657022000834:583a48583462657022000959"
+  }
+  index: 6
+  text: "{{GM}}Jon leans over to look at the console and nods.{{/GM}} Good diversionary tactic. Send the trolley down, we use it as mobile cover, any guards pop their heads out, we take \'em down before they even see us."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "583a36e03462657022000834:583a4858346265702200095a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isBartlett"
+}
+nodes {
+  idRef {
+    id: "583a36e03462657022000834:583a4858346265702200095c"
+  }
+  index: 7
+  text: "{{GM}}Coyote glances at the console, and then down the passage.{{/GM}} So... we load it with explosives, send it down the track, and I shoot the... No, that would probably crack the glass and drown us. {{GM}}She scratches her chin with her revolver.{{/GM}} Ah, right, we send it down and hide behind it when we pass any guards. Good thinking, $(l.name)."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "583a36e03462657022000834:583a4858346265702200095d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isCoyote"
+}
+nodes {
+  idRef {
+    id: "583a36e03462657022000834:583a4858346265702200095f"
+  }
+  index: 8
+  text: "{{GM}}Giving his beard a good yank, Seamus glances at the console.{{/GM}} Well, I\'m short enough to hide behind the trolley if\'n we pass by any guards, if that\'s the question. But you ain\'t smugglin\' me in the crates, if\'n it ain\'t."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "583a36e03462657022000834:583a48583462657022000960"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isSeamus"
+}
+nodes {
+  idRef {
+    id: "583a36e03462657022000834:583a48583462657022000962"
+  }
+  index: 9
+  text: "{{GM}}Violet scratches a horn absentmindedly while examining the console.{{/GM}} Well, there\'s a lot of power held up in the rail\'s capacitors. If we activate it, the excess power will get dumped back onto the grid. Probably enough juice to stabilize the system and allow us to access the elevator down there."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "583a36e03462657022000834:583a48583462657022000963"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isViolet"
+}
+nodes {
+  idRef {
+    id: "583a36e03462657022000834:583a48583462657022000965"
+  }
+  index: 10
+  text: "{{GM}}Paco pats his drone absentmindedly while examining the console.{{/GM}} That trolley uses linear motors? Crazy. {{GM}}He nods suddenly and looks at you.{{/GM}} You know, all the salt around here has corroded those wheels up pretty good. I bet it\'ll make a lot of noise as it goes down the track. Cover up the sound of our footfalls, and La Planchada\'s rotors, too."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "583a36e03462657022000834:583a48583462657022000966"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isPaco"
+}
+roots {
+  nextNodeIndex: 0
+  hideIfUnavailable: true
+  onlyOnce: true
+  idRef {
+    id: "583a36e03462657022000834:583a48583462657022000948"
+  }
+}
+roots {
+  responseText: ""
+  nextNodeIndex: 4
+  idRef {
+    id: "583a36e03462657022000834:583a48583462657022000954"
+  }
+}

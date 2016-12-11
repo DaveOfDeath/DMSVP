@@ -1,0 +1,284 @@
+idRef {
+  id: "582bd8a5346265300f001de9"
+}
+ui_name: "c16-s1_DockLegwork_Strength"
+nodes {
+  idRef {
+    id: "582bd8bc346265300f001df1"
+  }
+  index: 0
+  text: "{{GM}}There\'s something buried under the crates. It looks like an unlucky dock worker.{{/GM}}"
+  branches {
+    responseText: "{{CC}}Strength: 5{{/CC}} {{GM}}Move the crates.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 4
+        }
+      }
+    }
+    nextNodeIndex: 1
+    idRef {
+      id: "582bd8a5346265300f001de9:582bd8fa346265300f001df3"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Bartlett{{/CC}} {{GM}}Have Jon move the crates.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isBartlett"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+    hideIfUnavailable: true
+    idRef {
+      id: "582bd8a5346265300f001de9:582bd946346265300f001df5"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{GM}}Walk away.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "582bd8a5346265300f001de9:582bd981346265300f001df7"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "55897a5a613464581a001ae0"
+}
+nodes {
+  idRef {
+    id: "582bd99f346265300f001e02"
+  }
+  index: 1
+  text: "{{GM}}With the crates pushed aside, you can search the body. There\'s no ID on poor corpse, but his commlink is unlocked with a single read email. It reads: \"Gaeatronics has accepted your submission for a work visa based on the referral submitted by [REDACTED]. We have applied to the Salish-Shide Council for a temporary green card, and fully expect the request will be granted despite your current SIN status. On behalf of all Gaeatronics\' employees, we welcome you to the family.\"{{/GM}}"
+  branches {
+    responseText: "Why would Gaeatronics offer a job to some SINless ganger?"
+    nextNodeIndex: 2
+    idRef {
+      id: "582bd8a5346265300f001de9:582bdbaf346265300f001e04"
+    }
+  }
+  branches {
+    responseText: "Gaeatronics. Should I know that name?"
+    nextNodeIndex: 2
+    idRef {
+      id: "582bd8a5346265300f001de9:582bdcbf346265300f001e77"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "55897a5a613464581a001ae0"
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "wallbreak"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "582bd856346265300f001ddb"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Offset Point"
+          args {
+            call_value {
+              functionName: "Current Location of Prop"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Prop)"
+                  args {
+                    string_value: "582bd856346265300f001ddb"
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Specified Point (2D)"
+              args {
+                float_value: 0
+              }
+              args {
+                float_value: 1
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "582bdbee346265300f001e07"
+  }
+  index: 2
+  text: "Gaeatronics... They\'re the biggest Salish owned corp around. Deal in \"earth-friendly\" power generation and waste management. That Gaeatronics?\n\nThey must be involved with the FirstNation somehow... But to sponsor a known gang member?"
+  branches {
+    responseText: "Let\'s keep moving."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bd8a5346265300f001de9:582bdef6346265a809001a8d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isRiver"
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bLegwork_KnowCorp"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "582bd8a5346265300f001de9:582bd8a5346265300f001ded"
+  }
+}

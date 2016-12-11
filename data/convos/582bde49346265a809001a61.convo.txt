@@ -1,0 +1,2544 @@
+idRef {
+  id: "582bde49346265a809001a61"
+}
+ui_name: "c16-s1_DockGangWarehouse"
+nodes {
+  idRef {
+    id: "582e4b1c346265141a005fa1"
+  }
+  index: 0
+  text: "{{GM}}The big ork presiding over the FirstNation\'s activities turns as you enter the warehouse, but appears content to shout at you from across the room.{{/GM}}\n\nEh syah-yah! Welcome, pilot... And friends?"
+  branches {
+    responseText: "{{CC}}Etiquette: Corp{{/CC}} Operations auditors. Going in for a surprise inspection."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 13
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 1
+    idRef {
+      id: "582bde49346265a809001a61:582e4dee346265141a005fda"
+    }
+  }
+  branches {
+    responseText: "A salary-shaman and her bodyguard."
+    nextNodeIndex: 6
+    idRef {
+      id: "582bde49346265a809001a61:582e4ec1346265141a005fdc"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "582e4f32346265141a005fdf"
+  }
+  index: 1
+  text: "{{GM}}The ork nods, dubiously.{{/GM}} Of course. I do hope if won\'t be too cramped in the submersible.\n\nIf they had mentioned anything about carry-ons, we naturally would have not packed it so full."
+  branches {
+    responseText: "We\'re used to it."
+    nextNodeIndex: 2
+    idRef {
+      id: "582bde49346265a809001a61:582e4fdd346265141a005fe1"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Wouldn\'t be a surprise if they told anyone."
+    nextNodeIndex: 2
+    idRef {
+      id: "582bde49346265a809001a61:582e4fe5346265141a005fe3"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "These last second changes screw with everybody."
+    nextNodeIndex: 2
+    idRef {
+      id: "582bde49346265a809001a61:582e5065346265141a005fe5"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "582e5167346265141a005fe8"
+  }
+  index: 2
+  text: "Indeed. Well, it\'s been wonderful to greet you, but I\'m sure you\'re already behind schedule.\n\n{{GM}}The ork smiles a bit too broadly.{{/GM}} So, if you\'ll hand over the agreed payment, you can \"take delivery\" of the craft and be on your way."
+  branches {
+    responseText: "I was told Gaeatronics had already paid. Repeatedly."
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bLegwork_KnowCorp"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    idRef {
+      id: "582bde49346265a809001a61:582e526c346265141a005fea"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Charisma: 3{{/CC}} We both know the payment is already in your hands, Chief."
+    conditions {
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 2
+        }
+      }
+    }
+    nextNodeIndex: 3
+    idRef {
+      id: "582bde49346265a809001a61:582e52f6346265141a005fec"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}\302\245500{{/CC}} Uh, right. Let me see..."
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 500
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Nuyen"
+        args {
+          int_value: 500
+        }
+      }
+    }
+    nextNodeIndex: 4
+    idRef {
+      id: "582bde49346265a809001a61:582e53fe346265141a005fee"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Ranged Combat 5{{/CC}} I might have a few spare bullets..."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 4
+        }
+      }
+    }
+    nextNodeIndex: 5
+    idRef {
+      id: "582bde49346265a809001a61:582e589e346265141a0061b7"
+    }
+  }
+  branches {
+    responseText: "Uh, right. Let me see... {{GM}}Attack.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "gangGoHostile"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582e5616346265141a006054"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Easy Target"
+}
+nodes {
+  idRef {
+    id: "582e574b346265141a006151"
+  }
+  index: 3
+  text: "{{GM}}She claps her hand together and laughs.{{/GM}} All too true. Please forgive my little test.\n\nHey\342\200\231ewulh, pilot and friends. Find peace."
+  branches {
+    responseText: "Uh, thanks."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582e5841346265141a006153"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Say nothing.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582e5842346265141a006155"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bSubClear"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  comment: "Sub Access Exit"
+}
+nodes {
+  idRef {
+    id: "582e5a9b346265141a006226"
+  }
+  index: 4
+  text: "{{GM}}The ganger by the door slots your credstick gleefully. The ork leader seems to consider squeezing you for more, but then she casts a melancholy glance around the warehouse.{{/GM}}\n\nThis was a good gig, while it lasted, but all things come to an end. We have heard the spirits growing restless, and we must heed their words. Go on, take the submersible craft to your destination. We will take our leave."
+  branches {
+    responseText: "I don\'t even get a receipt?"
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582e5b8a346265141a006228"
+    }
+  }
+  branches {
+    responseText: "That\'s a good call."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582e5b8b346265141a00622a"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Say nothing.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582e5bba346265141a00622c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bSubClear"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  comment: "Sub Access Exit"
+}
+nodes {
+  idRef {
+    id: "582e58f5346265141a0061be"
+  }
+  index: 5
+  text: "{{GM}}The ork laughs and claps her hands together loudly.{{/GM}} A warrior\'s answer. Well, we too have many bullets. Should we exchange them? Perhaps, but perhaps not tonight.\n\n{{GM}}She looks around the warehouse, suddenly melancholy{{/GM}} This was a good gig, while it lasted, but all things come to an end. We have heard the spirits growing restless, and we head their words. We do not stand in your way, gunslinger. Go, take the submersible craft wherever you desire."
+  branches {
+    responseText: "You made the right choice."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582e5a04346265141a0061c0"
+    }
+  }
+  branches {
+    responseText: "Aw, I was hoping for a fight."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582e5a05346265141a0061c2"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bSubClear"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  comment: "Sub Access Exit"
+}
+nodes {
+  idRef {
+    id: "582bde49346265a809001a61:582e559d346265141a006031"
+  }
+  index: 6
+  text: "{{GM}}The ork nods, dubiously.{{/GM}} Of course. I do hope if won\'t be too cramped in the submersible.\n\nIf they had mentioned anything about carry-ons, we naturally would have not packed it so full."
+  branches {
+    responseText: "We\'re used to it."
+    nextNodeIndex: 7
+    idRef {
+      id: "582bde49346265a809001a61:582e559d346265141a006033"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Can\'t be worse than that Americar."
+    nextNodeIndex: 7
+    idRef {
+      id: "582bde49346265a809001a61:582e559d346265141a006035"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "These last second changes screw with everybody."
+    nextNodeIndex: 7
+    idRef {
+      id: "582bde49346265a809001a61:582e559d346265141a006037"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "582bde49346265a809001a61:582e559d346265141a006039"
+  }
+  index: 7
+  text: "Indeed. Well, it\'s been wonderful to greet you, but I\'m sure you\'re already behind schedule.\n\n{{GM}}The ork smiles a bit too broadly.{{/GM}} So, if you\'ll hand over the agreed payment, you can \"take delivery\" of the craft and be on your way."
+  branches {
+    responseText: "I was told Gaeatronics had already paid. Repeatedly."
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bLegwork_KnowCorp"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    idRef {
+      id: "582bde49346265a809001a61:582e559d346265141a00603b"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Charisma: 4{{/CC}} We both know the payment is already in your hands, Chief."
+    conditions {
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 3
+        }
+      }
+    }
+    nextNodeIndex: 3
+    idRef {
+      id: "582bde49346265a809001a61:582e559d346265141a00603d"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}\302\2451000{{/CC}} Uh, right. Let me see..."
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 1000
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Nuyen"
+        args {
+          int_value: 1000
+        }
+      }
+    }
+    nextNodeIndex: 4
+    idRef {
+      id: "582bde49346265a809001a61:582e559d346265141a00603f"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Ranged Combat 6{{/CC}} I might have a few spare bullets..."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 5
+        }
+      }
+    }
+    nextNodeIndex: 5
+    idRef {
+      id: "582bde49346265a809001a61:582e567a346265141a0060a2"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Uh, right. Let me see... {{GM}}Attack.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "gangGoHostile"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582e58ba346265141a0061ba"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Hard Target"
+}
+nodes {
+  idRef {
+    id: "582d03f7346265181600618b"
+  }
+  index: 8
+  text: "{{GM}}The big ork presiding over the FirstNation\'s activities turns as you enter the warehouse, but appears content to shout at you from across the room, her loud voice echoing off the metal walls. Her tone is laced with a malice not found in her words.{{/GM}}\n\nEh syah-yah! Honored guests. I would offer to share the pipe with you, but the night is not so young. And you look as people of action. So let us dispense with pleasantries, and lies, eh?"
+  branches {
+    responseText: "We\'ll be taking the sub."
+    nextNodeIndex: 9
+    idRef {
+      id: "582bde49346265a809001a61:582db887346265140e005f65"
+    }
+  }
+  branches {
+    responseText: "This can still be pleasant for us both."
+    nextNodeIndex: 10
+    idRef {
+      id: "582bde49346265a809001a61:582db88c346265140e005f67"
+    }
+  }
+  branches {
+    responseText: "So do we just start trying to kill each other?"
+    nextNodeIndex: 11
+    idRef {
+      id: "582bde49346265a809001a61:582db891346265140e005f69"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "582bde49346265a809001a61:582e5ce6346265141a0062f7"
+  }
+  index: 9
+  text: "{{GM}}The ork nods, dubiously.{{/GM}} Of course. I do hope if won\'t be too cramped inside. Naturally we would have not packed it so full if we had known you were coming to claim it.\n\nAnd how were you planning on making payment?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    idRef {
+      id: "582bde49346265a809001a61:582e6535346265141a006495"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "582bde49346265a809001a61:582e6342346265141a0063a7"
+  }
+  index: 10
+  text: "{{GM}}The ork nods, dubiously.{{/GM}} Of course. And what is it you will use to ply my good nature?\n\nWhat do you offer the FirstNation?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    idRef {
+      id: "582bde49346265a809001a61:582e6527346265141a00647c"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "582e63ef346265141a0063c9"
+  }
+  index: 11
+  text: "{{GM}}The ork considers your question. Then she shrugs.{{/GM}} We do have our honor, and if it is your wish then we will fight. But honor is not unyielding if an offering is made for peace.\n\nDo you have something to offer the FirstNation?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    idRef {
+      id: "582bde49346265a809001a61:582e64e5346265141a0063d7"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "582bde49346265a809001a61:582e64ee346265141a0063d9"
+  }
+  index: 12
+  text: ""
+  branches {
+    responseText: "{{CC}}\302\2451000{{/CC}} Certified cred work for you?"
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 1000
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Nuyen"
+        args {
+          int_value: 1000
+        }
+      }
+    }
+    nextNodeIndex: 4
+    idRef {
+      id: "582bde49346265a809001a61:582e64ee346265141a0063db"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Ranged Combat 6{{/CC}} I might have a few spare bullets..."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 5
+        }
+      }
+    }
+    nextNodeIndex: 5
+    idRef {
+      id: "582bde49346265a809001a61:582e64ee346265141a0063df"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Academic{{/CC}} I happen to have access keys to several thaumaturgical journals that might interest you."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 18
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 13
+    idRef {
+      id: "582bde49346265a809001a61:582e64ee346265141a0063e3"
+    }
+  }
+  branches {
+    responseText: "Uh, right. Let me see... {{GM}}Attack.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "gangGoHostile"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582e64ee346265141a0063ed"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Invited NotViolet NoRigger Target"
+}
+nodes {
+  idRef {
+    id: "582bde49346265a809001a61:582e64ee346265141a0063e5"
+  }
+  index: 13
+  text: "{{GM}}You list a few of the journal names and the ork ganger seems satisfied.{{/GM}} Indeed. Access to these materials would be very helpful for us. What... serendipity for us both.\n\n{{GM}}She looks around the warehouse, suddenly melancholic.{{/GM}} This was a good gig, while it lasted, but all things come to an end. We have heard the spirits growing restless, and we must heed their words. We do not stand in your way, peacemaker. Go, take the submersible craft wherever you desire."
+  branches {
+    responseText: "Thank you."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582e64ee346265141a0063e7"
+    }
+  }
+  branches {
+    responseText: "You made the right choice."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582e64ee346265141a0063e9"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Say nothing.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582e64ee346265141a0063eb"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bSubClear"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  comment: "Sub Acess Exit"
+}
+nodes {
+  idRef {
+    id: "582bde49346265a809001a61:582d14a4346265181600619d"
+  }
+  index: 14
+  text: "{{GM}}The big ork presiding over the FirstNation\'s activities turns as you enter the warehouse, but appears content to shout at you from across the room.{{/GM}}\n\nEh syah-yah! Honored guests. Why, young Violet, is that you or do the spirits deceive me?"
+  branches {
+    responseText: "You know this Chief, Violet?"
+    nextNodeIndex: 15
+    idRef {
+      id: "582bde49346265a809001a61:582d150534626518160061a1"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "582d152134626518160061a4"
+  }
+  index: 15
+  text: "{{GM}}Violet looks from you to the gang leader clearly uncomfortable.{{/GM}}\n\nUh, yeah. I guess? Hey, Mary. Uh, nice to see you. {{GM}}Violet lowers her voice.{{/GM}} She and Chuckles, I mean, Charles, were friends, I mean acquaintances, I guess. They would have O.R.C. meetings in Chuckles, uh, Charles\' squat. Mary, Two-Feather, and, uh, lots of people. Well, orks and trolls mostly."
+  branches {
+    responseText: "It\'s nice to meet you Chief... Mary?"
+    nextNodeIndex: 16
+    idRef {
+      id: "582bde49346265a809001a61:582d18e934626518160061a6"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isViolet"
+}
+nodes {
+  idRef {
+    id: "582d191b34626518160061a9"
+  }
+  index: 16
+  text: "{{GM}}The gang leader ignores you and River for a moment.{{/GM}}\n\nAh, I must say how happy I am to see you, Violet. You see, I had assumed it was \'runners knocking on our door. Here to end a lucrative contract for the FirstNation and her people. But seeing you, and knowing how much you despise those lowly... \"rent-a-murders\" you call them, yes? Well, it must mean that you and your friends are on some charity mission. Is it not so?"
+  branches {
+    responseText: "We don\'t intend any ill will to the FirstNation."
+    nextNodeIndex: 17
+    idRef {
+      id: "582bde49346265a809001a61:582d1a2034626518160061ab"
+    }
+  }
+  branches {
+    responseText: "We\'re here on a mission of justice."
+    nextNodeIndex: 21
+    idRef {
+      id: "582bde49346265a809001a61:582d1a4a34626518160061ad"
+    }
+  }
+  branches {
+    responseText: "That\'s rich from a ganger who takes corp script."
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bLegwork_KnowCorp"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 25
+    hideIfUnavailable: true
+    idRef {
+      id: "582bde49346265a809001a61:582d1a6e34626518160061af"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "582d1ec7346265181600621f"
+  }
+  index: 17
+  text: "{{GM}}The ork laughs heartily, perhaps even genuinely. She gestures around.{{/GM}} Do you hear that, everyone! They don\'t intend any ill to *The People*.\n\n{{GM}}Then she looks at you very seriously.{{/GM}} And yet ill comes from you as sure as river waters in the spring flow from mountain snow in the winter."
+  branches {
+    responseText: "{{CC}}Earth Spirit Fetish{{/CC}} I offer this gift as proof of good intentions."
+    conditions {
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "Evaluate If Actor Has Item"
+            args {
+              call_value {
+                functionName: "Specific Actor"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+                args {
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "HasOrHasNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (Item)"
+                args {
+                  string_value: "Bound Earth Spirit 1"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "OR"
+            args {
+              call_value {
+                functionName: "Evaluate If Actor Has Item"
+                args {
+                  call_value {
+                    functionName: "Specific Actor"
+                    args {
+                      call_value {
+                        functionName: "Get Map Item (Player)"
+                        args {
+                          int_value: 0
+                        }
+                      }
+                    }
+                    args {
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Preset Value (int)"
+                    args {
+                      string_value: "HasOrHasNot"
+                    }
+                    args {
+                      int_value: 1
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Item)"
+                    args {
+                      string_value: "Bound Earth Spirit 2"
+                    }
+                  }
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "OR"
+                args {
+                  call_value {
+                    functionName: "Evaluate If Actor Has Item"
+                    args {
+                      call_value {
+                        functionName: "Specific Actor"
+                        args {
+                          call_value {
+                            functionName: "Get Map Item (Player)"
+                            args {
+                              int_value: 0
+                            }
+                          }
+                        }
+                        args {
+                        }
+                      }
+                    }
+                    args {
+                      call_value {
+                        functionName: "Get Preset Value (int)"
+                        args {
+                          string_value: "HasOrHasNot"
+                        }
+                        args {
+                          int_value: 1
+                        }
+                      }
+                    }
+                    args {
+                      call_value {
+                        functionName: "Get Map Item (Item)"
+                        args {
+                          string_value: "Bound Earth Spirit 3"
+                        }
+                      }
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "OR"
+                    args {
+                      call_value {
+                        functionName: "Evaluate If Actor Has Item"
+                        args {
+                          call_value {
+                            functionName: "Specific Actor"
+                            args {
+                              call_value {
+                                functionName: "Get Map Item (Player)"
+                                args {
+                                  int_value: 0
+                                }
+                              }
+                            }
+                            args {
+                            }
+                          }
+                        }
+                        args {
+                          call_value {
+                            functionName: "Get Preset Value (int)"
+                            args {
+                              string_value: "HasOrHasNot"
+                            }
+                            args {
+                              int_value: 1
+                            }
+                          }
+                        }
+                        args {
+                          call_value {
+                            functionName: "Get Map Item (Item)"
+                            args {
+                              string_value: "Bound Earth Spirit 4"
+                            }
+                          }
+                        }
+                      }
+                    }
+                    args {
+                      call_value {
+                        functionName: "OR"
+                        args {
+                          call_value {
+                            functionName: "Evaluate If Actor Has Item"
+                            args {
+                              call_value {
+                                functionName: "Specific Actor"
+                                args {
+                                  call_value {
+                                    functionName: "Get Map Item (Player)"
+                                    args {
+                                      int_value: 0
+                                    }
+                                  }
+                                }
+                                args {
+                                }
+                              }
+                            }
+                            args {
+                              call_value {
+                                functionName: "Get Preset Value (int)"
+                                args {
+                                  string_value: "HasOrHasNot"
+                                }
+                                args {
+                                  int_value: 1
+                                }
+                              }
+                            }
+                            args {
+                              call_value {
+                                functionName: "Get Map Item (Item)"
+                                args {
+                                  string_value: "Bound Earth Spirit 5"
+                                }
+                              }
+                            }
+                          }
+                        }
+                        args {
+                          call_value {
+                            functionName: "Evaluate If Actor Has Item"
+                            args {
+                              call_value {
+                                functionName: "Specific Actor"
+                                args {
+                                  call_value {
+                                    functionName: "Get Map Item (Player)"
+                                    args {
+                                      int_value: 0
+                                    }
+                                  }
+                                }
+                                args {
+                                }
+                              }
+                            }
+                            args {
+                              call_value {
+                                functionName: "Get Preset Value (int)"
+                                args {
+                                  string_value: "HasOrHasNot"
+                                }
+                                args {
+                                  int_value: 1
+                                }
+                              }
+                            }
+                            args {
+                              call_value {
+                                functionName: "Get Map Item (Item)"
+                                args {
+                                  string_value: "Bound Earth Spirit 6"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 18
+    idRef {
+      id: "582bde49346265a809001a61:582d20103462651816006221"
+    }
+  }
+  branches {
+    responseText: "What can we do to prove our intentions?"
+    nextNodeIndex: 19
+    idRef {
+      id: "582bde49346265a809001a61:582d225a3462651816006288"
+    }
+  }
+  branches {
+    responseText: "Are we doing this the hard way or the easy way?"
+    nextNodeIndex: 20
+    idRef {
+      id: "582bde49346265a809001a61:582d23b934626518160062b6"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "582d21583462651816006244"
+  }
+  index: 18
+  text: "{{GM}}The genuine softness that crosses the tough gang leader surprises you.{{/GM}} Keep your gift, shaman. We learned long ago that Nautre\'s forces cannot be held back.\n\n{{GM}}She looks around the warehouse.{{/GM}} This was a good gig, while it lasted, but all things come to an end. We have heard the spirits growing restless, and your appearance here is an omen of change. We do not stand in your way, summoner. Go, take the submersible craft wherever you desire."
+  branches {
+    responseText: "{{GM}}Nod sagely.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582d24c534626518160062e2"
+    }
+  }
+  branches {
+    responseText: "You\'ve made the right choice."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582d24ca34626518160062e4"
+    }
+  }
+  branches {
+    responseText: "Great, now this thing is just taking up a slot in my inventory."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582d250834626518160062e6"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bSubClear"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  comment: "Sub Access Exit"
+}
+nodes {
+  idRef {
+    id: "582d2282346265181600628b"
+  }
+  index: 19
+  text: "{{GM}}The ork shakes her head sympathetically.{{/GM}} I already know your intentions. But I cannot raise my ire against the adopted daughter of my dear friend, so...\n\n{{GM}}She looks around the warehouse.{{/GM}} This was a good gig, while it lasted, but all things come to an end. We have heard the spirits growing restless, and your appearance here is an omen of change. We do not stand in your way, Justice-Seeker, Killer-For-Hire. Go, take the submersible craft wherever you desire."
+  branches {
+    responseText: "You\'ve made the right choice."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582d231b346265181600628d"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Say nothing.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582d231c346265181600628f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bSubClear"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  comment: "Sub Access Exit"
+}
+nodes {
+  idRef {
+    id: "582d23d234626518160062b9"
+  }
+  index: 20
+  text: "{{GM}}The ork nods solemnly.{{/GM}} Our people learned long ago that Nautre\'s forces cannot be held back. To stand in her path is to be crushed into dust.\n\n{{GM}}She looks around the warehouse.{{/GM}} This was a good gig, while it lasted, but all things come to an end. We have heard the spirits growing restless, and your appearance here is an omen of change. We do not stand in your way, Killer-For-Rent. Go, take the submersible craft wherever you desire."
+  branches {
+    responseText: "Damn, I was hoping for the hard way."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582d259b3462651816006312"
+    }
+  }
+  branches {
+    responseText: "You\'ve made the right choice."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582d25c03462651816006314"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Say nothing.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582d25cd3462651816006316"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bSubClear"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  comment: "Sub Access Exit"
+}
+nodes {
+  idRef {
+    id: "582d1a7a34626518160061b2"
+  }
+  index: 21
+  text: "{{GM}}The ork raises an eyebrow.{{/GM}}\n\nOh? I sense some truth in that, but, I must ask you, how many by-standards will be ground to dust by your lust for honor?"
+  branches {
+    responseText: "Only those that stand in my way."
+    nextNodeIndex: 22
+    idRef {
+      id: "582bde49346265a809001a61:582d1b5834626518160061b4"
+    }
+  }
+  branches {
+    responseText: "As many as it takes."
+    nextNodeIndex: 23
+    idRef {
+      id: "582bde49346265a809001a61:582d1d0934626518160061d2"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Remain silent.{{/GM}}"
+    nextNodeIndex: 24
+    idRef {
+      id: "582bde49346265a809001a61:582d1e1c34626518160061f7"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "582d1b6634626518160061b7"
+  }
+  index: 22
+  text: "Fool. Fool if you believe that. Fool if you think threatening the *First* Nation will make us budge. No, we move as the Spirit desires, not you, not Gaeatronics.\n\n{{GM}}She looks around the warehouse.{{/GM}} This was a good gig, while it lasted, but all things come to an end. We have heard the spirits growing restless, and your appearance here is an omen of change. We do not stand in your way, Justice-Seeker, Killer-For-Hire. Go, take the submersible craft wherever you desire."
+  branches {
+    responseText: "Uh, thanks."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582d1ca834626518160061b9"
+    }
+  }
+  branches {
+    responseText: "What a weird fucking night."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582d1cc634626518160061bb"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bSubClear"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  comment: "Sub Access Exit"
+}
+nodes {
+  idRef {
+    id: "582d1d1a34626518160061d5"
+  }
+  index: 23
+  text: "{{GM}}The ork laughs.{{/GM}}\n\nSpoken like a true warrior, and a true fool. {{GM}}She looks around the warehouse.{{/GM}} This was a good gig, while it lasted, but all things come to an end. We have heard the spirits growing restless, and your appearance here is an omen of change. We do not stand in your way, Justice-Seeker, Killer-For-Hire. Go, take the submersible craft wherever you desire."
+  branches {
+    responseText: "And here I was looking for a fight."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582d1d6c34626518160061d7"
+    }
+  }
+  branches {
+    responseText: "Thanks, I think."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582d1dae34626518160061db"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Say nothing.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582d1d6d34626518160061d9"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bSubClear"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  comment: "Sub Access Exit"
+}
+nodes {
+  idRef {
+    id: "582d1e2834626518160061fa"
+  }
+  index: 24
+  text: "A wise answer.\n\n{{GM}}She looks around the warehouse.{{/GM}} This was a good gig, while it lasted, but all things come to an end. We have heard the spirits growing restless, and your appearance here is an omen of change. We do not stand in your way, Justice-Seeker, Killer-For-Hire. Go, take the submersible craft wherever you desire."
+  branches {
+    responseText: "{{GM}}Nod.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582d1e6d34626518160061fc"
+    }
+  }
+  branches {
+    responseText: "Everything comes to an end."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582d1e7834626518160061fe"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bSubClear"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  comment: "Sub Access Exit"
+}
+nodes {
+  idRef {
+    id: "582d27813462651816006346"
+  }
+  index: 25
+  text: "{{GM}}The ork laughs.{{/GM}} True enough. But unlike you, money is not our master. We let the Spirit guide us. We are not guiled by money, by you, nor Gaeatronics.\n\n{{GM}}She looks around the warehouse.{{/GM}} This was a good gig, while it lasted, but all things come to an end. We have heard the spirits growing restless, and your appearance here is an omen of change. We do not stand in your way, Killer-For-Rent. Go, take the submersible craft wherever you desire.\n\nAnd, Violet, try to remember that Charles taught you more than just how to use a deck."
+  branches {
+    responseText: "Sayonara."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582d29243462651816006348"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Grumble.{{/GM}} I\'m not even getting paid for this."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582d29b9346265181600634c"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Say nothing.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582d2976346265181600634a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bSubClear"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  comment: "Sub Access Exit"
+}
+nodes {
+  idRef {
+    id: "582d03f43462651816006188"
+  }
+  index: 26
+  text: "{{GM}}The big ork presiding over the FirstNation\'s activities turns as you enter the warehouse, but appears content to shout at you from across the room, her loud voice echoing off the metal walls. Her tone is laced with a malice not found in her words.{{/GM}}\n\nEh syah-yah! Honored guests. I would offer to share the pipe with you, but the night is not so young, and you look as people of action. So let us dispense with pleasantries, eh?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 27
+    idRef {
+      id: "582bde49346265a809001a61:582e65a8346265141a00657d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "582e65b1346265141a006580"
+  }
+  index: 27
+  text: ""
+  branches {
+    responseText: "We\'ll be taking the sub."
+    nextNodeIndex: 28
+    idRef {
+      id: "582bde49346265a809001a61:582e65b4346265141a006582"
+    }
+  }
+  branches {
+    responseText: "This can still be pleasant for us both."
+    nextNodeIndex: 29
+    idRef {
+      id: "582bde49346265a809001a61:582e65bc346265141a00658e"
+    }
+  }
+  branches {
+    responseText: "So do we just start trying to kill each other?"
+    nextNodeIndex: 30
+    idRef {
+      id: "582bde49346265a809001a61:582e65c3346265141a00659a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "582bde49346265a809001a61:582e65b4346265141a006584"
+  }
+  index: 28
+  text: "{{GM}}The ork nods, dubiously.{{/GM}} Of course. I do hope if won\'t be too cramped inside. Naturally we would have not packed it so full if we had known you were coming to claim it.\n\nAnd how were you planning on making payment?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    idRef {
+      id: "582bde49346265a809001a61:582e65b4346265141a006586"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "582bde49346265a809001a61:582e65bc346265141a006590"
+  }
+  index: 29
+  text: "{{GM}}The ork nods, dubiously.{{/GM}} Of course. And what is it you will use to ply my good nature?\n\nWhat do you offer the FirstNation?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    idRef {
+      id: "582bde49346265a809001a61:582e65bc346265141a006592"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "582bde49346265a809001a61:582e65c3346265141a00659c"
+  }
+  index: 30
+  text: "{{GM}}The ork considers your question. Then she shrugs.{{/GM}} We do have our honor, and if it is your wish then we will fight. But honor is not unyielding if an offering is made for peace.\n\nDo you have something to offer the FirstNation?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 31
+    idRef {
+      id: "582bde49346265a809001a61:582e65c3346265141a00659e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "582bde49346265a809001a61:582e65c3346265141a0065a0"
+  }
+  index: 31
+  text: ""
+  branches {
+    responseText: "{{CC}}\302\2451000{{/CC}} Certified cred work for you?"
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 1000
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Nuyen"
+        args {
+          int_value: 1000
+        }
+      }
+    }
+    nextNodeIndex: 4
+    idRef {
+      id: "582bde49346265a809001a61:582e65c3346265141a0065a2"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Ranged Combat 6{{/CC}} I might have a few spare bullets..."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 5
+        }
+      }
+    }
+    nextNodeIndex: 5
+    idRef {
+      id: "582bde49346265a809001a61:582e65c3346265141a0065a6"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Academic{{/CC}} I happen to have access keys to several thaumaturgical journals that might interest you."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 18
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 32
+    idRef {
+      id: "582bde49346265a809001a61:582e65c3346265141a0065aa"
+    }
+  }
+  branches {
+    responseText: "Uh, right. Let me see... {{GM}}Attack.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "gangGoHostile"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582e65c3346265141a0065b4"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Invited NotViolet NoRigger Target"
+}
+nodes {
+  idRef {
+    id: "582bde49346265a809001a61:582e65c3346265141a0065ac"
+  }
+  index: 32
+  text: "{{GM}}You list a few of the journal names and the ork ganger seems satisfied.{{/GM}} Indeed. Access to these materials would be very helpful for us. What... serendipity for us both.\n\n{{GM}}She looks around the warehouse, suddenly melancholic.{{/GM}} This was a good gig, while it lasted, but all things come to an end. We have heard the spirits growing restless, and we must heed their words. We do not stand in your way, peacemaker. Go, take the submersible craft wherever you desire."
+  branches {
+    responseText: "Thank you."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582e65c3346265141a0065ae"
+    }
+  }
+  branches {
+    responseText: "You made the right choice."
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582e65c3346265141a0065b0"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Say nothing.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "582bde49346265a809001a61:582e65c3346265141a0065b2"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bSubClear"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  comment: "Sub Acess Exit"
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "All Actors on Team"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isViolet"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bDockPassword"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "OR"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bPCRigger"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bHiredPaco"
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+  idRef {
+    id: "582bde49346265a809001a61:582e4b08346265141a005f9e"
+  }
+  comment: "Invited: Not Violet IsHas Rigger"
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bDockPassword"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "All Actors on Team"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isViolet"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bPCRigger"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 8
+  idRef {
+    id: "582bde49346265a809001a61:582bde49346265a809001a65"
+  }
+  comment: "Invited: Not Violet NoRigger"
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "All Actors on Team"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isViolet"
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 14
+  idRef {
+    id: "582bde49346265a809001a61:582d14a4346265181600619b"
+  }
+  comment: "isViolet"
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bDockPassword"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "All Actors on Team"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isViolet"
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 26
+  idRef {
+    id: "582bde49346265a809001a61:582d03d33462651816006185"
+  }
+  comment: "Uninvited: Not Violet"
+}

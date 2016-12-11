@@ -1,0 +1,226 @@
+idRef {
+  id: "584422f23462659c280013f2"
+}
+ui_name: "c16-s1_LabSpirit_CrystalMatrix"
+nodes {
+  idRef {
+    id: "584423333462659c280013fa"
+  }
+  index: 0
+  text: "Searching through the command codes for the node it becomes quickly apparent that shutting down any one crystal resonator engages a safety lockout of the others."
+  branches {
+    responseText: "{{GM}}Shut down the resonator.{{/GM}}"
+    nextNodeIndex: 1
+    idRef {
+      id: "584422f23462659c280013f2:584424c33462659c28001401"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Walk away.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "584422f23462659c280013f2:584424dc3462659c28001403"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  speaker_override_id: "55897a5a613464581a001ad8"
+}
+nodes {
+  idRef {
+    id: "5844250b3462659c28001406"
+  }
+  index: 1
+  text: "{{GM}}The commands fly from the node at the speed of light, but it will be half a minute before the machines that receive those commands engage and close the resonator - a lifetime in the Matrix.{{/GM}}"
+  branches {
+    responseText: "{{GM}}Exit the Matrix for now.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Actor is Jacked in"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Force-Use Interactable Object (with Actor)"
+        args {
+          call_value {
+            functionName: "Get Map Item (InteractableObject)"
+            args {
+              string_value: "583c30003462651c2c00746e"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Actor\'s Persona"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    hideIfUnavailable: true
+    idRef {
+      id: "584422f23462659c280013f2:584425c33462659c28001408"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Have Violet exit the Matrix.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Actor is Jacked in"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Force-Use Interactable Object (with Actor)"
+        args {
+          call_value {
+            functionName: "Get Map Item (InteractableObject)"
+            args {
+              string_value: "583c30003462651c2c00746e"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    hideIfUnavailable: true
+    idRef {
+      id: "584422f23462659c280013f2:584425c43462659c2800140a"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Stay in the Matrix for now.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Actor is Jacked in"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "584422f23462659c280013f2:584425c63462659c2800140c"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Have Violet look around the Matrix some more.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Actor is Jacked in"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    hideIfUnavailable: true
+    idRef {
+      id: "584422f23462659c280013f2:58442d103462659c2800140e"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  speaker_override_id: "55897a5a613464581a001ad8"
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "labMatrixResonatorOff"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "584422f23462659c280013f2:584422f23462659c280013f6"
+  }
+}

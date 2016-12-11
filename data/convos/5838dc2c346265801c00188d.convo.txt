@@ -1,0 +1,176 @@
+idRef {
+  id: "5838dc2c346265801c00188d"
+}
+ui_name: "c16-s1_LabLv2_JackIn"
+nodes {
+  idRef {
+    id: "5838dc3c346265801c001895"
+  }
+  index: 0
+  text: "{{GM}}The terminal here is logged into the water filtration system, but judging by the crisscrossing wires that run all around the lab, a decker might be able to access far more systems than the designers intended.{{/GM}}"
+  branches {
+    responseText: "{{CC}}Decker{{/CC}} Jack-in."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Is Decker"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Force-Use Interactable Object (with Actor)"
+        args {
+          call_value {
+            functionName: "Get Map Item (InteractableObject)"
+            args {
+              string_value: "5838dbdd346265801c001876"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "5838dc2c346265801c00188d:5838dcc7346265801c001897"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Violet{{/CC}} Have Violet jack-in."
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isViolet"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Force-Use Interactable Object (with Actor)"
+        args {
+          call_value {
+            functionName: "Get Map Item (InteractableObject)"
+            args {
+              string_value: "5838dbdd346265801c001876"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Nearest Tagged Actor to Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isViolet"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "5838dc2c346265801c00188d:5838dd16346265801c001899"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Leave the terminal alone.{{/GM}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "5838dc2c346265801c00188d:5838dd72346265801c00189b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  speaker_override_id: "55897a5a613464581a001ad9"
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "5838dc2c346265801c00188d:5838dc2c346265801c001891"
+  }
+}

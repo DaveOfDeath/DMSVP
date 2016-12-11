@@ -1,0 +1,68 @@
+id: "Spell Earth Bolt (Enemy)"
+type: ItemType_AttackSpell
+uirep {
+  icon: "icon_nervebolt2"
+  name: "Nerve Bolt"
+  description: "Does minor damage, but unbalances the target making them easier to hit."
+}
+anim_type: AnimType_Spell
+coreAttribute: Attribute_Charisma
+coreSkill: Skill_Conjuring
+forceRating: 4
+apCost: 1
+maxAmmo: 0
+baseHPDamage: 4
+baseAPDamage: 0
+rangeModTable: 12
+rangeModTable: 12
+rangeModTable: 10
+rangeModTable: 10
+rangeModTable: 8
+rangeModTable: 8
+rangeModTable: 6
+rangeModTable: 4
+rangeModTable: 2
+rangeModTable: 0
+rangeModTable: -2
+rangeModTable: -4
+rangeModTable: -6
+rangeModTable: -8
+rangeModTable: -10
+rangeModTable: -12
+rangeModTable: -14
+rangeModTable: -16
+rangeModTable: -18
+rangeModTable: -20
+rangeModTable: -22
+rangeModTable: -24
+rangeModTable: -26
+rangeModTable: -28
+noiseLevel: 4
+noiseRounds: 1
+modelessAbilities: "Nervebolt"
+modelessAbilities: "Nervebolt (Flush Target)"
+affectsEnemy: true
+canTargetActor: true
+isMagic: false
+effectDuration: 2
+fxrep {
+  preActionFxName: "AcidSpellPrepare"
+  actionFxName: "Berlin:NerveBoltThrowAction"
+  postActionFxName: ""
+  hitReactionFxName: "AcidHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+activationStatusEffects {
+  uirep {
+    icon: "icon_acidstream1"
+    name: "Unbalanced"
+  }
+  stackingCategory: "Nerve"
+  statMods {
+    attribute: Attribute_Accuracy_Reduction_Mod
+    intModValue: -8
+  }
+  fxScript: "AcidBurnStatus"
+  is_debuff: true
+}
+sorting_group: "enemyWeapons"
