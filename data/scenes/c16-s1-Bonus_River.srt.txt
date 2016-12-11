@@ -22651,6 +22651,57 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "583e3e7b3462659408001880"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Set Environmental Effect Amount"
       args {
         call_value {
@@ -24791,52 +24842,6 @@ triggers {
         }
       }
     }
-    ops {
-      functionName: "Set Variable (int)"
-      args {
-        call_value {
-          functionName: "Get Variable (int)"
-          args {
-            string_value: "iWaveTimer_FN"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Arithmetic (int)"
-          args {
-            call_value {
-              functionName: "Get Measurement for Current Level"
-              args {
-                call_value {
-                  functionName: "Get Preset Value (int)"
-                  args {
-                    string_value: "MetricType"
-                  }
-                  args {
-                    int_value: 8
-                  }
-                }
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Preset Value (int)"
-              args {
-                string_value: "Arithmetic Ops"
-              }
-              args {
-                int_value: 0
-              }
-            }
-          }
-          args {
-            int_value: 4
-          }
-        }
-      }
-    }
   }
   isActive: true
   idRef {
@@ -25678,6 +25683,40 @@ triggers {
       }
     }
     ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Tag From String"
+          args {
+            string_value: "hasTalked"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Actor is Player Controlled"
       args {
         call_value {
@@ -25703,46 +25742,31 @@ triggers {
         }
       }
     }
+  }
+  actions {
     ops {
-      functionName: "Comparison (int)"
+      functionName: "Add Tag to Actor"
       args {
         call_value {
-          functionName: "Get Measurement for Current Level"
+          functionName: "Tag From String"
+          args {
+            string_value: "hasTalked"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
           args {
             call_value {
-              functionName: "Get Preset Value (int)"
-              args {
-                string_value: "MetricType"
-              }
-              args {
-                int_value: 8
-              }
+              functionName: "Triggering Actor"
             }
           }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
           args {
-            string_value: "Comparison Ops"
-          }
-          args {
-            int_value: 2
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Variable (int)"
-          args {
-            string_value: "iWaveTimer_FN"
           }
         }
       }
     }
-  }
-  actions {
     ops {
       functionName: "Display Text over Actor"
       args {
@@ -25787,21 +25811,30 @@ triggers {
       }
     }
     ops {
-      functionName: "Add To Variable (int)"
+      functionName: "Trigger: Wait Until Triggered Again"
+    }
+    ops {
+      functionName: "Add Tag to Actor"
       args {
         call_value {
-          functionName: "Get Variable (int)"
+          functionName: "Tag From String"
           args {
-            string_value: "iWaveTimer_FN"
+            string_value: "hasTalked"
           }
         }
       }
       args {
-        int_value: 1
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
       }
-    }
-    ops {
-      functionName: "Trigger: Wait Until Triggered Again"
     }
     ops {
       functionName: "Display Text over Actor"
@@ -25847,21 +25880,30 @@ triggers {
       }
     }
     ops {
-      functionName: "Add To Variable (int)"
+      functionName: "Trigger: Wait Until Triggered Again"
+    }
+    ops {
+      functionName: "Add Tag to Actor"
       args {
         call_value {
-          functionName: "Get Variable (int)"
+          functionName: "Tag From String"
           args {
-            string_value: "iWaveTimer_FN"
+            string_value: "hasTalked"
           }
         }
       }
       args {
-        int_value: 1
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
       }
-    }
-    ops {
-      functionName: "Trigger: Wait Until Triggered Again"
     }
     ops {
       functionName: "Display Text over Actor"
@@ -25907,21 +25949,30 @@ triggers {
       }
     }
     ops {
-      functionName: "Add To Variable (int)"
+      functionName: "Trigger: Wait Until Triggered Again"
+    }
+    ops {
+      functionName: "Add Tag to Actor"
       args {
         call_value {
-          functionName: "Get Variable (int)"
+          functionName: "Tag From String"
           args {
-            string_value: "iWaveTimer_FN"
+            string_value: "hasTalked"
           }
         }
       }
       args {
-        int_value: 1
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
       }
-    }
-    ops {
-      functionName: "Trigger: Wait Until Triggered Again"
     }
     ops {
       functionName: "Display Text over Actor"
@@ -25964,20 +26015,6 @@ triggers {
       }
       args {
         float_value: 0
-      }
-    }
-    ops {
-      functionName: "Add To Variable (int)"
-      args {
-        call_value {
-          functionName: "Get Variable (int)"
-          args {
-            string_value: "iWaveTimer_FN"
-          }
-        }
-      }
-      args {
-        int_value: 1
       }
     }
   }
@@ -30741,7 +30778,7 @@ characters {
         essence: 0
         magic: 0
         hp: 0
-        ap: 0
+        ap: 1
         armor: 0
         force: 0
         morale: 0
@@ -30754,6 +30791,7 @@ characters {
         vision_peripheral_distance: 0
         vision_cone_distance: 0
         vision_cone_angle: 0
+        is_fearless: 1
       }
       skills {
         ranged_combat: 5
@@ -30788,7 +30826,7 @@ characters {
         drone_combat: 0
       }
       archetypeName: "gumbo_Mage"
-      attitude: AttitudeAggressive
+      attitude: AttitudeBoss
       vulnerabilities {
       }
     }
@@ -30835,7 +30873,7 @@ characters {
         essence: 0
         magic: 0
         hp: 0
-        ap: 0
+        ap: 1
         armor: 0
         force: 0
         morale: 0
@@ -30848,100 +30886,7 @@ characters {
         vision_peripheral_distance: 0
         vision_cone_distance: 0
         vision_cone_angle: 0
-      }
-      skills {
-        ranged_combat: 0
-        close_combat: 0
-        throwing_weapons: 0
-        spellcasting: 0
-        decking: 0
-        conjuring: 0
-        spirit_summoning: 0
-        drone_control: 0
-        biotech: 0
-        dodge: 0
-        etiquette_corporate: 0
-        etiquette_security: 0
-        etiquette_gang: 0
-        etiquette_socialite: 0
-        chi_casting: 0
-        etiquette_shadowrunner: 0
-        etiquette_street: 0
-        etiquette_academic: 0
-        cyberware_affinity: 0
-      }
-      specializations {
-        pistol: 0
-        rifle: 0
-        shotgun: 0
-        smg: 0
-        edged: 0
-        unarmed: 0
-        spirit_control: 0
-        esp_control: 0
-        drone_combat: 0
-      }
-      archetypeName: "gumbo_Mage"
-      attitude: AttitudeAggressive
-      vulnerabilities {
-      }
-    }
-    team_id: "Disabled"
-    char_name: "Spirit of Earth"
-    GeneralTags: "isLabSpirit"
-    pc_spawn_number: -1
-    ai_ignores: false
-    hiring_type: HiringType_None
-    portrait {
-      filename: "Generic_Spirit_Earth"
-    }
-    karma: 107
-    hiring_cost_override: 1000
-    scale_character_sheet: false
-  }
-}
-characters {
-  name: "chars_icon_playerIcon"
-  gridPoint {
-    x: 83
-    y: 0
-    z: 14
-  }
-  orientation: ORIENTATION_N
-  GeneralTags: "isLabSpirit"
-  displayName: "LabSpiritFire3"
-  idRef {
-    id: "582e7483346265141a00685d"
-  }
-  lod: 0
-  character_instance {
-    prefab_name: "HongKong:Spirits/SpiritShrineFire"
-    character_sheet_id: "RedSamurai_Lv2_Mage"
-    equipment_sheet_id: "UncontrolledSpirit_Lv3_Fire"
-    character_mod {
-      stats {
-        body: 0
-        quickness: 0
-        strength: 0
-        charisma: 0
-        intelligence: 0
-        willpower: 0
-        essence: 0
-        magic: 0
-        hp: 0
-        ap: 0
-        armor: 0
-        force: 0
-        morale: 0
-        discipline: 0
-        awareness: 0
-        perception: 0
-        authority: 0
-        protect_tether_range: 0
-        move_speed: 0
-        vision_peripheral_distance: 0
-        vision_cone_distance: 0
-        vision_cone_angle: 0
+        is_fearless: 1
       }
       skills {
         ranged_combat: 5
@@ -30976,7 +30921,102 @@ characters {
         drone_combat: 0
       }
       archetypeName: "gumbo_Mage"
-      attitude: AttitudeAggressive
+      attitude: AttitudeBoss
+      vulnerabilities {
+      }
+    }
+    team_id: "Disabled"
+    char_name: "Spirit of Earth"
+    GeneralTags: "isLabSpirit"
+    pc_spawn_number: -1
+    ai_ignores: false
+    hiring_type: HiringType_None
+    portrait {
+      filename: "Generic_Spirit_Earth"
+    }
+    karma: 122
+    hiring_cost_override: 1000
+    scale_character_sheet: false
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: 83
+    y: 0
+    z: 14
+  }
+  orientation: ORIENTATION_N
+  GeneralTags: "isLabSpirit"
+  displayName: "LabSpiritFire3"
+  idRef {
+    id: "582e7483346265141a00685d"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Spirits/SpiritShrineFire"
+    character_sheet_id: "RedSamurai_Lv2_Mage"
+    equipment_sheet_id: "UncontrolledSpirit_Lv3_Fire"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 1
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+        is_fearless: 1
+      }
+      skills {
+        ranged_combat: 5
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "gumbo_Mage"
+      attitude: AttitudeBoss
       vulnerabilities {
       }
     }
@@ -31037,6 +31077,7 @@ characters {
         vision_peripheral_distance: 0
         vision_cone_distance: 0
         vision_cone_angle: 0
+        is_fearless: 1
       }
       skills {
         ranged_combat: 0
@@ -31071,7 +31112,7 @@ characters {
         drone_combat: 0
       }
       archetypeName: "gumbo_Mage"
-      attitude: AttitudeAggressive
+      attitude: AttitudeBoss
       vulnerabilities {
       }
     }
@@ -31105,9 +31146,8 @@ characters {
   lod: 0
   character_instance {
     prefab_name: "Berlin:Spirits/SpiritAdvRanged"
-    character_sheet_id: "UncontrolledSpirit_Lv4_Nature"
-    equipment_sheet_id: "UncontrolledSpirit_Lv3_Nature"
-    equipment_sheet_id: "UncontrolledSpirit_Lv4_Fire"
+    character_sheet_id: "RedSamurai_Lv4_Mage"
+    equipment_sheet_id: "RedSamurai_Lv4_Mage"
     character_mod {
       stats {
         body: 0
@@ -31119,7 +31159,7 @@ characters {
         essence: 0
         magic: 0
         hp: 0
-        ap: 0
+        ap: 1
         armor: 0
         force: 0
         morale: 0
@@ -31132,9 +31172,10 @@ characters {
         vision_peripheral_distance: 0
         vision_cone_distance: 0
         vision_cone_angle: 0
+        is_fearless: 1
       }
       skills {
-        ranged_combat: 0
+        ranged_combat: 5
         close_combat: 0
         throwing_weapons: 0
         spellcasting: 0
@@ -31166,7 +31207,7 @@ characters {
         drone_combat: 0
       }
       archetypeName: "gumbo_Mage"
-      attitude: AttitudeAggressive
+      attitude: AttitudeBoss
       vulnerabilities {
       }
     }
@@ -31179,7 +31220,7 @@ characters {
     portrait {
       filename: "npc_spirit_adversary"
     }
-    karma: 111
+    karma: 122
     hiring_cost_override: 1000
     scale_character_sheet: false
   }
@@ -31977,7 +32018,7 @@ characters {
     dimension_name: "Matrix"
     karma: 31
     hiring_cost_override: 1000
-    scale_character_sheet: true
+    scale_character_sheet: false
     blocker_ic_panel_bypass_code: "HATE"
   }
 }
@@ -33160,7 +33201,7 @@ characters {
     dimension_name: "Matrix"
     karma: 31
     hiring_cost_override: 1000
-    scale_character_sheet: true
+    scale_character_sheet: false
     blocker_ic_panel_bypass_code: "HATE"
   }
 }
@@ -33217,7 +33258,7 @@ characters {
     dimension_name: "Matrix"
     karma: 31
     hiring_cost_override: 1000
-    scale_character_sheet: true
+    scale_character_sheet: false
     blocker_ic_panel_bypass_code: "HATE"
   }
 }
@@ -33361,7 +33402,7 @@ characters {
     dimension_name: "Matrix"
     karma: 31
     hiring_cost_override: 1000
-    scale_character_sheet: true
+    scale_character_sheet: false
     blocker_ic_panel_bypass_code: "HATE"
   }
 }
@@ -33386,7 +33427,7 @@ characters {
   lod: 0
   character_instance {
     prefab_name: "HongKong:Matrix/MatrixIC_Blocker"
-    character_sheet_id: "IC_Lv2_White_Blocker"
+    character_sheet_id: "IC_Lv3_White_Blocker"
     equipment_sheet_id: "IC White Blocker Lv2 Gear"
     character_mod {
       stats {
@@ -33418,7 +33459,7 @@ characters {
     dimension_name: "Matrix"
     karma: 31
     hiring_cost_override: 1000
-    scale_character_sheet: true
+    scale_character_sheet: false
     blocker_ic_panel_bypass_code: "HATE"
   }
 }
