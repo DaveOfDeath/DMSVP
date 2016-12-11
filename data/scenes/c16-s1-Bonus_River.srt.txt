@@ -19539,6 +19539,72 @@ triggers {
       }
     }
     ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Eliminate the Lab Spirits"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Free Gormenghast"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Start Conversation Between Actors"
       args {
         call_value {
@@ -19613,12 +19679,19 @@ triggers {
       }
     }
     ops {
-      functionName: "Set Goal Status"
+      functionName: "Kill Actor"
       args {
         call_value {
-          functionName: "Get Map Item (Goal)"
+          functionName: "Specific Actor"
           args {
-            string_value: "Eliminate the Lab Spirits"
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "583e3e7b3462659408001880"
+              }
+            }
+          }
+          args {
           }
         }
       }
@@ -19626,32 +19699,10 @@ triggers {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "GoalStatus"
+            string_value: "DeathMethod"
           }
           args {
-            int_value: 2
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Set Goal Status"
-      args {
-        call_value {
-          functionName: "Get Map Item (Goal)"
-          args {
-            string_value: "Free Gormenghast"
+            int_value: 3
           }
         }
       }
@@ -19659,10 +19710,10 @@ triggers {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "GoalStatus"
+            string_value: "FacingDirection"
           }
           args {
-            int_value: 2
+            int_value: 0
           }
         }
       }
@@ -19673,7 +19724,7 @@ triggers {
             string_value: "WithOrWithout"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
@@ -22364,140 +22415,6 @@ triggers {
   is_oneshot: false
 }
 triggers {
-  name: "onDetainExit.AllShadowrunners.PlaySequence"
-  events {
-    ops {
-      functionName: "On Team Detain Exit"
-    }
-  }
-  conditions {
-    ops {
-      functionName: "Comparison (bool)"
-      args {
-        call_value {
-          functionName: "Get Variable (bool)"
-          args {
-            string_value: "bDockReturn"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "IsOrIsNot"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-  }
-  actions {
-    ops {
-      functionName: "Fade Camera Out"
-      args {
-        float_value: 0.5
-      }
-      args {
-        float_value: 0
-      }
-    }
-    ops {
-      functionName: "Send Event After Delay"
-      args {
-        call_value {
-          functionName: "Get Map Item (Event)"
-          args {
-            string_value: "teleportDelay"
-          }
-        }
-      }
-      args {
-        float_value: 0.5
-      }
-    }
-    ops {
-      functionName: "Trigger: Wait for Event"
-      args {
-        call_value {
-          functionName: "Get Map Item (Event)"
-          args {
-            string_value: "teleportDelay"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Play Sound"
-      args {
-        call_value {
-          functionName: "Get Map Item (Sound)"
-          args {
-            string_value: "HongKong:summoning"
-          }
-          args {
-            string_value: "WaterElemental_Summoned"
-          }
-        }
-      }
-      args {
-        float_value: 1
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Teleport Camera To Actor"
-      args {
-        call_value {
-          functionName: "Get Map Item (Player)"
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Fade Camera In"
-      args {
-        float_value: 1
-      }
-      args {
-        float_value: 0.6
-      }
-    }
-  }
-  isActive: true
-  idRef {
-    id: "5846bbc13462651825003d31"
-  }
-  elseActions {
-  }
-  is_oneshot: true
-}
-triggers {
   name: "onDeath.LabSpirit.Boogie.BanishGoal"
   events {
     ops {
@@ -22669,6 +22586,122 @@ triggers {
   is_oneshot: true
 }
 triggers {
+  name: "onDetainExit.AllShadowrunners.PlaySequence"
+  events {
+    ops {
+      functionName: "On Team Detain Exit"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bDockReturn"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:summoning"
+          }
+          args {
+            string_value: "WaterElemental_Summoned"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "teleportDelay"
+          }
+        }
+      }
+      args {
+        float_value: 0.5
+      }
+    }
+    ops {
+      functionName: "Trigger: Wait for Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "teleportDelay"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5846bbc13462651825003d31"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
   name: "onFadeIn.Return.StopEmbers.StartSquence"
   events {
     ops {
@@ -22748,57 +22781,6 @@ triggers {
     }
   }
   actions {
-    ops {
-      functionName: "Kill Actor"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "583e3e7b3462659408001880"
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "DeathMethod"
-          }
-          args {
-            int_value: 3
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "FacingDirection"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
     ops {
       functionName: "Kill Actor"
       args {
