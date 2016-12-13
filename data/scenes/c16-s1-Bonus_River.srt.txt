@@ -1109,6 +1109,62 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Display Text over Actor"
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isRiver"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        string_value: "Do some fool drop this when leaving the Party Barge?"
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 6
+      }
+      args {
+        float_value: 0.5
+      }
+      args {
+        float_value: 0
+      }
+    }
   }
   isActive: true
   idRef {
@@ -13688,6 +13744,52 @@ triggers {
   is_oneshot: true
 }
 triggers {
+  name: "MATRIX.onSpawn.Persona.TeleportCamera"
+  events {
+    ops {
+      functionName: "On Actor Alive"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Actor is a Persona"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "585000163462650c08005cf0"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
   name: "MATRIX.OnTeleport.Shadowrunner.TeleportCamera"
   events {
     ops {
@@ -19180,51 +19282,17 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Remove Status Effect from Actor"
+      functionName: "Teleport Camera To Point"
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "Current Location of Prop"
           args {
             call_value {
-              functionName: "Get Map Item (Actor)"
+              functionName: "Get Map Item (Prop)"
               args {
-                string_value: "582e7b24346265141a00685f"
+                string_value: "582e7377346265141a006847"
               }
             }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        string_value: "SpiritIgnore"
-      }
-    }
-    ops {
-      functionName: "Set Actor Uninjurable"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "582e7b24346265141a00685f"
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "IsOrIsNot"
-          }
-          args {
-            int_value: 1
           }
         }
       }
@@ -19291,7 +19359,7 @@ triggers {
       }
     }
     ops {
-      functionName: "Kill Actor"
+      functionName: "Teleport Actor"
       args {
         call_value {
           functionName: "Specific Actor"
@@ -19309,12 +19377,14 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Get Preset Value (int)"
+          functionName: "Get Random Point Within Region"
           args {
-            string_value: "DeathMethod"
-          }
-          args {
-            int_value: 3
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "5838fd09346265801c00198a"
+              }
+            }
           }
         }
       }
@@ -19333,7 +19403,7 @@ triggers {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "WithOrWithout"
+            string_value: "TeleportMethod"
           }
           args {
             int_value: 0
@@ -19360,12 +19430,28 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Current Location of Prop"
+          functionName: "Get Offset Point"
           args {
             call_value {
-              functionName: "Get Map Item (Prop)"
+              functionName: "Current Location of Prop"
               args {
-                string_value: "582e7377346265141a006847"
+                call_value {
+                  functionName: "Get Map Item (Prop)"
+                  args {
+                    string_value: "582e7377346265141a006847"
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Specified Point (2D)"
+              args {
+                float_value: -0.5
+              }
+              args {
+                float_value: -0.5
               }
             }
           }
@@ -19549,7 +19635,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Actor)"
           args {
-            string_value: "582e7b24346265141a00685f"
+            string_value: "584f7b0c346265f42200117e"
           }
         }
       }
@@ -19561,32 +19647,6 @@ triggers {
           }
           args {
             int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Add Tag to Actor"
-      args {
-        call_value {
-          functionName: "Tag From String"
-          args {
-            string_value: "doHunt"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "584f7b0c346265f42200117e"
-              }
-            }
-          }
-          args {
           }
         }
       }
@@ -19674,6 +19734,43 @@ triggers {
           }
           args {
             int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Hunt And Destroy (Team)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "584f7b0c346265f42200117e"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
           }
         }
       }
@@ -22396,7 +22493,7 @@ triggers {
             call_value {
               functionName: "Get Map Item (Actor)"
               args {
-                string_value: "582e7b24346265141a00685f"
+                string_value: "584f7b0c346265f42200117e"
               }
             }
           }
@@ -26275,6 +26372,116 @@ triggers {
   is_oneshot: true
 }
 triggers {
+  name: "<---Reload Handler--->"
+  events {
+  }
+  conditions {
+  }
+  actions {
+  }
+  isActive: false
+  idRef {
+    id: "584fedfe3462650c08005ce0"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "onReload.inRgnEntrance.EnableElevator"
+  events {
+    ops {
+      functionName: "On Load From Save Game"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate If Actor is Inside Region"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "AreOrAreNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "582fe9ca346265fc11003ae2"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5833b490346265401b004e17"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "584fee153462650c08005ce2"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: ""
+  events {
+  }
+  conditions {
+  }
+  actions {
+  }
+  isActive: false
+  idRef {
+    id: "584fee0f3462650c08005ce1"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
   name: "<---Autosave Handler--->"
   events {
   }
@@ -26781,6 +26988,77 @@ triggers {
           functionName: "Get Preset Value (int)"
           args {
             string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "All Actors on Team"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 6
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
           }
           args {
             int_value: 0
@@ -31458,7 +31736,9 @@ characters {
   character_instance {
     prefab_name: "HongKong:Spirits/SpiritShrineEarth"
     character_sheet_id: "RedSamurai_Lv2_Mage"
-    equipment_sheet_id: "Vanguard_Lv6_Mage_Gear"
+    equipment_sheet_id: "Vampire_Lv3_KuFeng"
+    equipment_sheet_id: "UncontrolledSpirit_Lv3_Earth"
+    equipment_sheet_id: "SeekerSpirit_Lv3_Gear"
     character_mod {
       stats {
         body: 0
@@ -31803,12 +32083,12 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "gumbo_Soldier_Boss"
+      archetypeName: "Non-Combatant"
       attitude: AttitudeBoss
       vulnerabilities {
       }
     }
-    team_id: "Disabled"
+    team_id: "Civilians"
     char_name: "Gormenghast"
     GeneralTags: "isBoogie"
     pc_spawn_number: -1
@@ -34935,7 +35215,7 @@ worldMapLocation {
 }
 mapName: "c16-s1-Bonus_River"
 parentStory: ""
-scene_title: "Deeper Shade of Blue"
+scene_title: "A DEEPER SHADE OF BLUE"
 scene_subtitle: ""
 scene_synopsis: "The shaman doesn\'t say much on the drive to the docks."
 scene_image: "loadingimage_epilogue_s1"
