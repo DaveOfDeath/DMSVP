@@ -7,7 +7,7 @@ nodes {
     id: "6079fdad6233317c1600006a"
   }
   index: 0
-  text: "{{GM}}The guard looks bored. He toys with his gun absentmindedly, like he might shoot something on a whim just to watch it die.{{/GM}}\n\nHey, you\'re about to trespass on Corporate property. You looking to get dusted, street scum?"
+  text: "{{GM}}The guard looks bored. He toys with his gun absentmindedly, drawing and holstering it again and again. \nHe looks like the type to shoot something on a whim just to watch it die.{{/GM}}\n\nHalt. You\'re about to trespass on Protected Corporate property. You take one step in here, and I have every right to shoot you.\nYou looking to get dusted, street scum? Ya feeling lucky?"
   branches {
     responseText: ""
     conditions {
@@ -49,6 +49,9 @@ nodes {
       }
     }
     nextNodeIndex: 1
+    idRef {
+      id: "6079ba346233317c16000064:585379ab3966301c24001a73"
+    }
   }
   branches {
     responseText: ""
@@ -90,7 +93,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 4
+    nextNodeIndex: 7
     onlyOnce: true
     idRef {
       id: "51c8bad8623331801c001bb6"
@@ -108,19 +111,28 @@ nodes {
   branches {
     responseText: "I\'m working with Lone Star on the crime scene investigation in the NTSB warehouse."
     nextNodeIndex: 2
+    idRef {
+      id: "6079ba346233317c16000064:585379ab3966301c24001a76"
+    }
   }
   branches {
-    responseText: "I\'m looking for my kitty cat. Here kitty!"
+    responseText: "Have you seen my kitty cat? Here kitty!"
     nextNodeIndex: 2
+    idRef {
+      id: "6079ba346233317c16000064:585379ab3966301c24001a79"
+    }
     auxiliaryLink: true
   }
   branches {
-    responseText: "I\'m the new maintenance guy. This is my first day. "
+    responseText: "I\'m the new maintenance guy. First day. "
     nextNodeIndex: 2
+    idRef {
+      id: "6079ba346233317c16000064:585379ab3966301c24001a7c"
+    }
     auxiliaryLink: true
   }
   branches {
-    responseText: "{{CC}}Etiquette: Security{{/CC}} Officer Aguirre called me in. Needs me to rule out if the killer bypassed security, or if they were let in."
+    responseText: "{{CC}}Etiquette: Academic{{/CC}} They call me down from the University, and you\'re going to blow me off without checking in? Your funeral."
     conditions {
       ops {
         functionName: "Compare Actor Skill"
@@ -139,7 +151,7 @@ nodes {
               string_value: "BaseOrCurrent"
             }
             args {
-              int_value: 0
+              int_value: 1
             }
           }
         }
@@ -150,7 +162,7 @@ nodes {
               string_value: "ActorSkills"
             }
             args {
-              int_value: 14
+              int_value: 18
             }
           }
         }
@@ -195,49 +207,12 @@ nodes {
       }
     }
     nextNodeIndex: 3
-  }
-  nodeType: ConversationNodeType_Simple
-  autoFollowBranchDelay: ConversationAutoFollowType_None
-}
-nodes {
-  idRef {
-    id: "60d741246233317c1600012a"
-  }
-  index: 2
-  text: "Sure you are. And I\'m Lofwyr, the King of Dragons. \n\nBeat it."
-  nodeType: ConversationNodeType_Simple
-  autoFollowBranchDelay: ConversationAutoFollowType_None
-}
-nodes {
-  idRef {
-    id: "51d0a08a62333158070042b8"
-  }
-  index: 3
-  text: "Oh, uh, of course. I\'ll open the gate, Aguirre is just inside the warehouse. Definitely no holes in our security, here. Tip-top shape."
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "60bff4b96233317c16000102"
-  }
-  index: 4
-  text: ""
-  branches {
-    responseText: "I\'m working with the coroner, bronze. Open the gate."
-    nextNodeIndex: 2
-    auxiliaryLink: true
+    idRef {
+      id: "6079ba346233317c16000064:58537d0a3966301c24001ab9"
+    }
   }
   branches {
-    responseText: "I\'m here to see the body at the NTSB warehouse."
-    nextNodeIndex: 5
-  }
-  branches {
-    responseText: "I\'m the new maintenance guy. This is my first day. "
-    nextNodeIndex: 2
-    auxiliaryLink: true
-  }
-  branches {
-    responseText: "{{CC}}Etiquette: Security{{/CC}} I\'m special assistant to the coroner. You met him, right? He needs me to get things off tall shelves for him."
+    responseText: "{{CC}}Etiquette: Corporate{{/CC}} Sure, I\'ll go-- let me get your employee number first."
     conditions {
       ops {
         functionName: "Compare Actor Skill"
@@ -256,7 +231,87 @@ nodes {
               string_value: "BaseOrCurrent"
             }
             args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 13
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
               int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasBluffedGuard"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    idRef {
+      id: "6079ba346233317c16000064:58537d0a3966301c24001ab7"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Security{{/CC}} Officer Aguirre called me in. Needs a security briefing-- did the killer bypassed security, or were they were let in?"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
             }
           }
         }
@@ -312,6 +367,178 @@ nodes {
       }
     }
     nextNodeIndex: 6
+    onlyOnce: true
+    idRef {
+      id: "6079ba346233317c16000064:585379ab3966301c24001a7f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "60d741246233317c1600012a"
+  }
+  index: 2
+  text: "{{GM}}You can\'t see his expression- his face is protected by armor, but you can hear his guffaw.{{/GM}}\n\nSure you are. And I\'m Lofwyr, the King of Dragons. \n\nBeat it."
+  nodeType: ConversationNodeType_Simple
+  autoFollowBranchDelay: ConversationAutoFollowType_None
+}
+nodes {
+  idRef {
+    id: "5853864e3966301c24001ad7"
+  }
+  index: 3
+  text: "{{GM}}The security guard jumps to the controls, opening the door with haste.{{/GM}}\n\nMy apologies, $+(l.sir). I didn\'t know you were a special operative. Please --uh, go right in."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "585387593966301c24001ada"
+  }
+  index: 4
+  text: "{{GM}}The guard seems uncertain what to do.{{/GM}}\n\nWhy do you need my employee number? Buzz off."
+  branches {
+    responseText: "I need to file a complaint, and I need your boss to know that it was You, specifically, that stopped me."
+    nextNodeIndex: 5
+    idRef {
+      id: "6079ba346233317c16000064:585387923966301c24001adc"
+    }
+  }
+  branches {
+    responseText: "I need to know who to get fired when I get back to the office."
+    nextNodeIndex: 5
+    idRef {
+      id: "6079ba346233317c16000064:585387b03966301c24001ade"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5853890a3966301c24001ae1"
+  }
+  index: 5
+  text: "{{GM}}The guard moves to the controls and triggers the opening of the door.{{/GM}}\n\nYou know what? There\'s no need for that. Go on through."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d0a08a62333158070042b8"
+  }
+  index: 6
+  text: "{{GM}}The security guard jumps at Aguirre\'s name, and reaches for the controls.{{/GM}}\n\nOh, uh, of course. I\'ll open the gate, Detective Aguirre is just inside the warehouse, $+(l.sir). \nDefinitely no holes in our security, here. Tip-top shape."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "60bff4b96233317c16000102"
+  }
+  index: 7
+  text: ""
+  branches {
+    responseText: "I\'m working with the coroner, bronze. Open the gate."
+    nextNodeIndex: 2
+    idRef {
+      id: "6079ba346233317c16000064:585379ab3966301c24001a84"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I\'m here to see the body at the NTSB warehouse."
+    nextNodeIndex: 8
+    idRef {
+      id: "6079ba346233317c16000064:585379ab3966301c24001a87"
+    }
+  }
+  branches {
+    responseText: "I\'m the new maintenance guy. This is my first day. "
+    nextNodeIndex: 2
+    idRef {
+      id: "6079ba346233317c16000064:585379ab3966301c24001a8a"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Security{{/CC}} Special assistant to Dresden, the coroner. You met him, right? He needs me to get things off tall shelves for him."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 14
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasBluffedGuard"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 9
+    idRef {
+      id: "6079ba346233317c16000064:585379ab3966301c24001a8d"
+    }
   }
   nodeType: ConversationNodeType_Simple
   autoFollowBranchDelay: ConversationAutoFollowType_None
@@ -320,8 +547,8 @@ nodes {
   idRef {
     id: "60d79f936233317c1600012c"
   }
-  index: 5
-  text: "What, you like looking at dead bodies? Sicko. Get out of here before I call for backup."
+  index: 8
+  text: "{{GM}}The Lonestar officer draws his sidearm and keeps it near his hip.{{/GM}}\n\nWhat, you like looking at dead bodies? Sicko. \nGet out of here before I ventilate you and... show you a picture of yourself."
   nodeType: ConversationNodeType_Simple
   autoFollowBranchDelay: ConversationAutoFollowType_None
 }
@@ -329,8 +556,8 @@ nodes {
   idRef {
     id: "51d0a0cc62333158070042be"
   }
-  index: 6
-  text: "Oh, uh, of course. I\'ll open the gate, the response team is just inside the warehouse. Sorry for my rudeness."
+  index: 9
+  text: "{{GM}}The guard moves to the controls quickly.{{/GM}}\n\nOh, uh, of course. Let me open the gate, the response team is just inside the warehouse. "
   nodeType: ConversationNodeType_Simple
 }
 roots {
