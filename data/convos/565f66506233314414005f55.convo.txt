@@ -248,6 +248,73 @@ nodes {
       id: "565f66506233314414005f55:5850c4e5393066540b001af1"
     }
   }
+  branches {
+    responseText: "{{CC}}Paco{{/CC}} Frankie?  Is that you?"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isPaco"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+    idRef {
+      id: "565f66506233314414005f55:58538a0866313620110065c2"
+    }
+  }
   nodeType: ConversationNodeType_Simple
 }
 nodes {
@@ -273,6 +340,58 @@ nodes {
   index: 5
   text: "Whoa, hey, I got nothin\' to do with that! It was those guys in the warehouse, they did it! Frag, I\'m gettin\' out of here!"
   nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58538a3e66313620110065c5"
+  }
+  index: 6
+  text: "{{GM}}His head swivels around and is taken back seeing Paco in your group.{{/GM}}\n\nShit man, I didn\'t know you were here.   Look, some bad shits going down... Just stay clear tonight."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "565f66506233314414005f55:58538a6d66313620110065c7"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58538a6d66313620110065ca"
+  }
+  index: 7
+  text: "{{GM}}Shakes his head{{/GM}}\n\nCan\'t do it, Frankie.   This is important.   Take a hike."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "565f66506233314414005f55:58538a9b66313620110065cc"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isPaco"
+}
+nodes {
+  idRef {
+    id: "58538a9b66313620110065cf"
+  }
+  index: 8
+  text: "Yeah... I think I need to be going anyways.   Getting a really bad vibe about this team anyways.   Thanks Paco."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "LookoutLeaves"
+          }
+        }
+      }
+    }
+  }
 }
 roots {
   responseText: ""

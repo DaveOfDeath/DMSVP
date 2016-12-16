@@ -1,6 +1,6 @@
-minX: -44
+minX: -47
 minZ: -53
-numX: 104
+numX: 107
 numZ: 98
 props {
   name: "docks_clutter_aircraftThreeSeats02"
@@ -3440,6 +3440,9 @@ props {
     z: -38
   }
   orientation: ORIENTATION_E
+  idRef {
+    id: "5853862b663136201100632d"
+  }
   lod: 0
 }
 props {
@@ -9186,19 +9189,6 @@ props {
   lod: 0
 }
 props {
-  name: "tenements_wall_door03Mid"
-  gridPoint {
-    x: -32
-    y: 0
-    z: 7
-  }
-  orientation: ORIENTATION_S
-  idRef {
-    id: "0eeac8416434316708702e88"
-  }
-  lod: 0
-}
-props {
   name: "warehouse_wall_interiorEdge03"
   gridPoint {
     x: -32
@@ -11033,6 +11023,12 @@ props {
     z: -12
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isPaco"
+  GeneralTags: "isCoyote"
+  GeneralTags: "isRiver"
+  GeneralTags: "isSeamus"
+  GeneralTags: "isBartlett"
+  GeneralTags: "isViolet"
   idRef {
     id: "19a3f8f16233313c15006e13"
   }
@@ -15726,19 +15722,6 @@ props {
 props {
   name: "office_tech_alarmOn"
   gridPoint {
-    x: -30.1
-    y: 2
-    z: 11.099998
-  }
-  orientation: ORIENTATION_N
-  idRef {
-    id: "519d6a95643431b50e13513b"
-  }
-  lod: 0
-}
-props {
-  name: "office_tech_alarmOn"
-  gridPoint {
     x: -3.5000005
     y: 2
     z: 9.2999973
@@ -15892,23 +15875,6 @@ props {
   }
   idRef {
     id: "519d6b31643431b50e135144"
-  }
-  lod: 0
-}
-props {
-  name: "vfx_fx_flashingAlarm"
-  gridPoint {
-    x: -29.9
-    y: 2
-    z: 11
-  }
-  orientation: ORIENTATION_S
-  properties {
-    property_id: "fxScript"
-    string_value: "EnvironmentLoopFlashingAlarm"
-  }
-  idRef {
-    id: "519d6b39643431b50e135145"
   }
   lod: 0
 }
@@ -17375,6 +17341,7 @@ props {
     property_id: "fxScript"
     string_value: "EnvironmentLoopLowMistBank"
   }
+  displayName: "obj_SpiritSpawnPoint"
   lod: 0
 }
 props {
@@ -17980,4 +17947,107 @@ props {
     }
     karma: 327
   }
+}
+props {
+  name: "vfx_fx_fallingsparks"
+  gridPoint {
+    x: -29.8
+    y: 0.9
+    z: 11.2
+  }
+  orientation: ORIENTATION_S
+  properties {
+    property_id: "fxScript"
+    string_value: "SparksEnvironment"
+  }
+  lod: 0
+}
+props {
+  name: "sleekOffice_tech_alarmBroken"
+  gridPoint {
+    x: -31
+    y: 1.3
+    z: 10.2
+  }
+  orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "tenements_wall_door06Mid"
+  gridPoint {
+    x: -31.6
+    y: 0
+    z: 7
+  }
+  orientation: ORIENTATION_E
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -31
+    y: 0.5
+    z: 7.5
+  }
+  orientation: ORIENTATION_S
+  displayName: "obj_Escape"
+  idRef {
+    id: "58538df4663136201100673f"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 4
+    inspectInteraction {
+      dispalyTime: 20
+      fadeTime: 0
+      inspectText: "The door\'s security screen has been removed, and replaced with a claymore mine.   Someone wanted to use this as an exit, and make sure they weren\'t followed."
+      disableAfterInteracting: true
+    }
+    interaction_info_text: "Examine Door"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -47
+    y: 0
+    z: -1
+  }
+  orientation: ORIENTATION_S
+  displayName: "obj_Commlink"
+  idRef {
+    id: "58539a126631365c17007366"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Search Runner"
+  }
+  lod: 0
 }

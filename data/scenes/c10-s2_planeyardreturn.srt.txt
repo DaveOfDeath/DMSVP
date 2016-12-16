@@ -246,7 +246,7 @@ triggers {
   name: "FirstGuardSpeech"
   events {
     ops {
-      functionName: "On Actor Start Turn"
+      functionName: "On Map Start"
     }
   }
   conditions {
@@ -310,12 +310,13 @@ triggers {
         float_value: 0
       }
       args {
-        float_value: 0
+        float_value: 6
       }
       args {
         float_value: 0
       }
       args {
+        float_value: 2
       }
     }
     ops {
@@ -351,6 +352,52 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Change Actor Team"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isBaddie"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -359,6 +406,77 @@ triggers {
   elseActions {
   }
   is_oneshot: true
+}
+triggers {
+  name: "KillCounter.Baddie"
+  events {
+    ops {
+      functionName: "On Actor Death"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Compare Actor Team"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Add To Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iBioMoniter"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "58538c3c6631362011006671"
+  }
+  elseActions {
+  }
+  is_oneshot: false
 }
 triggers {
   name: "SpiritVisionFade"
@@ -408,6 +526,17 @@ triggers {
           functionName: "Get Map Item (Actor Reference)"
           args {
             string_value: "94625e546233315412003dd3"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
           }
         }
       }
@@ -739,6 +868,37 @@ triggers {
         }
       }
       args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
       }
     }
     ops {
@@ -916,7 +1076,7 @@ triggers {
   name: "PlayerDies"
   events {
     ops {
-      functionName: "On Actor Downed"
+      functionName: "On Actor Death"
     }
   }
   conditions {
@@ -1029,6 +1189,12 @@ triggers {
         }
       }
       args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
       }
     }
   }
@@ -1124,43 +1290,6 @@ triggers {
         }
       }
     }
-    ops {
-      functionName: "Order Actor to Hunt And Destroy (Team)"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "9302ee526233312c2f006185"
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (string)"
-          args {
-            string_value: "FactionList"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (SceneDimension)"
-          args {
-            string_value: "Default"
-          }
-        }
-      }
-    }
   }
   isActive: true
   idRef {
@@ -1174,10 +1303,35 @@ triggers {
   name: "ShamanToStation"
   events {
     ops {
-      functionName: "On Freemove Mode Enter"
+      functionName: "On Actor Death"
     }
   }
   conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "iBioMoniter"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        int_value: 13
+      }
+    }
   }
   actions {
     ops {
@@ -1866,6 +2020,17 @@ triggers {
           }
         }
       }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
     }
     ops {
       functionName: "Play FX on Actor"
@@ -2414,6 +2579,20 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "On Actor Damage"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HPOrAP"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
   conditions {
     ops {
@@ -2501,21 +2680,10 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "MohawkBossDown"
+  name: "BossKilled"
   events {
     ops {
-      functionName: "On Actor Damage"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "HPOrAP"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
+      functionName: "On Actor Death"
     }
   }
   conditions {
@@ -2546,8 +2714,70 @@ triggers {
         }
       }
     }
+  }
+  actions {
     ops {
-      functionName: "Compare Actor Attribute"
+      functionName: "Move Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "58539a126631365c17007366"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Waypoint on Prop"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PrimaryOrSecondary"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "51cb0ab86233318c1e002f0c"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "585399c56631365c17007364"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "DeckerKilled"
+  events {
+    ops {
+      functionName: "On Actor Death"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
       args {
         call_value {
           functionName: "Triggering Target Actor"
@@ -2557,7 +2787,7 @@ triggers {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "BaseOrCurrent"
+            string_value: "IsOrIsNot"
           }
           args {
             int_value: 1
@@ -2566,28 +2796,11 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Get Preset Value (int)"
+          functionName: "Get Map Item (Actor)"
           args {
-            string_value: "ActorAttributes"
-          }
-          args {
-            int_value: 8
+            string_value: "92f6675e6233312c2f00617f"
           }
         }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "Comparison Ops"
-          }
-          args {
-            int_value: 4
-          }
-        }
-      }
-      args {
-        int_value: 3
       }
     }
   }
@@ -2613,7 +2826,23 @@ triggers {
             string_value: "DeathMethod"
           }
           args {
-            int_value: 1
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Nothing Selected"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
           }
         }
       }
@@ -2661,40 +2890,6 @@ triggers {
         }
       }
     }
-    ops {
-      functionName: "Change Actor Team"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Triggering Target Actor"
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (string)"
-          args {
-            string_value: "FactionList"
-          }
-          args {
-            int_value: 4
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (SceneDimension)"
-          args {
-            string_value: "Default"
-          }
-        }
-      }
-    }
   }
   isActive: true
   idRef {
@@ -2729,57 +2924,6 @@ triggers {
           functionName: "Get Map Item (Prop)"
           args {
             string_value: "51cb0ab86233318c1e002f0c"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Set Actor Unkillable"
-      args {
-        call_value {
-          functionName: "Get Map Item (Actor)"
-          args {
-            string_value: "92f5f7cd6233312c2f00617d"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "IsOrIsNot"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Kill Actor"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "92f5f7cd6233312c2f00617d"
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "DeathMethod"
-          }
-          args {
-            int_value: 2
           }
         }
       }
@@ -2826,6 +2970,185 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "Frankie.Status [0]"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "iFrankieStatus"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sFrankieStatus"
+          }
+        }
+      }
+      args {
+        string_value: " "
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "58538ad866313620110065e7"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Frankie.Status [1]"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "iFrankieStatus"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sFrankieStatus"
+          }
+        }
+      }
+      args {
+        string_value: "{{00FFFF}}[ 1 ] Signal Lost, Out of Range.{{-}}"
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "58538b1166313620110065e8"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Boss.Commlink"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "58539a126631365c17007366"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Start Conversation"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "5853795a6631362011005fa0"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "58539a236631365c17007367"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
 regions {
   name: "Flashback"
   position {
@@ -2836,6 +3159,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: true
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "9461e3266233315412003dd2"
   }
@@ -2846,6 +3171,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -2866,9 +3192,20 @@ regions {
   }
   ambience_template: "warehouse-quiet"
   combat_music: "Seattle-Set6-Combat"
-  default_music: ""
+  default_music: "HongKong-Legwork-Museum"
   loop_combat_music: true
-  loop_default_music: false
+  loop_default_music: true
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 regions {
   name: "CameraBounds"
@@ -2880,6 +3217,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: true
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "946e62ed6233315412003e17"
   }
@@ -2890,6 +3229,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -2909,10 +3249,21 @@ regions {
     a: 1
   }
   ambience_template: "warehouse-quiet"
-  combat_music: "Seattle-Set6-Combat"
-  default_music: "Seattle-Set5-Legwork"
+  combat_music: "HongKong-Combat-Generic-Int1"
+  default_music: "HongKong-Legwork-Generic"
   loop_combat_music: true
   loop_default_music: true
+  no_fow_in_region: false
+  combat_intense_music: "HongKong-Combat-Is0bel-Int2"
+  combat_wrapup_music: "HongKong-Combat-Generic-WrapUp"
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: "HongKong-Combat-Stinger-Start"
+  combat_outro_stinger: "HongKong-Combat-Stinger-End"
+  vfx_fill_prefab_name: ""
 }
 regions {
   name: "ShamanGoal"
@@ -2924,6 +3275,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "5c6d5939623331e00700390e"
   }
@@ -2934,6 +3287,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -2957,6 +3311,17 @@ regions {
   default_music: ""
   loop_combat_music: true
   loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 regions {
   name: "WaypointGoal"
@@ -2968,6 +3333,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "51a1117c623331fc2100164b"
   }
@@ -2978,6 +3345,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -3001,6 +3369,17 @@ regions {
   default_music: ""
   loop_combat_music: true
   loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 characters {
   name: "chars_icon_playerIcon"
@@ -3010,6 +3389,7 @@ characters {
     z: -29
   }
   orientation: ORIENTATION_E
+  GeneralTags: "isBaddie"
   displayName: "First Enemy"
   idRef {
     id: "92f476946233312c2f006179"
@@ -3072,11 +3452,14 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "Guard - Seek And Destroy"
+      archetypeName: "gumbo_Soldier"
       attitude: AttitudeAggressive
+      vulnerabilities {
+      }
     }
-    team_id: "LoneStar"
+    team_id: "Civilians"
     char_name: "Shadowrunner"
+    GeneralTags: "isBaddie"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -3087,11 +3470,12 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -13
+    x: -15
     y: 0
-    z: -19
+    z: -15
   }
-  orientation: ORIENTATION_W
+  orientation: ORIENTATION_S
+  GeneralTags: "isBaddie"
   idRef {
     id: "92f48d4d6233312c2f00617a"
   }
@@ -3114,9 +3498,13 @@ characters {
       }
       specializations {
       }
+      archetypeName: "gumbo_Soldier"
+      vulnerabilities {
+      }
     }
-    team_id: "LoneStar"
+    team_id: "Civilians"
     char_name: "Shadowrunner"
+    GeneralTags: "isBaddie"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -3131,6 +3519,7 @@ characters {
     z: -18
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isBaddie"
   idRef {
     id: "92f4c58e6233312c2f00617b"
   }
@@ -3192,11 +3581,12 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "Guard - Seek And Destroy"
+      archetypeName: "gumbo_Soldier"
       attitude: AttitudeAggressive
     }
-    team_id: "LoneStar"
+    team_id: "Civilians"
     char_name: "Ork Shadowrunner"
+    GeneralTags: "isBaddie"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -3211,6 +3601,7 @@ characters {
     z: -27
   }
   orientation: ORIENTATION_E
+  GeneralTags: "isBaddie"
   idRef {
     id: "92f512d06233312c2f00617c"
   }
@@ -3286,8 +3677,9 @@ characters {
     equipment {
       prefab_name: "Mystic Armor"
     }
-    team_id: "LoneStar"
+    team_id: "Civilians"
     char_name: "Adept"
+    GeneralTags: "isBaddie"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -3297,20 +3689,20 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -13
+    x: -3
     y: 0
-    z: -4
+    z: -5
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isBaddie"
   displayName: "MohawkBoss"
   idRef {
     id: "92f5f7cd6233312c2f00617d"
   }
   lod: 0
   character_instance {
-    prefab_name: "Gangers/ElfMaleGangerEyepatch"
-    character_sheet_id: "Lonestar_Lv3_Human_Pistol"
-    equipment_sheet_id: "Lonestar_Pistol_Low"
+    prefab_name: "Seattle:Core/HumanMale"
+    character_sheet_id: "Lonestar_Lv3_Captain"
     character_mod {
       stats {
         body: 0
@@ -3332,6 +3724,10 @@ characters {
         authority: 0
         protect_tether_range: 0
         move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+        is_fearless: 1
       }
       skills {
         ranged_combat: 0
@@ -3352,11 +3748,12 @@ characters {
         etiquette_shadowrunner: 0
         etiquette_street: 0
         etiquette_academic: 0
+        cyberware_affinity: 0
       }
       specializations {
         pistol: 0
-        rifle: 0
-        shotgun: 0
+        rifle: -2
+        shotgun: 2
         smg: 0
         edged: 0
         unarmed: 0
@@ -3364,26 +3761,45 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "Guard - Seek And Destroy"
-      attitude: AttitudeAggressive
+      archetypeName: "gumbo_Soldier_Boss"
+      attitude: AttitudeBoss
+      attackRandom: AttackStyle_BestOnly
+      vulnerabilities {
+      }
     }
-    team_id: "LoneStar"
-    char_name: "Shadowrunner"
+    equipment {
+      prefab_name: "Berlin_Player_RiggerTrenchcoat"
+    }
+    equipment {
+      prefab_name: "Sh 1 Benelli Raffaello (Smartlink)"
+    }
+    equipment {
+      prefab_name: "Ex 1 M203"
+    }
+    team_id: "Civilians"
+    char_name: "Team Leader"
+    GeneralTags: "isBaddie"
     pc_spawn_number: -1
-    unkillable: true
+    unkillable: false
     portrait {
-      filename: ""
+      filename: "Traxx"
     }
+    portrait_code_override: "s3h7c2b0t0"
+    karma: 68
+    persistent_body: true
+    has_fist: false
+    cyberware_head: "(Head) Datajack"
   }
 }
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -10
+    x: -8
     y: 0
-    z: -1
+    z: 3
   }
-  orientation: ORIENTATION_S
+  orientation: ORIENTATION_N
+  GeneralTags: "isBaddie"
   idRef {
     id: "92f62e726233312c2f00617e"
   }
@@ -3445,11 +3861,12 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "Guard - Seek And Destroy"
+      archetypeName: "gumbo_Soldier"
       attitude: AttitudeAggressive
     }
-    team_id: "LoneStar"
+    team_id: "Civilians"
     char_name: "Ork Shadowrunner"
+    GeneralTags: "isBaddie"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -3459,20 +3876,33 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -2
+    x: 2
     y: 0
-    z: 12
+    z: 5
   }
   orientation: ORIENTATION_W
+  GeneralTags: "isBaddie"
   idRef {
     id: "92f6675e6233312c2f00617f"
   }
   lod: 0
   character_instance {
-    prefab_name: "Core/HumanMale"
-    character_sheet_id: "Generic_Lv2_Human_Melee"
+    prefab_name: "Berlin:Story/HumanFemaleMonika"
+    character_sheet_id: "Lonestar_Lv3_Heavy_SMG"
     character_mod {
       stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
         morale: 0
         discipline: 0
         awareness: 0
@@ -3480,40 +3910,75 @@ characters {
         authority: 0
         protect_tether_range: 0
         move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
       }
       skills {
-        close_combat: 1
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 3
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
         dodge: 1
-        chi_casting: 4
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
       }
       specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 2
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "gumbo_Soldier"
+      attitude: AttitudeAggressive
+      vulnerabilities {
       }
     }
     equipment {
-      prefab_name: "Sword 1 Machete"
+      prefab_name: "Berlin_CyberdeckKraftwerk1"
     }
     equipment {
-      prefab_name: "AdeptStreetMonk"
+      prefab_name: "SMG 1 Uzi III (Smartlink)"
     }
-    equipment {
-      prefab_name: "Mana Fist"
-    }
-    team_id: "LoneStar"
-    char_name: "Adept"
+    team_id: "Civilians"
+    char_name: "Decker"
+    GeneralTags: "isBaddie"
     pc_spawn_number: -1
     portrait {
-      filename: ""
+      filename: "matrix_humanfemale_tsilonsiereht"
     }
+    karma: 73
+    persistent_body: true
+    has_fist: false
+    cyberware_head: "(Head) Datajack"
   }
 }
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -17
+    x: 6
     y: 0
-    z: -25
+    z: -31
   }
-  orientation: ORIENTATION_S
+  orientation: ORIENTATION_N
+  GeneralTags: "isBaddie"
   idRef {
     id: "9302ee526233312c2f006185"
   }
@@ -3575,14 +4040,15 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "Guard - Seek And Destroy"
+      archetypeName: "gumbo_Soldier"
       attitude: AttitudeAggressive
     }
     equipment {
       prefab_name: "SamuraiBunny"
     }
-    team_id: "LoneStar"
+    team_id: "Civilians"
     char_name: "Troll Shadowrunner"
+    GeneralTags: "isBaddie"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -3669,6 +4135,8 @@ characters {
       }
       archetypeName: "Guard - Protect"
       attitude: AttitudeAggressive
+      vulnerabilities {
+      }
     }
     team_id: "Civilians"
     char_name: "Forgotten Souls"
@@ -3677,6 +4145,7 @@ characters {
     portrait {
       filename: "Generic_Spirit_ForgottenSoul"
     }
+    is_prop_character: true
   }
 }
 characters {
@@ -3709,13 +4178,15 @@ characters {
       }
       specializations {
       }
-      archetypeName: "Player"
+      archetypeName: "Non-Combatant"
       attitude: AttitudeBoss
       attackRandom: AttackStyle_AllEqual
+      vulnerabilities {
+      }
     }
     team_id: "Civilians"
     char_name: "Meticulous Elf"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: "NPC_ElfMale_HolmesSilhouetted"
@@ -3760,9 +4231,11 @@ characters {
       }
       specializations {
       }
-      archetypeName: "Guard - Seek And Destroy"
+      archetypeName: "Non-Combatant"
       attitude: AttitudeBoss
       attackRandom: AttackStyle_AllEqual
+      vulnerabilities {
+      }
     }
     team_id: "Civilians"
     char_name: "Slovenly Troll"
@@ -3892,6 +4365,276 @@ characters {
     pc_spawn_number: 3
   }
 }
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -30
+    y: 0
+    z: -46
+  }
+  orientation: ORIENTATION_S
+  displayName: "Speaker"
+  idRef {
+    id: "58538fe766313620110067c8"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Objects/InvisibleActor"
+    character_sheet_id: "BaseCivilian"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Non-Combatant"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "Civilians"
+    char_name: "Mr. Fix It"
+    pc_spawn_number: -1
+    ai_ignores: true
+    portrait {
+      filename: "backer_elfmale_matthendrickson"
+    }
+    karma: 6
+    is_prop_character: true
+    has_fist: false
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -29
+    y: 0
+    z: -46
+  }
+  orientation: ORIENTATION_S
+  displayName: "Speaker"
+  idRef {
+    id: "58539dc26631365c1700736d"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Objects/InvisibleActor"
+    character_sheet_id: "BaseCivilian"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Non-Combatant"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "Civilians"
+    char_name: "$(scene.sDecker)"
+    pc_spawn_number: -1
+    ai_ignores: true
+    portrait {
+      filename: "matrix_humanfemale_tsilonsiereht"
+    }
+    karma: 6
+    is_prop_character: true
+    has_fist: false
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -28
+    y: 0
+    z: -46
+  }
+  orientation: ORIENTATION_S
+  displayName: "Speaker"
+  idRef {
+    id: "58539dc46631365c1700736e"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Objects/InvisibleActor"
+    character_sheet_id: "BaseCivilian"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Non-Combatant"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "Civilians"
+    char_name: "$(scene.sTeamLeader)"
+    pc_spawn_number: -1
+    ai_ignores: true
+    portrait {
+      filename: "Traxx"
+    }
+    karma: 6
+    is_prop_character: true
+    has_fist: false
+  }
+}
 variables {
   int_value: 1
   variableref_value {
@@ -3930,6 +4673,54 @@ variables {
     scope: TsVariableScope_Scene
     name: "ToldAboutEvidence"
     typeName: "int"
+  }
+}
+variables {
+  int_value: 5
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "iBioMoniter"
+    typeName: "int"
+  }
+}
+variables {
+  string_value: " "
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "sFrankieStatus"
+    typeName: "string"
+  }
+}
+variables {
+  string_value: "{{D2691E}}"
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "sWarningOn"
+    typeName: "string"
+  }
+}
+variables {
+  string_value: "{{-}}"
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "sWarningOff"
+    typeName: "string"
+  }
+}
+variables {
+  string_value: "Team Leader"
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "sTeamLeader"
+    typeName: "string"
+  }
+}
+variables {
+  string_value: "Decker"
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "sDecker"
+    typeName: "string"
   }
 }
 mapEvents: "SpiritVision"
@@ -4062,5 +4853,8 @@ use_hiring_cost_warning: false
 hiring_average_cost: 0
 override_hiring_average_cost: false
 show_equip_screen_on_scene_load: false
+is_persistant: false
+is_persistant_has_value: false
 can_move_outside_camera_regions: true
 can_start_before_triggers: true
+can_use_team_advancement: false
