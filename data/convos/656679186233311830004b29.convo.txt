@@ -7,10 +7,25 @@ nodes {
     id: "6aa85de5623331ec1c0072b4"
   }
   index: 0
-  text: "{{GM}}This appears to be the victim\'s locker. The door is slightly ajar. Inside, you see several of the dead man\'s personal items.{{/GM}}"
+  text: "{{GM}}This employee locker is marked \'Halfsky\'. Lonestar already cut off the lock, and the door is slightly ajar. \nInside, you see several of the dead man\'s personal items.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "656679186233311830004b29:5858cf39396630c40a000287"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "5858cf39396630c40a00028a"
+  }
+  index: 1
+  text: ""
   branches {
     responseText: "{{GM}}Inspect the toothbrush.{{/GM}}"
-    nextNodeIndex: 1
+    nextNodeIndex: 2
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -46,7 +61,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 2
+    nextNodeIndex: 3
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -82,7 +97,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 3
+    nextNodeIndex: 4
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -92,18 +107,25 @@ nodes {
   branches {
     responseText: "{{GM}} Leave the locker.{{/GM}}"
     nextNodeIndex: -1
+    idRef {
+      id: "656679186233311830004b29:5858cf2f396630c40a000277"
+    }
   }
-  nodeType: ConversationNodeType_GM_Voice
+  nodeType: ConversationNodeType_Simple
+  comment: "Locker Loop"
 }
 nodes {
   idRef {
     id: "6aa9872c623331ec1c0072b9"
   }
-  index: 1
+  index: 2
   text: "The blue toothbrush is still wet from being used. It smells of mint and cigarettes."
   branches {
     responseText: ""
-    nextNodeIndex: 0
+    nextNodeIndex: 1
+    idRef {
+      id: "656679186233311830004b29:5858cf2f396630c40a00026a"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Voice
@@ -112,11 +134,14 @@ nodes {
   idRef {
     id: "6aaa3b3c623331ec1c0072c5"
   }
-  index: 2
+  index: 3
   text: "The comb is black plastic, and has some wiry grey hairs stuck in it."
   branches {
     responseText: ""
-    nextNodeIndex: 0
+    nextNodeIndex: 1
+    idRef {
+      id: "656679186233311830004b29:5858cf2f396630c40a00026f"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Voice
@@ -125,11 +150,14 @@ nodes {
   idRef {
     id: "155a2561623331d81a003a96"
   }
-  index: 3
+  index: 4
   text: "{{GM}}As you reach for the comb, the hair on the back of your hand stands on end. And when you take it off its little shelf, your heart thumps in your chest. Hard. This must be one of the items the shaman was looking for. \n\nYou pocket the comb.{{/GM}}"
   branches {
     responseText: ""
-    nextNodeIndex: 0
+    nextNodeIndex: 1
+    idRef {
+      id: "656679186233311830004b29:5858cf2f396630c40a000274"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Voice
@@ -184,10 +212,24 @@ nodes {
           }
         }
       }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
     }
   }
 }
 roots {
   responseText: ""
   nextNodeIndex: 0
+  idRef {
+    id: "656679186233311830004b29:5858cf2f396630c40a000265"
+  }
 }
