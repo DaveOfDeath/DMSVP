@@ -7,18 +7,27 @@ nodes {
     id: "51ccc614323664d82000137d"
   }
   index: 0
-  text: "{{GM}}The hulking troll bouncer in the immaculate suit stands as impassively as ever. The absence of dust on his broad shoulders is the only real indication that the man ever moves. He nods to you when you approach.{{/GM}}\n\nEvening. I see Coyote is back, looking only a little worse for wear. We have you to thank for that?"
+  text: "{{GM}}The hulking troll bouncer in the immaculate suit stands as impassively as ever. The absence of dust on his broad shoulders is the only real indication that the man ever moves. He nods to you when you approach.{{/GM}}\n\nEvening. I see Coyote is back, looking only slightly worse for wear. A little bird said we have you to thank for that?"
   branches {
     responseText: "The having her back part, yes."
     nextNodeIndex: 1
+    idRef {
+      id: "51ccc603323664d820001377:586377b2396630d40f007be6"
+    }
   }
   branches {
     responseText: "I didn\342\200\231t rough her up, if that\342\200\231s what you\342\200\231re wondering."
-    nextNodeIndex: 14
+    nextNodeIndex: 26
+    idRef {
+      id: "51ccc603323664d820001377:586377b2396630d40f007c1b"
+    }
   }
   branches {
     responseText: "Paco and I tracked her down."
-    nextNodeIndex: 15
+    nextNodeIndex: 27
+    idRef {
+      id: "51ccc603323664d820001377:586377b2396630d40f007c21"
+    }
   }
   nodeType: ConversationNodeType_Simple
   actions {
@@ -51,10 +60,13 @@ nodes {
     id: "51ccc64b323664d820001382"
   }
   index: 1
-  text: "You have the gratitude of everyone here, especially mine."
+  text: "{{GM}}Kluwe makes eye contact, careful to show you his sincerity.{{/GM}}\n\nYou have the gratitude of everyone here, especially mine."
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "51ccc603323664d820001377:586377b2396630d40f007be9"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -63,18 +75,27 @@ nodes {
     id: "51ccc65d323664d820001385"
   }
   index: 2
-  text: "Couldn\342\200\231t stomach losing anyone else so soon after what happened to Sam."
+  text: "I don\'t think we could stomach losing anyone else so soon after what happened to Sam."
   branches {
     responseText: "You feel protective over the people here."
     nextNodeIndex: 3
+    idRef {
+      id: "51ccc603323664d820001377:586377b2396630d40f007bec"
+    }
   }
   branches {
     responseText: "Guess it\342\200\231s your job to care."
-    nextNodeIndex: 12
+    nextNodeIndex: 24
+    idRef {
+      id: "51ccc603323664d820001377:586377b2396630d40f007c0f"
+    }
   }
   branches {
     responseText: "You\342\200\231re just a big old sheepdog, aren\342\200\231t ya?"
-    nextNodeIndex: 13
+    nextNodeIndex: 25
+    idRef {
+      id: "51ccc603323664d820001377:586377b2396630d40f007c15"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -83,10 +104,13 @@ nodes {
     id: "51ccc6c2323664d820001394"
   }
   index: 3
-  text: "Immensely. Toward anyone who walks through that door, be they employee or patron. Unless they mean ill will, of course."
+  text: "Immensely. Toward anyone who walks through that door, be they employee or patron. \n\nUnless they mean ill will, of course. Breaking the social contract means a painful end."
   branches {
     responseText: ""
     nextNodeIndex: 4
+    idRef {
+      id: "51ccc603323664d820001377:586377b2396630d40f007bef"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -97,8 +121,11 @@ nodes {
   index: 4
   text: ""
   branches {
-    responseText: "Mind if I ask you a few questions."
+    responseText: "Mind if I ask you a few questions?"
     nextNodeIndex: 5
+    idRef {
+      id: "51ccc603323664d820001377:586377b2396630d40f007bf2"
+    }
   }
 }
 nodes {
@@ -106,10 +133,13 @@ nodes {
     id: "51ccc737323664d8200013a7"
   }
   index: 5
-  text: "Haven\342\200\231t minded so far."
+  text: "{{GM}}Kluwe shrugs.{{/GM}}\n\nHaven\342\200\231t minded so far."
   branches {
     responseText: ""
     nextNodeIndex: 6
+    idRef {
+      id: "51ccc603323664d820001377:586377b2396630d40f007bf5"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -130,6 +160,41 @@ nodes {
   }
   branches {
     responseText: "You know where I can find a fence?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasFencedStones"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 8
     hideIfUnavailable: true
     onlyOnce: true
@@ -147,8 +212,91 @@ nodes {
     }
   }
   branches {
-    responseText: "Do you have to pay extra for a manicure on hands that big?"
+    responseText: "Know anything about a reporter named Glint?"
     nextNodeIndex: 10
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ccc603323664d820001377:58637954396630d40f007c28"
+    }
+  }
+  branches {
+    responseText: "Know anything about a reporter named Marrow?"
+    nextNodeIndex: 15
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ccc603323664d820001377:58637954396630d40f007c2a"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Etiquette: Socialite{{/GM}} Seriously. Didn\'t you used to be a Urban Brawl player?"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 16
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 17
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ccc603323664d820001377:58637955396630d40f007c2c"
+    }
+  }
+  branches {
+    responseText: "Who is the elf in gang colors guarding your usual spot?"
+    nextNodeIndex: 21
+    idRef {
+      id: "51ccc603323664d820001377:58637976396630d40f007c2e"
+    }
+  }
+  branches {
+    responseText: "Do you have to pay extra for a manicure on hands that big?"
+    nextNodeIndex: 22
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -157,9 +305,13 @@ nodes {
   }
   branches {
     responseText: "I should be going."
-    nextNodeIndex: 11
+    nextNodeIndex: 23
+    idRef {
+      id: "51ccc603323664d820001377:586377b2396630d40f007c0c"
+    }
   }
   nodeType: ConversationNodeType_Simple
+  comment: "Kluwe Questions"
 }
 nodes {
   idRef {
@@ -170,6 +322,9 @@ nodes {
   branches {
     responseText: ""
     nextNodeIndex: 6
+    idRef {
+      id: "51ccc603323664d820001377:586377b2396630d40f007bfa"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -183,6 +338,9 @@ nodes {
   branches {
     responseText: ""
     nextNodeIndex: 6
+    idRef {
+      id: "51ccc603323664d820001377:586377b2396630d40f007bff"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -192,10 +350,230 @@ nodes {
     id: "51ccc818323664d8200013d0"
   }
   index: 9
-  text: "I crawled in here after I gobli... after I Awoke.\n\nMrs. Kubota took me in and gave me a job. I\'ve been here ever since."
+  text: "The short version is, I owe her big. I got greedy, and had a shot at a multi-million payout. When that crashed and burned, I was left out to die in the cold.\n\nMrs. Kubota took me in and gave me a job. I\'ve been at her side ever since."
   branches {
     responseText: ""
     nextNodeIndex: 6
+    idRef {
+      id: "51ccc603323664d820001377:586377b2396630d40f007c04"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58637b4a396630d40f007ccf"
+  }
+  index: 10
+  text: "{{GM}}Klewe nods, letting out an exasperated sigh.{{/GM}}\n\nGlint I am familiar with, but calling her a reporter is a stretch. She\'s somewhere between private investigator and personal assistant."
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "51ccc603323664d820001377:58637b8b396630d40f007cd1"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58637b8d396630d40f007cd4"
+  }
+  index: 11
+  text: ""
+  branches {
+    responseText: "Is she looking into the Ripper Murders?"
+    nextNodeIndex: 12
+    idRef {
+      id: "51ccc603323664d820001377:58637b97396630d40f007cd6"
+    }
+  }
+  branches {
+    responseText: "Has she made any progress on the Ripper Murders?"
+    nextNodeIndex: 13
+    idRef {
+      id: "51ccc603323664d820001377:58637b97396630d40f007cd8"
+    }
+  }
+  branches {
+    responseText: "Everyone seems to think she\'s dead. Why is that?"
+    nextNodeIndex: 14
+    idRef {
+      id: "51ccc603323664d820001377:58637b98396630d40f007cda"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Glint Loop"
+}
+nodes {
+  idRef {
+    id: "58637bc0396630d40f007cdd"
+  }
+  index: 12
+  text: "{{GM}}Kluwe nods.{{/GM}}\n\nYes. Last I heard, she overheard Dresden and Marrow talking about the murders early on, and got it in her head that she was going to crack the case Nancy Drew-style. She was a little out of her depth, more youthful exuberance than street smarts guiding her."
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "51ccc603323664d820001377:58637c10396630d40f007cdf"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58637c27396630d40f007d3d"
+  }
+  index: 13
+  text: "{{GM}}Kluwe shakes his head.{{/GM}}\n\nI would imagine not. Glint was a young groupie- the wanna-be Shadowrunner types that hang out at a dive bar like this. She overheard Dresden and Marrow talking about the Ripper Murders early on, and got it in her head that she was going to crack the case. If she isn\'t already dead, she\'s probably not far from it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "51ccc603323664d820001377:586380c7396630d40f007e66"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58637d32396630d40f007d8e"
+  }
+  index: 14
+  text: "{{GM}}Kluwe shrugs.{{/GM}}\n\nIt\'s the logical conclusion. She was young and inexperienced. If she hadn\'t already pissed off someone like McKlusky, it was only a matter of time before she found someone willing to end her. I would be careful, if I were you.\n\nAt this point, I think the only ones who think she\'s still alive are the innocent or deluded."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "51ccc603323664d820001377:586380be396630d40f007e62"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58637d9b396630d40f007de0"
+  }
+  index: 15
+  text: "{{GM}}Kluwe snorts.{{/GM}}\n\nI am well aware of Marrow and his addictions. He doesn\'t crave drink, companionship, or chips like most-- although he indulges those vices regularly. Marrow is always on the hunt for a story- the more bullets flying and heat, the better. \n\nIrony is, if he hadn\'t burned bridges here selling every story he could get his hands on, this would be a great place for rumor gathering."
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+    idRef {
+      id: "51ccc603323664d820001377:58637df6396630d40f007de2"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58637df9396630d40f007de5"
+  }
+  index: 16
+  text: "{{GM}}Kluwe folds his impressive arms over his chest.{{/GM}}\n\nI\'ll keep an eye out for him, and let you know when he comes in."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "51ccc603323664d820001377:58637e1e396630d40f007de7"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "586379bf396630d40f007c31"
+  }
+  index: 17
+  text: "{{GM}}Kluwe looks bashful, scratching his nose before responding.{{/GM}}\n\nI try and avoid the spotlight, for that very reason. Now that you\'re family I guess I can spill the beans."
+  branches {
+    responseText: "How did an Urban Brawl star end up as a bouncer at a whorehouse in Seattle?"
+    nextNodeIndex: 18
+    idRef {
+      id: "51ccc603323664d820001377:58637a92396630d40f007c79"
+    }
+  }
+  branches {
+    responseText: "Can I get an autograph?"
+    nextNodeIndex: 19
+    idRef {
+      id: "51ccc603323664d820001377:586379f1396630d40f007c33"
+    }
+  }
+  branches {
+    responseText: "Jocks are not my thing."
+    nextNodeIndex: 20
+    idRef {
+      id: "51ccc603323664d820001377:586379f3396630d40f007c37"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58637ab3396630d40f007c7c"
+  }
+  index: 18
+  text: "{{GM}}Kluwe pauses to think on the answer, and then fixes you with a kindly gaze.{{/GM}}\n\nA conversation for another time, I think. I promise you the same that I do for the rest of the family- an honest answer."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "51ccc603323664d820001377:58637ab6396630d40f007c7e"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58637a65396630d40f007c3a"
+  }
+  index: 19
+  text: "{{GM}}Kluwe considers it for a moment before responding.{{/GM}}\n\nNot tonight, but ask me again when we\'ve known each other a little longer."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "51ccc603323664d820001377:58637a68396630d40f007c3c"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58637b2b396630d40f007cc9"
+  }
+  index: 20
+  text: "{{GM}}Klewe shrugs.{{/GM}}\n\nMe either- I was always more into cheerleaders."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "51ccc603323664d820001377:58637b42396630d40f007ccb"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58637e3e396630d40f007deb"
+  }
+  index: 21
+  text: "{{GM}}Kluwe gestures absently at the elf guarding the partition between bar and whorehouse.{{/GM}}\n\nBattlehawk is here to keep the peace among gangs. We had a dust-up a few nights back, over some gangers and the girls they called dibs on. We don\'t want that sort of nonsense in the Seamstress Union, so Kubota allowed them one representative to help us with security until we can get someone we trust."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "51ccc603323664d820001377:5863808c396630d40f007df1"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -204,11 +582,14 @@ nodes {
   idRef {
     id: "51ccc832323664d8200013d5"
   }
-  index: 10
-  text: "It\342\200\231s not the size they charge more for. It\'s the blood under the fingernails."
+  index: 22
+  text: "{{GM}}Kluwe flexes a fist under your nose.{{/GM}}\n\nIt\342\200\231s not the size they charge more for. It\'s the blood under the fingernails. "
   branches {
     responseText: ""
     nextNodeIndex: 6
+    idRef {
+      id: "51ccc603323664d820001377:586377b2396630d40f007c09"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -217,7 +598,7 @@ nodes {
   idRef {
     id: "51ccc7d2323664d8200013b7"
   }
-  index: 11
+  index: 23
   text: "Catch you round."
   nodeType: ConversationNodeType_Simple
 }
@@ -225,11 +606,14 @@ nodes {
   idRef {
     id: "51ccc6fb323664d82000139c"
   }
-  index: 12
-  text: "More than just my job. It\342\200\231s my role in the Union family. It\342\200\231s how I belong."
+  index: 24
+  text: "{{GM}}Kluwe bristles at that.{{/GM}}\n\nMore than just a job. Protecting the people here, caring for them, it\342\200\231s my role in the Union family. This is how I belong."
   branches {
     responseText: ""
     nextNodeIndex: 4
+    idRef {
+      id: "51ccc603323664d820001377:586377b2396630d40f007c12"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -238,11 +622,14 @@ nodes {
   idRef {
     id: "51ccc6fe323664d82000139e"
   }
-  index: 13
-  text: "Not the comparison made of most trolls, but I\342\200\231m happy to defy expectations."
+  index: 25
+  text: "{{GM}}Kluwe studies you for a moment, quizzically. {{/GM}}\n\nNot the comparison made of most trolls, but I am always happy to defy metahuman racial norms and generally all expectations."
   branches {
     responseText: ""
     nextNodeIndex: 4
+    idRef {
+      id: "51ccc603323664d820001377:586377b2396630d40f007c18"
+    }
     auxiliaryLink: true
   }
 }
@@ -250,11 +637,14 @@ nodes {
   idRef {
     id: "51ccc66a323664d820001387"
   }
-  index: 14
-  text: "If I had any reason to suspect that, you\342\200\231d be on the floor. But seeing as how you walked in together, I\342\200\231m going to assume you had something to do with her being found. You have my thanks."
+  index: 26
+  text: "{{GM}}Kluwe shrugs.{{/GM}}\n\nIf I had any reason to suspect that, you\342\200\231d be unconscious on the floor, and the girls would be stripping you of valuables. \n\nBut seeing as how you walked in together, I\342\200\231m going to assume you had something to do with her being found. You have my thanks."
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "51ccc603323664d820001377:586377b2396630d40f007c1e"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -263,11 +653,14 @@ nodes {
   idRef {
     id: "51ccc688323664d82000138d"
   }
-  index: 15
-  text: "Always wondered what she saw in him, but I guess he ain\342\200\231t all bad. I\342\200\231m just glad she\342\200\231s back."
+  index: 27
+  text: "{{GM}}Kluwe shrugs, looking thoughtful.{{/GM}}\n\nI have always wondered what she saw in Paco, but I guess he isn\'t all bad, if he helped you get her out. Everyone here is glad Coyote is back, she\'s family."
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "51ccc603323664d820001377:586377b2396630d40f007c24"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -275,4 +668,7 @@ nodes {
 roots {
   responseText: ""
   nextNodeIndex: 0
+  idRef {
+    id: "51ccc603323664d820001377:586377b2396630d40f007be3"
+  }
 }

@@ -7,10 +7,13 @@ nodes {
     id: "51ace26c303031b41300276a"
   }
   index: 0
-  text: "How else may I be of service?"
+  text: "Doshita No, $+(l.name), how else may I be of service?"
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "51ace200303031b413002718:58638dca396630d40f00827c"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -21,7 +24,7 @@ nodes {
   index: 1
   text: ""
   branches {
-    responseText: "Is Mr. Delilah here tonight?"
+    responseText: "You mentioned Coyote\342\200\231s crusade. What is it?"
     actions {
       ops {
         functionName: "Add To Variable (int)"
@@ -42,11 +45,11 @@ nodes {
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
-      id: "51e6e4e2623331a81a000767"
+      id: "51acfb9f303031b4130027f0"
     }
   }
   branches {
-    responseText: "You mentioned Coyote\342\200\231s crusade. What is it?"
+    responseText: "Is there Mr. Delilah here tonight?"
     actions {
       ops {
         functionName: "Add To Variable (int)"
@@ -67,7 +70,7 @@ nodes {
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
-      id: "51acfb9f303031b4130027f0"
+      id: "51e6e4e2623331a81a000767"
     }
   }
   branches {
@@ -121,8 +124,71 @@ nodes {
     }
   }
   branches {
+    responseText: "Anything else that you can tell me about Sam\'s death?"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countKubotaQuestions"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ace200303031b413002718:58638e0e396630d40f008296"
+    }
+  }
+  branches {
+    responseText: "There\'s some talk about a reporter?"
+    nextNodeIndex: 7
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ace200303031b413002718:58638e0f396630d40f008298"
+    }
+  }
+  branches {
+    responseText: "Any special discounts I can get on services here now?"
+    nextNodeIndex: 18
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ace200303031b413002718:58638e0f396630d40f00829a"
+    }
+  }
+  branches {
     responseText: "I\'ll be going now."
     nextNodeIndex: -1
+    idRef {
+      id: "51ace200303031b413002718:58638dca396630d40f008293"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Kubota Question Loop"
+}
+nodes {
+  idRef {
+    id: "51ace484303031b413002776"
+  }
+  index: 2
+  text: "Coyote lived in the Royale but managed to escape that life. However, her cousin was apparently not so lucky.\n\nHe came to town about a year ago and fell in with the wrong circle. He was introduced to simchips by the same people who sold them to Coyote, and became a BTL junkie. Coyote has been tearing her way through chiphouses for months now, searching for him and acting as a one-woman cleanup crew. Dasai!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "51ace200303031b413002718:58638dca396630d40f008286"
+    }
+    auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -130,24 +196,14 @@ nodes {
   idRef {
     id: "51ace46e303031b413002774"
   }
-  index: 2
-  text: "Yes, Mr. Delilah in the back bar. That\'s usually where he does business."
-  branches {
-    responseText: ""
-    nextNodeIndex: 1
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "51ace484303031b413002776"
-  }
   index: 3
-  text: "Coyote grew up in the Royale but managed to escape that life. However, her cousin was apparently not so lucky.\n\nHe came to town about a year ago and fell in with the wrong circle. He was introduced to simchips and became addicted to BTLs. Coyote has been tearing her way through chiphouses for months now, searching for him and acting as a one-woman cleanup crew."
+  text: "{{GM}}Kubota thinks for a moment before nodding.{{/GM}}\n\nYes, Mr. Delilah is in the back bar area. That\'s usually where he conducts his business."
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "51ace200303031b413002718:58638dca396630d40f008281"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -157,10 +213,13 @@ nodes {
     id: "51ace4cc303031b413002779"
   }
   index: 4
-  text: "I am a former runner. Now, I provide a safe haven and a marketplace for runners who need a trustworthy place to congregate and do business."
+  text: "{{GM}}Kubota gestures to herself, to her fine red dress.{{/GM}}\n\nI may not look it, but I am a former shadowrunner. I got out of the life after a particularly lucrative and lethal run left my friends dead.\nNow, I provide a safe haven for my fellow independents and a marketplace for runners who need a trustworthy place to congregate."
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "51ace200303031b413002718:58638dca396630d40f00828b"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -170,10 +229,408 @@ nodes {
     id: "51acf9a8303031b41300277f"
   }
   index: 5
-  text: "In addition to Mr. Delilah, you may wish to speak to Van Graas. He is often stage-side. Van Graas is most often a \342\200\234receiver of found articles\342\200\235 but he occasionally has work."
+  text: "{{GM}}Tapping a finger against her lips, Kubota answers.{{/GM}}\n\nIn addition to Mr. Delilah in the back area, you may wish to speak to Van Graas. He is often stage-side. Van Graas is most often a \342\200\234receiver of found articles\342\200\235 but he occasionally has work for newer runners."
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "51ace200303031b413002718:58638dca396630d40f008290"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58638f77396630d40f0082b8"
+  }
+  index: 6
+  text: "{{GM}}Kubota bows toward you.{{/GM}}\n\nRegretfully, no. I will continue to scour the matrix and my contacts to get any information that may aid you."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "51ace200303031b413002718:58638fa9396630d40f0082e6"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58638fdd396630d40f0082ea"
+  }
+  index: 7
+  text: "{{GM}}Kubota nods.{{/GM}}\n\nDo-Amai! There are two that I know of, other than the developing story downtown about the ork activists killed."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "51ace200303031b413002718:586390ff396630d40f0082fc"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "586390ff396630d40f0082ff"
+  }
+  index: 8
+  text: ""
+  branches {
+    responseText: "Ork activists?"
+    nextNodeIndex: 9
+    onlyOnce: true
+    idRef {
+      id: "51ace200303031b413002718:58639049396630d40f0082ec"
+    }
+  }
+  branches {
+    responseText: "Tell me about the reporters."
+    conditions {
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "Comparison (bool)"
+            args {
+              call_value {
+                functionName: "Get Story Variable (bool)"
+                args {
+                  string_value: "57084f7c6631365c1600767e"
+                }
+                args {
+                  string_value: "bHeardOfGlint"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "IsOrIsNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "bool"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Comparison (bool)"
+            args {
+              call_value {
+                functionName: "Get Story Variable (bool)"
+                args {
+                  string_value: "57084f7c6631365c1600767e"
+                }
+                args {
+                  string_value: "bHeardOfMarrow"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "IsOrIsNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "bool"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ace200303031b413002718:5863938f396630d40f0083a2"
+    }
+  }
+  branches {
+    responseText: "Tell me about Glint."
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "bHeardOfGlint"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 12
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ace200303031b413002718:58639049396630d40f0082ee"
+    }
+  }
+  branches {
+    responseText: "Tell me about Marrow."
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "bHeardOfMarrow"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 14
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ace200303031b413002718:58639049396630d40f0082f0"
+    }
+  }
+  branches {
+    responseText: "I think that\'s enough about reporters for one day."
+    nextNodeIndex: 17
+    idRef {
+      id: "51ace200303031b413002718:5863904c396630d40f0082f2"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Reporter Loop"
+}
+nodes {
+  idRef {
+    id: "58639055396630d40f0082f5"
+  }
+  index: 9
+  text: "{{GM}}Kubota shakes her head.{{/GM}}\n\nCarla Harris is covering a story that is of great interest among the Ork Underground, but that is perhaps outside our sphere of influence."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "51ace200303031b413002718:58639122396630d40f008306"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "586393a1396630d40f0083a5"
+  }
+  index: 10
+  text: "{{GM}}Kubota makes a face as though she\'s encountered a bad smell.{{/GM}}\n\nReporters? Save me from the self-righteous newshounds and muckrackers."
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "51ace200303031b413002718:5863943a396630d40f008414"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5863943a396630d40f008417"
+  }
+  index: 11
+  text: "{{GM}}Kubota taps her lips thoughtfully.{{/GM}}\n\nIf you\'re looking into Sam\'s murder, Glint and Marrow may be able to give you more information."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "51ace200303031b413002718:5863943d396630d40f008419"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "586391d7396630d40f00836b"
+  }
+  index: 12
+  text: "{{GM}}Kubota sighs.{{/GM}}\n\nGlint is a young woman, an idealist despite growing up in Seattle. She got it into her head to follow Marrow\'s lead and poke her nose into the Ripper Killings. She is undoubtably dead by this point- none of her friends have seen her, not even Dresden when he was trying valiantly to track her down a couple weeks ago."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "51ace200303031b413002718:58639214396630d40f008370"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58639214396630d40f008373"
+  }
+  index: 13
+  text: "{{GM}}Kubota shivers.{{/GM}}\n\nEven talking about the murders sends a shiver down my spine. There\'s no way of knowing who is next."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "51ace200303031b413002718:58639211396630d40f00836d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5863926e396630d40f008396"
+  }
+  index: 14
+  text: "{{GM}}Kubota sighs.{{/GM}}\n\nA reporter like Marrow is a useful fish. A bottom feeder, one that you can rely on to keep the tank healthy. It\'s an apt comparison, for the bottom feeder. A runner bar like this will attract gaki and baka."
+  branches {
+    responseText: ""
+    nextNodeIndex: 15
+    idRef {
+      id: "51ace200303031b413002718:586392e0396630d40f008398"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "586392e0396630d40f00839b"
+  }
+  index: 15
+  text: "Marrow will let them brag, publish their words, and bring the heat of corporate justice down on them. It\'s useful to disturb enemies and leak false information, and  keeps the corporations from looking too hard at where that information comes from."
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+    idRef {
+      id: "51ace200303031b413002718:58639329396630d40f00839d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58639329396630d40f0083a0"
+  }
+  index: 16
+  text: "{{GM}}Kubota sighs.{{/GM}}\n\nAs far as his involvement in the Emerald City Ripper story, other than pestering Dresden about it and giving the killer the name in the first place, Marrow has been cut out of the loop by every news organization that bought the story for him. As far as I am aware, he\'s not involved with the story, and will wander in here looking for new stories once his account gets low."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "51ace200303031b413002718:5863942f396630d40f0083e1"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58639147396630d40f008318"
+  }
+  index: 17
+  text: "{{GM}}Kubota nods.{{/GM}}\n\nI agree. Glint and Marrow touch a dark topic."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "51ace200303031b413002718:5863915a396630d40f008360"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5863916d396630d40f008364"
+  }
+  index: 18
+  text: "{{GM}}Kubota inclines her head to you.{{/GM}}\n\nYou will now have complete access to my safehouse, as well as the black market contacts to secure prime gear. I will mention that they should treat you as family. But beyond this, there are no additional services that I will provide at a discounted rate. Alcohol and women will be paid normally."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "51ace200303031b413002718:586391c7396630d40f008366"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -181,4 +638,7 @@ nodes {
 roots {
   responseText: ""
   nextNodeIndex: 0
+  idRef {
+    id: "51ace200303031b413002718:58638dca396630d40f008279"
+  }
 }
