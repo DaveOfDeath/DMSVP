@@ -7,7 +7,7 @@ nodes {
     id: "51d1d8743561648412000297"
   }
   index: 0
-  text: "{{GM}}The woman is probably in her thirties but hard times have aged her. She looks at you with concern.{{/GM}}\n\nDon\342\200\231t do it, friends. Don\342\200\231t slot that drek they\342\200\231re selling. BTLs are killers - theirs most of all!"
+  text: "{{GM}}The woman is probably in her thirties but hard times have aged her. She looks at you with concern.{{/GM}}\n\nDon\342\200\231t do it, friends. Don\342\200\231t slot that drek they\342\200\231re selling. BTLs are killers - these Yakuza BTL most of all!"
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -34,7 +34,7 @@ nodes {
   }
   branches {
     responseText: "Do you have a pass card to get in there?"
-    nextNodeIndex: 4
+    nextNodeIndex: 5
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -43,7 +43,7 @@ nodes {
   }
   branches {
     responseText: "What kind of guards do they have on this place?"
-    nextNodeIndex: 5
+    nextNodeIndex: 6
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -52,7 +52,7 @@ nodes {
   }
   branches {
     responseText: "Any chipheads inside the lab?"
-    nextNodeIndex: 9
+    nextNodeIndex: 15
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -61,7 +61,7 @@ nodes {
   }
   branches {
     responseText: "We\342\200\231re looking for a kid named Gino. Know him?"
-    nextNodeIndex: 11
+    nextNodeIndex: 17
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -111,16 +111,34 @@ nodes {
     responseText: ""
     nextNodeIndex: 3
     idRef {
-      id: "36bafa69306434fc04000a2c:5827bdef66313688140059eb"
+      id: "36bafa69306434fc04000a2c:58644f773966303c29004463"
     }
   }
   nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
-    id: "51d1d93c35616484120002a9"
+    id: "58644f773966303c29004466"
   }
   index: 3
+  text: "{{GM}}The concern on Coyote\'s face is painful. She speaks as the woman breaks down sobbing.{{/GM}}\n\nWe need to get in there and end this place."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "36bafa69306434fc04000a2c:5827bdef66313688140059eb"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5827b883663136f817005f3e"
+  }
+}
+nodes {
+  idRef {
+    id: "51d1d93c35616484120002a9"
+  }
+  index: 4
   text: "...to record.\n\n{{GM}}Tears stream down her face.{{/GM}}"
   branches {
     responseText: ""
@@ -135,8 +153,8 @@ nodes {
   idRef {
     id: "51d1d96135616484120002af"
   }
-  index: 4
-  text: "No. But Jamal has... my son\342\200\231s card. Took it off his... took it off him when his brain fried. Jamal\342\200\231s down the hall. Don\342\200\231t know if he\342\200\231ll give it up but that\342\200\231s between you and him."
+  index: 5
+  text: "{{GM}}The woman wipes tears, pointing to an apartment to the north.{{/GM}}\n\nNo. But Jamal has... my son\342\200\231s card. Took it off his... took it off him when his brain fried. Jamal\342\200\231s down the hall. \nI don\342\200\231t know if he\342\200\231ll give it up but that\342\200\231s between you and him."
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -197,11 +215,11 @@ nodes {
   idRef {
     id: "51d1d9a435616484120002e0"
   }
-  index: 5
-  text: "{{GM}}She looks around, frightened. Whispers.{{/GM}}\n\nThey\342\200\231re serious. This place is backed by the Yakuza. "
+  index: 6
+  text: "{{GM}}She looks around, frightened her voice dropping to a whisper.{{/GM}}\n\nThey\342\200\231re serious. This place is backed by the Yakuza. I hear they\'re even bringing in a street gang to help out."
   branches {
     responseText: ""
-    nextNodeIndex: 6
+    nextNodeIndex: 7
     idRef {
       id: "36bafa69306434fc04000a2c:5827bdef66313688140059f8"
     }
@@ -212,14 +230,196 @@ nodes {
   idRef {
     id: "51d1d9c935616484120002e3"
   }
-  index: 6
-  text: "Japanese mafia. Oh man."
+  index: 7
+  text: "{{GM}}Paco curses, bouncing his bat off of the wall.{{/GM}}\n\nNow we\'re fragging off the Yakuza? Are you aware of the Japanese crime families? Oh man, we are so fragged if they catch us."
   branches {
-    responseText: "How many and what kind of firepower?"
-    nextNodeIndex: 7
+    responseText: "How many guards, and what kind of artillery?"
+    nextNodeIndex: 8
     idRef {
       id: "36bafa69306434fc04000a2c:5827bdef66313688140059fb"
     }
+  }
+  branches {
+    responseText: "{{GM}}Etiquette: Gang{{/GM}} If they\'re making a deal with go-gangs, we need to get Gino out now."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 15
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 10
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "36bafa69306434fc04000a2c:586450473966303c2900446e"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Etiquette: Corporate{{/GM}} Not just the Yakuza, either. The Yaks have deep ties into Mitsuhama, one of the Big Eight Megacorporations."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 13
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 12
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "36bafa69306434fc04000a2c:586450363966303c2900446c"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Etiquette: Security{{/GM}} If the Yakuza is backing a lab here, that means the Mafia will want to come in and shut it down."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 14
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 13
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "36bafa69306434fc04000a2c:586450473966303c29004470"
+    }
+  }
+  branches {
+    responseText: "Best not to get caught, then. How much firepower do they have?"
+    nextNodeIndex: 8
+    idRef {
+      id: "36bafa69306434fc04000a2c:5864512b3966303c29004472"
+    }
+    auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
@@ -230,11 +430,11 @@ nodes {
   idRef {
     id: "51d1d9e135616484120002e6"
   }
-  index: 7
-  text: "There\342\200\231s a guy on the door - Charlie - he sells the passes to get in. He\342\200\231s not tough. Blind in one eye. \n\nThere\342\200\231s another five or so wandering around. Two of \342\200\230em are bad news - covered in magic symbols. Mean."
+  index: 8
+  text: "{{GM}}The woman counts on her fingers quickly.{{/GM}}\n\nThere\342\200\231s Charlie on the door -- he sells the passes to get in. He\342\200\231s not tough, blind in one eye. \n\nThere\342\200\231s another five gangers wandering around. Two of \342\200\230em are bad news - covered in magic symbols. Mean. More Yakuza inside the lab itself, I couldn\'t bring myself to go in there."
   branches {
     responseText: ""
-    nextNodeIndex: 8
+    nextNodeIndex: 9
     idRef {
       id: "36bafa69306434fc04000a2c:5827bdef66313688140059fe"
     }
@@ -245,7 +445,7 @@ nodes {
   idRef {
     id: "51d1d9eb35616484120002e9"
   }
-  index: 8
+  index: 9
   text: "{{GM}}She\342\200\231s amped. Ready.{{/GM}}\n\nFive or six? That\342\200\231s not so bad. We have surprise on our side."
   branches {
     responseText: ""
@@ -262,13 +462,106 @@ nodes {
 }
 nodes {
   idRef {
+    id: "5864518c3966303c29004480"
+  }
+  index: 10
+  text: "{{GM}}Paco nods.{{/GM}}\n\nWe\'re extremely lucky, or the universe loves us. Either way, we need to go now."
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "36bafa69306434fc04000a2c:586451b63966303c29004482"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5827b7ea663136f817005f3a"
+  }
+}
+nodes {
+  idRef {
+    id: "586451b63966303c29004485"
+  }
+  index: 11
+  text: "{{GM}}Coyote nods.{{/GM}}\n\nWe need to go in right now. How many did you say there were, Lady?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "36bafa69306434fc04000a2c:586451d93966303c29004487"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5827b883663136f817005f3e"
+  }
+}
+nodes {
+  idRef {
+    id: "586451ea3966303c29004495"
+  }
+  index: 12
+  text: "{{GM}}Coyote bites her lip. She\'s nervous, but not backing down.{{/GM}}\n\nAll the more reason not to get caught. Right?"
+  branches {
+    responseText: "How many guards here?"
+    nextNodeIndex: 8
+    idRef {
+      id: "36bafa69306434fc04000a2c:586452123966303c29004497"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5827b883663136f817005f3e"
+  }
+}
+nodes {
+  idRef {
+    id: "586452543966303c290044a8"
+  }
+  index: 13
+  text: "{{GM}}Coyote shakes her head \'no.\'{{/GM}}\n\nAnd leave Gino in the middle of a shootout between crime families who don\'t care if he lives? No dice.\nWe can call the Mafia and let them know about this lab, to keep the Yakuza heat from coming down on us, but we need to go now."
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "36bafa69306434fc04000a2c:586452933966303c290044aa"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5827b883663136f817005f3e"
+  }
+}
+nodes {
+  idRef {
+    id: "586452973966303c290044ad"
+  }
+  index: 14
+  text: "{{GM}}Paco shrugs.{{/GM}}\n\nCould work in our favor- the Yakuza can\'t risk drawing Mafia attention, so they have the non-affiliated gangers instead of their own trained soldiers. Could be we\'re looking at zip-guns and knives rather than assault rifles and Yakuza mages."
+  branches {
+    responseText: "But how many?"
+    nextNodeIndex: 8
+    idRef {
+      id: "36bafa69306434fc04000a2c:586453163966303c290044af"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5827b7ea663136f817005f3a"
+  }
+}
+nodes {
+  idRef {
     id: "51d1da1935616484120002eb"
   }
-  index: 9
-  text: "Yep. All day. All night. And they can be dangerous too."
+  index: 15
+  text: "Chipheads?\n\nYep. Crowded in there, all day. All night. And they can be dangerous too."
   branches {
     responseText: "Chipheads? Dangerous?"
-    nextNodeIndex: 10
+    nextNodeIndex: 16
     idRef {
       id: "36bafa69306434fc04000a2c:5827bdef6631368814005a06"
     }
@@ -279,8 +572,8 @@ nodes {
   idRef {
     id: "51d1da2735616484120002ee"
   }
-  index: 10
-  text: "Once someone\342\200\231s chipped, they can send \342\200\230em any program they want. Make \342\200\230em do whatever. Turn \342\200\230em into whores. Killers. Anything."
+  index: 16
+  text: "{{GM}}The woman shakes her head.{{/GM}}\n\nYou don\'t know what srot of chips this lab is putting out. Once someone has slotted these chips, they can send \342\200\230em any program they want. Replace their personalities, make \342\200\230em do whatever. Turn \342\200\230em into whores. Killers. Anything."
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -295,11 +588,11 @@ nodes {
   idRef {
     id: "51d1da3f35616484120002f2"
   }
-  index: 11
-  text: "Who doesn\342\200\231t? He\342\200\231s here all the time. Gino\342\200\231s a clocker - trades his time for chips - like their little errand boy. I saw him go in there this morning. Hasn\342\200\231t come out, so I imagine he\342\200\231s riding a dreamchip."
+  index: 17
+  text: "{{GM}}The woman makes a disgusted sound.{{/GM}}\n\nWho doesn\342\200\231t know Gino? He\342\200\231s here all the time. Gino\342\200\231s a clocker - trades his time for chips - their little errand boy. Not just them, either. He\'ll do errands for anyone to get his next fix. I saw him go in there this morning. Hasn\342\200\231t come out, so I imagine he\342\200\231s riding a nice fat dreamchip."
   branches {
     responseText: ""
-    nextNodeIndex: 12
+    nextNodeIndex: 18
     idRef {
       id: "36bafa69306434fc04000a2c:5827be306631368814005a16"
     }
@@ -310,7 +603,7 @@ nodes {
   idRef {
     id: "5827be306631368814005a19"
   }
-  index: 12
+  index: 18
   text: "{{GM}}Coyote\'s expression hardens, but she doesn\'t speak.{{/GM}}"
   branches {
     responseText: ""

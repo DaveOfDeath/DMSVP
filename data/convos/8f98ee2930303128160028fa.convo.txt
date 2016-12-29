@@ -7,10 +7,13 @@ nodes {
     id: "8f9965a13030312816002900"
   }
   index: 0
-  text: "Every inch of the tech alcove is covered in a chaotic patchwork quilt of circuit boards, chips, wires, displays, and a million other things that you can\342\200\231t identify. In the eye of this techno-bits storm stands a dwarf, immaculately dressed and supremely calm."
+  text: "Every inch of the tech alcove is covered in a chaotic patchwork quilt of circuit boards, chips, wires, displays, and a million other things that you can\342\200\231t identify. In the eye of this technological hurricane stands a dwarf, immaculately dressed and supremely calm."
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003b9b"
+    }
   }
   nodeType: ConversationNodeType_GM_Voice
   actions {
@@ -65,10 +68,13 @@ nodes {
     id: "8f99b6b13030312816002903"
   }
   index: 1
-  text: "I know that look, don\342\200\231t let the size of the shop fool you, I can get any Matrix hardware or software that exists, and if it doesn\342\200\231t exist then I can get it made it for you. Any questions I can answer or anything gear you need?"
+  text: "{{GM}}The dwarf winks at you.{{/GM}}\n\nI know that look, don\342\200\231t let the size of the shop fool you, I can get my hands on any cyberdeck or program written that exists, and if it doesn\342\200\231t exist then I\'ll get one of my contacts to make it for you, SOTA and custom. I even have a few sweet ESP programs you can try out.\n\nI\'m David Fry, the Second. Any questions I can answer, or any tech gear you need?"
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003b9e"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -79,16 +85,145 @@ nodes {
   index: 2
   text: ""
   branches {
-    responseText: "What\342\200\231s a deck?"
+    responseText: "What\342\200\231s a cyberdeck?"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 5
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 4
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
     nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003ba1"
+    }
   }
   branches {
     responseText: "What\342\200\231s a program?"
-    nextNodeIndex: 4
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 5
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 4
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 5
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003ba7"
+    }
+  }
+  branches {
+    responseText: "What is SOTA?"
+    nextNodeIndex: 6
+    idRef {
+      id: "8f98ee2930303128160028fa:58641bc93966303c29003e0e"
+    }
   }
   branches {
     responseText: "What\342\200\231s an ESP?"
-    nextNodeIndex: 5
+    nextNodeIndex: 7
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003bad"
+    }
+  }
+  branches {
+    responseText: "Do you guys know the street tech vendors?"
+    nextNodeIndex: 9
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "8f98ee2930303128160028fa:58641a433966303c29003cdd"
+    }
   }
   branches {
     responseText: "What do you have for sale?"
@@ -106,23 +241,48 @@ nodes {
       }
     }
     nextNodeIndex: 2
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003bb6"
+    }
     auxiliaryLink: true
   }
   branches {
     responseText: "See you later."
-    nextNodeIndex: 7
+    nextNodeIndex: 10
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003bb9"
+    }
   }
   nodeType: ConversationNodeType_Simple
+  comment: "Fry Loop"
 }
 nodes {
   idRef {
     id: "8f9a3cd13030312816002909"
   }
   index: 3
-  text: "You jack into the Matrix or in the context of a run, when you jack into the local node of the facility you\342\200\231re in, the deck determines how many programs and ESPs you can carry and the firepower of your base Matrix attack. Decks have IP when a deck\342\200\231s IP is reduced to zero you\'ll get booted from the system - and it\'ll hurt."
+  text: "Deck. Cyberdeck. Portable cyberterminal for full-VR hot-ASIST experience.\n\nWhen you jack into the Matrix or breach a system in the context of a run, when you jack into the local node of the facility you\342\200\231re in, the deck determines how many programs and ESPs you can carry; and the firepower of your basic Matrix attack program. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "8f98ee2930303128160028fa:586415173966303c29003c52"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "586415173966303c29003c55"
+  }
+  index: 4
+  text: "Decks have IP--  when your deck\342\200\231s response time is reduced to zero you\'ll get booted from the system - and it\'ll hurt.\n\nDo that a couple of times in a row, and it\'ll pop a vessel in your brain, or burn out your motor functions. Try not to do that."
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003ba4"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -131,11 +291,30 @@ nodes {
   idRef {
     id: "8f9d24513030312816002918"
   }
-  index: 4
-  text: "A program in the Matrix allows you to defend your avatar against countermeasures and enemy deckers. There are a wide variety of different programs for attack and defense at different power levels. \n\nAs you progress as a decker, you can use more powerful versions of these programs. "
+  index: 5
+  text: "A program is code that functions within the Matrix to allow you additional functions. Some programs allows you to defend your avatar, some allow you to attack other programs or enemy deckers. Intrusion countermeasures, or IC, are also technically programs. \n\nThere are a wide variety of different programs for attack and defense, and a plethora of utilities for use. These vary wildly at different power levels. \n\nAs you or your crew decker learn new programming tricks, you\'ll learn new programs or more powerful versions of existing programs. "
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003baa"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58641bd53966303c29003e11"
+  }
+  index: 6
+  text: "{{GM}}Fry smiles happy to share the information.{{/GM}}\n\nSOTA is an acronym for State Of The Art. The razor bleeding-edge of tech supremacy. You\'re either SOTA, or you\'re irrelevant."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "8f98ee2930303128160028fa:58641c5c3966303c29003e13"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -144,11 +323,14 @@ nodes {
   idRef {
     id: "8f9eda313030312816002921"
   }
-  index: 5
-  text: "Johnny, you want to take this one?"
+  index: 7
+  text: "{{GM}}David looks at the janitor, who is standing nearby.{{/GM}}\n\nJohnny, you want to take this one?"
   branches {
     responseText: ""
-    nextNodeIndex: 6
+    nextNodeIndex: 8
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003bb0"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -156,11 +338,14 @@ nodes {
   idRef {
     id: "8f9f28613030312816002924"
   }
-  index: 6
-  text: "Sure, when you infiltrate a facility on a run you have a team, when you jack into the Matrix you are all alone. That\342\200\231s where ESPs come in. An ESP is a highly advanced artificial life program which when you deploy it manifests as another team member in the Matrix. Different types of ESPs have different abilities."
+  index: 8
+  text: "{{GM}}The janitor nearby takes a seat at the table.{{/GM}}\n\nSure, I\'ll take this one.\n\nWhen you infiltrate a facility on a run, you have a crew to back you up; when you jack into the Matrix you\'re usually on your own. That\342\200\231s where ESPs come in. An ESP is a highly advanced smartframe- not an AI, but a program you deploy. The ESP manifests in the Matrix and you can give it commands to help you or attack enemies. Different types of ESPs have different subroutines."
   branches {
     responseText: ""
     nextNodeIndex: 2
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003bb3"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -170,13 +355,32 @@ nodes {
 }
 nodes {
   idRef {
-    id: "8fa1bfb1303031281600294d"
+    id: "58641a653966303c29003ce2"
   }
-  index: 7
-  text: "Oh I\342\200\231m being rude, let me also introduce you to our resident decker and my good friend Johnny Clean."
+  index: 9
+  text: "{{GM}}Fry raises an eyebrow.{{/GM}}\n\nViolet and Chuckles? Yeah, I know them. \nChuckles is a decent tech, but wastes his time fixing computers for Touristville and training Violet.\nViolet is brash little troll decker, and I like her."
   branches {
     responseText: ""
-    nextNodeIndex: 8
+    nextNodeIndex: 2
+    idRef {
+      id: "8f98ee2930303128160028fa:58641ab83966303c29003ce4"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "8fa1bfb1303031281600294d"
+  }
+  index: 10
+  text: "{{GM}}David smacks himself on the forehead, smile never leaving his face.{{/GM}}\n\nOh I\342\200\231m being rude, let me introduce you to the Seamstress Union\'s resident decker and my close personal friend. Around here, we call him Johnny Clean."
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003bbc"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -184,8 +388,8 @@ nodes {
   idRef {
     id: "8fa237d13030312816002950"
   }
-  index: 8
-  text: "While in the same overalls that you saw him in upstairs, down here, leaning over a workbench crammed with circuit boards, cables and chips, Johnny Clean seems a totally different person. You get the impression that Johnny was once as hot and as invisible as the most infamous deckers today."
+  index: 11
+  text: "While in the same overalls that you saw him in upstairs, down here, leaning over a workbench crammed with tools, fiddling with circuit boards, cables and chips, Johnny Clean seems a totally different person. \n\nThe deference shown by David Fry gives the impression that Johnny was once as hot and as invisible as the most infamous deckers today."
   branches {
     responseText: ""
     conditions {
@@ -226,8 +430,11 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 9
+    nextNodeIndex: 12
     hideIfUnavailable: true
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003bbf"
+    }
   }
   branches {
     responseText: ""
@@ -269,8 +476,11 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 14
+    nextNodeIndex: 19
     hideIfUnavailable: true
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003bd6"
+    }
   }
   nodeType: ConversationNodeType_GM_Speaker_Voice
   sourceInSceneRef {
@@ -281,11 +491,14 @@ nodes {
   idRef {
     id: "8fa504593030312816002973"
   }
-  index: 9
-  text: "Good to see you down here, happy to be of help if I can be.\n"
+  index: 12
+  text: "{{GM}}Johnny glances up from what he\'s working on to meet your eye.{{/GM}}\n\nGood to see you down here, $+(l.name), let me know if I can be of any help.\n"
   branches {
     responseText: ""
-    nextNodeIndex: 10
+    nextNodeIndex: 13
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003bc2"
+    }
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
@@ -296,11 +509,47 @@ nodes {
   idRef {
     id: "8fa5a8793030312816002978"
   }
-  index: 10
+  index: 13
   text: ""
   branches {
+    responseText: "Like, cleanup on aisle twelve? "
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "C04BadToJohnny"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 14
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "8f98ee2930303128160028fa:586418893966303c29003c9c"
+    }
+  }
+  branches {
     responseText: "How is decking used?"
-    nextNodeIndex: 11
+    nextNodeIndex: 15
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -309,7 +558,7 @@ nodes {
   }
   branches {
     responseText: "Why are you dressed as a janitor?"
-    nextNodeIndex: 12
+    nextNodeIndex: 16
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -317,8 +566,8 @@ nodes {
     }
   }
   branches {
-    responseText: "Is it true that you were part of the Echo Mirage team?"
-    nextNodeIndex: 13
+    responseText: "Is it true that you were part of Echo Mirage?"
+    nextNodeIndex: 18
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -328,18 +577,44 @@ nodes {
   branches {
     responseText: "See you guys around."
     nextNodeIndex: -1
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003bd4"
+    }
   }
   nodeType: ConversationNodeType_Simple
+  comment: "Clean Loop"
+}
+nodes {
+  idRef {
+    id: "586418c93966303c29003c9f"
+  }
+  index: 14
+  text: "{{GM}}Johnny doesn\'t flinch, but you can tell he\'s not happy at the joke.{{/GM}}\n\nYeah, that\'s the last time you get to do that, asshole."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "8f98ee2930303128160028fa:58641d2c3966303c29003f94"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "80b73b8430303184100041d2"
+  }
 }
 nodes {
   idRef {
     id: "8fa832413030312816002982"
   }
-  index: 11
-  text: "The decking skill is often used just on terminals in the real world to get information, hack doors, etc. But occasionally a run will have the option or the requirement to go into the local Matrix LAN of the facility you are infiltrating in order to gain access to valuable information or control more important things in the real world"
+  index: 15
+  text: "Decking is programming skill, hacking, and tech finesse, all rolled into one. Decking will give you access to difficult terminals, let you step around security protocols, and hack doors, cameras, or sometimes even drones.\n\nOccasionally a run will have a matrix requirment. You can deck into the to Local Telecom Grid of the facility you are infiltrating in order to gain access to valuable information or control more important things in the real world, but it\'s every bit as dangerous as dodging bullets."
   branches {
     responseText: ""
-    nextNodeIndex: 10
+    nextNodeIndex: 13
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003bc7"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -351,12 +626,14 @@ nodes {
   idRef {
     id: "8fa8bd213030312816002985"
   }
-  index: 12
-  text: "Did I stand out upstairs? No. Janitors never do.\n\nWhen I was younger, I had a rep for getting in and getting out of systems so cleanly that no one knew I was there. \n\nHalf the Matrix runs that earned me my rep were made possible because I was able to get inside the facility posing as a janitor. Now it\342\200\231s just sort of part of me.\n"
+  index: 16
+  text: "{{GM}}Johnny shrugs.{{/GM}}\n\nDid I stand out upstairs? No. Janitors never do. Slick hot deckers with pink mohawks stand out. Standing out gets you killed."
   branches {
     responseText: ""
-    nextNodeIndex: 10
-    auxiliaryLink: true
+    nextNodeIndex: 17
+    idRef {
+      id: "8f98ee2930303128160028fa:5864184d3966303c29003c5b"
+    }
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
@@ -365,26 +642,51 @@ nodes {
 }
 nodes {
   idRef {
-    id: "8fa992513030312816002987"
+    id: "5864184d3966303c29003c5e"
   }
-  index: 13
-  text: "Let me take this one. Listen, I\342\200\231ve known the guy for over a decade and he\'s been smart enough not to tell me. So he is sure as hell not going to tell you anything about those days. \n\nFor your health and his, best to let the subject drop."
+  index: 17
+  text: "When I was younger, I earned a reputation for getting in and out of systems so cleanly that no one knew I was there. \n\nHalf the Matrix runs that earned me my rep were made possible because I was able to get inside the facility posing as a janitor. Now it\342\200\231s just sort of part of me."
   branches {
     responseText: ""
-    nextNodeIndex: 10
+    nextNodeIndex: 13
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003bcc"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
-    id: "8fa513e13030312816002975"
+    id: "8fa992513030312816002987"
   }
-  index: 14
-  text: " You were an asshole upstairs, but I\342\200\231ll give you another shot down here."
+  index: 18
+  text: "{{GM}}Fry leans forward.{{/GM}}\n\nLet me take this one. Not every nova-hot decker was a member of Echo Mirage, and anyone who claims to be part of Echo Mirage is probably lying.\n\nI\342\200\231ve been friends with this guy for over a decade, and he\'s been smart enough to never make that claim. \nSo he is sure as hell not going to tell you anything about it. For your health and everyone\'s involved, it\'s a good idea to let it drop."
   branches {
     responseText: ""
-    nextNodeIndex: 10
+    nextNodeIndex: 13
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003bd1"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "8c5059d63030313417004384"
+  }
+}
+nodes {
+  idRef {
+    id: "8fa513e13030312816002975"
+  }
+  index: 19
+  text: "{{GM}}Johnny shrugs.{{/GM}}\n\n You were an asshole upstairs, but I\342\200\231ll give you another shot down here if you need help."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003bd9"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -396,10 +698,10 @@ nodes {
   idRef {
     id: "8fac0b4230303128160029e0"
   }
-  index: 15
-  text: "Glad you checked back, I am always getting new stuff in, so check the lists as I am sure you will find something you can\342\200\231t live without."
+  index: 20
+  text: "{{GM}}Fry looks up from his workbench.{{/GM}}\n\nThanks for checking back, I\'m always getting SOTA programs and tech in, so check the lists often-- I\'m sure you\'ll find something you or your crew decker can\342\200\231t live without."
   branches {
-    responseText: "Alright lets see the what you have."
+    responseText: "Alright let\'s see the what you have."
     actions {
       ops {
         functionName: "Open Store Screen From Actor"
@@ -414,10 +716,16 @@ nodes {
       }
     }
     nextNodeIndex: -1
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003bdf"
+    }
   }
   branches {
     responseText: "I\'m good for now."
     nextNodeIndex: -1
+    idRef {
+      id: "8f98ee2930303128160028fa:586413813966303c29003be1"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -459,6 +767,9 @@ roots {
     }
   }
   nextNodeIndex: 0
+  idRef {
+    id: "8f98ee2930303128160028fa:586413813966303c29003b98"
+  }
 }
 roots {
   responseText: ""
@@ -497,6 +808,9 @@ roots {
       }
     }
   }
-  nextNodeIndex: 15
+  nextNodeIndex: 20
   hideIfUnavailable: true
+  idRef {
+    id: "8f98ee2930303128160028fa:586413813966303c29003bdc"
+  }
 }
