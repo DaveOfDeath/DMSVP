@@ -165,10 +165,51 @@ triggers {
         call_value {
           functionName: "Get Map Item (AnimationModifiers)"
           args {
-            string_value: "btltweaking"
+            string_value: "mentalPatient_straightJacket"
           }
           args {
-            string_value: "btltweaking"
+            string_value: "straightjacket"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Prop Visible by Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isNodeGate"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        call_value {
+          functionName: "Everywhere"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DoesOrDoesNot"
+          }
+          args {
+            int_value: 1
           }
         }
       }
@@ -866,7 +907,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Item)"
           args {
-            string_value: "Pi 1 Fichetti Security 500"
+            string_value: "SDU_ShockBaton"
           }
         }
       }
@@ -1331,6 +1372,118 @@ triggers {
             int_value: 0
           }
         }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "19038f046233318c0a0069ea"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle_rocking"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "f90c4228623331f4130018c2"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle_clamoring"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "51c4d958623331881e004db8"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle_straightJacket"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Apply Condition Status Effect to Actor"
+      args {
+        call_value {
+          functionName: "All Actors With Tag"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isNeutral"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "StatusCondition"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        string_value: "Scared"
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "BuffDebuffType"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: -1
       }
     }
   }
@@ -2426,7 +2579,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (InteractableObject)"
           args {
-            string_value: "f65b99e16233310017001035"
+            string_value: "58826fb6663136b804000c9d"
           }
         }
       }
@@ -2509,7 +2662,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (InteractableObject)"
           args {
-            string_value: "f65b99e16233310017001035"
+            string_value: "58826fb6663136b804000c9d"
           }
         }
       }
@@ -2532,7 +2685,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (InteractableObject)"
           args {
-            string_value: "f65f71a8623331001700103b"
+            string_value: "58826fed663136b804000c9f"
           }
         }
       }
@@ -2649,7 +2802,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (InteractableObject)"
           args {
-            string_value: "f65f71a8623331001700103b"
+            string_value: "58826fed663136b804000c9f"
           }
         }
       }
@@ -2982,7 +3135,7 @@ triggers {
         }
       }
       args {
-        int_value: 1
+        int_value: 2
       }
       args {
         call_value {
@@ -3832,7 +3985,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "51d1f1f1623331a416000125"
   }
@@ -3928,11 +4081,358 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "Camera.WarpToPlayer"
+  events {
+    ops {
+      functionName: "On Actor Teleport"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Compare Actor Team"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "matrix"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5882686f663136b804000c37"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Matrix.Node1_TravelEnabled"
+  events {
+    ops {
+      functionName: "On Actor Death"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "Node1"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Node1"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Prop Visible by Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isNode1PortalAvailable"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        call_value {
+          functionName: "Everywhere"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DoesOrDoesNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Region Enabled"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "58826721663136b804000c18"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "58826d4a663136b804000c61"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Matrix.Node2_TravelEnabled"
+  events {
+    ops {
+      functionName: "On Actor Death"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Target Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "Node2"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "Node2"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Prop Visible by Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isNode2PortalAvailable"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        call_value {
+          functionName: "Everywhere"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DoesOrDoesNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Region Enabled"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "5882672e663136b804000c19"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "58826d4c663136b804000c62"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
 regions {
   name: "FrontDeskMove"
   position {
     x: 4
-    y: -9
+    y: -11
     width: 1
     height: 1
   }
@@ -4138,200 +4638,26 @@ regions {
     a: 1
   }
   ambient_light_color {
-    r: 0.082352944
-    g: 0.070588239
-    b: 0.0627451
+    r: 0.58431375
+    g: 0.50196081
+    b: 0.44705883
     a: 0.88235295
   }
   ambience_template: "asylum-quiet"
-  combat_music: "Seattle-Set3-Combat"
-  default_music: "Seattle-Set3-Legwork"
+  combat_music: "HongKong-Combat-Generic-Int1"
+  default_music: "HongKong-Legwork-Generic"
   loop_combat_music: true
   loop_default_music: true
   no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
+  combat_intense_music: "HongKong-Combat-Generic-Int2"
+  combat_wrapup_music: "HongKong-Combat-Generic-WrapUp"
   loop_combat_intense_music: true
   loop_combat_wrapup_music: true
   combat_intense_threshold: 5
   combat_wrapup_threshold: 2
   combat_fade_interval: 2
-  combat_intro_stinger: ""
-  combat_outro_stinger: ""
-  vfx_fill_prefab_name: ""
-}
-regions {
-  name: "YellowPortalB"
-  position {
-    x: -96
-    y: 2
-    width: 2
-    height: 1
-  }
-  enabledAtStart: true
-  is_camera_region: false
-  is_matrix_node: false
-  is_vfx_fill_region: false
-  idRef {
-    id: "f6578d126233310017000f56"
-  }
-  highlight_color {
-    r: 0
-    g: 0
-    b: 0
-    a: 1
-  }
-  visible_at_start: false
-  is_closet: false
-  is_teleporter_region: false
-  directional_light_dir {
-    x: -0.5
-    y: -1
-    z: -0.75
-  }
-  directional_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 1
-  }
-  ambient_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 0.88235295
-  }
-  ambience_template: ""
-  combat_music: ""
-  default_music: ""
-  loop_combat_music: true
-  loop_default_music: false
-  no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
-  loop_combat_intense_music: true
-  loop_combat_wrapup_music: true
-  combat_intense_threshold: 5
-  combat_wrapup_threshold: 2
-  combat_fade_interval: 2
-  combat_intro_stinger: ""
-  combat_outro_stinger: ""
-  vfx_fill_prefab_name: ""
-}
-regions {
-  name: "YellowPortalA"
-  position {
-    x: -95
-    y: -9
-    width: 2
-    height: 1
-  }
-  enabledAtStart: true
-  is_camera_region: false
-  is_matrix_node: false
-  is_vfx_fill_region: false
-  idRef {
-    id: "f6582733623331001700102a"
-  }
-  highlight_color {
-    r: 0
-    g: 0
-    b: 0
-    a: 1
-  }
-  visible_at_start: false
-  is_closet: false
-  is_teleporter_region: false
-  directional_light_dir {
-    x: -0.5
-    y: -1
-    z: -0.75
-  }
-  directional_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 1
-  }
-  ambient_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 0.88235295
-  }
-  ambience_template: ""
-  combat_music: ""
-  default_music: ""
-  loop_combat_music: true
-  loop_default_music: false
-  no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
-  loop_combat_intense_music: true
-  loop_combat_wrapup_music: true
-  combat_intense_threshold: 5
-  combat_wrapup_threshold: 2
-  combat_fade_interval: 2
-  combat_intro_stinger: ""
-  combat_outro_stinger: ""
-  vfx_fill_prefab_name: ""
-}
-regions {
-  name: "New Region"
-  position {
-    x: -115
-    y: -39
-    width: 38
-    height: 65
-  }
-  enabledAtStart: true
-  is_camera_region: true
-  is_matrix_node: false
-  is_vfx_fill_region: false
-  idRef {
-    id: "f662992f623331001700103f"
-  }
-  highlight_color {
-    r: 0
-    g: 0
-    b: 0
-    a: 1
-  }
-  visible_at_start: false
-  is_closet: false
-  is_teleporter_region: false
-  directional_light_dir {
-    x: -0.5
-    y: -1
-    z: -0.75
-  }
-  directional_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 1
-  }
-  ambient_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
-    a: 0.88235295
-  }
-  ambience_template: ""
-  combat_music: "Seattle-Set8-Combat"
-  default_music: "Seattle-Set8-Stealth"
-  loop_combat_music: true
-  loop_default_music: false
-  no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
-  loop_combat_intense_music: true
-  loop_combat_wrapup_music: true
-  combat_intense_threshold: 5
-  combat_wrapup_threshold: 2
-  combat_fade_interval: 2
-  combat_intro_stinger: ""
-  combat_outro_stinger: ""
+  combat_intro_stinger: "HongKong-Combat-Stinger-Start"
+  combat_outro_stinger: "HongKong-Combat-Stinger-End"
   vfx_fill_prefab_name: ""
 }
 regions {
@@ -4438,64 +4764,6 @@ regions {
   default_music: ""
   loop_combat_music: true
   loop_default_music: false
-  no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
-  loop_combat_intense_music: true
-  loop_combat_wrapup_music: true
-  combat_intense_threshold: 5
-  combat_wrapup_threshold: 2
-  combat_fade_interval: 2
-  combat_intro_stinger: ""
-  combat_outro_stinger: ""
-  vfx_fill_prefab_name: ""
-}
-regions {
-  name: "Matrix"
-  position {
-    x: -115
-    y: -39
-    width: 38
-    height: 65
-  }
-  enabledAtStart: true
-  is_camera_region: true
-  is_matrix_node: true
-  is_vfx_fill_region: false
-  idRef {
-    id: "519fef486331650c140039b4"
-  }
-  highlight_color {
-    r: 0
-    g: 0
-    b: 0
-    a: 1
-  }
-  visible_at_start: false
-  is_closet: false
-  is_teleporter_region: false
-  directional_light_dir {
-    x: -0.5
-    y: -1
-    z: -0.75
-  }
-  directional_light_color {
-    r: 0.047058824
-    g: 0.070588239
-    b: 0.50980395
-    a: 1
-  }
-  ambient_light_color {
-    r: 0.25490198
-    g: 0.67843139
-    b: 0.67843139
-    a: 0.94117647
-  }
-  ambience_template: ""
-  combat_music: ""
-  default_music: "Seattle-Set8-MatrixLoop"
-  loop_combat_music: false
-  loop_default_music: true
   no_fow_in_region: false
   combat_intense_music: ""
   combat_wrapup_music: ""
@@ -4743,10 +5011,10 @@ regions {
 regions {
   name: "GuardAttacks"
   position {
-    x: 0
+    x: -1
     y: -4
-    width: 1
-    height: 1
+    width: 2
+    height: 2
   }
   enabledAtStart: true
   is_camera_region: false
@@ -4780,6 +5048,312 @@ regions {
     g: 0.50196081
     b: 0.50196081
     a: 0.88235295
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "cMatrix"
+  position {
+    x: -84
+    y: -41
+    width: 26
+    height: 57
+  }
+  enabledAtStart: true
+  is_camera_region: true
+  is_matrix_node: true
+  is_vfx_fill_region: false
+  idRef {
+    id: "588260486631361812003290"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.18431373
+    g: 0.21176471
+    b: 0.76078433
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.26274511
+    g: 0.81176472
+    b: 0.81176472
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "tr_Node1"
+  position {
+    x: -75
+    y: -19
+    width: 2
+    height: 1
+  }
+  enabledAtStart: false
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "58826721663136b804000c18"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: true
+  linked_teleporter_region: "58826800663136b804000c36"
+  teleport_facing: 0
+  teleport_sound_fx: ""
+  teleport_sound_volume: 0
+  teleport_source_fx: ""
+  teleport_destination_fx: ""
+  teleport_pc_only: true
+  teleport_fade_time: 0
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "tr_Node2"
+  position {
+    x: -73
+    y: -8
+    width: 2
+    height: 1
+  }
+  enabledAtStart: false
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "5882672e663136b804000c19"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: true
+  linked_teleporter_region: "588267f0663136b804000c35"
+  teleport_facing: 4
+  teleport_sound_fx: ""
+  teleport_sound_volume: 0
+  teleport_source_fx: ""
+  teleport_destination_fx: ""
+  teleport_pc_only: true
+  teleport_fade_time: 0
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "tr_Node1Dest"
+  position {
+    x: -75
+    y: -21
+    width: 2
+    height: 2
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "588267f0663136b804000c35"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "tr_Node2Dest"
+  position {
+    x: -73
+    y: -7
+    width: 2
+    height: 2
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "58826800663136b804000c36"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
   }
   ambience_template: ""
   combat_music: ""
@@ -4907,7 +5481,7 @@ characters {
         throwing_blades: 0
         spirit_control: 0
       }
-      archetypeName: "Guard - Protect"
+      archetypeName: "Non-Combatant"
       attitude: AttitudeAggressive
       vulnerabilities {
       }
@@ -4929,6 +5503,7 @@ characters {
     z: 8
   }
   orientation: ORIENTATION_N
+  GeneralTags: "isNeutral"
   idRef {
     id: "f90c4228623331f4130018c2"
   }
@@ -5070,11 +5645,13 @@ characters {
       }
       specializations {
       }
+      archetypeName: "Non-Combatant"
       vulnerabilities {
       }
     }
     team_id: "Inmates"
     char_name: "Donny"
+    GeneralTags: "isNeutral"
     pc_spawn_number: -1
     portrait {
       filename: "npc_humanmale_winters"
@@ -5090,6 +5667,7 @@ characters {
     z: 9
   }
   orientation: ORIENTATION_E
+  GeneralTags: "isNeutral"
   displayName: "Lorraine"
   idRef {
     id: "19038f046233318c0a0069ea"
@@ -5198,11 +5776,13 @@ characters {
       }
       specializations {
       }
+      archetypeName: "Non-Combatant"
       vulnerabilities {
       }
     }
     team_id: "Inmates"
     char_name: "Lorraine"
+    GeneralTags: "isNeutral"
     pc_spawn_number: -1
     portrait {
       filename: "npc_humanfemale_feuerschwinge"
@@ -5224,10 +5804,13 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "HumanMaleLonestarSecurityGuard"
+    prefab_name: "Seattle:Lonestar/HumanMaleLonestarSecurityGuard"
     character_sheet_id: "Lonestar_Lv3_Human_Pistol"
     character_mod {
       stats {
+        body: 1
+        hp: 10
+        armor: 1
         morale: 0
         discipline: 0
         awareness: 0
@@ -5237,8 +5820,12 @@ characters {
         move_speed: 0
       }
       skills {
+        close_combat: 3
       }
       specializations {
+      }
+      archetypeName: "Guard - Seek And Destroy"
+      vulnerabilities {
       }
     }
     team_id: "Inmates"
@@ -5247,6 +5834,7 @@ characters {
     portrait {
       filename: ""
     }
+    karma: 62
   }
 }
 characters {
@@ -5263,10 +5851,23 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "HumanMaleLonestarSecurityGuard"
-    character_sheet_id: "Lonestar_Lv3_Human_Pistol"
+    prefab_name: "Seattle:Lonestar/HumanMaleLonestarSecurityGuard"
+    character_sheet_id: "Lonestar_Lv3_Ork_Shotgun"
+    equipment_sheet_id: "Lonestar_Lv3_Shotgun_Gear"
     character_mod {
       stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
         morale: 0
         discipline: 0
         awareness: 0
@@ -5274,18 +5875,46 @@ characters {
         authority: 0
         protect_tether_range: 0
         move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
       }
       skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
       }
       specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
       }
-      archetypeName: "Guard - Protect"
-    }
-    equipment {
-      prefab_name: "Pi 1 Fichetti Security 500"
-    }
-    equipment {
-      prefab_name: "Grenade 1 (Flash)"
+      archetypeName: "Guard - Seek And Destroy"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
     }
     team_id: "Inmates"
     char_name: "Hospital Guard"
@@ -5293,6 +5922,7 @@ characters {
     portrait {
       filename: ""
     }
+    karma: 52
   }
 }
 characters {
@@ -5314,6 +5944,8 @@ characters {
     team_id: "Shadowrunners"
     char_name: "New Actor"
     pc_spawn_number: 0
+    spawn_type: SpawnType_Normal
+    dimension_name: "Default"
   }
 }
 characters {
@@ -5431,9 +6063,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -92
+    x: -70
     y: 0
-    z: -29
+    z: -34
   }
   orientation: ORIENTATION_N
   GeneralTags: "Node1"
@@ -5442,7 +6074,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Seattle:Matrix/MatrixICE_white_melee"
+    prefab_name: "HongKong:Matrix/MatrixIC_Ranged"
     character_sheet_id: "IC_Lv2_White_Ranged"
     equipment_sheet_id: "IC White Melee Low"
     character_mod {
@@ -5481,9 +6113,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -97
+    x: -80
     y: 0
-    z: -30
+    z: -32
   }
   orientation: ORIENTATION_S
   GeneralTags: "Node1"
@@ -5492,7 +6124,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Seattle:Matrix/MatrixICE_white_range"
+    prefab_name: "HongKong:Matrix/MatrixIC_Ranged"
     character_sheet_id: "IC_Lv2_White_Ranged"
     equipment_sheet_id: "IC White Ranged Low"
     character_mod {
@@ -5531,9 +6163,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -98
+    x: -76
     y: 0
-    z: 14
+    z: 4
   }
   orientation: ORIENTATION_W
   GeneralTags: "Node2"
@@ -5542,7 +6174,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Seattle:Matrix/MatrixICE_white_range"
+    prefab_name: "HongKong:Matrix/MatrixIC_goldSupport"
     character_sheet_id: "IC_Lv2_White_Ranged"
     equipment_sheet_id: "IC White Ranged Low"
     character_mod {
@@ -5631,6 +6263,8 @@ characters {
     z: 11
   }
   orientation: ORIENTATION_E
+  GeneralTags: "isNeutral"
+  displayName: "Cafe"
   idRef {
     id: "51c4d958623331881e004db8"
   }
@@ -5669,6 +6303,7 @@ characters {
     }
     team_id: "Inmates"
     char_name: "Patient"
+    GeneralTags: "isNeutral"
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -5730,9 +6365,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -92
+    x: -71
     y: 0
-    z: 14
+    z: 2
   }
   orientation: ORIENTATION_W
   GeneralTags: "Node2"
@@ -5741,7 +6376,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Seattle:Matrix/SpiritESPAssassin"
+    prefab_name: "HongKong:Matrix/MatrixIC_goldLaser"
     character_sheet_id: "IC_Lv3_White_Ranged"
     equipment_sheet_id: "IC White ChargeLaser Mid"
     character_mod {
@@ -5775,6 +6410,210 @@ characters {
     }
     dimension_name: "matrix"
     karma: 33
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -74
+    y: 0
+    z: -38
+  }
+  orientation: ORIENTATION_E
+  GeneralTags: "BlockerIC_Door"
+  GeneralTags: "isNode1"
+  displayName: "BlockerIC_Door"
+  idRef {
+    id: "58825f1c663136181200328c"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    interactionIcon: InteractionIcon_BlockerIC
+    interaction_info_text: ""
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Matrix/MatrixIC_Blocker"
+    character_sheet_id: "IC_Lv2_White_Blocker"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "gumbo_G_BlockerIC"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "IC"
+    char_name: "Blocker IC Firewall"
+    GeneralTags: "BlockerIC_Door"
+    GeneralTags: "isNode1"
+    pc_spawn_number: -1
+    spawn_type: SpawnType_BlockerIC
+    portrait {
+      filename: ""
+    }
+    dimension_name: "matrix"
+    karma: 31
+    scale_character_sheet: true
+    blocker_ic_panel_difficulty: 0
+    blocker_ic_panel_bypass_code: "facade"
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -73
+    y: 0
+    z: 7
+  }
+  orientation: ORIENTATION_W
+  GeneralTags: "BlockerIC_Data"
+  GeneralTags: "isNode2"
+  displayName: "BlockerIC_Data"
+  idRef {
+    id: "58826609663136b804000c11"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    interactionIcon: InteractionIcon_BlockerIC
+    interaction_info_text: ""
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Matrix/MatrixIC_Blocker"
+    character_sheet_id: "IC_Lv2_White_Blocker"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "gumbo_G_BlockerIC"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "IC"
+    char_name: "Blocker IC Security"
+    GeneralTags: "BlockerIC_Data"
+    GeneralTags: "isNode2"
+    pc_spawn_number: -1
+    spawn_type: SpawnType_BlockerIC
+    portrait {
+      filename: ""
+    }
+    dimension_name: "matrix"
+    karma: 31
+    scale_character_sheet: true
+    blocker_ic_panel_difficulty: 0
+    blocker_ic_panel_bypass_code: "charity"
   }
 }
 variables {
@@ -5965,9 +6804,11 @@ team_affiliations {
   affiliation: 0
   affiliation: 1
   affiliation: 0
+  affiliation: 1
 }
 team_affiliations {
   team_name: "Cameras"
+  affiliation: 0
   affiliation: 0
   affiliation: 0
   affiliation: 0
@@ -5979,9 +6820,19 @@ team_affiliations {
   affiliation: 0
   affiliation: 0
   affiliation: 0
+  affiliation: 0
 }
 team_affiliations {
   team_name: "Inmates"
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+}
+team_affiliations {
+  team_name: "IC"
+  affiliation: 1
   affiliation: 0
   affiliation: 0
   affiliation: 0
@@ -5999,8 +6850,6 @@ scene_dimensions {
 ambience_template: "asylum-busy"
 combat_music: "Seattle-Set3-Combat"
 matrix_music: "Seattle-Set8-Stealth"
-character_roster {
-}
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
   prereq_description: ""
@@ -6023,9 +6872,9 @@ roster_overrides {
 use_hiring_cost_warning: false
 hiring_average_cost: 0
 override_hiring_average_cost: false
-show_equip_screen_on_scene_load: true
+show_equip_screen_on_scene_load: false
 is_persistant: false
 is_persistant_has_value: false
-can_move_outside_camera_regions: true
+can_move_outside_camera_regions: false
 can_start_before_triggers: true
 can_use_team_advancement: false

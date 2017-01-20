@@ -7,7 +7,7 @@ nodes {
     id: "588066c4663136d4110063e4"
   }
   index: 0
-  text: "Password attempts exceeded. \n\nThis Terminal will be locked for the next [27] hours."
+  text: "{{GM}}The guard station terminal is covered with half full soykaf cups, and wrappers from several protien bars.{{/GM}}\n\n\nID Card accepted.\n\n[WARNING] No connection found.  Contact your IT professional."
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -272,10 +272,112 @@ nodes {
   sourceInSceneRef {
     id: "21df525d6233319c1f0018c5"
   }
+  comment: "ComputerLoop"
+}
+nodes {
+  idRef {
+    id: "58827962663136d80400265f"
+  }
+  index: 2
+  text: "{{GM}}The computer on this cluttered workstation appears to be in a security standby mode.{{/GM}}\n\n\n"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "588066af663136d4110063dc:588279c2663136d804002661"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
 }
 roots {
+  conditions {
+    ops {
+      functionName: "Evaluate If Actor Has Item"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "c12-s1_MercyMental_GuardKey"
+          }
+        }
+      }
+    }
+  }
   nextNodeIndex: 0
   idRef {
     id: "588066af663136d4110063dc:588066af663136d4110063e0"
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Evaluate If Actor Has Item"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "c12-s1_MercyMental_GuardKey"
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 2
+  idRef {
+    id: "588066af663136d4110063dc:5882794a663136d80400265c"
   }
 }

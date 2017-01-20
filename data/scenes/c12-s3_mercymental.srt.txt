@@ -100,6 +100,12 @@ triggers {
             }
           }
           args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
           }
         }
       }
@@ -136,6 +142,12 @@ triggers {
             }
           }
           args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
           }
         }
       }
@@ -392,6 +404,7 @@ triggers {
         float_value: 0
       }
       args {
+        float_value: 0
       }
     }
   }
@@ -449,12 +462,18 @@ triggers {
         }
       }
       args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
       }
     }
   }
   actions {
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "4c2ccdca62333128060018e5"
   }
@@ -466,7 +485,7 @@ triggers {
   name: "MissionFailure"
   events {
     ops {
-      functionName: "On Actor Downed"
+      functionName: "On Actor Death"
     }
   }
   conditions {
@@ -740,6 +759,7 @@ triggers {
         float_value: 0
       }
       args {
+        float_value: 0
       }
     }
     ops {
@@ -1157,6 +1177,28 @@ triggers {
           }
         }
       }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
     }
     ops {
       functionName: "Clear Actor Orders"
@@ -1198,6 +1240,12 @@ triggers {
         }
       }
       args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
       }
     }
     ops {
@@ -1873,6 +1921,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "da77b066623331c801001983"
   }
@@ -1883,6 +1933,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -1906,6 +1957,17 @@ regions {
   default_music: ""
   loop_combat_music: true
   loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 regions {
   name: "LightsOn"
@@ -1917,6 +1979,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "da78bd85623331c801001984"
   }
@@ -1927,6 +1991,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -1950,6 +2015,17 @@ regions {
   default_music: ""
   loop_combat_music: true
   loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 regions {
   name: "Arena"
@@ -1961,6 +2037,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "da7c6dcb623331c801001986"
   }
@@ -1971,6 +2049,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -1994,6 +2073,17 @@ regions {
   default_music: ""
   loop_combat_music: true
   loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 regions {
   name: "EnterOffice"
@@ -2005,6 +2095,8 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "4c2c58d462333128060018e4"
   }
@@ -2015,6 +2107,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -0.5
@@ -2038,17 +2131,30 @@ regions {
   default_music: ""
   loop_combat_music: true
   loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
 }
 regions {
   name: "MainCameraRegion"
   position {
-    x: 27
-    y: 22
-    width: -61
-    height: -48
+    x: -35
+    y: -27
+    width: 61
+    height: 46
   }
   enabledAtStart: true
   is_camera_region: true
+  is_matrix_node: false
+  is_vfx_fill_region: false
   idRef {
     id: "519fd946643431c2cefc4112"
   }
@@ -2059,6 +2165,7 @@ regions {
     a: 1
   }
   visible_at_start: false
+  is_closet: false
   is_teleporter_region: false
   directional_light_dir {
     x: -1
@@ -2078,10 +2185,21 @@ regions {
     a: 1
   }
   ambience_template: "secretlab-busy"
-  combat_music: "Seattle-Set3-Combat"
-  default_music: "Seattle-Set3-Legwork"
+  combat_music: "HongKong-Combat-Generic-Int1"
+  default_music: "HongKong-Legwork-Generic"
   loop_combat_music: true
   loop_default_music: true
+  no_fow_in_region: false
+  combat_intense_music: "HongKong-Combat-Generic-Int2"
+  combat_wrapup_music: "HongKong-Combat-Generic-WrapUp"
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: "HongKong-Combat-Stinger-Start"
+  combat_outro_stinger: "HongKong-Combat-Stinger-End"
+  vfx_fill_prefab_name: ""
 }
 characters {
   name: "chars_icon_playerIcon"
@@ -2096,7 +2214,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Story/Pitezel"
+    prefab_name: "Seattle:Story/Pitezel"
     character_sheet_id: "Boss_Pitezel"
     character_mod {
       stats {
@@ -2109,11 +2227,16 @@ characters {
         move_speed: 0
       }
       skills {
+        throwing_weapons: -2
+        dodge: 2
       }
       specializations {
+        unarmed: 3
       }
       archetypeName: "Guard - Seek And Destroy"
       attackRandom: AttackStyle_CycleAll
+      vulnerabilities {
+      }
     }
     equipment {
       prefab_name: "Pitezel Attack Fist"
@@ -2209,11 +2332,23 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Scientist/HumanMaleScientistMask"
-    character_sheet_id: "Generic_Lv2_Human_Melee"
-    equipment_sheet_id: "Generic_Melee_Low"
+    prefab_name: "Seattle:Scientist/HumanMaleScientistMask"
+    character_sheet_id: "Adept_Lv2_Melee"
+    equipment_sheet_id: "Adept_Lv2_Melee_Gear"
     character_mod {
       stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
         morale: 0
         discipline: 0
         awareness: 0
@@ -2221,10 +2356,45 @@ characters {
         authority: 0
         protect_tether_range: 0
         move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
       }
       skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
       }
       specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Guard - Seek And Destroy"
+      attitude: AttitudeAggressive
+      vulnerabilities {
       }
     }
     team_id: "LoneStar"
@@ -2233,7 +2403,7 @@ characters {
     portrait {
       filename: ""
     }
-    karma: 41
+    karma: 78
   }
 }
 characters {
@@ -2250,7 +2420,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "HowardHenryHolmes"
+    prefab_name: "Seattle:Story/HowardHenryHolmes"
     character_sheet_id: "Boss_Holmes"
     equipment_sheet_id: "Boss_Holmes_Gear"
     character_mod {
@@ -2267,8 +2437,13 @@ characters {
       }
       specializations {
       }
-      archetypeName: "Guard - Seek And Destroy"
+      archetypeName: "gumbo_Mage"
       attitude: AttitudeBoss
+      vulnerabilities {
+      }
+    }
+    equipment {
+      prefab_name: "Spell Powerbolt 2"
     }
     team_id: "LoneStar"
     char_name: "Dr. Holmes"
@@ -2278,6 +2453,7 @@ characters {
     portrait {
       filename: "NPC_ElfMale_Holmes"
     }
+    karma: 141
   }
 }
 characters {
@@ -2404,11 +2580,23 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Core/ElfFemale"
-    character_sheet_id: "Lonestar_Lv2_Human_Mage"
-    equipment_sheet_id: "Lonestar_Mage_Low"
+    prefab_name: "Seattle:Core/ElfFemale"
+    character_sheet_id: "Errant_Lv3_Human_Mage"
+    equipment_sheet_id: "Errant_Lv3_Spellcasting"
     character_mod {
       stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
         morale: 0
         discipline: 0
         awareness: 0
@@ -2416,14 +2604,52 @@ characters {
         authority: 0
         protect_tether_range: 0
         move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
       }
       skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
       }
       specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Guard - Seek And Destroy"
+      attitude: AttitudeAggressive
+      vulnerabilities {
       }
     }
     equipment {
       prefab_name: "MageDark"
+    }
+    equipment {
+      prefab_name: "Spell Manabolt 2"
     }
     team_id: "LoneStar"
     char_name: "Hired Mage"
@@ -2431,7 +2657,7 @@ characters {
     portrait {
       filename: ""
     }
-    karma: 43
+    karma: 69
   }
 }
 characters {
@@ -2504,6 +2730,8 @@ characters {
       }
       archetypeName: "Non-Combatant"
       attitude: AttitudeAggressive
+      vulnerabilities {
+      }
     }
     equipment {
       prefab_name: "Pi 2 Browning Max-Power"
@@ -2731,8 +2959,6 @@ scene_dimensions {
 ambience_template: "secretlab-quiet"
 combat_music: "Seattle-Set3-Combat"
 matrix_music: "Seattle-Set8-Stealth"
-character_roster {
-}
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
   prereq_description: ""
@@ -2748,3 +2974,8 @@ use_hiring_cost_warning: false
 hiring_average_cost: 0
 override_hiring_average_cost: false
 show_equip_screen_on_scene_load: false
+is_persistant: false
+is_persistant_has_value: false
+can_move_outside_camera_regions: false
+can_start_before_triggers: true
+can_use_team_advancement: false
