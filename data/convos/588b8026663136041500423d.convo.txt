@@ -1,0 +1,305 @@
+idRef {
+  id: "588b8026663136041500423d"
+}
+ui_name: "c15-s2_LabRun_DoorGuard"
+nodes {
+  idRef {
+    id: "588b808d663136041500424d"
+  }
+  index: 0
+  text: "{{GM}}He glanced up from the small portable TRI-D unit sitting on his desk, appearing genuinely surprised at having visitors.{{/GM}}\n\nAnd who the hell might you be?"
+  branches {
+    responseText: "{{CC}}Etiquette - Corporate{{/CC}} Lieutenant Harris, Renraku Internal Security Force.   Spot inspection."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 13
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 1
+    hideIfUnavailable: true
+    idRef {
+      id: "588b8026663136041500423d:588b80ce663136041500424f"
+    }
+  }
+  branches {
+    responseText: "How about you pretend you didn\'t see us... and we won\'t have to stuff your body into that desk."
+    nextNodeIndex: 5
+    idRef {
+      id: "588b8026663136041500423d:588b80cf6631360415004251"
+    }
+  }
+  branches {
+    responseText: "{{CC}}1,000\302\245{{/CC}} How about you and this nuyen took the morning off?"
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 1000
+        }
+      }
+    }
+    nextNodeIndex: 7
+    idRef {
+      id: "588b8026663136041500423d:588b80cf6631360415004253"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Attack{{/CC}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "eSecurityStationAttack"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "588b8026663136041500423d:588b80cf6631360415004255"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "b60bf3e8623331c80e0026de"
+  }
+}
+nodes {
+  idRef {
+    id: "588b81356631360415004261"
+  }
+  index: 1
+  text: "{{GM}}He snaps to attention, clearly as a reflex.  After a moment his look grows skeptical.{{/GM}}\n\nI\'ve never heard of RISF.   And you don\'t look like none of the Corp teams we\'ve seen parade through here.   Your gear is all mismatched... I\'d say that you\'re mercenaries."
+  branches {
+    responseText: "Close enough.  Hit the door, kid.   You might wanna look for other work after this."
+    nextNodeIndex: 2
+    idRef {
+      id: "588b8026663136041500423d:588b81d76631360415004263"
+    }
+  }
+  branches {
+    responseText: "Why would anybody tell a desk jockey about the internal audit policies of a mega-corp?  Just know that if you don\'t want to be standing watch over an Siberian turnip field by the end of the day, stay out of my way."
+    nextNodeIndex: 3
+    idRef {
+      id: "588b8026663136041500423d:588b81d86631360415004265"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Attack{{/CC}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "eSecurityStationAttack"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "588b8026663136041500423d:588b81d96631360415004267"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "b60bf3e8623331c80e0026de"
+  }
+}
+nodes {
+  idRef {
+    id: "588b82c4663136041500426a"
+  }
+  index: 2
+  text: "{{GM}}A smile creeps across his lips{{/GM}}\n\nNo, I think you\'re the one who\'ll be needing work.\n\n{{GM}}He slams his hand down on a button on his console and draws his gun.{{/GM}}"
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "b60bf3e8623331c80e0026de"
+  }
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eSecurityStationAttack"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "588b834c663136041500426d"
+  }
+  index: 3
+  text: "As I thought.   You may have taken me for a dumb rent-a-cop... but it appears that a promotion is in order.   I seem to have caught myself a room full of mercs."
+  branches {
+    responseText: "You do realize that you\'re trapped in that room with us, don\'t you?"
+    nextNodeIndex: 4
+    idRef {
+      id: "588b8026663136041500423d:588b838c663136041500426f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "b60bf3e8623331c80e0026de"
+  }
+}
+nodes {
+  idRef {
+    id: "588b83e16631360415004272"
+  }
+  index: 4
+  text: "{{GM}}He pales a little, most of the bluster eroding from his confidence.{{/GM}}\n\nGood thing I\'m not alone, huh?"
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "b60bf3e8623331c80e0026de"
+  }
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eSecurityStationAttack"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "588b84d76631360415004286"
+  }
+  index: 5
+  text: "{{GM}}His grin widens.{{/GM}}\n\nGuess I\'m getting out of this shit assignment afterall.   Caught me a room full of mercs!"
+  branches {
+    responseText: "You do realize that you\'re caught in that room with us, don\'t you?"
+    nextNodeIndex: 6
+    idRef {
+      id: "588b8026663136041500423d:588b84fe6631360415004288"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "b60bf3e8623331c80e0026de"
+  }
+}
+nodes {
+  idRef {
+    id: "588b8524663136041500428b"
+  }
+  index: 6
+  text: "Good thing I brought friends!"
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eSecurityStationAttack"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "588b85d4663136041500428e"
+  }
+  index: 7
+  text: "Or better yet... How about I just take the whole stick off your corpse!"
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "b60bf3e8623331c80e0026de"
+  }
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eSecurityStationAttack"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "588b8026663136041500423d:588b80266631360415004241"
+  }
+}
