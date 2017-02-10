@@ -6,6 +6,42 @@ triggers {
     }
   }
   conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "_DEBUGGER"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   actions {
     ops {
@@ -1677,6 +1713,12 @@ triggers {
         int_value: 1
       }
       args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
       }
     }
     ops {
@@ -2545,6 +2587,7 @@ triggers {
         float_value: 1
       }
       args {
+        float_value: 0
       }
     }
   }
@@ -2671,20 +2714,6 @@ triggers {
         }
       }
     }
-    ops {
-      functionName: "Set Retain Trigger"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
   }
   isActive: true
   idRef {
@@ -2692,7 +2721,7 @@ triggers {
   }
   elseActions {
   }
-  is_oneshot: true
+  is_oneshot: false
 }
 triggers {
   name: "HRTerminalInteractInteract"
@@ -2747,20 +2776,6 @@ triggers {
         }
       }
     }
-    ops {
-      functionName: "Set Retain Trigger"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
   }
   isActive: true
   idRef {
@@ -2768,7 +2783,7 @@ triggers {
   }
   elseActions {
   }
-  is_oneshot: true
+  is_oneshot: false
 }
 triggers {
   name: "SawHR"
@@ -3020,6 +3035,12 @@ triggers {
         }
       }
       args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
       }
     }
   }
@@ -3335,6 +3356,12 @@ triggers {
         }
       }
       args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
       }
     }
   }
@@ -3431,6 +3458,7 @@ triggers {
         float_value: 0
       }
       args {
+        float_value: 0
       }
     }
   }
@@ -7274,7 +7302,7 @@ triggers {
   name: "Player0Died"
   events {
     ops {
-      functionName: "On Actor Downed"
+      functionName: "On Actor Death"
     }
   }
   conditions {
@@ -11257,7 +11285,7 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "NewTrigger"
+  name: "DEBUGGER_WarpToBasement"
   events {
     ops {
       functionName: "On Map Start"
@@ -11326,9 +11354,196 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "5853b9c26631365816003152"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "DEBUGGER_TagForSeamus"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "_DEBUGGER"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Add Tag to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isSeamus"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+    }
+  }
+  isActive: false
+  idRef {
+    id: "589d420b6631361819006048"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "ShadowRunner.BroughtDrone"
+  events {
+    ops {
+      functionName: "On Actor Alive"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Compare Actor Race"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Race"
+          }
+          args {
+            int_value: 8
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Compare Actor Team"
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Delete Props by Tag"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "HasDrone"
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        call_value {
+          functionName: "Everywhere"
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "589d5615663136181900606a"
   }
   elseActions {
   }
@@ -12620,7 +12835,7 @@ regions {
   }
   enabledAtStart: true
   is_camera_region: true
-  is_matrix_node: false
+  is_matrix_node: true
   is_vfx_fill_region: false
   idRef {
     id: "eb7395ee303031900a005fed"
@@ -14189,7 +14404,7 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -22
+    x: -23
     y: 0
     z: -45
   }
@@ -14207,7 +14422,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Drone/AutoTurret"
+    prefab_name: "Seattle:Objects/CorpTurret"
     character_sheet_id: "Turret_Lv3"
     equipment_sheet_id: "Turret_Burst_Mid"
     character_mod {
@@ -14236,6 +14451,8 @@ characters {
         smg: 4
       }
       attitude: AttitudeCautious
+      vulnerabilities {
+      }
     }
     team_id: "LoneStar"
     char_name: "Turret 1"
@@ -14785,7 +15002,7 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -25
+    x: -26
     y: 0
     z: -45
   }
@@ -14803,7 +15020,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Drone/AutoTurret"
+    prefab_name: "Seattle:Objects/CorpTurret"
     character_sheet_id: "Turret_Lv3"
     equipment_sheet_id: "Turret_Burst_Mid"
     character_mod {
@@ -14832,6 +15049,8 @@ characters {
         smg: 4
       }
       attitude: AttitudeAggressive
+      vulnerabilities {
+      }
     }
     team_id: "LoneStar"
     char_name: "Turret 2"
@@ -14939,7 +15158,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Core/ElfFemale"
+    prefab_name: "Seattle:Core/ElfFemale"
     character_sheet_id: "Lonestar_Lv5_Human_Pistol"
     character_mod {
       stats {
@@ -14996,6 +15215,8 @@ characters {
       }
       archetypeName: "Guard - Seek And Destroy"
       attitude: AttitudeAggressive
+      vulnerabilities {
+      }
     }
     equipment {
       prefab_name: "RiggerTrenchcoat"
@@ -15011,7 +15232,7 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "Telestrian Rigger"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     cyberware_jack: "Datajack"
     portrait {
@@ -15019,6 +15240,7 @@ characters {
     }
     portrait_code_override: "s2h6c8b0c0t0"
     karma: 128
+    cyberware_head: "(Head) Datajack"
   }
 }
 characters {
@@ -16282,11 +16504,10 @@ scene_dimensions {
   dimension_name: "Matrix"
   initial_alarm_state: 10
   turns_per_round: 3
+  is_matrix: true
 }
 combat_music: "Seattle-Set9-Combat"
 matrix_music: "Seattle-Set8-Stealth"
-character_roster {
-}
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
   prereq_description: "Requires a Decker"
@@ -16341,60 +16562,52 @@ hiring_maximum_karma: 5
 hire_from_content_pack: "518d7672643431b03f0041aa"
 roster_overrides {
   roster_entries {
-    reference_id: "Story Dodger"
+    reference_id: "crew_lv5_bartlett"
     hiring_conditions {
     }
     hiring_cost: -1
-    content_pack_source: "518d7674643431b03f0041ab"
+    content_pack_source: "57084f7c6631365c1600767e"
   }
   roster_entries {
-    reference_id: "Story_Coyote_Lv5"
+    reference_id: "crew_lv5_coyote"
     hiring_conditions {
-      ops {
-        functionName: "Comparison (bool)"
-        args {
-          call_value {
-            functionName: "Get Story Variable (bool)"
-            args {
-              string_value: "518d7674643431b03f0041ab"
-            }
-            args {
-              string_value: "isCoyoteDead"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "IsOrIsNot"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-      }
     }
     hiring_cost: -1
-    content_pack_source: "518d7674643431b03f0041ab"
+    content_pack_source: "57084f7c6631365c1600767e"
+  }
+  roster_entries {
+    reference_id: "crew_lv5_seamus"
+    hiring_conditions {
+    }
+    hiring_cost: -1
+    content_pack_source: "57084f7c6631365c1600767e"
+  }
+  roster_entries {
+    reference_id: "crew_lv5_paco"
+    hiring_conditions {
+    }
+    hiring_cost: -1
+    content_pack_source: "57084f7c6631365c1600767e"
+  }
+  roster_entries {
+    reference_id: "crew_lv5_river"
+    hiring_conditions {
+    }
+    hiring_cost: -1
+    content_pack_source: "57084f7c6631365c1600767e"
+  }
+  roster_entries {
+    reference_id: "crew_lv5_violet"
+    hiring_conditions {
+    }
+    hiring_cost: -1
+    content_pack_source: "57084f7c6631365c1600767e"
   }
 }
 use_hiring_cost_warning: false
 hiring_average_cost: 0
 override_hiring_average_cost: false
-show_equip_screen_on_scene_load: true
+show_equip_screen_on_scene_load: false
 is_persistant: false
 is_persistant_has_value: false
 can_move_outside_camera_regions: true

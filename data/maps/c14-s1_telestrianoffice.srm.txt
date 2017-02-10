@@ -9917,63 +9917,6 @@ props {
 props {
   name: "office_wall_greyDoorMid02"
   gridPoint {
-    x: -21
-    y: 0
-    z: -36
-  }
-  orientation: ORIENTATION_S
-  idRef {
-    id: "c8719381616634b41a004d4c"
-  }
-  interactionRoot {
-    isEnabled: true
-    interactionRadius: 1
-    prerequisites {
-      ops {
-        functionName: "Evaluate Tag for Actor"
-        args {
-          call_value {
-            functionName: "Specific Actor"
-            args {
-              call_value {
-                functionName: "Active Actor"
-              }
-            }
-            args {
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "HasOrHasNot"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Map Item (SenseTagList)"
-            args {
-              string_value: "CanUseDoors"
-            }
-          }
-        }
-      }
-    }
-    doorPoint {
-      doorState: false
-      aiOnlyDoor: false
-    }
-  }
-  lod: 0
-}
-props {
-  name: "office_wall_greyDoorMid02"
-  gridPoint {
     x: -40
     y: 0
     z: -42
@@ -26693,10 +26636,35 @@ props {
   interactionRoot {
     isEnabled: false
     interactionRadius: 1
-    transitionPoint {
-      scene_name: "c14-s2_TelestrianTopFloor"
-      confirmation_text: ""
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
     }
+    transitionPoint {
+      scene_name: "c14-s2_telestriantopfloor"
+      confirmation_text: "Head up to the Executive Level?"
+    }
+    interaction_info_text: "Use Elevator"
   }
   lod: 0
 }
@@ -26864,6 +26832,20 @@ props {
     z: -49
   }
   orientation: ORIENTATION_S
+  idRef {
+    id: "589d49ed6631361819006055"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    inspectInteraction {
+      dispalyTime: 20
+      fadeTime: 0
+      inspectText: "Live Specimen: Do not feed after midnight, do not expose to liquids."
+      disableAfterInteracting: true
+    }
+    interaction_info_text: "Examine crate"
+  }
   lod: 0
 }
 props {
@@ -29626,6 +29608,12 @@ props {
     z: 13
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isCoyote"
+  GeneralTags: "isPaco"
+  GeneralTags: "isRiver"
+  GeneralTags: "isViolet"
+  GeneralTags: "isBartlett"
+  GeneralTags: "isSeamus"
   idRef {
     id: "51d1cc73616634b0000000a0"
   }
@@ -30695,6 +30683,74 @@ props {
   }
   orientation: ORIENTATION_E
   displayName: "obj_BasementLift"
+  idRef {
+    id: "589d3fab6631361819006043"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isSeamus"
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Warp
+    interaction_info_text: "{{32CD32}}Seamus{{-}}: Enter Elevator"
+  }
   lod: 0
 }
 props {
@@ -36688,6 +36744,341 @@ props {
   orientation: ORIENTATION_S
   idRef {
     id: "5853c67b663136b0110031e2"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_4x4fill"
+  gridPoint {
+    x: -9
+    y: 0
+    z: -28
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "589d4935663136181900604f"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_4x4fill"
+  gridPoint {
+    x: -9
+    y: 0
+    z: -25
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "589d49376631361819006050"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_4x4fill"
+  gridPoint {
+    x: -11.3
+    y: 0
+    z: -43
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "589d49396631361819006051"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_4x4fill"
+  gridPoint {
+    x: -11.3
+    y: 0
+    z: -47
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "589d493c6631361819006052"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_4x4fill"
+  gridPoint {
+    x: -13
+    y: 0
+    z: -50.5
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "589d493e6631361819006053"
+  }
+  lod: 0
+}
+props {
+  name: "office_wall_glassDoor01"
+  gridPoint {
+    x: -21
+    y: 0
+    z: -36
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "589d5476663136181900605a"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Active Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "CanUseDoors"
+            }
+          }
+        }
+      }
+    }
+    doorPoint {
+      doorState: false
+      aiOnlyDoor: false
+      doorSound: "DoorSwing"
+      doorSoundBundle: "HongKong:props"
+    }
+    interaction_info_text: "Open door"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_fill"
+  gridPoint {
+    x: -22
+    y: 0
+    z: -28
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "HasDrone"
+  idRef {
+    id: "589d55b6663136181900605c"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_fill"
+  gridPoint {
+    x: -19
+    y: 0
+    z: -50
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "HasDrone"
+  idRef {
+    id: "589d55c0663136181900605d"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_fill"
+  gridPoint {
+    x: -15
+    y: 0
+    z: -33
+  }
+  orientation: ORIENTATION_E
+  GeneralTags: "HasDrone"
+  idRef {
+    id: "589d55ce663136181900605e"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_fill"
+  gridPoint {
+    x: -16
+    y: 0
+    z: -43
+  }
+  orientation: ORIENTATION_E
+  GeneralTags: "HasDrone"
+  idRef {
+    id: "589d55d5663136181900605f"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_4x4fill"
+  gridPoint {
+    x: -14.3
+    y: 0
+    z: -43
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "HasDrone"
+  idRef {
+    id: "589d55ec6631361819006061"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_4x4fill"
+  gridPoint {
+    x: -15.8
+    y: 0
+    z: -47
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "HasDrone"
+  idRef {
+    id: "589d55ef6631361819006062"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_4x4fill"
+  gridPoint {
+    x: -13.8
+    y: 0
+    z: -47
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "HasDrone"
+  idRef {
+    id: "589d55f86631361819006063"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_4x4fill"
+  gridPoint {
+    x: -12.3
+    y: 0
+    z: -31
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "HasDrone"
+  idRef {
+    id: "589d55fd6631361819006064"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_4x4fill"
+  gridPoint {
+    x: -12.3
+    y: 0
+    z: -28
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "HasDrone"
+  idRef {
+    id: "589d55ff6631361819006065"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_4x4fill"
+  gridPoint {
+    x: -12.3
+    y: 0
+    z: -26
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "HasDrone"
+  idRef {
+    id: "589d56016631361819006066"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_4x4fill"
+  gridPoint {
+    x: -14.3
+    y: 0
+    z: -26
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "HasDrone"
+  idRef {
+    id: "589d56036631361819006067"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_4x4fill"
+  gridPoint {
+    x: -16.3
+    y: 0
+    z: -26
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "HasDrone"
+  idRef {
+    id: "589d56046631361819006068"
+  }
+  lod: 0
+}
+props {
+  name: "secretLab_wall_4x4fill"
+  gridPoint {
+    x: -19.699999
+    y: 0
+    z: -26
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "HasDrone"
+  idRef {
+    id: "589d56056631361819006069"
+  }
+  lod: 0
+}
+props {
+  name: "office_wall_greyEdge09"
+  gridPoint {
+    x: -16
+    y: 0
+    z: -42
+  }
+  orientation: ORIENTATION_E
+  GeneralTags: "HasDrone"
+  idRef {
+    id: "589d565d663136181900606b"
+  }
+  lod: 0
+}
+props {
+  name: "lodge_wallDecoration_MartaGloryPortrait01"
+  gridPoint {
+    x: -15.5
+    y: 0.9
+    z: -41.3
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "HasDrone"
+  idRef {
+    id: "589d56a6663136181900606c"
   }
   lod: 0
 }
