@@ -22,7 +22,7 @@ triggers {
         }
       }
       args {
-        int_value: 100
+        int_value: 80
       }
     }
     ops {
@@ -1070,12 +1070,47 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Activate Actor Spawner"
+      functionName: "Teleport Actor to Area Around Point"
       args {
         call_value {
-          functionName: "Get Map Item (Actor Reference)"
+          functionName: "All Actors With Tag"
           args {
-            string_value: "c79b855c303031141100730d"
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isTeamA"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        int_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "09d54ccb3030311410003d74"
+              }
+            }
           }
         }
       }
@@ -1083,21 +1118,10 @@ triggers {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "WithOrWithout"
+            string_value: "FacingDirection"
           }
           args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Activate Actor Spawner"
-      args {
-        call_value {
-          functionName: "Get Map Item (Actor Reference)"
-          args {
-            string_value: "c79b855c303031141100730c"
+            int_value: 5
           }
         }
       }
@@ -1105,51 +1129,7 @@ triggers {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Activate Actor Spawner"
-      args {
-        call_value {
-          functionName: "Get Map Item (Actor Reference)"
-          args {
-            string_value: "c79b855d303031141100730e"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Activate Actor Spawner"
-      args {
-        call_value {
-          functionName: "Get Map Item (Actor Reference)"
-          args {
-            string_value: "c79b855e303031141100730f"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
+            string_value: "TeleportMethod"
           }
           args {
             int_value: 0
@@ -6806,8 +6786,8 @@ triggers {
 regions {
   name: "PriestTransportTarget"
   position {
-    x: 6
-    y: 73
+    x: -62
+    y: -12
     width: 1
     height: 1
   }
@@ -7676,8 +7656,8 @@ regions {
 regions {
   name: "DeadDwarfTarget"
   position {
-    x: 7
-    y: 73
+    x: -61
+    y: -12
     width: 1
     height: 1
   }
@@ -7968,8 +7948,8 @@ regions {
   position {
     x: -10
     y: 15
-    width: 4
-    height: 4
+    width: 3
+    height: 8
   }
   enabledAtStart: true
   is_camera_region: false
@@ -8109,15 +8089,15 @@ regions {
     z: -0.75
   }
   directional_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
+    r: 0.11764706
+    g: 0.11764706
+    b: 0.63137257
     a: 1
   }
   ambient_light_color {
-    r: 0.50196081
-    g: 0.50196081
-    b: 0.50196081
+    r: 0.4509804
+    g: 0.4509804
+    b: 0.4509804
     a: 1
   }
   ambience_template: "graveyard-night"
@@ -8198,8 +8178,8 @@ regions {
 regions {
   name: "JessClosetTarget"
   position {
-    x: 6
-    y: 75
+    x: -62
+    y: -10
     width: 1
     height: 1
   }
@@ -8256,8 +8236,8 @@ regions {
 regions {
   name: "LynnClosetTarget"
   position {
-    x: 8
-    y: 75
+    x: -60
+    y: -10
     width: 1
     height: 1
   }
@@ -8314,8 +8294,8 @@ regions {
 regions {
   name: "CoyoteDeathClosetTarget"
   position {
-    x: 19
-    y: 73
+    x: -61
+    y: -23
     width: 1
     height: 1
   }
@@ -8372,8 +8352,8 @@ regions {
 regions {
   name: "JakeDeathClosetTarget"
   position {
-    x: 19
-    y: 75
+    x: -61
+    y: -21
     width: 1
     height: 1
   }
@@ -8836,10 +8816,10 @@ regions {
 regions {
   name: "BoxCameraRegion"
   position {
-    x: 24
-    y: 69
-    width: -21
-    height: 9
+    x: -65
+    y: -28
+    width: 11
+    height: 23
   }
   enabledAtStart: true
   is_camera_region: true
@@ -8847,6 +8827,64 @@ regions {
   is_vfx_fill_region: false
   idRef {
     id: "5230ba48333463a018004b48"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "cHoldingPen"
+  position {
+    x: -58
+    y: 5
+    width: 12
+    height: 21
+  }
+  enabledAtStart: true
+  is_camera_region: true
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "589d21b6663136800f001c19"
   }
   highlight_color {
     r: 0
@@ -8992,6 +9030,7 @@ characters {
   }
   orientation: ORIENTATION_N
   GeneralTags: "isThug"
+  GeneralTags: "isTeamB"
   displayName: "Thug1W2"
   idRef {
     id: "c79b85593030311411007307"
@@ -9068,6 +9107,7 @@ characters {
     team_id: "NeutralThugs"
     char_name: "Mercenary"
     GeneralTags: "isThug"
+    GeneralTags: "isTeamB"
     enabled_at_start: true
     pc_spawn_number: -1
     portrait {
@@ -9085,6 +9125,7 @@ characters {
   }
   orientation: ORIENTATION_N
   GeneralTags: "isThug"
+  GeneralTags: "isTeamB"
   displayName: "ThugMageW2"
   idRef {
     id: "c79b855a3030311411007308"
@@ -9160,6 +9201,7 @@ characters {
     team_id: "NeutralThugs"
     char_name: "Hired Mage"
     GeneralTags: "isThug"
+    GeneralTags: "isTeamB"
     enabled_at_start: true
     pc_spawn_number: -1
     portrait {
@@ -9177,6 +9219,7 @@ characters {
   }
   orientation: ORIENTATION_N
   GeneralTags: "isThug"
+  GeneralTags: "isTeamB"
   displayName: "ThugLTW2"
   idRef {
     id: "c79b855a3030311411007309"
@@ -9256,6 +9299,7 @@ characters {
     team_id: "NeutralThugs"
     char_name: "Mercenary"
     GeneralTags: "isThug"
+    GeneralTags: "isTeamB"
     enabled_at_start: true
     pc_spawn_number: -1
     portrait {
@@ -9273,6 +9317,7 @@ characters {
   }
   orientation: ORIENTATION_N
   GeneralTags: "isThug"
+  GeneralTags: "isTeamB"
   displayName: "ThugBossW2"
   idRef {
     id: "c79b855b303031141100730a"
@@ -9352,6 +9397,7 @@ characters {
     team_id: "NeutralThugs"
     char_name: "Mercenary Captain"
     GeneralTags: "isThug"
+    GeneralTags: "isTeamB"
     enabled_at_start: true
     pc_spawn_number: -1
     unkillable: true
@@ -9370,6 +9416,7 @@ characters {
   }
   orientation: ORIENTATION_N
   GeneralTags: "isThug"
+  GeneralTags: "isTeamB"
   displayName: "Thug2W2"
   idRef {
     id: "c79b855b303031141100730b"
@@ -9444,6 +9491,7 @@ characters {
     team_id: "NeutralThugs"
     char_name: "Mercenary"
     GeneralTags: "isThug"
+    GeneralTags: "isTeamB"
     enabled_at_start: true
     pc_spawn_number: -1
     portrait {
@@ -9455,12 +9503,13 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -8
+    x: -50
     y: 0
-    z: 16
+    z: 19
   }
   orientation: ORIENTATION_S
   GeneralTags: "isThug"
+  GeneralTags: "isTeamA"
   displayName: "Thug2W1"
   idRef {
     id: "c79b855c303031141100730c"
@@ -9535,7 +9584,8 @@ characters {
     team_id: "Thugs"
     char_name: "Hired Gun"
     GeneralTags: "isThug"
-    enabled_at_start: false
+    GeneralTags: "isTeamA"
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -9546,12 +9596,13 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -9
+    x: -51
     y: 0
-    z: 16
+    z: 19
   }
   orientation: ORIENTATION_S
   GeneralTags: "isThug"
+  GeneralTags: "isTeamA"
   displayName: "Thug1W1"
   idRef {
     id: "c79b855c303031141100730d"
@@ -9632,7 +9683,8 @@ characters {
     team_id: "Thugs"
     char_name: "Mercenary"
     GeneralTags: "isThug"
-    enabled_at_start: false
+    GeneralTags: "isTeamA"
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -9643,12 +9695,13 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -8
+    x: -50
     y: 0
-    z: 17
+    z: 20
   }
   orientation: ORIENTATION_S
   GeneralTags: "isThug"
+  GeneralTags: "isTeamA"
   displayName: "ThugPistolW1"
   idRef {
     id: "c79b855d303031141100730e"
@@ -9726,7 +9779,8 @@ characters {
     team_id: "Thugs"
     char_name: "Hired Gun"
     GeneralTags: "isThug"
-    enabled_at_start: false
+    GeneralTags: "isTeamA"
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -9737,12 +9791,13 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -9
+    x: -51
     y: 0
-    z: 17
+    z: 20
   }
   orientation: ORIENTATION_S
   GeneralTags: "isThug"
+  GeneralTags: "isTeamA"
   displayName: "ThugSMGW1"
   idRef {
     id: "c79b855e303031141100730f"
@@ -9819,7 +9874,8 @@ characters {
     team_id: "Thugs"
     char_name: "Hired Gun"
     GeneralTags: "isThug"
-    enabled_at_start: false
+    GeneralTags: "isTeamA"
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -9832,7 +9888,7 @@ characters {
   gridPoint {
     x: 8
     y: 0
-    z: 0
+    z: 1
   }
   orientation: ORIENTATION_N
   displayName: "Jessica"
@@ -10577,9 +10633,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 10
+    x: -58
     y: 0
-    z: 75
+    z: -10
   }
   orientation: ORIENTATION_S
   displayName: "ConvoThugBoss"
@@ -10688,9 +10744,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: 21
+    x: -59
     y: 0
-    z: 75
+    z: -21
   }
   orientation: ORIENTATION_S
   displayName: "ConvoThugBoss"
@@ -11087,7 +11143,7 @@ parentStory: ""
 scene_title: "FAMILY DEBTS"
 scene_subtitle: ""
 scene_synopsis: "The sun has nearly set when you reach Our Lady of the Blessed Sacrament. Its cemetery, dilapidated and overgrown, sits atop a small hill on the outskirts of the city - a somber enclave of the dead overlooking the sprawl of the living. The Seattle rain continues unabated and lightning appears over the mountains, exposing the landscape in staccato pulses of stark flashes. \n\nYou walk the gravel path to the gates of the cemetery. Up ahead you see Coyote and Jake standing by the gravesite alongside Jessica Watts and another mourner, a beautiful elven woman in a six-figure outfit. \n\nWhatever Dr. Holmes was up to at Mercy Mental Hospital, the answers lie here, with the reinterred body of Melinda Watts, the recently deceased body of Sam Watts, and with those attending them at this ceremony."
-scene_image: "loadingimage_epilogue_s1"
+scene_image: "loadingimage_c17-s0"
 scene_continue_button_skip: false
 scene_restore_runner_health: true
 directional_light_dir {
@@ -11201,6 +11257,6 @@ override_hiring_average_cost: false
 show_equip_screen_on_scene_load: true
 is_persistant: false
 is_persistant_has_value: false
-can_move_outside_camera_regions: true
+can_move_outside_camera_regions: false
 can_start_before_triggers: true
 can_use_team_advancement: false
