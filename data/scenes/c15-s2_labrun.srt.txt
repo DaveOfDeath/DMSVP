@@ -3062,13 +3062,21 @@ triggers {
       }
     }
     ops {
-      functionName: "Force-Use Interactable Object (Basic)"
+      functionName: "Delete Props by Tag"
       args {
         call_value {
-          functionName: "Get Map Item (InteractableObject)"
+          functionName: "Get Map Item (SenseTagList)"
           args {
-            string_value: "51d49a23623331f415004d10"
+            string_value: "isBlocked"
           }
+        }
+      }
+      args {
+        float_value: -1
+      }
+      args {
+        call_value {
+          functionName: "Everywhere"
         }
       }
     }
@@ -3308,28 +3316,6 @@ triggers {
     }
   }
   actions {
-    ops {
-      functionName: "Enable/Disable Trigger"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Trigger)"
-          args {
-            string_value: "51d4acc8623331dc0f00164b"
-          }
-        }
-      }
-    }
     ops {
       functionName: "Trigger: Run Alternate Trigger"
       args {
@@ -4591,6 +4577,495 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "Loot.Spellbook"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "589d127f663136800f001bb4"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Compare Actor Skill"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "BaseOrCurrent"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "ActorSkills"
+          }
+          args {
+            int_value: 7
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        int_value: 4
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Spell Poison Fog"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Display Text over Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "589d127f663136800f001bb4"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        string_value: "An old ritual spell is folded neatly in the back of the book."
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 8
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "589d127f663136800f001bb4"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "589d1282663136800f001bb5"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "589d195d663136800f001bb7"
+  }
+  elseActions {
+    ops {
+      functionName: "Display Text over Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "589d127f663136800f001bb4"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        string_value: "A weathered scroll is tucked into the back of the book."
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 8
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Berlin_Spell Dark AOE 2"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "589d127f663136800f001bb4"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "589d1282663136800f001bb5"
+          }
+        }
+      }
+    }
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "Loot.NoSkills"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "589d1282663136800f001bb5"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Turn Mode in Dimension"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TurnBasedOrFreeMove"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Display Text over Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "589d1282663136800f001bb5"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        string_value: "An ancient paper crumbles to dust as you touch it."
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 8
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "589d1282663136800f001bb5"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "589d127f663136800f001bb4"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "589d1b63663136800f001bba"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "1"
   position {
@@ -5464,10 +5939,10 @@ regions {
 regions {
   name: "CameraBounds"
   position {
-    x: -96
-    y: -14
-    width: 64
-    height: 51
+    x: -90
+    y: -15
+    width: 55
+    height: 48
   }
   enabledAtStart: true
   is_camera_region: true
@@ -5643,7 +6118,7 @@ regions {
     width: 14
     height: 2
   }
-  enabledAtStart: false
+  enabledAtStart: true
   is_camera_region: false
   is_matrix_node: false
   is_vfx_fill_region: false
@@ -5753,9 +6228,8 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Lonestar/OrkLoneStarCaptain"
+    prefab_name: "Seattle:Lonestar/OrkLoneStarCaptain"
     character_sheet_id: "Lonestar_Lv5_Ork_Shotgun"
-    equipment_sheet_id: "Lonestar_Shotgun_High"
     character_mod {
       stats {
         body: 0
@@ -5811,6 +6285,14 @@ characters {
       }
       archetypeName: "Guard - Seek And Destroy"
       attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    equipment {
+      prefab_name: "Berlin_Sh 2 Remington 990"
+    }
+    equipment {
+      prefab_name: "Berlin_Grenade 2 (Flashbang)"
     }
     team_id: "LoneStar"
     char_name: "Corporate Enforcer"
@@ -5985,7 +6467,7 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "Guard - Seek And Destroy"
+      archetypeName: "gumbo_Soldier"
       attitude: AttitudeAggressive
     }
     team_id: "LoneStar"
@@ -6014,7 +6496,6 @@ characters {
   character_instance {
     prefab_name: "Seattle:Lonestar/TrollMaleLoneStarHeavyGuard"
     character_sheet_id: "Lonestar_Lv5_Ork_Shotgun"
-    equipment_sheet_id: "Lonestar_SMG_High"
     character_mod {
       stats {
         body: 0
@@ -6074,10 +6555,16 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "Guard - Seek And Destroy"
+      archetypeName: "gumbo_Soldier"
       attitude: AttitudeAggressive
       vulnerabilities {
       }
+    }
+    equipment {
+      prefab_name: "Berlin_Sh 2 Remington 990"
+    }
+    equipment {
+      prefab_name: "Ex 1 M203"
     }
     team_id: "LoneStar"
     char_name: "Lonestar Heavy Gunner"
@@ -6160,7 +6647,7 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "Guard - Seek And Destroy"
+      archetypeName: "gumbo_Soldier"
       attitude: AttitudeAggressive
     }
     team_id: "LoneStar"
@@ -6809,7 +7296,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "CreatureBasilisk"
+    prefab_name: "Berlin:Creatures/CreatureBillyBasilisk"
     character_sheet_id: "Basilisk (tough)"
     equipment_sheet_id: "Basilisk Critter Powers"
     character_mod {
@@ -6840,7 +7327,7 @@ characters {
         throwing_weapons: 0
         spellcasting: 0
         decking: 0
-        conjuring: 0
+        conjuring: 4
         spirit_summoning: 0
         drone_control: 0
         biotech: 0
@@ -6867,20 +7354,29 @@ characters {
         spirit_control: 0
       }
       attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    equipment {
+      prefab_name: "Berlin_Firedrake Death Explosion"
+    }
+    equipment {
+      prefab_name: "Gargoyle High Noxious Breath"
     }
     team_id: "LoneStar"
     char_name: "Subject 1"
     GeneralTags: "WillBeGassed"
     enabled_at_start: true
     pc_spawn_number: -1
+    karma: 159
   }
 }
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -55
+    x: -50
     y: 0
-    z: 26
+    z: 24
   }
   orientation: ORIENTATION_S
   GeneralTags: "SecondRoom"
@@ -6946,7 +7442,7 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "Guard - Seek And Destroy"
+      archetypeName: "gumbo_Soldier"
       attitude: AttitudeAggressive
     }
     team_id: "LoneStar"
@@ -7157,7 +7653,7 @@ characters {
     portrait {
       filename: ""
     }
-    dimension_name: "matrix"
+    dimension_name: "Matrix"
     karma: 47
   }
 }
@@ -7207,7 +7703,7 @@ characters {
     portrait {
       filename: ""
     }
-    dimension_name: "matrix"
+    dimension_name: "Matrix"
     karma: 47
   }
 }
@@ -7304,7 +7800,7 @@ characters {
     portrait {
       filename: ""
     }
-    dimension_name: "matrix"
+    dimension_name: "Matrix"
     karma: 33
     has_fist: false
     blocker_ic_panel_difficulty: 1
@@ -7514,7 +8010,7 @@ scene_dimensions {
   dimension_name: "Default"
 }
 scene_dimensions {
-  dimension_name: "matrix"
+  dimension_name: "Matrix"
   initial_alarm_state: 5
   turns_per_round: 3
   is_matrix: true
