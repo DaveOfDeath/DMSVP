@@ -7,10 +7,13 @@ nodes {
     id: "51d1a2766233318c1200640c"
   }
   index: 0
-  text: "I\'m very busy. You show me something worth my time, or you walk away."
+  text: "{{GM}}Van Graas doesn\'t look up from his digital display as you approach.{{/GM}}\n\nI\'m very busy. Show me something worth my time, or you walk away."
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "51d1a24b6233318c12006406:58a933fc396630b41800514c"
+    }
   }
   nodeType: ConversationNodeType_Simple
   actions {
@@ -87,6 +90,9 @@ nodes {
     }
     nextNodeIndex: 2
     hideIfUnavailable: true
+    idRef {
+      id: "51d1a24b6233318c12006406:58a933fc396630b41800514f"
+    }
   }
   branches {
     responseText: "Got a juicy list of BTL clients. Straight from a Yakuza syndicate lab."
@@ -131,22 +137,127 @@ nodes {
     }
     nextNodeIndex: 7
     hideIfUnavailable: true
+    idRef {
+      id: "51d1a24b6233318c12006406:58a933fc396630b41800515e"
+    }
+  }
+  branches {
+    responseText: "I got a chip that Bobby outside is desperate to get his hands on."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "Sam\'s BTL chip"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 12
+    hideIfUnavailable: true
+    idRef {
+      id: "51d1a24b6233318c12006406:58a9347c396630b418005176"
+    }
+  }
+  branches {
+    responseText: "I got this... antique lighter? Maybe gold?"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c02-s1_JakesLighter"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 21
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51d1a24b6233318c12006406:58a9347e396630b418005178"
+    }
   }
   branches {
     responseText: "It\'s nothing. Sorry to bother you."
     nextNodeIndex: -1
+    idRef {
+      id: "51d1a24b6233318c12006406:58a933fc396630b41800516d"
+    }
   }
   nodeType: ConversationNodeType_Simple
+  comment: "Fence Loop"
 }
 nodes {
   idRef {
     id: "51d458ed623331241b0007c0"
   }
   index: 2
-  text: "I\'ve got 800 nuyen for something like that. "
+  text: "{{GM}}Van Grass shrugs.{{/GM}}\n\nI\'ve got 800 nuyen for something like that. "
   branches {
     responseText: ""
     nextNodeIndex: 3
+    idRef {
+      id: "51d1a24b6233318c12006406:58a933fc396630b418005152"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -159,6 +270,9 @@ nodes {
   branches {
     responseText: "Deal."
     nextNodeIndex: 4
+    idRef {
+      id: "51d1a24b6233318c12006406:58a933fc396630b418005155"
+    }
   }
   branches {
     responseText: "{{CC}}Etiquette: Shadowrunner{{/CC}} I know you\'ll double dip on this one. Make it 1,000."
@@ -212,12 +326,19 @@ nodes {
       }
     }
     nextNodeIndex: 5
+    idRef {
+      id: "51d1a24b6233318c12006406:58a933fc396630b418005158"
+    }
   }
   branches {
     responseText: "I\'ll think about it."
     nextNodeIndex: 6
+    idRef {
+      id: "51d1a24b6233318c12006406:58a933fc396630b41800515b"
+    }
   }
   nodeType: ConversationNodeType_Simple
+  comment: "NTSB Loop"
 }
 nodes {
   idRef {
@@ -330,7 +451,7 @@ nodes {
     id: "51d458ed623331241b0007cc"
   }
   index: 6
-  text: "Don\'t think too long. Info like that has an expiration date."
+  text: "Don\'t think too long. Info like that has an expiration date, and there\'s no prize for runner-up."
   nodeType: ConversationNodeType_Simple
 }
 nodes {
@@ -342,6 +463,9 @@ nodes {
   branches {
     responseText: ""
     nextNodeIndex: 8
+    idRef {
+      id: "51d1a24b6233318c12006406:58a933fc396630b418005161"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -354,9 +478,12 @@ nodes {
   branches {
     responseText: "Deal."
     nextNodeIndex: 9
+    idRef {
+      id: "51d1a24b6233318c12006406:58a933fc396630b418005164"
+    }
   }
   branches {
-    responseText: "{{CC}}Etiquette: Gang{{/CC}} A rival BTL lab would pay top dollar, if you don\'t mind getting dirty. Make it 800."
+    responseText: "{{CC}}Etiquette: Gang{{/CC}} Any rival BTL lab would pay top dollar, if you don\'t mind getting dirty. Make it 800."
     conditions {
       ops {
         functionName: "Compare Actor Skill"
@@ -407,12 +534,19 @@ nodes {
       }
     }
     nextNodeIndex: 10
+    idRef {
+      id: "51d1a24b6233318c12006406:58a933fc396630b418005167"
+    }
   }
   branches {
     responseText: "I\'ll think about it."
     nextNodeIndex: 11
+    idRef {
+      id: "51d1a24b6233318c12006406:58a933fc396630b41800516a"
+    }
   }
   nodeType: ConversationNodeType_Simple
+  comment: "BTL Loop"
 }
 nodes {
   idRef {
@@ -525,18 +659,349 @@ nodes {
     id: "51d45c9a623331241b0007f5"
   }
   index: 11
-  text: "Suit yourself. I\'m not the most patient person."
+  text: "Suit yourself. I\'d rather not deal with it anyway."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58a935ac396630b418005217"
+  }
+  index: 12
+  text: "{{GM}}Van Graas gives you a considering look.{{/GM}}\n\nI\'m listening. Why should I be interested?"
+  branches {
+    responseText: "It\'s more than just a simchip"
+    nextNodeIndex: 13
+    idRef {
+      id: "51d1a24b6233318c12006406:58a93685396630b418005227"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d1a24b6233318c12006406:58a9363d396630b418005219"
+  }
+  index: 13
+  text: "{{GM}}Van Graas waits for you to elaborate, and then shrugs.{{/GM}}\n\nI\'m curious what would have ended up in the dealer\'s hands that he would want to have back. I\'ll buy it for 400."
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "51d1a24b6233318c12006406:58a9369d396630b418005236"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58a9369d396630b418005239"
+  }
+  index: 14
+  text: ""
+  branches {
+    responseText: "Deal."
+    nextNodeIndex: 15
+    idRef {
+      id: "51d1a24b6233318c12006406:58a9363d396630b41800521b"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Etiquette: Gang{{/CC}} He peddles Yakuza product, so maybe the Mafia families would want this chip?"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 15
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 16
+    idRef {
+      id: "51d1a24b6233318c12006406:58a9363d396630b41800521f"
+    }
+  }
+  branches {
+    responseText: "I\'ll think about it."
+    nextNodeIndex: 20
+    idRef {
+      id: "51d1a24b6233318c12006406:58a9363d396630b418005223"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d1a24b6233318c12006406:58a9363d396630b41800521d"
+  }
+  index: 15
+  text: "It\'s done."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Nuyen"
+      args {
+        int_value: 400
+      }
+    }
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Sam\'s BTL chip"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d1a24b6233318c12006406:58a9363d396630b418005221"
+  }
+  index: 16
+  text: "They will- A thousand seems fair?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 17
+    idRef {
+      id: "51d1a24b6233318c12006406:58a93727396630b418005241"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "c09-s1_Notebook"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Add Nuyen"
+      args {
+        int_value: 800
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d1a24b6233318c12006406:58a93729396630b418005243"
+  }
+  index: 17
+  text: ""
+  branches {
+    responseText: "Deal."
+    nextNodeIndex: 18
+    idRef {
+      id: "51d1a24b6233318c12006406:58a93729396630b418005245"
+    }
+  }
+  branches {
+    responseText: "I\'ll think about it."
+    nextNodeIndex: 19
+    idRef {
+      id: "51d1a24b6233318c12006406:58a93729396630b41800524d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d1a24b6233318c12006406:58a93729396630b418005247"
+  }
+  index: 18
+  text: "It\'s done."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Add Nuyen"
+      args {
+        int_value: 1000
+      }
+    }
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Sam\'s BTL chip"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d1a24b6233318c12006406:58a93729396630b41800524f"
+  }
+  index: 19
+  text: "Don\'t let Kubota see you with that thing, she doesn\'t allow chipheads in her place."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51d1a24b6233318c12006406:58a9377e396630b418005251"
+  }
+  index: 20
+  text: "Don\'t let Kubota see you with that thing, she doesn\'t allow chipheads in her place."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58a9357e396630b4180051dd"
+  }
+  index: 21
+  text: "{{GM}}Van Graas glances at the lighter, and then stares at you.{{/GM}}\n\nArmitage wouldn\'t like you trying to pawn his lighter. It\'s worthless, anyway."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "51d1a24b6233318c12006406:58a935a3396630b4180051df"
+    }
+    auxiliaryLink: true
+  }
   nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
     id: "51d1a2c06233318c12006410"
   }
-  index: 12
-  text: "You change your mind?"
+  index: 22
+  text: "{{GM}}Van Grass looks at you skeptically.{{/GM}}\n\nDid you change your mind? Or did you find something in the last five minutes that\'s worth my time?"
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "51d1a24b6233318c12006406:58a933fc396630b418005172"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -579,6 +1044,9 @@ roots {
     }
   }
   nextNodeIndex: 0
+  idRef {
+    id: "51d1a24b6233318c12006406:58a933fc396630b418005149"
+  }
 }
 roots {
   responseText: ""
@@ -617,5 +1085,8 @@ roots {
       }
     }
   }
-  nextNodeIndex: 12
+  nextNodeIndex: 22
+  idRef {
+    id: "51d1a24b6233318c12006406:58a933fc396630b41800516f"
+  }
 }
