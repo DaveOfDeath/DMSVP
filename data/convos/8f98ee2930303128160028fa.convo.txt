@@ -203,6 +203,8 @@ nodes {
   branches {
     responseText: "What is SOTA?"
     nextNodeIndex: 6
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "8f98ee2930303128160028fa:58641bc93966303c29003e0e"
     }
@@ -358,7 +360,7 @@ nodes {
     id: "58641a653966303c29003ce2"
   }
   index: 9
-  text: "{{GM}}Fry raises an eyebrow.{{/GM}}\n\nViolet and Chuckles? Yeah, I know them. \nChuckles is a decent tech, but wastes his time fixing computers for Touristville and training Violet.\nViolet is brash little troll decker, and I like her."
+  text: "{{GM}}Fry raises an eyebrow.{{/GM}}\n\nChuckles and Violet? I have made their acquaintance. \nChuckles is a decent tech, but wastes his time fixing computers and fridges, anything for the people of Touristville.\nViolet is brash little troll decker, and his assistant. Her we really like."
   branches {
     responseText: ""
     nextNodeIndex: 2
@@ -512,7 +514,7 @@ nodes {
   index: 13
   text: ""
   branches {
-    responseText: "Like, cleanup on aisle twelve? "
+    responseText: "Like, if I need a cleanup on aisle twelve? "
     actions {
       ops {
         functionName: "Set Variable (bool)"
@@ -549,6 +551,44 @@ nodes {
   }
   branches {
     responseText: "How is decking used?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "C04BadToJohnny"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 15
     hideIfUnavailable: true
     onlyOnce: true
@@ -567,6 +607,44 @@ nodes {
   }
   branches {
     responseText: "Is it true that you were part of Echo Mirage?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "C04BadToJohnny"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 18
     hideIfUnavailable: true
     onlyOnce: true
@@ -601,6 +679,33 @@ nodes {
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
     id: "80b73b8430303184100041d2"
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "C04BadToJohnny"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
 }
 nodes {
@@ -655,6 +760,9 @@ nodes {
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "8f322d3630303128160026ed"
+  }
 }
 nodes {
   idRef {
@@ -680,7 +788,7 @@ nodes {
     id: "8fa513e13030312816002975"
   }
   index: 19
-  text: "{{GM}}Johnny shrugs.{{/GM}}\n\n You were an asshole upstairs, but I\342\200\231ll give you another shot down here if you need help."
+  text: "{{GM}}Johnny shrugs.{{/GM}}\n\n You were an asshole upstairs, but I\342\200\231ll give you one more shot down here if you need help."
   branches {
     responseText: ""
     nextNodeIndex: 13
@@ -692,6 +800,33 @@ nodes {
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
     id: "8f322d3630303128160026ed"
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "C04BadToJohnny"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
 }
 nodes {

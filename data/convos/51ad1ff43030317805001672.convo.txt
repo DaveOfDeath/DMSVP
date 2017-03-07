@@ -7,7 +7,7 @@ nodes {
     id: "51ad20143030317805001678"
   }
   index: 0
-  text: "{{GM}}Coyote looks both better and worse than you last saw her. All the gaping holes are plugged and she\'s sporting a shiny new cyber-arm, but now that the adrenaline has worn off, it\'s clear she needs some rest.{{/GM}}\n\nGood... morning, I guess? \nThanks to the miracles of modern science, combined with a healthy dose of Doc Castle\342\200\231s magical healing; I\342\200\231m almost good as new. Better, really.\n\n"
+  text: "{{GM}}Coyote looks both better and worse than you last saw her. All the gaping holes are plugged and she\'s sporting a shiny new cyber-arm, but now that the adrenaline has worn off, it\'s clear she needs some rest.{{/GM}}\n\nGood... morning, I guess? I have no idea what time of day it is, I\'ve lost track of time.\nA big thank you to the miracles of modern science-- combined with a massive dose of Doc\342\200\231s magical healing-- I\'m good as new. Better, really.\n\n"
   branches {
     responseText: "Nice arm."
     conditions {
@@ -344,7 +344,7 @@ nodes {
     id: "51ad2081303031780500167d"
   }
   index: 1
-  text: "{{GM}}She notices something in your expression.{{/GM}}\n\nThanks. Mrs. Kubota will have me working it off for the rest of my life. You aren\'t here to ask about this, it look like you\342\200\231ve got something on your mind."
+  text: "{{GM}}She notices something in your expression.{{/GM}}\n\nThanks. Mrs. Kubota will have me working it off for the rest of my life. \nYou clearly aren\'t here to ask about the arm, it look like you\342\200\231ve got something on your mind."
   branches {
     responseText: "I have some questions."
     nextNodeIndex: 2
@@ -374,7 +374,7 @@ nodes {
     id: "51ad22223030317805001688"
   }
   index: 3
-  text: "{{GM}}Coyote nods.{{/GM}}\n\nSam Watts? Yeah, I know him. What about him?"
+  text: "{{GM}}Coyote nods, looking suspicious.{{/GM}}\n\nSam Watts? Yeah, I know him. What about him?"
   branches {
     responseText: "Sam is dead."
     nextNodeIndex: 4
@@ -389,7 +389,7 @@ nodes {
     id: "51ad2249303031780500168b"
   }
   index: 4
-  text: "{{GM}}Coyote\'s shock registers all over her face, covering her mouth with her new cyberhand.{{/GM}}\n\nHoly drek. Sam."
+  text: "{{GM}}Coyote\'s shock registers all over her face, covering her mouth with her new cyberhand.{{/GM}}\n\nHoly fragging drek. Sam."
   branches {
     responseText: ""
     nextNodeIndex: 5
@@ -404,7 +404,7 @@ nodes {
     id: "586404ed3966303c2900369c"
   }
   index: 5
-  text: "{{GM}}Coyote takes a deep breath, and lets out a sad sigh.{{/GM}}\n\nI\342\200\231m not surprised he\342\200\231s dead. Sam was on a downward spiral for a long time.\nWhat can I do to help?"
+  text: "{{GM}}Coyote takes a deep breath, and lets out a shaky sigh.{{/GM}}\n\nI guess I\342\200\231m not surprised he\342\200\231s dead. Sam was on a downward spiral for a long time.\nWhat can I do to help?"
   branches {
     responseText: ""
     nextNodeIndex: 9
@@ -468,7 +468,7 @@ nodes {
   index: 9
   text: ""
   branches {
-    responseText: "Tell me about Sam. I hear you liked him."
+    responseText: "Tell me about Sam. I\'ve heard you liked him."
     actions {
       ops {
         functionName: "Add To Variable (int)"
@@ -518,6 +518,31 @@ nodes {
     }
   }
   branches {
+    responseText: "How bad was his drinking?"
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "numCoyoteHubQuestionsSeen"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 24
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ad5c93303031d4050019b8"
+    }
+  }
+  branches {
     responseText: "What did you mean about the downward spiral?"
     conditions {
       ops {
@@ -562,7 +587,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 24
+    nextNodeIndex: 28
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -587,7 +612,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 25
+    nextNodeIndex: 29
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -639,7 +664,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 26
+    nextNodeIndex: 30
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -664,36 +689,11 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 29
+    nextNodeIndex: 33
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
       id: "51ad35503030317805001a49"
-    }
-  }
-  branches {
-    responseText: "How bad was his drinking?"
-    actions {
-      ops {
-        functionName: "Add To Variable (int)"
-        args {
-          call_value {
-            functionName: "Get Variable (int)"
-            args {
-              string_value: "numCoyoteHubQuestionsSeen"
-            }
-          }
-        }
-        args {
-          int_value: 1
-        }
-      }
-    }
-    nextNodeIndex: 30
-    hideIfUnavailable: true
-    onlyOnce: true
-    idRef {
-      id: "51ad5c93303031d4050019b8"
     }
   }
   branches {
@@ -739,7 +739,7 @@ nodes {
     id: "51ad268c303031780500171f"
   }
   index: 10
-  text: "{{GM}}Coyote gives you a pained smile.{{/GM}}\n\nI did. He was an unapologetic jerk, but he made me laugh. No one else seemed to like Sam\342\200\231s jokes, but I did."
+  text: "{{GM}}Coyote gives you a pained smile.{{/GM}}\n\nI did. He was an jerk, and made no apologies for that, but he made me laugh. No one else seemed to like Sam\342\200\231s jokes, but I did."
   branches {
     responseText: "No accounting for taste. Sam made some bad jokes."
     nextNodeIndex: 11
@@ -786,7 +786,7 @@ nodes {
     id: "51ad27223030317805001726"
   }
   index: 12
-  text: "{{GM}}The questions catches Paco off-guard.{{/GM}}\n\nWoah! Whafaq?"
+  text: "{{GM}}The questions catches Coyote off-guard.{{/GM}}\n\nWhafaq? No-- it wasn\342\200\231t anything like that. We were friends. "
   branches {
     responseText: ""
     nextNodeIndex: 13
@@ -796,7 +796,7 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
-    id: "9ed51136303031c40e0001ed"
+    id: "51a80e5b6233317c1a0039b1"
   }
 }
 nodes {
@@ -804,7 +804,7 @@ nodes {
     id: "51ad278c3030317805001729"
   }
   index: 13
-  text: "{{GM}}Coyote smiles at Paco.{{/GM}}\n\nEasy, mi amor.\n\nNo, it wasn\342\200\231t like that. We were friends. I was his bartender, and we were drinking buddies occasionally even when I wasn\'t working.\nI guess I knew him the best of anyone here. I can\'t believe it, I\'m sorry that he\342\200\231s gone."
+  text: "{{GM}}Coyote smiles off in Paco\'s direction.{{/GM}}\n\nI was his bartender, and we were drinking buddies occasionally even when I wasn\'t working.\nI guess I knew him the best of anyone here. I can\'t believe it, I\'m sorry that he\342\200\231s gone."
   branches {
     responseText: ""
     nextNodeIndex: 9
@@ -849,7 +849,7 @@ nodes {
     id: "51ad284a303031780500177e"
   }
   index: 15
-  text: "{{GM}}Coyote nods.{{/GM}}\nYou were part of the runner crew he went on and on about? \nGuess it was the same way for me, in a way. Sam was my drinking buddy- he just had a way of charming you.\n\nI guess I knew him the best of everyone here. Sorry he\342\200\231s gone."
+  text: "{{GM}}Coyote nods.{{/GM}}\nYou were part of the runner crew he went on and on about? He was always talking about $(l.race) and Sangoma, and how you always had his back.\nGuess it was the same way for me, in a way. Sam was my drinking buddy- he just had a way of being charming and an asshole at the same time.\n\nI guess I knew him the best of everyone here. Sorry he\342\200\231s gone."
   branches {
     responseText: ""
     nextNodeIndex: 9
@@ -897,7 +897,7 @@ nodes {
     id: "51ad29743030317805001794"
   }
   index: 18
-  text: "{{GM}}Coyote shrugs.{{/GM}}\n\nIt was a pretty average night. Regular crowd. Gangers cut each other up over one of the girls. Sam was drinking with a guy named Armitage."
+  text: "{{GM}}Coyote shrugs.{{/GM}}\n\nIt was a pretty average night. Regular crowd. Gangers cut each other upstairs over one of the girls. Sam was drinking with a guy named Armitage."
   branches {
     responseText: "Jake Armitage?"
     nextNodeIndex: 19
@@ -927,7 +927,7 @@ nodes {
     id: "51ad2a97303031780500179a"
   }
   index: 20
-  text: "{{GM}}She bites her lip.{{/GM}}\n\nWhat can I say, I have a thing for gingers.\n\nAnyway, Jake and Sam were having a few... well, Jake was having a few. Sam was tossing \342\200\230em back like he was trying to drown a sorrow. Eventually, Sam got loud, the way he sometimes did when he mixed drinking and who-knows-what. \n\n"
+  text: "{{GM}}Coyote smiles, biting her lip.{{/GM}}\n\nWhat can I say, I have a thing for ginger jerks.\n\nAnyway, Jake and Sam were having a few... well, Jake was having a few. Sam was tossing \342\200\230em back like he was trying to put a fire out. Eventually, Sam got loud, the way he sometimes did when he mixed drinking and who-knows-what. \n\n"
   branches {
     responseText: ""
     nextNodeIndex: 21
@@ -942,7 +942,7 @@ nodes {
     id: "51ad2ade303031780500179d"
   }
   index: 21
-  text: "Mrs. Kubota was dealing with the other situation, and asked Jake to eject him. Pretty common stuff, happened at least once a week.\n\nJake dragged him out the back door, into the alleyway and that\342\200\231s the last time I saw Sam."
+  text: "Mrs. Kubota was dealing with the other situation, and Jake was asked to eject him. Pretty common stuff, happened at least once a week.\n\nJake dragged him out the back door, into the alleyway and that\342\200\231s the last time I saw Sam."
   branches {
     responseText: "You said he got loud. Do you remember what he was saying?"
     nextNodeIndex: 22
@@ -964,7 +964,7 @@ nodes {
     id: "51ad2c5430303178050017a0"
   }
   index: 22
-  text: "{{GM}}Coyote thinks about it for a moment, looking up into space.{{/GM}}\n\nJust standard Sam drek. How he grew up rich and wasn\'t cut out for this life. He didn\342\200\231t deserve this. How fragged up his relationship with his mother was; how he alternatively hated or  loved his mother. His sister preaching at him for not making something of his life. It was pretty pathetic stuff."
+  text: "{{GM}}Coyote thinks about it for a moment, looking up into space.{{/GM}}\n\nJust standard Sam drek. How he grew up rich and wasn\'t cut out for this life. He didn\342\200\231t deserve this. How fragged up his relationship with his mother was; how he alternatively hated or loved his mother. \n\nHis sister preaching at him for not making something of his life. It was pretty pathetic stuff."
   branches {
     responseText: ""
     nextNodeIndex: 9
@@ -980,15 +980,92 @@ nodes {
     id: "586409133966303c29003741"
   }
   index: 23
-  text: "{{GM}}Coyote nods.{{/GM}}\n\nWe had a couple of messy fights that night. There were some gangers posturing over a girl, and then a little while after Jake and Sam exited there were some fireworks in the street outside. I didn\'t catch the particulars, and I left for the Royale thing right after my shift."
+  text: "{{GM}}Coyote nods.{{/GM}}\n\nWe had a couple of messy fights that night. There were some gangers posturing over a girl, and then a little while after Jake and Sam exited there were some fireworks in the street outside. I didn\'t catch the particulars, and I left for the Royale thing when Delilah called me-- before my shift even ended."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ad2f4f3030317805001966"
+  }
+  index: 24
+  text: "{{GM}}Coyote shrugs.{{/GM}}\n\nIf it was just drinking, it would have been bad. But Sam wasn\342\200\231t the monogamous type, he dabbled in everything. Booze... chips... sex... drugs-- he loved Nitro-- but he would smoke, screw, drink, or binge whatever he could get his hands on."
+  branches {
+    responseText: ""
+    nextNodeIndex: 25
+    idRef {
+      id: "51ad1ff43030317805001672:586403e33966303c29003671"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ad2f653030317805001969"
+  }
+  index: 25
+  text: "It wasn\342\200\231t always like that- but he was sick, and I think he started using more and more to try and forget about it."
+  branches {
+    responseText: "Sam was sick?"
+    nextNodeIndex: 26
+    idRef {
+      id: "51ad1ff43030317805001672:586403e33966303c29003674"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ad2f90303031780500196c"
+  }
+  index: 26
+  text: "{{GM}}Coyote looks confused.{{/GM}}\n\nYeah, Sam was dying. I thought you knew? Everyone who saw him could tell. You could just see he was a walking corpse. It had to be the hard living. \n\nThen he disappeared for awhile, and we all assumed he\'d kicked. Then one day he came back all better. Looked good, even."
+  branches {
+    responseText: "Hard to imagine."
+    nextNodeIndex: 27
+    idRef {
+      id: "51ad1ff43030317805001672:586403e33966303c29003677"
+    }
+  }
+  branches {
+    responseText: "All better. Just like that."
+    nextNodeIndex: 27
+    idRef {
+      id: "51ad1ff43030317805001672:586403e33966303c2900367d"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Did he say how he got better?"
+    nextNodeIndex: 27
+    idRef {
+      id: "51ad1ff43030317805001672:586403e33966303c29003680"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ad2fce3030317805001971"
+  }
+  index: 27
+  text: "Sam said he got a family member to help him out. Never said who, though.\n\nCalled it his \'stroke of luck.\'"
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "51ad1ff43030317805001672:586403e33966303c2900367a"
+    }
+    auxiliaryLink: true
+  }
   nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
     id: "586407053966303c290036a3"
   }
-  index: 24
-  text: "{{GM}}Coyote shrugs.{{/GM}}\n\nSam had some sort of stroke of luck about a year ago- a family member died, or left him money or something. Instead of getting out, he just dug deeper.\nSeemed like he wanted to burn out rather than fade away."
+  index: 28
+  text: "{{GM}}Coyote shrugs.{{/GM}}\n\nSam had some sort of stroke of luck about a year ago- a family member died, and left him money or something. Instead of getting out, he just dug deeper.\nSeemed like he wanted to burn out rather than fade away."
   branches {
     responseText: ""
     nextNodeIndex: 9
@@ -1003,8 +1080,8 @@ nodes {
   idRef {
     id: "51ad2ee0303031780500195e"
   }
-  index: 25
-  text: "{{GM}}Coyote nods without even pausing to think about it.{{/GM}}\n\nSure, Sam rubbed a lot of people the wrong way. Sam partied hard and when he did, he ran his mouth off pretty good. He got a well-deserved ass-kicking on more than one occasion. \n\nSomeone who would want him dead? That\342\200\231s harder to say. I can\'t think of anyone who hated him that much."
+  index: 29
+  text: "{{GM}}Coyote nods without even pausing to think about it.{{/GM}}\n\nSure, Sam rubbed a lot of people the wrong way. Sam partied hard and when he did, he ran his mouth off pretty good. He got a well-deserved ass-kicking on more than one occasion. \n\nSomeone who would want him dead? That\342\200\231s harder to say. I can\'t think of anyone who hated him that much. Maybe he just mouthed off to the wrong person?"
   branches {
     responseText: ""
     nextNodeIndex: 9
@@ -1019,18 +1096,18 @@ nodes {
   idRef {
     id: "58640b1b3966303c29003825"
   }
-  index: 26
-  text: "{{GM}}Coyote nods.{{/GM}}\n\nSam was dying the entire time I knew him. Liver problems- which isn\'t a surprise the way he burned through drugs and booze. \nYeah, so like a year ago he got a windfall from a relative or something. He scored an organ transplant, and a bunch of extra cred."
+  index: 30
+  text: "{{GM}}Coyote looks off into the distance, remembering.{{/GM}}\n\nSam was dying the entire time I knew him. He had some pretty severe liver problems- which isn\'t a surprise if you\'re aware of the way he burned through chips, women, drugs, and booze. \n\nSo like a year ago he got a windfall from a rich relative or something. He scored himself an organ transplant, and a bunch of extra cred."
   branches {
     responseText: "Enough to support his habits?"
-    nextNodeIndex: 27
+    nextNodeIndex: 31
     idRef {
       id: "51ad1ff43030317805001672:58640b7a3966303c29003827"
     }
   }
   branches {
     responseText: "Liver transplant?"
-    nextNodeIndex: 28
+    nextNodeIndex: 32
     idRef {
       id: "51ad1ff43030317805001672:58640b8a3966303c2900382c"
     }
@@ -1041,8 +1118,8 @@ nodes {
   idRef {
     id: "58640b7d3966303c2900382a"
   }
-  index: 27
-  text: "{{GM}}Coyote shrugs.{{/GM}}\n\nNo, not at the rate he was burning cred. I never knew him to work, but he must have had some sort of income."
+  index: 31
+  text: "{{GM}}Coyote shrugs.{{/GM}}\n\nNo, not at the rate he was burning cred. \nI never knew him to work, but he must have had some sort of income. He burned out his lucky money, and just kept spending."
   branches {
     responseText: ""
     nextNodeIndex: 9
@@ -1057,8 +1134,8 @@ nodes {
   idRef {
     id: "58640b913966303c2900382f"
   }
-  index: 28
-  text: "{{GM}}Coyote shrugs, waggling metallic fingers at you.{{/GM}}\n\nYeah, he got his liver replaced about a year ago. Not uncommon, in our day in age. "
+  index: 32
+  text: "{{GM}}Coyote shrugs, tapping new metallic cyberarm fingers.{{/GM}}\n\nIt\'s not uncommon in our day and age- I just got chromed myself.\nBut yeah, he got his liver replaced about a year ago."
   branches {
     responseText: ""
     nextNodeIndex: 9
@@ -1073,7 +1150,7 @@ nodes {
   idRef {
     id: "51ad2ce0303031780500182a"
   }
-  index: 29
+  index: 33
   text: "{{GM}}Coyote shrugs.{{/GM}}\n\nOn the streets, mostly. He\342\200\231d convince someone to let him flop on their couch but he\342\200\231d always overstay his welcome and get kicked out. He\'d pay for a coffin motel when he could afford it or was too desperate to sleep out in the acid rain.\n\nSometimes, Kubota would let me sneak him down here so he could crash in one of the bunks. He crashed down here a few nights the week before he died."
   branches {
     responseText: ""
@@ -1087,87 +1164,10 @@ nodes {
 }
 nodes {
   idRef {
-    id: "51ad2f4f3030317805001966"
-  }
-  index: 30
-  text: "{{GM}}Coyote shrugs.{{/GM}}\n\nIf it was just drinking, it would have been bad. But Sam wasn\342\200\231t the monogamous type, he dabbled in everything. Booze... chips... sex... drugs - he loved the Nitro - whatever he could get his hands on."
-  branches {
-    responseText: ""
-    nextNodeIndex: 31
-    idRef {
-      id: "51ad1ff43030317805001672:586403e33966303c29003671"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "51ad2f653030317805001969"
-  }
-  index: 31
-  text: "It wasn\342\200\231t always like that- but he was sick, and I think he started using more and more to try and forget about it."
-  branches {
-    responseText: "Sam was sick?"
-    nextNodeIndex: 32
-    idRef {
-      id: "51ad1ff43030317805001672:586403e33966303c29003674"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "51ad2f90303031780500196c"
-  }
-  index: 32
-  text: "Yeah, Sam was dying. Didn\342\200\231t you know? Yeah, everyone could tell. You could just look at him and see he was a walking corpse. It had to be the drinking. \n\nThen he disappeared for awhile, and we all assumed he\'d kicked. Then one day he came back all better. Looked good, even."
-  branches {
-    responseText: "Hard to imagine."
-    nextNodeIndex: 33
-    idRef {
-      id: "51ad1ff43030317805001672:586403e33966303c29003677"
-    }
-  }
-  branches {
-    responseText: "All better. Just like that."
-    nextNodeIndex: 33
-    idRef {
-      id: "51ad1ff43030317805001672:586403e33966303c2900367d"
-    }
-    auxiliaryLink: true
-  }
-  branches {
-    responseText: "Did he say how he got better?"
-    nextNodeIndex: 33
-    idRef {
-      id: "51ad1ff43030317805001672:586403e33966303c29003680"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "51ad2fce3030317805001971"
-  }
-  index: 33
-  text: "Sam said he got a family member to help him out. Never said who, though.\n\nCalled it his \'stroke of luck.\'"
-  branches {
-    responseText: ""
-    nextNodeIndex: 9
-    idRef {
-      id: "51ad1ff43030317805001672:586403e33966303c2900367a"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
     id: "51ad33bc3030317805001a3e"
   }
   index: 34
-  text: "{{GM}}Coyote fixes you with a level gaze. {{/GM}}\n\nNow I need you two to do something for me."
+  text: "{{GM}}Coyote fixes you with a level gaze. {{/GM}}\n\nNow I need you to do something for me."
   branches {
     responseText: ""
     nextNodeIndex: 35
@@ -1182,7 +1182,7 @@ nodes {
     id: "51ad33ee3030317805001a41"
   }
   index: 35
-  text: "{{GM}}Paco voices concern.{{/GM}}\n\nWhat do you need, babe?"
+  text: "I need you to go talk to Mr. Delilah for me, tell him about the Royale run."
   branches {
     responseText: ""
     nextNodeIndex: 36
@@ -1192,7 +1192,7 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
-    id: "9ed51136303031c40e0001ed"
+    id: "51a80e5b6233317c1a0039b1"
   }
 }
 nodes {
@@ -1200,7 +1200,7 @@ nodes {
     id: "51ad33fc3030317805001a44"
   }
   index: 36
-  text: "{{GM}}Coyote grimaces, looking at the bar above you through the ceiling.{{/GM}}\n\nI need you to go talk to Mr. Delilah for me, tell him about the Royale run. He is usually in a booth upstairs."
+  text: "{{GM}}Coyote grimaces, looking at the bar above you through the ceiling.{{/GM}}\n\nHe\'s a regular, and should have been expecting me yesterday. He has a regular booth upstairs, on the back bar side."
   branches {
     responseText: ""
     conditions {

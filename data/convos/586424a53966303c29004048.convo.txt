@@ -7,7 +7,7 @@ nodes {
     id: "586424b93966303c29004050"
   }
   index: 0
-  text: "{{GM}}The dwarf and mercenary with cyberlegs stand awkwardly waiting for you to finish your conversation.{{/GM}}"
+  text: "{{GM}}The dwarf and human with cyberlegs stand awkwardly waiting for you to finish your other conversations.{{/GM}}"
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -16,15 +16,39 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "btalkedtoSeamusJon"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
     id: "586424e43966303c29004055"
   }
   index: 1
-  text: "{{GM}}The dwarf speaks first, edging out the mercenary.{{/GM}}\n\nThat was a fucking thing you did, for Coyote."
+  text: "{{GM}}The dwarf speaks first, edging out the mercenary.{{/GM}}\n\nThat was a fucking thing you did!"
   branches {
-    responseText: "Did you just say \"Fuck\"? Did you slot Ye Olde Timey Swearing Lingasoft?"
+    responseText: "Did someone slot Ye Olde Timey Swearing Lingasoft? Who says fuck anymore?"
     nextNodeIndex: 2
     hideIfUnavailable: true
     onlyOnce: true
@@ -40,7 +64,7 @@ nodes {
     }
   }
   branches {
-    responseText: "I\'m $+(l.name), and you are?"
+    responseText: "I\'m $+(s.name), and you are?"
     nextNodeIndex: 5
     idRef {
       id: "586424a53966303c29004048:5864254e3966303c2900405b"
@@ -56,7 +80,7 @@ nodes {
     id: "586425623966303c2900405e"
   }
   index: 2
-  text: "{{GM}}The human mercenary with cyberlegs laughs into his hand.{{/GM}}\n\nSeamus and I are some of the regulars here. Seamus is an acquired taste, like scotch. You\'ll get used to him."
+  text: "{{GM}}The human mercenary with cyberlegs laughs into his hand.{{/GM}}\n\nSeamus and I are some of the regulars here. Seamus is an acquired taste, like a hairy, dark, tarry scotch. \nYou\'ll get used to him, maybe even start to like him."
   branches {
     responseText: ""
     nextNodeIndex: 3
@@ -118,10 +142,10 @@ nodes {
     id: "586425ae3966303c29004063"
   }
   index: 3
-  text: "{{GM}}The mercenary nods.{{/GM}}\n\nSeamus is a mage, I\'m Jon, a general run-and-chop expert. You saved Coyote, Kubota says you\'re family, so when you need backup, call us, and we\'ll back you up against anyone. No questions asked."
+  text: "{{GM}}The mercenary nods.{{/GM}}\n\nI\'m Jon, general run-and-chop expert. You saved Coyote, Kubota says you\'re family.\nWhen you need backup, call us and we\'ll back you up against anyone. No questions asked."
   branches {
     responseText: ""
-    nextNodeIndex: 5
+    nextNodeIndex: 7
     idRef {
       id: "586424a53966303c29004048:586428d43966303c29004080"
     }
@@ -243,7 +267,7 @@ nodes {
     id: "586427123966303c29004077"
   }
   index: 6
-  text: "{{GM}}The mercenary with the cyberlegs shifts his feet.{{/GM}}\n\nI\'m Jon Bartlett. Former mercenary with Nephilim Network. I have some heavy tactical experience, but mostly I run into a fight with a sword and keep the heat off people like Seamus and you."
+  text: "{{GM}}The mercenary with the cyberlegs shifts his feet.{{/GM}}\n\nJon Bartlett. Former physad mercenary with Nephilim Network. I have some heavy tactical experience, but mostly I run into a fight with a sword and keep the heat off people like Seamus."
   branches {
     responseText: ""
     nextNodeIndex: 7
@@ -298,24 +322,53 @@ nodes {
   }
   actions {
     ops {
-      functionName: "Set Actor Display Name"
+      functionName: "Set Variable (bool)"
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "Get Story Variable (bool)"
           args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "8caae0fb3030315810000bb8"
-              }
-            }
+            string_value: "57084f7c6631365c1600767e"
           }
           args {
+            string_value: "Crew_Recruited_Seamus"
           }
         }
       }
       args {
-        string_value: "Seamus O\'Toole"
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Recruited_Jon"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
       }
     }
   }
@@ -338,8 +391,6 @@ nodes {
   branches {
     responseText: "Jon, what are you good at?"
     nextNodeIndex: 10
-    hideIfUnavailable: true
-    onlyOnce: true
     idRef {
       id: "586424a53966303c29004048:58642c123966303c2900409a"
     }
@@ -347,7 +398,6 @@ nodes {
   branches {
     responseText: "How do I contact you?"
     nextNodeIndex: 11
-    hideIfUnavailable: true
     onlyOnce: true
     idRef {
       id: "586424a53966303c29004048:58642c123966303c2900409c"
@@ -356,6 +406,7 @@ nodes {
   branches {
     responseText: "I think I\'m good."
     nextNodeIndex: 12
+    onlyOnce: true
     idRef {
       id: "586424a53966303c29004048:58642c123966303c2900409e"
     }
@@ -459,7 +510,7 @@ nodes {
     id: "586437d43966303c2900412e"
   }
   index: 11
-  text: "{{GM}}Jon shrugs.{{/GM}}\n\nHowever you want- telecom message, email, matrix text? Call here and leave word with Mrs. Kubota, or write smoke signals. \nWe\'ll be there."
+  text: "{{GM}}Jon shrugs.{{/GM}}\n\nHowever you want- telecom message, email, matrix text? Call here and leave word with Mrs. Kubota, or build a fire and make smoke signals. \nWe\'ll be there."
   branches {
     responseText: ""
     nextNodeIndex: 8
@@ -501,7 +552,7 @@ nodes {
     id: "586424a53966303c29004048:586438d03966303c29004150"
   }
   index: 12
-  text: "{{GM}}Jon shrugs.{{/GM}}\n\nKeep it in mind- if you get in over your head, it\'s good to have some backup to call in to pull your ass out of the fire, right? "
+  text: "{{GM}}Jon shrugs.{{/GM}}\n\nKeep it in mind- if you get in over your head, it\'s good to have some backup to call in to pull your ass out of the fire, right?\nCoyote didn\'t think she needed help, either."
   branches {
     responseText: ""
     actions {
@@ -583,9 +634,315 @@ nodes {
     }
   }
 }
+nodes {
+  idRef {
+    id: "58bded87396630201a0080a7"
+  }
+  index: 13
+  text: "{{GM}}Seamus and Jon are speaking quietly, but stop at your approach.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "586424a53966303c29004048:58bded8d396630201a0080a9"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "8caae0fb3030315810000bb8"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "8caa84423030315810000bb7"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "586424a53966303c29004048:58bdef2d396630201a008203"
+  }
+  index: 14
+  text: ""
+  branches {
+    responseText: "Seamus, what are you good at, again?"
+    nextNodeIndex: 15
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "586424a53966303c29004048:58bdef2d396630201a008205"
+    }
+  }
+  branches {
+    responseText: "Jon, what are you good at?"
+    nextNodeIndex: 16
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "586424a53966303c29004048:58bdef2d396630201a00820d"
+    }
+  }
+  branches {
+    responseText: "How do I contact you?"
+    nextNodeIndex: 17
+    onlyOnce: true
+    idRef {
+      id: "586424a53966303c29004048:58bdef2d396630201a008215"
+    }
+  }
+  branches {
+    responseText: "Catch you guys later."
+    nextNodeIndex: -1
+    idRef {
+      id: "586424a53966303c29004048:58bdef2d396630201a008223"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Seamus and Jon Intro Loop"
+}
+nodes {
+  idRef {
+    id: "586424a53966303c29004048:58bdef2d396630201a008207"
+  }
+  index: 15
+  text: "{{GM}}Seamus responds with a smile.{{/GM}}\n\nI blow shit up. I have a master\'s degree from MIT&T, but I use it to do destructive testing here in Seattle. If someone needs to know how much magical energy is used to burn through their new polycarbonate armor coating, I\'m the one who does the actual burning."
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "586424a53966303c29004048:58bdef2d396630201a008209"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "8caae0fb3030315810000bb8"
+  }
+  actions {
+    ops {
+      functionName: "Set Actor Display Name"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "8caae0fb3030315810000bb8"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        string_value: "Seamus O\'Toole"
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "586424a53966303c29004048:58bdef2d396630201a00820f"
+  }
+  index: 16
+  text: "{{GM}}Jon bows at the waist, formally.{{/GM}}\n\nI\'m a trained small unit mercenary, familiar with guerrilla tactics in both urban and jungle warfare. Most of all, I\'m a trained physical adept with four black belts, and I can cut apart anything with blood or oil inside of it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "586424a53966303c29004048:58bdef2d396630201a008211"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "8caa84423030315810000bb7"
+  }
+  actions {
+    ops {
+      functionName: "Set Actor Display Name"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "8caa84423030315810000bb7"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        string_value: "Jon Bartlett"
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "586424a53966303c29004048:58bdef2d396630201a008217"
+  }
+  index: 17
+  text: "{{GM}}Jon shrugs.{{/GM}}\n\nHowever you want- telecom message, email, matrix text? Call here and leave word with Mrs. Kubota, or build a fire and make smoke signals. \nWe\'ll be there."
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "586424a53966303c29004048:58bdef2d396630201a008219"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "8caa84423030315810000bb7"
+  }
+  actions {
+    ops {
+      functionName: "Set Actor Display Name"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "8caa84423030315810000bb7"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        string_value: "Jon Bartlett"
+      }
+    }
+  }
+}
 roots {
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "b_TalkedtoSeamusJon"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
   nextNodeIndex: 0
   idRef {
     id: "586424a53966303c29004048:586424a53966303c2900404c"
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "b_TalkedtoSeamusJon"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 13
+  idRef {
+    id: "586424a53966303c29004048:58bdec71396630201a0080a4"
   }
 }

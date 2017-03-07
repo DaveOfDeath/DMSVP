@@ -2550,31 +2550,15 @@ props {
     interactionRadius: 1
     prerequisites {
       ops {
-        functionName: "Compare Actor Team"
-        args {
-          call_value {
-            functionName: "Triggering Actor"
-          }
-        }
+        functionName: "Evaluate Turn Mode in Dimension"
         args {
           call_value {
             functionName: "Get Preset Value (int)"
             args {
-              string_value: "IsOrIsNot"
+              string_value: "TurnBasedOrFreeMove"
             }
             args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (string)"
-            args {
-              string_value: "FactionList"
-            }
-            args {
-              int_value: 0
+              int_value: 1
             }
           }
         }
@@ -8648,6 +8632,44 @@ props {
     z: 29
   }
   orientation: ORIENTATION_S
+  idRef {
+    id: "58bdde52396630201a007c7e"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    inspectInteraction {
+      dispalyTime: 5
+      fadeTime: 3
+      inspectText: "This poor ork, whoever he was, was torn apart while still alive. Stevie J is one sick fragger."
+      disableAfterInteracting: true
+    }
+    interaction_info_text: "Inspect corpse"
+  }
   lod: 0
 }
 props {
@@ -9713,9 +9735,7 @@ props {
         }
       }
     }
-    transitionPoint {
-      scene_name: "c07-s1_seamstress"
-      confirmation_text: "Travel to the Seamstress\' Union?"
+    dummyInteraciton {
     }
     interaction_info_text: "Leave Royale?"
   }
@@ -9805,12 +9825,40 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Count_Loot"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          int_value: 2
+        }
+      }
+    }
     inspectInteraction {
       dispalyTime: 0
       fadeTime: 0
       inspectText: "You find a small velvet bag filled with precious gems."
       disableAfterInteracting: true
     }
+    interaction_info_text: ""
   }
   lod: 0
 }
@@ -10088,9 +10136,73 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
-    dummyInteraciton {
+    prerequisites {
+      ops {
+        functionName: "Evaluate Team Survival Percentage"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 100
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (string)"
+            args {
+              string_value: "FactionList"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
     }
-    interaction_info_text: ""
+    inspectInteraction {
+      dispalyTime: 5
+      fadeTime: 3
+      inspectText: "This desk has a plethora of chips, in all the colors of the rainbow. There are notes of where these chips are being sent, but the entries are all encoded with street names. There\'s no way of knowing where \'Dung Beetle\" is without knowing who that is."
+      disableAfterInteracting: true
+    }
+    interaction_info_text: "Search Desk"
   }
   lod: 0
 }
@@ -10891,5 +11003,181 @@ props {
     z: 17.5
   }
   orientation: ORIENTATION_S
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: 9
+    y: 0
+    z: 44
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "58bddda4396630201a007c78"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    inspectInteraction {
+      dispalyTime: 5
+      fadeTime: 3
+      inspectText: "Stevie J\'s bed is not a clean place. Considering how he often accepts payments for chips, you are not surprised."
+      disableAfterInteracting: true
+    }
+    interaction_info_text: "Check bed?"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: 3.4
+    y: 0
+    z: 46.4
+  }
+  orientation: ORIENTATION_S
+  idRef {
+    id: "58bddd1d396630201a007c75"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 2
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    inspectInteraction {
+      dispalyTime: 5
+      fadeTime: 3
+      inspectText: "You rifle through Stevie J\'s clothes for a few moments. You are not impressed with his fashion sense."
+      disableAfterInteracting: true
+    }
+    interaction_info_text: "Search drawers"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: 6
+    y: 0
+    z: 29
+  }
+  orientation: ORIENTATION_S
+  displayName: "Obj_Kitchen"
+  idRef {
+    id: "58bddf2e396630201a007c82"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate Team Survival Percentage"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 100
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (string)"
+            args {
+              string_value: "FactionList"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_Inspect
+    interaction_info_text: "Search kitchen?"
+  }
   lod: 0
 }

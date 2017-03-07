@@ -336,7 +336,7 @@ nodes {
     id: "51b25c9e623331a02a003156"
   }
   index: 6
-  text: "Better get here quick - before McKlusky arrives."
+  text: "{{GM}}Aguirre smiles.{{/GM}}\n\nGet here quick, before McKlusky arrives. Once Officer-in-Charge is on-scene, there\'s not much I can do for you."
   branches {
     responseText: ""
     nextNodeIndex: 16
@@ -374,7 +374,7 @@ nodes {
     id: "51ad45c33030317805001b2f"
   }
   index: 8
-  text: "{{GM}}Aguirre gives you a patronizing smile.{{/GM}}\n\nYeah, yeah. We\342\200\231re great buddies. Let\342\200\231s go salsa dancing soon.\n\nListen, the Ripper got another one. The victim worked at the NTSB investigation facility down in Tacoma. Come meet us down at the docks. "
+  text: "{{GM}}Aguirre gives you a patronizing smile.{{/GM}}\n\nYeah, yeah, Great buddy. Let\342\200\231s go salsa dancing soon.\n\nListen, the Ripper got another vic. This guy worked at the NTSB investigation facility down in Tacoma. Come meet us down at the docks. "
   branches {
     responseText: ""
     nextNodeIndex: 5
@@ -605,21 +605,6 @@ nodes {
   index: 18
   text: "{{GM}}Coyote nods, still cradling her new arm.{{/GM}}\n\nYou dragged my ass out of the Royale before... something worse happened. Worse than getting my arm torn off. \nSam was my friend, too. I want to help.\n\nYou head to the docks and I\'ll see if I can track down Sam\342\200\231s sister, Jessica. She may be able to help us put the pieces together."
   branches {
-    responseText: "See you when I get back."
-    nextNodeIndex: 20
-    idRef {
-      id: "51ad36533030317805001abd:58640eb73966303c29003a24"
-    }
-    auxiliaryLink: true
-  }
-  branches {
-    responseText: "I don\342\200\231t need your help. See you around."
-    nextNodeIndex: 19
-    idRef {
-      id: "51ad36533030317805001abd:58640eb73966303c29003a26"
-    }
-  }
-  branches {
     responseText: "Thanks, I appreciate the help."
     actions {
       ops {
@@ -648,27 +633,69 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 20
+    nextNodeIndex: 19
     idRef {
       id: "51ad36533030317805001abd:58640eb73966303c29003a28"
+    }
+  }
+  branches {
+    responseText: "See you when I get back."
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "Dead Man\'s Switch: The Mystery of Sam Watts"
+            }
+            args {
+              string_value: "c07_askedCoyoteToLookForJess"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 19
+    idRef {
+      id: "51ad36533030317805001abd:58640eb73966303c29003a24"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I don\342\200\231t need your help. See you around."
+    nextNodeIndex: 20
+    idRef {
+      id: "51ad36533030317805001abd:58640eb73966303c29003a26"
     }
   }
   nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
-    id: "586412173966303c29003ad1"
+    id: "586412463966303c29003ad4"
   }
   index: 19
-  text: "{{GM}}Coyote grimaces.{{/GM}}\n\nYou know what the Japanese say about the life you save? You\'re responsible for it forever.\nSee you around, Shadowrunner."
+  text: "{{GM}}Coyote nods.{{/GM}}\n\nGive me a call if you need backup, and I\'ll call you if anything develops."
   nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
-    id: "586412463966303c29003ad4"
+    id: "586412173966303c29003ad1"
   }
   index: 20
-  text: "{{GM}}Coyote nods.{{/GM}}\n\nGive me a call if you need backup, and I\'ll call you if anything develops."
+  text: "{{GM}}Coyote grimaces.{{/GM}}\n\nYou know what the Japanese say about the life you save? You\'re responsible for it forever.\nSee you around, Shadowrunner."
   nodeType: ConversationNodeType_Simple
 }
 nodes {

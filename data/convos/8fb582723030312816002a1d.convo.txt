@@ -7,10 +7,128 @@ nodes {
     id: "8fb5ff213030312816002a23"
   }
   index: 0
-  text: "Be careful out there."
+  text: "{{GM}}Johnny tips the brim of his cap as you pass by.{{/GM}}\n\nBe careful out there."
   nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58be033f396630201a008a3d"
+  }
+  index: 1
+  text: "{{GM}}Johnny pointedly ignores you. When you stop in front of him, he has two words for you.{{/GM}}\n\nFrag off."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "8f322d3630303128160026ed"
+          }
+        }
+      }
+    }
+  }
 }
 roots {
   responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "C04BadToJohnny"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
   nextNodeIndex: 0
+  idRef {
+    id: "8fb582723030312816002a1d:58be0328396630201a008a36"
+  }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "C04BadToJohnny"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 1
+  idRef {
+    id: "8fb582723030312816002a1d:58be0334396630201a008a3a"
+  }
 }
