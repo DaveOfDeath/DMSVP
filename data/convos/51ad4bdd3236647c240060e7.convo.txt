@@ -7,10 +7,13 @@ nodes {
     id: "51ad4bfe3236647c240060ed"
   }
   index: 0
-  text: "Holmes\'s workbench falls somewhere between coroner\'s slab and medieval torture device. It is decorated in the many colors of death, and littered with the instruments of that trade. To one side, there is a leather-bound journal stuffed with uneven pages. To the other is a pocsec, its small screen still glowing. Beneath the bench is a rolled sheaf of papers held closed with a tied length of surgical tubing."
+  text: "Holmes\'s workbench falls somewhere between coroner\'s slab, tech junkie, and medieval torture toolbox. It is decorated in the many scents and colors of death, and littered with the instruments of that trade. \n\nTo one side, there is a leather-bound journal stuffed with uneven pages. To the other is a pocket secretary, its small screen still glowing. Beneath the bench is a rolled sheaf of papers held closed with a tied length of surgical tubing."
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c900003966306400008053"
+    }
   }
   nodeType: ConversationNodeType_GM_Voice
 }
@@ -72,6 +75,55 @@ nodes {
   }
   branches {
     responseText: "{{GM}}Access the pocket secretary.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 5
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
     actions {
       ops {
         functionName: "Add To Variable (int)"
@@ -92,12 +144,111 @@ nodes {
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
+      id: "51ad4bdd3236647c240060e7:58c900963966306400008070"
+    }
+    comment: "No Decking"
+  }
+  branches {
+    responseText: "{{GM}}Access the pocket secretary.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "OR"
+        args {
+          call_value {
+            functionName: "Evaluate Tag for Actor"
+            args {
+              call_value {
+                functionName: "All Actors With Tag"
+                args {
+                  call_value {
+                    functionName: "Nothing Selected"
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Nothing Selected"
+                  }
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "HasOrHasNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Nothing Selected"
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Evaluate If Actor Is Decker"
+            args {
+              call_value {
+                functionName: "Specific Actor"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+                args {
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "IsOrIsNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add To Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "countWorkbenchInspections"
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
       id: "51e4618c623331dc1500262f"
     }
+    comment: "Decking"
   }
   branches {
     responseText: "{{GM}}Examine the rolled sheet of paper.{{/GM}}"
-    nextNodeIndex: 6
+    nextNodeIndex: 26
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -151,18 +302,25 @@ nodes {
     }
     nextNodeIndex: -1
     hideIfUnavailable: true
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c90000396630640000806d"
+    }
   }
   nodeType: ConversationNodeType_GM_Voice
+  comment: "Holmes Bench Loop"
 }
 nodes {
   idRef {
     id: "51ad51103236647c2400615d"
   }
   index: 2
-  text: "The bench has clearly played host to numerous bodies over its lifetime. It includes limb restraints, as well as skeletal traction mechanisms. At this table, Holmes likely dismembered bodies, or quite possibly put them back together. The tackiness of the blood suggests it has been used relatively recently."
+  text: "The bench has clearly played host to numerous bodies over its lifetime. It includes limb restraints, as well as skeletal traction mechanisms. \n\nAt this table, Holmes likely dismembered bodies, or quite possibly put them back together. The tackiness of the blood suggests it has been used relatively recently."
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c900003966306400008058"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Voice
@@ -172,35 +330,44 @@ nodes {
     id: "51ad51103236647c24006160"
   }
   index: 3
-  text: "Leafing through the pages, you find few intelligible entries. Holmes may not have been a real doctor, but his handwriting certainly fits the stereotype.\n\nStuffed in the last few pages is a copy of a disinterment order from a local cemetery, with the grave\'s occupant marked as \"Melinda Watts\"."
+  text: "Leafing through the pages, you find few intelligible entries. Holmes may not have been a real doctor, but his handwriting certainly fits the stereotype.\n\nStuffed in the last few pages is a copy of a disinterment order from a local cemetery, with the grave\'s occupant marked as \"Watts\"."
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c90000396630640000805d"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Voice
 }
 nodes {
   idRef {
-    id: "51ad55603236647c24006177"
+    id: "51ad4bdd3236647c240060e7:58c900963966306400008072"
   }
   index: 4
   text: "Holmes is still logged in, granting you access to his currently loaded files. Prominent among them is a hospital report from a donor program. It lists the organs beside the names and vital statistics of the recipients. Your eye catches Sam Watts\' name beside the entry for \"liver\". Also on the list are the Ripper\'s other known victims, along with several others who may have shared in the same fate."
   branches {
     responseText: ""
     nextNodeIndex: 5
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c900963966306400008074"
+    }
   }
   nodeType: ConversationNodeType_GM_Voice
 }
 nodes {
   idRef {
-    id: "51e46167623331dc1500262b"
+    id: "51ad4bdd3236647c240060e7:58c900963966306400008076"
   }
   index: 5
   text: "There is also a large sum of nuyen which can easily be transferred to your account."
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c900963966306400008078"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Voice
@@ -220,13 +387,449 @@ nodes {
 }
 nodes {
   idRef {
-    id: "51ad56553236647c2400617b"
+    id: "51ad55603236647c24006177"
   }
   index: 6
-  text: "Unfurling the large sheet of paper, you discover a diagram of the human female form, rendered to an impressive level of detail. It appears to be the blueprint for making Holmes\'s very own monster."
+  text: "Holmes is still logged in, granting you access to his currently loaded files. Prominent among them is a hospital report from a donor program. It lists the organs beside the names and vital statistics of the recipients. Your eye catches Sam Watts\' name beside the entry for \"liver\". Also on the list are the Ripper\'s other known victims, along with several others who may have shared in the same fate."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c900e23966306400008086"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "58c900e23966306400008089"
+  }
+  index: 7
+  text: ""
+  branches {
+    responseText: "Investigate report."
+    nextNodeIndex: 8
+    hideIfUnavailable: true
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c901b33966306400008099"
+    }
+  }
+  branches {
+    responseText: "Investigate messages."
+    nextNodeIndex: 10
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c90107396630640000808f"
+    }
+  }
+  branches {
+    responseText: "Transfer Nuyen"
+    nextNodeIndex: 18
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c900003966306400008062"
+    }
+  }
+  branches {
+    responseText: "Investigate Security"
+    nextNodeIndex: 19
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c901073966306400008091"
+    }
+  }
+  branches {
+    responseText: "Put pocket secretary down."
+    nextNodeIndex: 25
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c901073966306400008097"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Poksec Loop"
+}
+nodes {
+  idRef {
+    id: "58c901bf396630640000809c"
+  }
+  index: 8
+  text: "The identifying information has been scrubbed from the report, so there\'s only plain text."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c9020139663064000080a0"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58c9020139663064000080a3"
+  }
+  index: 9
+  text: "It lists twenty names, including the ripper victims, and each entry has an organ listed.\n\nWho these people are, or how they ended up on this list, is anyone\'s guess."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c9026e39663064000080bf"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58c9027339663064000080c3"
+  }
+  index: 10
+  text: "One message string catches your eye:"
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c9029b39663064000080d7"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58c9029b39663064000080da"
+  }
+  index: 11
+  text: "This is the burner that I\'ve set up for you to contact when the job is complete. \nDO NOT CONTACT ME FOR ANY OTHER REASON."
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c9029a39663064000080cc"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58c9029a39663064000080cf"
+  }
+  index: 12
+  text: "You wound me, Madame. I am but a humble purveyor of human interest, and I will do my utmost to fulfill the terms of our contract."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c9029a39663064000080c5"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "3710970d623331981d004ae2"
+  }
+}
+nodes {
+  idRef {
+    id: "58c9029a39663064000080c8"
+  }
+  index: 13
+  text: "I\'ve secured the list from Organ Grinders, and will begin shortly."
+  branches {
+    responseText: ""
+    nextNodeIndex: 14
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c9032039663064000080e7"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "3710970d623331981d004ae2"
+  }
+}
+nodes {
+  idRef {
+    id: "58c9032039663064000080ea"
+  }
+  index: 14
+  text: "This is getting quite messy, and the attention being paid to the operations is going to cost extra."
+  branches {
+    responseText: ""
+    nextNodeIndex: 15
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c9031f39663064000080e0"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "3710970d623331981d004ae2"
+  }
+}
+nodes {
+  idRef {
+    id: "58c9031f39663064000080e3"
+  }
+  index: 15
+  text: "I have all of the organs, but I need the body to assemble. Is our business concluded?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c9034e39663064000080f5"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "3710970d623331981d004ae2"
+  }
+}
+nodes {
+  idRef {
+    id: "58c9034e39663064000080f8"
+  }
+  index: 16
+  text: "Payment confirmed, shipment was sent out moments ago. Enjoy."
+  branches {
+    responseText: ""
+    nextNodeIndex: 17
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c9034e39663064000080ee"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "3710970d623331981d004ae2"
+  }
+}
+nodes {
+  idRef {
+    id: "58c9034e39663064000080f1"
+  }
+  index: 17
+  text: "Did you pull the Eagle Security officers? You treacherous slitch, did you set me up?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c9037b39663064000080fc"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "3710970d623331981d004ae2"
+  }
+}
+nodes {
+  idRef {
+    id: "51e46167623331dc1500262b"
+  }
+  index: 18
+  text: "Holmes has several accounts, and a large sum of nuyen easily moves to your account."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c900003966306400008065"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  actions {
+    ops {
+      functionName: "Add Nuyen"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "numNuyenPayout"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "58c903f73966306400008101"
+  }
+  index: 19
+  text: "Eagle Security contract; lease expired.\n\nThere\'s a lease agreement, with a digital notification that it\'s been canceled. No reason is given."
+  branches {
+    responseText: ""
+    nextNodeIndex: 20
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c904123966306400008103"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58c904123966306400008106"
+  }
+  index: 20
+  text: "Richard, find out where our contracted security is. "
+  branches {
+    responseText: ""
+    actions {
+      ops {
+        functionName: "Set Actor Display Name"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Actor)"
+                args {
+                  string_value: "6cbc980f303633ec10003c04"
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          string_value: "Richard"
+        }
+      }
+    }
+    nextNodeIndex: 21
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c9042a3966306400008108"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "3710970d623331981d004ae2"
+  }
+}
+nodes {
+  idRef {
+    id: "58c9042a396630640000810b"
+  }
+  index: 21
+  text: "Yes sir, Dr Holmes. Right away."
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c9051f3966306400008224"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "6cbc980f303633ec10003c04"
+  }
+}
+nodes {
+  idRef {
+    id: "58c9051f3966306400008227"
+  }
+  index: 22
+  text: "It seems the contract has been pulled, so we\'ll have to make other arrangements.\n\nContact our buyer, and request a few thugs to patrol. We can use the extra Eagle security uniforms."
+  branches {
+    responseText: ""
+    actions {
+      ops {
+        functionName: "Set Actor Display Name"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Actor)"
+                args {
+                  string_value: "6cbc980f303633ec10003c04"
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          string_value: "Richard"
+        }
+      }
+    }
+    nextNodeIndex: 23
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c9051f3966306400008219"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "3710970d623331981d004ae2"
+  }
+}
+nodes {
+  idRef {
+    id: "58c9051f396630640000821c"
+  }
+  index: 23
+  text: "Yes, sir. Marco says they can be here within the hour."
+  branches {
+    responseText: ""
+    nextNodeIndex: 24
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c9051e3966306400008212"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "6cbc980f303633ec10003c04"
+  }
+}
+nodes {
+  idRef {
+    id: "58c9051e3966306400008215"
+  }
+  index: 24
+  text: "If anyone shows up asking questions, stall them and let me get a look at them. We\'ll probably just dispose of them, but I want to make sure we don\'t waste any valuable stock."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c9066939663064000082c5"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "3710970d623331981d004ae2"
+  }
+}
+nodes {
+  idRef {
+    id: "58c904cf396630640000820a"
+  }
+  index: 25
+  text: "{{GM}}You wipe your fingerprints off of the pocket secretary, and leave it on the bench, still logged into Holmes\' account.{{/GM}}"
   branches {
     responseText: ""
     nextNodeIndex: 1
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c904d3396630640000820c"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "51ad56553236647c2400617b"
+  }
+  index: 26
+  text: "Unfurling the large sheet of paper, you discover a diagram of the human female form, rendered to an impressive level of detail. It appears to be the blueprint for making Holmes\' very own monster."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "51ad4bdd3236647c240060e7:58c90000396630640000806a"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_GM_Voice
@@ -234,4 +837,7 @@ nodes {
 roots {
   responseText: ""
   nextNodeIndex: 0
+  idRef {
+    id: "51ad4bdd3236647c240060e7:58c900003966306400008050"
+  }
 }
