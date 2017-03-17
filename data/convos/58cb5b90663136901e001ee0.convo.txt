@@ -1,0 +1,121 @@
+idRef {
+  id: "58cb5b90663136901e001ee0"
+}
+ui_name: "c14-s1_MatrixGreeting"
+nodes {
+  idRef {
+    id: "58cb5bdd663136901e001eea"
+  }
+  index: 0
+  text: "Greetings, New User.\n\nI am Silvia, Your digital workplace assistant.   \n\nI\'ve noticed you haven\'t yet set up your credentials with the system administrator.  Please report to his automated kiosk at the rear of this node.   Once I know your access level, I\'ll be able to direct you to the department.\n\nThank you."
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bMatrixGreeter_Met"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bMatrixGreeter_Met"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+  idRef {
+    id: "58cb5b90663136901e001ee0:58cb5b90663136901e001ee4"
+  }
+  comment: "Initial Convo"
+}
+roots {
+  responseText: "Welcome, $(scene.sUserName).\n\nI see your verified credentials grant you $(scene.sAccessLevel) Level clearance.   Let me enable those passages for you now."
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bMatrixGreeter_Met"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: -1
+  idRef {
+    id: "58cb5b90663136901e001ee0:58cb5bcf663136901e001ee7"
+  }
+  comment: "Revisit Convo"
+}
