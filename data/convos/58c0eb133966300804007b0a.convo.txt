@@ -130,18 +130,400 @@ nodes {
     id: "58c0ef9d3966300804007b35"
   }
   index: 7
-  text: "{{GM}}River turns to you.{{/GM}}\n\nThank"
+  text: "{{GM}}River turns to you.{{/GM}}\n\nThank you for getting that data for me. I can\'t even tell you how important it is to me."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce3eb8396630f80300500f"
+    }
+    comment: "River Loop"
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58ce3f5a396630f803005019"
+  }
+  index: 8
+  text: ""
+  branches {
+    responseText: "{{GM}}Flight Logs{{/GM}} I\'ve got something you wanted."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c08-s1_FlightLogs"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 9
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce3f63396630f80300501b"
+    }
+  }
+  branches {
+    responseText: "Okay, so we\'ve met twice now, who are you?"
+    nextNodeIndex: 10
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce3f63396630f803005023"
+    }
+  }
+  branches {
+    responseText: "How do you know Cherry?"
+    nextNodeIndex: 11
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce3f63396630f80300501d"
+    }
+  }
+  branches {
+    responseText: "I have a few friends that I\'m recruiting for runs. You available?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Recruited_River"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 14
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce5565396630f80300526b"
+    }
+  }
+  branches {
+    responseText: "What\'s on those flight logs?"
+    nextNodeIndex: 15
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce3f63396630f80300501f"
+    }
+  }
+  branches {
+    responseText: "What do you do when you\'re not hanging out on the docks?"
+    nextNodeIndex: 20
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce3f63396630f803005021"
+    }
+  }
+  branches {
+    responseText: "Talk to you later, River."
+    nextNodeIndex: -1
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce5518396630f803005266"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "b_TalkedtoRiver"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  comment: "River Loop"
+}
+nodes {
+  idRef {
+    id: "58ce44dc396630f8030051ce"
+  }
+  index: 9
+  text: "{{GM}}River\'s mouth make a little \'o\' of surprise.{{/GM}}\n\nOh, Ghost, you actually got it? I can\'t believe it. I waited in the rain for half an hour, and then caught a cab back here."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce45aa396630f8030051e0"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58ce58a4396630f8030052f5"
+  }
+  index: 10
+  text: "{{GM}}River smiles, but doesn\'t laugh.{{/GM}}\n\nRiver Daye. You can look it up, if you want, but it won\'t show up in the UCAS System registry. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce5bfe396630f8030052f7"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58ce461b396630f803005206"
+  }
+  index: 11
+  text: "{{GM}}River shrugs.{{/GM}}\n\nIt\'s a long story."
+  branches {
+    responseText: "Long story?"
+    nextNodeIndex: 12
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce462e396630f803005208"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58ce4635396630f80300520b"
+  }
+  index: 12
+  text: "{{GM}}River shrugs again.{{/GM}}\n\nFine, she was my college dorm mate, freshman year."
+  branches {
+    responseText: "What?"
+    nextNodeIndex: 13
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce4650396630f80300520d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58ce4655396630f803005210"
+  }
+  index: 13
+  text: "{{GM}}River laughs.{{/GM}}\n\nOkay, so it wasn\'t that long of a story."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce4669396630f803005212"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58ce56ac396630f80300526e"
+  }
+  index: 14
+  text: "{{GM}}River meets your eye.{{/GM}}\n\nYeah, I got my own thing going, but that\'ll take time. I\'m up for work."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce589c396630f8030052f1"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Recruited_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "58ce4ab7396630f803005250"
+  }
+  index: 15
+  text: "{{GM}}River fixes you with an intense stare.{{/GM}}\n\nThis is important. I don\'t want to be unclear. While I don\'t know what exactly is in those files, I need to know what those files say."
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce4cb8396630f803005252"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58ce4cbb396630f803005255"
+  }
+  index: 16
+  text: "{{GM}}River sits back against the wall.{{/GM}}\n\nSome friends of mine were killed, and if I find out why, I can begin making it right."
+  branches {
+    responseText: "Let me know if you need help."
+    nextNodeIndex: 17
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce4cee396630f803005257"
+    }
+  }
+  branches {
+    responseText: "Interesting."
+    nextNodeIndex: 18
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce4cf3396630f803005259"
+    }
+  }
+  branches {
+    responseText: "Not my problem. If you\'ve got more paying work, let me know."
+    nextNodeIndex: 19
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce4cf3396630f80300525b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58ce5044396630f80300525e"
+  }
+  index: 17
+  text: "{{GM}}River avoids meeting your eyes, but you can see that she has tears in hers.{{/GM}} \n\nI will."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58ce51ce396630f803005261"
+  }
+  index: 18
+  text: "{{GM}}River avoids looking at you.{{/GM}}\n\nSomething like that. Once I get a name-- that will be interesting."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58ce544b396630f803005264"
+  }
+  index: 19
+  text: "{{GM}}River avoids looking at you, biting her lip.{{/GM}}\n\nIf you need someone to help you out, I can do that. If you can pay me a little, I can use that to hire you. Deal?"
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58ce552d396630f803005269"
+  }
+  index: 20
+  text: "{{GM}}River shrugs.{{/GM}}\n\nIt\'s going to sound bad, but I work in one the waterfront, so I hang out on docks a lot. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce5c35396630f8030052fb"
+    }
+    auxiliaryLink: true
+  }
   nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
     id: "58c0eb133966300804007b0a:58c0f0093966300804007b39"
   }
-  index: 8
+  index: 21
   text: "You stumble upon River talking with a young troll decker."
   branches {
     responseText: ""
-    nextNodeIndex: 9
+    nextNodeIndex: 22
     idRef {
       id: "58c0eb133966300804007b0a:58c0f0093966300804007b3b"
     }
@@ -152,11 +534,11 @@ nodes {
   idRef {
     id: "58c0eb133966300804007b0a:58c0f0093966300804007b3d"
   }
-  index: 9
+  index: 22
   text: "{{GM}}Violet reads through data on a chip-reader, talking to River.{{/GM}}\n\nIf you really need those flight logs,I can probably put together an intrusion worm and get into the system and sleaze the backups.\n\nAre you sure you need the copies off the physical hook?"
   branches {
     responseText: ""
-    nextNodeIndex: 10
+    nextNodeIndex: 23
     idRef {
       id: "58c0eb133966300804007b0a:58c0f0093966300804007b3f"
     }
@@ -170,11 +552,11 @@ nodes {
   idRef {
     id: "58c0eb133966300804007b0a:58c0f0093966300804007b41"
   }
-  index: 10
-  text: "{{GM}}River takes a breath, steeling herself.{{/GM}}\n\nI\'m afraid that asking that sleaze for the data meant that he would delete the backup. If I need to go into the facility after Star clears out, and pick up the physical data chip, I can do that but I\'ll need help."
+  index: 23
+  text: "{{GM}}River takes a breath, steeling herself.{{/GM}}\n\nI\'m afraid that asking that asshole for the data meant that he would corrupt any other copies. If I need to go into the facility after Star clears out, and pick up the physical data chip, I can do that but I\'ll need help with alarms and stuff."
   branches {
     responseText: ""
-    nextNodeIndex: 11
+    nextNodeIndex: 24
     idRef {
       id: "58c0eb133966300804007b0a:58c0f0093966300804007b43"
     }
@@ -188,11 +570,11 @@ nodes {
   idRef {
     id: "58c0eb133966300804007b0a:58c0f0093966300804007b45"
   }
-  index: 11
+  index: 24
   text: "{{GM}}Violet nods.{{/GM}}\n\nI won\'t have it done tonight, but give me a day or two, and I\'ll sweep the system."
   branches {
     responseText: ""
-    nextNodeIndex: 12
+    nextNodeIndex: 25
     idRef {
       id: "58c0eb133966300804007b0a:58c0f0093966300804007b47"
     }
@@ -206,11 +588,11 @@ nodes {
   idRef {
     id: "58c0eb133966300804007b0a:58c0f0093966300804007b49"
   }
-  index: 12
-  text: "{{GM}}River breathes a sigh of relief, touching Violet\'s arm.{{/GM}}\n\nThank you, I really appreciate this. I have a couple hundred nuye, and as soon as I have some more, I\'ll pay you whatever you need."
+  index: 25
+  text: "{{GM}}River breathes a sigh of relief, touching Violet\'s arm.{{/GM}}\n\nThank you, I really appreciate this. I have a couple hundred nuyen, and as soon as I have some more, I\'ll pay you whatever you need."
   branches {
     responseText: ""
-    nextNodeIndex: 13
+    nextNodeIndex: 26
     idRef {
       id: "58c0eb133966300804007b0a:58c0f0093966300804007b4b"
     }
@@ -224,11 +606,11 @@ nodes {
   idRef {
     id: "58c0eb133966300804007b0a:58c0f0093966300804007b4d"
   }
-  index: 13
+  index: 26
   text: "{{GM}}Violet looks flattered and embarrassed at the same time.{{/GM}}\n\nThere- it-- not a problem. It\'s the right thing to do, even if you can\'t pay."
   branches {
     responseText: ""
-    nextNodeIndex: 14
+    nextNodeIndex: 27
     idRef {
       id: "58c0eb133966300804007b0a:58c0f0093966300804007b4f"
     }
@@ -242,11 +624,11 @@ nodes {
   idRef {
     id: "58c0eb133966300804007b0a:58c0f0093966300804007b51"
   }
-  index: 14
+  index: 27
   text: "{{GM}}Violet turns away, fiddling with a commlink that is dwarfed by her massive hands.{{/GM}}"
   branches {
     responseText: ""
-    nextNodeIndex: 15
+    nextNodeIndex: 28
     idRef {
       id: "58c0eb133966300804007b0a:58c0f0093966300804007b53"
     }
@@ -260,34 +642,43 @@ nodes {
   idRef {
     id: "58c0eb133966300804007b0a:58c0f0093966300804007b55"
   }
-  index: 15
+  index: 28
   text: "{{GM}}River turns to you.{{/GM}}\n\nGreetings, fearless hero."
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce3eb3396630f80300500d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58ce3eee396630f803005014"
+  }
+  index: 29
+  text: "{{GM}}River is leaning against the wall. She\'s got military stance and bearing, which stands out among the gangers and whores.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "58c0eb133966300804007b0a:58ce3f50396630f803005016"
+    }
+    auxiliaryLink: true
+  }
   nodeType: ConversationNodeType_Simple
 }
 roots {
-  nextNodeIndex: 0
-  idRef {
-    id: "58c0eb133966300804007b0a:58c0eb133966300804007b0e"
-  }
-  comment: "Data Stolen"
-}
-roots {
-  responseText: ""
   conditions {
     ops {
-      functionName: "Evaluate If Actor Has Item"
+      functionName: "Comparison (bool)"
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "Get Variable (bool)"
           args {
-            call_value {
-              functionName: "Get Map Item (Player)"
-              args {
-                int_value: 0
-              }
-            }
-          }
-          args {
+            string_value: "b_TalkedtoRiver"
           }
         }
       }
@@ -295,7 +686,7 @@ roots {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "HasOrHasNot"
+            string_value: "IsOrIsNot"
           }
           args {
             int_value: 1
@@ -304,17 +695,177 @@ roots {
       }
       args {
         call_value {
-          functionName: "Get Map Item (Item)"
+          functionName: "Get Preset Value (int)"
           args {
-            string_value: "Plague Barrier"
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Recruited_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
           }
         }
       }
     }
   }
-  nextNodeIndex: 8
+  nextNodeIndex: 0
+  idRef {
+    id: "58c0eb133966300804007b0a:58c0eb133966300804007b0e"
+  }
+  comment: "Data Delivered"
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "b_TalkedtoRiver"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Recruited_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 21
   idRef {
     id: "58c0eb133966300804007b0a:58c0eff73966300804007b37"
   }
-  comment: "Data Not Stolen"
+  comment: "Data Not Delivered"
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "b_TalkedtoRiver"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 29
+  idRef {
+    id: "58c0eb133966300804007b0a:58ce3ee3396630f803005011"
+  }
 }
