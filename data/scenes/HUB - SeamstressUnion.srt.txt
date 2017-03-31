@@ -1616,6 +1616,17 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eTeleport"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Teleport Actor With Fade"
       args {
         call_value {
@@ -1672,23 +1683,17 @@ triggers {
       }
     }
     ops {
-      functionName: "Teleport Camera To Actor"
+      functionName: "Send Event After Delay"
       args {
         call_value {
-          functionName: "Get Map Item (Player)"
+          functionName: "Get Map Item (Event)"
           args {
-            int_value: 0
+            string_value: "eTeleport"
           }
         }
       }
-    }
-    ops {
-      functionName: "Fade Camera In"
       args {
-        float_value: 1
-      }
-      args {
-        float_value: 1
+        float_value: 0.5
       }
     }
   }
@@ -1698,7 +1703,7 @@ triggers {
   }
   elseActions {
   }
-  is_oneshot: true
+  is_oneshot: false
 }
 triggers {
   name: "RunnerDoor"
@@ -1709,7 +1714,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (InteractableObject)"
           args {
-            string_value: "58db3a30396630ec800050cf"
+            string_value: "9011d3563030312816002a2d"
           }
         }
       }
@@ -1718,6 +1723,17 @@ triggers {
   conditions {
   }
   actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eTeleport"
+          }
+        }
+      }
+    }
     ops {
       functionName: "Teleport Actor With Fade"
       args {
@@ -1775,23 +1791,17 @@ triggers {
       }
     }
     ops {
-      functionName: "Teleport Camera To Actor"
+      functionName: "Send Event After Delay"
       args {
         call_value {
-          functionName: "Get Map Item (Player)"
+          functionName: "Get Map Item (Event)"
           args {
-            int_value: 0
+            string_value: "eTeleport"
           }
         }
       }
-    }
-    ops {
-      functionName: "Fade Camera In"
       args {
-        float_value: 1
-      }
-      args {
-        float_value: 1
+        float_value: 0.5
       }
     }
   }
@@ -1801,7 +1811,7 @@ triggers {
   }
   elseActions {
   }
-  is_oneshot: true
+  is_oneshot: false
 }
 triggers {
   name: "OrganExit"
@@ -1821,6 +1831,17 @@ triggers {
   conditions {
   }
   actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eTeleport"
+          }
+        }
+      }
+    }
     ops {
       functionName: "Teleport Actor With Fade"
       args {
@@ -1878,6 +1899,54 @@ triggers {
       }
     }
     ops {
+      functionName: "Send Event After Delay"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eTeleport"
+          }
+        }
+      }
+      args {
+        float_value: 0.5
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "58db3c13396630ec800050f4"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Teleport"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eTeleport"
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Fade Camera Out"
+      args {
+        float_value: 0.25
+      }
+      args {
+        float_value: 0
+      }
+    }
+    ops {
+      functionName: "Trigger: Wait Until Triggered Again"
+    }
+    ops {
       functionName: "Teleport Camera To Actor"
       args {
         call_value {
@@ -1891,20 +1960,20 @@ triggers {
     ops {
       functionName: "Fade Camera In"
       args {
-        float_value: 1
+        float_value: 0.25
       }
       args {
-        float_value: 1
+        float_value: 0.25
       }
     }
   }
   isActive: true
   idRef {
-    id: "58db3c13396630ec800050f4"
+    id: "58ddd0dc39663010ea001a4a"
   }
   elseActions {
   }
-  is_oneshot: true
+  is_oneshot: false
 }
 triggers {
   name: " "
@@ -7201,6 +7270,7 @@ mapEvents: "eRNDIdleAnimations"
 mapEvents: "eGenerateConvo"
 mapEvents: "eGenerateRumor"
 mapEvents: "eNewsUpdate"
+mapEvents: "eTeleport"
 senseTags: "isSpeaker"
 worldMapLocation {
   filename: ""

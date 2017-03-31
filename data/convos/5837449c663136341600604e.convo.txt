@@ -123,6 +123,17 @@ nodes {
     responseText: "{{GM}}Visit Organ Grinder\'s{{/GM}}"
     actions {
       ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "eTeleport"
+            }
+          }
+        }
+      }
+      ops {
         functionName: "Teleport Actor With Fade"
         args {
           call_value {
@@ -175,27 +186,21 @@ nodes {
           }
         }
         args {
-          float_value: 2
+          float_value: 0.25
         }
       }
       ops {
-        functionName: "Teleport Camera To Actor"
+        functionName: "Send Event After Delay"
         args {
           call_value {
-            functionName: "Get Map Item (Player)"
+            functionName: "Get Map Item (Event)"
             args {
-              int_value: 0
+              string_value: "eTeleport"
             }
           }
         }
-      }
-      ops {
-        functionName: "Fade Camera In"
         args {
-          float_value: 2
-        }
-        args {
-          float_value: 2
+          float_value: 0.5
         }
       }
     }
