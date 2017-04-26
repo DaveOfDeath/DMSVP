@@ -1,0 +1,131 @@
+idRef {
+  id: "5900f6b8303539a41c007ffb"
+}
+ui_name: "c14-s1_MatrixTelestrianDecker"
+nodes {
+  idRef {
+    id: "5900f6ca303539a41c008003"
+  }
+  index: 0
+  text: "Whoa there... $(l.man).\n\nJust who in the hell might you be? Are you responsible for all this off-hours network traffic reports I\'m being pinged with?"
+  branches {
+    responseText: "{{CC}}[Charisma - 4]{{/CC}} Yeah, sorry. Boss is really on my ass for the deadline. I feel like I\'m sleep-walking in here."
+    nextNodeIndex: 1
+    idRef {
+      id: "5900f6b8303539a41c007ffb:5900f781303539a41c008005"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: -1
+    idRef {
+      id: "5900f6b8303539a41c007ffb:5900f781303539a41c008007"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5900f7c4303539a41c00800a"
+  }
+  index: 1
+  text: "That so, $(scene.sUserName)... \n\nSeems that you\'ve sleep-walked into an unauthorized area."
+  branches {
+    responseText: ""
+    actions {
+      ops {
+        functionName: "Modify Dimension Heat"
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Matrix"
+            }
+          }
+        }
+        args {
+          float_value: 10
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "5900f6b8303539a41c007ffb:5900f7f4303539a41c00800c"
+    }
+  }
+  branches {
+    responseText: ""
+    nextNodeIndex: -1
+    idRef {
+      id: "5900f6b8303539a41c007ffb:5900f7f4303539a41c00800e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bDeckerMetAvatar"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bDeckerMetAvatar"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+  idRef {
+    id: "5900f6b8303539a41c007ffb:5900f6b8303539a41c007fff"
+  }
+  comment: "UnMet Avatar"
+}
