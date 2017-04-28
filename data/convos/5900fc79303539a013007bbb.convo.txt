@@ -7,40 +7,25 @@ nodes {
     id: "5900fcb9303539a013007bc5"
   }
   index: 0
-  text: "Whoa there!  Just who in th hell might you be?  Are you the one responsible for all these after hour access exception reports flooding my commlink?"
+  text: "Whoa there!\n\nJust who in th hell might you be?  Are you the one responsible for all these after hour access exception reports flooding my commlink?"
   branches {
     responseText: "Yeah, Sorry.  Boss really has be burning the midnight oil on this project deadline."
-    nextNodeIndex: -1
+    nextNodeIndex: 1
     idRef {
       id: "5900fc79303539a013007bbb:5900fced303539a013007bc7"
     }
   }
   branches {
-    responseText: "No, I just logged in.  Needed to check that I had properly secured my terminal."
-    nextNodeIndex: -1
+    responseText: "No, I just logged in.  Needed to check that I had secured my terminal.  Can\'t get it out of my head that I accidentally left it unlocked.\n\nI know how much you IT guys hate that."
+    nextNodeIndex: 1
     idRef {
       id: "5900fc79303539a013007bbb:5900fced303539a013007bc9"
     }
+    auxiliaryLink: true
   }
   branches {
     responseText: "{{CC}}[Attack]{{/CC}} I got your activity logs right here!"
-    actions {
-      ops {
-        functionName: "Modify Dimension Heat"
-        args {
-          call_value {
-            functionName: "Get Map Item (SceneDimension)"
-            args {
-              string_value: "Matrix"
-            }
-          }
-        }
-        args {
-          float_value: 50
-        }
-      }
-    }
-    nextNodeIndex: 1
+    nextNodeIndex: 3
     idRef {
       id: "5900fc79303539a013007bbb:5900fced303539a013007bcb"
     }
@@ -49,19 +34,77 @@ nodes {
 }
 nodes {
   idRef {
-    id: "5900fd89303539a013007bce"
+    id: "590365c0343831b410002a9a"
   }
   index: 1
-  text: "I knew it.  Fucking Shadowrunners.  \n\nYou\'re about to suck void, buddy."
+  text: "Well, I suggest that you take just a moment and look around.  Your clearance doesn\'t grant you access to this node.\n\nYou\'re suppose to be working $(scene.sAuthorizedArea)."
+  branches {
+    responseText: "My bad.  These hours will be the death of me.  Thanks."
+    nextNodeIndex: 2
+    idRef {
+      id: "5900fc79303539a013007bbb:5903660e343831b410002a9c"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Pretend to look around{{/CC}} Yeah, how about that.   Thanks for the warning."
+    nextNodeIndex: 2
+    idRef {
+      id: "5900fc79303539a013007bbb:5903660e343831b410002a9e"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59036647343831b410002aa1"
+  }
+  index: 2
+  text: "Just make sure it doesn\'t happen again.\n\n{{GM}}He gestures towards the exit portal.{{/GM}}"
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5900fd89303539a013007bce"
+  }
+  index: 3
+  text: "You\'re about to suck void, buddy."
   nodeType: ConversationNodeType_Simple
   actions {
     ops {
+      functionName: "Modify Dimension Heat"
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Matrix"
+          }
+        }
+      }
+      args {
+        float_value: 50
+      }
+    }
+    ops {
       functionName: "Send Event"
       args {
-        string_value: "USER_EVENT"
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eMatrixHostile"
+          }
+        }
       }
     }
   }
+}
+nodes {
+  idRef {
+    id: "590370db343831b410002b9c"
+  }
+  index: 4
+  text: "blarp."
+  nodeType: ConversationNodeType_Simple
 }
 roots {
   conditions {
@@ -98,12 +141,145 @@ roots {
         }
       }
     }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bMetSecurityDecker"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bMetSecurityDecker"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
   nextNodeIndex: 0
   idRef {
     id: "5900fc79303539a013007bbb:5900fc79303539a013007bbf"
   }
-  comment: "Heat Safe"
+  comment: "Heat Safe - First Time"
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bHeatTriggered"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bMetSecurityDecker"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 4
+  idRef {
+    id: "5900fc79303539a013007bbb:59036b37343831b410002af1"
+  }
+  comment: "Heat Safe - Secondary Visit"
 }
 roots {
   responseText: ""
@@ -142,9 +318,10 @@ roots {
       }
     }
   }
-  nextNodeIndex: -1
+  nextNodeIndex: 3
   idRef {
     id: "5900fc79303539a013007bbb:5900fc9e303539a013007bc2"
   }
-  comment: "Heat Threshold"
+  auxiliaryLink: true
+  comment: "Heat Threshold Reached"
 }
