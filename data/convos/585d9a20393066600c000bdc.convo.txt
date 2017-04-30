@@ -7,7 +7,7 @@ nodes {
     id: "585d9a32393066600c000be4"
   }
   index: 0
-  text: "This example uses Bartlett, but try to maintain the naming conventions... so we can actually navigate these.\n\nBasic Introduction.   Text expansion?   Or  just generic?"
+  text: "Generic Introduction Text. Never to be seen by players."
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -16,7 +16,7 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
-  comment: "Intro {Text Expansion?}"
+  comment: "Main Loop"
 }
 nodes {
   idRef {
@@ -25,7 +25,7 @@ nodes {
   index: 1
   text: ""
   branches {
-    responseText: "What are your thoughts on that last run?"
+    responseText: "What are your thoughts on the NTSB warehouse?"
     conditions {
       ops {
         functionName: "Comparison (string)"
@@ -166,7 +166,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 3
+    nextNodeIndex: 4
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -175,7 +175,7 @@ nodes {
     comment: "LEFT LastRun:Planeyard"
   }
   branches {
-    responseText: "What kinda hobbies or interests do you have, {Crew Name}?"
+    responseText: "What kinda hobbies or interests do you have, Bartlett?"
     conditions {
       ops {
         functionName: "Comparison (bool)"
@@ -244,31 +244,6 @@ nodes {
     }
     actions {
       ops {
-        functionName: "Set Variable (bool)"
-        args {
-          call_value {
-            functionName: "Get Story Variable (bool)"
-            args {
-              string_value: "57084f7c6631365c1600767e"
-            }
-            args {
-              string_value: "bHubTalkedTo_Bartlett"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-      }
-      ops {
         functionName: "Set Variable (int)"
         args {
           call_value {
@@ -286,7 +261,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: -1
+    nextNodeIndex: 5
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -295,7 +270,7 @@ nodes {
     comment: "Progression 0"
   }
   branches {
-    responseText: "You were telling me about {Hobby/interest}... I\'d like to chat a little more about it."
+    responseText: "Okay, so I want to hear more about your story."
     conditions {
       ops {
         functionName: "Comparison (bool)"
@@ -406,7 +381,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: -1
+    nextNodeIndex: 77
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -415,7 +390,7 @@ nodes {
     comment: "Progression 1"
   }
   branches {
-    responseText: "You were really involved with ____?"
+    responseText: "You really served under Matador?"
     conditions {
       ops {
         functionName: "Comparison (bool)"
@@ -526,7 +501,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: -1
+    nextNodeIndex: 78
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -535,7 +510,7 @@ nodes {
     comment: "Progression 2"
   }
   branches {
-    responseText: "What are the plans for after the shadows?"
+    responseText: "What are the plans for after all this, when you leave the shadows?"
     conditions {
       ops {
         functionName: "Comparison (bool)"
@@ -646,7 +621,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: -1
+    nextNodeIndex: 79
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -656,7 +631,7 @@ nodes {
   }
   branches {
     responseText: "We\'ll talk later."
-    nextNodeIndex: 4
+    nextNodeIndex: 81
     idRef {
       id: "585d9a20393066600c000bdc:585d9b2e393066600c000c14"
     }
@@ -670,7 +645,22 @@ nodes {
     id: "585d9ac7393066600c000bf4"
   }
   index: 2
-  text: "{{GM}}He glances around, and leans in.{{/GM}}\n\nHonestly?   Not too sure about River. \n\nI don\'t buy the damsel in distress routine.   Who needs flight logs from some worthless cargo chopper on the docks, at midnight?   That\'s got a shadowy thumb print ALL over it.  Watch your back, $(l.name)... I doubt we\'ve heard the last from her.   "
+  text: "{{GM}}Jon leans in discretely.{{/GM}}\n\nI\'m honestly not too sure about this \'River\' character. \n\nI get it, we all want to save a damsel in distress. Who needs flight logs from some busted drone chopper on the docks, late at night? \nThat\'s got a shadowy fingerprints ALL over it. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "585d9a20393066600c000bdc:590510bc3966307c1c005497"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590510bc3966307c1c00549a"
+  }
+  index: 3
+  text: "If you ask me, she\'s looking for a patsy.\nWatch your back, $(l.name)... I doubt we\'ve heard the last from her.   "
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -685,8 +675,8 @@ nodes {
   idRef {
     id: "585d9ad3393066600c000bf7"
   }
-  index: 3
-  text: "I don\'t really have any thoughts, Chief... You had me riding the pine here."
+  index: 4
+  text: "{{GM}}Bartlett looks at you, and shrugs.{{/GM}}\n\nI don\'t really have any thoughts, Chief... I heard you had a hell of a time, but I was riding the pine here."
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -699,9 +689,2410 @@ nodes {
 }
 nodes {
   idRef {
+    id: "5905075b3966307c1c004f92"
+  }
+  index: 5
+  text: "{{GM}}Bartlett shakes his head.{{/GM}}\n\nI got enough of that last name bullshit in the military. I\'m retired. Call me Jon."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:590507893966307c1c004fa0"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590507893966307c1c004fa3"
+  }
+  index: 6
+  text: ""
+  branches {
+    responseText: "Tell me about the service."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Progression_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_TalkedTo_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "bHubTalkedTo_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    hideIfUnavailable: true
+    idRef {
+      id: "585d9a20393066600c000bdc:590507653966307c1c004f94"
+    }
+  }
+  branches {
+    responseText: "You were going to tell me about those legs."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Progression_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_TalkedTo_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "bHubTalkedTo_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    hideIfUnavailable: true
+    idRef {
+      id: "585d9a20393066600c000bdc:590507663966307c1c004f96"
+    }
+  }
+  branches {
+    responseText: "You said something about \'hung like a horse\'?"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Progression_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 21
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "585d9a20393066600c000bdc:590507663966307c1c004f98"
+    }
+  }
+  branches {
+    responseText: "Okay, so after the UCAS army, where did you go?"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Progression_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_TalkedTo_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "bHubTalkedTo_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 23
+    hideIfUnavailable: true
+    idRef {
+      id: "585d9a20393066600c000bdc:590507f53966307c1c004fad"
+    }
+  }
+  branches {
+    responseText: "So, why didn\'t you end up with something cool like Kid Stealth legs?"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Progression_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_TalkedTo_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "bHubTalkedTo_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 29
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "585d9a20393066600c000bdc:590507f53966307c1c004faf"
+    }
+  }
+  branches {
+    responseText: "How about that bottle of tequilla?"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Progression_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 33
+    hideIfUnavailable: true
+    idRef {
+      id: "585d9a20393066600c000bdc:590507f53966307c1c004fb1"
+    }
+  }
+  branches {
+    responseText: "Something on your mind, Jon?"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Progression_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 2
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Loyalty_Jon"
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 36
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "585d9a20393066600c000bdc:59052a6e3966307c1c00605c"
+    }
+    comment: "Loyalty Quest"
+  }
+  branches {
+    responseText: "Where have you been, other than here and Bogota?"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Progression_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 2
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_TalkedTo_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "bHubTalkedTo_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 43
+    hideIfUnavailable: true
+    idRef {
+      id: "585d9a20393066600c000bdc:590507f53966307c1c004fb3"
+    }
+  }
+  branches {
+    responseText: "Are shadows the same all over?"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Progression_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 2
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_TalkedTo_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "bHubTalkedTo_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 47
+    hideIfUnavailable: true
+    idRef {
+      id: "585d9a20393066600c000bdc:590507f63966307c1c004fb9"
+    }
+  }
+  branches {
+    responseText: "Okay, spill. How did you get the legs?"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Progression_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 2
+        }
+      }
+    }
+    nextNodeIndex: 50
+    idRef {
+      id: "585d9a20393066600c000bdc:59050f563966307c1c00536f"
+    }
+  }
+  branches {
+    responseText: "I think we\'re approaching third date area."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Progression_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 2
+        }
+      }
+    }
+    nextNodeIndex: 55
+    idRef {
+      id: "585d9a20393066600c000bdc:59050f553966307c1c00536b"
+    }
+  }
+  branches {
+    responseText: "How did you get here?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_TalkedTo_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Progression_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 3
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "bHubTalkedTo_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 57
+    hideIfUnavailable: true
+    idRef {
+      id: "585d9a20393066600c000bdc:59050f563966307c1c00536d"
+    }
+  }
+  branches {
+    responseText: "How is your magic going?"
+    nextNodeIndex: -1
+    idRef {
+      id: "585d9a20393066600c000bdc:590529f53966307c1c00605a"
+    }
+  }
+  branches {
+    responseText: "I made sure Kubota got some of the tequilla you like."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Progression_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 3
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "bHubTalkedTo_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 58
+    hideIfUnavailable: true
+    idRef {
+      id: "585d9a20393066600c000bdc:590520963966307c1c00577e"
+    }
+  }
+  branches {
+    responseText: "I got the files you needed."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Loyalty_Jon"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 72
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "585d9a20393066600c000bdc:59052a6f3966307c1c00605e"
+    }
+    comment: "Loyalty Success"
+  }
+  branches {
+    responseText: "Sorry I couldn\'t get those files, Bartlett."
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Loyalty_Jon"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: -1
+        }
+      }
+    }
+    nextNodeIndex: 73
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "585d9a20393066600c000bdc:59052ad43966307c1c006060"
+    }
+    comment: "Loyalty Failure"
+  }
+  branches {
+    responseText: "Talk to you later, Jon."
+    nextNodeIndex: 81
+    idRef {
+      id: "585d9a20393066600c000bdc:590507663966307c1c004f9a"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{CC}}DEBUG{{/CC}} How about we keep going?"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "_DEBUGGER"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 75
+    hideIfUnavailable: true
+    idRef {
+      id: "585d9a20393066600c000bdc:5905246c3966307c1c005a1a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Bartlett Interest Hub"
+}
+nodes {
+  idRef {
+    id: "5905082a3966307c1c004fbf"
+  }
+  index: 7
+  text: "{{GM}}Jon hides a smile.{{/GM}}\n\nWhich service? I\'ve been in a couple. I was recruited for the UCAS army when I was a teenager, after the Olympic games were cancelled. "
+  branches {
+    responseText: "Olympics and then enlisting?"
+    nextNodeIndex: 8
+    idRef {
+      id: "585d9a20393066600c000bdc:590508563966307c1c004fc1"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590508563966307c1c004fc4"
+  }
+  index: 8
+  text: "{{GM}}Jon takes a draw of his beer, and smiles.{{/GM}}\n\nI can\'t blame my parents for that- with everything going on, they were really focused on the Olympics, and when that crapped out, they really didn\'t have a backup plan. I mean, everyone thought the world was going to end next week, so military service seemed like a good fit."
+  branches {
+    responseText: "What did you do after that?"
+    nextNodeIndex: 9
+    idRef {
+      id: "585d9a20393066600c000bdc:590508b03966307c1c005043"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590508b03966307c1c005046"
+  }
+  index: 9
+  text: "I did a few tours with the UCAS, and after I got out, it seemed like all of my friends were dead or working elsewhere. So I followed a few of them into mercenary service. \n\nSame MO as the service, fly all over the world, meet new and interesting people- and try to kill them."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:590508e93966307c1c005048"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5905090d3966307c1c00506e"
+  }
+  index: 10
+  text: "{{GM}}Jon looks down at his feet, shifting slightly.{{/GM}}\n\nIt could be worse- at least mine face the right direction. You got time for a story?"
+  branches {
+    responseText: "Sure."
+    nextNodeIndex: 11
+    idRef {
+      id: "585d9a20393066600c000bdc:5905092f3966307c1c005070"
+    }
+  }
+  branches {
+    responseText: "Not at the moment, I\'ll catch you later."
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "bHubTalkedTo_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 20
+    idRef {
+      id: "585d9a20393066600c000bdc:5905092f3966307c1c005072"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590509c33966307c1c005203"
+  }
+  index: 11
+  text: "Have you ever heard of Kid Stealth?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    idRef {
+      id: "585d9a20393066600c000bdc:590509e93966307c1c005208"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590509e93966307c1c00520b"
+  }
+  index: 12
+  text: "{{GM}}Jon waves his hand over your response, as if it is unimportant.{{/GM}}\n\nSo, Kid Stealth is the name of a runner here in Seattle, assuming he\'s still alive. Also, those terrible cyberlegs with the backwards knees. Make you look like a damned chicken when you walk."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "585d9a20393066600c000bdc:59050a233966307c1c00520e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59050a233966307c1c005211"
+  }
+  index: 13
+  text: "{{GM}}Jon watches you closely.{{/GM}}\n\nHave you ever heard the story about how he GOT those legs?"
+  branches {
+    responseText: "Got them?"
+    nextNodeIndex: 14
+    idRef {
+      id: "585d9a20393066600c000bdc:59050a3d3966307c1c005213"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59050a3d3966307c1c005216"
+  }
+  index: 14
+  text: "{{GM}}Jon smirks{{/GM}}\n\nHe sure as shit wasn\'t born with them. He didn\'t get them in combat, neither. His were optional replacements, well-- semi-optional."
+  branches {
+    responseText: ""
+    nextNodeIndex: 15
+    idRef {
+      id: "585d9a20393066600c000bdc:59050a6f3966307c1c005218"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59050a6f3966307c1c00521b"
+  }
+  index: 15
+  text: "Kid Stealth was once the main hitter for a scumbag named LeFleur. A minor criminal type, but big enough to have his own crew. \n\nKid Stealth was his #1 guy, the kind all the new guys looked up to. The way I heard it, LeFleur didn\'t like everyone admiring Stealth, so he drugged him, put him in cement shoes, and dropped him off the docks in the Puget Sound."
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+    idRef {
+      id: "585d9a20393066600c000bdc:59050b103966307c1c00521d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59050b103966307c1c005220"
+  }
+  index: 16
+  text: "Only, LeFleur didn\'t search Kid thoroughly, or maybe his guys were all too afraid of Stealth, even unconscious, so they let him wake up, to gloat and all that, and drop him in the water, and he has--"
+  branches {
+    responseText: ""
+    nextNodeIndex: 17
+    idRef {
+      id: "585d9a20393066600c000bdc:59050b3d3966307c1c005222"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59050b3d3966307c1c005225"
+  }
+  index: 17
+  text: "On this point the stories vary, based on who you heard it from. I\'ve heard monoknife, and I\'ve heard 9mm. So he\'s underwater with a pistol or little knife, neither enough to break apart the concrete around his feet. So he can off himself, right?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 18
+    idRef {
+      id: "585d9a20393066600c000bdc:59050b8c3966307c1c005227"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59050b8c3966307c1c00522a"
+  }
+  index: 18
+  text: "No, Stealth cuts off his own damned feet. I don\'t know how he did it without passing out, or how he stopped from bleeding to death or whatever, but he got to air, and then to land, and got optional full replacement legs. The kind that hinge backwards, like a chicken."
+  branches {
+    responseText: ""
+    nextNodeIndex: 19
+    idRef {
+      id: "585d9a20393066600c000bdc:59050bc93966307c1c00522c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59050bc93966307c1c00522f"
+  }
+  index: 19
+  text: "Or velociraptor. How\'s that for a damned story?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:59050bdb3966307c1c005231"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5905094d3966307c1c0050f7"
+  }
+  index: 20
+  text: "{{GM}}Bartlett shrugs.{{/GM}}\n\nFair enough. I\'ll be here."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5905099a3966307c1c005200"
+  }
+  index: 21
+  text: "{{GM}}Jon laughs, sputtering beer.{{/GM}}\n\nHa-- no, I believe I said third date material, and something about a bottle of tequilla."
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "585d9a20393066600c000bdc:59050bff3966307c1c005288"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59050bff3966307c1c00528b"
+  }
+  index: 22
+  text: "{{GM}}Jon points a finger at you steadily.{{/GM}}\n\nNot the cheap stuff, either. If I\'m going to burn liver cells, I want some Cuervo Silver or better."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:59050c243966307c1c00528d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5905112d3966307c1c00554f"
+  }
+  index: 23
+  text: "I got recruited by some friends into MET2000, but they\'re the Kong-Sang Walmart of Mercenary companies. They rely too much on cyber, and the pay is too low so the corporate overlords can squeeze a few extra nuyen out of every job.\n\nBeen with a few outfits, the 77th was too strict but good people. I ended up with "
+  branches {
+    responseText: ""
+    nextNodeIndex: 24
+    idRef {
+      id: "585d9a20393066600c000bdc:590513323966307c1c0055e4"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5905136a3966307c1c0055e7"
+  }
+  index: 24
+  text: "{{GM}}Jon smiles.{{/GM}}\n\nI bounced around a few companies. The benefit of being awakened is that it\'s one skill that is always in demand. I could get better pay, better bunking, better gear, because I have one of the few skills that isn\'t easily replaceable."
+  branches {
+    responseText: ""
+    nextNodeIndex: 25
+    idRef {
+      id: "585d9a20393066600c000bdc:590513a63966307c1c0055e9"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590513a83966307c1c0055ec"
+  }
+  index: 25
+  text: "{{GM}}Jon sighs, looking at his legs.{{/GM}}\n\nOf course, once I got blown in half and these sticks welded to my spine, the job offers no longer rolled in. Street Sams are one thing, but a half-mage, half-samurai, that\'s a waste of two opportunities. I can choose the path of the burnout, and keep augmenting with cyber, or start over again from a magic perspective, relearning my fighting styles and "
+  branches {
+    responseText: "Seems like magic can grow, you can initiate and stuff, right?"
+    nextNodeIndex: 26
+    idRef {
+      id: "585d9a20393066600c000bdc:5905141e3966307c1c0055f0"
+    }
+  }
+  branches {
+    responseText: "Why not just cyber up, and be done with it?"
+    nextNodeIndex: 26
+    idRef {
+      id: "585d9a20393066600c000bdc:5905141d3966307c1c0055ee"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590514413966307c1c0055f3"
+  }
+  index: 26
+  text: "Magic is too precious a commodity. But not only that, it\'s a part of me. I couldn\'t cut off my hands and replace them with razors any more than I could suddenly be a troll. Even the idea is anathema to me."
+  branches {
+    responseText: ""
+    nextNodeIndex: 27
+    idRef {
+      id: "585d9a20393066600c000bdc:590517c83966307c1c0055fd"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590517c83966307c1c005600"
+  }
+  index: 27
+  text: "Besides, if I give up all of my soul, how will I learn blues guitar?\n\n{{GM}}He stares at you.{{/GM}}\n\nThat was a joke."
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+    idRef {
+      id: "585d9a20393066600c000bdc:590517eb3966307c1c005602"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590517eb3966307c1c005605"
+  }
+  index: 28
+  text: "{{GM}}Jon takes a sip from his beer, and sighs.{{/GM}}\n\nI\'ve got not complaints, I\'ve lived a good life. Been all over the world, met some amazing people, been with some incredible women.\nServed under Matador for a while, he\'s cool."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:59051b773966307c1c0056ad"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5905112f3966307c1c005552"
+  }
+  index: 29
+  text: "{{GM}}Jon grimaces.{{/GM}}\n\nBecause cyberware-- that shit is poisonous. I got my legs blown off, and if I had been conscious enough to tell them so, I would have re-learned to fight from a wheelchair until they could regrow me some biological legs from my own cells."
+  branches {
+    responseText: ""
+    nextNodeIndex: 30
+    idRef {
+      id: "585d9a20393066600c000bdc:590511623966307c1c005554"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590511663966307c1c005557"
+  }
+  index: 30
+  text: "{{GM}}Jon fixes you with a stare.{{/GM}}\n\nAs it happens, my CO decided for me, so I got these happy chrome pogosticks to jump around on."
+  branches {
+    responseText: "They look cool."
+    nextNodeIndex: 31
+    idRef {
+      id: "585d9a20393066600c000bdc:590511823966307c1c005559"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5905118a3966307c1c00555c"
+  }
+  index: 31
+  text: "You know what martial arts are? They\'re about doing the same punches, kicks, turns, and moves a hundred thousand times, so that they\'re ingrained in muscle memory and you can do them literally without thinking about it. Every kata, every form, every style of martial arts I\'ve learned, they relied on how tall I was, how my ankles bent, the length of my leg from hip to knee."
+  branches {
+    responseText: ""
+    nextNodeIndex: 32
+    idRef {
+      id: "585d9a20393066600c000bdc:590512363966307c1c00555e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590512363966307c1c005561"
+  }
+  index: 32
+  text: "Do you think the cutter in Bogota cared about any of that? No, he cut off good meat to give him a flat platform to work with, and bolted some Aztechnology framework to my spine. What the mine didn\'t do to my soul, that hack took care of.\n\nI woke up two inches taller-- every muscle memory in my back, hips, legs, and feet gone. Sure my brain remembers, but try telling it that my leg is taller now, or bends differently. \n\nNot even the essence loss draining my magic was as bad having two black belts and tripping over a step because I didn\'t used to have to raise my foot that far to go up stairs."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:590512ae3966307c1c005563"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59050caa3966307c1c005292"
+  }
+  index: 33
+  text: "{{GM}}Jon rubs his hands together, looking excited.{{/GM}}\n\nYou got one?"
+  branches {
+    responseText: "No, but I\'m sure Kubota stocks it."
+    nextNodeIndex: 34
+    idRef {
+      id: "585d9a20393066600c000bdc:59050ebc3966307c1c0052ff"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59050ec63966307c1c005302"
+  }
+  index: 34
+  text: "{{GM}}Jon leans back, deflating.{{/GM}}\n\nNo, she has a bottle, but she fills it with the cheap stuff during the day. No one here knows or cares about the difference."
+  branches {
+    responseText: ""
+    nextNodeIndex: 35
+    idRef {
+      id: "585d9a20393066600c000bdc:590521033966307c1c005782"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590521033966307c1c005785"
+  }
+  index: 35
+  text: "Okay, you get the short version. When the mine took my legs, it messed up my hips, too, so the doc in Bogota took off good meat- meaning the rest of my legs, most of my hips, and OTHER parts. Yeah, the dude took off my dick with a machete. \n\nOkay, so I don\'t know if that last part is true, but I\'d like to think it was."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:59050ef93966307c1c005304"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59052af63966307c1c006063"
+  }
+  index: 36
+  text: "{{GM}}Jon sighs.{{/GM}}\n\nYeah, I hate to do it, $(l.name), but I\'ve got a big problem, and I really need your help."
+  branches {
+    responseText: ""
+    nextNodeIndex: 37
+    idRef {
+      id: "585d9a20393066600c000bdc:59052b563966307c1c006065"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59052b563966307c1c006068"
+  }
+  index: 37
+  text: "Seriously, every two minutes some asshole is asking you to do something extra for them.\n\n{{GM}}Jon scratches his chin.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 38
+    idRef {
+      id: "585d9a20393066600c000bdc:59052b923966307c1c00606d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59052b923966307c1c006070"
+  }
+  index: 38
+  text: "That being said, I need a favor. You got time for it?"
+  branches {
+    responseText: "Sure."
+    nextNodeIndex: 39
+    idRef {
+      id: "585d9a20393066600c000bdc:59052b8f3966307c1c00606a"
+    }
+  }
+  branches {
+    responseText: "Nope."
+    nextNodeIndex: 42
+    idRef {
+      id: "585d9a20393066600c000bdc:59052bae3966307c1c006073"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59052bbc3966307c1c006076"
+  }
+  index: 39
+  text: "{{GM}}Jon sighs, relieved.{{/GM}}\n\nI was afraid you were going to tell me to pound sand. My company got into buyout talks with MET2000. Those sharks lowballed the offer, but when my guys walked..."
+  branches {
+    responseText: ""
+    nextNodeIndex: 40
+    idRef {
+      id: "585d9a20393066600c000bdc:59052c733966307c1c00607b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59052c783966307c1c00607e"
+  }
+  index: 40
+  text: "MET2000 gave a copy of our roster to LoneStar, who are bound to leak it to someone important sooner or later."
+  branches {
+    responseText: ""
+    nextNodeIndex: 41
+    idRef {
+      id: "585d9a20393066600c000bdc:59052cd43966307c1c006085"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59052cd43966307c1c006088"
+  }
+  index: 41
+  text: "I need to get it off of Lonestar\'s servers sooner rather than later. And I don\'t know anyone else who can put something like that together. \nYou\'re my only gat.\n\nIf you know someone and can get a guy on it, awesome. If not, farm it out and give it to someone you trust. If Aztech manages to get their hooks into it, my guys are as good as dead; and if it\'s on Lonestar servers- they will get it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:59052db53966307c1c0062a5"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59052bbf3966307c1c006079"
+  }
+  index: 42
+  text: "{{GM}}Jon shrugs.{{/GM}}\n\nHere it is anyway: My company got into buyout negotiations with another group. The other guys, MET2000, low-balled the offer, so my guys walked. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 40
+    idRef {
+      id: "585d9a20393066600c000bdc:59052cca3966307c1c006080"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590521c23966307c1c00585d"
+  }
+  index: 43
+  text: "{{GM}}Bartlett smiles, a far-away look in his eyes.{{/GM}}\n\nI\'ve been all over the world. A lot of time on South America, in and around Bogota. I spent a lot of leave down in Amazonia. Bounced around Europa for a few years first, spent time in Russia, Germany, and France, but it got too cold. I\'ll skip icy winters, thank you. I love me some steamy jungles."
+  branches {
+    responseText: ""
+    nextNodeIndex: 44
+    idRef {
+      id: "585d9a20393066600c000bdc:590522123966307c1c00585f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590522123966307c1c005862"
+  }
+  index: 44
+  text: "{{GM}}Jon grins.{{/GM}}\n\nThat, and dives like this place. You may or may not believe it, but you could set a dingy place like this down in any number of third-world countries, and it would fit right in. May be serving different drinks, or sawdust on the floor, but no different in spirit. Don\'t tell Kubota I said that. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 45
+    idRef {
+      id: "585d9a20393066600c000bdc:590522633966307c1c005938"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590522633966307c1c00593b"
+  }
+  index: 45
+  text: "That\'s why I come here- it reminds me of the good times, drinking among friends in the midst of enemies, perhaps to die at any time.\n\nBasically, I come here and the dojo, I don\'t even go in and punch the clock at work anymore. Those young men and women will have to find somewhere else to die."
+  branches {
+    responseText: "Dojo?"
+    nextNodeIndex: 46
+    idRef {
+      id: "585d9a20393066600c000bdc:590522ce3966307c1c00593d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590522ce3966307c1c005940"
+  }
+  index: 46
+  text: "Yeah, I found a dojo after I\'d been back a few months. Most places won\'t let you use the floor with cyberlimbs, because Lonestar will come in and shut the place down if you get busted or accused of anything. I found this one place, with a blind old guy named Kaiju. His family had paid for some cybereyes, but he hated the things"
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590526693966307c1c005c98"
+  }
+  index: 47
+  text: "{{GM}}Jon shrugs.{{/GM}}\n\nI\'ve only ever really been in the shadows in here an Bogota. There: everywhere is like Touristville, where a body can get left in the street without people commenting on it two days later. Fewer tall buildings left, since there\'s been shelling and all manner of aircraft bombing runs. Aztech is to thank for most of that, but thanks to a bleeding-hot PR department, Amazonia gets almost all of the blame."
+  branches {
+    responseText: ""
+    nextNodeIndex: 48
+    idRef {
+      id: "585d9a20393066600c000bdc:590526df3966307c1c005c9a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590526df3966307c1c005c9d"
+  }
+  index: 48
+  text: "I did a little time in Germany, and they\'re pretty standard with the you scratch my back, I scratch yours. \n\nMost everywhere else I\'ve been is about family- either you know someone, and you\'re in the family, or you\'re outside and worthless to them."
+  branches {
+    responseText: ""
+    nextNodeIndex: 49
+    idRef {
+      id: "585d9a20393066600c000bdc:5905296f3966307c1c005f64"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5905296f3966307c1c005f67"
+  }
+  index: 49
+  text: "I think that\'s mostly the way that shadows have grown opposite of law enforcement. While the Law relies on turning people, lies, and deception; we have to rely on who we know and who we can trust. \n\nLike Kubota and the Seamstress\' here accepting you. It\'s a big deal, I hope you know that."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:590529d43966307c1c005f69"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590527563966307c1c005d83"
+  }
+  index: 50
+  text: "{{GM}}Bartlett takes a slow and steady breath.{{/GM}}\n\nYeah, you\'ve earned that story. I was running with my last company, down in Bogota, and we got pitted up against established Aztech forces. The kind that live and knew the area. It was bloody and rough fighting, the kind that makes or breaks a unit. I had been with my unit for a few months as an LT."
+  branches {
+    responseText: ""
+    nextNodeIndex: 51
+    idRef {
+      id: "585d9a20393066600c000bdc:590527b03966307c1c005e69"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590527b03966307c1c005e6c"
+  }
+  index: 51
+  text: "{{GM}}Jon takes a breath to steady himself.{{/GM}}\n\nI honestly don\'t even remember the explosion. I know that\'s anticlimactic, but it\'s the truth. My last memory before is of sitting around the stove, night in the camp, laughing over a trido clip that Charlie was trying to recount and doing a terrible job of. Mark and Phillip were there, and Dora glaring at everyone. Next thing I knew, I woke up in Seattle, and my CO Taylor was telling me about the lost legs."
+  branches {
+    responseText: ""
+    nextNodeIndex: 52
+    idRef {
+      id: "585d9a20393066600c000bdc:5905280c3966307c1c005e6e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5905280c3966307c1c005e71"
+  }
+  index: 52
+  text: "More than just legs- nerve damage, hip replacement, my eyes were fragged up. If it had happened thirty years ago, I would have died, or spent the rest of my life in a wheelchair.\n\nCO authorized me for the nerves, hip replacement, eye and smartlink combo, standard for anyone who got eye-gouged. Legs were standard ARES model, fitted to Aztechnology hip and bone replacement. The irony of having bomb shrapnel and bone replacement from Aztechnology is not lost on me."
+  branches {
+    responseText: ""
+    nextNodeIndex: 53
+    idRef {
+      id: "585d9a20393066600c000bdc:590528ba3966307c1c005e73"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590528ba3966307c1c005e76"
+  }
+  index: 53
+  text: "{{GM}}Jon stares into his beer.{{/GM}}\n\nTaylor was my friend- and the one who recruited me, so he felt a little responsible, and authorized me for some extras."
+  branches {
+    responseText: "Extras?"
+    nextNodeIndex: 54
+    idRef {
+      id: "585d9a20393066600c000bdc:590529373966307c1c005f5d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590529373966307c1c005f60"
+  }
+  index: 54
+  text: "{{GM}}Jon fakes a smile.{{/GM}}\n\nSeriously, third date plus tequilla. Maybe a story for another time."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:590528e33966307c1c005f58"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5905185c3966307c1c005608"
+  }
+  index: 55
+  text: "{{GM}}Bartlett raises an eyebrow.{{/GM}}\n\nI think you have to buy me dinner and put out if you want to consider it a date."
+  branches {
+    responseText: "I have to put out?"
+    nextNodeIndex: 56
+    idRef {
+      id: "585d9a20393066600c000bdc:590518793966307c1c00560a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590518793966307c1c00560d"
+  }
+  index: 56
+  text: "{{GM}}Jon watches you with a straight face.{{/GM}}\n\nDude, I hang out in a whorehouse. If you don\'t put out, it\'s just dinner. I eat dinner with Seamus, but I wouldn\'t say we\'re dating."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:5905205a3966307c1c00577b"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590521a63966307c1c00585a"
+  }
+  index: 57
+  text: ""
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590531e33966307c1c00670d"
+  }
+  index: 58
+  text: "{{GM}}Jon\'s shocked face is priceless.{{/GM}}\n\nWhat??! You did, no shit?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 59
+    idRef {
+      id: "585d9a20393066600c000bdc:590532043966307c1c00670f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590532043966307c1c006712"
+  }
+  index: 59
+  text: "{{GM}}Jon waits while the waitress brings over the bottle, and pulls the top to take a deep lingering smell of the liquid inside.{{/GM}}\n\nDamn, you are a $(l.man) of your word. I can admire that."
+  branches {
+    responseText: ""
+    nextNodeIndex: 60
+    idRef {
+      id: "585d9a20393066600c000bdc:590532423966307c1c006714"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590532423966307c1c006717"
+  }
+  index: 60
+  text: "{{GM}}Jon pours the two of you a drink, and then settles back in.{{/GM}}\n\nOkay, you made good. Go ahead and ask."
+  branches {
+    responseText: "Hung like a horse, something extra, what\'s up?"
+    nextNodeIndex: 61
+    idRef {
+      id: "585d9a20393066600c000bdc:590532713966307c1c006719"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5905327f3966307c1c00671c"
+  }
+  index: 61
+  text: "{{GM}}Jon sputters the tequilla, coughing and refilling both glasses.{{/GM}}\n\nDamn, you\'re not even going to let me get good and proper drunk first?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 62
+    idRef {
+      id: "585d9a20393066600c000bdc:590532a93966307c1c00671e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590532a93966307c1c006721"
+  }
+  index: 62
+  text: "{{GM}}Jon takes his second shot much smoother.{{/GM}}\n\nOkay, so Taylor, my CO, he felt bad because he not only recruited me, but he\'s the one who sent me back to Bogota for my last assignment. I don\'t blame him, but he felt responsible."
+  branches {
+    responseText: ""
+    nextNodeIndex: 63
+    idRef {
+      id: "585d9a20393066600c000bdc:590532db3966307c1c006723"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590532db3966307c1c006726"
+  }
+  index: 63
+  text: "The mine blew off my legs, tore up my hips, and if you\'re an expert in anatomy, you\'ll know that\'s the location of some very sensitive equipment."
+  branches {
+    responseText: "Blew off your dick?"
+    nextNodeIndex: 64
+    idRef {
+      id: "585d9a20393066600c000bdc:590533013966307c1c006728"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590533013966307c1c00672b"
+  }
+  index: 64
+  text: "{{GM}}Jon shudders.{{/GM}}\n\nYeah, that\'s about the size of it. Boom, goodbye Mr Happy."
+  branches {
+    responseText: "Mr Happy?"
+    nextNodeIndex: 65
+    idRef {
+      id: "585d9a20393066600c000bdc:590533233966307c1c00672d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590533233966307c1c006730"
+  }
+  index: 65
+  text: "{{GM}}Jon rolls his eyes, refilling both glasses.{{/GM}}\n\nOh, like there\'s a dignified name for someone\'s bits. Krull the Warrior King, Bear With Wide Canyon, I\'ve heard some doozies.\nAnyway, yeah- was blown to smithereens."
+  branches {
+    responseText: ""
+    nextNodeIndex: 66
+    idRef {
+      id: "585d9a20393066600c000bdc:5905336a3966307c1c006732"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5905336a3966307c1c006735"
+  }
+  index: 66
+  text: "So Taylor felt responsible, and opted for the upgraded replacement."
+  branches {
+    responseText: "What is that?"
+    nextNodeIndex: 67
+    idRef {
+      id: "585d9a20393066600c000bdc:5905337d3966307c1c006737"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5905337d3966307c1c00673a"
+  }
+  index: 67
+  text: "{{GM}}Jon sighs.{{/GM}}\n\nThe Mister Studd implant. It\'s like a foot-long vibrator attached to my hips, with vibration settings, lights, and even knobbly bits I can set for her pleasure."
+  branches {
+    responseText: ""
+    nextNodeIndex: 68
+    idRef {
+      id: "585d9a20393066600c000bdc:590533bd3966307c1c00673c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590533bd3966307c1c00673f"
+  }
+  index: 68
+  text: "Not that any woman will let me touch her with it. Or man, for that matter.\n\nI get service here, and it seems pretty popular, but why wouldn\'t it when you\'re paying for the time?"
+  branches {
+    responseText: "I could be up for it."
+    nextNodeIndex: 69
+    idRef {
+      id: "585d9a20393066600c000bdc:5905340f3966307c1c006741"
+    }
+  }
+  branches {
+    responseText: "Interesting."
+    nextNodeIndex: 70
+    idRef {
+      id: "585d9a20393066600c000bdc:590534103966307c1c006743"
+    }
+  }
+  branches {
+    responseText: "I couldn\'t see letting it in me, either."
+    nextNodeIndex: 71
+    idRef {
+      id: "585d9a20393066600c000bdc:5905341d3966307c1c006745"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5905342d3966307c1c00686f"
+  }
+  index: 69
+  text: "{{GM}}Jon raises an eyebrow.{{/GM}}\n\nReally? Interesting. Let me know the next time you\'re bunking down, I\'ll come visit."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:590534603966307c1c006af5"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590534673966307c1c006af9"
+  }
+  index: 70
+  text: "{{GM}}Jon shrugs.{{/GM}}\n\nEmbarrassing, novel, anecdotal. Feel free to share the story, your buddy with the cyber-dick."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:590534b93966307c1c006b02"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590534693966307c1c006afc"
+  }
+  index: 71
+  text: "{{GM}}Jon shrugs.{{/GM}}\n\nMost want to see it, no one wants it once they have."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:5905347f3966307c1c006afe"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59052e6d3966307c1c0063b0"
+  }
+  index: 72
+  text: "{{GM}}Jon slides you a cerveza of your own.{{/GM}}\n\nI know you did. I passed along word to my friends, who were very grateful. They even got me a new armored vest, with actual magical sigil drawn all over it. I don\'t know if it\'s better than what I had, but you really came through for us.\n\nI owe you about five hundred beers, Boss."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:59052e923966307c1c0063b2"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590531403966307c1c0065de"
+  }
+  index: 73
+  text: "{{GM}}Bartlett grits his teeth.{{/GM}}\n\nI was hoping that you\'d pull it out in the clinch, but I understand. We got a lot more going on here than my old merc buddies. \nI appreciate the effort, $(l.guy)."
+  branches {
+    responseText: ""
+    nextNodeIndex: 74
+    idRef {
+      id: "585d9a20393066600c000bdc:590531713966307c1c0065e0"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590531783966307c1c006707"
+  }
+  index: 74
+  text: "We\'ll try and figure something else out, I\'ll loop you in when I know more."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:590531863966307c1c006709"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590525073966307c1c005a1d"
+  }
+  index: 75
+  text: "You want to progress the story, or just look at the options?"
+  branches {
+    responseText: "{{CC}}+1{{/CC}} Progress the story "
+    actions {
+      ops {
+        functionName: "Set Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Progression_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Arithmetic (int)"
+            args {
+              call_value {
+                functionName: "Get Story Variable (int)"
+                args {
+                  string_value: "57084f7c6631365c1600767e"
+                }
+                args {
+                  string_value: "Crew_Progression_Bartlett"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "Arithmetic Ops"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 76
+    idRef {
+      id: "585d9a20393066600c000bdc:590525103966307c1c005a1f"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Set TalkedtoBartlett: False{{/CC}} Have a look at the other options."
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "bHubTalkedTo_Bartlett"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 76
+    idRef {
+      id: "585d9a20393066600c000bdc:590525613966307c1c005bc0"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590525963966307c1c005bc3"
+  }
+  index: 76
+  text: "Sure thing, boss. Have at it."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:590525993966307c1c005bc5"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59050de63966307c1c005295"
+  }
+  index: 77
+  text: "{{GM}}Jon smiles.{{/GM}}\n\nWhich story, mine or Kid Stealth? Both handsome men with cyberlegs. I think I\'m taller."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:59050e183966307c1c0052f5"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59050e233966307c1c0052f9"
+  }
+  index: 78
+  text: "{{GM}}Jon shrugs.{{/GM}}\n\nHe\'s a regular guy, puts his pants on one leg at a time. Mercenary companies are a lot like any other company. You go for the people and the pay, stay for the pay, until you need a new start. I bounced around a few when I first started, including the 77th. Good people, a little too straight-laced for me. I got out of the military to escape rules and regulations, you know?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:59050e283966307c1c0052fb"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59050fac3966307c1c00541b"
+  }
+  index: 79
+  text: "{{GM}}Jon shrugs.{{/GM}}\n\nSadly, I think this might be it for me. Mercenary service retired me, turned me over to recruiting. Didn\'t feel right, and I ended up bouncing around from place to place until I found a dojo that would take someone with cyber."
+  branches {
+    responseText: ""
+    nextNodeIndex: 80
+    idRef {
+      id: "585d9a20393066600c000bdc:59050fd23966307c1c00548e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59050fd23966307c1c005491"
+  }
+  index: 80
+  text: "Actually how I met Kubota. It was run by her half-brother until he was killed. I\'ve been talking to her about running it, but she says I haven\'t proven myself yet."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "585d9a20393066600c000bdc:59050fcd3966307c1c005489"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
     id: "585d9b3d393066600c000c17"
   }
-  index: 4
+  index: 81
   text: "Sure.  No problem."
   nodeType: ConversationNodeType_Simple
 }
@@ -709,11 +3100,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b001316"
   }
-  index: 5
+  index: 82
   text: "{{GM}}Bartlett lifts his beer in your direction as you approach, with a smile.{{/GM}}\n\nHow\'s it shakin\342\200\231?"
   branches {
     responseText: ""
-    nextNodeIndex: 6
+    nextNodeIndex: 83
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001318"
     }
@@ -737,17 +3128,42 @@ nodes {
         int_value: 1
       }
     }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_TalkedTo_Bartlett"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
 }
 nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b00131a"
   }
-  index: 6
+  index: 83
   text: ""
   branches {
     responseText: "Have you looked around? There\342\200\231s a whole lotta shakin\342\200\231 going on."
-    nextNodeIndex: 7
+    nextNodeIndex: 84
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -756,7 +3172,7 @@ nodes {
   }
   branches {
     responseText: "What are you drinking?"
-    nextNodeIndex: 8
+    nextNodeIndex: 85
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -765,7 +3181,7 @@ nodes {
   }
   branches {
     responseText: "How do you know Seamus?"
-    nextNodeIndex: 15
+    nextNodeIndex: 92
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -774,7 +3190,7 @@ nodes {
   }
   branches {
     responseText: "How did you get here?"
-    nextNodeIndex: 17
+    nextNodeIndex: 94
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -783,7 +3199,7 @@ nodes {
   }
   branches {
     responseText: "Talk to you later."
-    nextNodeIndex: 33
+    nextNodeIndex: 110
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b0013ac"
     }
@@ -795,11 +3211,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b00131e"
   }
-  index: 7
+  index: 84
   text: "{{GM}}Bartlett nods.{{/GM}}\n\nThere\'s more than a little truth to that. \'Period of civil unrest,\' I think the term is. People afraid for their lives, and all that waiting for a flame to ignite the gasoline. If something doesn\'t resolve itself in a big way, this city is going to explode."
   branches {
     responseText: ""
-    nextNodeIndex: 6
+    nextNodeIndex: 83
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001320"
     }
@@ -811,11 +3227,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b001326"
   }
-  index: 8
+  index: 85
   text: "{{GM}}Bartlett smiles, showing you the label for a cheap Aztlan beer.{{/GM}}\n\nI am, of course, drinking a Cerveza, the preferred brand of Aztechnology."
   branches {
     responseText: "Cerveza? Doesn\'t that mean beer in Spanish?"
-    nextNodeIndex: 9
+    nextNodeIndex: 86
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001328"
     }
@@ -826,11 +3242,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b00132a"
   }
-  index: 9
+  index: 86
   text: "{{GM}}Bartlett smiles.{{/GM}}\n\nIt does indeed. Aztechnology stole the entire branding for something as simple as beer- that\'s why they\'re an unstoppable force."
   branches {
     responseText: "Why drink that?"
-    nextNodeIndex: 10
+    nextNodeIndex: 87
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -839,7 +3255,7 @@ nodes {
   }
   branches {
     responseText: "So you drink cheap beer?"
-    nextNodeIndex: 11
+    nextNodeIndex: 88
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -848,7 +3264,7 @@ nodes {
   }
   branches {
     responseText: "I think I\'ll have one with you."
-    nextNodeIndex: 12
+    nextNodeIndex: 89
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -861,11 +3277,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b00132e"
   }
-  index: 10
+  index: 87
   text: "{{GM}}Bartlett considers the bottle and its peeling label.{{/GM}}\n\nI used to hate the taste- I always wanted a beer like back home. But you spend a few years down there, and you get used to the stuff. Eventually, you go to a far away country, and this is the only beer that reminds you of happier times."
   branches {
     responseText: ""
-    nextNodeIndex: 6
+    nextNodeIndex: 83
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001330"
     }
@@ -877,11 +3293,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b001336"
   }
-  index: 11
+  index: 88
   text: "{{GM}}Bartlett shrugs, finishing the bottle and leaving it on the counter.{{/GM}}\n\nHell no. Mrs Kubota doesn\'t pay to import it, I have to get it here, and then drink it all myself. The stuff is swill, but it reminds me of sitting around a camp fire at night, laughing and surviving another day."
   branches {
     responseText: ""
-    nextNodeIndex: 6
+    nextNodeIndex: 83
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001338"
     }
@@ -893,11 +3309,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b00133e"
   }
-  index: 12
+  index: 89
   text: "{{GM}}Bartlett nods.{{/GM}}\n\nCherry, would you get this $(l.man) one of my stock?"
   branches {
     responseText: ""
-    nextNodeIndex: 13
+    nextNodeIndex: 90
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001340"
     }
@@ -908,11 +3324,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b001342"
   }
-  index: 13
+  index: 90
   text: "{{GM}}Cherry leaves you a cold beer and a clean napkin. She leaves with a smile and without saying a word.{{/GM}}"
   branches {
     responseText: ""
-    nextNodeIndex: 14
+    nextNodeIndex: 91
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001344"
     }
@@ -926,11 +3342,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b001346"
   }
-  index: 14
+  index: 91
   text: "{{GM}}Bartlett raises his bottle, and waits for you to touch yours.{{/GM}}\n\nSalud."
   branches {
     responseText: ""
-    nextNodeIndex: 6
+    nextNodeIndex: 83
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001348"
     }
@@ -942,11 +3358,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b00134e"
   }
-  index: 15
+  index: 92
   text: "{{GM}}Bartlett shrugs.{{/GM}}\n\nHow do any two barflies know each other? You spend enough time drunkenly rambling at each other, and you become friends. We\'re no Cliff and Norm, but I know I can rely on him. That boy can throw one hell of a spell."
   branches {
     responseText: ""
-    nextNodeIndex: 16
+    nextNodeIndex: 93
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001350"
     }
@@ -957,11 +3373,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b001352"
   }
-  index: 16
+  index: 93
   text: "{{GM}}Bartlett burps into his fist.{{/GM}}\n\nDrink you under the table, if you give him the chance. Damn Dwarves and whatever God gave \'em."
   branches {
     responseText: ""
-    nextNodeIndex: 6
+    nextNodeIndex: 83
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001354"
     }
@@ -973,11 +3389,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b00135a"
   }
-  index: 17
+  index: 94
   text: "{{GM}}Bartlett scratches at the label on his beer with his thumbnail.{{/GM}}\n\nWhat is \'things I\'ve wondered myself, Alex?\' for 200?"
   branches {
     responseText: ""
-    nextNodeIndex: 18
+    nextNodeIndex: 95
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b00135c"
     }
@@ -988,32 +3404,32 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b00135e"
   }
-  index: 18
+  index: 95
   text: "{{GM}}Bartlett gives you a significant glance.{{/GM}}\n\nThis isn\'t really first date material. Do you want the long version or the short version?"
   branches {
     responseText: "Long version."
-    nextNodeIndex: 19
+    nextNodeIndex: 96
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001360"
     }
   }
   branches {
     responseText: "Short version."
-    nextNodeIndex: 26
+    nextNodeIndex: 103
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001384"
     }
   }
   branches {
     responseText: "Shortest"
-    nextNodeIndex: 31
+    nextNodeIndex: 108
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b00139c"
     }
   }
   branches {
     responseText: "This isn\'t a date."
-    nextNodeIndex: 32
+    nextNodeIndex: 109
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b0013a4"
     }
@@ -1024,11 +3440,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b001362"
   }
-  index: 19
+  index: 96
   text: "{{GM}}Bartlett smiles at you, taking a swig of his drink.{{/GM}}\n\nif I didn\'t know better, I\'d think you were flirting with me. Long version is a few more beers deep. If you\'ve got time and a bottle of tequilla, I\'ll tell you all about it.\nIt\'s an amazing story- young Olympic hopeful recruited by military organization, only to get legs blown off in God-forsaken jungle. It\'s got everything- drama, suspense, love, loss, and a hero hung like a horse."
   branches {
     responseText: ""
-    nextNodeIndex: 20
+    nextNodeIndex: 97
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001364"
     }
@@ -1039,11 +3455,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b001366"
   }
-  index: 20
+  index: 97
   text: ""
   branches {
     responseText: "Olympic hopeful?"
-    nextNodeIndex: 21
+    nextNodeIndex: 98
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -1052,21 +3468,21 @@ nodes {
   }
   branches {
     responseText: "Start with the Military Organization."
-    nextNodeIndex: 22
+    nextNodeIndex: 99
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001370"
     }
   }
   branches {
     responseText: "Your legs?"
-    nextNodeIndex: 23
+    nextNodeIndex: 100
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001378"
     }
   }
   branches {
     responseText: "Hung like a horse?"
-    nextNodeIndex: 25
+    nextNodeIndex: 102
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001380"
     }
@@ -1078,11 +3494,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b00136a"
   }
-  index: 21
+  index: 98
   text: "{{GM}}Bartlett snorts, checking his reflection in the mirror behind the bar. {{/GM}}\n\nYeah, and look at me now. I was a dual black-belt by the time I was sixteen. I may have had a shot, but with the cancellation in 2032 and no-shows in 2036 and 2040 only sparsely attended, no one recruited. By the time it came back I was too old, and had been a professional mercenary for the better part of a decade."
   branches {
     responseText: ""
-    nextNodeIndex: 20
+    nextNodeIndex: 97
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b00136c"
     }
@@ -1094,11 +3510,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b001372"
   }
-  index: 22
+  index: 99
   text: "{{GM}}Bartlett fixes you with a steady gaze, despite being at least a few beers in.{{/GM}}\n\nThe Nephilim Network is a private mercenary network. Discreet, professional, and top-tier talent. They\'re always hiring, and always in demand."
   branches {
     responseText: ""
-    nextNodeIndex: 20
+    nextNodeIndex: 97
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001374"
     }
@@ -1110,11 +3526,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b00137a"
   }
-  index: 23
+  index: 100
   text: "{{GM}}Bartlett hits the metal leg of his stool with his leg, and it has the definite \'clunk\' of metal to it.{{/GM}}"
   branches {
     responseText: ""
-    nextNodeIndex: 24
+    nextNodeIndex: 101
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b00137c"
     }
@@ -1125,7 +3541,7 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b00137e"
   }
-  index: 24
+  index: 101
   text: "{{GM}}Bartlett fixes you with a steady gaze.{{/GM}}\n\nThat is a story for another time- when we\'re drunker, about to die, or know each other much better."
   nodeType: ConversationNodeType_Simple
 }
@@ -1133,7 +3549,7 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b001382"
   }
-  index: 25
+  index: 102
   text: "{{GM}}Bartlett smiles at you.{{/GM}}\n\nPlease, call me Jon. And buy me a few more drinks before we go down that road."
   nodeType: ConversationNodeType_Simple
 }
@@ -1141,11 +3557,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b001386"
   }
-  index: 26
+  index: 103
   text: "{{GM}}Bartlett wipes some sweat off his bottle as he thinks.{{/GM}}\n\nI used to work as a mercenary group called the Nephilim Network. I got sidelined by an injury, and they asked me to turn to recruiting. You\'d be surprised how many future heavy-hitters come out of a neighborhood like Redmond. If you can survive eighteen years here, Bogota is a breeze."
   branches {
     responseText: ""
-    nextNodeIndex: 27
+    nextNodeIndex: 104
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001388"
     }
@@ -1156,25 +3572,25 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b00138a"
   }
-  index: 27
+  index: 104
   text: ""
   branches {
     responseText: "Can you tell me about the Nephilim network?"
-    nextNodeIndex: 28
+    nextNodeIndex: 105
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b00138c"
     }
   }
   branches {
     responseText: "What injury?"
-    nextNodeIndex: 29
+    nextNodeIndex: 106
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001394"
     }
   }
   branches {
     responseText: "How do you like recruiting?"
-    nextNodeIndex: 30
+    nextNodeIndex: 107
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001398"
     }
@@ -1186,11 +3602,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b00138e"
   }
-  index: 28
+  index: 105
   text: "{{GM}}Bartlett fixes you with a steady gaze, despite being at least a few beers in.{{/GM}}\n\nThe Nephilim Network is a private mercenary network. Discreet, professional, and top-tier talent. They\'re always hiring, and always in demand."
   branches {
     responseText: ""
-    nextNodeIndex: 27
+    nextNodeIndex: 104
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b001390"
     }
@@ -1202,7 +3618,7 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b001396"
   }
-  index: 29
+  index: 106
   text: "{{GM}}Bartlett sips his beer, and then watches you with an amused expression.{{/GM}}\n\nSomebody hurt my feelings, and I came all the way to Seattle to sulk."
   nodeType: ConversationNodeType_Simple
 }
@@ -1210,7 +3626,7 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b00139a"
   }
-  index: 30
+  index: 107
   text: "{{GM}}Bartlett shrugs.{{/GM}}\n\nMost jobs you get in trouble if you\'re sitting in a bar already pleasantly buzzed by 1pm. \nMe? I\'m recruiting! So that part about it I really like."
   nodeType: ConversationNodeType_Simple
 }
@@ -1218,11 +3634,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b00139e"
   }
-  index: 31
+  index: 108
   text: "{{GM}}Bartlett blows out a sigh with a smile.{{/GM}}\n\nShortest? Okay: lifetime of mercenary work left me incapable of being a contributing member of society.\n\nThat\'s not bad. I should get that on a business card or something."
   branches {
     responseText: ""
-    nextNodeIndex: 6
+    nextNodeIndex: 83
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b0013a0"
     }
@@ -1234,11 +3650,11 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b0013a6"
   }
-  index: 32
+  index: 109
   text: "{{GM}}Bartlett rolls his eyes in an exaggerated motion.{{/GM}}\n\nI know, I\'ve been throwing myself at you, and you haven\'t even felt me up yet! \nChill, omae, I know we\'re biz."
   branches {
     responseText: ""
-    nextNodeIndex: 6
+    nextNodeIndex: 83
     idRef {
       id: "51ae7b4a303031980d0066bc:58f70c81396630708b0013a8"
     }
@@ -1250,7 +3666,7 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b0013ae"
   }
-  index: 33
+  index: 110
   text: "{{GM}}Bartlett toys with the bottle in front of him.{{/GM}}\n\nLater."
   nodeType: ConversationNodeType_Simple
 }
@@ -1258,7 +3674,7 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70dba396630708b001478"
   }
-  index: 34
+  index: 111
   text: "{{GM}}Bartlett raises an eyebrow as you return.{{/GM}}\n\nForget your drink?"
   branches {
     responseText: ""
@@ -1293,7 +3709,7 @@ nodes {
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70de3396630708b001484"
   }
-  index: 35
+  index: 112
   text: "{{GM}}Bartlett raises an eyebrow as you return.{{/GM}}\n\nOkay, now I know you\'re throwing yourself at me. You should know, I\'m a Ophiuchus, and I like long walks on the beach."
   branches {
     responseText: ""
@@ -1381,6 +3797,42 @@ roots {
         int_value: 0
       }
     }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_TalkedTo_Bartlett"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   actions {
     ops {
@@ -1401,7 +3853,7 @@ roots {
       }
     }
   }
-  nextNodeIndex: 5
+  nextNodeIndex: 82
   onlyOnce: true
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70c81396630708b001314"
@@ -1439,8 +3891,44 @@ roots {
         int_value: 1
       }
     }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_TalkedTo_Bartlett"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
-  nextNodeIndex: 34
+  nextNodeIndex: 111
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70dba396630708b001476"
   }
@@ -1477,8 +3965,44 @@ roots {
         int_value: 2
       }
     }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_TalkedTo_Bartlett"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
-  nextNodeIndex: 35
+  nextNodeIndex: 112
   idRef {
     id: "51ae7b4a303031980d0066bc:58f70de3396630708b001482"
   }
