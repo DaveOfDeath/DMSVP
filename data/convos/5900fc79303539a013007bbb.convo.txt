@@ -62,6 +62,41 @@ nodes {
   index: 2
   text: "Just make sure it doesn\'t happen again.\n\n{{GM}}He gestures towards the exit portal.{{/GM}}"
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bStill_In_Region"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eDeckerGetOut"
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
