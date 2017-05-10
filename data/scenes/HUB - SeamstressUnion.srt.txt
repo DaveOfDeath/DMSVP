@@ -609,6 +609,65 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Teleport Actor to Area Around Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "591289db3966307421004db9"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Prop"
+          args {
+            call_value {
+              functionName: "Get Map Item (Prop)"
+              args {
+                string_value: "5912895d3966307421004db8"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -1159,6 +1218,84 @@ triggers {
           functionName: "Get Map Item (Event)"
           args {
             string_value: "eRNDNextPatron"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Actor to Area Around Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "591289db3966307421004db9"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Prop"
+          args {
+            call_value {
+              functionName: "Get Map Item (Prop)"
+              args {
+                string_value: "5713e9b8663136c010001cbd"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "591289db3966307421004db9"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:Human/Gaichu/Standing_idle_normalstance"
           }
         }
       }
@@ -2690,7 +2827,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Animation)"
           args {
-            string_value: "Seattle:General/decking_dizzy_dumpshock"
+            string_value: "HongKong:General/prisoner_idle_kneeling"
           }
         }
       }
@@ -3900,9 +4037,6 @@ triggers {
         }
       }
     }
-    ops {
-      functionName: "No Effect"
-    }
   }
   isActive: true
   idRef {
@@ -4053,7 +4187,7 @@ triggers {
             string_value: "57084f7c6631365c1600767e"
           }
           args {
-            string_value: "Crew_Recruited_Seamus"
+            string_value: "Crew_OnLastRun_Seamus"
           }
         }
       }
@@ -4219,7 +4353,7 @@ triggers {
             string_value: "57084f7c6631365c1600767e"
           }
           args {
-            string_value: "Crew_Recruited_River"
+            string_value: "Crew_OnLastRun_River"
           }
         }
       }
@@ -5518,6 +5652,12 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eCloseDrawer"
+      }
+    }
   }
   conditions {
   }
@@ -5648,51 +5788,49 @@ triggers {
       }
     }
     ops {
-      functionName: "Trigger: Run Alternate Trigger"
+      functionName: "Send Event After Delay"
       args {
         call_value {
-          functionName: "Get Map Item (Trigger)"
+          functionName: "Get Map Item (Event)"
           args {
-            string_value: "58f7139b396630708b00172d"
+            string_value: "eCloseDrawer"
           }
         }
+      }
+      args {
+        float_value: 3
+      }
+    }
+    ops {
+      functionName: "Trigger: Wait Until Triggered Again"
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:props"
+          }
+          args {
+            string_value: "ChairSlide1"
+          }
+        }
+      }
+      args {
+        float_value: 3
       }
       args {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WaitOrNot"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
+            string_value: "bool"
           }
           args {
             int_value: 0
           }
         }
       }
-    }
-    ops {
-      functionName: "Trigger: Wait Until Triggered Again"
     }
     ops {
       functionName: "Set Prop Visible by Tag"
@@ -5794,6 +5932,17 @@ triggers {
           functionName: "Get Map Item (InteractableObject)"
           args {
             string_value: "58db37b0396630ec80004eb5"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Delete Prop"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "58db37b0396630ec80004e80"
           }
         }
       }
@@ -6207,7 +6356,7 @@ triggers {
         }
       }
       args {
-        string_value: "Sure has been quiet.   I like it that way."
+        string_value: "Sure has been quiet. I like it that way."
       }
     }
   }
@@ -6268,7 +6417,7 @@ triggers {
         }
       }
       args {
-        string_value: "Sure has been one helluva storm, eh Partner?  Going on what now... A week?"
+        string_value: "Sure has been one helluva storm. Raining for a week straight?"
       }
     }
   }
@@ -6329,7 +6478,7 @@ triggers {
         }
       }
       args {
-        string_value: "The Ripper Killers been quiet a while.  Where do you think he\'ll strike next?"
+        string_value: "The Ripper has been quiet a while. Where do you think he\'ll strike next?"
       }
     }
   }
@@ -6390,7 +6539,7 @@ triggers {
         }
       }
       args {
-        string_value: "Heard some team really burned up a Yakuza BTL den.   They\'ve been out in force looking for answers."
+        string_value: "Heard someone really burned up a Yakuza BTL den.  "
       }
     }
   }
@@ -6451,7 +6600,7 @@ triggers {
         }
       }
       args {
-        string_value: "Cherry Bomb\'s been off the last few days.   Think she\'s alright?"
+        string_value: "Coyote has been off the last few days. Think she\'s alright?"
       }
     }
   }
@@ -6512,7 +6661,7 @@ triggers {
         }
       }
       args {
-        string_value: "The streets been a little chaotic.  Seems some Lieutenant from the Ancients got herself killed in some BTL den."
+        string_value: "Some leader from the Ancients got herself killed in a BTL raid, causing major chaos."
       }
     }
   }
@@ -6573,7 +6722,7 @@ triggers {
         }
       }
       args {
-        string_value: "Heard rumblings on the street that someones targeting the Space Needle.   Think they could actually get through the security?"
+        string_value: "Heard rumor that terrorists are targeting the Space Needle. Do you think they could get through the security?"
       }
     }
   }
@@ -6822,7 +6971,7 @@ triggers {
         }
       }
       args {
-        string_value: "Sure is dead in here.   What time do the girls start working?"
+        string_value: "Sure is dead in here. What time do the pretty ones start working?"
       }
     }
   }
@@ -6944,7 +7093,7 @@ triggers {
         }
       }
       args {
-        string_value: "Damned bathrooms been occupied forever!"
+        string_value: "Damned bathroom has been occupied forever!"
       }
     }
   }
@@ -7005,7 +7154,7 @@ triggers {
         }
       }
       args {
-        string_value: "Hurry up in there!   Or I\'m gonna need a mop!"
+        string_value: "Hurry up in there! Or I\'m gonna need a mop!"
       }
     }
   }
@@ -7315,7 +7464,7 @@ triggers {
         }
       }
       args {
-        string_value: "You\'re cute.   Ever thought of working here?"
+        string_value: "You\'re cute. Ever thought of working here?"
       }
     }
   }
@@ -7498,7 +7647,7 @@ triggers {
         }
       }
       args {
-        string_value: "I can\'t remember what I was doing.  I really hope I can go home soon."
+        string_value: "I can\'t remember what I was doing. I hope I can go home soon."
       }
     }
   }
@@ -7620,7 +7769,7 @@ triggers {
         }
       }
       args {
-        string_value: "It\'s been a long night... My feet hurt.  What is it that you need, Darling?"
+        string_value: "It\'s been a long night... My feet hurt. What is it that you need, Darling?"
       }
     }
   }
@@ -9207,7 +9356,10 @@ triggers {
               functionName: "Specific Actor"
               args {
                 call_value {
-                  functionName: "Triggering Actor"
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "5904a7a239663034100050b5"
+                  }
                 }
               }
               args {
@@ -9243,7 +9395,10 @@ triggers {
               functionName: "Specific Actor"
               args {
                 call_value {
-                  functionName: "Triggering Actor"
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "5904a7a239663034100050b8"
+                  }
                 }
               }
               args {
@@ -9278,6 +9433,667 @@ triggers {
   isActive: true
   idRef {
     id: "590e5dab3966308007005b53"
+  }
+  elseActions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "590e5dab3966308007005b53"
+          }
+        }
+      }
+    }
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Chatter.Jon and Seamus"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eMassEffectChatter"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "AND"
+      args {
+        call_value {
+          functionName: "Evaluate If Actor is Inside Region"
+          args {
+            call_value {
+              functionName: "Specific Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "5904a7a239663034100050b5"
+                  }
+                }
+              }
+              args {
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AreOrAreNot"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "51a12f24616634a81e001378"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Evaluate If Actor is Inside Region"
+          args {
+            call_value {
+              functionName: "Specific Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "5904a7a239663034100050b8"
+                  }
+                }
+              }
+              args {
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AreOrAreNot"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "51a12f24616634a81e001378"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  actions {
+  }
+  isActive: true
+  idRef {
+    id: "591291633966307421004dbb"
+  }
+  elseActions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "590e5dab3966308007005b53"
+          }
+        }
+      }
+    }
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Chatter.Seamus and Violet"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eMassEffectChatter"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "AND"
+      args {
+        call_value {
+          functionName: "Evaluate If Actor is Inside Region"
+          args {
+            call_value {
+              functionName: "Specific Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "5904a7a239663034100050b5"
+                  }
+                }
+              }
+              args {
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AreOrAreNot"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "51a12f24616634a81e001378"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Evaluate If Actor is Inside Region"
+          args {
+            call_value {
+              functionName: "Specific Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "5904a7a239663034100050b8"
+                  }
+                }
+              }
+              args {
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AreOrAreNot"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "51a12f24616634a81e001378"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  actions {
+  }
+  isActive: true
+  idRef {
+    id: "591291713966307421004dbc"
+  }
+  elseActions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "590e5dab3966308007005b53"
+          }
+        }
+      }
+    }
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Chatter.Violet and River"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eMassEffectChatter"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "AND"
+      args {
+        call_value {
+          functionName: "Evaluate If Actor is Inside Region"
+          args {
+            call_value {
+              functionName: "Specific Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "5904a7a239663034100050b5"
+                  }
+                }
+              }
+              args {
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AreOrAreNot"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "51a12f24616634a81e001378"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Evaluate If Actor is Inside Region"
+          args {
+            call_value {
+              functionName: "Specific Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "5904a7a239663034100050b8"
+                  }
+                }
+              }
+              args {
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AreOrAreNot"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "51a12f24616634a81e001378"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  actions {
+  }
+  isActive: true
+  idRef {
+    id: "5912917f3966307421004dbd"
+  }
+  elseActions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "590e5dab3966308007005b53"
+          }
+        }
+      }
+    }
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Chatter.River and Paco"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eMassEffectChatter"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "AND"
+      args {
+        call_value {
+          functionName: "Evaluate If Actor is Inside Region"
+          args {
+            call_value {
+              functionName: "Specific Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "5904a7a239663034100050b5"
+                  }
+                }
+              }
+              args {
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AreOrAreNot"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "51a12f24616634a81e001378"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Evaluate If Actor is Inside Region"
+          args {
+            call_value {
+              functionName: "Specific Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "5904a7a239663034100050b8"
+                  }
+                }
+              }
+              args {
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AreOrAreNot"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "51a12f24616634a81e001378"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  actions {
+  }
+  isActive: true
+  idRef {
+    id: "5912918d3966307421004dbe"
+  }
+  elseActions {
+    ops {
+      functionName: "Enable/Disable Trigger"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Trigger)"
+          args {
+            string_value: "590e5dab3966308007005b53"
+          }
+        }
+      }
+    }
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Chatter.Paco and Coyote"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eMassEffectChatter"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "AND"
+      args {
+        call_value {
+          functionName: "Evaluate If Actor is Inside Region"
+          args {
+            call_value {
+              functionName: "Specific Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "5904a7a239663034100050b5"
+                  }
+                }
+              }
+              args {
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AreOrAreNot"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "51a12f24616634a81e001378"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Evaluate If Actor is Inside Region"
+          args {
+            call_value {
+              functionName: "Specific Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Actor)"
+                  args {
+                    string_value: "5904a7a239663034100050b8"
+                  }
+                }
+              }
+              args {
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AreOrAreNot"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "51a12f24616634a81e001378"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "bHub_FirstVisit"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+  }
+  isActive: true
+  idRef {
+    id: "591291973966307421004dbf"
   }
   elseActions {
     ops {
@@ -11202,7 +12018,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Story/JakeArmitage"
+    prefab_name: "Seattle:Story/JakeArmitage"
     character_sheet_id: "Story_Jake"
     equipment_sheet_id: "Story_Jake"
     character_mod {
@@ -11260,16 +12076,19 @@ characters {
       }
       archetypeName: "Guard - Seek And Destroy"
       attitude: AttitudeAggressive
+      vulnerabilities {
+      }
     }
     team_id: "Civilians"
-    char_name: "Jake Armitage"
+    char_name: "Organ Grinders System"
     GeneralTags: "isJake"
     enabled_at_start: true
     pc_spawn_number: -1
     cyberware_jack: "Datajack"
     portrait {
-      filename: "NPC_HumanMale_JakeArmitage"
+      filename: "Geeked_plainhack"
     }
+    karma: 97
   }
 }
 characters {
@@ -12353,7 +13172,7 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -51
+    x: -50
     y: 0
     z: -3
   }
@@ -12454,7 +13273,7 @@ characters {
   gridPoint {
     x: -60
     y: 0
-    z: -21
+    z: -20
   }
   orientation: ORIENTATION_E
   idRef {
@@ -12550,9 +13369,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -64
+    x: -65
     y: 0
-    z: -15
+    z: -14
   }
   orientation: ORIENTATION_S
   idRef {
@@ -12649,7 +13468,7 @@ characters {
   gridPoint {
     x: -52
     y: 0
-    z: -23
+    z: -22
   }
   orientation: ORIENTATION_E
   idRef {
@@ -12749,11 +13568,11 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -50
+    x: -46
     y: 0
     z: -18
   }
-  orientation: ORIENTATION_E
+  orientation: ORIENTATION_N
   idRef {
     id: "5904a7a339663034100050bd"
   }
@@ -12844,6 +13663,100 @@ characters {
     portrait_code_override: "s5h4c2b0c0t0"
     karma: 44
     hiring_cost_override: 500
+    is_prop_character: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: 16
+    y: 0
+    z: -44
+  }
+  orientation: ORIENTATION_W
+  displayName: "Johnny Clean2"
+  idRef {
+    id: "591289db3966307421004db9"
+  }
+  interactionRoot {
+    isEnabled: false
+    interactionRadius: 1
+    conversationPoint {
+      conversationID: "8fb582723030312816002a1d"
+      turnToFace: true
+    }
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Story/JohnnyClean"
+    character_sheet_id: "Lonestar_Lv1_Human_Mage"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Guard - Seek And Destroy"
+      attitude: AttitudeAggressive
+    }
+    equipment {
+      prefab_name: "Outfit_Maintenance"
+    }
+    team_id: "Civilians"
+    char_name: "Johnny Clean"
+    pc_spawn_number: -1
+    portrait {
+      filename: "Backer_HumanMale_GregWilhelm_JohnnyClean_Tribute"
+    }
+    portrait_code_override: "s4h5c6b4"
+    karma: 40
     is_prop_character: true
   }
 }
@@ -12984,6 +13897,7 @@ mapEvents: "eNewsUpdate"
 mapEvents: "eTeleport"
 mapEvents: "eMassEffectChatter"
 mapEvents: "eRNDRunnerPlacement"
+mapEvents: "eCloseDrawer"
 senseTags: "isSpeaker"
 senseTags: "isJon"
 senseTags: "isSeamus"
