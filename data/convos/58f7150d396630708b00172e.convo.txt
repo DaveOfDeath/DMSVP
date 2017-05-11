@@ -7,7 +7,7 @@ nodes {
     id: "590df13d3966308007004dc4"
   }
   index: 0
-  text: "Welcome to Organ Grinders. Please log in with your user ID."
+  text: "Welcome to Organ Grinders. Please log in with your user ID card, biometrics, or PIN code."
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -25,34 +25,383 @@ nodes {
   text: ""
   branches {
     responseText: "4118"
-    nextNodeIndex: -1
+    nextNodeIndex: 2
     idRef {
       id: "58f7150d396630708b00172e:590df15b3966308007004dc6"
     }
   }
   branches {
-    responseText: ""
-    nextNodeIndex: -1
-    idRef {
-      id: "58f7150d396630708b00172e:590df15b3966308007004dc8"
+    responseText: "{{GM}}Drone Control 6{{/GM}} Use Drone Control Deck to spoof keycard RFID signal."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 10
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 6
+        }
+      }
     }
-  }
-  branches {
-    responseText: ""
-    nextNodeIndex: -1
-    idRef {
-      id: "58f7150d396630708b00172e:590df15b3966308007004dca"
-    }
-  }
-  branches {
-    responseText: ""
-    nextNodeIndex: -1
+    nextNodeIndex: 2
+    hideIfUnavailable: true
     idRef {
       id: "58f7150d396630708b00172e:590df15b3966308007004dcc"
     }
+    inputBypass: true
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{GM}}Decking 6{{/GM}} crack the password protocol and gain entry to the system."
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 5
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 6
+        }
+      }
+    }
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    idRef {
+      id: "58f7150d396630708b00172e:590df15b3966308007004dc8"
+    }
+    inputBypass: true
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{GM}}Biotech 6{{/GM}} Spoof the biometric sensors to gain access"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 11
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 6
+        }
+      }
+    }
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    idRef {
+      id: "58f7150d396630708b00172e:590df15b3966308007004dca"
+    }
+    inputBypass: true
+    auxiliaryLink: true
   }
   nodeType: ConversationNodeType_InputNumpad
+  inputMaxLength: 4
   comment: "Computer Loop"
+}
+nodes {
+  idRef {
+    id: "5913ebc2396630c418006fef"
+  }
+  index: 2
+  text: "Welcome, Doctor Dresden.\n\nPlease review our menu options, as our system has changed:\n{{CC}}Personnel{{/CC}}\n{{CC}}Payroll{{/CC}}\n{{CC}}Security{{/CC}}\n{{CC}}Data Backup{{/CC}}\n{{CC}}Donor Privacy{{/CC}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "58f7150d396630708b00172e:5913ec22396630c418006ff1"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5913ec22396630c418006ff4"
+  }
+  index: 3
+  text: ""
+  branches {
+    responseText: "{{CC}}Personnel{{/CC}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "58f7150d396630708b00172e:5913ec48396630c418007012"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Payroll{{/CC}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "58f7150d396630708b00172e:5913ec48396630c418007014"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Security{{/CC}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "58f7150d396630708b00172e:5913ec48396630c418007016"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Data Backup{{/CC}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "58f7150d396630708b00172e:5913ec48396630c418007018"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Donor Privacy{{/CC}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "58f7150d396630708b00172e:5913ec48396630c41800701a"
+    }
+  }
+  branches {
+    responseText: "Search system for information about Ripper Killer."
+    nextNodeIndex: 4
+    idRef {
+      id: "58f7150d396630708b00172e:5913ec49396630c41800701c"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Dresden Menu Loop"
+}
+nodes {
+  idRef {
+    id: "5913eca4396630c41800701f"
+  }
+  index: 4
+  text: "A quick search by the most basic smartframe finds Dresden\'s notes about the killings... all of them. Even the ones that he didn\'t preside over the autopsy of, he attended and made notes."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "58f7150d396630708b00172e:5913ece2396630c418007021"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "5913ece8396630c418007024"
+  }
+  index: 5
+  text: ""
+  branches {
+    responseText: "First Killing, Eisen (SINless)"
+    nextNodeIndex: 6
+    idRef {
+      id: "58f7150d396630708b00172e:5913ecec396630c418007026"
+    }
+  }
+  branches {
+    responseText: "Second Killing, Robin Dagger (SINless)"
+    nextNodeIndex: -1
+    idRef {
+      id: "58f7150d396630708b00172e:5913ecf6396630c418007028"
+    }
+  }
+  branches {
+    responseText: "Third Killing, AJ Bolden (SINner)"
+    nextNodeIndex: -1
+    idRef {
+      id: "58f7150d396630708b00172e:5913ecf7396630c41800702a"
+    }
+  }
+  branches {
+    responseText: "Fourth Killing, Sam Watts (SINner)"
+    nextNodeIndex: -1
+    idRef {
+      id: "58f7150d396630708b00172e:5913ecf7396630c41800702c"
+    }
+  }
+  branches {
+    responseText: "Fifth Killing, Lucy (SINner)"
+    nextNodeIndex: -1
+    idRef {
+      id: "58f7150d396630708b00172e:5913ecf7396630c41800702e"
+    }
+  }
+  branches {
+    responseText: "Sixth Killing, Halfsky (SINner)"
+    nextNodeIndex: -1
+    idRef {
+      id: "58f7150d396630708b00172e:5913ecf7396630c418007030"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Delete the records.{{/GM}}"
+    nextNodeIndex: 7
+    idRef {
+      id: "58f7150d396630708b00172e:5913ecf7396630c418007032"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5913ef11396630c418007060"
+  }
+  index: 6
+  text: ""
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5913ee29396630c418007035"
+  }
+  index: 7
+  text: "Are you sure that you want to do this? These records will not be recoverable."
+  branches {
+    responseText: "Yes."
+    nextNodeIndex: 8
+    idRef {
+      id: "58f7150d396630708b00172e:5913ee46396630c418007037"
+    }
+  }
+  branches {
+    responseText: "No."
+    nextNodeIndex: 9
+    idRef {
+      id: "58f7150d396630708b00172e:5913ee46396630c418007039"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "5913ee7f396630c41800705d"
+  }
+  index: 8
+  text: "You purge the records completely from the system. That may confuse a certain doctor when he comes back to look at them later."
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "5913ee66396630c418007057"
+  }
+  index: 9
+  text: "Returning to the Smartframe search, you find the remaining notes."
+  branches {
+    responseText: ""
+    nextNodeIndex: 5
+    idRef {
+      id: "58f7150d396630708b00172e:5913ee69396630c418007059"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
 }
 roots {
   nextNodeIndex: 0
