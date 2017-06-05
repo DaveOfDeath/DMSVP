@@ -7534,7 +7534,7 @@ triggers {
   is_oneshot: false
 }
 triggers {
-  name: "Matix.ShowTrustLegalFilesInteract"
+  name: "Matrix.Data.Legal"
   events {
     ops {
       functionName: "On Item Interaction"
@@ -7574,6 +7574,42 @@ triggers {
       }
     }
     ops {
+      functionName: "Set Hack Status On Matrix Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HackIndicatorStatus"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "58ddb940663136e017001954"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sComputerName"
+          }
+        }
+      }
+      args {
+        string_value: "Telestrian Legal Department Server"
+      }
+    }
+    ops {
       functionName: "Start Conversation Between Actors"
       args {
         call_value {
@@ -7592,7 +7628,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (Actor)"
           args {
-            string_value: "51aba01f303031d8110012ea"
+            string_value: "5934a3ce343831a8040023a7"
           }
         }
       }
@@ -7671,7 +7707,7 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "Matrix.PayDataInteractAndBaronConvo"
+  name: "Matrix.Data.Research&Delivery"
   events {
     ops {
       functionName: "On Item Interaction"
@@ -7688,6 +7724,28 @@ triggers {
   conditions {
   }
   actions {
+    ops {
+      functionName: "Set Hack Status On Matrix Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HackIndicatorStatus"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "58de18c2663136200e0061cb"
+          }
+        }
+      }
+    }
     ops {
       functionName: "Display Text over Point"
       args {
@@ -7736,6 +7794,7 @@ triggers {
         float_value: 0
       }
       args {
+        float_value: 0
       }
     }
     ops {
@@ -7891,6 +7950,28 @@ triggers {
   conditions {
   }
   actions {
+    ops {
+      functionName: "Set Hack Status On Matrix Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HackIndicatorStatus"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "58de18c2663136200e0062f6"
+          }
+        }
+      }
+    }
     ops {
       functionName: "Enable/Disable Interactable Object"
       args {
@@ -18646,6 +18727,132 @@ triggers {
   }
   is_oneshot: false
 }
+triggers {
+  name: "Matix.Data.Archives"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "58de0ab0663136200e005ffd"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+  }
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "58de0ab0663136200e005ffd"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "decker"
+          }
+          args {
+            string_value: "Matrix_NodeHackSuccess"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Variable (string)"
+          args {
+            string_value: "sComputerName"
+          }
+        }
+      }
+      args {
+        string_value: "Telestrian Archive Database"
+      }
+    }
+    ops {
+      functionName: "Start Conversation Between Actors"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "59349369343831a80400223b"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "5934a3ce343831a8040023a7"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "593492bf343831a804002232"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "EnforcerMoveInTarget"
   position {
@@ -26272,6 +26479,50 @@ characters {
     karma: 33
   }
 }
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: 18
+    y: 0
+    z: -22
+  }
+  orientation: ORIENTATION_S
+  displayName: "TelestrianComputerInABox"
+  idRef {
+    id: "5934a3ce343831a8040023a7"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Objects/InvisibleActor"
+    character_sheet_id: "Lonestar_Lv1_Captain"
+    character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: -74
+        perception: 0
+        authority: -49
+        protect_tether_range: -4
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
+      archetypeName: "Non-Combatant"
+      vulnerabilities {
+      }
+    }
+    team_id: "Civilians"
+    char_name: "$(scene.sComputerName)"
+    pc_spawn_number: -1
+    portrait {
+      filename: "Geeked_plainhack2"
+    }
+    karma: 44
+    is_prop_character: true
+  }
+}
 variables {
   bool_value: false
   variableref_value {
@@ -26645,6 +26896,22 @@ variables {
     scope: TsVariableScope_Scene
     name: "iMaxTimer"
     typeName: "int"
+  }
+}
+variables {
+  string_value: "Telestrian Archive Database"
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "sComputerName"
+    typeName: "string"
+  }
+}
+variables {
+  string_value: ""
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "sDisplayName"
+    typeName: "string"
   }
 }
 mapEvents: "CloseControlledDoors"
