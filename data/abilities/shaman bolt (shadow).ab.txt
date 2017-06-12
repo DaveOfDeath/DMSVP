@@ -1,0 +1,58 @@
+id: "Shaman Bolt (Shadow)"
+uirep {
+  icon: "icon_totem_dove"
+  name: "Dove\'s Cry"
+  description: "The effected cannot target others, nor be targeted for 1 RND."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: -99
+apDamageMod: 0
+accuracyMod: 0
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+effectDuration: 1
+cooldown: 3
+fxrep {
+  preActionFxName: "AcidSpellPrepare"
+  actionFxName: "Berlin:ToxicBoltThrowAction"
+  postActionFxName: ""
+  hitReactionFxName: "AcidHitReaction"
+  missReactionFxName: "GenericSpellMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"
+activationStatusEffects {
+  uirep {
+    icon: "icon_shadow"
+    name: "Dove: Out of Combat"
+  }
+  stackingCategory: "AI"
+  statusConditions: Condition_MindWiped
+  statusConditions: Condition_Invisible
+  fxScript: "Berlin:ManaBurnStatus"
+  is_debuff: true
+}
+damageType: VulnerabilityType_Bleed

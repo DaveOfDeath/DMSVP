@@ -1,0 +1,62 @@
+id: "Shaman Bolt (Fire)"
+uirep {
+  icon: "icon_creatoridol"
+  name: "Dragon\'s Breath"
+  description: "-5% accuracy. Target is ignited and takes 4 ongoing DMG for 2 RNDs. Strips 1 Armor from the target."
+}
+anim_action: AnimAction_Attack
+apCostMod: 0
+hpDamageMod: 0
+apDamageMod: 0
+accuracyMod: -5
+damageBucket {
+  successEntries {
+    weight: 0.25
+    value: 2
+  }
+  successEntries {
+    weight: 0.25
+    value: 1.5
+  }
+  successEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 1
+  }
+  failureEntries {
+    weight: 0.5
+    value: 0.5
+  }
+}
+attackRatingMod: 0
+offensiveAbility: true
+effectDuration: 2
+cooldown: 3
+rpReduce: 1
+fxrep {
+  preActionFxName: "AcidSpellPrepare"
+  actionFxName: "Berlin:ToxicBoltThrowAction"
+  postActionFxName: ""
+  hitReactionFxName: "Berlin:DragonBreathHitReaction"
+  missReactionFxName: "Berlin:DragonBreathMissReaction"
+}
+toHitFunction: "actorWeaponAttackToHit"
+damageFunction: "weaponDamage"
+activationStatusEffects {
+  uirep {
+    icon: "icon_fireball1"
+    name: "On Fire: HP -4 per RND"
+  }
+  stackingCategory: "Fire"
+  statMods {
+    attribute: Attribute_HP
+    intModValue: -4
+  }
+  fxScript: "BurningStatus"
+  durationFxScript: "BurningStatusHitReaction"
+  is_debuff: true
+}
+damageType: VulnerabilityType_Fire

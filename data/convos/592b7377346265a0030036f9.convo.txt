@@ -1,0 +1,484 @@
+idRef {
+  id: "592b7377346265a0030036f9"
+}
+ui_name: "c16-s3_Doctor_Intro"
+nodes {
+  idRef {
+    id: "592b7377346265a0030036f9:5930b25b346265b42a005c81"
+  }
+  index: 0
+  text: "{{GM}}All semblance of bravado and calm washed from his manner, Paco rushes up to you and the Doctor as you exit the van.{{/GM}}\n\nAnother minute and I would have gone in without you. Everything\'s gone to hell in there. {{GM}}He points wildly.{{/GM}} Hanzu is cowering over there moaning about the lights, and when I approached him, he tried to attack me! And his face, his hands, they\'re all covered in scabs and sores... He was fine just a few hours ago! {{GM}}Paco shudders.{{/GM}}"
+  branches {
+    responseText: "Stay frosty, Paco. We\'ll figure this out."
+    nextNodeIndex: 1
+    idRef {
+      id: "592b7377346265a0030036f9:5930b25b346265b42a005c82"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "What kind of mess have you gotten me into?"
+    nextNodeIndex: 1
+    idRef {
+      id: "592b7377346265a0030036f9:5930b25b346265b42a005c83"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isPaco"
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isPaco"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "Seattle:General/standing_idle_talking"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "592b7377346265a0030036f9:5930b25b346265b42a005c84"
+  }
+  index: 1
+  text: "{{GM}}Doctor Castle looks more and more alarmed as Paco speaks.{{/GM}} Quickly, Paco, did this Hanzu bite you? Or scratch your skin? Are you bleeding? {{GM}}Paco shakes his head in response, and the doctor audibly sighs in relief before pulling two auto-injectors from her belt and handing one to each of you.{{/GM}} The serum in these will inoculate you both from infection - it\'s a cocktail of broad-spectrum nanite antibodies. If I\'m right, it will protect you from the infection agent. {{GM}}The doctor opens her bag and begins digging around in the contents. She looks up at you and Paco before continuing in exasperated tones.{{/GM}} Well, go on and inject yourselves. We don\'t have all night."
+  branches {
+    responseText: "{{GM}}Inject the serum.{{/GM}}"
+    nextNodeIndex: 5
+    idRef {
+      id: "592b7377346265a0030036f9:5930b25b346265b42a005c85"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "You guessed the infection from the vague symptoms Paco just described?"
+    nextNodeIndex: 2
+    idRef {
+      id: "592b7377346265a0030036f9:5930b25b346265b42a005c86"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "591d1628346265ec25003ef8"
+  }
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isPaco"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "Seattle:General/standing_idle_calm"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "591d1628346265ec25003ef8"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "Seattle:General/standing_idle_talking"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "5930b451346265b42a005c94"
+  }
+  index: 2
+  text: "{{GM}}The doctor looks at you seriously.{{/GM}} Not just the symptoms, no. There\'s a significant amount of background count present in the Astral here with a signature is similar to some research I... stumbled on recently. Similar enough that I have a high confidence in sending a valuable client, you, into an actively contagious region to extract the likely infected $(scene.sCousinName) with the hope that you\'ll return with that infected patient so that I may treat them before the infection becomes fatal."
+  branches {
+    responseText: "{{GM}}Inject the serum.{{/GM}}"
+    nextNodeIndex: 5
+    idRef {
+      id: "592b7377346265a0030036f9:5930b66a346265b42a005ca2"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "How long do we have?"
+    nextNodeIndex: 3
+    idRef {
+      id: "592b7377346265a0030036f9:5930b672346265b42a005ca4"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "591d1628346265ec25003ef8"
+  }
+}
+nodes {
+  idRef {
+    id: "5930b67b346265b42a005ca7"
+  }
+  index: 3
+  text: "{{GM}}She glances at the terminal.{{/GM}} Judging by the rate of Astral decay, I would give you no more than an hour.  I\'m not going to sugarcoat this; we\'re dealing with a viral bioweapon that was deliberately activated by a spell. The virus was designed to spread via contact, which its symptoms encourage, but only within the radius of the attacker\'s choosing. Once the spell fades from the astral, the virus switches to a non-contagious, but quickly fatal, illness."
+  branches {
+    responseText: "{{GM}}Inject the serum.{{/GM}}"
+    nextNodeIndex: 5
+    idRef {
+      id: "592b7377346265a0030036f9:5930b85c346265b42a005ca9"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "If this bioweapon was set off intentionally..."
+    nextNodeIndex: 4
+    idRef {
+      id: "592b7377346265a0030036f9:5930b881346265b42a005cab"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "591d1628346265ec25003ef8"
+  }
+}
+nodes {
+  idRef {
+    id: "5930b918346265b42a005cae"
+  }
+  index: 4
+  text: "Of which there is no doubt. This isn\'t some random spell a ganger would know. And yes, whoever did this is very likely monitoring the situation closely and will send in a cleanup squad to destory the evidence. All the more reason to hurry. {{GM}}She gestures to the auto-injector.{{/GM}}"
+  branches {
+    responseText: "{{GM}}Inject the serum.{{/GM}}"
+    nextNodeIndex: 5
+    idRef {
+      id: "592b7377346265a0030036f9:5930b98e346265b42a005cb0"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "591d1628346265ec25003ef8"
+  }
+}
+nodes {
+  idRef {
+    id: "5930b9bc346265b42a005cb3"
+  }
+  index: 5
+  text: "{{GM}}Paco wastes no time injecting the serum and looks ready to run into the airport terminal bat swinging.{{/GM}} Before you go, here\'s two more auto-injectors. Each carries several doses of powerful sedative that will induce a coma in whomever you inject them with. However, it must be injected directly into the heart if we\'re to have any chance of saving them. If you knock one of the infected Cutters unconscious, you can use the injector to put them out without having to kill them. Otherwise, you may have to kill them before the virus drives them to scratch you to death."
+  branches {
+    responseText: "I better be getting hazard pay for this."
+    nextNodeIndex: 6
+    idRef {
+      id: "592b7377346265a0030036f9:5930bb44346265b42a005cb5"
+    }
+  }
+  branches {
+    responseText: "Wouldn\'t it just be easier to kill them?"
+    nextNodeIndex: 6
+    idRef {
+      id: "592b7377346265a0030036f9:5930bb5b346265b42a005cb7"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Why would someone use a bioweapon on the Cutters?"
+    nextNodeIndex: 6
+    idRef {
+      id: "592b7377346265a0030036f9:5930bbf8346265b42a005cc1"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "591d1628346265ec25003ef8"
+  }
+}
+nodes {
+  idRef {
+    id: "5930bb80346265b42a005cba"
+  }
+  index: 6
+  text: "{{GM}}The doctor smiles as if you were joking.{{/GM}} Take that up with young Paco here. Once you reach $(scene.sCousinName), if they\'re infected, inject them and carry them back to me. I can\'t undo all the damage, but I may be able to save their life."
+  branches {
+    responseText: "You ready, Paco?"
+    conditions {
+      ops {
+        functionName: "Comparison (string)"
+        args {
+          call_value {
+            functionName: "Get Variable (string)"
+            args {
+              string_value: "sCousinName"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          string_value: "Gino"
+        }
+      }
+    }
+    nextNodeIndex: 7
+    hideIfUnavailable: true
+    idRef {
+      id: "592b7377346265a0030036f9:5930bc79346265b42a005cdf"
+    }
+  }
+  branches {
+    responseText: "You ready, Paco?"
+    conditions {
+      ops {
+        functionName: "Comparison (string)"
+        args {
+          call_value {
+            functionName: "Get Variable (string)"
+            args {
+              string_value: "sCousinName"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          string_value: "Gino"
+        }
+      }
+    }
+    nextNodeIndex: 8
+    hideIfUnavailable: true
+    idRef {
+      id: "592b7377346265a0030036f9:5930bd9d346265b42a005ce8"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "591d1628346265ec25003ef8"
+  }
+}
+nodes {
+  idRef {
+    id: "5930bca4346265b42a005ce2"
+  }
+  index: 7
+  text: "{{GM}}Paco nods.{{/GM}} If I don\'t save Gino, Coyote will murder me. I\'d rather not have to kill any Cutters, but I\'ll do what it takes to save him."
+  branches {
+    responseText: "We\'ll talk about compensation later."
+    nextNodeIndex: -1
+    idRef {
+      id: "592b7377346265a0030036f9:5930bd5e346265b42a005ce4"
+    }
+  }
+  branches {
+    responseText: "Don\'t worry, kid, we\'ll save Gino. Again."
+    nextNodeIndex: -1
+    idRef {
+      id: "592b7377346265a0030036f9:5930bd82346265b42a005ce6"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isPaco"
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "591d1628346265ec25003ef8"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "Seattle:General/standing_idle_calm"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isPaco"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "Seattle:General/standing_idle_talking"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "592b7377346265a0030036f9:5930bd9d346265b42a005cea"
+  }
+  index: 8
+  text: "{{GM}}Paco nods.{{/GM}} If I don\'t save Maria, my mom will murder me. Then my uncle. Then the rest of my family will take turns pissing on my corpse. I\'d rather not have to kill any Cutters, but I\'ll do what it takes to save her."
+  branches {
+    responseText: "We\'ll talk about compensation later."
+    nextNodeIndex: -1
+    idRef {
+      id: "592b7377346265a0030036f9:5930bd9d346265b42a005cec"
+    }
+  }
+  branches {
+    responseText: "Don\'t worry, kid, we\'ll save your cousin."
+    nextNodeIndex: -1
+    idRef {
+      id: "592b7377346265a0030036f9:5930bd9d346265b42a005cee"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isPaco"
+  actions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "591d1628346265ec25003ef8"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "Seattle:General/standing_idle_calm"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isPaco"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "Seattle:General/standing_idle_talking"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "592b7377346265a0030036f9:5930b25b346265b42a005c80"
+  }
+}

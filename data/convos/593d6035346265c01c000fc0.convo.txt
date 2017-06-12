@@ -1,0 +1,103 @@
+idRef {
+  id: "593d6035346265c01c000fc0"
+}
+ui_name: "c16-s3_Nemo"
+nodes {
+  idRef {
+    id: "593d6041346265c01c000fc8"
+  }
+  index: 0
+  text: "Survivors? Fascinating. There was always a small chance that one of the Cutters would have immunity to the lyssavirus carrier, but two? {{GM}}The elf sounds contemplative.{{/GM}}"
+  branches {
+    responseText: "Who are you?"
+    nextNodeIndex: 1
+    idRef {
+      id: "593d6035346265c01c000fc0:593d615c346265c01c000fca"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{GM}}Say nothing.{{/GM}}"
+    nextNodeIndex: 1
+    idRef {
+      id: "593d6035346265c01c000fc0:593d6167346265c01c000fcc"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Attack.{{/GM}} We know how this ends."
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "eGateCleanup"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "593d6035346265c01c000fc0:593d6171346265c01c000fce"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "593b653d346265e01e00540c"
+  }
+}
+nodes {
+  idRef {
+    id: "593d812f346265e821003ce1"
+  }
+  index: 1
+  text: "Nemo! I knew you were too good to be true. {{GM}}Paco points his bat at the elf.{{/GM}} I\'m going to knock you fragging head off!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "593d6035346265c01c000fc0:593d82cd346265e821003ce3"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isPaco"
+}
+nodes {
+  idRef {
+    id: "593d832b346265e821003ce6"
+  }
+  index: 2
+  text: "{{GM}}The elf ignores Paco and speaks into his collar.{{/GM}} This is Speartip, prepare carrier Bigous to receive hostile specimens for transport. {{GM}}He then looks at you, but addresses the operatives with him.{{/GM}} Try to take them alive if you can, captain."
+  branches {
+    responseText: "{{GM}}Attack.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "eGateCleanup"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "593d6035346265c01c000fc0:593d8401346265e821003cf3"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "593b653d346265e01e00540c"
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "593d6035346265c01c000fc0:593d6035346265c01c000fc4"
+  }
+}
