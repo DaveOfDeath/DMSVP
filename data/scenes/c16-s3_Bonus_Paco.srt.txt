@@ -149,7 +149,7 @@ triggers {
         }
       }
       args {
-        string_value: "Coyote/\'s"
+        string_value: "Coyote\'s"
       }
     }
     ops {
@@ -2163,6 +2163,125 @@ triggers {
   is_oneshot: true
 }
 triggers {
+  name: "Global.onDeath.Cousin.FailMassion"
+  events {
+    ops {
+      functionName: "On Actor Death"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isCousin"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bPhase2"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "$(scene.sCousinName) Died"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "593f31a73462651c26002f16"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
   name: "Global.onConvoClose.EnableShadowrunner"
   events {
     ops {
@@ -2655,6 +2774,42 @@ triggers {
     }
   }
   conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "c09_GinoAlive"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
   actions {
     ops {
@@ -2726,12 +2881,147 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Rescue Coyote\'s Cousin"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
     id: "5930ccf3346265b42a005d5a"
   }
   elseActions {
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isPaco"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "Seattle:General/standing_idle"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Region)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "591d1628346265ec25003ef8"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "5930cd57346265b42a005d5b"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 4
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Rescue Paco\'s Cousin"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
   is_oneshot: true
 }
@@ -11038,7 +11328,7 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "[FIX ON PORT] Plane.onInteract.wExitWaypoint.Return2Hub"
+  name: "Plane.onInteract.wExitWaypoint.Return2Hub"
   events {
     ops {
       functionName: "On Item Interaction"
@@ -11086,46 +11376,20 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Display Text over Actor"
+      functionName: "Set Variable (int)"
       args {
         call_value {
-          functionName: "Triggering Actor"
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
+          functionName: "Get Story Variable (int)"
           args {
-            string_value: "TextPopupStyle"
+            string_value: "57084f7c6631365c1600767e"
           }
           args {
-            int_value: 0
+            string_value: "Crew_Loyalty_Paco"
           }
         }
       }
       args {
-        string_value: "This Trigger Should Set Mission To Fail"
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 3
-      }
-      args {
-        float_value: 3
-      }
-      args {
-        float_value: 0
+        int_value: -1
       }
     }
     ops {
@@ -11162,6 +11426,23 @@ triggers {
     id: "593b5737346265e01e005402"
   }
   elseActions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Loyalty_Paco"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
     ops {
       functionName: "Display Text over Actor"
       args {
@@ -11301,7 +11582,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (SceneDimension)"
           args {
-            string_value: "Default"
+            string_value: "Matrix"
           }
         }
       }
@@ -11348,7 +11629,7 @@ triggers {
         float_value: 3
       }
       args {
-        float_value: 3
+        float_value: 6
       }
     }
   }
@@ -11589,7 +11870,7 @@ triggers {
         float_value: 1
       }
       args {
-        float_value: 3
+        float_value: 6
       }
     }
   }
@@ -12645,7 +12926,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "593b747a346265e01e0054f4"
   }
@@ -13311,6 +13592,77 @@ triggers {
           }
           args {
             int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Trigger: Wait for Rounds"
+      args {
+        int_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Hunt And Destroy (Team)"
+      args {
+        call_value {
+          functionName: "All Actors on Team"
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 2
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
           }
         }
       }
@@ -15648,6 +16000,19 @@ characters {
     character_sheet_id: "Zombie_Lv3_Melee"
     equipment_sheet_id: "Ghoul_Lv1_Gear"
     character_mod {
+      stats {
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+      }
+      specializations {
+      }
       archetypeName: "gumbo_MeleeSoldier"
       attitude: AttitudeAggressive
       attackRandom: AttackStyle_AllEqual
@@ -18263,12 +18628,12 @@ goals {
   status: GoalStatus_Hidden
 }
 goals {
-  name: "Find Paco\'s Cousin"
+  name: "Rescue Paco\'s Cousin"
   type: GoalType_Primary
   status: GoalStatus_Hidden
 }
 goals {
-  name: "Find Coyote\'s Cousin"
+  name: "Rescue Coyote\'s Cousin"
   type: GoalType_Primary
   status: GoalStatus_Hidden
 }
@@ -18276,6 +18641,12 @@ goals {
   name: "Find a Battery"
   type: GoalType_Secondary
   status: GoalStatus_Hidden
+}
+goals {
+  name: "$(scene.sCousinName) Died"
+  type: GoalType_Primary
+  status: GoalStatus_Hidden
+  description: "How did you do that?"
 }
 worldMapLocation {
   filename: ""
