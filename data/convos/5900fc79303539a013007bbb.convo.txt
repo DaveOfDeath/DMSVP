@@ -117,7 +117,7 @@ nodes {
     id: "5900fd89303539a013007bce"
   }
   index: 3
-  text: "You\'re about to suck void, buddy."
+  text: "{{GM}}He quickly summons some serious looking security programs to his side.{{/GM}}\n\nGuess we\'ll test how durable your brain is on a hard-reset, Chummer."
   nodeType: ConversationNodeType_Simple
   actions {
     ops {
@@ -625,6 +625,30 @@ nodes {
   index: 7
   text: "Yeah, that scans.\n\nLast warning... Get out of here."
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bDeckerBeenWarned"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
   comment: "Authorized NODE"
 }
 nodes {
@@ -675,6 +699,25 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
 }
+nodes {
+  idRef {
+    id: "594430e0663136c4070068ee"
+  }
+  index: 11
+  text: "{{GM}}An experated look crosses his face briefly, replaced by completely unhinged anger.{{/GM}}\n\nI\'ve had enough of this.   \n\nClearly you\'re campaigning for an ass-whipping... and now you\'re gonna get elected."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "5900fc79303539a013007bbb:5944310d663136c4070068f0"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "58ddbadf663136e01700195c"
+  }
+}
 roots {
   conditions {
     ops {
@@ -717,6 +760,39 @@ roots {
           functionName: "Get Variable (bool)"
           args {
             string_value: "bMetSecurityDecker"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bDeckerBeenWarned"
           }
         }
       }
@@ -843,12 +919,154 @@ roots {
         }
       }
     }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bDeckerBeenWarned"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   nextNodeIndex: 4
   idRef {
     id: "5900fc79303539a013007bbb:59036b37343831b410002af1"
   }
   comment: "Heat Safe - Secondary Visit"
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bHeatTriggered"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bMetSecurityDecker"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bDeckerBeenWarned"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 11
+  idRef {
+    id: "5900fc79303539a013007bbb:59443032663136c4070068e3"
+  }
+  comment: "Heat Safe - Third Visit"
 }
 roots {
   responseText: ""
