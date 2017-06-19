@@ -7837,6 +7837,55 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bTimerAbort"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Remove Tag from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isActiveZoneIC"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "All Actors"
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Teleport Camera To Actor"
       args {
         call_value {
@@ -19316,7 +19365,7 @@ triggers {
             string_value: "Comparison Ops"
           }
           args {
-            int_value: 5
+            int_value: 3
           }
         }
       }
@@ -20951,6 +21000,22 @@ triggers {
   elseActions {
   }
   is_oneshot: false
+}
+triggers {
+  name: "NewTrigger"
+  events {
+  }
+  conditions {
+  }
+  actions {
+  }
+  isActive: true
+  idRef {
+    id: "594832ad6631362c140072e0"
+  }
+  elseActions {
+  }
+  is_oneshot: true
 }
 regions {
   name: "EnforcerMoveInTarget"
@@ -25353,9 +25418,9 @@ characters {
 characters {
   name: "system_spawner_playerSpawner"
   gridPoint {
-    x: -26
+    x: -14
     y: 0
-    z: -98
+    z: 23
   }
   orientation: ORIENTATION_W
   idRef {
