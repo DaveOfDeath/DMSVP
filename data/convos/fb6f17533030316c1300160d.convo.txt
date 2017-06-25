@@ -11,6 +11,9 @@ nodes {
   branches {
     responseText: "{{GM}}Run search?{{/GM}}"
     nextNodeIndex: 1
+    idRef {
+      id: "fb6f17533030316c1300160d:594f5dea3966301431002ed9"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -23,6 +26,9 @@ nodes {
   branches {
     responseText: "{{GM}}HR Communications{{/GM}}"
     nextNodeIndex: 2
+    idRef {
+      id: "fb6f17533030316c1300160d:594f5dea3966301431002edc"
+    }
   }
   nodeType: ConversationNodeType_Simple
   actions {
@@ -46,28 +52,528 @@ nodes {
   index: 2
   text: "HR Communications"
   branches {
-    responseText: "{{GM}}Run Search: \"Lynne Telestrian\"{{/GM}}"
+    responseText: ""
     nextNodeIndex: 3
-  }
-  branches {
-    responseText: "{{GM}}Run Search: \"Universal Brotherhood\"{{/GM}}"
-    nextNodeIndex: 4
-  }
-  branches {
-    responseText: "{{GM}}Exit{{/GM}}"
-    nextNodeIndex: 5
+    idRef {
+      id: "fb6f17533030316c1300160d:594f5fb23966301431002f49"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
-    id: "51aa5969303031ec0d00411b"
+    id: "594f5fb23966301431002f4c"
   }
   index: 3
-  text: ">>Employee status: Terminated"
+  text: ""
+  branches {
+    responseText: "{{GM}}Run Search: \"Lynne Telestrian\"{{/GM}}"
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "fb6f17533030316c1300160d:594f5dea3966301431002edf"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Run Search: \"Seamus O\'Toole\"{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isSeamus"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Loyalty_Seamus"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 5
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "fb6f17533030316c1300160d:594f5e843966301431002f02"
+    }
+    comment: "Seamus on Team"
+  }
+  branches {
+    responseText: "{{GM}}Run Search: \"Seamus O\'Toole\"{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isSeamus"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Loyalty_Seamus"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 14
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "fb6f17533030316c1300160d:594f5e853966301431002f04"
+    }
+    comment: "Seamus not on Team"
+  }
+  branches {
+    responseText: "{{GM}}Run Search: \"Nemo\"{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Loyalty_Paco"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    nextNodeIndex: 16
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "fb6f17533030316c1300160d:594f5e853966301431002f06"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Run Search: \"Universal Brotherhood\"{{/GM}}"
+    nextNodeIndex: 17
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "fb6f17533030316c1300160d:594f5dea3966301431002ee5"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Exit{{/GM}}"
+    nextNodeIndex: 18
+    idRef {
+      id: "fb6f17533030316c1300160d:594f5dea3966301431002eeb"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "HR Loop"
+}
+nodes {
+  idRef {
+    id: "51aa5969303031ec0d00411b"
+  }
+  index: 4
+  text: ">>Employee: Telestrian, Lynn\n\n>> Position: Division Head, Biotechnology. Shareholder with voting rights.\n\n>> Status: Hiatus, Sabbatical [[Locked]]"
   branches {
     responseText: ""
-    nextNodeIndex: 2
+    nextNodeIndex: 3
+    idRef {
+      id: "fb6f17533030316c1300160d:594f5dea3966301431002ee2"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "594f60b93966301431002fb6"
+  }
+  index: 5
+  text: "Jesus Christ, $(l.guy), don\'t go rootin\' around in my personal files. I don\'t know what sort of red flags it\'ll send up, to have my shit get accessed the same night as a break-in."
+  branches {
+    responseText: "You\'re right."
+    nextNodeIndex: 12
+    idRef {
+      id: "fb6f17533030316c1300160d:594f60f73966301431002fb8"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "We\'ll just delete your records when we\'re done reading them."
+    nextNodeIndex: 6
+    idRef {
+      id: "fb6f17533030316c1300160d:594f60fe3966301431002fba"
+    }
+  }
+  branches {
+    responseText: "No problem, I was just curious."
+    nextNodeIndex: 12
+    idRef {
+      id: "fb6f17533030316c1300160d:594f60fe3966301431002fbc"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isSeamus"
+}
+nodes {
+  idRef {
+    id: "594f61743966301431002fc5"
+  }
+  index: 6
+  text: "{{GM}}Seamus peers at you.{{/GM}}\n\nYou can do that? We\'ll have to purge my ritual sample, too, to make sure they can\'t track me down."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "fb6f17533030316c1300160d:594f61b73966301431002fcc"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isSeamus"
+}
+nodes {
+  idRef {
+    id: "594f61b73966301431002fcf"
+  }
+  index: 7
+  text: ">> Employee: O\'Toole, Seamus\n\n>> Position: Destructive Testing Specialist\n\n>> Status: Failed Loyalty Inquest, Termination Inbound, 3/27/2054"
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "fb6f17533030316c1300160d:594f62183966301431002fd1"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "594f621b3966301431002fd4"
+  }
+  index: 8
+  text: "Huh, that\'s not so bad. I thought it would have links to my HR file and matrix browser history.\n\nDelete it, then."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "fb6f17533030316c1300160d:594f62c03966301431003017"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isSeamus"
+}
+nodes {
+  idRef {
+    id: "594f62c0396630143100301a"
+  }
+  index: 9
+  text: ""
+  branches {
+    responseText: "Sure thing. {{GM}}Delete Files.{{/GM}}"
+    nextNodeIndex: 10
+    idRef {
+      id: "fb6f17533030316c1300160d:594f6291396630143100300e"
+    }
+  }
+  branches {
+    responseText: "Sure. {{GM}}Fake deletion of files.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Set Variable (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Loyalty_Seamus"
+            }
+          }
+        }
+        args {
+          int_value: -1
+        }
+      }
+    }
+    nextNodeIndex: 10
+    idRef {
+      id: "fb6f17533030316c1300160d:594f62923966301431003010"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "I don\'t want to send up any more flags."
+    nextNodeIndex: 11
+    idRef {
+      id: "fb6f17533030316c1300160d:594f62933966301431003012"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isSeamus"
+  comment: "Seamus"
+}
+nodes {
+  idRef {
+    id: "594f636b3966301431003032"
+  }
+  index: 10
+  text: "{{GM}}Seamus sighs.{{/GM}}\n\nThat\'s a damn relief. I was half-worried that Telestrian would show up in black vans and snuff me to stop me from taking \'company secrets\' to my next job."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "fb6f17533030316c1300160d:594f63f5396630143100303a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "594f62ee3966301431003020"
+  }
+  index: 11
+  text: "{{GM}}Seamus stares at you, grinding his teeth.{{/GM}}\n\nAre you fucking serious, red flags? Other than accessing my files during a messy, loud, and quite noticeable infiltration? Purge the files, or we see how your brain does when I put a powerbolt through the deck."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "fb6f17533030316c1300160d:594f63533966301431003022"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "594f611d3966301431002fbf"
+  }
+  index: 12
+  text: "{{GM}}Seamus wipes sweat off his brow.{{/GM}}\n\nYou had me going there, for a minute."
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "fb6f17533030316c1300160d:594f61aa3966301431002fc7"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isSeamus"
+}
+nodes {
+  idRef {
+    id: "594f61aa3966301431002fca"
+  }
+  index: 13
+  text: ""
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "594f64a239663014310030d8"
+  }
+  index: 14
+  text: ">> Employee: O\'Toole, Seamus\n\n>> Position: Destructive Testing Specialist\n\n>> Status: Failed Loyalty Inquest, Termination Inbound, 3/27/2054"
+  branches {
+    responseText: "We should delete this or something, for Seamus."
+    nextNodeIndex: 15
+    idRef {
+      id: "fb6f17533030316c1300160d:594f64ab39663014310030da"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "594f64f239663014310030dd"
+  }
+  index: 15
+  text: "Gotta keep moving, $+(l.name)."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "fb6f17533030316c1300160d:594f65113966301431003139"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "2335192b303031dc0a000139"
+  }
+}
+nodes {
+  idRef {
+    id: "594f5eed3966301431002f1f"
+  }
+  index: 16
+  text: ">> Employee: Nemo, Jason Thomas\n\n>> Position: Security Operative, Special Projects\n\n>> Status: Unknown. Team missed last check-in, assigned to Operation Sheath.\n"
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "fb6f17533030316c1300160d:594f5fc43966301431002f79"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -76,11 +582,14 @@ nodes {
   idRef {
     id: "51aa65e0303031ec0d004159"
   }
-  index: 4
-  text: ">>Brotherhood, Universal: Record not found"
+  index: 17
+  text: ">>Brotherhood, Universal: Record not found\n\n[[Your account info has been logged, per system guidelines. Remain where you are, government operatives will contact you soon.]]"
   branches {
     responseText: ""
-    nextNodeIndex: 2
+    nextNodeIndex: 3
+    idRef {
+      id: "fb6f17533030316c1300160d:594f5dea3966301431002ee8"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -89,11 +598,14 @@ nodes {
   idRef {
     id: "51aa6604303031ec0d00415c"
   }
-  index: 5
+  index: 18
   text: ">>Logging Off"
   nodeType: ConversationNodeType_Simple
 }
 roots {
   responseText: ""
   nextNodeIndex: 0
+  idRef {
+    id: "fb6f17533030316c1300160d:594f5dea3966301431002ed6"
+  }
 }

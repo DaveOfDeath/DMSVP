@@ -7,7 +7,7 @@ nodes {
     id: "58ddfb8a663136e01700198d"
   }
   index: 0
-  text: "Some good news... You\'ve made it into one of the most exclusive matrix systems there is.   Bad news... They use a form of credentials to prevent people like us from accessing it outside of anything else I\'ve ever seen.   "
+  text: "Bonne chance, \'Runner. You have infiltrated one of the most exclusive matrix systems there is. Mauvaises nouvelles, they use specialized credentials to prevent people like us from accessing it. \n\nI can\'t get a high-level alchemical passkey, but I may be able to forge a low-level security login."
   branches {
     responseText: ""
     nextNodeIndex: 1
@@ -25,7 +25,7 @@ nodes {
     id: "5944627e663136c407007176"
   }
   index: 1
-  text: "But, fear not!   The Baron has found a solution to our problem!\n\nI have combed through user logs and found a handful of potential names that have so many \'Forgotten Passcode\' resets the system has actually disabled some of the security on them.  You should be able to use one of these ID\'s to poke around, as long as you don\'t raise too many red flags."
+  text: "Ne peurez pas! The Baron has found a solution to your problem!\n\nI have sleazed through users with so many \'Forgotten Passcode\' resets the system has actually disabled security features for the accounts. \nYou will be able to use these ID\'s to poke around. Choose one, and I will forge a code for you."
   branches {
     responseText: ""
     nextNodeIndex: 2
@@ -45,7 +45,7 @@ nodes {
   index: 2
   text: ""
   branches {
-    responseText: "Know anything about any of these ID\'s?"
+    responseText: "Know anything about these ID\'s?"
     nextNodeIndex: 3
     hideIfUnavailable: true
     onlyOnce: true
@@ -172,6 +172,144 @@ nodes {
     }
     auxiliaryLink: true
   }
+  branches {
+    responseText: "Can I use Seamus O\'Toole?"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isSeamus"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "58ddfb7c663136e017001985:594f684e3966301431003243"
+    }
+    comment: "NoSeamus"
+  }
+  branches {
+    responseText: "Can I use Seamus O\'Toole?"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isSeamus"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 9
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "58ddfb7c663136e017001985:594f68ce3966301431003287"
+    }
+    comment: "Seamus"
+  }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
     id: "23a89086303031f014002b1d"
@@ -183,7 +321,7 @@ nodes {
     id: "58ddfcbd663136e01700199f"
   }
   index: 3
-  text: "Unfortunately, No.   \n\nI got them user log dump, and these were the ones who have requested lost passwords most often.   They\'re the least likely to be flagged by the system.   I don\'t know what kinda access any of them have, or what department they\'re from.    Just that they\'re low risk."
+  text: "Malheureux, No.   \n\nUser log dump, no connected data. I sorted lost passwords requests,  I don\'t know what kinda access any of them have, or what department they\'re from.   They are low risk."
   branches {
     responseText: "I see."
     nextNodeIndex: 4
@@ -192,7 +330,7 @@ nodes {
     }
   }
   branches {
-    responseText: "{{CC}}Etiquette: Corporate{{/CC}} Shouldn\'t we just grab a Telestrian account?  They own this company, don\'t they?"
+    responseText: "{{CC}}Etiquette: Corporate{{/CC}} Shouldn\'t we just grab an excutive account?  Telestrians own this company, don\'t they?"
     conditions {
       ops {
         functionName: "Compare Actor Skill"
@@ -377,7 +515,7 @@ nodes {
     id: "58ddfd44663136e0170019a9"
   }
   index: 5
-  text: "{{GM}}He snorts{{/GM}}\n\nYou\'d have a better chance of tossing a snowball into hell to quench the fires, my friend. I looked, but Telestrian accounts are all linked to a DNA profile. So unless you\'re a elven prince heir within the Telestrian bloodline, I think you\'re out of luck.\n\nSo what\'ll it be?"
+  text: "{{GM}}Samedi snorts{{/GM}}\n\nYou would have a better chance of tossing a snowball into hell to quench the fires, mon amie. Telestrian accounts are linked to a DNA profile, and each is assigned an alchemical key. So unless you\'re a elven heir with a bottle of unknown fluid, I believe we are out of luck.\n\nWhich shall it be?"
   branches {
     responseText: ""
     nextNodeIndex: 2
@@ -396,7 +534,7 @@ nodes {
     id: "58ddffa2663136e0170019e2"
   }
   index: 6
-  text: "I highly doubt any of them will get you that level of access.   Security nodes are generally locked down pretty well.   You\'re probably gonna need to find an alternate path, or bleogeon your way though.\n\nI\'ve got you covered on any alarms leaving the building, but that Intranet is disconnected from the external services.  You\'re on your own in there.\n\nSo, you make a decision yet?"
+  text: "{{GM}}Samedi gives you a digital headshake.{{/GM}}\n\nNone of these accounts will grant you that level of access. Security protocols have their own secure sub-system. \n\nI\'ve got dampeners on any alarm signals leaving the building, but the internal matrix is disconnected from the external services.\nHave you reached a decision yet?"
   branches {
     responseText: ""
     nextNodeIndex: 2
@@ -455,6 +593,54 @@ nodes {
       }
     }
   }
+}
+nodes {
+  idRef {
+    id: "594f685a3966301431003246"
+  }
+  index: 8
+  text: "Mon amie, I wish that I could have your sense of humor while in vie and mort situations.\n\nIt would be unwise to leave digital footprints to the doorstep of your companion."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "58ddfb7c663136e017001985:594f68943966301431003248"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "58ddfb7c663136e017001985:594f68ce3966301431003289"
+  }
+  index: 9
+  text: "Mon amie, I wish that I could have your sense of humor while in vie and mort situations.\n\nIt would be unwise to leave digital footprints to the doorstep of your companion."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "58ddfb7c663136e017001985:594f68e13966301431003295"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "594f68e13966301431003298"
+  }
+  index: 10
+  text: "{{GM}}Seamus glares at you.{{/GM}}\n\nFuck me, $(l.man). You\'d lead them right up my shitter, wouldn\'t you?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "58ddfb7c663136e017001985:594f68ce396630143100328b"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isSeamus"
 }
 roots {
   nextNodeIndex: 0

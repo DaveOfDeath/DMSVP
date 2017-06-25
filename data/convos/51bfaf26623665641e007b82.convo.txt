@@ -7,20 +7,29 @@ nodes {
     id: "51bfaf53623665641e007b88"
   }
   index: 0
-  text: "Apparently the coast was not-so clear. "
+  text: "{{GM}}Samedi\'s smile holds a trace of chagrin.{{/GM}}\n\nApparently the coast was not-so clear. "
   branches {
     responseText: "Apparently not."
     nextNodeIndex: 1
+    idRef {
+      id: "51bfaf26623665641e007b82:594f7527396630143100358a"
+    }
     auxiliaryLink: true
   }
   branches {
     responseText: "Is this the way this whole run is gonna go?"
     nextNodeIndex: 1
+    idRef {
+      id: "51bfaf26623665641e007b82:594f7527396630143100358d"
+    }
     auxiliaryLink: true
   }
   branches {
-    responseText: "I thought you said you were a technomancer."
+    responseText: "I thought you said you were a hot-shit technomancer or whatever."
     nextNodeIndex: 1
+    idRef {
+      id: "51bfaf26623665641e007b82:594f75273966301431003590"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -29,10 +38,158 @@ nodes {
     id: "51bfb018623665641e007bac"
   }
   index: 1
-  text: "Do not doubt Samedi. The Aegis sample will be ours before the night is through. \n\nThere was reorganization in Telestrian recently. They have a new Vice President of Security and he is making changes to their standard procedures. It is nothing Samedi cannot handle. Now on to the Accounting offices!"
+  text: "Do not doubt Samedi. The Aegis sample will be ours before the night is through. \n\nThere was shuffling within Telestrian recently. They\'ve lost many operatives, and have a new Vice President of Security. He is making changes to their standard procedures. It is nothing Samedi cannot handle. Now on to the Accounting offices!"
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isSeamus"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51bfaf26623665641e007b82:594f75593966301431003594"
+    }
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isSeamus"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51bfaf26623665641e007b82:594f755f3966301431003599"
+    }
+  }
   nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "594f755c3966301431003597"
+  }
+  index: 2
+  text: "{{GM}}Seamus grunts.{{/GM}}\n\nYeah, Silverstar is a fuckin\' tool. Not a cool badass like me, but the kind of dick... you know."
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isSeamus"
 }
 roots {
   responseText: ""
   nextNodeIndex: 0
+  idRef {
+    id: "51bfaf26623665641e007b82:594f75273966301431003587"
+  }
 }
