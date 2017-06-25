@@ -1,0 +1,451 @@
+idRef {
+  id: "594f4dfd343831081400091f"
+}
+ui_name: "c14-s2_ConferenceRoomDoor"
+nodes {
+  idRef {
+    id: "594f4dff3438310814000927"
+  }
+  index: 0
+  text: "The conference room door is made of some high-strength reinforced ballistic glass.  It looks VERY sturdy."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "594f4dfd343831081400091f:594f51473438310814000962"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "594f51473438310814000965"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "{{GM}}STR: 8{{/GM}} Smash it down"
+    conditions {
+      ops {
+        functionName: "Compare Actor Attribute"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorAttributes"
+            }
+            args {
+              int_value: 2
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 8
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "eSmashDoor"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "594f4dfd343831081400091f:594f4e5d3438310814000929"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Drone Control: 6{{/GM}} Examine the Lock"
+    conditions {
+      ops {
+        functionName: "Compare Actor Skill"
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "BaseOrCurrent"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 10
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 6
+        }
+      }
+    }
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "594f4dfd343831081400091f:594f50733438310814000951"
+    }
+  }
+  branches {
+    responseText: "$(scene.sCrewHighlight)[Paco]$(scene.sCrewClose) Think you can break this Paco?"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isPaco"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    idRef {
+      id: "594f4dfd343831081400091f:594f4ebd343831081400092b"
+    }
+  }
+  branches {
+    responseText: "$(scene.sCrewHighlight)[Bartlett]$(scene.sCrewClose) What are the odds that you can get through this John?"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isBartlett"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    idRef {
+      id: "594f4dfd343831081400091f:594f4ebe343831081400092d"
+    }
+  }
+  branches {
+    responseText: "$(scene.sCrewHighlight)[Seamus]$(scene.sCrewClose) You did destructive testing here, right?  Can you show me on this door?"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isSeamus"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+    hideIfUnavailable: true
+    idRef {
+      id: "594f4dfd343831081400091f:594f5073343831081400094f"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Leave it alone{{/CC}}"
+    nextNodeIndex: -1
+    idRef {
+      id: "594f4dfd343831081400091f:594f4ebe343831081400092f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Line Loop"
+}
+nodes {
+  idRef {
+    id: "594f517c3438310814000972"
+  }
+  index: 2
+  text: "After a moment of studying the lock, you realize you\'d need specialized gear for it.  Telestrian\'s executive security chief is apparently no slouch."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "594f4dfd343831081400091f:594f51c23438310814000974"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "594f4f863438310814000944"
+  }
+  index: 3
+  text: "No problemo, $(l.name).\n\nI don\'t carry this bat JUST for fun."
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isPaco"
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eSmashDoor"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "594f50113438310814000949"
+  }
+  index: 4
+  text: "{{GM}}He rolls his shoulders, sizing up the barrier.{{/GM}}\n\nPretty good, I think.   Guess you didn\'t just drag me along for eye-candy."
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isBartlett"
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eSmashDoor"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "594f50e63438310814000956"
+  }
+  index: 5
+  text: "{{GM}}He laughs heartily.{{/GM}}\n\nFuck yeah.  Now you\'re talking my language.\n\nLet\'s break some shit."
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isSeamus"
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eSmashDoor"
+          }
+        }
+      }
+    }
+  }
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "594f4dfd343831081400091f:594f4dfd3438310814000923"
+  }
+}
