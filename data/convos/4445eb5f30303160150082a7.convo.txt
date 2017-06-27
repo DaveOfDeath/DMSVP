@@ -7,7 +7,14 @@ nodes {
     id: "444697be30303160150082ad"
   }
   index: 0
-  text: "{{GM}}Your commlink screen flickers and the Baron appears.{{/GM}}\n\nThey are moving fast. The Telestrian deckers have already regained control of the elevator to this level and several security teams have been dispatched. I suggest we find what we are looking for sooner rather than later. \n\nYou must regain control over the elevator and try to lock them down, before you have a prayer of getting out. Hurry!\n\n"
+  text: "{{GM}}Your commlink screen flickers and the Baron appears.{{/GM}}\n\nThey are moving fast. The Telestrian deckers have already regained control of the elevator to this level and several security teams have been dispatched. I suggest we find what we are looking for sooner rather than later. \n\n"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "4445eb5f30303160150082a7:5951f5a8343831f416005edc"
+    }
+  }
   nodeType: ConversationNodeType_GM_Speaker_Voice
   sourceInSceneRef {
     id: "8eaf881a3030314413001908"
@@ -31,6 +38,30 @@ nodes {
           }
           args {
             int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "5951f5a8343831f416005edf"
+  }
+  index: 1
+  text: "You must override their control over the elevator and try to lock them out, if you want a prayer of getting out. Hurry!"
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "8eaf881a3030314413001908"
+  }
+  actions {
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eGatherParty"
           }
         }
       }
