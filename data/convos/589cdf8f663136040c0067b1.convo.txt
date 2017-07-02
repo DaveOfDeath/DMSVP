@@ -25,14 +25,132 @@ nodes {
   index: 1
   text: ""
   branches {
-    responseText: "{{CC}}Search{{/CC}} for recent activity"
+    responseText: "{{GM}}Dig through the log entries.{{/GM}}"
     nextNodeIndex: 2
     idRef {
-      id: "589cdf8f663136040c0067b1:589cdfdd663136040c0067c0"
+      id: "589cdf8f663136040c0067b1:595838e2346265e82600616a"
     }
   }
   branches {
-    responseText: "{{CC}}Log off{{/CC}}"
+    responseText: "{{GM}}Download all of the research data.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c15-s2_LabRun_Research"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add Item to Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c15-s2_LabRun_Research"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+    hideIfUnavailable: true
+    idRef {
+      id: "589cdf8f663136040c0067b1:59583339346265e8260060a8"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{GM}}Close the terminal.{{/GM}}"
     nextNodeIndex: -1
     idRef {
       id: "589cdf8f663136040c0067b1:589cdfdd663136040c0067c4"
@@ -44,20 +162,277 @@ nodes {
 }
 nodes {
   idRef {
-    id: "589ce0a6663136040c006802"
+    id: "595838ec346265e82600616d"
   }
   index: 2
-  text: "Recent Searches By User:\n   [Saada, Nathanial]\n      Safety systems\n      Purge System\n      Security overrides\n      \n   [Charles, Raymond]\n      How to hide a body\n      Job opportunities\n      Hermetic fetishes"
+  text: "Most of the entries here are from the security manager for the lab who spends much of their time complaining about Renraku\'s funding cutbacks and - more recently - complaining about the security threat represented by recruiting \"training dummies\" from the surrounding Barrens and Ork Underground."
   branches {
     responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "589cdf8f663136040c0067b1:595838f2346265e82600616f"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "59583925346265e826006175"
+  }
+  index: 3
+  text: ""
+  branches {
+    responseText: "{{GM}}Open Log RC\\12-3-2053{{/GM}}"
+    nextNodeIndex: 4
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "589cdf8f663136040c0067b1:5958928f346265880a007eb9"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Violet{{/CC}} {{GM}}Open Log RC\\3-15-2054{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (Actor)"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Actor\'s Persona"
+            args {
+              call_value {
+                functionName: "Nearest Tagged Actor to Actor"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (SenseTagList)"
+                    args {
+                      string_value: "isViolet"
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bVioletKnows"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 5
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "589cdf8f663136040c0067b1:595836b9346265e82600610f"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Open Log RC\\3-15-2054{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (Actor)"
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Actor\'s Persona"
+            args {
+              call_value {
+                functionName: "Nearest Tagged Actor to Actor"
+                args {
+                  call_value {
+                    functionName: "Get Map Item (SenseTagList)"
+                    args {
+                      string_value: "isViolet"
+                    }
+                  }
+                }
+                args {
+                  call_value {
+                    functionName: "Get Map Item (Player)"
+                    args {
+                      int_value: 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 7
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "589cdf8f663136040c0067b1:59589200346265880a007e7f"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Go back.{{/GM}}"
     nextNodeIndex: 1
     idRef {
-      id: "589cdf8f663136040c0067b1:589ce155663136040c006804"
+      id: "589cdf8f663136040c0067b1:595893d9346265880a007ee5"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  comment: "Log Loop"
+}
+nodes {
+  idRef {
+    id: "595892c0346265880a007edf"
+  }
+  index: 4
+  text: "Our lead scientist is concerned about lab safety regarding the new subjects. It\'s disconcerting to have the person who designed the safety features we implemented to deal with them express concern over the effectiveness of said safety systems! The primary fear is probably that he\'d be gassed along with the subjects if things went sour.\n\nHe\'s probably right."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "589cdf8f663136040c0067b1:595893b8346265880a007ee1"
     }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
-  speaker_override_id: "57384e3566313618130064b2"
+  sourceInSceneRef {
+    id: "b71f28576233313015004e47"
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bKnowsSafetySwitch"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59583726346265e826006135"
+  }
+  index: 5
+  text: "Our matrix connection to Renraku Seattle has been temporarily severed under security protocol MX-1376-24, unauthorized access by a remote decker. The decker was traced to a local area, and my agents believe they\'ve identified the perp as \"Chuckles\" - a known decker with ties to the Ork Underground. (Confirming what I\'ve always said about using that group in our affairs.) The agents have contracted local \"assets\" to eliminate the decker."
+  branches {
+    responseText: ""
+    nextNodeIndex: 6
+    idRef {
+      id: "589cdf8f663136040c0067b1:595838c1346265e826006145"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "b71f28576233313015004e47"
+  }
+}
+nodes {
+  idRef {
+    id: "59583936346265e82600617e"
+  }
+  index: 6
+  text: "They... they had him killed. They killed Chuckles! It was Renraku. I... Is this justice then? "
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "589cdf8f663136040c0067b1:5958925c346265880a007ea2"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isViolet"
+}
+nodes {
+  idRef {
+    id: "589cdf8f663136040c0067b1:5958924f346265880a007e99"
+  }
+  index: 7
+  text: "Our matrix connection to Renraku Seattle has been temporarily severed under security protocol MX-1376-24, unauthorized access by a remote decker. The decker was traced to a local area, and my agents believe they\'ve identified the perp as \"Chuckles\" - a known decker with ties to the Ork Underground. (Confirming what I\'ve always said about using that group in our affairs.) The agents have contracted local \"assets\" to eliminate the decker."
+  branches {
+    responseText: ""
+    nextNodeIndex: 3
+    idRef {
+      id: "589cdf8f663136040c0067b1:59589267346265880a007eb5"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "b71f28576233313015004e47"
+  }
 }
 roots {
   nextNodeIndex: 0
