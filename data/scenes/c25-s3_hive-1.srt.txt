@@ -35,6 +35,15 @@ triggers {
         }
       }
       args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
       }
     }
   }
@@ -102,18 +111,7 @@ triggers {
   name: "FirstPriestsRun"
   events {
     ops {
-      functionName: "On AI Threat Evaluation"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "ThreatType"
-          }
-          args {
-            int_value: 3
-          }
-        }
-      }
+      functionName: "On Actor Awareness of Another Actor"
     }
   }
   conditions {
@@ -147,6 +145,44 @@ triggers {
           functionName: "Get Map Item (SenseTagList)"
           args {
             string_value: "isBrotherhood"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Compare Actor Team"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
           }
         }
       }
@@ -703,6 +739,12 @@ triggers {
         }
       }
       args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
       }
     }
   }
@@ -752,55 +794,17 @@ triggers {
       }
     }
     ops {
-      functionName: "Activate Actor Spawner"
-      args {
-        call_value {
-          functionName: "Get Map Item (Actor Reference)"
-          args {
-            string_value: "a551f8723030318017004dae"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Activate Actor Spawner"
-      args {
-        call_value {
-          functionName: "Get Map Item (Actor Reference)"
-          args {
-            string_value: "a551ce533030318017004dad"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
       functionName: "Trigger: Wait for Rounds"
       args {
         int_value: 2
       }
       args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
       }
     }
     ops {
@@ -946,6 +950,12 @@ triggers {
         }
       }
       args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
       }
     }
   }
@@ -2040,7 +2050,7 @@ triggers {
   name: "PlayerDied"
   events {
     ops {
-      functionName: "On Actor Downed"
+      functionName: "On Actor Death"
     }
   }
   conditions {
@@ -2395,7 +2405,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "51d1f1f1623331a416000125"
   }
@@ -2631,6 +2641,12 @@ triggers {
                 }
               }
               args {
+                call_value {
+                  functionName: "Get Map Item (SceneDimension)"
+                  args {
+                    string_value: "Default"
+                  }
+                }
               }
             }
           }
@@ -2684,6 +2700,12 @@ triggers {
                 }
               }
               args {
+                call_value {
+                  functionName: "Get Map Item (SceneDimension)"
+                  args {
+                    string_value: "Default"
+                  }
+                }
               }
             }
           }
@@ -2827,6 +2849,12 @@ triggers {
             }
           }
           args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
           }
         }
       }
@@ -2870,6 +2898,12 @@ triggers {
             }
           }
           args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
           }
         }
       }
@@ -2985,6 +3019,12 @@ triggers {
         }
       }
       args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
       }
     }
   }
@@ -4653,7 +4693,7 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "True Form Venom"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
@@ -4742,7 +4782,7 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "True Form Venom"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     hiring_type: HiringType_None
     portrait {
