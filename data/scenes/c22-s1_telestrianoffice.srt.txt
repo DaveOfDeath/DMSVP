@@ -28,6 +28,25 @@ triggers {
       }
     }
     ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "58c8fe433966306400007ff7"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle_rocking"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Set Actor Run Speed"
       args {
         call_value {
@@ -1035,6 +1054,28 @@ triggers {
           }
           args {
             int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "58c8fe433966306400007ff7"
           }
         }
       }
@@ -4403,6 +4444,64 @@ regions {
   combat_outro_stinger: ""
   vfx_fill_prefab_name: ""
 }
+regions {
+  name: "rML_Start"
+  position {
+    x: -9
+    y: 11
+    width: 1
+    height: 1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "5959c62734383190140023ce"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
@@ -4438,7 +4537,7 @@ characters {
     team_id: "Civilians"
     char_name: "Security Camera"
     GeneralTags: "isCamera"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -4484,7 +4583,7 @@ characters {
     team_id: "Civilians"
     char_name: "Security Camera"
     GeneralTags: "isCamera"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -4528,7 +4627,7 @@ characters {
     team_id: "Civilians"
     char_name: "Security Camera"
     GeneralTags: "isCamera"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -4571,7 +4670,7 @@ characters {
     team_id: "Civilians"
     char_name: "Security Camera"
     GeneralTags: "isCamera"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -4614,7 +4713,7 @@ characters {
     team_id: "Civilians"
     char_name: "Security Camera"
     GeneralTags: "isCamera"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -4695,11 +4794,12 @@ characters {
       }
       specializations {
       }
+      archetypeName: "Non-Combatant"
     }
-    team_id: "Shadowrunners"
+    team_id: "Civilians"
     char_name: "Security Camera"
     GeneralTags: "isCamera"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -4715,6 +4815,7 @@ characters {
     z: -14
   }
   orientation: ORIENTATION_E
+  GeneralTags: "isCamera"
   idRef {
     id: "8a8eef896166349c04005b61"
   }
@@ -4736,14 +4837,17 @@ characters {
       }
       specializations {
       }
+      archetypeName: "Non-Combatant"
     }
-    team_id: "Shadowrunners"
+    team_id: "Civilians"
     char_name: "Security Camera"
-    enabled_at_start: false
+    GeneralTags: "isCamera"
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: ""
     }
+    is_prop_character: true
   }
 }
 characters {
@@ -4781,7 +4885,7 @@ characters {
     team_id: "Civilians"
     char_name: "Security Camera"
     GeneralTags: "isCamera"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -5193,9 +5297,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -9
+    x: -30
     y: 0
-    z: 11
+    z: 57
   }
   orientation: ORIENTATION_N
   idRef {
@@ -5303,7 +5407,7 @@ characters {
     }
     team_id: "Civilians"
     char_name: "Marie-Louise Telestrian"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: "NPC_ElfFemale_MarieLouiseTelestrian"
@@ -5660,8 +5764,9 @@ characters {
       }
       specializations {
       }
+      archetypeName: "Non-Combatant"
     }
-    team_id: "Shadowrunners"
+    team_id: "Civilians"
     char_name: "Security Camera"
     GeneralTags: "isCamera"
     pc_spawn_number: -1
@@ -6347,7 +6452,7 @@ characters {
   lod: 0
   character_instance {
     prefab_name: "Seattle:Story/ValerieTelestrian"
-    character_sheet_id: "AGChemie_Cyberzombie_Lv1"
+    character_sheet_id: "BaseCivilian"
     character_mod {
       stats {
         body: 0
@@ -6357,9 +6462,11 @@ characters {
         intelligence: 0
         willpower: 0
         essence: 0
+        magic: 0
         hp: 0
         ap: 0
         armor: 0
+        force: 0
         morale: 0
         discipline: 0
         awareness: 0
@@ -6374,25 +6481,48 @@ characters {
       skills {
         ranged_combat: 0
         close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
         dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
       }
       specializations {
+        pistol: 0
         rifle: 0
+        shotgun: 0
+        smg: 0
         edged: 0
         unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
       }
-      archetypeName: "Non-Combatant"
+      archetypeName: "Guard - Protect"
+      attitude: AttitudeAggressive
       vulnerabilities {
       }
     }
     team_id: "Civilians"
-    char_name: "Old Woman"
+    char_name: "$(scene.sOldWoman)"
     pc_spawn_number: -1
     portrait {
       filename: "npc_humanfemale_valerietelestrian"
     }
     portrait_code_override: ""
-    karma: 174
+    karma: 6
     is_prop_character: true
   }
 }
@@ -6601,6 +6731,14 @@ variables {
   variableref_value {
     scope: TsVariableScope_Scene
     name: "sComment"
+    typeName: "string"
+  }
+}
+variables {
+  string_value: "Old Woman"
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "sOldWoman"
     typeName: "string"
   }
 }
