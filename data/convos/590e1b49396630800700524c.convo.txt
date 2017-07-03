@@ -570,7 +570,7 @@ nodes {
     id: "590e20953966308007005368"
   }
   index: 22
-  text: "{{GM}}Doctor Castle fixes you with a glare.{{/GM}}\n\nYes, Paco. You may have noticed that he\'s not around right now. I got a call from a mutual friend, and he\'s in trouble."
+  text: "{{GM}}Doctor Castle fixes you with a glare.{{/GM}}\n\nYes, Paco. You may have noticed that he\'s not around right now. I got a call from our mutual friend, and he\'s in trouble."
   branches {
     responseText: ""
     nextNodeIndex: 23
@@ -626,16 +626,7 @@ nodes {
     }
   }
   branches {
-    responseText: "Who is this mutual friend?"
-    nextNodeIndex: 28
-    hideIfUnavailable: true
-    onlyOnce: true
-    idRef {
-      id: "590e1b49396630800700524c:590e217e3966308007005371"
-    }
-  }
-  branches {
-    responseText: "Where is this location?"
+    responseText: "What is the location?"
     conditions {
       ops {
         functionName: "Comparison (int)"
@@ -666,48 +657,9 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 31
+    nextNodeIndex: 28
     idRef {
       id: "590e1b49396630800700524c:590e217e3966308007005373"
-    }
-  }
-  branches {
-    responseText: "Why is this my problem?"
-    conditions {
-      ops {
-        functionName: "Comparison (int)"
-        args {
-          call_value {
-            functionName: "Get Story Variable (int)"
-            args {
-              string_value: "57084f7c6631365c1600767e"
-            }
-            args {
-              string_value: "Crew_Loyalty_Paco"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "Comparison Ops"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          int_value: 0
-        }
-      }
-    }
-    nextNodeIndex: 32
-    hideIfUnavailable: true
-    onlyOnce: true
-    idRef {
-      id: "590e1b49396630800700524c:590e21a43966308007005379"
     }
   }
   branches {
@@ -762,7 +714,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: -1
+    nextNodeIndex: 29
     idRef {
       id: "590e1b49396630800700524c:590e217f3966308007005375"
     }
@@ -819,9 +771,48 @@ nodes {
         }
       }
     }
-    nextNodeIndex: -1
+    nextNodeIndex: 30
     idRef {
       id: "590e1b49396630800700524c:590e21a43966308007005377"
+    }
+  }
+  branches {
+    responseText: "Why is this my problem?"
+    conditions {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (int)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Loyalty_Paco"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+    }
+    nextNodeIndex: 31
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "590e1b49396630800700524c:590e21a43966308007005379"
     }
   }
   branches {
@@ -865,7 +856,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: -1
+    nextNodeIndex: 32
     idRef {
       id: "590e1b49396630800700524c:590e253d39663080070053ba"
     }
@@ -878,7 +869,7 @@ nodes {
     id: "590e22f239663080070053a6"
   }
   index: 24
-  text: "{{GM}}Doctor Castle fixes you with a stare.{{/GM}}\n\nAbout as much trouble as you can get into on your own.\n"
+  text: "{{GM}}Doctor Castle fixes you with a stare.{{/GM}}\n\nAbout as much trouble as you can get into on your own. The kind where you need someone to show up and bail you out."
   branches {
     responseText: ""
     nextNodeIndex: 25
@@ -912,7 +903,7 @@ nodes {
     id: "590e33c03966308007005488"
   }
   index: 25
-  text: "A mutual friend called me because he thinks Paco is dying, and needs help."
+  text: "There\'s some sort of plague going through the Cutters. I wasn\'t going to do anything about it, but with Paco getting closer to the Seamstress, I thought I should look into it. Paco went to a \'big meet\' and he called here in a panic for medical help. I don\'t know the sitch, but I assume we\'re driving into a warzone with our resident thug rigger dying slowly."
   branches {
     responseText: ""
     conditions {
@@ -1033,7 +1024,7 @@ nodes {
     id: "590e23b239663080070053ad"
   }
   index: 26
-  text: "Coyote just got Gino back, and now you want her to lose Paco?"
+  text: "Coyote just got Gino back, and now you want her to lose Paco?\n\nCome to think of it, I don\'t know where Paco even stashed her cousin- that is something we should figure out sooner rather than later."
   branches {
     responseText: ""
     nextNodeIndex: 23
@@ -1062,56 +1053,10 @@ nodes {
 }
 nodes {
   idRef {
-    id: "590e21d8396630800700537c"
-  }
-  index: 28
-  text: "Doctor Castle watches you for a moment.\n\nIs that really important?"
-  branches {
-    responseText: "Yes."
-    nextNodeIndex: 29
-    idRef {
-      id: "590e1b49396630800700524c:590e21e9396630800700537e"
-    }
-  }
-  branches {
-    responseText: "No."
-    nextNodeIndex: 30
-    idRef {
-      id: "590e1b49396630800700524c:590e21ef3966308007005380"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "590e220b3966308007005386"
-  }
-  index: 29
-  text: "{{GM}}Doctor Castle sighs.{{/GM}} \n\nA ganger friend of his, Wolfgang, called and said Paco is dying. I have a location, but I don\'t have any more information than that."
-  branches {
-    responseText: ""
-    nextNodeIndex: 23
-    idRef {
-      id: "590e1b49396630800700524c:590e229c3966308007005388"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "590e21f43966308007005383"
-  }
-  index: 30
-  text: "Doctor Castle nods.\n\nThen let\'s get going."
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
     id: "590e311d3966308007005463"
   }
-  index: 31
-  text: "{{GM}}Doctor Castle looks relieved, tension draining out of her shoulders.{{/GM}}\n\nOld airports fell out of use with the facilities all consolidated at SeaTac. Cutters run one airport near here."
+  index: 28
+  text: "{{GM}}Doctor Castle looks relieved, tension draining out of her shoulders.{{/GM}}\n\nI was afraid you\'d refuse. Paco called me from one of the old airports. \n\nWith new and shiny SEATAC, older airports fell out of use. There\'s Thunder Bay to the south, and Cutters run one airport near here."
   branches {
     responseText: ""
     nextNodeIndex: 23
@@ -1124,10 +1069,42 @@ nodes {
 }
 nodes {
   idRef {
+    id: "595ab9cd396630f016006b4d"
+  }
+  index: 29
+  text: "Okay, now that you\'ve got your pack of band-aids, can you help me with Paco\'s extraction?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 23
+    idRef {
+      id: "590e1b49396630800700524c:595ab9f1396630f016006b81"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590e1b49396630800700524c:595aba14396630f016006b8b"
+  }
+  index: 30
+  text: "Okay, you\'ve got your pound of flesh. Care to help me with Paco\'s extraction now?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 23
+    idRef {
+      id: "590e1b49396630800700524c:595aba14396630f016006b8d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
     id: "590e2f3d3966308007005460"
   }
-  index: 32
-  text: "{{GM}}Doctor Castle fixes you with a glare.{{/GM}}"
+  index: 31
+  text: "{{GM}}Doctor Castle fixes you with a glare.{{/GM}}\n\nBecause sooner or later, you or one of your crew are going to need my help, and then you\'ll wish that you had done me this favor.\nThis favor that you\'re going to do right now."
   branches {
     responseText: ""
     nextNodeIndex: 25
@@ -1140,10 +1117,33 @@ nodes {
 }
 nodes {
   idRef {
-    id: "590e27193966308007005459"
+    id: "595aba3c396630f016006b95"
+  }
+  index: 32
+  text: "{{GM}}Doctor Castle nods.{{/GM}}\n\nI\'ll upload the coordinates to your map, and when you\'re ready I\'ll bring the van around."
+  branches {
+    responseText: "Van?"
+    nextNodeIndex: 33
+    idRef {
+      id: "590e1b49396630800700524c:595abb1f396630f016006b97"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "595abb1f396630f016006b9a"
   }
   index: 33
-  text: "{{GM}}Doctor Castle stares at you.{{/GM}}\n\nAre you ready to go save Paco yet?"
+  text: "{{GM}}Doctor Castle nods.{{/GM}}\n\nDocWagon HTR, armored and packed with enough medicine to revive a dead man or suppress a zombie plague."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "590e27193966308007005459"
+  }
+  index: 34
+  text: "{{GM}}Doctor Castle stares daggers at you at your approach.{{/GM}}\n\nAre you ready to go save Paco yet?"
   branches {
     responseText: ""
     nextNodeIndex: 23
@@ -1392,7 +1392,7 @@ roots {
       }
     }
   }
-  nextNodeIndex: 33
+  nextNodeIndex: 34
   hideIfUnavailable: true
   idRef {
     id: "590e1b49396630800700524c:590e1fe13966308007005331"
