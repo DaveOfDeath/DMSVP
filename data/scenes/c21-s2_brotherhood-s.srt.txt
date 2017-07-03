@@ -3079,6 +3079,65 @@ triggers {
       }
     }
     ops {
+      functionName: "Teleport Actor to Area Around Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "51980db53030315015000306"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "5959f1e2343831fc1900366f"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 7
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Delete Prop"
       args {
         call_value {
@@ -5208,7 +5267,7 @@ triggers {
             string_value: "WithOrWithout"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
@@ -5256,7 +5315,7 @@ triggers {
             string_value: "WithOrWithout"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
@@ -5304,7 +5363,7 @@ triggers {
             string_value: "WithOrWithout"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
@@ -5352,7 +5411,7 @@ triggers {
             string_value: "WithOrWithout"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
@@ -5400,7 +5459,7 @@ triggers {
             string_value: "WithOrWithout"
           }
           args {
-            int_value: 1
+            int_value: 0
           }
         }
       }
@@ -12535,7 +12594,7 @@ regions {
     b: 0.31764707
     a: 0.88235295
   }
-  ambience_template: "secretlab-busy"
+  ambience_template: "secretlab-quiet"
   combat_music: "HongKong-Combat-Generic-Int1"
   default_music: "HongKong-Legwork-Museum"
   loop_combat_music: true
@@ -14161,7 +14220,7 @@ regions {
   }
   ambience_template: "barrens-day"
   combat_music: ""
-  default_music: "Seattle-Set9-Legwork"
+  default_music: "HongKong-Legwork-Whistleblower"
   loop_combat_music: false
   loop_default_music: true
   no_fow_in_region: false
@@ -14933,10 +14992,10 @@ regions {
 regions {
   name: "cHoldingPen"
   position {
-    x: -7
-    y: 29
-    width: -7
-    height: 8
+    x: -13
+    y: 30
+    width: 6
+    height: 6
   }
   enabledAtStart: true
   is_camera_region: true
@@ -15118,6 +15177,64 @@ regions {
   is_vfx_fill_region: false
   idRef {
     id: "5959e913343831c400004a13"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "rFinalMage"
+  position {
+    x: -50
+    y: -8
+    width: 1
+    height: -1
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "5959f1e2343831fc1900366f"
   }
   highlight_color {
     r: 0
@@ -15965,9 +16082,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -52
+    x: -11
     y: 0
-    z: -9
+    z: 32
   }
   orientation: ORIENTATION_W
   GeneralTags: "canUseDoors"
@@ -16044,7 +16161,7 @@ characters {
     team_id: "Civilians"
     char_name: "Brotherhood Follower"
     GeneralTags: "canUseDoors"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -16055,9 +16172,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -51
+    x: -10
     y: 0
-    z: -9
+    z: 32
   }
   orientation: ORIENTATION_W
   GeneralTags: "canUseDoors"
@@ -16134,7 +16251,7 @@ characters {
     team_id: "Civilians"
     char_name: "Brotherhood Follower"
     GeneralTags: "canUseDoors"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -16145,9 +16262,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -53
+    x: -12
     y: 0
-    z: -9
+    z: 32
   }
   orientation: ORIENTATION_W
   GeneralTags: "canUseDoors"
@@ -16200,7 +16317,7 @@ characters {
     team_id: "Civilians"
     char_name: "Brotherhood Mage"
     GeneralTags: "canUseDoors"
-    enabled_at_start: false
+    enabled_at_start: true
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -17354,6 +17471,8 @@ scene_dimensions {
   initial_alarm_state: 17
   turns_per_round: 2
   is_matrix: true
+}
+character_roster {
 }
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
