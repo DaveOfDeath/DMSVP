@@ -14983,6 +14983,7 @@ props {
     matrixSpawnPoint {
       dimension: "Matrix"
     }
+    interaction_info_text: "Jack Out"
   }
   lod: 0
 }
@@ -18840,6 +18841,7 @@ props {
       LANIdentifier: "5197d7e53030319417004ebd"
       LANEquipment: "IC Black Melee High"
     }
+    interaction_info_text: "Jack In"
   }
   lod: 0
 }
@@ -18867,14 +18869,6 @@ props {
   displayName: "Jack Point 2"
   idRef {
     id: "51ae3918323539fc15000081"
-  }
-  interactionRoot {
-    isEnabled: false
-    interactionRadius: 1
-    jackPoint {
-      LANIdentifier: "5197d7e53030319417004ebd"
-      LANEquipment: "IC Black Melee High"
-    }
   }
   lod: 0
 }
@@ -19250,7 +19244,10 @@ props {
             functionName: "Specific Actor"
             args {
               call_value {
-                functionName: "Active Actor"
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
               }
             }
             args {
@@ -19278,7 +19275,8 @@ props {
         }
       }
     }
-    interactionIcon: InteractionIcon_Door
+    interactionIcon: InteractionIcon_LockedDoor
+    interaction_info_text: "Open Cell Door"
   }
   lod: 0
 }
@@ -20102,7 +20100,7 @@ props {
       g: 0.654902
       b: 0.094117649
     }
-    intensity: 7
+    intensity: 5
   }
 }
 props {
@@ -20124,7 +20122,7 @@ props {
       g: 0.654902
       b: 0.094117649
     }
-    intensity: 7
+    intensity: 5
   }
 }
 props {
@@ -20146,7 +20144,7 @@ props {
       g: 0.654902
       b: 0.094117649
     }
-    intensity: 7
+    intensity: 5
   }
 }
 props {
@@ -20168,7 +20166,7 @@ props {
       g: 0.654902
       b: 0.094117649
     }
-    intensity: 7
+    intensity: 5
   }
 }
 props {
@@ -36841,9 +36839,10 @@ props {
     isEnabled: false
     interactionRadius: 1
     transitionPoint {
-      scene_name: "c15-s1_Seamstress"
-      confirmation_text: ""
+      scene_name: "c15-s1_seamstress"
+      confirmation_text: "Return the the Seamstress Union?"
     }
+    interaction_info_text: "Exit Alleyway"
   }
   lod: 0
 }
@@ -39341,6 +39340,53 @@ props {
   orientation: ORIENTATION_S
   idRef {
     id: "51e86448643431aceb13c39b"
+  }
+  lod: 0
+}
+props {
+  name: "system_invisible_nonsolidProp"
+  gridPoint {
+    x: -53
+    y: 0
+    z: 28
+  }
+  orientation: ORIENTATION_S
+  displayName: "DEV_UB"
+  idRef {
+    id: "5959e9b2343831c400004a14"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Get Commentary Enabled"
+      }
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
+    interactionIcon: InteractionIcon_AudioCommentary
+    interaction_info_text: "{{00AAFF}}DEV:{{-}} UB Mission"
   }
   lod: 0
 }
