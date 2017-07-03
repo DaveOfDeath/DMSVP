@@ -7085,6 +7085,105 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "Global.SeamusLoyalty"
+  events {
+    ops {
+      functionName: "On Map Setup"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "OR"
+      args {
+        call_value {
+          functionName: "Comparison (int)"
+          args {
+            call_value {
+              functionName: "Get Story Variable (int)"
+              args {
+                string_value: "57084f7c6631365c1600767e"
+              }
+              args {
+                string_value: "Crew_Loyalty_Seamus"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Comparison Ops"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Comparison (int)"
+          args {
+            call_value {
+              functionName: "Get Story Variable (int)"
+              args {
+                string_value: "57084f7c6631365c1600767e"
+              }
+              args {
+                string_value: "Crew_Loyalty_Seamus"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Comparison Ops"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            int_value: -10
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Loyalty_Seamus"
+          }
+        }
+      }
+      args {
+        int_value: -1
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5959aedb3438316011007bba"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "UpstairsTarget"
   position {
@@ -10093,6 +10192,8 @@ scene_dimensions {
 }
 combat_music: "Seattle-Set9-Combat"
 matrix_music: "Seattle-Set8-Stealth"
+character_roster {
+}
 show_hiring_screen_on_scene_load: true
 scene_hiring_prerequisites {
   prereq_description: ""
