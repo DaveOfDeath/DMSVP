@@ -3288,6 +3288,28 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasMonologued"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Start Conversation"
       args {
         call_value {
@@ -3425,6 +3447,131 @@ triggers {
   is_oneshot: false
 }
 triggers {
+  name: "onDeath.CorpMage.PopInsult"
+  events {
+    ops {
+      functionName: "On Actor Death"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (Actor)"
+      args {
+        call_value {
+          functionName: "Triggering Target Actor"
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "b71f28576233313015004e47"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasMonologued"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Display Text over Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TextPopupStyle"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        string_value: "Goodnight, asshole."
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 6
+      }
+      args {
+        float_value: 0.5
+      }
+      args {
+        float_value: 0
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "595aeeac346265bc30006dbc"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
   name: "onDeath.AllEnemiesKilled.runAlarmOff"
   events {
     ops {
@@ -3529,6 +3676,153 @@ triggers {
   isActive: true
   idRef {
     id: "51d4ad3d623331dc0f00164c"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "onDeath.AllEnemiesKilled.Violet"
+  events {
+    ops {
+      functionName: "On Actor Death"
+    }
+    ops {
+      functionName: "On New Round"
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Team Survival Percentage"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 100
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (string)"
+          args {
+            string_value: "FactionList"
+          }
+          args {
+            int_value: 2
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "All Actors"
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isViolet"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Start Conversation"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "595aefd0346265bc30006dbe"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isViolet"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "595aef89346265bc30006dbd"
   }
   elseActions {
   }
@@ -4093,40 +4387,98 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Teleport Actor to Area Around Actor"
+      functionName: "Teleport Actor to Area Around Point"
       args {
         call_value {
-          functionName: "All Actors With Tag"
+          functionName: "Specific Actor"
           args {
             call_value {
-              functionName: "Get Map Item (SenseTagList)"
+              functionName: "Get Map Item (Actor)"
               args {
-                string_value: "isHeatIC"
+                string_value: "51d49dd1623331f415004dae"
               }
             }
           }
           args {
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Prop"
+          args {
             call_value {
-              functionName: "Get Preset Value (int)"
+              functionName: "Get Map Item (Prop)"
               args {
-                string_value: "AllOrAny"
-              }
-              args {
-                int_value: 0
+                string_value: "595ade51346265bc30006cd0"
               }
             }
           }
         }
       }
       args {
-        int_value: 6
-      }
-      args {
-        int_value: 2
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
       }
       args {
         call_value {
-          functionName: "Last Created Persona"
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Actor to Area Around Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "51d49db0623331f415004da8"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Prop"
+          args {
+            call_value {
+              functionName: "Get Map Item (Prop)"
+              args {
+                string_value: "595ade77346265bc30006cd3"
+              }
+            }
+          }
         }
       }
       args {
@@ -7773,6 +8125,64 @@ regions {
   combat_outro_stinger: ""
   vfx_fill_prefab_name: ""
 }
+regions {
+  name: "camMeatCloset"
+  position {
+    x: -81
+    y: -25
+    width: 4
+    height: 4
+  }
+  enabledAtStart: true
+  is_camera_region: true
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "595adc96346265bc30006c57"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: true
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
 patrolRoutes {
   name: "pth_MatrixWatcher_1"
   pathType: 0
@@ -8843,9 +9253,9 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -84
+    x: -80
     y: 0
-    z: -17
+    z: -23
   }
   orientation: ORIENTATION_W
   displayName: "Computer"
@@ -8941,6 +9351,7 @@ characters {
     z: -2
   }
   orientation: ORIENTATION_S
+  displayName: "PC0"
   idRef {
     id: "f3ac2a54623331100e005db3"
   }
@@ -9448,13 +9859,13 @@ characters {
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
-    x: -32
+    x: -31
     y: 0
     z: 96
   }
-  orientation: ORIENTATION_E
+  orientation: ORIENTATION_N
   GeneralTags: "isHeatIC"
-  displayName: "HardIC"
+  displayName: "HardIC_Ranged"
   idRef {
     id: "51d49db0623331f415004da8"
   }
@@ -9526,7 +9937,7 @@ characters {
       }
     }
     team_id: "matrixIC"
-    char_name: "Black IC"
+    char_name: "Black Ranged IC"
     GeneralTags: "isHeatIC"
     enabled_at_start: true
     pc_spawn_number: -1
@@ -9545,16 +9956,17 @@ characters {
     y: 0
     z: 97
   }
-  orientation: ORIENTATION_E
+  orientation: ORIENTATION_W
   GeneralTags: "isHeatIC"
+  displayName: "HardIC_Tank"
   idRef {
     id: "51d49dd1623331f415004dae"
   }
   lod: 0
   character_instance {
-    prefab_name: "HongKong:Matrix/MatrixIC_whiteLaser"
-    character_sheet_id: "IC_Lv4_White_ChargeLaser"
-    equipment_sheet_id: "IC White ChargeLaser Lv4 Gear"
+    prefab_name: "HongKong:Matrix/MatrixIC_blackTank"
+    character_sheet_id: "IC_Lv4_Black_Tank"
+    equipment_sheet_id: "IC Black Tank Lv4 Gear"
     character_mod {
       stats {
         body: 0
@@ -9612,13 +10024,13 @@ characters {
         esp_control: 0
         drone_combat: 0
       }
-      archetypeName: "gumbo_IC_Laser"
+      archetypeName: "gumbo_MatrixTank"
       attitude: AttitudeAggressive
       vulnerabilities {
       }
     }
     team_id: "matrixIC"
-    char_name: "White Sparky IC"
+    char_name: "Destroyer IC"
     GeneralTags: "isHeatIC"
     enabled_at_start: true
     pc_spawn_number: -1
@@ -9627,7 +10039,7 @@ characters {
       filename: ""
     }
     dimension_name: "Matrix"
-    karma: 39
+    karma: 47
   }
 }
 characters {
@@ -9911,6 +10323,188 @@ characters {
     karma: 75
   }
 }
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -79
+    y: 0
+    z: -24
+  }
+  orientation: ORIENTATION_E
+  displayName: "Mage Dummy"
+  idRef {
+    id: "595adc59346265bc30006c54"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Lonestar/HumanMaleLonestarMage"
+    character_sheet_id: "Errant_Lv4_Human_Mage"
+    equipment_sheet_id: "Errant_Lv4_Spellcasting"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "Non-Combatant"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "Civilians"
+    char_name: "Corporate Mage"
+    pc_spawn_number: -1
+    portrait {
+      filename: "Backer_HumanMale_RC"
+    }
+    karma: 94
+    is_prop_character: true
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: -32
+    y: 0
+    z: 96
+  }
+  orientation: ORIENTATION_S
+  GeneralTags: "isHeatIC"
+  displayName: "HardIC_Melee"
+  idRef {
+    id: "595adf54346265bc30006cd6"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Matrix/MatrixIC_blackMelee"
+    character_sheet_id: "IC_Lv4_Black_Ranged"
+    equipment_sheet_id: "IC Black Melee Lv4 Gear"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "gumbo_IC_Soldier"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "matrixIC"
+    char_name: "Black Melee IC"
+    GeneralTags: "isHeatIC"
+    enabled_at_start: true
+    pc_spawn_number: -1
+    spawn_type: SpawnType_Matrix
+    portrait {
+      filename: ""
+    }
+    dimension_name: "Matrix"
+    karma: 47
+  }
+}
 variables {
   int_value: 0
   variableref_value {
@@ -10029,6 +10623,14 @@ variables {
     scope: TsVariableScope_Scene
     name: "iCrewNumber"
     typeName: "int"
+  }
+}
+variables {
+  bool_value: false
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "hasMonologued"
+    typeName: "bool"
   }
 }
 mapEvents: "SecondRoomDeath"
