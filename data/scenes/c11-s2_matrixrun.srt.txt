@@ -63,6 +63,25 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Force-Use Interactable Object (with Actor)"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "3774a99e62333124100001ed"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -4005,6 +4024,15 @@ triggers {
         }
       }
       args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
       }
     }
     ops {
@@ -5737,6 +5765,12 @@ triggers {
         }
       }
       args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "matrix"
+          }
+        }
       }
     }
     ops {
@@ -5775,6 +5809,12 @@ triggers {
         }
       }
       args {
+        call_value {
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "matrix"
+          }
+        }
       }
     }
   }
@@ -9931,6 +9971,26 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "No Effect"
+    }
+    ops {
+      functionName: "Set Variable (string)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (string)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_LastRun"
+          }
+        }
+      }
+      args {
+        string_value: "Matrix"
+      }
+    }
   }
   isActive: true
   idRef {
@@ -11003,6 +11063,308 @@ triggers {
   elseActions {
   }
   is_oneshot: true
+}
+triggers {
+  name: "Watcher.RailSwitch"
+  events {
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "isRail_Set"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "isRail_Set"
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "595ac65b3438316c05006f53"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Activate Actor Spawner"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor Reference)"
+          args {
+            string_value: "595acb753438316c05006f57"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "595ac7273438316c05006f56"
+  }
+  elseActions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Variable (int)"
+          args {
+            string_value: "isRail_Set"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "595acb753438316c05006f57"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 3
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Activate Actor Spawner"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor Reference)"
+          args {
+            string_value: "595ac65b3438316c05006f53"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Watcher.Detain"
+  events {
+    ops {
+      functionName: "On Region Enter"
+      args {
+        call_value {
+          functionName: "Get Map Item (Region)"
+          args {
+            string_value: "595acb843438316c05006f59"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Tag for Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "HasOrHasNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "isWatcher"
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Detain Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DetainMethod"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "595acd0c3438316c05006f81"
+  }
+  elseActions {
+  }
+  is_oneshot: false
 }
 regions {
   name: "Portal3B"
@@ -13034,6 +13396,138 @@ regions {
   combat_outro_stinger: ""
   vfx_fill_prefab_name: ""
 }
+regions {
+  name: "WatcherIC_Pause"
+  position {
+    x: 13
+    y: -36
+    width: 8
+    height: 8
+  }
+  enabledAtStart: true
+  is_camera_region: true
+  is_matrix_node: true
+  is_vfx_fill_region: false
+  idRef {
+    id: "595acb843438316c05006f59"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+patrolRoutes {
+  name: "isRail_1"
+  pathType: 0
+  nodes {
+    position {
+      x: 34
+      z: 13
+    }
+    index: 0
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: 4
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 34
+      z: 9
+    }
+    index: 1
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: 0
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  can_move_beyond_node: false
+  is_rail: true
+  rail_speed: 4
+  rail_rotation_time: 4
+  idRef {
+    id: "595ac61c3438316c05006f51"
+  }
+  rail_draw_segments: true
+  rail_draw_nodes: true
+}
+patrolRoutes {
+  name: "isRail_2"
+  pathType: 0
+  nodes {
+    position {
+      x: 34
+      z: 5
+    }
+    index: 0
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: 0
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  nodes {
+    position {
+      x: 34
+      z: 9
+    }
+    index: 1
+    rail_node_pause_time: 0
+    rail_node_flip_180_rotation: false
+    rail_node_facing: 4
+    rail_draw_segment: true
+    rail_draw_node: true
+  }
+  can_move_beyond_node: false
+  is_rail: true
+  rail_speed: 4
+  rail_rotation_time: 4
+  idRef {
+    id: "595ac63d3438316c05006f52"
+  }
+  rail_draw_segments: true
+  rail_draw_nodes: true
+}
 characters {
   name: "chars_icon_playerIcon"
   gridPoint {
@@ -13107,7 +13601,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Story/JohnnyClean"
+    prefab_name: "Seattle:Story/JohnnyClean"
     character_sheet_id: "Story_JohnnyClean"
     character_mod {
       stats {
@@ -13181,6 +13675,8 @@ characters {
         esp_control: 0
       }
       archetypeName: "Guard - Protect"
+      vulnerabilities {
+      }
     }
     equipment {
       prefab_name: "PR Supression 1"
@@ -13216,6 +13712,7 @@ characters {
     description_bio: "Whether working as a janitor or a decker, he gets out clean."
     portrait_code_override: "s5h1c6b5c6"
     karma: 106
+    cyberware_head: "(Head) Datajack"
   }
 }
 characters {
@@ -15276,6 +15773,385 @@ characters {
     is_prop_character: true
   }
 }
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: 43
+    y: 0
+    z: 4
+  }
+  orientation: ORIENTATION_E
+  displayName: "Persona"
+  idRef {
+    id: "595ac26d3438316c05006f14"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "JohnnyConversationComplete"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 0
+        }
+      }
+      ops {
+        functionName: "Comparison (int)"
+        args {
+          call_value {
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "FryConversationComplete"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          int_value: 1
+        }
+      }
+    }
+    conversationPoint {
+      conversationID: "0fa2f765623331d00e006df2"
+      turnToFace: true
+    }
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "Seattle:Story/JohnnyClean"
+    character_sheet_id: "Story_JohnnyClean"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 6
+        reaction: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 24
+        discipline: 24
+        awareness: 19
+        perception: 0
+        authority: 49
+        protect_tether_range: 0
+        move_speed: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        deck_build_repair: 0
+        conjuring: 0
+        spirit_summoning: 0
+        spirit_banishing: 0
+        magic_defense: 0
+        drone_control: 0
+        remote_gunnery: 0
+        drone_build_repair: 0
+        athletics: 0
+        biotech: 0
+        dodge: 0
+        negotiation: 0
+        stealth: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_socialite: 0
+        drain_resistance: 0
+      }
+      specializations {
+        bows: 0
+        heavy_weapons: 0
+        laser: 0
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        clubs: 0
+        edged: 0
+        polearms: 0
+        unarmed: 0
+        whips: 0
+        throwing_blades: 0
+        attack_spells: 0
+        manipulation_spells: 0
+        social_spells: 0
+        support_spells: 0
+        combat_programs: 0
+        defensive_programs: 0
+        trap_programs: 0
+        spirit_control: 0
+        esp_control: 0
+      }
+      archetypeName: "Non-Combatant"
+      vulnerabilities {
+      }
+    }
+    equipment {
+      prefab_name: "PR Supression 1"
+    }
+    equipment {
+      prefab_name: "PR Medic 1"
+    }
+    equipment {
+      prefab_name: "CyberdeckKraftwerk1"
+    }
+    equipment {
+      prefab_name: "PR Sniffer 1"
+    }
+    equipment {
+      prefab_name: "PR Killer 1"
+    }
+    equipment {
+      prefab_name: "ESP Attacker"
+    }
+    equipment {
+      prefab_name: "Outfit_Maintenance"
+    }
+    team_id: "Civilians"
+    char_name: "Johnny Clean"
+    GeneralTags: "Runner"
+    enabled_at_start: true
+    pc_spawn_number: -1
+    spawn_type: SpawnType_Avatar
+    cyberware_jack: "Datajack"
+    portrait {
+      filename: "Backer_HumanMale_GregWilhelm_JohnnyClean_Tribute"
+    }
+    description_bio: "Whether working as a janitor or a decker, he gets out clean."
+    portrait_code_override: "s5h1c6b5c6"
+    dimension_name: "matrix"
+    karma: 106
+    is_prop_character: true
+    cyberware_head: "(Head) Datajack"
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: 34
+    y: 0
+    z: 13
+  }
+  orientation: ORIENTATION_W
+  GeneralTags: "isWatcher1"
+  displayName: "Watcher1"
+  idRef {
+    id: "595ac65b3438316c05006f53"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Matrix/MatrixIC_goldWatcher"
+    character_sheet_id: "IC_Lv3_Watcher"
+    equipment_sheet_id: "IC White Ranged Lv3 Gear"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "gumbo_G_WatcherIC"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "Gangers"
+    char_name: "Watcher IC"
+    GeneralTags: "isWatcher1"
+    patrolRoute: "isRail_1"
+    pc_spawn_number: -1
+    spawn_type: SpawnType_Matrix
+    portrait {
+      filename: ""
+    }
+    dimension_name: "matrix"
+    karma: 36
+    has_fist: false
+  }
+}
+characters {
+  name: "chars_icon_playerIcon"
+  gridPoint {
+    x: 34
+    y: 0
+    z: 5
+  }
+  orientation: ORIENTATION_E
+  GeneralTags: "isWatcher2"
+  displayName: "Watcher2"
+  idRef {
+    id: "595acb753438316c05006f57"
+  }
+  lod: 0
+  character_instance {
+    prefab_name: "HongKong:Matrix/MatrixIC_goldWatcher"
+    character_sheet_id: "IC_Lv3_Watcher"
+    equipment_sheet_id: "IC White Ranged Lv3 Gear"
+    character_mod {
+      stats {
+        body: 0
+        quickness: 0
+        strength: 0
+        charisma: 0
+        intelligence: 0
+        willpower: 0
+        essence: 0
+        magic: 0
+        hp: 0
+        ap: 0
+        armor: 0
+        force: 0
+        morale: 0
+        discipline: 0
+        awareness: 0
+        perception: 0
+        authority: 0
+        protect_tether_range: 0
+        move_speed: 0
+        vision_peripheral_distance: 0
+        vision_cone_distance: 0
+        vision_cone_angle: 0
+      }
+      skills {
+        ranged_combat: 0
+        close_combat: 0
+        throwing_weapons: 0
+        spellcasting: 0
+        decking: 0
+        conjuring: 0
+        spirit_summoning: 0
+        drone_control: 0
+        biotech: 0
+        dodge: 0
+        etiquette_corporate: 0
+        etiquette_security: 0
+        etiquette_gang: 0
+        etiquette_socialite: 0
+        chi_casting: 0
+        etiquette_shadowrunner: 0
+        etiquette_street: 0
+        etiquette_academic: 0
+        cyberware_affinity: 0
+      }
+      specializations {
+        pistol: 0
+        rifle: 0
+        shotgun: 0
+        smg: 0
+        edged: 0
+        unarmed: 0
+        spirit_control: 0
+        esp_control: 0
+        drone_combat: 0
+      }
+      archetypeName: "gumbo_G_WatcherIC"
+      attitude: AttitudeAggressive
+      vulnerabilities {
+      }
+    }
+    team_id: "Gangers"
+    char_name: "Watcher IC"
+    GeneralTags: "isWatcher2"
+    patrolRoute: "isRail_2"
+    enabled_at_start: false
+    pc_spawn_number: -1
+    spawn_type: SpawnType_Matrix
+    portrait {
+      filename: ""
+    }
+    dimension_name: "matrix"
+    karma: 36
+    has_fist: false
+  }
+}
 variables {
   int_value: 0
   variableref_value {
@@ -15460,6 +16336,14 @@ variables {
     typeName: "bool"
   }
 }
+variables {
+  int_value: 1
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "isRail_Set"
+    typeName: "int"
+  }
+}
 mapEvents: "UnlockSecondaryPoliceNodes"
 mapEvents: "UnlockSecondaryMedicalNodes"
 mapEvents: "Node1ICDestroyed"
@@ -15576,17 +16460,17 @@ scene_dimensions {
   dimension_name: "matrix"
   initial_alarm_state: 15
   turns_per_round: 3
+  is_matrix: true
 }
 scene_dimensions {
   dimension_name: "matrix_medical"
   initial_alarm_state: 5
   turns_per_round: 3
+  is_matrix: true
 }
 ambience_template: "bar-quiet"
 combat_music: "Seattle-Set6-Combat"
 matrix_music: "Seattle-Set8-Stealth"
-character_roster {
-}
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
   prereq_description: ""
@@ -15602,7 +16486,7 @@ roster_overrides {
     hiring_conditions {
     }
     hiring_cost: -1
-    content_pack_source: "518d7674643431b03f0041ab"
+    content_pack_source: "57084f7c6631365c1600767e"
   }
 }
 use_hiring_cost_warning: false
