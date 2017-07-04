@@ -963,7 +963,7 @@ nodes {
     id: "593489e6346265501f005c3e"
   }
   index: 7
-  text: "Nemo said one of us was rotten; he insisted that it was , but I should have known it was you, Paco. {{GM}}The ganger stands rigid, his voice cold and dispassionate contrasting to his deteriorating flesh. Wisps of smoke trail upwards from the open wounds that cover his body.{{/GM}} I put all my adept powers into holding myself together long enough to see who would come along to clean up. And it\'s you... Now I will make you pay, maggot. And your little dog, too."
+  text: "Nemo said one of us was rotten; I should have known it was you, Paco. {{GM}}The ganger stands rigid, his voice cold and dispassionate contrasting to his deteriorating flesh. Wisps of smoke trail upwards from the open wounds that cover his body.{{/GM}} I put all my adept powers into holding myself together long enough to see who would come along to clean up. And it\'s you... Now I will make you pay, maggot. And your little dog, too."
   branches {
     responseText: "Nemo betrayed you, not Paco."
     conditions {
@@ -1449,10 +1449,18 @@ nodes {
     responseText: "{{GM}}Use the auto-injector on him.{{/GM}}"
     actions {
       ops {
-        functionName: "Set Actor Dead Body Persists"
+        functionName: "Move Prop"
         args {
           call_value {
-            functionName: "Specific Actor"
+            functionName: "Get Map Item (Prop)"
+            args {
+              string_value: "592b6c1a346265a0030036f3"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Current Location of Actor"
             args {
               call_value {
                 functionName: "Get Map Item (Actor)"
@@ -1460,19 +1468,6 @@ nodes {
                   string_value: "5932071d346265741a0033fb"
                 }
               }
-            }
-            args {
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "IsOrIsNot"
-            }
-            args {
-              int_value: 1
             }
           }
         }
@@ -1501,7 +1496,7 @@ nodes {
               string_value: "DeathMethod"
             }
             args {
-              int_value: 1
+              int_value: 3
             }
           }
         }
@@ -1537,6 +1532,30 @@ nodes {
   branches {
     responseText: "{{GM}}Watch him die.{{/GM}}"
     actions {
+      ops {
+        functionName: "Move Prop"
+        args {
+          call_value {
+            functionName: "Get Map Item (Prop)"
+            args {
+              string_value: "592b6c1a346265a0030036f3"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Current Location of Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Actor)"
+                args {
+                  string_value: "5932071d346265741a0033fb"
+                }
+              }
+            }
+          }
+        }
+      }
       ops {
         functionName: "Kill Actor"
         args {
