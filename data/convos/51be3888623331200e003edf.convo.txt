@@ -11,16 +11,44 @@ nodes {
   branches {
     responseText: "Are you $(l.name)?"
     nextNodeIndex: 1
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f001fd6"
+    }
   }
   branches {
     responseText: "You\342\200\231re making a career change, buddy."
     nextNodeIndex: 3
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f001fdf"
+    }
   }
   branches {
     responseText: "Say goodbye to Renraku, $(l.name)."
-    nextNodeIndex: 13
+    nextNodeIndex: 24
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f002012"
+    }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Loyalty_Violet"
+          }
+        }
+      }
+      args {
+        int_value: -1
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -31,6 +59,9 @@ nodes {
   branches {
     responseText: "Then you\342\200\231ll end up like them."
     nextNodeIndex: 2
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f001fd9"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -43,6 +74,9 @@ nodes {
   branches {
     responseText: ""
     nextNodeIndex: 4
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f001fdc"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -56,6 +90,9 @@ nodes {
   branches {
     responseText: ""
     nextNodeIndex: 4
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f001fe2"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -68,15 +105,24 @@ nodes {
   branches {
     responseText: "Well, whoever sent me is definitely interested in you."
     nextNodeIndex: 5
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f001fe5"
+    }
   }
   branches {
     responseText: "Think of this as a signing bonus."
     nextNodeIndex: 5
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f00200c"
+    }
     auxiliaryLink: true
   }
   branches {
     responseText: "What\342\200\231s the difference? A corp\342\200\231s a corp."
     nextNodeIndex: 5
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f00200f"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -90,14 +136,105 @@ nodes {
   branches {
     responseText: "Not my problem. You\342\200\231re coming with me."
     nextNodeIndex: 6
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f001fe8"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Violet{{/CC}} Maybe we can come to an arrangement."
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors"
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isViolet"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bVioletKnows"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 8
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "51be3888623331200e003edf:595c4b2e3462652c1f002019"
+    }
   }
   branches {
     responseText: "Of course, you have something to say about it. You can beat their price."
-    nextNodeIndex: 8
+    nextNodeIndex: 19
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f001ff0"
+    }
   }
   branches {
     responseText: "What do you want me to do?"
-    nextNodeIndex: 10
+    nextNodeIndex: 21
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f001ffc"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -110,6 +247,9 @@ nodes {
   branches {
     responseText: "Then I knock you out and drag you behind me."
     nextNodeIndex: 7
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f001feb"
+    }
   }
   branches {
     responseText: "{{GM}}Knock him out and drag him behind you.{{/GM}}"
@@ -188,6 +328,9 @@ nodes {
       }
     }
     nextNodeIndex: -1
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f001fee"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -275,17 +418,299 @@ nodes {
 }
 nodes {
   idRef {
-    id: "51be3a6d623331200e003f09"
+    id: "595c4bb83462652c1f00201c"
   }
   index: 8
+  text: "What sort of arrangement? {{GM}}He looks at your group suspiciously.{{/GM}} I... I don\'t have a lot of money."
+  branches {
+    responseText: "Answer this young lady\'s questions, and if I like your answers, I\'ll think about letting you go."
+    nextNodeIndex: 9
+    idRef {
+      id: "51be3888623331200e003edf:595c4c2c3462652c1f00201e"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "595c4c973462652c1f002021"
+  }
+  index: 9
+  text: "{{GM}}Raising an eyebrow, the scientist eventually nods his head.{{/GM}}\n\nOkay... I\'ll do my best."
+  branches {
+    responseText: ""
+    nextNodeIndex: 10
+    idRef {
+      id: "51be3888623331200e003edf:595c4cf03462652c1f002025"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "595c4cf43462652c1f002028"
+  }
+  index: 10
+  text: "A couple months ago, a decker infiltrated your Matrix node. His name was Chuckles - well, Charles, but Chuckles was his handle. {{GM}}The scientist shoots you a glance, but then looks back to Violet and slowly nods.{{/GM}}\n\nWhy? I mean, what was he after?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 11
+    idRef {
+      id: "51be3888623331200e003edf:595c4d943462652c1f00202a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isViolet"
+}
+nodes {
+  idRef {
+    id: "595c4d9a3462652c1f00202d"
+  }
+  index: 11
+  text: "{{GM}}He rubs his temples.{{/GM}} I - think I remember. At first they couldn\'t find anything. The decker hadn\'t downloaded any data or even enter the research database; and RC - the security head here... whose body is lying in the other room there - had them check a dozen times.\n\nLater, the maintenance people discovered the lab\'s generator was putting out more power than the lab was using. The decker - this Chuckles, you said? They had activated an old power shunt to a nearby junction. I guess they were feeding power into the Barrens for some reason."
+  branches {
+    responseText: ""
+    nextNodeIndex: 12
+    idRef {
+      id: "51be3888623331200e003edf:595c4ef83462652c1f00202f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "595c4efc3462652c1f002032"
+  }
+  index: 12
+  text: "Of course. That sounds just like Chuckles. {{GM}}Violet\'s eyes tear up, but she continues, anger overcoming the sadness in her voice.{{/GM}} And then you guys figured out what he had done, after you had him killed, and then shut off the power. Putting all those people back in the dark, even though you had more than enough power from that little fusion generator than you could possibly need."
+  branches {
+    responseText: "Take it easy, Violet."
+    nextNodeIndex: 13
+    idRef {
+      id: "51be3888623331200e003edf:595c50ab3462652c1f00206e"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{GM}}Say nothing.{{/GM}}"
+    nextNodeIndex: 13
+    idRef {
+      id: "51be3888623331200e003edf:595c50af3462652c1f002070"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isViolet"
+}
+nodes {
+  idRef {
+    id: "595c50f13462652c1f002073"
+  }
+  index: 13
+  text: "{{GM}}He holds his hands up.{{/GM}} Whoa, whoa. I didn\'t do any of that. I\'m just a *wage-slave*. They don\'t ask me what we should do about any of this. And they locked my bank account when I asked a single question about security measures.\n\nI\'m sorry about your friend. Really. He must have known the risks, breaking into a Renraku Matrix node is dangerous for anyone. And he did it... just to help people?"
+  branches {
+    responseText: "He was a fool. A brave fool."
+    nextNodeIndex: 14
+    idRef {
+      id: "51be3888623331200e003edf:595c51933462652c1f0020b2"
+    }
+  }
+  branches {
+    responseText: "We\'re not all mercenaries."
+    nextNodeIndex: 14
+    idRef {
+      id: "51be3888623331200e003edf:595cd5a6346265a8310010d4"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "And yet you still want to stay."
+    nextNodeIndex: 14
+    idRef {
+      id: "51be3888623331200e003edf:595cd5c0346265a8310010f5"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "595ccb8b346265a83100103d"
+  }
+  index: 14
+  text: "We can - Mrs. Kubota wanted me to - Chuckles was working for her. She asked me to look into his files; see if we could get the power back in parts of the Barrens. But there wasn\'t any... Can we - $(l.name), can we use the lab power like - like Chuckles did?\n\n{{GM}}She looks frustrated, torn between the desire for revenge and consolation.{{/GM}}"
+  branches {
+    responseText: "Sorry, Violet. We have a job to do."
+    nextNodeIndex: 15
+    idRef {
+      id: "51be3888623331200e003edf:595cce22346265a83100103f"
+    }
+  }
+  branches {
+    responseText: "Will Renraku abandon this lab after this?"
+    nextNodeIndex: 16
+    idRef {
+      id: "51be3888623331200e003edf:595cce22346265a831001041"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isViolet"
+}
+nodes {
+  idRef {
+    id: "595cce48346265a831001044"
+  }
+  index: 15
+  text: "I answered your questions! You said-"
+  branches {
+    responseText: "I said I\'d think about it. I did. Now you\'re coming with us."
+    nextNodeIndex: 7
+    idRef {
+      id: "51be3888623331200e003edf:595cce5d346265a831001046"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "595ccef1346265a83100104e"
+  }
+  index: 16
+  text: "Not a chance. There\'s a powerful mana line running through the area. The power plant meltdown near here twisted the magical properties, making it possible to bind Awakened animals to a trainer. It\'s really quiet useful."
+  branches {
+    responseText: "And what happens if we reactivate the power shunt?"
+    nextNodeIndex: 17
+    idRef {
+      id: "51be3888623331200e003edf:595cd00d346265a831001050"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "595cd033346265a831001053"
+  }
+  index: 17
+  text: "Well, Renraku would naturally shut it down when they discovered it... Unless. Unless...\n\nOne of you is a decker, right? I could write up some fake research project documentation. You could insert the documentation in the proper places of the log files. Everyone who would know better is dead. It would take months for them to discover the power wasn\'t going where it should. All they care about is that the numbers match up. {{GM}}The scientist looks at you triumphantly. Violet searches your face cautiously for an answer.{{/GM}}"
+  branches {
+    responseText: "...Alright. Fine. I\'ll talk with Kubota about compensation."
+    nextNodeIndex: 18
+    idRef {
+      id: "51be3888623331200e003edf:595cd195346265a831001055"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{GM}}Mumble: Fraggin\' charity cases.{{/GM}} Get it done."
+    nextNodeIndex: 18
+    idRef {
+      id: "51be3888623331200e003edf:595cd232346265a831001057"
+    }
+  }
+  branches {
+    responseText: "No deal. We were hired to do a job, we\'re finishing it."
+    nextNodeIndex: 7
+    idRef {
+      id: "51be3888623331200e003edf:595cd2a3346265a831001059"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "595cd3a1346265a83100105f"
+  }
+  index: 18
+  text: "{{GM}}Violet smiles.{{/GM}} I - We\'ll be quick about it. I\'m sure Kubota will be super pleased. I know it. {{GM}}She turns to the scientist, suddenly stern.{{/GM}} Come on; you heard the $(l.man); let\'s do this before they change their mind."
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isViolet"
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "hasSaadaComplete"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "518d7674643431b03f0041ab"
+          }
+          args {
+            string_value: "c15_hasCompletedOptionalRun"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Loyalty_Violet"
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51be3a6d623331200e003f09"
+  }
+  index: 19
   text: "How much are they paying you?"
   branches {
     responseText: "\302\2459,000."
-    nextNodeIndex: 9
+    nextNodeIndex: 20
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f001ff3"
+    }
   }
   branches {
     responseText: "{{GM}}Lie{{/GM}} \302\24515,000."
-    nextNodeIndex: 9
+    nextNodeIndex: 20
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f001ff9"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -294,11 +719,14 @@ nodes {
   idRef {
     id: "51be3c4b623331200e003f53"
   }
-  index: 9
+  index: 20
   text: "I can\'t beat that... Renraku froze all my personal funds while I\'m here, for \"security.\" All I have on me is \302\2455,000. Let me go, and it\'s yours."
   branches {
     responseText: ""
-    nextNodeIndex: 12
+    nextNodeIndex: 23
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f001ff6"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -331,15 +759,21 @@ nodes {
   idRef {
     id: "51be3c14623331200e003f3c"
   }
-  index: 10
+  index: 21
   text: "Let me go. Just walk away."
   branches {
     responseText: "What will you do?"
-    nextNodeIndex: 11
+    nextNodeIndex: 22
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f001fff"
+    }
   }
   branches {
     responseText: "It\'s gonna cost you."
-    nextNodeIndex: 8
+    nextNodeIndex: 19
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f002009"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -348,11 +782,14 @@ nodes {
   idRef {
     id: "51be3c60623331200e003f64"
   }
-  index: 11
+  index: 22
   text: "Run. Somewhere. I don\342\200\231t know. But I shouldn\342\200\231t tell you anyway. Safer that way."
   branches {
     responseText: ""
-    nextNodeIndex: 12
+    nextNodeIndex: 23
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f002002"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -360,7 +797,7 @@ nodes {
   idRef {
     id: "51e5e3a96233319819005dd2"
   }
-  index: 12
+  index: 23
   text: ""
   branches {
     responseText: "Fine. Get out of here."
@@ -414,6 +851,9 @@ nodes {
       }
     }
     nextNodeIndex: -1
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f002005"
+    }
   }
   branches {
     responseText: "Nah. You\342\200\231re coming with me. {{GM}}Knock him out and drag him behind you.{{/GM}}"
@@ -492,6 +932,9 @@ nodes {
       }
     }
     nextNodeIndex: -1
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f002007"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -499,11 +942,14 @@ nodes {
   idRef {
     id: "51be38d1623331200e003eea"
   }
-  index: 13
+  index: 24
   text: "H-how do you know my name?"
   branches {
     responseText: ""
     nextNodeIndex: 4
+    idRef {
+      id: "51be3888623331200e003edf:595c4af33462652c1f002015"
+    }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
@@ -511,4 +957,7 @@ nodes {
 roots {
   responseText: ""
   nextNodeIndex: 0
+  idRef {
+    id: "51be3888623331200e003edf:595c4af33462652c1f001fd3"
+  }
 }
