@@ -16,33 +16,6 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_GM_Voice
-  actions {
-    ops {
-      functionName: "Set Variable (bool)"
-      args {
-        call_value {
-          functionName: "Get Story Variable (bool)"
-          args {
-            string_value: "57084f7c6631365c1600767e"
-          }
-          args {
-            string_value: "Crew_TalkedTo_River"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-  }
 }
 nodes {
   idRef {
@@ -259,6 +232,8 @@ nodes {
   branches {
     responseText: "Okay, so we\'ve met twice now, who are you?"
     nextNodeIndex: 9
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "58c0eb133966300804007b0a:5959db0339663060140061b5"
     }
@@ -339,11 +314,6 @@ nodes {
   }
   branches {
     responseText: "Talk to you later, River."
-    actions {
-      ops {
-        functionName: "No Effect"
-      }
-    }
     nextNodeIndex: -1
     idRef {
       id: "58c0eb133966300804007b0a:5959db0339663060140061f1"
@@ -546,13 +516,677 @@ nodes {
 }
 nodes {
   idRef {
-    id: "585d9a20393066600c000bdc:5923bc29396630501b004f19"
+    id: "585d9a20393066600c000bdc:5923bc5e396630501b005478"
   }
   index: 20
+  text: "{{GM}}River is staring at a picture, of her and some friends. The four of them are dressed in military fatigues, with the Salish flag on the shoulder.  River doesn\'t look up from her picture as you approach.{{/GM}}\n\nYeah, what\'s up?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 54
+    idRef {
+      id: "585d9a20393066600c000bdc:5923bc5e396630501b00547a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Seamstress_Char_Bartlett"
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "5959e2da39663060140076af"
+  }
+  index: 21
+  text: "{{GM}}River stares off into space, not reacting to your approach until you\'ve been standing there for several minutes.{{/GM}}\n\nWhoa-- when did you get here? I was just seeking the advice of my totem."
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e31339663060140076b3"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959e31939663060140076b6"
+  }
+  index: 22
+  text: ""
+  branches {
+    responseText: "What totem do you follow?"
+    nextNodeIndex: 23
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e32039663060140076b8"
+    }
+  }
+  branches {
+    responseText: "What is Dolphin telling you?"
+    nextNodeIndex: 24
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e32439663060140076ba"
+    }
+  }
+  branches {
+    responseText: "Can I ask you about something else?"
+    nextNodeIndex: 54
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e32439663060140076bc"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "How do you like being a shaman?"
+    nextNodeIndex: 26
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e32439663060140076be"
+    }
+  }
+  branches {
+    responseText: "Talk to you later."
+    nextNodeIndex: -1
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e32539663060140076c0"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Totem Loop"
+}
+nodes {
+  idRef {
+    id: "5959e34b39663060140076c3"
+  }
+  index: 23
+  text: "{{GM}}River stares off into the distance, a half-smile on her face.{{/GM}}\n\nDolphin chose me, from a young age. I always loved the water, and it seemed like no matter how dirty the Sound got, whenever I would go to the water as a kid, there would be dolphins playing. I always loved the majesty of them- how they play and enjoy themselves, but fight for other dolphins, and can even kill sharks."
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e3a339663060140076c5"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "b_TalkedtoRiver"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "5959e4b039663060140076e5"
+  }
+  index: 24
+  text: "{{GM}}River stares off into space.{{/GM}}\n\nShe says my heart is too clouded with emotion to see the choice clearly. I should keep following the information, and keep my options open. Not as helpful as I was hoping."
+  branches {
+    responseText: ""
+    nextNodeIndex: 25
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e4e739663060140076e7"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959e4e939663060140076ea"
+  }
+  index: 25
+  text: "I don\'t know what I was hoping for.\n\nMaybe GPS coordinates, and a sign that says \'The bad guys are in there.\'"
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e50939663060140076ec"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959e43239663060140076d9"
+  }
+  index: 26
+  text: "{{GM}}River raises an eyebrow at you.{{/GM}}\n\nYou ask that like I\'d have any idea what it was like not to be a shaman. It doesn\'t work like that- I didn\'t choose to be a Shaman instead of a Hermetic Mage. In fact, it would have been easier for me in college if I had been able to work spells the way the Hermetic Studies Professors said they should work, instead of creating my own workarounds."
+  branches {
+    responseText: ""
+    nextNodeIndex: 27
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e48239663060140076db"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959e48439663060140076de"
+  }
+  index: 27
+  text: "{{GM}}River shrugs.{{/GM}}\n\nMy degree is a worthless bit of paper, but it made my Grandfather happy."
+  branches {
+    responseText: ""
+    nextNodeIndex: 22
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e4a839663060140076e0"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "585d9a20393066600c000bdc:5923bc65396630501b005484"
+  }
+  index: 28
+  text: "{{GM}}River stuffs the old image back in her pocket as you approach, turning to face you.{{/GM}}\n\nIt\'s weird, isn\'t it? I thought knowing anything would make things better, but it really doesn\'t."
+  branches {
+    responseText: "What will you do when you get answers?"
+    nextNodeIndex: 29
+    idRef {
+      id: "5923bc30396630501b0050dc:5959eafb396630601400854d"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959eafb3966306014008550"
+  }
+  index: 29
+  text: "{{GM}}River sucks air through her teeth, leaning back.{{/GM}}\n\nThat is a good question. I don\'t know.\nWhat would you do?"
+  branches {
+    responseText: "Revenge, plain and simple."
+    nextNodeIndex: 30
+    idRef {
+      id: "585d9a20393066600c000bdc:5923bc65396630501b005486"
+    }
+  }
+  branches {
+    responseText: "If it\'s a corp, hurt them. If it\'s a person, end them."
+    nextNodeIndex: 31
+    idRef {
+      id: "5923bc30396630501b0050dc:5959eb2d3966306014008554"
+    }
+  }
+  branches {
+    responseText: "Do you want revenge?"
+    nextNodeIndex: 34
+    idRef {
+      id: "5923bc30396630501b0050dc:5959eb2d3966306014008556"
+    }
+  }
+  branches {
+    responseText: "What do you want to do?"
+    nextNodeIndex: 35
+    idRef {
+      id: "5923bc30396630501b0050dc:5959eb2e3966306014008558"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959eb5c396630601400855b"
+  }
+  index: 30
+  text: "{{GM}}River grits her teeth, her face grim.{{/GM}}\n\nYeah, I could be down for that. I still have nightmares, waking up underwater, with the bodies of my friends floating and catching rounds from whoever was shooting into the water."
+  branches {
+    responseText: ""
+    nextNodeIndex: 54
+    idRef {
+      id: "5923bc30396630501b0050dc:5959ed0839663060140088c3"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959eb99396630601400855e"
+  }
+  index: 31
+  text: "{{GM}}River nods.{{/GM}}\n\nSounds like a plan. Can I count on you to be there?"
+  branches {
+    responseText: "Yes."
+    nextNodeIndex: 32
+    idRef {
+      id: "5923bc30396630501b0050dc:5959ebbc3966306014008560"
+    }
+  }
+  branches {
+    responseText: "Pass."
+    nextNodeIndex: 33
+    idRef {
+      id: "5923bc30396630501b0050dc:5959ebbc3966306014008562"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "My friends call me Nuyen."
+    nextNodeIndex: 33
+    idRef {
+      id: "5923bc30396630501b0050dc:5959ebbc3966306014008564"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959ebd93966306014008567"
+  }
+  index: 32
+  text: "{{GM}}River flashes a predatory smile- very sharklike.{{/GM}}\n\nIt\'s a date."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959ec833966306014008577"
+  }
+  index: 33
+  text: "{{GM}}River rolls her eyes.{{/GM}}\n\nOf course."
+  branches {
+    responseText: ""
+    nextNodeIndex: 54
+    idRef {
+      id: "5923bc30396630501b0050dc:5959ec953966306014008579"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959ec11396630601400856d"
+  }
+  index: 34
+  text: "Of course I want revenge! I want those bastards to hurt, I want them to pay for all the pain and misery they put me through!"
+  branches {
+    responseText: ""
+    nextNodeIndex: 54
+    idRef {
+      id: "5923bc30396630501b0050dc:5959ec34396630601400856f"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959ec3a3966306014008574"
+  }
+  index: 35
+  text: "{{GM}}River shrugs, looking lost.{{/GM}}\n\nI wish I could just say that I want revenge, but that\'s not enough. I could go whack a mailbox with Paco, but that doesn\'t solve anything. I want to know WHY. Why did my friends die? What did I almost die for? "
+  branches {
+    responseText: ""
+    nextNodeIndex: 54
+    idRef {
+      id: "5923bc30396630501b0050dc:5959eca73966306014008584"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959e52f39663060140079ef"
+  }
+  index: 36
+  text: "River takes a deep breath, and has a Brandy sitting on the table next to her. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 37
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e71c3966306014007bbf"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "5959e71e3966306014007bc2"
+  }
+  index: 37
+  text: "{{GM}}River takes another breath when she sees you, and then fixes you with a stare.{{/GM}}\n\nViolet cracked the encryption on the Corporate Court Order that was supposed to clear the waterways. The one that gave the Nameless corp permission to kill my team. I haven\'t opened the file yet, I\'m afraid of what I\'ll find in there."
+  branches {
+    responseText: ""
+    nextNodeIndex: 38
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e76f3966306014007bc4"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959e7733966306014007bc7"
+  }
+  index: 38
+  text: ""
+  branches {
+    responseText: "Did Violet say anything about it?"
+    nextNodeIndex: 39
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e7a43966306014007d11"
+    }
+  }
+  branches {
+    responseText: "Woman up, open the damned file."
+    nextNodeIndex: 40
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e7a43966306014007d13"
+    }
+  }
+  branches {
+    responseText: "Would you like me to open it for you?"
+    nextNodeIndex: 43
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e7a43966306014007d15"
+    }
+  }
+  branches {
+    responseText: "You got this."
+    nextNodeIndex: 40
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e7a43966306014007d17"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "RiverRevealLoop"
+}
+nodes {
+  idRef {
+    id: "5959e7cf3966306014007d1a"
+  }
+  index: 39
+  text: "{{GM}}River takes a slug of her drink.{{/GM}}\n\nShe was so excited for the file to be open, that she hadn\'t checked it beyond scanning to make sure it wasn\'t junk data. So I know it\'s not trashed by the defrag, and I know it says who killed my friends."
+  branches {
+    responseText: ""
+    nextNodeIndex: 38
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e80b3966306014007d1c"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959e8153966306014007d2e"
+  }
+  index: 40
+  text: "{{GM}}River finishes her drink, and nods.{{/GM}}\n\nWoman up-- you got this, Daye. She opens the file, and scans."
+  branches {
+    responseText: ""
+    nextNodeIndex: 41
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e87d3966306014007d3f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959e87d3966306014007d42"
+  }
+  index: 41
+  text: "{{GM}}River\'s jaw drops.{{/GM}}\n\nGaeatronics. A fuckin\' Salish corporation killed my Salish soldiers in Salish territorial waters."
+  branches {
+    responseText: ""
+    nextNodeIndex: 42
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e9353966306014007d51"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959e9353966306014007d54"
+  }
+  index: 42
+  text: "Bastards. Worse than that. Turncoats. \n\nI could understand if one of your Anglo-corps or especially one of the soulless Japancorps could murder my people to protect their bottom line, but my own people? My own people killing Salish in their homeland? Those fuckers have got to pay."
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959e83c3966306014007d34"
+  }
+  index: 43
+  text: "River finishes her drink, and nods, pushing the datapad your way.\n\nWould you?"
+  branches {
+    responseText: "Sure."
+    nextNodeIndex: 44
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e8593966306014007d36"
+    }
+  }
+  branches {
+    responseText: "No, I was just checking how bad you want this."
+    nextNodeIndex: 40
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e8593966306014007d38"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Not my problem."
+    nextNodeIndex: 47
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e85b3966306014007d3a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959e8763966306014007d3d"
+  }
+  index: 44
+  text: "You scan through the dense and boring legal code quickly, looking for the bolded entity name for the group that asked for the Corporate Court Order.\n\nYou find it about a third of the way into the document.\nGaeatronics."
+  branches {
+    responseText: ""
+    nextNodeIndex: 45
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e99d3966306014007d5e"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "5959e99d3966306014007d61"
+  }
+  index: 45
+  text: ""
+  branches {
+    responseText: "Gaetronics."
+    nextNodeIndex: 41
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e8f63966306014007d48"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "{{GM}}Etiquette: Corporate{{/GM}} It\'s a Salish company, River, are you sure you want to know?"
+    nextNodeIndex: 46
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e8f93966306014007d4a"
+    }
+  }
+  branches {
+    responseText: "I think you should read it yourself."
+    nextNodeIndex: 40
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e8f93966306014007d4c"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Reveal"
+}
+nodes {
+  idRef {
+    id: "5959e98a3966306014007d57"
+  }
+  index: 46
+  text: "{{GM}}River bites her lips, indecisive for a moment.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 45
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e9b43966306014007d68"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959e9df3966306014007d87"
+  }
+  index: 47
+  text: "{{GM}}River glares at you.{{/GM}}\n\nRight, you\'re basically a corp yourself- all about profit margins. I forgot about that."
+  branches {
+    responseText: ""
+    nextNodeIndex: 48
+    idRef {
+      id: "5923bc30396630501b0050dc:5959ea003966306014007d89"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959ea003966306014007d8c"
+  }
+  index: 48
+  text: "{{GM}}River scans the file, and throws the pad down when she finds what she was looking for.{{/GM}}\n\nGaeatronics. Not that you care.\n\nWhat do you want?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 54
+    idRef {
+      id: "5923bc30396630501b0050dc:5959ea7e3966306014008548"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959e55939663060140079f5"
+  }
+  index: 49
+  text: "{{GM}}River doesn\'t look up from her picture, crumpled and apparently flattened again.{{/GM}}\n\nI\'d better be able to get back into that fucking facility after all this is over, $+(l.name). I need revenge for my friends."
+  branches {
+    responseText: ""
+    nextNodeIndex: 54
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e56639663060140079f7"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5959e55739663060140079f2"
+  }
+  index: 50
+  text: "{{GM}}River holds a framed picture- the one you\'ve seen her holding many times.{{/GM}}\n\nWe got revenge on those fraggers, and that\'s thanks to you, $+(l.name). What can I do for you?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 54
+    idRef {
+      id: "5923bc30396630501b0050dc:5959e65e39663060140079fa"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "595d21303035391827006172"
+  }
+  index: 51
+  text: "I just feel like we should be doing something about this info."
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isRiver"
+}
+nodes {
+  idRef {
+    id: "5959df8839663060140069fd"
+  }
+  index: 52
+  text: "{{GM}}River is staring at an old image, of her and some friends. They\'re smiling in the picture. She wipes the corners of her eyes before turning to look at you.{{/GM}}\n\nUh, $+(l.name)... I could use some time to think.  You mind if we catch up later?"
+  branches {
+    responseText: "Sure, We\'ll chat later."
+    nextNodeIndex: -1
+    idRef {
+      id: "5923bc30396630501b0050dc:5959dfa939663060140069ff"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "585d9a20393066600c000bdc:5923bc29396630501b004f19"
+  }
+  index: 53
   text: "Generic Introduction Text. Never to be seen by players."
   branches {
     responseText: ""
-    nextNodeIndex: 21
+    nextNodeIndex: 54
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b004f1b"
     }
@@ -564,7 +1198,7 @@ nodes {
   idRef {
     id: "585d9a20393066600c000bdc:5923bc29396630501b004f1d"
   }
-  index: 21
+  index: 54
   text: ""
   branches {
     responseText: "What are your thoughts on the last run?"
@@ -605,7 +1239,7 @@ nodes {
               string_value: "57084f7c6631365c1600767e"
             }
             args {
-              string_value: "Crew_OnLastRun_Bartlett"
+              string_value: "Crew_OnLastRun_River"
             }
           }
         }
@@ -633,7 +1267,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 22
+    nextNodeIndex: 55
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -680,7 +1314,7 @@ nodes {
               string_value: "57084f7c6631365c1600767e"
             }
             args {
-              string_value: "Crew_OnLastRun_Bartlett"
+              string_value: "Crew_OnLastRun_River"
             }
           }
         }
@@ -708,7 +1342,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 24
+    nextNodeIndex: 57
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -746,8 +1380,44 @@ nodes {
           string_value: "Planeyard"
         }
       }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_OnLastRun_River"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
     }
-    nextNodeIndex: 26
+    nextNodeIndex: 59
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -795,26 +1465,7 @@ nodes {
         }
       }
     }
-    actions {
-      ops {
-        functionName: "Set Variable (int)"
-        args {
-          call_value {
-            functionName: "Get Story Variable (int)"
-            args {
-              string_value: "57084f7c6631365c1600767e"
-            }
-            args {
-              string_value: "Crew_Progression_Bartlett"
-            }
-          }
-        }
-        args {
-          int_value: 1
-        }
-      }
-    }
-    nextNodeIndex: 29
+    nextNodeIndex: 62
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -861,80 +1512,8 @@ nodes {
           }
         }
       }
-      ops {
-        functionName: "Comparison (int)"
-        args {
-          call_value {
-            functionName: "Get Story Variable (int)"
-            args {
-              string_value: "57084f7c6631365c1600767e"
-            }
-            args {
-              string_value: "Crew_Loyalty_River"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "Comparison Ops"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          int_value: 1
-        }
-      }
     }
-    actions {
-      ops {
-        functionName: "Set Variable (bool)"
-        args {
-          call_value {
-            functionName: "Get Story Variable (bool)"
-            args {
-              string_value: "57084f7c6631365c1600767e"
-            }
-            args {
-              string_value: "bHubTalkedTo_River"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-      }
-      ops {
-        functionName: "Set Variable (int)"
-        args {
-          call_value {
-            functionName: "Get Story Variable (int)"
-            args {
-              string_value: "57084f7c6631365c1600767e"
-            }
-            args {
-              string_value: "Crew_Progression_River"
-            }
-          }
-        }
-        args {
-          int_value: 2
-        }
-      }
-    }
-    nextNodeIndex: 92
+    nextNodeIndex: 125
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -1054,7 +1633,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 93
+    nextNodeIndex: 126
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -1174,7 +1753,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 94
+    nextNodeIndex: 127
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -1329,7 +1908,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 96
+    nextNodeIndex: 129
     hideIfUnavailable: true
     idRef {
       id: "5923bc30396630501b0050dc:5959fb5c3966306014009864"
@@ -1476,7 +2055,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 97
+    nextNodeIndex: 130
     hideIfUnavailable: true
     idRef {
       id: "5923bc30396630501b0050dc:5959fd5139663060140099db"
@@ -1623,7 +2202,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 99
+    nextNodeIndex: 132
     hideIfUnavailable: true
     idRef {
       id: "5923bc30396630501b0050dc:5959fd5639663060140099e1"
@@ -1632,7 +2211,7 @@ nodes {
   }
   branches {
     responseText: "We\'ll talk later."
-    nextNodeIndex: 101
+    nextNodeIndex: 134
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b0050d9"
     }
@@ -1645,11 +2224,11 @@ nodes {
   idRef {
     id: "585d9a20393066600c000bdc:5923bc29396630501b004f21"
   }
-  index: 22
+  index: 55
   text: "{{GM}}River suppresses a smile.{{/GM}}\n\nI had no idea you were that flexible."
   branches {
     responseText: ""
-    nextNodeIndex: 23
+    nextNodeIndex: 56
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b004f23"
     }
@@ -1660,11 +2239,11 @@ nodes {
   idRef {
     id: "585d9a20393066600c000bdc:5923bc29396630501b004f25"
   }
-  index: 23
+  index: 56
   text: "$(l.name), maybe we should come up with a catchy group name. Marauders? $(l.name)\'s Seven?"
   branches {
     responseText: ""
-    nextNodeIndex: 21
+    nextNodeIndex: 54
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b004f27"
     }
@@ -1676,11 +2255,11 @@ nodes {
   idRef {
     id: "585d9a20393066600c000bdc:5923bc29396630501b004f2d"
   }
-  index: 24
+  index: 57
   text: "{{GM}}River gives you a glower before returning to her book.{{/GM}}\n\nI\'m going to assume that\'s a rhetorical question, because you left me here to babysit."
   branches {
     responseText: ""
-    nextNodeIndex: 25
+    nextNodeIndex: 58
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b004f2f"
     }
@@ -1691,11 +2270,11 @@ nodes {
   idRef {
     id: "585d9a20393066600c000bdc:5923bc29396630501b004f31"
   }
-  index: 25
+  index: 58
   text: "Next time, bring me along and I can watch your back."
   branches {
     responseText: ""
-    nextNodeIndex: 21
+    nextNodeIndex: 54
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b004f33"
     }
@@ -1707,11 +2286,11 @@ nodes {
   idRef {
     id: "585d9a20393066600c000bdc:5923bc29396630501b004f39"
   }
-  index: 26
+  index: 59
   text: "{{GM}}River sighs.{{/GM}}\n\nI suppose you want to know why I wanted the data off a specific hook in the dock."
   branches {
     responseText: ""
-    nextNodeIndex: 27
+    nextNodeIndex: 60
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b004f3b"
     }
@@ -1722,11 +2301,11 @@ nodes {
   idRef {
     id: "585d9a20393066600c000bdc:5923bc29396630501b004f3d"
   }
-  index: 27
+  index: 60
   text: "Hiring runners wasn\'t my first choice- I tried bribing the dirty NTSB agent, and then I tried bribing the Halloweeners, who were supposed to be security for that section of dock. "
   branches {
     responseText: ""
-    nextNodeIndex: 28
+    nextNodeIndex: 61
     idRef {
       id: "5923bc30396630501b0050dc:5959f1d53966306014008d4a"
     }
@@ -1737,11 +2316,11 @@ nodes {
   idRef {
     id: "5959f1d53966306014008d4d"
   }
-  index: 28
+  index: 61
   text: "I even tried bribing that security guard to let me in the gate, but he wanted favors I wasn\'t willing to give. At least, not to him."
   branches {
     responseText: ""
-    nextNodeIndex: 21
+    nextNodeIndex: 54
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b004f3f"
     }
@@ -1753,11 +2332,11 @@ nodes {
   idRef {
     id: "585d9a20393066600c000bdc:5923bc29396630501b004f4d"
   }
-  index: 29
+  index: 62
   text: "{{GM}}River raises an eyebrow at you.{{/GM}}\n\nHobbies or interests? Are there going to be trust-building exercises? Can we play desert island?"
   branches {
     responseText: ""
-    nextNodeIndex: 30
+    nextNodeIndex: 63
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b004f4f"
     }
@@ -1768,7 +2347,7 @@ nodes {
   idRef {
     id: "585d9a20393066600c000bdc:5923bc29396630501b004f51"
   }
-  index: 30
+  index: 63
   text: ""
   branches {
     responseText: "Tell me about the NAN."
@@ -1865,7 +2444,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 31
+    nextNodeIndex: 64
     hideIfUnavailable: true
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b004f53"
@@ -1903,7 +2482,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 54
+    nextNodeIndex: 87
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -2005,7 +2584,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 55
+    nextNodeIndex: 88
     hideIfUnavailable: true
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b00504b"
@@ -2106,7 +2685,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 64
+    nextNodeIndex: 97
     hideIfUnavailable: true
     idRef {
       id: "5923bc30396630501b0050dc:595a1026396630601400aa33"
@@ -2207,7 +2786,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 71
+    nextNodeIndex: 104
     hideIfUnavailable: true
     idRef {
       id: "5923bc30396630501b0050dc:595a1247396630601400ab9b"
@@ -2264,7 +2843,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 75
+    nextNodeIndex: 108
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -2367,7 +2946,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 78
+    nextNodeIndex: 111
     hideIfUnavailable: true
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b005017"
@@ -2375,7 +2954,7 @@ nodes {
   }
   branches {
     responseText: "Okay, so Desert Island. What books would you take with you on a Desert Island?"
-    nextNodeIndex: 82
+    nextNodeIndex: 115
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -2414,7 +2993,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 83
+    nextNodeIndex: 116
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -2453,7 +3032,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 86
+    nextNodeIndex: 119
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -2500,7 +3079,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 90
+    nextNodeIndex: 123
     hideIfUnavailable: true
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b0050ad"
@@ -2508,7 +3087,7 @@ nodes {
   }
   branches {
     responseText: "Talk to you later, River."
-    nextNodeIndex: 101
+    nextNodeIndex: 134
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b0050a9"
     }
@@ -2528,11 +3107,11 @@ nodes {
   idRef {
     id: "5959f3073966306014008ed0"
   }
-  index: 31
+  index: 64
   text: "{{GM}}River shrugs.{{/GM}}\n\nWhat\'s to tell? You should know the broad strokes- Great Ghost Dance, Treaty of Denver, NAN Tribal Council and all that."
   branches {
     responseText: ""
-    nextNodeIndex: 32
+    nextNodeIndex: 65
     idRef {
       id: "5923bc30396630501b0050dc:5959f65639663060140090b7"
     }
@@ -2543,11 +3122,11 @@ nodes {
   idRef {
     id: "5959f65639663060140090ba"
   }
-  index: 32
+  index: 65
   text: ""
   branches {
     responseText: "Tell me about the Great Ghost Dance."
-    nextNodeIndex: 33
+    nextNodeIndex: 66
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -2556,7 +3135,7 @@ nodes {
   }
   branches {
     responseText: "Tell me about the Treaty of Denver."
-    nextNodeIndex: 43
+    nextNodeIndex: 76
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -2565,7 +3144,7 @@ nodes {
   }
   branches {
     responseText: "Tell me about the NAN tribal council."
-    nextNodeIndex: 46
+    nextNodeIndex: 79
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -2574,7 +3153,7 @@ nodes {
   }
   branches {
     responseText: "Thanks, River."
-    nextNodeIndex: 53
+    nextNodeIndex: 86
     idRef {
       id: "5923bc30396630501b0050dc:5959f3413966306014008ed8"
     }
@@ -2586,18 +3165,18 @@ nodes {
   idRef {
     id: "5959f3523966306014008edb"
   }
-  index: 33
+  index: 66
   text: "River stares at you for a moment.\n\nSeriously? It kicked off this whole \'magic revolution thing\'? Pretty important stuff."
   branches {
     responseText: "Let\'s say I was absent that day."
-    nextNodeIndex: 34
+    nextNodeIndex: 67
     idRef {
       id: "5923bc30396630501b0050dc:5959f3753966306014008edd"
     }
   }
   branches {
     responseText: "{{GM}}Etiquette: Academic{{/GM}} I\'m interested to hear an Amerind Perspective on it, rather than the UCAS version."
-    nextNodeIndex: 42
+    nextNodeIndex: 75
     hideIfUnavailable: true
     idRef {
       id: "5923bc30396630501b0050dc:5959f3823966306014008edf"
@@ -2609,11 +3188,11 @@ nodes {
   idRef {
     id: "5959f3d43966306014008ee7"
   }
-  index: 34
+  index: 67
   text: "{{GM}}River chuffs.{{/GM}}\n\nYeah, I bet you were."
   branches {
     responseText: ""
-    nextNodeIndex: 35
+    nextNodeIndex: 68
     idRef {
       id: "5923bc30396630501b0050dc:5959f40c3966306014008eec"
     }
@@ -2624,11 +3203,11 @@ nodes {
   idRef {
     id: "5959f40f3966306014008eef"
   }
-  index: 35
+  index: 68
   text: "Okay, so the Great Ghost Dance was this big shamanic ritual that happened when the Amerind Nation declared war on the old United States. Serious shit, after the forced relocations, migrations, labor camps, smallpox in blankets, Nepean Act, and all that. The USA had it coming."
   branches {
     responseText: ""
-    nextNodeIndex: 36
+    nextNodeIndex: 69
     idRef {
       id: "5923bc30396630501b0050dc:5959f4633966306014008ef1"
     }
@@ -2639,11 +3218,11 @@ nodes {
   idRef {
     id: "5959f4633966306014008ef4"
   }
-  index: 36
+  index: 69
   text: "Daniel Howling Coyote, some call him RedBraids. He was the mastermind behind it. He said that if we did the ritual, that the great spirit would be there for us.\n\nWhich is weird, because our ancestors tried it before, and then got stomped into dust by the US Army."
   branches {
     responseText: "Why did people call him RedBraids?"
-    nextNodeIndex: 37
+    nextNodeIndex: 70
     idRef {
       id: "5923bc30396630501b0050dc:5959f4b33966306014008eff"
     }
@@ -2654,11 +3233,11 @@ nodes {
   idRef {
     id: "5959f4bf3966306014008f02"
   }
-  index: 37
+  index: 70
   text: "Daniel Howling Coyote wasn\'t a saint. He didn\'t walk on water or any of that Jesus stuff. He was a guerrila fighter against the UCAS army, and did some dark stuff. They called him Red Braids because he supposedly soaked his braids in the blood of his enemies. I don\'t know if that\'s true, but that\'s what I\'ve heard."
   branches {
     responseText: ""
-    nextNodeIndex: 38
+    nextNodeIndex: 71
     idRef {
       id: "5923bc30396630501b0050dc:5959f50a3966306014008f04"
     }
@@ -2669,11 +3248,11 @@ nodes {
   idRef {
     id: "5959f50a3966306014008f07"
   }
-  index: 38
+  index: 71
   text: "So this big ritual, with every tribal elder that Coyote can get to attend the thing. There\'s some tribes back east and down south that won\'t come, but almost all the tribes from the west and north send representatives. "
   branches {
     responseText: ""
-    nextNodeIndex: 39
+    nextNodeIndex: 72
     idRef {
       id: "5923bc30396630501b0050dc:5959f5423966306014008f09"
     }
@@ -2684,11 +3263,11 @@ nodes {
   idRef {
     id: "5959f5423966306014008f0c"
   }
-  index: 39
+  index: 72
   text: "The ritual goes on for DAYS. I\'m serious, shaman dancing, drugs, everything. A lot of people passed out and or died from exposure. My uncle died, and it\'s a source of pride for my family- to have an ancestor who was there."
   branches {
     responseText: ""
-    nextNodeIndex: 40
+    nextNodeIndex: 73
     idRef {
       id: "5923bc30396630501b0050dc:5959f5833966306014008f0e"
     }
@@ -2699,11 +3278,11 @@ nodes {
   idRef {
     id: "5959f5833966306014008f11"
   }
-  index: 40
+  index: 73
   text: "Anyway, the ritual goes until the US military starts mobilizing, and then every volcano in the continental United States goes off. I heard even the ones in Alaska, but I\'m not sure on that. Hawai\'i got spared, but they sent shamans too. Who knows how that all worked out."
   branches {
     responseText: ""
-    nextNodeIndex: 41
+    nextNodeIndex: 74
     idRef {
       id: "5923bc30396630501b0050dc:5959f5d93966306014008f13"
     }
@@ -2714,11 +3293,11 @@ nodes {
   idRef {
     id: "5959f5d93966306014008f16"
   }
-  index: 41
+  index: 74
   text: "So after all the dust settled- pun intended- the US of A realized that they couldn\'t push ol Injun Joe around anymore.\n\nThey signed the Treaty of Denver, and that recognized the Native American Nations. Salish lands, all the way west to the Sioux, south to the PCC. Of course, those tribes in the east and south, they got the shaft, but that\'s what they get for not being team players."
   branches {
     responseText: ""
-    nextNodeIndex: 32
+    nextNodeIndex: 65
     idRef {
       id: "5923bc30396630501b0050dc:5959f6633966306014009109"
     }
@@ -2730,11 +3309,11 @@ nodes {
   idRef {
     id: "5959f3e13966306014008eea"
   }
-  index: 42
+  index: 75
   text: "{{GM}}River stares at you, considering for a moment.{{/GM}}\n\nFair enough."
   branches {
     responseText: ""
-    nextNodeIndex: 35
+    nextNodeIndex: 68
     idRef {
       id: "5923bc30396630501b0050dc:5959f4683966306014008efc"
     }
@@ -2746,11 +3325,11 @@ nodes {
   idRef {
     id: "5959f66e396630601400910d"
   }
-  index: 43
+  index: 76
   text: "{{GM}}River smiles.{{/GM}}\n\nHow the US of A got its shit kicked in, and had to go home with its tail between its legs, and tell Lady Liberty that he lost all the rent at poker?"
   branches {
     responseText: ""
-    nextNodeIndex: 44
+    nextNodeIndex: 77
     idRef {
       id: "5923bc30396630501b0050dc:5959f88239663060140092b7"
     }
@@ -2761,11 +3340,11 @@ nodes {
   idRef {
     id: "5959f88239663060140092ba"
   }
-  index: 44
+  index: 77
   text: "{{GM}}River stops.{{/GM}}\n\nWow, that mixed metaphor really got away from me."
   branches {
     responseText: ""
-    nextNodeIndex: 45
+    nextNodeIndex: 78
     idRef {
       id: "5923bc30396630501b0050dc:5959f89b39663060140092bc"
     }
@@ -2776,11 +3355,11 @@ nodes {
   idRef {
     id: "5959f89b39663060140092bf"
   }
-  index: 45
+  index: 78
   text: "After the Great Ghost Dance, it wasn\'t like the US had much choice. Their choices were to see the volcano thing repeated for every natural disaster in every city  in the US, or sign the treaty giving us back our lands. Took like thirty minutes, including parking and having everyone march into the building for the singing of the paperwork.\n\nI\'ve always wondered how they picked the poor bastard to represent the US. I mean, how would you like your name attached to the document that ended the US as we knew it? The failure of an entire country and national identity? I heard that guy killed himself."
   branches {
     responseText: ""
-    nextNodeIndex: 32
+    nextNodeIndex: 65
     idRef {
       id: "5923bc30396630501b0050dc:5959f95a39663060140092c1"
     }
@@ -2792,11 +3371,11 @@ nodes {
   idRef {
     id: "5959f6da3966306014009112"
   }
-  index: 46
+  index: 79
   text: "{{GM}}River shrugs.{{/GM}}\n\nWhat\'s to tell? It\'s a big government, and big governments like that don\'t do jack shit for the common person."
   branches {
     responseText: ""
-    nextNodeIndex: 47
+    nextNodeIndex: 80
     idRef {
       id: "5923bc30396630501b0050dc:5959f6fc3966306014009114"
     }
@@ -2807,11 +3386,11 @@ nodes {
   idRef {
     id: "5959f6ff3966306014009117"
   }
-  index: 47
+  index: 80
   text: "I could tell you some stuff about Salish tribal politics, but it would probably bore you."
   branches {
     responseText: "I\'m interested."
-    nextNodeIndex: 48
+    nextNodeIndex: 81
     idRef {
       id: "5923bc30396630501b0050dc:5959f71b3966306014009119"
     }
@@ -2829,11 +3408,11 @@ nodes {
   idRef {
     id: "5959f72a396630601400911e"
   }
-  index: 48
+  index: 81
   text: "{{GM}}River studies you to see if your interest is genuine.{{/GM}}\n\nYeah? "
   branches {
     responseText: ""
-    nextNodeIndex: 49
+    nextNodeIndex: 82
     idRef {
       id: "5923bc30396630501b0050dc:5959f7403966306014009120"
     }
@@ -2844,11 +3423,11 @@ nodes {
   idRef {
     id: "5959f7403966306014009123"
   }
-  index: 49
+  index: 82
   text: "Most people think that the NAN are better than the UCAS and other anglo governments."
   branches {
     responseText: ""
-    nextNodeIndex: 50
+    nextNodeIndex: 83
     idRef {
       id: "5923bc30396630501b0050dc:5959f7663966306014009125"
     }
@@ -2859,11 +3438,11 @@ nodes {
   idRef {
     id: "5959f7663966306014009128"
   }
-  index: 50
+  index: 83
   text: "The UCAS, for instance, has rich people in charge, and lobbyists to keep those rich people in charge. If the people tried to get the power, like we did, the rich would have to fight them for it."
   branches {
     responseText: ""
-    nextNodeIndex: 51
+    nextNodeIndex: 84
     idRef {
       id: "5923bc30396630501b0050dc:5959f799396630601400912a"
     }
@@ -2874,11 +3453,11 @@ nodes {
   idRef {
     id: "5959f799396630601400912d"
   }
-  index: 51
+  index: 84
   text: "My Salish tribe had an eight-seat council. Which means there are eight people who don\'t want to give up an inch to anyone else.\n\nEight people pulling in different directions, convinced that their way is the right one and everyone else should accept it."
   branches {
     responseText: ""
-    nextNodeIndex: 52
+    nextNodeIndex: 85
     idRef {
       id: "5923bc30396630501b0050dc:5959f7d2396630601400912f"
     }
@@ -2889,11 +3468,11 @@ nodes {
   idRef {
     id: "5959f7d23966306014009132"
   }
-  index: 52
+  index: 85
   text: "On top of that, we have our Salish government, so our tribe sends a representative there. That\'s probably thirty tribes all fighting for power and influence, and the NAN tribal council seat. \n\nThe NAN isn\'t miles better than Anglo Governments, just different. Better, I think, but not that different."
   branches {
     responseText: ""
-    nextNodeIndex: 32
+    nextNodeIndex: 65
     idRef {
       id: "5923bc30396630501b0050dc:5959f84939663060140092b4"
     }
@@ -2905,11 +3484,11 @@ nodes {
   idRef {
     id: "5959f96e3966306014009450"
   }
-  index: 53
+  index: 86
   text: "{{GM}}River nods.{{/GM}}\n\nI am willing to talk about the US getting its shit kicked literally any time."
   branches {
     responseText: ""
-    nextNodeIndex: 30
+    nextNodeIndex: 63
     idRef {
       id: "5923bc30396630501b0050dc:5959f97d3966306014009452"
     }
@@ -2921,11 +3500,11 @@ nodes {
   idRef {
     id: "595a0090396630601400a325"
   }
-  index: 54
+  index: 87
   text: "{{GM}}River looks at her feet, shuffling them and getting comfortable.{{/GM}}\n\nThat\'s kind of a long story, $(l.guy). I don\'t know you that well, but I\'ll just let you know that it\'s super important to me to find out what data was stored on there."
   branches {
     responseText: ""
-    nextNodeIndex: 30
+    nextNodeIndex: 63
     idRef {
       id: "5923bc30396630501b0050dc:595a00d3396630601400a327"
     }
@@ -2937,11 +3516,11 @@ nodes {
   idRef {
     id: "585d9a20393066600c000bdc:5923bc29396630501b00504d"
   }
-  index: 55
+  index: 88
   text: "So, I overheard in Tribal Council when they were sentencing me..."
   branches {
     responseText: "Sentencing you?"
-    nextNodeIndex: 56
+    nextNodeIndex: 89
     idRef {
       id: "5923bc30396630501b0050dc:595a00f5396630601400a3f8"
     }
@@ -2952,25 +3531,25 @@ nodes {
   idRef {
     id: "595a00f5396630601400a3fb"
   }
-  index: 56
+  index: 89
   text: "{{GM}}River looks impatient.{{/GM}}\n\nYeah, but try not to interrupt."
   branches {
     responseText: "No, this is important. Sentencing you for what?"
-    nextNodeIndex: 57
+    nextNodeIndex: 90
     idRef {
       id: "5923bc30396630501b0050dc:595a0110396630601400a3fd"
     }
   }
   branches {
     responseText: "You got it."
-    nextNodeIndex: 58
+    nextNodeIndex: 91
     idRef {
       id: "5923bc30396630501b0050dc:595a0110396630601400a3ff"
     }
   }
   branches {
     responseText: "I\'m into criminal chicks."
-    nextNodeIndex: 63
+    nextNodeIndex: 96
     idRef {
       id: "5923bc30396630501b0050dc:595a0110396630601400a401"
     }
@@ -2981,11 +3560,11 @@ nodes {
   idRef {
     id: "595a0283396630601400a543"
   }
-  index: 57
+  index: 90
   text: "{{GM}}River sighs.{{/GM}}\n\nI uh-- I got blamed for what happened to my crew. We were on patrol, and I thought everyone got killed."
   branches {
     responseText: ""
-    nextNodeIndex: 58
+    nextNodeIndex: 91
     idRef {
       id: "5923bc30396630501b0050dc:595a0318396630601400a54f"
     }
@@ -2997,11 +3576,11 @@ nodes {
   idRef {
     id: "595a013c396630601400a407"
   }
-  index: 58
+  index: 91
   text: "{{GM}}River narrows her eyes, watching you for a moment to make sure you don\'t interrupt.{{/GM}}\n\nSo in the hearing, I found out that one of my crew had also survived, and blamed me for... what happened."
   branches {
     responseText: "What happened?"
-    nextNodeIndex: 59
+    nextNodeIndex: 92
     idRef {
       id: "5923bc30396630501b0050dc:595a02b6396630601400a545"
     }
@@ -3012,11 +3591,11 @@ nodes {
   idRef {
     id: "595a02bd396630601400a548"
   }
-  index: 59
+  index: 92
   text: "So, I found out that Mari Ravenclaw was alive, and had left Salish lands for Seattle.\n\nI thought I would just show up, and she\'d be sitting in a coffee shop or something, and I\'d bump into her, and there\'d be a simple explanation for what happened."
   branches {
     responseText: ""
-    nextNodeIndex: 60
+    nextNodeIndex: 93
     idRef {
       id: "5923bc30396630501b0050dc:595a0329396630601400a558"
     }
@@ -3027,18 +3606,18 @@ nodes {
   idRef {
     id: "595a0329396630601400a55b"
   }
-  index: 60
+  index: 93
   text: "I didn\'t account for the Greater Seattle Metroplex and it\'s diverse inhabitants or thousands of square miles of pavement.\n\nThat\'s if Mari actually came here. She wouldn\'t be above telling people she was heading one direction and going another-- and the person I heard it from wasn\'t exactly trustworthy."
   branches {
     responseText: "Who did you hear it from?"
-    nextNodeIndex: 61
+    nextNodeIndex: 94
     idRef {
       id: "5923bc30396630501b0050dc:595a0367396630601400a55d"
     }
   }
   branches {
     responseText: "Continue."
-    nextNodeIndex: 62
+    nextNodeIndex: 95
     idRef {
       id: "5923bc30396630501b0050dc:595a03be396630601400a562"
     }
@@ -3049,11 +3628,11 @@ nodes {
   idRef {
     id: "595a0367396630601400a560"
   }
-  index: 61
+  index: 94
   text: "{{GM}}River has a look cross her face like she\'s considering spitting on the floor.{{/GM}}\n\nAtian Badge-Stripe. Corporate Tribal liason."
   branches {
     responseText: ""
-    nextNodeIndex: 62
+    nextNodeIndex: 95
     idRef {
       id: "5923bc30396630501b0050dc:595a0403396630601400a652"
     }
@@ -3065,11 +3644,11 @@ nodes {
   idRef {
     id: "595a03c4396630601400a565"
   }
-  index: 62
+  index: 95
   text: "So I couldn\'t find Mari, but I did know that my old college roommate was up here, so I looked up Cherry and asked if I could crash on her couch."
   branches {
     responseText: ""
-    nextNodeIndex: 30
+    nextNodeIndex: 63
     idRef {
       id: "5923bc30396630501b0050dc:595a03f4396630601400a567"
     }
@@ -3081,11 +3660,11 @@ nodes {
   idRef {
     id: "595a012d396630601400a404"
   }
-  index: 63
+  index: 96
   text: "{{GM}}River winks.{{/GM}}\n\nHot, me too."
   branches {
     responseText: ""
-    nextNodeIndex: 59
+    nextNodeIndex: 92
     idRef {
       id: "5923bc30396630501b0050dc:595a02cb396630601400a54a"
     }
@@ -3097,11 +3676,11 @@ nodes {
   idRef {
     id: "595a1040396630601400aa82"
   }
-  index: 64
+  index: 97
   text: "{{GM}}River nods.{{/GM}}\n\nYeah, so you met me outside the NTSB. I was a crew chief on a Salish Coast Guard ship. We were tasked with routine smuggling patrol."
   branches {
     responseText: "I thought NAN used spirits for that kind of work?"
-    nextNodeIndex: 65
+    nextNodeIndex: 98
     idRef {
       id: "5923bc30396630501b0050dc:595a10a6396630601400aa84"
     }
@@ -3112,11 +3691,11 @@ nodes {
   idRef {
     id: "595a10b6396630601400aa87"
   }
-  index: 65
+  index: 98
   text: "{{GM}}River nods more emphatically.{{/GM}}\n\nYes, usually they do. But they\'d had a number of watcher spirits banished, and it was expensive to keep running them. When we stop a smuggler, we tag them and impose a fee equal to the taxes on the goods that would have been smuggled."
   branches {
     responseText: "You don\'t seize it?"
-    nextNodeIndex: 66
+    nextNodeIndex: 99
     idRef {
       id: "5923bc30396630501b0050dc:595a10f3396630601400aa89"
     }
@@ -3127,11 +3706,11 @@ nodes {
   idRef {
     id: "595a10f3396630601400aa8c"
   }
-  index: 66
+  index: 99
   text: "Nope. Tribal council wants profits, not hostiles. So we catch them and throw them back. Some smugglers even hit our routes on purpose, if they have a deal with a crew chief or captain."
   branches {
     responseText: ""
-    nextNodeIndex: 67
+    nextNodeIndex: 100
     idRef {
       id: "5923bc30396630501b0050dc:595a114f396630601400ab84"
     }
@@ -3142,11 +3721,11 @@ nodes {
   idRef {
     id: "595a114f396630601400ab87"
   }
-  index: 67
+  index: 100
   text: "Which-- incidentally-- is what I was accused of doing. Taking a bribe from smugglers, cutting out the Tribal Council as middlmen.\n\nWhich I did not do."
   branches {
     responseText: ""
-    nextNodeIndex: 68
+    nextNodeIndex: 101
     idRef {
       id: "5923bc30396630501b0050dc:595a1180396630601400ab89"
     }
@@ -3157,11 +3736,11 @@ nodes {
   idRef {
     id: "595a1180396630601400ab8c"
   }
-  index: 68
+  index: 101
   text: "But while we were out, we get a redirect from an unknown source, and while we were confirming it, we kept on our course. The water was really clear that night, and we didn\'t have much company out there- and now I know why."
   branches {
     responseText: ""
-    nextNodeIndex: 69
+    nextNodeIndex: 102
     idRef {
       id: "5923bc30396630501b0050dc:595a11aa396630601400ab8e"
     }
@@ -3172,11 +3751,11 @@ nodes {
   idRef {
     id: "595a11aa396630601400ab91"
   }
-  index: 69
+  index: 102
   text: "The one ping we did have was from a UCAS drone hook- the one you pulled the memory banks from.\n\nThe hook was flying a mission, and was re-routed mid-mission to return to base. I\'ve seen that drone fly that route hundreds of times, and I\'ve never seen it behave like that. So I knew that if I could get its memory logs open, we could find out why it changed course."
   branches {
     responseText: ""
-    nextNodeIndex: 70
+    nextNodeIndex: 103
     idRef {
       id: "5923bc30396630501b0050dc:595a11fa396630601400ab93"
     }
@@ -3187,11 +3766,11 @@ nodes {
   idRef {
     id: "595a11fa396630601400ab96"
   }
-  index: 70
+  index: 103
   text: "Okay, so back to the drone leaving-- I didn\'t know it, but we had stumbled into something-- we got shot up, my friends got killed. Good men and women.\n\nSo I fixated on finding out what happened with my crew. What happened, why did they have to die?"
   branches {
     responseText: ""
-    nextNodeIndex: 30
+    nextNodeIndex: 63
     idRef {
       id: "5923bc30396630501b0050dc:595a123c396630601400ab98"
     }
@@ -3203,11 +3782,11 @@ nodes {
   idRef {
     id: "595a125f396630601400abcc"
   }
-  index: 71
+  index: 104
   text: "{{GM}}River bounces on her toes with excitement.{{/GM}}\n\nGhost, did she ever come through for me!"
   branches {
     responseText: ""
-    nextNodeIndex: 72
+    nextNodeIndex: 105
     idRef {
       id: "5923bc30396630501b0050dc:595a1296396630601400abce"
     }
@@ -3218,11 +3797,11 @@ nodes {
   idRef {
     id: "595a1296396630601400abd1"
   }
-  index: 72
+  index: 105
   text: "The drone was reprogrammed to return to station because of Corporate Court order 799181. That\'s a big deal, to cut through UCAS bureaucracy like that."
   branches {
     responseText: ""
-    nextNodeIndex: 73
+    nextNodeIndex: 106
     idRef {
       id: "5923bc30396630501b0050dc:595a12ca396630601400abd3"
     }
@@ -3233,11 +3812,11 @@ nodes {
   idRef {
     id: "595a12ca396630601400abd6"
   }
-  index: 73
+  index: 106
   text: "You gotta ask yourself, who has that kind of pull? Who can pull of a Salish patrol AND cut through red tape of the UCAS?\nWho has got the stones to murder anyone who defies them?\n\nIt has to be a Megacorp."
   branches {
     responseText: ""
-    nextNodeIndex: 74
+    nextNodeIndex: 107
     idRef {
       id: "5923bc30396630501b0050dc:595a130b396630601400abd8"
     }
@@ -3248,11 +3827,11 @@ nodes {
   idRef {
     id: "595a130d396630601400abdb"
   }
-  index: 74
+  index: 107
   text: "Violet already got me the order, but ever damn thing is redacted. Once Violet cracks the encryption on the redacted portions, then we\'ll have something to work with."
   branches {
     responseText: ""
-    nextNodeIndex: 30
+    nextNodeIndex: 63
     idRef {
       id: "5923bc30396630501b0050dc:595a1338396630601400abdd"
     }
@@ -3264,11 +3843,11 @@ nodes {
   idRef {
     id: "585d9a20393066600c000bdc:5923bc29396630501b004fe5"
   }
-  index: 75
+  index: 108
   text: "{{GM}}River grits her teeth, determination written across her face.{{/GM}}\n\nHell yes, I do. There\'s one name buried in that file: Gaeatronics. "
   branches {
     responseText: ""
-    nextNodeIndex: 76
+    nextNodeIndex: 109
     idRef {
       id: "5923bc30396630501b0050dc:595a1710396630601400b6f1"
     }
@@ -3279,11 +3858,11 @@ nodes {
   idRef {
     id: "595a1710396630601400b6f4"
   }
-  index: 76
+  index: 109
   text: "The memorandum states that Corporate Court Order 54BOD791981 was to redirect traffic around a secure facility to protect trade secrets."
   branches {
     responseText: ""
-    nextNodeIndex: 77
+    nextNodeIndex: 110
     idRef {
       id: "5923bc30396630501b0050dc:595a1372396630601400ae5b"
     }
@@ -3294,7 +3873,7 @@ nodes {
   idRef {
     id: "595a1372396630601400ae5e"
   }
-  index: 77
+  index: 110
   text: "Violet found a building they own through a shell company down on the waterfront. Maybe a mile or two from where my team was hit. \n\nWe hit the building, get intelligence about what they\'re hiding there, and publish it for the world to see. \nLet\'s find out what they killed my friends over."
   nodeType: ConversationNodeType_Simple
 }
@@ -3302,11 +3881,11 @@ nodes {
   idRef {
     id: "585d9a20393066600c000bdc:5923bc29396630501b005019"
   }
-  index: 78
+  index: 111
   text: "{{GM}}River shrugs.{{/GM}}\n\nI don\'t know, I only have experience with the Salish, Tir A-holes, and UCAS. Those three are pretty similar."
   branches {
     responseText: ""
-    nextNodeIndex: 79
+    nextNodeIndex: 112
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b00501b"
     }
@@ -3317,11 +3896,11 @@ nodes {
   idRef {
     id: "595a0011396630601400a0e2"
   }
-  index: 79
+  index: 112
   text: "Salish have a lot more smugglers and coyotes who\'ll get people from place to place."
   branches {
     responseText: ""
-    nextNodeIndex: 80
+    nextNodeIndex: 113
     idRef {
       id: "5923bc30396630501b0050dc:595a0025396630601400a0e4"
     }
@@ -3332,11 +3911,11 @@ nodes {
   idRef {
     id: "595a0025396630601400a0e7"
   }
-  index: 80
+  index: 113
   text: "Tir smuggle a lot of goods into Cara\'Sir, high-grade stuff like art and foods that they\'re supposed to be getting from the peasants.\n\nMost runners there are pointy-eared bastards, or the odd human or ork. "
   branches {
     responseText: ""
-    nextNodeIndex: 81
+    nextNodeIndex: 114
     idRef {
       id: "5923bc30396630501b0050dc:595a004c396630601400a0e9"
     }
@@ -3347,11 +3926,11 @@ nodes {
   idRef {
     id: "595a004c396630601400a0ec"
   }
-  index: 81
+  index: 114
   text: "UCAS is just packed to the gills with criminals for hire. SINless like us, I guess."
   branches {
     responseText: ""
-    nextNodeIndex: 30
+    nextNodeIndex: 63
     idRef {
       id: "5923bc30396630501b0050dc:595a005e396630601400a0ee"
     }
@@ -3363,11 +3942,11 @@ nodes {
   idRef {
     id: "5959ff273966306014009e1b"
   }
-  index: 82
+  index: 115
   text: "{{GM}}River laughs.{{/GM}}\n\nI was joking Kemosabe, calm down. I\'d bring my girl\'s best friend and my tablet with the solar panel charger."
   branches {
     responseText: ""
-    nextNodeIndex: 30
+    nextNodeIndex: 63
     idRef {
       id: "5923bc30396630501b0050dc:5959ff5d3966306014009f63"
     }
@@ -3379,11 +3958,11 @@ nodes {
   idRef {
     id: "595a13b8396630601400afc6"
   }
-  index: 83
+  index: 116
   text: "River watches you closely.\n\nYou want to know if Cherry went through some lesbian experiments in college? That\'s what everyone wants to ask me."
   branches {
     responseText: ""
-    nextNodeIndex: 84
+    nextNodeIndex: 117
     idRef {
       id: "5923bc30396630501b0050dc:595a13d7396630601400afc8"
     }
@@ -3394,11 +3973,11 @@ nodes {
   idRef {
     id: "595a13d7396630601400afcb"
   }
-  index: 84
+  index: 117
   text: "{{GM}}River toughens up.{{/GM}}\n\nNone of your fraggin\' business."
   branches {
     responseText: "Just asking..."
-    nextNodeIndex: 85
+    nextNodeIndex: 118
     idRef {
       id: "5923bc30396630501b0050dc:595a13ed396630601400afcd"
     }
@@ -3409,11 +3988,11 @@ nodes {
   idRef {
     id: "595a13f4396630601400afd0"
   }
-  index: 85
+  index: 118
   text: "If Cherry wanted you to know, she would have told you."
   branches {
     responseText: ""
-    nextNodeIndex: 30
+    nextNodeIndex: 63
     idRef {
       id: "5923bc30396630501b0050dc:595a1401396630601400afd2"
     }
@@ -3425,11 +4004,11 @@ nodes {
   idRef {
     id: "595a1455396630601400b102"
   }
-  index: 86
+  index: 119
   text: "{{GM}}River tucks a stray hair behind her ear.{{/GM}}\n\nSorry about earlier. I must have had thirty \'regulars\' ask about Cherry\'s lesbo phase, with a glassy-eyed look that let me know they were going to go rub out to the answer. I was a little touchy."
   branches {
     responseText: ""
-    nextNodeIndex: 87
+    nextNodeIndex: 120
     idRef {
       id: "5923bc30396630501b0050dc:595a1498396630601400b104"
     }
@@ -3440,11 +4019,11 @@ nodes {
   idRef {
     id: "595a1498396630601400b107"
   }
-  index: 87
+  index: 120
   text: "We didn\'t get along great at first, Cherry and I; U of Dub had a weird policy based on some meta-racism, where only elves could bunk with elves. So Cherry ended up in my dorm, even though I was Thaumaturgy and Religious Iconography, and she was a double-major studying Psychology and Matrix Architecture."
   branches {
     responseText: ""
-    nextNodeIndex: 88
+    nextNodeIndex: 121
     idRef {
       id: "5923bc30396630501b0050dc:595a1515396630601400b109"
     }
@@ -3455,11 +4034,11 @@ nodes {
   idRef {
     id: "595a1515396630601400b10c"
   }
-  index: 88
+  index: 121
   text: " We didn\'t have a lot in common, but the number of frat guys who wanted to follow us back to the dorm room and get the Daisy Eater Merit Badge was enough that we bonded."
   branches {
     responseText: ""
-    nextNodeIndex: 89
+    nextNodeIndex: 122
     idRef {
       id: "5923bc30396630501b0050dc:595a151b396630601400b10e"
     }
@@ -3470,11 +4049,11 @@ nodes {
   idRef {
     id: "595a151b396630601400b111"
   }
-  index: 89
+  index: 122
   text: "We\'ve kept in touch, mostly over the Persona network stuff. This is the first time I\'ve seen her in years."
   branches {
     responseText: ""
-    nextNodeIndex: 30
+    nextNodeIndex: 63
     idRef {
       id: "5923bc30396630501b0050dc:595a1542396630601400b113"
     }
@@ -3486,7 +4065,7 @@ nodes {
   idRef {
     id: "585d9a20393066600c000bdc:5923bc29396630501b0050af"
   }
-  index: 90
+  index: 123
   text: "You want to progress the story, or just look at the options?"
   branches {
     responseText: "{{CC}}+1{{/CC}} Progress the story "
@@ -3536,7 +4115,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 91
+    nextNodeIndex: 124
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b0050b1"
     }
@@ -3570,7 +4149,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 91
+    nextNodeIndex: 124
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b0050b9"
     }
@@ -3582,11 +4161,11 @@ nodes {
   idRef {
     id: "585d9a20393066600c000bdc:5923bc29396630501b0050b3"
   }
-  index: 91
+  index: 124
   text: "Sure thing, boss. Have at it."
   branches {
     responseText: ""
-    nextNodeIndex: 30
+    nextNodeIndex: 63
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b0050b5"
     }
@@ -3598,11 +4177,11 @@ nodes {
   idRef {
     id: "585d9a20393066600c000bdc:5923bc29396630501b0050bf"
   }
-  index: 92
+  index: 125
   text: "{{GM}}River smiles.{{/GM}}\n\nGot more questions about the NAN? What can I help you with?"
   branches {
     responseText: ""
-    nextNodeIndex: 30
+    nextNodeIndex: 63
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b0050c1"
     }
@@ -3614,11 +4193,11 @@ nodes {
   idRef {
     id: "585d9a20393066600c000bdc:5923bc29396630501b0050c7"
   }
-  index: 93
+  index: 126
   text: "{{GM}}River shrugs.{{/GM}}\n\nI don\'t know. If I can get your help, and Violet cracks the encryption on the messages, I\'ll be able to move forward."
   branches {
     responseText: ""
-    nextNodeIndex: 30
+    nextNodeIndex: 63
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b0050c9"
     }
@@ -3630,11 +4209,11 @@ nodes {
   idRef {
     id: "585d9a20393066600c000bdc:5923bc29396630501b0050cf"
   }
-  index: 94
+  index: 127
   text: "{{GM}}River shakes her head, and gestures with a half-empty glass.{{/GM}}\n\nNo, Ghost-dammit. I\'m still at a dead fucking end with the information. Ghost, I hope Violet cracks it soon."
   branches {
     responseText: ""
-    nextNodeIndex: 95
+    nextNodeIndex: 128
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b0050d1"
     }
@@ -3645,11 +4224,11 @@ nodes {
   idRef {
     id: "585d9a20393066600c000bdc:5923bc29396630501b0050d3"
   }
-  index: 95
+  index: 128
   text: "You know why I came to Seattle? I overheard in a Tribal Council meeting that one of my former crew members had survived, and I thought I would come here and find her. Like there\'s not ten million SINners in Seattle, plus a few million SINless and ten thousand miles of paved wasteland.\n\nI don\'t know what I was thinking, I was never going to stumble into Ravenclaw on accident."
   branches {
     responseText: ""
-    nextNodeIndex: 30
+    nextNodeIndex: 63
     idRef {
       id: "585d9a20393066600c000bdc:5923bc29396630501b0050d5"
     }
@@ -3661,11 +4240,11 @@ nodes {
   idRef {
     id: "5959fc793966306014009869"
   }
-  index: 96
+  index: 129
   text: "{{GM}}River restlessly paces back and forth.{{/GM}}\n\nI just got a message from Violet, and she\'s tracked down where they have a site on the waterfront. I think we can do this!"
   branches {
     responseText: ""
-    nextNodeIndex: 30
+    nextNodeIndex: 63
     idRef {
       id: "5923bc30396630501b0050dc:5959fe893966306014009cca"
     }
@@ -3677,11 +4256,11 @@ nodes {
   idRef {
     id: "5923bc30396630501b0050dc:5959fd5139663060140099dd"
   }
-  index: 97
+  index: 130
   text: "{{GM}}River has two glasses of brandy on the surface.{{/GM}}\n\nI can\'t believe it. That was a damned thing, wasn\'t it?"
   branches {
     responseText: ""
-    nextNodeIndex: 98
+    nextNodeIndex: 131
     idRef {
       id: "5923bc30396630501b0050dc:5959fec93966306014009e0d"
     }
@@ -3692,11 +4271,11 @@ nodes {
   idRef {
     id: "5959fec93966306014009e10"
   }
-  index: 98
+  index: 131
   text: "Gaeatronics- a company from my own people. Killed my own people.\n\nTribal Council decided not to do anything, so we stepped up. That feels pretty damned good."
   branches {
     responseText: ""
-    nextNodeIndex: 30
+    nextNodeIndex: 63
     idRef {
       id: "5923bc30396630501b0050dc:5959feee3966306014009e12"
     }
@@ -3708,11 +4287,11 @@ nodes {
   idRef {
     id: "5923bc30396630501b0050dc:5959fd5639663060140099e3"
   }
-  index: 99
+  index: 132
   text: "{{GM}}River restlessly paces back and forth.{{/GM}}\n\nMy thing? You mean, that thing where I wanted to go to the riverfront and kick the shit out of the people responsible for the death of my friends and everything that\'s happened to me since?"
   branches {
     responseText: ""
-    nextNodeIndex: 100
+    nextNodeIndex: 133
     idRef {
       id: "5923bc30396630501b0050dc:5959fdcd39663060140099e5"
     }
@@ -3723,7 +4302,7 @@ nodes {
   idRef {
     id: "5959fdcd39663060140099e8"
   }
-  index: 100
+  index: 133
   text: "Fuck this. I don\'t feel like talking about it."
   nodeType: ConversationNodeType_Simple
 }
@@ -3731,724 +4310,8 @@ nodes {
   idRef {
     id: "585d9a20393066600c000bdc:5923bc29396630501b0050db"
   }
-  index: 101
+  index: 134
   text: "Sure.  No problem."
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "585d9a20393066600c000bdc:5923bc5e396630501b005478"
-  }
-  index: 102
-  text: "{{GM}}River is staring at a picture, of her and some friends. The four of them are dressed in military fatigues, with the Salish flag on the shoulder.  River doesn\'t look up from her picture as you approach.{{/GM}}\n\nYeah, what\'s up?"
-  branches {
-    responseText: ""
-    nextNodeIndex: 21
-    idRef {
-      id: "585d9a20393066600c000bdc:5923bc5e396630501b00547a"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-  actions {
-    ops {
-      functionName: "Set Variable (int)"
-      args {
-        call_value {
-          functionName: "Get Story Variable (int)"
-          args {
-            string_value: "57084f7c6631365c1600767e"
-          }
-          args {
-            string_value: "Seamstress_Char_Bartlett"
-          }
-        }
-      }
-      args {
-        int_value: 2
-      }
-    }
-  }
-}
-nodes {
-  idRef {
-    id: "5959e2da39663060140076af"
-  }
-  index: 103
-  text: "{{GM}}River stares off into space, not reacting to your approach until you\'ve been standing there for several minutes.{{/GM}}\n\nWhoa-- when did you get here? I was just seeking the advice of my totem."
-  branches {
-    responseText: ""
-    nextNodeIndex: 104
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e31339663060140076b3"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959e31939663060140076b6"
-  }
-  index: 104
-  text: ""
-  branches {
-    responseText: "What totem do you follow?"
-    conditions {
-      ops {
-        functionName: "Comparison (bool)"
-        args {
-          call_value {
-            functionName: "Get Variable (bool)"
-            args {
-              string_value: "b_TalkedtoRiver"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "IsOrIsNot"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-      }
-    }
-    nextNodeIndex: 105
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e32039663060140076b8"
-    }
-  }
-  branches {
-    responseText: "What is Dolphin telling you?"
-    conditions {
-      ops {
-        functionName: "Comparison (bool)"
-        args {
-          call_value {
-            functionName: "Get Variable (bool)"
-            args {
-              string_value: "b_TalkedtoRiver"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "IsOrIsNot"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-      }
-    }
-    nextNodeIndex: 106
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e32439663060140076ba"
-    }
-  }
-  branches {
-    responseText: "Can I ask you about something else?"
-    nextNodeIndex: 21
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e32439663060140076bc"
-    }
-    auxiliaryLink: true
-  }
-  branches {
-    responseText: "How do you like being a shaman?"
-    nextNodeIndex: 108
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e32439663060140076be"
-    }
-  }
-  branches {
-    responseText: "Talk to you later."
-    nextNodeIndex: -1
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e32539663060140076c0"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-  comment: "Totem Loop"
-}
-nodes {
-  idRef {
-    id: "5959e34b39663060140076c3"
-  }
-  index: 105
-  text: "{{GM}}River stares off into the distance, a half-smile on her face.{{/GM}}\n\nDolphin chose me, from a young age. I always loved the water, and it seemed like no matter how dirty the Sound got, whenever I would go to the water as a kid, there would be dolphins playing. I always loved the majesty of them- how they play and enjoy themselves, but fight for other dolphins, and can even kill sharks."
-  branches {
-    responseText: ""
-    nextNodeIndex: 104
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e3a339663060140076c5"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-  actions {
-    ops {
-      functionName: "Set Variable (bool)"
-      args {
-        call_value {
-          functionName: "Get Variable (bool)"
-          args {
-            string_value: "b_TalkedtoRiver"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-  }
-}
-nodes {
-  idRef {
-    id: "5959e4b039663060140076e5"
-  }
-  index: 106
-  text: "{{GM}}River stares off into space.{{/GM}}\n\nShe says my heart is too clouded with emotion to see the choice clearly. I should keep following the information, and keep my options open. Not as helpful as I was hoping."
-  branches {
-    responseText: ""
-    nextNodeIndex: 107
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e4e739663060140076e7"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959e4e939663060140076ea"
-  }
-  index: 107
-  text: "I don\'t know what I was hoping for.\n\nMaybe GPS coordinates, and a sign that says \'The bad guys are in there.\'"
-  branches {
-    responseText: ""
-    nextNodeIndex: 104
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e50939663060140076ec"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959e43239663060140076d9"
-  }
-  index: 108
-  text: "{{GM}}River raises an eyebrow at you.{{/GM}}\n\nYou ask that like I\'d have any idea what it was like not to be a shaman. It doesn\'t work like that- I didn\'t choose to be a Shaman instead of a Hermetic Mage. In fact, it would have been easier for me in college if I had been able to work spells the way the Hermetic Studies Professors said they should work, instead of creating my own workarounds."
-  branches {
-    responseText: ""
-    nextNodeIndex: 109
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e48239663060140076db"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959e48439663060140076de"
-  }
-  index: 109
-  text: "{{GM}}River shrugs.{{/GM}}\n\nMy degree is a worthless bit of paper, but it made my Grandfather happy."
-  branches {
-    responseText: ""
-    nextNodeIndex: 104
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e4a839663060140076e0"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "585d9a20393066600c000bdc:5923bc65396630501b005484"
-  }
-  index: 110
-  text: "{{GM}}River stuffs the old image back in her pocket as you approach, turning to face you.{{/GM}}\n\nIt\'s weird, isn\'t it? I thought knowing anything would make things better, but it really doesn\'t."
-  branches {
-    responseText: "What will you do when you get answers?"
-    nextNodeIndex: 111
-    idRef {
-      id: "5923bc30396630501b0050dc:5959eafb396630601400854d"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959eafb3966306014008550"
-  }
-  index: 111
-  text: "{{GM}}River sucks air through her teeth, leaning back.{{/GM}}\n\nThat is a good question. I don\'t know.\nWhat would you do?"
-  branches {
-    responseText: "Revenge, plain and simple."
-    nextNodeIndex: 112
-    idRef {
-      id: "585d9a20393066600c000bdc:5923bc65396630501b005486"
-    }
-  }
-  branches {
-    responseText: "If it\'s a corp, hurt them. If it\'s a person, end them."
-    nextNodeIndex: 113
-    idRef {
-      id: "5923bc30396630501b0050dc:5959eb2d3966306014008554"
-    }
-  }
-  branches {
-    responseText: "Do you want revenge?"
-    nextNodeIndex: 116
-    idRef {
-      id: "5923bc30396630501b0050dc:5959eb2d3966306014008556"
-    }
-  }
-  branches {
-    responseText: "What do you want to do?"
-    nextNodeIndex: 117
-    idRef {
-      id: "5923bc30396630501b0050dc:5959eb2e3966306014008558"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959eb5c396630601400855b"
-  }
-  index: 112
-  text: "{{GM}}River grits her teeth, her face grim.{{/GM}}\n\nYeah, I could be down for that. I still have nightmares, waking up underwater, with the bodies of my friends floating and catching rounds from whoever was shooting into the water."
-  branches {
-    responseText: ""
-    nextNodeIndex: 21
-    idRef {
-      id: "5923bc30396630501b0050dc:5959ed0839663060140088c3"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959eb99396630601400855e"
-  }
-  index: 113
-  text: "{{GM}}River nods.{{/GM}}\n\nSounds like a plan. Can I count on you to be there?"
-  branches {
-    responseText: "Yes."
-    nextNodeIndex: 114
-    idRef {
-      id: "5923bc30396630501b0050dc:5959ebbc3966306014008560"
-    }
-  }
-  branches {
-    responseText: "Pass."
-    nextNodeIndex: 115
-    idRef {
-      id: "5923bc30396630501b0050dc:5959ebbc3966306014008562"
-    }
-    auxiliaryLink: true
-  }
-  branches {
-    responseText: "My friends call me Nuyen."
-    nextNodeIndex: 115
-    idRef {
-      id: "5923bc30396630501b0050dc:5959ebbc3966306014008564"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959ebd93966306014008567"
-  }
-  index: 114
-  text: "{{GM}}River flashes a predatory smile- very sharklike.{{/GM}}\n\nIt\'s a date."
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959ec833966306014008577"
-  }
-  index: 115
-  text: "{{GM}}River rolls her eyes.{{/GM}}\n\nOf course."
-  branches {
-    responseText: ""
-    nextNodeIndex: 21
-    idRef {
-      id: "5923bc30396630501b0050dc:5959ec953966306014008579"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959ec11396630601400856d"
-  }
-  index: 116
-  text: "Of course I want revenge! I want those bastards to hurt, I want them to pay for all the pain and misery they put me through!"
-  branches {
-    responseText: ""
-    nextNodeIndex: 21
-    idRef {
-      id: "5923bc30396630501b0050dc:5959ec34396630601400856f"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959ec3a3966306014008574"
-  }
-  index: 117
-  text: "{{GM}}River shrugs, looking lost.{{/GM}}\n\nI wish I could just say that I want revenge, but that\'s not enough. I could go whack a mailbox with Paco, but that doesn\'t solve anything. I want to know WHY. Why did my friends die? What did I almost die for? "
-  branches {
-    responseText: ""
-    nextNodeIndex: 21
-    idRef {
-      id: "5923bc30396630501b0050dc:5959eca73966306014008584"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959e52f39663060140079ef"
-  }
-  index: 118
-  text: "River takes a deep breath, and has a Brandy sitting on the table next to her. "
-  branches {
-    responseText: ""
-    nextNodeIndex: 119
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e71c3966306014007bbf"
-    }
-  }
-  nodeType: ConversationNodeType_GM_Voice
-}
-nodes {
-  idRef {
-    id: "5959e71e3966306014007bc2"
-  }
-  index: 119
-  text: "{{GM}}River takes another breath when she sees you, and then fixes you with a stare.{{/GM}}\n\nViolet cracked the encryption on the Corporate Court Order that was supposed to clear the waterways. The one that gave the Nameless corp permission to kill my team. I haven\'t opened the file yet, I\'m afraid of what I\'ll find in there."
-  branches {
-    responseText: ""
-    nextNodeIndex: 120
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e76f3966306014007bc4"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959e7733966306014007bc7"
-  }
-  index: 120
-  text: ""
-  branches {
-    responseText: "Did Violet say anything about it?"
-    nextNodeIndex: 121
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e7a43966306014007d11"
-    }
-  }
-  branches {
-    responseText: "Woman up, open the damned file."
-    nextNodeIndex: 122
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e7a43966306014007d13"
-    }
-  }
-  branches {
-    responseText: "Would you like me to open it for you?"
-    nextNodeIndex: 125
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e7a43966306014007d15"
-    }
-  }
-  branches {
-    responseText: "You got this."
-    nextNodeIndex: 122
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e7a43966306014007d17"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-  comment: "RiverRevealLoop"
-}
-nodes {
-  idRef {
-    id: "5959e7cf3966306014007d1a"
-  }
-  index: 121
-  text: "{{GM}}River takes a slug of her drink.{{/GM}}\n\nShe was so excited for the file to be open, that she hadn\'t checked it beyond scanning to make sure it wasn\'t junk data. So I know it\'s not trashed by the defrag, and I know it says who killed my friends."
-  branches {
-    responseText: ""
-    nextNodeIndex: 120
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e80b3966306014007d1c"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959e8153966306014007d2e"
-  }
-  index: 122
-  text: "{{GM}}River finishes her drink, and nods.{{/GM}}\n\nWoman up-- you got this, Daye. She opens the file, and scans."
-  branches {
-    responseText: ""
-    nextNodeIndex: 123
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e87d3966306014007d3f"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959e87d3966306014007d42"
-  }
-  index: 123
-  text: "{{GM}}River\'s jaw drops.{{/GM}}\n\nGaeatronics. A fuckin\' Salish corporation killed my Salish soldiers in Salish territorial waters."
-  branches {
-    responseText: ""
-    nextNodeIndex: 124
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e9353966306014007d51"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959e9353966306014007d54"
-  }
-  index: 124
-  text: "Bastards. Worse than that. Turncoats. \n\nI could understand if one of your Anglo-corps or especially one of the soulless Japancorps could murder my people to protect their bottom line, but my own people? My own people killing Salish in their homeland? Those fuckers have got to pay."
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959e83c3966306014007d34"
-  }
-  index: 125
-  text: "River finishes her drink, and nods, pushing the datapad your way.\n\nWould you?"
-  branches {
-    responseText: "Sure."
-    nextNodeIndex: 126
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e8593966306014007d36"
-    }
-  }
-  branches {
-    responseText: "No, I was just checking how bad you want this."
-    nextNodeIndex: 122
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e8593966306014007d38"
-    }
-    auxiliaryLink: true
-  }
-  branches {
-    responseText: "Not my problem."
-    nextNodeIndex: 129
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e85b3966306014007d3a"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959e8763966306014007d3d"
-  }
-  index: 126
-  text: "You scan through the dense and boring legal code quickly, looking for the bolded entity name for the group that asked for the Corporate Court Order.\n\nYou find it about a third of the way into the document.\nGaeatronics."
-  branches {
-    responseText: ""
-    nextNodeIndex: 127
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e99d3966306014007d5e"
-    }
-  }
-  nodeType: ConversationNodeType_GM_Voice
-}
-nodes {
-  idRef {
-    id: "5959e99d3966306014007d61"
-  }
-  index: 127
-  text: ""
-  branches {
-    responseText: "Gaetronics."
-    nextNodeIndex: 123
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e8f63966306014007d48"
-    }
-    auxiliaryLink: true
-  }
-  branches {
-    responseText: "{{GM}}Etiquette: Corporate{{/GM}} It\'s a Salish company, River, are you sure you want to know?"
-    nextNodeIndex: 128
-    hideIfUnavailable: true
-    onlyOnce: true
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e8f93966306014007d4a"
-    }
-  }
-  branches {
-    responseText: "I think you should read it yourself."
-    nextNodeIndex: 122
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e8f93966306014007d4c"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-  comment: "Reveal"
-}
-nodes {
-  idRef {
-    id: "5959e98a3966306014007d57"
-  }
-  index: 128
-  text: "{{GM}}River bites her lips, indecisive for a moment.{{/GM}}"
-  branches {
-    responseText: ""
-    nextNodeIndex: 127
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e9b43966306014007d68"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959e9df3966306014007d87"
-  }
-  index: 129
-  text: "{{GM}}River glares at you.{{/GM}}\n\nRight, you\'re basically a corp yourself- all about profit margins. I forgot about that."
-  branches {
-    responseText: ""
-    nextNodeIndex: 130
-    idRef {
-      id: "5923bc30396630501b0050dc:5959ea003966306014007d89"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959ea003966306014007d8c"
-  }
-  index: 130
-  text: "{{GM}}River scans the file, and throws the pad down when she finds what she was looking for.{{/GM}}\n\nGaeatronics. Not that you care.\n\nWhat do you want?"
-  branches {
-    responseText: ""
-    nextNodeIndex: 21
-    idRef {
-      id: "5923bc30396630501b0050dc:5959ea7e3966306014008548"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959e55939663060140079f5"
-  }
-  index: 131
-  text: "{{GM}}River doesn\'t look up from her picture, crumpled and apparently flattened again.{{/GM}}\n\nI\'d better be able to get back into that fucking facility after all this is over, $+(l.name). I need revenge for my friends."
-  branches {
-    responseText: ""
-    nextNodeIndex: 21
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e56639663060140079f7"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959e55739663060140079f2"
-  }
-  index: 132
-  text: "{{GM}}River holds a framed picture- the one you\'ve seen her holding many times.{{/GM}}\n\nWe got revenge on those fraggers, and that\'s thanks to you, $+(l.name). What can I do for you?"
-  branches {
-    responseText: ""
-    nextNodeIndex: 21
-    idRef {
-      id: "5923bc30396630501b0050dc:5959e65e39663060140079fa"
-    }
-    auxiliaryLink: true
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "5959df8839663060140069fd"
-  }
-  index: 133
-  text: "{{GM}}River is staring at an old image, of her and some friends. They\'re smiling in the picture. She wipes the corners of her eyes before turning to look at you.{{/GM}}\n\nYeah, $+(l.name), what\'s up?"
-  branches {
-    responseText: ""
-    nextNodeIndex: 21
-    idRef {
-      id: "5923bc30396630501b0050dc:5959dfa939663060140069ff"
-    }
-    auxiliaryLink: true
-  }
   nodeType: ConversationNodeType_Simple
 }
 roots {
@@ -4537,6 +4400,31 @@ roots {
         int_value: 1
       }
     }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_TalkedTo_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
   }
   nextNodeIndex: 0
   onlyOnce: true
@@ -4544,51 +4432,6 @@ roots {
     id: "585d9a20393066600c000bdc:5923bc56396630501b00538c"
   }
   comment: "LevelZero0"
-}
-roots {
-  conditions {
-    ops {
-      functionName: "Comparison (bool)"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "IsOrIsNot"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-  }
-  nextNodeIndex: 20
-  idRef {
-    id: "585d9a20393066600c000bdc:5923bc29396630501b004f17"
-  }
-  comment: "Crew Convo Template"
 }
 roots {
   responseText: ""
@@ -4621,8 +4464,88 @@ roots {
         int_value: 1
       }
     }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_TalkedTo_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
-  nextNodeIndex: 102
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_TalkedTo_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Progression_River"
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+    }
+  }
+  nextNodeIndex: 20
   idRef {
     id: "585d9a20393066600c000bdc:5923bc5e396630501b005476"
   }
@@ -4659,8 +4582,88 @@ roots {
         int_value: 2
       }
     }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_TalkedTo_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
-  nextNodeIndex: 103
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_TalkedTo_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Progression_River"
+          }
+        }
+      }
+      args {
+        int_value: 3
+      }
+    }
+  }
+  nextNodeIndex: 21
   hideIfUnavailable: true
   idRef {
     id: "5923bc30396630501b0050dc:5959e0fd396630601400720c"
@@ -4698,8 +4701,88 @@ roots {
         int_value: 3
       }
     }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_TalkedTo_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
-  nextNodeIndex: 110
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_TalkedTo_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Progression_River"
+          }
+        }
+      }
+      args {
+        int_value: 4
+      }
+    }
+  }
+  nextNodeIndex: 28
   idRef {
     id: "585d9a20393066600c000bdc:5923bc65396630501b005482"
   }
@@ -4736,6 +4819,70 @@ roots {
         int_value: 4
       }
     }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_TalkedTo_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Loyalty_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: -10
+      }
+    }
   }
   actions {
     ops {
@@ -4755,8 +4902,50 @@ roots {
         int_value: 0
       }
     }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_TalkedTo_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Progression_River"
+          }
+        }
+      }
+      args {
+        int_value: 5
+      }
+    }
   }
-  nextNodeIndex: 118
+  nextNodeIndex: 36
   hideIfUnavailable: true
   idRef {
     id: "5923bc30396630501b0050dc:5959e0fd396630601400720e"
@@ -4823,7 +5012,34 @@ roots {
       }
     }
   }
-  nextNodeIndex: 131
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_TalkedTo_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 49
   hideIfUnavailable: true
   idRef {
     id: "5923bc30396630501b0050dc:5959e1aa396630601400745e"
@@ -4881,21 +5097,177 @@ roots {
             string_value: "Comparison Ops"
           }
           args {
-            int_value: 2
+            int_value: 0
           }
         }
       }
       args {
-        int_value: -1
+        int_value: 1
       }
     }
   }
-  nextNodeIndex: 132
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_TalkedTo_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 50
   hideIfUnavailable: true
   idRef {
     id: "5923bc30396630501b0050dc:5959e0fe3966306014007210"
   }
   comment: "ZeroLevel4+Loyal"
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Progression_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 5
+      }
+    }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_TalkedTo_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Loyalty_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_TalkedTo_River"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 51
+  idRef {
+    id: "5923bc30396630501b0050dc:595d208b3035391827005ff5"
+  }
+  comment: "LevelZero5 (Got Loyalty Quest, haven\'t gone)"
 }
 roots {
   responseText: ""
@@ -4937,9 +5309,54 @@ roots {
       }
     }
   }
-  nextNodeIndex: 133
+  nextNodeIndex: 52
   idRef {
     id: "5923bc30396630501b0050dc:5959df4a39663060140069fa"
   }
   comment: "River Re-Return"
+}
+roots {
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 53
+  idRef {
+    id: "585d9a20393066600c000bdc:5923bc29396630501b004f17"
+  }
+  comment: "Crew Convo Template"
 }
