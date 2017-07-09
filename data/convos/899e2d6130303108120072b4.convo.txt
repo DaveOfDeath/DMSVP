@@ -24,23 +24,10 @@ nodes {
   index: 1
   text: ">>Local access connected\n>>Network access connected"
   branches {
-    responseText: "{{GM}}Run Search: \"Project Aegis\"{{/GM}}"
-    actions {
-      ops {
-        functionName: "Send Event"
-        args {
-          call_value {
-            functionName: "Get Map Item (Event)"
-            args {
-              string_value: "AddJamesObjecitve"
-            }
-          }
-        }
-      }
-    }
+    responseText: ""
     nextNodeIndex: 2
     idRef {
-      id: "899e2d6130303108120072b4:594f598a3966301431002da6"
+      id: "899e2d6130303108120072b4:59617448396630042e007419"
     }
   }
   nodeType: ConversationNodeType_Simple
@@ -60,25 +47,30 @@ nodes {
 }
 nodes {
   idRef {
-    id: "51aa4382303031ec0d003f1a"
+    id: "59617448396630042e00741c"
   }
   index: 2
-  text: ">>Project established on 5/12/2053. \n>>Project terminated 5 days ago. \n>>Project resources, status, and cost centers are restricted to CEO access"
+  text: ""
   branches {
-    responseText: ""
+    responseText: "{{GM}}Run Search: \"Project Aegis\"{{/GM}}"
+    actions {
+      ops {
+        functionName: "Send Event"
+        args {
+          call_value {
+            functionName: "Get Map Item (Event)"
+            args {
+              string_value: "AddJamesObjecitve"
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 3
     idRef {
-      id: "899e2d6130303108120072b4:594f598a3966301431002da9"
+      id: "899e2d6130303108120072b4:594f598a3966301431002da6"
     }
   }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "51aa45f7303031ec0d003f25"
-  }
-  index: 3
-  text: ""
   branches {
     responseText: "{{GM}}Run Search: \"Sam Watts\"{{/GM}}"
     nextNodeIndex: 4
@@ -124,32 +116,86 @@ nodes {
               string_value: "bool"
             }
             args {
-              int_value: 0
+              int_value: 1
             }
           }
         }
       }
     }
     nextNodeIndex: 6
+    hideIfUnavailable: true
     idRef {
       id: "899e2d6130303108120072b4:594f59c73966301431002dbc"
     }
   }
   branches {
     responseText: "{{GM}}Search Account Number 29911012{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasSeenAccountNumbers"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 7
+    hideIfUnavailable: true
     idRef {
       id: "899e2d6130303108120072b4:594f59c73966301431002dbe"
     }
   }
   branches {
     responseText: "{{GM}}Exit{{/GM}}"
-    nextNodeIndex: 9
+    nextNodeIndex: 10
     idRef {
       id: "899e2d6130303108120072b4:594f598a3966301431002db8"
     }
   }
-  nodeType: ConversationNodeType_GM_Voice
+  nodeType: ConversationNodeType_Simple
+  comment: "Project Manager Search"
+}
+nodes {
+  idRef {
+    id: "51aa4382303031ec0d003f1a"
+  }
+  index: 3
+  text: ">>Project established on 5/12/2053. \n>>Project terminated 5 days ago. \n>>Project resources, status, and cost centers are restricted to CEO access"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "899e2d6130303108120072b4:594f598a3966301431002da9"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
@@ -159,7 +205,7 @@ nodes {
   text: ">>Primary hits(s) on Watts, Sam: Record not found\n>>Secondary hits(s) on Watts, Sam: Watts, Melinda: Payment record(s) 1952681, 2911012\n>>Billing system access not available from this terminal"
   branches {
     responseText: ""
-    nextNodeIndex: 3
+    nextNodeIndex: 2
     idRef {
       id: "899e2d6130303108120072b4:594f598a3966301431002daf"
     }
@@ -199,11 +245,10 @@ nodes {
   text: ">>Primary hits(s) on Watts, Jessica: Record not found\n>>Secondary hits(s) on Watts, Jessica: Watts, Melinda: Payment record(s) 1952681, 2911012\n>>Billing system access not available from this terminal"
   branches {
     responseText: ""
-    nextNodeIndex: 3
+    nextNodeIndex: -1
     idRef {
       id: "899e2d6130303108120072b4:594f598a3966301431002db5"
     }
-    auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
   actions {
@@ -236,10 +281,10 @@ nodes {
     id: "594f5a113966301431002dc1"
   }
   index: 6
-  text: "The search parameters find a very specific chain of evidence. Although the money is hidden through shell companies and moved through escrow accounts, there\'s a paperwork trail linking James Telestrian the IIIrd to a large monetary bribe paid to Melinda Watts in 2032."
+  text: "The search parameters find a very specific chain of evidence. Although the money is hidden through shell companies and moved through escrow accounts, there\'s a paperwork trail linking James Telestrian the IIIrd to a string of  large bribes paid to Melinda Watts in at regular intervals since 2032."
   branches {
     responseText: ""
-    nextNodeIndex: 3
+    nextNodeIndex: 2
     idRef {
       id: "899e2d6130303108120072b4:594f5a653966301431002dc3"
     }
@@ -267,22 +312,37 @@ nodes {
     id: "594f5c983966301431002e22"
   }
   index: 8
-  text: "He also asked for \"a fraggin\' liver\", and I took the initiative to research options: Mother is a blood type and genetic match, and will do nicely for a donor. \n\nOperative McKlusky is standing by, should we give the order. It can be arranged to appear as suicide, so that the majority of the organs are undamaged.\n\n[[Operation approved: James Telestrian, III]]"
+  text: "He also asked for \"a fraggin\' liver\", and I took the initiative to research options: Mother is a blood type and genetic match, and will do nicely for a donor. \n\nOperative McKlusky is standing by, should we give the order. It can be arranged to appear as suicide, so that the majority of the organs are undamaged."
   branches {
     responseText: ""
-    nextNodeIndex: 3
+    nextNodeIndex: 9
     idRef {
-      id: "899e2d6130303108120072b4:594f5ca03966301431002e24"
+      id: "899e2d6130303108120072b4:596174eb396630042e007497"
     }
-    auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
-    id: "51aa5750303031ec0d00409f"
+    id: "596174eb396630042e00749a"
   }
   index: 9
+  text: "[[Operation approved: James Telestrian, III]]"
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "899e2d6130303108120072b4:594f5ca03966301431002e24"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "51aa5750303031ec0d00409f"
+  }
+  index: 10
   text: ">>Logging Off"
   nodeType: ConversationNodeType_Simple
 }

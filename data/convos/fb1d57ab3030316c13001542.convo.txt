@@ -22,22 +22,81 @@ nodes {
     id: "fb2297d93030316c1300154b"
   }
   index: 1
-  text: "PRIORITY ALERT: Intrusion detected, all elevators locked down, security response Oscar Six, East Entrance.\n\nNOTICE: Terminal 6J4-Accounting is unsecured. Notify the user to secure the terminal at once."
+  text: "PRIORITY ALERT: Intrusion detected, all elevators locked down, security response Oscar Six, East Entrance.\n\nNOTICE: Terminal 6J4-Accounting is unsecured. All available employees secure the terminal at once."
   branches {
-    responseText: "{{GM}}Unlock lobby doors{{/GM}}"
+    responseText: ""
     nextNodeIndex: 2
     idRef {
-      id: "fb1d57ab3030316c13001542:594f6aa13966301431003376"
+      id: "fb1d57ab3030316c13001542:596157b23966304c0d0036f5"
     }
   }
   nodeType: ConversationNodeType_GM_Voice
 }
 nodes {
   idRef {
-    id: "fb23df2a3030316c1300154f"
+    id: "596157b23966304c0d0036f8"
   }
   index: 2
-  text: "Lobby doors unlocked. "
+  text: ""
+  branches {
+    responseText: "{{GM}}Disable Alarm{{/GM}}"
+    nextNodeIndex: 3
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "fb1d57ab3030316c13001542:5961570a3966304c0d0036e5"
+    }
+  }
+  branches {
+    responseText: "{{GM}}Unlock lobby doors{{/GM}}"
+    nextNodeIndex: 5
+    idRef {
+      id: "fb1d57ab3030316c13001542:594f6aa13966301431003376"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+  comment: "Security Loop"
+}
+nodes {
+  idRef {
+    id: "596157223966304c0d0036e8"
+  }
+  index: 3
+  text: "SECURITY CONTROLS DISABLED DURING LOCKDOWN"
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "fb1d57ab3030316c13001542:596157483966304c0d0036ea"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "596157483966304c0d0036ed"
+  }
+  index: 4
+  text: "I have restricted the alarm to your building, Camarade, but I can do nothing for the internal alarms."
+  branches {
+    responseText: ""
+    nextNodeIndex: 2
+    idRef {
+      id: "fb1d57ab3030316c13001542:596157bc3966304c0d003700"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "23a89086303031f014002b1d"
+  }
+}
+nodes {
+  idRef {
+    id: "fb23df2a3030316c1300154f"
+  }
+  index: 5
+  text: "Lobby doors unlock, large bolts sliding out of place like a bank vault."
   nodeType: ConversationNodeType_GM_Voice
   actions {
     ops {

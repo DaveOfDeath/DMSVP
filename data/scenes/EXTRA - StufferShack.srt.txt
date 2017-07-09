@@ -642,7 +642,7 @@ triggers {
   is_oneshot: true
 }
 triggers {
-  name: "onInteract.River.OpenHiring.OpenScene"
+  name: "onInteract.DevTeleport"
   events {
     ops {
       functionName: "On Item Interaction"
@@ -660,17 +660,33 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Open Hiring Screen and Open Scene"
+      functionName: "Start Conversation"
       args {
         call_value {
-          functionName: "Get Map Item (Scene)"
+          functionName: "Get Map Item (Conversation)"
           args {
-            string_value: "c16-s1-Bonus_River"
+            string_value: "596101323966304c0d002d13"
           }
         }
       }
       args {
-        string_value: "Test River\'s Deeper Shade of Blue?"
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "5821d0023462651415005992"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
       }
     }
   }

@@ -57,6 +57,68 @@ nodes {
       id: "59349369343831a80400223b:593494aa343831a804002268"
     }
   }
+  branches {
+    responseText: "{{GM}}Violet{{/GM}} What am I looking at, here?"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag Pattern for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          string_value: "isViolet"
+        }
+      }
+    }
+    nextNodeIndex: 14
+    idRef {
+      id: "59349369343831a80400223b:596165b5396630042e006fdd"
+    }
+    comment: "VioletOnCrew"
+  }
   nodeType: ConversationNodeType_Simple
   comment: "BaronTopLoop"
 }
@@ -84,7 +146,7 @@ nodes {
     id: "59349556343831a8040022ad"
   }
   index: 4
-  text: "{{GM}}Samedi winks at you.{{/GM}}\n\nMuch better to a typical runner.\nNot many could find this pathway, let alone exploit it. We can create that key, it will be worth a fortune!"
+  text: "{{GM}}Samedi give a conspiratorial wink.{{/GM}}\n\nMuch better to a typical runner.\nNot many could find this pathway, let alone exploit it. We can create that key, it will be worth a fortune!"
   branches {
     responseText: ""
     nextNodeIndex: 5
@@ -407,6 +469,23 @@ nodes {
   sourceInSceneRef {
     id: "23a89086303031f014002b1d"
   }
+}
+nodes {
+  idRef {
+    id: "5961662f396630042e006fe0"
+  }
+  index: 14
+  text: "{{GM}}Violet whistles.{{/GM}}\n\nI\'ll be damned. Whoever built the architecture for this system accidentally left a huge loophole in their defenses."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "59349369343831a80400223b:59616665396630042e006fe2"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isViolet"
 }
 roots {
   nextNodeIndex: 0
