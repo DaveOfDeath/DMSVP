@@ -67,7 +67,7 @@ nodes {
     id: "51afd009623665a011003358"
   }
   index: 2
-  text: "We hit the Lone Star DNA database first to see if our donor has a prior criminal record. They have extensive DNA archives. Then we go hunting based on what we find.\n\nLet\'s hit the decks and jack into the Matrix. I can get into their private grid easily, but I\'ve got to warn you - once we\'re in, it could get a little rough. How much decking experience have you had?"
+  text: "We hit the Lone Star DNA database first to see if our donor has a prior criminal record. They have extensive DNA archives. Then we go hunting based on what we find.\n\nLet\'s hit the decks and jack into the Matrix. I can get into their private grid easily, but I\'ve got to warn you - once we\'re in, it could get a little rough. Mrs. Kubota would kill us if we drew the attention of Lone Star to the Seamstress, so we have to make sure we don\'t get traced."
   branches {
     responseText: ""
     nextNodeIndex: 6
@@ -114,13 +114,100 @@ nodes {
     id: "51afd030623665a01100335f"
   }
   index: 5
-  text: "Here\'s what I\'m thinking. We hit the Lone Star DNA database first to see if our donor has a prior criminal record. They have extensive DNA archives. Then we go hunting based on what we find.\n\nLet\'s hit the decks and jack into the Matrix. I can get into their private grid easily, but I\'ve got to warn you - once we\'re in, it could get a little rough. How much decking experience have you had?"
+  text: "Here\'s what I\'m thinking. We hit the Lone Star DNA database first to see if our donor has a prior criminal record. They have extensive DNA archives. Then we go hunting based on what we find.\n\nLet\'s hit the decks and jack into the Matrix. I can get into their private grid easily, but I\'ve got to warn you - once we\'re in, it could get a little rough. Mrs. Kubota would kill us if we drew the attention of Lone Star to the Seamstress, so we have to make sure we don\'t get traced."
   branches {
     responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Recruited_Jon"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
     nextNodeIndex: 6
+    hideIfUnavailable: true
     idRef {
       id: "0fa2f765623331d00e006df2:595ac0d73438316c05006eae"
     }
+    comment: "Bartlett Recruited"
+  }
+  branches {
+    responseText: ""
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Recruited_Jon"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 14
+    hideIfUnavailable: true
+    idRef {
+      id: "0fa2f765623331d00e006df2:596298aa346265441c001c44"
+    }
+    comment: "No Bartlett"
   }
   nodeType: ConversationNodeType_Simple
 }
@@ -129,254 +216,94 @@ nodes {
     id: "51e437246233310016006a38"
   }
   index: 6
-  text: ""
+  text: "{{GM}}As Johnny speaks, Bartlett looks up from the pile of electronics trash that he was helping a young ork decker rummage through. He casts a careful glance at Johnny Clean, but shrugs and sidles up to you.{{/GM}}\n\nHey, look, $(l.name). Not that I was eavesdropping, but if you\'re hitting Lone Star\'s private system... Maybe you could do me a little favor while you\'re there?"
   branches {
-    responseText: "{{CC}}Decking: 0{{/CC}} No experience. What now?"
-    conditions {
-      ops {
-        functionName: "Compare Actor Skill"
-        args {
-          call_value {
-            functionName: "Get Map Item (Player)"
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "BaseOrCurrent"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "ActorSkills"
-            }
-            args {
-              int_value: 5
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "Comparison Ops"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          int_value: 0
-        }
-      }
-    }
+    responseText: "Depends on the favor."
     nextNodeIndex: 7
     idRef {
-      id: "0fa2f765623331d00e006df2:595ac0d73438316c05006eb1"
+      id: "0fa2f765623331d00e006df2:59629ad3346265441c001e3d"
     }
   }
   branches {
-    responseText: "{{CC}}Decking: 1{{/CC}} I\'ve got a jack and a deck."
-    conditions {
-      ops {
-        functionName: "Compare Actor Skill"
-        args {
-          call_value {
-            functionName: "Get Map Item (Player)"
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "BaseOrCurrent"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "ActorSkills"
-            }
-            args {
-              int_value: 5
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "Comparison Ops"
-            }
-            args {
-              int_value: 3
-            }
-          }
-        }
-        args {
-          int_value: 1
-        }
-      }
-      ops {
-        functionName: "OR"
-        args {
-          call_value {
-            functionName: "Evaluate If Actor Has Item"
-            args {
-              call_value {
-                functionName: "Specific Actor"
-                args {
-                  call_value {
-                    functionName: "Get Map Item (Player)"
-                    args {
-                      int_value: 0
-                    }
-                  }
-                }
-                args {
-                }
-              }
-            }
-            args {
-              call_value {
-                functionName: "Get Preset Value (int)"
-                args {
-                  string_value: "HasOrHasNot"
-                }
-                args {
-                  int_value: 1
-                }
-              }
-            }
-            args {
-              call_value {
-                functionName: "Get Map Item (Item)"
-                args {
-                  string_value: "CyberdeckSony"
-                }
-              }
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "OR"
-            args {
-              call_value {
-                functionName: "Evaluate If Actor Has Item"
-                args {
-                  call_value {
-                    functionName: "Specific Actor"
-                    args {
-                      call_value {
-                        functionName: "Get Map Item (Player)"
-                        args {
-                          int_value: 0
-                        }
-                      }
-                    }
-                    args {
-                    }
-                  }
-                }
-                args {
-                  call_value {
-                    functionName: "Get Preset Value (int)"
-                    args {
-                      string_value: "HasOrHasNot"
-                    }
-                    args {
-                      int_value: 1
-                    }
-                  }
-                }
-                args {
-                  call_value {
-                    functionName: "Get Map Item (Item)"
-                    args {
-                      string_value: "CyberdeckVirtuaX"
-                    }
-                  }
-                }
-              }
-            }
-            args {
-              call_value {
-                functionName: "Evaluate If Actor Has Item"
-                args {
-                  call_value {
-                    functionName: "Specific Actor"
-                    args {
-                      call_value {
-                        functionName: "Get Map Item (Player)"
-                        args {
-                          int_value: 0
-                        }
-                      }
-                    }
-                    args {
-                    }
-                  }
-                }
-                args {
-                  call_value {
-                    functionName: "Get Preset Value (int)"
-                    args {
-                      string_value: "HasOrHasNot"
-                    }
-                    args {
-                      int_value: 1
-                    }
-                  }
-                }
-                args {
-                  call_value {
-                    functionName: "Get Map Item (Item)"
-                    args {
-                      string_value: "CyberdeckKraftwerk1"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+    responseText: "Need some parking tickets cleared?"
+    nextNodeIndex: 12
+    idRef {
+      id: "0fa2f765623331d00e006df2:59629ad6346265441c001e3f"
     }
+  }
+  branches {
+    responseText: "You know me, I do things for nuyen."
+    nextNodeIndex: 13
+    idRef {
+      id: "0fa2f765623331d00e006df2:59629af1346265441c001e41"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isBartlett"
+}
+nodes {
+  idRef {
+    id: "59629bc8346265441c001e4e"
+  }
+  index: 7
+  text: "{{GM}}He looks uncomfortable and it doesn\'t suit him.{{/GM}} Lone Star sometimes infiltrates various organizations, to keep tabs on them, report on activities, that sort of drek. Usually, we\'re talking terrorist groups and policlub trash. But, they also insert operatives into competitors - to sabotage them or get some competitive advantage.\n\nThey keep a list in their private server, a NOC list, that is basically a roster of these operatives. I need that list."
+  branches {
+    responseText: "And what\'s that worth to you?"
     nextNodeIndex: 8
     idRef {
-      id: "0fa2f765623331d00e006df2:595ac0d73438316c05006eb4"
+      id: "0fa2f765623331d00e006df2:59629d63346265441c001e5f"
     }
   }
   branches {
-    responseText: "{{CC}}Decking: 2{{/CC}} I know my way around the Matrix."
+    responseText: "If we come across the list, you got it."
+    nextNodeIndex: 14
+    idRef {
+      id: "0fa2f765623331d00e006df2:59629d66346265441c001e61"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isBartlett"
+}
+nodes {
+  idRef {
+    id: "59629d9e346265441c001e64"
+  }
+  index: 8
+  text: "I can line item the expense under company security. Probably get together a thousand nuyen before you\'ve even jacked out of the system."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "0fa2f765623331d00e006df2:5962a071346265441c001e7a"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isBartlett"
+}
+nodes {
+  idRef {
+    id: "5962a075346265441c001e7d"
+  }
+  index: 9
+  text: ""
+  branches {
+    responseText: "No promises, but I\'ll do my best."
     conditions {
       ops {
-        functionName: "Compare Actor Skill"
+        functionName: "Evaluate If Actor Is Decker"
         args {
           call_value {
-            functionName: "Get Map Item (Player)"
+            functionName: "Specific Actor"
             args {
-              int_value: 0
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
             }
           }
         }
@@ -384,7 +311,111 @@ nodes {
           call_value {
             functionName: "Get Preset Value (int)"
             args {
-              string_value: "BaseOrCurrent"
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 14
+    hideIfUnavailable: true
+    idRef {
+      id: "0fa2f765623331d00e006df2:59629ddb346265441c001e66"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "What do you think, Johnny, you up for some extra cash?"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Is Decker"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 10
+    hideIfUnavailable: true
+    idRef {
+      id: "0fa2f765623331d00e006df2:59629de1346265441c001e68"
+    }
+  }
+  branches {
+    responseText: "Maybe Violet should take a look."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Is Decker"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Recruited_Violet"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
             }
             args {
               int_value: 1
@@ -395,338 +426,62 @@ nodes {
           call_value {
             functionName: "Get Preset Value (int)"
             args {
-              string_value: "ActorSkills"
-            }
-            args {
-              int_value: 5
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "Comparison Ops"
-            }
-            args {
-              int_value: 3
-            }
-          }
-        }
-        args {
-          int_value: 2
-        }
-      }
-      ops {
-        functionName: "OR"
-        args {
-          call_value {
-            functionName: "Evaluate If Actor Has Item"
-            args {
-              call_value {
-                functionName: "Specific Actor"
-                args {
-                  call_value {
-                    functionName: "Get Map Item (Player)"
-                    args {
-                      int_value: 0
-                    }
-                  }
-                }
-                args {
-                }
-              }
-            }
-            args {
-              call_value {
-                functionName: "Get Preset Value (int)"
-                args {
-                  string_value: "HasOrHasNot"
-                }
-                args {
-                  int_value: 1
-                }
-              }
-            }
-            args {
-              call_value {
-                functionName: "Get Map Item (Item)"
-                args {
-                  string_value: "CyberdeckSony"
-                }
-              }
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "OR"
-            args {
-              call_value {
-                functionName: "Evaluate If Actor Has Item"
-                args {
-                  call_value {
-                    functionName: "Specific Actor"
-                    args {
-                      call_value {
-                        functionName: "Get Map Item (Player)"
-                        args {
-                          int_value: 0
-                        }
-                      }
-                    }
-                    args {
-                    }
-                  }
-                }
-                args {
-                  call_value {
-                    functionName: "Get Preset Value (int)"
-                    args {
-                      string_value: "HasOrHasNot"
-                    }
-                    args {
-                      int_value: 1
-                    }
-                  }
-                }
-                args {
-                  call_value {
-                    functionName: "Get Map Item (Item)"
-                    args {
-                      string_value: "CyberdeckVirtuaX"
-                    }
-                  }
-                }
-              }
-            }
-            args {
-              call_value {
-                functionName: "Evaluate If Actor Has Item"
-                args {
-                  call_value {
-                    functionName: "Specific Actor"
-                    args {
-                      call_value {
-                        functionName: "Get Map Item (Player)"
-                        args {
-                          int_value: 0
-                        }
-                      }
-                    }
-                    args {
-                    }
-                  }
-                }
-                args {
-                  call_value {
-                    functionName: "Get Preset Value (int)"
-                    args {
-                      string_value: "HasOrHasNot"
-                    }
-                    args {
-                      int_value: 1
-                    }
-                  }
-                }
-                args {
-                  call_value {
-                    functionName: "Get Map Item (Item)"
-                    args {
-                      string_value: "CyberdeckKraftwerk1"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    nextNodeIndex: 9
-    idRef {
-      id: "0fa2f765623331d00e006df2:595ac0d73438316c05006eb7"
-    }
-  }
-  branches {
-    responseText: "{{CC}}Decking: 4{{/CC}} I\'m pretty damn good."
-    conditions {
-      ops {
-        functionName: "Compare Actor Skill"
-        args {
-          call_value {
-            functionName: "Get Map Item (Player)"
-            args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "BaseOrCurrent"
+              string_value: "bool"
             }
             args {
               int_value: 1
             }
           }
         }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "ActorSkills"
-            }
-            args {
-              int_value: 5
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "Comparison Ops"
-            }
-            args {
-              int_value: 3
-            }
-          }
-        }
-        args {
-          int_value: 4
-        }
-      }
-      ops {
-        functionName: "OR"
-        args {
-          call_value {
-            functionName: "Evaluate If Actor Has Item"
-            args {
-              call_value {
-                functionName: "Specific Actor"
-                args {
-                  call_value {
-                    functionName: "Get Map Item (Player)"
-                    args {
-                      int_value: 0
-                    }
-                  }
-                }
-                args {
-                }
-              }
-            }
-            args {
-              call_value {
-                functionName: "Get Preset Value (int)"
-                args {
-                  string_value: "HasOrHasNot"
-                }
-                args {
-                  int_value: 1
-                }
-              }
-            }
-            args {
-              call_value {
-                functionName: "Get Map Item (Item)"
-                args {
-                  string_value: "CyberdeckSony"
-                }
-              }
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "OR"
-            args {
-              call_value {
-                functionName: "Evaluate If Actor Has Item"
-                args {
-                  call_value {
-                    functionName: "Specific Actor"
-                    args {
-                      call_value {
-                        functionName: "Get Map Item (Player)"
-                        args {
-                          int_value: 0
-                        }
-                      }
-                    }
-                    args {
-                    }
-                  }
-                }
-                args {
-                  call_value {
-                    functionName: "Get Preset Value (int)"
-                    args {
-                      string_value: "HasOrHasNot"
-                    }
-                    args {
-                      int_value: 1
-                    }
-                  }
-                }
-                args {
-                  call_value {
-                    functionName: "Get Map Item (Item)"
-                    args {
-                      string_value: "CyberdeckVirtuaX"
-                    }
-                  }
-                }
-              }
-            }
-            args {
-              call_value {
-                functionName: "Evaluate If Actor Has Item"
-                args {
-                  call_value {
-                    functionName: "Specific Actor"
-                    args {
-                      call_value {
-                        functionName: "Get Map Item (Player)"
-                        args {
-                          int_value: 0
-                        }
-                      }
-                    }
-                    args {
-                    }
-                  }
-                }
-                args {
-                  call_value {
-                    functionName: "Get Preset Value (int)"
-                    args {
-                      string_value: "HasOrHasNot"
-                    }
-                    args {
-                      int_value: 1
-                    }
-                  }
-                }
-                args {
-                  call_value {
-                    functionName: "Get Map Item (Item)"
-                    args {
-                      string_value: "CyberdeckKraftwerk1"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
       }
     }
-    nextNodeIndex: 9
+    nextNodeIndex: 11
+    hideIfUnavailable: true
     idRef {
-      id: "0fa2f765623331d00e006df2:595ac0d73438316c05006eba"
+      id: "0fa2f765623331d00e006df2:59629f48346265441c001e71"
+    }
+  }
+  branches {
+    responseText: "We need to stay focused on the killer, Bartlett. Sorry."
+    nextNodeIndex: 14
+    idRef {
+      id: "0fa2f765623331d00e006df2:59629e46346265441c001e6a"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Loyalty_Jon"
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  comment: "Bartlett Mission Take Node"
+}
+nodes {
+  idRef {
+    id: "59629eb0346265441c001e6d"
+  }
+  index: 10
+  text: "The NOC list is a pretty dangerous data pack to have your hands on. Lone Star holds their covert operations close to the chest.\n\nBut, if we get the data we need on the Ripper without tipping our hand, I\'m willing to poke around and see what we find. I planned on sideloading anything valuable we found there anyway."
+  branches {
+    responseText: "Sounds like a plan."
+    nextNodeIndex: 14
+    idRef {
+      id: "0fa2f765623331d00e006df2:59629f1d346265441c001e6f"
     }
     auxiliaryLink: true
   }
@@ -734,10 +489,214 @@ nodes {
 }
 nodes {
   idRef {
-    id: "51e437246233310016006a3b"
+    id: "0fa2f765623331d00e006df2:59629f48346265441c001e73"
   }
-  index: 7
+  index: 11
+  text: "{{GM}}Violet looks up from the jumble of wires in her hands.{{/GM}} Uh, I heard my name.\n\nSomething about breaking into Lone Star\'s private database for a list? I mean, I do owe Bartlett a favor. So, ok, I guess, sure."
+  branches {
+    responseText: "Sounds like a plan."
+    nextNodeIndex: 14
+    idRef {
+      id: "0fa2f765623331d00e006df2:59629f48346265441c001e75"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isViolet"
+}
+nodes {
+  idRef {
+    id: "59629b8f346265441c001e47"
+  }
+  index: 12
+  text: "{{GM}}He smiles, but it looks forced.{{/GM}}\n\nSomething like that. There\'s nuyen to be had, if that helps. The Nephilim Network is a mercenary outfit, so paying for services is our whole gig."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "0fa2f765623331d00e006df2:59629bc5346265441c001e4b"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isBartlett"
+}
+nodes {
+  idRef {
+    id: "59629b10346265441c001e44"
+  }
+  index: 13
+  text: "{{GM}}Bartlett nods.{{/GM}}\n\nYeah, the Nephilim Network is a mercenary outfit, so paying for services is our whole gig."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "0fa2f765623331d00e006df2:59629bc4346265441c001e49"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isBartlett"
+}
+nodes {
+  idRef {
+    id: "0fa2f765623331d00e006df2:596298aa346265441c001c46"
+  }
+  index: 14
+  text: "Alright. We\'ve got a plan. Now, who\'s going to take on Lone Star? The system is trace happy, so I think only one of us should go in."
+  branches {
+    responseText: "You sound confident. Why don\'t you go ahead."
+    nextNodeIndex: 15
+    idRef {
+      id: "0fa2f765623331d00e006df2:596298aa346265441c001c48"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Decker{{/CC}} I\'ve got a jack and a deck, I\'ll go."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Is Decker"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 16
+    hideIfUnavailable: true
+    idRef {
+      id: "0fa2f765623331d00e006df2:596298aa346265441c001c4c"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Violet{{/CC}} I\'ve seen Violet in action. I know what she\'s capable of. She should do this."
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Story Variable (bool)"
+            args {
+              string_value: "57084f7c6631365c1600767e"
+            }
+            args {
+              string_value: "Crew_Recruited_Violet"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasNoDecking"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Set Variable (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "hasVioletGoing"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 17
+    hideIfUnavailable: true
+    idRef {
+      id: "0fa2f765623331d00e006df2:5962a233346265441c001e8f"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "0fa2f765623331d00e006df2:596298aa346265441c001c4a"
+  }
+  index: 15
   text: "I have a trode net here. It\342\200\231s a headband you wear that lets you piggyback me in the Matrix. You\342\200\231ll see and hear everything I do."
+  branches {
+    responseText: "Let\'s do this."
+    nextNodeIndex: -1
+    idRef {
+      id: "0fa2f765623331d00e006df2:5962a8db346265441c002214"
+    }
+  }
   nodeType: ConversationNodeType_Simple
   actions {
     ops {
@@ -766,10 +725,38 @@ nodes {
 }
 nodes {
   idRef {
-    id: "51e437246233310016006a3e"
+    id: "0fa2f765623331d00e006df2:596298aa346265441c001c4e"
   }
-  index: 8
+  index: 16
   text: "Alright, follow your progress, see what I can do to point you in the right direction."
+  branches {
+    responseText: "{{GM}}Jack into the Matrix.{{/GM}}"
+    actions {
+      ops {
+        functionName: "Force-Use Interactable Object (with Actor)"
+        args {
+          call_value {
+            functionName: "Get Map Item (InteractableObject)"
+            args {
+              string_value: "3774a99e62333124100001ed"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Player)"
+            args {
+              int_value: 0
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "0fa2f765623331d00e006df2:5962a871346265441c0021d6"
+    }
+  }
   nodeType: ConversationNodeType_Simple
   actions {
     ops {
@@ -795,10 +782,17 @@ nodes {
 }
 nodes {
   idRef {
-    id: "51e437246233310016006a41"
+    id: "0fa2f765623331d00e006df2:5962a233346265441c001e91"
   }
-  index: 9
-  text: "Great. I\'ll be on overwatch, just in case any IC decides to crash your party."
+  index: 17
+  text: "Violet\'s capable. I\'m sure. {{GM}}He glances at the young troll, dubiously.{{/GM}} I have a trode net here. It\342\200\231s a headband you wear that lets you piggyback with her in the Matrix. You\342\200\231ll see and hear everything she does.\n\nWe\'ll follow her progress and see if we can point her in the right direction."
+  branches {
+    responseText: "You ready, Violet?"
+    nextNodeIndex: 18
+    idRef {
+      id: "0fa2f765623331d00e006df2:5962a333346265441c001e95"
+    }
+  }
   nodeType: ConversationNodeType_Simple
   actions {
     ops {
@@ -821,6 +815,15 @@ nodes {
       }
     }
   }
+}
+nodes {
+  idRef {
+    id: "5962a3b0346265441c001f20"
+  }
+  index: 18
+  text: "{{GM}}Violet untangles herself from the electronic spaghetti and scratches her cheek.{{/GM}}\n\nBorn ready. That\'s what you\'re supposed to say, I think. Let\'s go break the law, again. Not like those bastards did anything for me ever anyway."
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isViolet"
 }
 roots {
   responseText: ""
