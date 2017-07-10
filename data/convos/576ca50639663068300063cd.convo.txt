@@ -3067,7 +3067,7 @@ nodes {
     }
   }
   branches {
-    responseText: "Doctor Dirk"
+    responseText: "Dirk"
     actions {
       ops {
         functionName: "Enable/Disable Interactable Object"
@@ -3099,7 +3099,7 @@ nodes {
     }
   }
   branches {
-    responseText: "Dr Dirk Dingleberry"
+    responseText: "Dirk Dingleberry"
     actions {
       ops {
         functionName: "Enable/Disable Interactable Object"
@@ -3935,7 +3935,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: -1
+    nextNodeIndex: 101
     hideIfUnavailable: true
     idRef {
       id: "576ca50639663068300063cd:58bdd13b396630201a0075cb"
@@ -3977,8 +3977,45 @@ nodes {
           }
         }
       }
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "Sam\'s BTL chip"
+            }
+          }
+        }
+      }
     }
-    nextNodeIndex: -1
+    nextNodeIndex: 102
     hideIfUnavailable: true
     idRef {
       id: "576ca50639663068300063cd:58bdd13b396630201a0075cc"
@@ -4325,6 +4362,38 @@ nodes {
       }
     }
   }
+}
+nodes {
+  idRef {
+    id: "5963abf4343831e80f002d3e"
+  }
+  index: 101
+  text: "You pocket the chip."
+  branches {
+    responseText: ""
+    nextNodeIndex: 90
+    idRef {
+      id: "576ca50639663068300063cd:5963ac1b343831e80f002d96"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "5963ac32343831e80f002d9c"
+  }
+  index: 102
+  text: "You leave the chip untouched."
+  branches {
+    responseText: ""
+    nextNodeIndex: 90
+    idRef {
+      id: "576ca50639663068300063cd:5963ac3f343831e80f002d9e"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_GM_Voice
 }
 roots {
   responseText: ""
