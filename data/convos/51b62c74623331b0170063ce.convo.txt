@@ -38,10 +38,11 @@ nodes {
         }
       }
     }
-    nextNodeIndex: -1
+    nextNodeIndex: 1
     idRef {
       id: "51b62c74623331b0170063ce:575cf4c0396630f802007ffc"
     }
+    auxiliaryLink: true
   }
   branches {
     responseText: "Do you know Sam Watts?"
@@ -813,6 +814,45 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Sam\'s BTL chip"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -1091,12 +1131,74 @@ nodes {
     id: "57af87f9613131001c0080c5"
   }
   index: 31
-  text: "{{GM}}Bobby rubs his face, composing himself.{{/GM}}\n\nLook, you got what I would like to purchase, and I may have information that you would be interested in."
+  text: "{{GM}}Bobby rubs his face, composing himself.{{/GM}}\n\nLook, you got what I would like to purchase, and I may have information that you would be interested in.\n\nBut I gotta know you\'re straight up, before we talk."
+  branches {
+    responseText: "{{CC}}Give him the BTL{{/CC}} I am."
+    actions {
+      ops {
+        functionName: "Remove Item from Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "Sam\'s BTL chip"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 32
+    idRef {
+      id: "51b62c74623331b0170063ce:57af8831613131001c0080c7"
+    }
+  }
+  branches {
+    responseText: "Let me think about it."
+    nextNodeIndex: 15
+    idRef {
+      id: "51b62c74623331b0170063ce:59640f14343831b01b0077ec"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59640f32343831b01b0077ef"
+  }
+  index: 32
+  text: "Excellent!   Ask away."
   branches {
     responseText: ""
     nextNodeIndex: 19
     idRef {
-      id: "51b62c74623331b0170063ce:57af8831613131001c0080c7"
+      id: "51b62c74623331b0170063ce:59640f40343831b01b0077f1"
     }
     auxiliaryLink: true
   }
