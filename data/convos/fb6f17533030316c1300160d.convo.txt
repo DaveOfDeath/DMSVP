@@ -301,7 +301,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 15
+    nextNodeIndex: 14
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -310,7 +310,7 @@ nodes {
   }
   branches {
     responseText: "{{GM}}Run Search: \"Universal Brotherhood\"{{/GM}}"
-    nextNodeIndex: 16
+    nextNodeIndex: 15
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -319,7 +319,7 @@ nodes {
   }
   branches {
     responseText: "{{GM}}Exit{{/GM}}"
-    nextNodeIndex: 17
+    nextNodeIndex: 16
     idRef {
       id: "fb6f17533030316c1300160d:594f5dea3966301431002eeb"
     }
@@ -464,6 +464,8 @@ nodes {
   branches {
     responseText: "I don\'t want to send up any more flags."
     nextNodeIndex: 11
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "fb6f17533030316c1300160d:594f62933966301431003012"
     }
@@ -528,38 +530,39 @@ nodes {
   index: 13
   text: ">> Employee: O\'Toole, Seamus\n\n>> Position: Destructive Testing Specialist\n\n>> Status: Failed Loyalty Inquest, Termination Inbound, 3/27/2054"
   branches {
-    responseText: "We should delete this or something, for Seamus."
-    nextNodeIndex: 14
-    idRef {
-      id: "fb6f17533030316c1300160d:594f64ab39663014310030da"
-    }
-  }
-  nodeType: ConversationNodeType_Simple
-}
-nodes {
-  idRef {
-    id: "594f64f239663014310030dd"
-  }
-  index: 14
-  text: "Gotta keep moving, $+(l.name)."
-  branches {
     responseText: ""
     nextNodeIndex: 3
     idRef {
-      id: "fb6f17533030316c1300160d:594f65113966301431003139"
+      id: "fb6f17533030316c1300160d:594f64ab39663014310030da"
     }
     auxiliaryLink: true
   }
   nodeType: ConversationNodeType_Simple
-  sourceInSceneRef {
-    id: "2335192b303031dc0a000139"
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Loyalty_Seamus"
+          }
+        }
+      }
+      args {
+        int_value: -1
+      }
+    }
   }
 }
 nodes {
   idRef {
     id: "594f5eed3966301431002f1f"
   }
-  index: 15
+  index: 14
   text: ">> Employee: Nemo, Jason Thomas\n\n>> Position: Security Operative, Special Projects\n\n>> Status: Unknown. Team missed last check-in, assigned to Operation Sheath.\n"
   branches {
     responseText: ""
@@ -575,7 +578,7 @@ nodes {
   idRef {
     id: "51aa65e0303031ec0d004159"
   }
-  index: 16
+  index: 15
   text: ">>Brotherhood, Universal: Truncated Search Results shown.\n\n[[NO RESULTS FOUND]]\n\n[[While Telestrian Industries allows freedom of religion, certain fringe groups require close monitoring.\nYour account info has been logged, per guidelines. Remain where you are, security will contact you soon.]]"
   branches {
     responseText: ""
@@ -591,7 +594,7 @@ nodes {
   idRef {
     id: "51aa6604303031ec0d00415c"
   }
-  index: 17
+  index: 16
   text: ">>Logging Off"
   nodeType: ConversationNodeType_Simple
 }
