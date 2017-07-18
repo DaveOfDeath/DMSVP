@@ -2811,12 +2811,20 @@ triggers {
       }
     }
     ops {
-      functionName: "Enable/Disable Interactable Object"
+      functionName: "Display Text over Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "8caae0fb3030315810000bb8"
+          }
+        }
+      }
       args {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "EnableOrDisable"
+            string_value: "TextPopupStyle"
           }
           args {
             int_value: 0
@@ -2824,12 +2832,28 @@ triggers {
         }
       }
       args {
-        call_value {
-          functionName: "Get Map Item (InteractableObject)"
-          args {
-            string_value: "8caa84423030315810000bb7"
-          }
-        }
+        string_value: "Hey, uh-- can we talk to you?"
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 0
+      }
+      args {
+        float_value: 5
+      }
+      args {
+        float_value: 3
+      }
+      args {
+        float_value: 3
       }
     }
   }
@@ -2887,7 +2911,20 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Display Text over Actor"
+      functionName: "Start Conversation Between Actors"
+      args {
+        call_value {
+          functionName: "Get Map Item (Conversation)"
+          args {
+            string_value: "586424a53966303c29004048"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Triggering Actor"
+        }
+      }
       args {
         call_value {
           functionName: "Get Map Item (Actor)"
@@ -2900,56 +2937,10 @@ triggers {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "TextPopupStyle"
+            string_value: "WithOrWithout"
           }
           args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        string_value: "Hey, uh-- can we talk to you?"
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 5
-      }
-      args {
-        float_value: 3
-      }
-      args {
-        float_value: 3
-      }
-    }
-    ops {
-      functionName: "Enable/Disable Interactable Object"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (InteractableObject)"
-          args {
-            string_value: "8caae0fb3030315810000bb8"
+            int_value: 1
           }
         }
       }
@@ -4014,50 +4005,6 @@ triggers {
           }
           args {
             int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Enable/Disable Interactable Object"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (InteractableObject)"
-          args {
-            string_value: "9a845bc7303031040700390e"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Set Waypoint on Prop"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "PrimaryOrSecondary"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Prop)"
-          args {
-            string_value: "9a845bc7303031040700390e"
           }
         }
       }
@@ -7078,10 +7025,10 @@ regions {
 regions {
   name: "DeckerLady1PopUpRegion"
   position {
-    x: -91
-    y: -4
-    width: 4
-    height: 2
+    x: -92
+    y: -10
+    width: 5
+    height: 8
   }
   enabledAtStart: true
   is_camera_region: false
@@ -8447,7 +8394,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Seattle:Extras/OrkFemaleProstitute"
+    prefab_name: "Seattle:Core/HumanMale"
     character_sheet_id: "BaseCivilian"
     character_mod {
       stats {
@@ -8506,12 +8453,16 @@ characters {
       vulnerabilities {
       }
     }
+    equipment {
+      prefab_name: "NPC_HK_Combat_SamuraiShades"
+    }
     team_id: "Civilians"
     char_name: "Bartender"
     pc_spawn_number: -1
     portrait {
       filename: "backer_humanmale_alexanderbrown"
     }
+    portrait_code_override: "s2h22c4b4c4t0"
     karma: 6
     is_prop_character: true
   }
@@ -10422,46 +10373,8 @@ characters {
   interactionRoot {
     isEnabled: false
     interactionRadius: 1
-    prerequisites {
-      ops {
-        functionName: "Comparison (bool)"
-        args {
-          call_value {
-            functionName: "Get Variable (bool)"
-            args {
-              string_value: "b_TalkedtoSeamusJon"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "IsOrIsNot"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-      }
+    dummyInteraciton {
     }
-    conversationPoint {
-      conversationID: "586424a53966303c29004048"
-      turnToFace: true
-    }
-    interactionIcon: InteractionIcon_Conversation
     interaction_info_text: "Talk to Human Mercenary?"
   }
   lod: 0
@@ -10555,46 +10468,8 @@ characters {
   interactionRoot {
     isEnabled: false
     interactionRadius: 1
-    prerequisites {
-      ops {
-        functionName: "Comparison (bool)"
-        args {
-          call_value {
-            functionName: "Get Variable (bool)"
-            args {
-              string_value: "b_TalkedtoSeamusJon"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "IsOrIsNot"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-      }
+    dummyInteraciton {
     }
-    conversationPoint {
-      conversationID: "586424a53966303c29004048"
-      turnToFace: true
-    }
-    interactionIcon: InteractionIcon_Conversation
     interaction_info_text: "Talk to Dwarf Shadowrunner?"
   }
   lod: 0

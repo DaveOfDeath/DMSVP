@@ -497,52 +497,11 @@ nodes {
       }
     }
     nextNodeIndex: 21
+    hideIfUnavailable: true
     idRef {
       id: "581e2a41396630cc16003610:585395803966301c24001e95"
     }
     auxiliaryLink: true
-  }
-  branches {
-    responseText: "Not my business, not my problem."
-    conditions {
-      ops {
-        functionName: "Comparison (bool)"
-        args {
-          call_value {
-            functionName: "Get Variable (bool)"
-            args {
-              string_value: "b_RiverJob"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "IsOrIsNot"
-            }
-            args {
-              int_value: 1
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "bool"
-            }
-            args {
-              int_value: 0
-            }
-          }
-        }
-      }
-    }
-    nextNodeIndex: -1
-    idRef {
-      id: "581e2a41396630cc16003610:581e2d4b396630cc16003629"
-    }
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
@@ -564,6 +523,29 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Actor Display Name"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "581e27d9396630cc16003601"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        string_value: "River"
+      }
+    }
+  }
 }
 nodes {
   idRef {
@@ -605,6 +587,8 @@ nodes {
   branches {
     responseText: "Did he say why?"
     nextNodeIndex: 6
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "581e2a41396630cc16003610:581e2d98396630cc1600362e"
     }
@@ -612,6 +596,8 @@ nodes {
   branches {
     responseText: "Do you want me to beat it out of him?"
     nextNodeIndex: 9
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "581e2a41396630cc16003610:581e2da4396630cc16003633"
     }
@@ -933,7 +919,7 @@ nodes {
     auxiliaryLink: true
   }
   branches {
-    responseText: "Chopper."
+    responseText: "Whirly bird."
     nextNodeIndex: 15
     idRef {
       id: "581e2a41396630cc16003610:58538f0a3966301c24001c38"
@@ -1114,6 +1100,13 @@ nodes {
   }
   index: 21
   text: "{{GM}}The woman\'s face drops, and she puts out a hand to stop you, just short of actually touching you.{{/GM}}\n\nPlease, I need those files. I\'ll pay you what I have on me now, 250\302\245. More when I get it."
+  branches {
+    responseText: "Fine.  I\'ll get them."
+    nextNodeIndex: -1
+    idRef {
+      id: "581e2a41396630cc16003610:596e4c40343831200f001f54"
+    }
+  }
   nodeType: ConversationNodeType_Simple
 }
 nodes {
