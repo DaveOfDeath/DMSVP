@@ -31584,50 +31584,56 @@ scene_dimensions {
 }
 combat_music: "Seattle-Set9-Combat"
 matrix_music: "Seattle-Set8-Stealth"
-character_roster {
-}
 show_hiring_screen_on_scene_load: true
 scene_hiring_prerequisites {
   prereq_description: "Requires a Decker"
   prereq_conditions {
     ops {
-      functionName: "Compare Hire-able Actor Skill"
+      functionName: "OR"
       args {
         call_value {
-          functionName: "Get Preset Value (int)"
+          functionName: "Evaluate If Actor Is Decker"
           args {
-            string_value: "ActorSkills"
+            call_value {
+              functionName: "Specific Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (Player)"
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+              args {
+              }
+            }
           }
           args {
-            int_value: 5
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "IsOrIsNot"
+              }
+              args {
+                int_value: 1
+              }
+            }
           }
         }
       }
       args {
         call_value {
-          functionName: "Get Preset Value (int)"
+          functionName: "Compare Hire-able Has Cyberdeck"
           args {
-            string_value: "Comparison Ops"
-          }
-          args {
-            int_value: 3
-          }
-        }
-      }
-      args {
-        int_value: 1
-      }
-    }
-    ops {
-      functionName: "Compare Hire-able Has Cyberdeck"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "HasOrHasNot"
-          }
-          args {
-            int_value: 1
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "HasOrHasNot"
+              }
+              args {
+                int_value: 1
+              }
+            }
           }
         }
       }
