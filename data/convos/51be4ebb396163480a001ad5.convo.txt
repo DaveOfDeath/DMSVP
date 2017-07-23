@@ -250,6 +250,123 @@ nodes {
         }
       }
     }
+    ops {
+      functionName: "Teleport Actor to Area Around Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Nearest Tagged Actor to Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isViolet"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Map Item (Player)"
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 2
+      }
+      args {
+        int_value: 5
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Move To (Actor)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Nearest Tagged Actor to Actor"
+              args {
+                call_value {
+                  functionName: "Get Map Item (SenseTagList)"
+                  args {
+                    string_value: "isViolet"
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Map Item (Player)"
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
 }
 nodes {
@@ -273,6 +390,14 @@ nodes {
   }
   index: 10
   text: "I\'ll send the lab\'s location to your PDA. Hire a team and head there right away. Liberate Saada and deliver him to my employers - they\'ll have a car waiting outside the lab when you\'re done. \n\nOnce Mr. Saada\'s on his way, meet me back here for payment."
+  branches {
+    responseText: ""
+    nextNodeIndex: 28
+    idRef {
+      id: "51be4ebb396163480a001ad5:59748724396630681e006853"
+    }
+    auxiliaryLink: true
+  }
   nodeType: ConversationNodeType_Simple
   actions {
     ops {
@@ -1073,7 +1198,7 @@ nodes {
     id: "51bf77336233315815003d87"
   }
   index: 27
-  text: "{{GM}}He quickly inspects the data.{{/GM}}\n\nDamn, you lifted this out of the Raku system? I hired the right $(l.guy). Here\'s a bonus."
+  text: "{{GM}}He quickly inspects the data.{{/GM}}\n\nDamn, you lifted this out of the Renraku system? I hired the right $(l.guy). Here\'s a bonus."
   nodeType: ConversationNodeType_Simple
   actions {
     ops {
@@ -1128,6 +1253,116 @@ nodes {
       }
     }
   }
+}
+nodes {
+  idRef {
+    id: "59748413396630681e006832"
+  }
+  index: 28
+  text: "{{GM}}Violet approaches you, nervously.{{/GM}}\n\nHey, $(l.name), can I talk to you?"
+  branches {
+    responseText: "What\'s this about?"
+    nextNodeIndex: 29
+    idRef {
+      id: "51be4ebb396163480a001ad5:59748461396630681e006836"
+    }
+  }
+  branches {
+    responseText: "Sure."
+    nextNodeIndex: 29
+    idRef {
+      id: "51be4ebb396163480a001ad5:59748460396630681e006834"
+    }
+    auxiliaryLink: true
+  }
+  branches {
+    responseText: "Busy."
+    nextNodeIndex: 33
+    idRef {
+      id: "51be4ebb396163480a001ad5:59748461396630681e006838"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Loyalty_Violet"
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59748479396630681e00683b"
+  }
+  index: 29
+  text: "{{GM}}Violet carefully watches as Mr Johnson turns back to his commlink, and turns to you, lowering her voice to a whisper.{{/GM}}\n\nThat Azzie goon has been trying ot hire people all day to hit a \'secret\' lab here in Redmond."
+  branches {
+    responseText: ""
+    nextNodeIndex: 30
+    idRef {
+      id: "51be4ebb396163480a001ad5:5974876f396630681e006856"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5974876f396630681e006859"
+  }
+  index: 30
+  text: "The place isn\'t secret-- it\'s a few blocks from here. The area stinks like guano, and all the locals avoid it. Anyone who doesn\'t avoid it turns up dead."
+  branches {
+    responseText: ""
+    nextNodeIndex: 31
+    idRef {
+      id: "51be4ebb396163480a001ad5:59748797396630681e00685b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59748797396630681e00685e"
+  }
+  index: 31
+  text: "{{GM}}Violet looks nervous.{{/GM}}\n\nThing is, the lab shows up in Chuck\'s notes, and I don\'t know why. No context for the note, just the name \'Corporate Extraction\'.\nI need to get in there, figure out what Chuck\'s interest in it was."
+  branches {
+    responseText: ""
+    nextNodeIndex: 32
+    idRef {
+      id: "51be4ebb396163480a001ad5:59748832396630681e0068ba"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59748832396630681e0068bd"
+  }
+  index: 32
+  text: "{{GM}}Violet meets your eye. {{/GM}}\n\nPlease, I know I haven\'t been exactly supportive of your career choices, but this is important. \nCan I be on the team that hits this place?"
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "5974862b396630681e006843"
+  }
+  index: 33
+  text: "{{GM}}Violet bites her lip. {{/GM}}\n\nI\'ll make it quick then. That guy is trying to hire a team to hit a lab not far from here. It\'s not far from here, but it stinks like guano, and all the locals avoid it. It\'s in Chuck\'s notes, and I really need to get in there. Consider bringing me on the team."
+  nodeType: ConversationNodeType_Simple
 }
 roots {
   responseText: ""
@@ -1533,4 +1768,50 @@ roots {
   idRef {
     id: "51be4ebb396163480a001ad5:58d21a6d3966307049005354"
   }
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 28
+  idRef {
+    id: "51be4ebb396163480a001ad5:597483b0396630681e0067e2"
+  }
+  comment: "Violet"
 }
