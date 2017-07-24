@@ -17,21 +17,21 @@ nodes {
   }
   branches {
     responseText: "You must be the Union\342\200\231s hired muscle."
-    nextNodeIndex: 21
+    nextNodeIndex: 22
     idRef {
       id: "51ccc25e323664d8200012e2:580c5832396630440c001c01"
     }
   }
   branches {
     responseText: "Funny place for the architect to put a wall."
-    nextNodeIndex: 22
+    nextNodeIndex: 23
     idRef {
       id: "51ccc25e323664d8200012e2:580c5832396630440c001c07"
     }
   }
   branches {
     responseText: "You look familiar, are you famous or something?"
-    nextNodeIndex: 23
+    nextNodeIndex: 24
     idRef {
       id: "51ccc25e323664d8200012e2:580c5885396630440c001c0e"
     }
@@ -92,21 +92,21 @@ nodes {
   }
   branches {
     responseText: "Yes, and it\342\200\231s none of yours."
-    nextNodeIndex: 15
+    nextNodeIndex: 16
     idRef {
       id: "51ccc25e323664d8200012e2:580c5832396630440c001be9"
     }
   }
   branches {
     responseText: "I was a friend of Sam Watts. Know him?"
-    nextNodeIndex: 19
+    nextNodeIndex: 20
     idRef {
       id: "51ccc25e323664d8200012e2:580c5832396630440c001bfb"
     }
   }
   branches {
     responseText: "I\'m $(s.name), whom might you be?"
-    nextNodeIndex: 20
+    nextNodeIndex: 21
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -145,14 +145,14 @@ nodes {
   }
   branches {
     responseText: "You ever have to toss Sam out on his ass?"
-    nextNodeIndex: 13
+    nextNodeIndex: 14
     idRef {
       id: "51ccc25e323664d8200012e2:580c5832396630440c001bdd"
     }
   }
   branches {
     responseText: "In your role here, I suppose you often escorted Sam to the door."
-    nextNodeIndex: 14
+    nextNodeIndex: 15
     idRef {
       id: "51ccc25e323664d8200012e2:580c5832396630440c001be3"
     }
@@ -265,7 +265,48 @@ nodes {
   }
   branches {
     responseText: "{{GM}}Gold Lighter{{/GM}} Seen this lighter before?"
-    nextNodeIndex: 12
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c02-s1_JakesLighter"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 13
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "51ccc25e323664d8200012e2:580c5e65396630440c001db5"
     }
@@ -302,13 +343,36 @@ nodes {
   }
   index: 11
   text: "{{GM}}Mister Kluwe\'s face goes stone-cold, and you know you are in dangerous territory.{{/GM}}\n\nMadame Sinful, or Mistress Kubota if you prefer, has forbidden the purchase, sale, or consumption of dreamchips like the ones that Bobby sells. If you insist on waving that thing around, I\'ll have to ask you to leave."
+  branches {
+    responseText: "{{CC}}Pocket the chip{{/CC}}  Noted."
+    nextNodeIndex: 12
+    idRef {
+      id: "51ccc25e323664d8200012e2:597626b9343831b008005e15"
+    }
+  }
+  branches {
+    responseText: "Found it in Sam\'s things.  I\'m not a user.   I\'ll ask elsewhere though, out of respect."
+    nextNodeIndex: 12
+    idRef {
+      id: "51ccc25e323664d8200012e2:597626b9343831b008005e17"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59762af1343831b008005e1a"
+  }
+  index: 12
+  text: "{{GM}}He nods.{{/GM}}"
   nodeType: ConversationNodeType_Simple
 }
 nodes {
   idRef {
     id: "580c5f51396630440c001dff"
   }
-  index: 12
+  index: 13
   text: "{{GM}}Kluwe shakes his head, \'No.\'{{/GM}}\n\nI don\'t go for coffin nails. You might ask Armitage, he smokes."
   nodeType: ConversationNodeType_Simple
 }
@@ -316,7 +380,7 @@ nodes {
   idRef {
     id: "51ccc4cc323664d820001329"
   }
-  index: 13
+  index: 14
   text: "{{GM}}Kluwe nods, and then shrugs.{{/GM}}\n\nNever so much tossed as nudged on his way."
   branches {
     responseText: ""
@@ -332,7 +396,7 @@ nodes {
   idRef {
     id: "51ccc4e6323664d82000132f"
   }
-  index: 14
+  index: 15
   text: "{{GM}}Kluwe nods.{{/GM}}\n\nYes, albeit gently. "
   branches {
     responseText: ""
@@ -348,18 +412,18 @@ nodes {
   idRef {
     id: "51ccc418323664d82000130e"
   }
-  index: 15
+  index: 16
   text: "{{GM}}The gaze that the troll sends your way hardens considerably.{{/GM}}\n\nAny business conducted on these premises is my business."
   branches {
     responseText: "Fine. I\342\200\231m here about Sam Watts."
-    nextNodeIndex: 16
+    nextNodeIndex: 17
     idRef {
       id: "51ccc25e323664d8200012e2:580c5832396630440c001bec"
     }
   }
   branches {
     responseText: "You going to beat it out of me?"
-    nextNodeIndex: 18
+    nextNodeIndex: 19
     idRef {
       id: "51ccc25e323664d8200012e2:580c5832396630440c001bf5"
     }
@@ -370,11 +434,11 @@ nodes {
   idRef {
     id: "51ccc43e323664d820001312"
   }
-  index: 16
+  index: 17
   text: "{{GM}}The troll nods at your confirmation.{{/GM}}\n\nFigured as much."
   branches {
     responseText: ""
-    nextNodeIndex: 17
+    nextNodeIndex: 18
     idRef {
       id: "51ccc25e323664d8200012e2:580c5832396630440c001bef"
     }
@@ -385,7 +449,7 @@ nodes {
   idRef {
     id: "51ccc44e323664d820001317"
   }
-  index: 17
+  index: 18
   text: "You\'re not one of our regulars, and you don\342\200\231t have the fresh-fish look of some wage slave thrill seeker braving Touristville for stories to tell his friends. \n\nYou\342\200\231re new in town, and showing up on the heels of Sam\342\200\231s death... that\'s a big coincidence, and I don\'t believe in coincidences, so it stands to reason you\'re here about him."
   branches {
     responseText: ""
@@ -400,11 +464,11 @@ nodes {
   idRef {
     id: "51ccc44b323664d820001314"
   }
-  index: 18
+  index: 19
   text: "{{GM}}The massive troll doesn\'t shift his stance, but he somehow seems ready for action.{{/GM}}\n\nDon\342\200\231t think that\342\200\231ll be necessary."
   branches {
     responseText: ""
-    nextNodeIndex: 17
+    nextNodeIndex: 18
     idRef {
       id: "51ccc25e323664d8200012e2:580c5832396630440c001bf8"
     }
@@ -416,7 +480,7 @@ nodes {
   idRef {
     id: "51ccc3fd323664d820001307"
   }
-  index: 19
+  index: 20
   text: "{{GM}}The troll doesn\'t look away, but his brow furrows briefly.{{/GM}}\n\nSure, everyone here knew Sam. Shame to lose a part of the family."
   branches {
     responseText: ""
@@ -432,7 +496,7 @@ nodes {
   idRef {
     id: "580c5cfd396630440c001ca8"
   }
-  index: 20
+  index: 21
   text: "{{GM}}The troll raises an eyebrow.{{/GM}}\n\nMy dear, manners in the Barrens? I am Mister Kluwe. My friends call me Kluwe."
   branches {
     responseText: ""
@@ -448,7 +512,7 @@ nodes {
   idRef {
     id: "51ccc375323664d8200012f4"
   }
-  index: 21
+  index: 22
   text: "{{GM}}The massive troll smiles, showing off a set of perfect white teeth.{{/GM}}\n\nMust I?  Only if you insist."
   branches {
     responseText: ""
@@ -464,7 +528,7 @@ nodes {
   idRef {
     id: "51ccc391323664d8200012fa"
   }
-  index: 22
+  index: 23
   text: "{{GM}}The Massive well-mannered troll doesn\'t even glance at the wall as you gesture toward it, never taking his eyes off of you.{{/GM}}\n\nLoad bearing, too."
   branches {
     responseText: ""
@@ -480,7 +544,7 @@ nodes {
   idRef {
     id: "580c5a81396630440c001c11"
   }
-  index: 23
+  index: 24
   text: "{{GM}}The troll smiles, showing off perfect teeth.{{/GM}}\n\nOr something. In another life, perhaps."
   branches {
     responseText: ""
