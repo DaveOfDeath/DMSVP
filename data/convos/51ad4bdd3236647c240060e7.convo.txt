@@ -152,73 +152,50 @@ nodes {
     responseText: "{{GM}}Access the pocket secretary.{{/GM}}"
     conditions {
       ops {
-        functionName: "OR"
+        functionName: "Compare Actor Skill"
         args {
           call_value {
-            functionName: "Evaluate Tag for Actor"
+            functionName: "Get Map Item (Player)"
             args {
-              call_value {
-                functionName: "All Actors With Tag"
-                args {
-                  call_value {
-                    functionName: "Nothing Selected"
-                  }
-                }
-                args {
-                  call_value {
-                    functionName: "Nothing Selected"
-                  }
-                }
-              }
-            }
-            args {
-              call_value {
-                functionName: "Get Preset Value (int)"
-                args {
-                  string_value: "HasOrHasNot"
-                }
-                args {
-                  int_value: 1
-                }
-              }
-            }
-            args {
-              call_value {
-                functionName: "Nothing Selected"
-              }
+              int_value: 0
             }
           }
         }
         args {
           call_value {
-            functionName: "Evaluate If Actor Is Decker"
+            functionName: "Get Preset Value (int)"
             args {
-              call_value {
-                functionName: "Specific Actor"
-                args {
-                  call_value {
-                    functionName: "Get Map Item (Player)"
-                    args {
-                      int_value: 0
-                    }
-                  }
-                }
-                args {
-                }
-              }
+              string_value: "BaseOrCurrent"
             }
             args {
-              call_value {
-                functionName: "Get Preset Value (int)"
-                args {
-                  string_value: "IsOrIsNot"
-                }
-                args {
-                  int_value: 1
-                }
-              }
+              int_value: 1
             }
           }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "ActorSkills"
+            }
+            args {
+              int_value: 5
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 1
         }
       }
     }
@@ -248,7 +225,7 @@ nodes {
   }
   branches {
     responseText: "{{GM}}Examine the rolled sheet of paper.{{/GM}}"
-    nextNodeIndex: 26
+    nextNodeIndex: 27
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -410,6 +387,7 @@ nodes {
     responseText: "Investigate report."
     nextNodeIndex: 8
     hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "51ad4bdd3236647c240060e7:58c901b33966306400008099"
     }
@@ -443,7 +421,7 @@ nodes {
   }
   branches {
     responseText: "Put pocket secretary down."
-    nextNodeIndex: 25
+    nextNodeIndex: 26
     idRef {
       id: "51ad4bdd3236647c240060e7:58c901073966306400008097"
     }
@@ -464,7 +442,7 @@ nodes {
       id: "51ad4bdd3236647c240060e7:58c9020139663064000080a0"
     }
   }
-  nodeType: ConversationNodeType_Simple
+  nodeType: ConversationNodeType_GM_Voice
 }
 nodes {
   idRef {
@@ -480,7 +458,7 @@ nodes {
     }
     auxiliaryLink: true
   }
-  nodeType: ConversationNodeType_Simple
+  nodeType: ConversationNodeType_GM_Voice
 }
 nodes {
   idRef {
@@ -495,14 +473,14 @@ nodes {
       id: "51ad4bdd3236647c240060e7:58c9029b39663064000080d7"
     }
   }
-  nodeType: ConversationNodeType_Simple
+  nodeType: ConversationNodeType_GM_Voice
 }
 nodes {
   idRef {
     id: "58c9029b39663064000080da"
   }
   index: 11
-  text: "This is the burner that I\'ve set up for you to contact when the job is complete. \nDO NOT CONTACT ME FOR ANY OTHER REASON."
+  text: "This is the burner that I\'ve set up for you to contact when the job is complete. \n\nDO NOT CONTACT ME FOR ANY OTHER REASON."
   branches {
     responseText: ""
     nextNodeIndex: 12
@@ -511,6 +489,9 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "59764944343831f0010029a6"
+  }
 }
 nodes {
   idRef {
@@ -527,7 +508,7 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
-    id: "3710970d623331981d004ae2"
+    id: "597649cc343831f0010029a7"
   }
 }
 nodes {
@@ -545,7 +526,7 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
-    id: "3710970d623331981d004ae2"
+    id: "597649cc343831f0010029a7"
   }
 }
 nodes {
@@ -563,7 +544,7 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
-    id: "3710970d623331981d004ae2"
+    id: "597649cc343831f0010029a7"
   }
 }
 nodes {
@@ -581,7 +562,7 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
-    id: "3710970d623331981d004ae2"
+    id: "597649cc343831f0010029a7"
   }
 }
 nodes {
@@ -599,7 +580,7 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
-    id: "3710970d623331981d004ae2"
+    id: "597649cc343831f0010029a7"
   }
 }
 nodes {
@@ -618,7 +599,7 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
-    id: "3710970d623331981d004ae2"
+    id: "597649cc343831f0010029a7"
   }
 }
 nodes {
@@ -663,7 +644,7 @@ nodes {
       id: "51ad4bdd3236647c240060e7:58c904123966306400008103"
     }
   }
-  nodeType: ConversationNodeType_Simple
+  nodeType: ConversationNodeType_GM_Voice
 }
 nodes {
   idRef {
@@ -703,7 +684,7 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
-    id: "3710970d623331981d004ae2"
+    id: "597649cc343831f0010029a7"
   }
 }
 nodes {
@@ -721,7 +702,7 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
-    id: "6cbc980f303633ec10003c04"
+    id: "59764b15343831f001002a8c"
   }
 }
 nodes {
@@ -762,7 +743,7 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
-    id: "3710970d623331981d004ae2"
+    id: "597649cc343831f0010029a7"
   }
 }
 nodes {
@@ -770,7 +751,7 @@ nodes {
     id: "58c9051f396630640000821c"
   }
   index: 23
-  text: "Yes, sir. Marco says they can be here within the hour."
+  text: "Yes, sir.\n\nMarco says they can be here within the hour."
   branches {
     responseText: ""
     nextNodeIndex: 24
@@ -780,7 +761,7 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
-    id: "6cbc980f303633ec10003c04"
+    id: "59764b15343831f001002a8c"
   }
 }
 nodes {
@@ -791,6 +772,24 @@ nodes {
   text: "If anyone shows up asking questions, stall them and let me get a look at them. We\'ll probably just dispose of them, but I want to make sure we don\'t waste any valuable stock."
   branches {
     responseText: ""
+    nextNodeIndex: 25
+    idRef {
+      id: "51ad4bdd3236647c240060e7:59764bb4343831f001002b28"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "597649cc343831f0010029a7"
+  }
+}
+nodes {
+  idRef {
+    id: "59764bb4343831f001002b2b"
+  }
+  index: 25
+  text: "Very well, Sir."
+  branches {
+    responseText: ""
     nextNodeIndex: 7
     idRef {
       id: "51ad4bdd3236647c240060e7:58c9066939663064000082c5"
@@ -799,14 +798,14 @@ nodes {
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
-    id: "3710970d623331981d004ae2"
+    id: "59764b15343831f001002a8c"
   }
 }
 nodes {
   idRef {
     id: "58c904cf396630640000820a"
   }
-  index: 25
+  index: 26
   text: "{{GM}}You wipe your fingerprints off of the pocket secretary, and leave it on the bench, still logged into Holmes\' account.{{/GM}}"
   branches {
     responseText: ""
@@ -816,13 +815,13 @@ nodes {
     }
     auxiliaryLink: true
   }
-  nodeType: ConversationNodeType_Simple
+  nodeType: ConversationNodeType_GM_Voice
 }
 nodes {
   idRef {
     id: "51ad56553236647c2400617b"
   }
-  index: 26
+  index: 27
   text: "Unfurling the large sheet of paper, you discover a diagram of the human female form, rendered to an impressive level of detail. It appears to be the blueprint for making Holmes\' very own monster."
   branches {
     responseText: ""
