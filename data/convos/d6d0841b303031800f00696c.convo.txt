@@ -155,17 +155,10 @@ nodes {
   index: 3
   text: "We don\342\200\231t know each other too well, but it seems to me that you need to find a better group of people to associate with."
   branches {
-    responseText: "You\'re not the first person to tell me that."
+    responseText: ""
     nextNodeIndex: 4
     idRef {
-      id: "d6d0841b303031800f00696c:5823c4ec3462659c21001563"
-    }
-  }
-  branches {
-    responseText: "Where did those guys come from?"
-    nextNodeIndex: 5
-    idRef {
-      id: "d6d0841b303031800f00696c:5823c4ec3462659c2100156c"
+      id: "d6d0841b303031800f00696c:5975a07c3966303419005212"
     }
   }
   nodeType: ConversationNodeType_Simple
@@ -175,13 +168,109 @@ nodes {
 }
 nodes {
   idRef {
-    id: "51a80723303031e8160016df"
+    id: "5975a07c3966303419005215"
   }
   index: 4
+  text: ""
+  branches {
+    responseText: "You\'re not the first person to tell me that."
+    nextNodeIndex: 5
+    idRef {
+      id: "d6d0841b303031800f00696c:5823c4ec3462659c21001563"
+    }
+  }
+  branches {
+    responseText: "Where did those guys come from?"
+    nextNodeIndex: 10
+    idRef {
+      id: "d6d0841b303031800f00696c:5823c4ec3462659c2100156c"
+    }
+  }
+  branches {
+    responseText: "I think I ended up with something of yours."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c02-s1_JakesLighter"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Item from Stash"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c02-s1_JakesLighter"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "d6d0841b303031800f00696c:59759d1039663034190051c6"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "Put the Fun in Funeral Loop"
+}
+nodes {
+  idRef {
+    id: "51a80723303031e8160016df"
+  }
+  index: 5
   text: "Yeah, well it\342\200\231s part of living in the shadows. Do the research, chummer."
   branches {
     responseText: "How did those troops materialize?"
-    nextNodeIndex: 5
+    nextNodeIndex: 10
     idRef {
       id: "d6d0841b303031800f00696c:5823c4ec3462659c21001566"
     }
@@ -189,11 +278,83 @@ nodes {
   }
   branches {
     responseText: "That woman, Lynne, seemed familiar."
-    nextNodeIndex: 11
+    nextNodeIndex: 17
     idRef {
       id: "d6d0841b303031800f00696c:5823c4ec3462659c21001569"
     }
     auxiliaryLink: true
+  }
+  branches {
+    responseText: "I think this is your lighter."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c02-s1_JakesLighter"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Remove Item from Stash"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "c02-s1_JakesLighter"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 6
+    hideIfUnavailable: true
+    onlyOnce: true
+    idRef {
+      id: "d6d0841b303031800f00696c:59759d1339663034190051c8"
+    }
   }
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
@@ -202,20 +363,93 @@ nodes {
 }
 nodes {
   idRef {
+    id: "59759deb39663034190051d4"
+  }
+  index: 6
+  text: "Jake laughs, recognizing the lighter instantly.\n\nHey, that it is! Where did you grab this? I thought it was gone forever!"
+  branches {
+    responseText: "The alleyway behind the Seamstress Union."
+    nextNodeIndex: 7
+    idRef {
+      id: "d6d0841b303031800f00696c:59759e0a39663034190051d6"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5823bdc53462659c21001552"
+  }
+}
+nodes {
+  idRef {
+    id: "59759e1539663034190051d9"
+  }
+  index: 7
+  text: "{{GM}}Jake sobers.{{/GM}}\n\nYeah, well I guess that was the last place that I used it. "
+  branches {
+    responseText: ""
+    nextNodeIndex: 8
+    idRef {
+      id: "d6d0841b303031800f00696c:59759e2c39663034190051db"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5823bdc53462659c21001552"
+  }
+}
+nodes {
+  idRef {
+    id: "59759e2c39663034190051de"
+  }
+  index: 8
+  text: "{{GM}}Jake whispers into the lighter, as if talking to a favorite pet or a daft old friend.{{/GM}}\n\nHey Fuego, buddy, you in there? Yeah? I\'ll take better care of it in the future."
+  branches {
+    responseText: ""
+    nextNodeIndex: 9
+    idRef {
+      id: "d6d0841b303031800f00696c:5975a05139663034190051eb"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5823bdc53462659c21001552"
+  }
+}
+nodes {
+  idRef {
+    id: "5975a05139663034190051ee"
+  }
+  index: 9
+  text: "{{GM}}Coyote\'s voice cuts into Jake\'s revere. {{/GM}}\n\nGet it together, Jake."
+  branches {
+    responseText: ""
+    nextNodeIndex: 4
+    idRef {
+      id: "d6d0841b303031800f00696c:5975a0a63966303419005239"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5823be2c3462659c21001553"
+  }
+}
+nodes {
+  idRef {
     id: "51a803a6303031e816001679"
   }
-  index: 5
+  index: 10
   text: "You didn\342\200\231t recognize who the elf was?"
   branches {
     responseText: "No. Who was she?"
-    nextNodeIndex: 6
+    nextNodeIndex: 11
     idRef {
       id: "d6d0841b303031800f00696c:5823c4ec3462659c2100156f"
     }
   }
   branches {
     responseText: "She looks familiar. Have I seen her somewhere?"
-    nextNodeIndex: 11
+    nextNodeIndex: 17
     idRef {
       id: "d6d0841b303031800f00696c:5823c4ec3462659c2100157e"
     }
@@ -229,11 +463,11 @@ nodes {
   idRef {
     id: "51a803f8303031e81600167d"
   }
-  index: 6
+  index: 11
   text: "She\342\200\231s Lynne Telestrian, super rich and super into the Universal Brotherhood. She\'s a major spokesperson for them in Seattle."
   branches {
     responseText: ""
-    nextNodeIndex: 7
+    nextNodeIndex: 12
     idRef {
       id: "d6d0841b303031800f00696c:5823c4ec3462659c21001572"
     }
@@ -247,11 +481,11 @@ nodes {
   idRef {
     id: "51a80414303031e816001680"
   }
-  index: 7
-  text: "Hmmmm.\n\n{{GM}}Jake grabs the dead man by the throat. At first it looks like he\342\200\231s trying to kill him again, and then you notice he\342\200\231s feeling for something under the skin.{{/GM}}\n\nYep, he\342\200\231s got a corp ID chip."
+  index: 12
+  text: "Hmmmm.\n\n{{GM}}Jake grabs the dead man by the throat. At first it looks like he\342\200\231s trying to kill him again, and then you notice he\342\200\231s feeling for something under the skin.{{/GM}}\n\nYep, he\342\200\231s got a corp ID chip. All the big companies require it."
   branches {
     responseText: ""
-    nextNodeIndex: 8
+    nextNodeIndex: 13
     idRef {
       id: "d6d0841b303031800f00696c:5823c4ec3462659c21001575"
     }
@@ -265,11 +499,11 @@ nodes {
   idRef {
     id: "51a80480303031e816001696"
   }
-  index: 8
-  text: "{{GM}}You watch as Jake pulls out his modified PDA and slots the chip.{{/GM}}\n\nMister... Wylie here was with Eagle Security. They work for the UB. That must\'ve been Lynne Telestrian\342\200\231s security detail we just chewed through. If she\342\200\231s protecting Jessica, they\342\200\231ll be inside the Universal Brotherhood."
+  index: 13
+  text: "{{GM}}You watch as Jake pulls out his modified PDA and scans the chip.{{/GM}}\n\nMister... Wylie here was with Eagle Security. \n\nThey\'re based out of Chichago, and the only contract I know they have in Seattle is the Universal Brotherhood. \nThat must\'ve been Lynne Telestrian\342\200\231s security detail we just chewed through. If she\342\200\231s the one protecting Jessica, they\342\200\231ll be holed up inside the most secure UB Chapter House they can find."
   branches {
     responseText: ""
-    nextNodeIndex: 9
+    nextNodeIndex: 14
     idRef {
       id: "d6d0841b303031800f00696c:5823c4ec3462659c21001578"
     }
@@ -283,13 +517,13 @@ nodes {
   idRef {
     id: "51c0eb55623331ac07001af9"
   }
-  index: 9
-  text: "If you\342\200\231re going to hit the Universal Brotherhood, I\'m coming too. That psycho just admitted she had my friend Sam and a lot of innocent people killed so she could put her dead mother back together. \n\nThat is totally slagged-up. Plus, she and her elf-buddy Lynne just tried to geek me.\n\nThey\'re gonna hurt for that. "
+  index: 14
+  text: "Eagle doesn\'t just protect the UB-- they also protected Mercy Hospital until someone pulled them-- just before a certain someone showed up and cleaned house."
   branches {
     responseText: ""
-    nextNodeIndex: 10
+    nextNodeIndex: 15
     idRef {
-      id: "d6d0841b303031800f00696c:5823c4ec3462659c2100157b"
+      id: "d6d0841b303031800f00696c:59759d8839663034190051cc"
     }
   }
   sourceInSceneRef {
@@ -298,10 +532,28 @@ nodes {
 }
 nodes {
   idRef {
+    id: "59759d8839663034190051cf"
+  }
+  index: 15
+  text: "{{GM}}Coyote nods, determined.{{/GM}}\n\nIf you\342\200\231re going to hit the Universal Brotherhood, I\'m coming too. That psycho just admitted she had my friend Sam and a lot of innocent people killed so she could Frankenstein her dead mother back together. \n\nThat is totally slagged-up. Plus, she and her elf-buddy Lynne just tried to geek me. I don\'t take kindly to that, and they\'re gonna pay."
+  branches {
+    responseText: ""
+    nextNodeIndex: 16
+    idRef {
+      id: "d6d0841b303031800f00696c:5823c4ec3462659c2100157b"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "5823be2c3462659c21001553"
+  }
+}
+nodes {
+  idRef {
     id: "51c0eb55623331ac07001afc"
   }
-  index: 10
-  text: "Suit yourself, lady. I was only stopping by to pay my respects to Sam. Merc hit squads, the Universal Brotherhood... not my scene, at the moment. \n\nI\'ve got a secure line if you want to call up some runners. Let me know what you decide."
+  index: 16
+  text: "{{GM}}Armitage shrugs.{{/GM}}\n\nSuit yourself, Ugly. I only stopped by to pay my respects to Sam. \n\nMercs, hit squads, the Universal Brotherhood... doesn\'t mesh well with the whole \'under the radar\' vibe I got going.\nNot my scene, at the moment, sorry. \n\nI\'ve got a secure line if you want to call up some friends and go running. Let me know what you decide."
   nodeType: ConversationNodeType_Simple
   sourceInSceneRef {
     id: "5823bdc53462659c21001552"
@@ -311,11 +563,11 @@ nodes {
   idRef {
     id: "51a805cd303031e8160016cf"
   }
-  index: 11
+  index: 17
   text: "Yep, she\342\200\231s a major spokesperson for the Universal Brotherhood. Her name is Lynne Telestrian. She\342\200\231s super rich."
   branches {
     responseText: ""
-    nextNodeIndex: 7
+    nextNodeIndex: 12
     idRef {
       id: "d6d0841b303031800f00696c:5823c4ec3462659c21001581"
     }
