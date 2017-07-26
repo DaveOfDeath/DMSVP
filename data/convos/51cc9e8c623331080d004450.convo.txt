@@ -7,7 +7,7 @@ nodes {
     id: "51cc9e9c623331080d004456"
   }
   index: 0
-  text: "You need some hardware or software?"
+  text: "{{GM}}David smiles at you, exhausted but triumphant.{{/GM}}\n\nYou need some hardware or software?"
   branches {
     responseText: "I\'ll take a look."
     actions {
@@ -15,23 +15,45 @@ nodes {
         functionName: "Open Store Screen From Actor"
         args {
           call_value {
-            functionName: "Get Map Item (Actor)"
+            functionName: "Nearest Tagged Actor to Actor"
             args {
-              string_value: "6cd09a586233317c1d00767e"
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isTech"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
             }
           }
         }
       }
     }
     nextNodeIndex: -1
+    idRef {
+      id: "51cc9e8c623331080d004450:59780dd6396630a02000883b"
+    }
   }
   branches {
     responseText: "Not right now."
     nextNodeIndex: -1
+    idRef {
+      id: "51cc9e8c623331080d004450:59780dd6396630a02000883d"
+    }
   }
   nodeType: ConversationNodeType_Simple
 }
 roots {
   responseText: ""
   nextNodeIndex: 0
+  idRef {
+    id: "51cc9e8c623331080d004450:59780dd6396630a020008838"
+  }
 }
