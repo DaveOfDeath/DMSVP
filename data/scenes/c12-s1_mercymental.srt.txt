@@ -2068,7 +2068,7 @@ triggers {
   name: "MissionFailure"
   events {
     ops {
-      functionName: "On Actor Downed"
+      functionName: "On Actor Death"
     }
   }
   conditions {
@@ -4002,7 +4002,7 @@ triggers {
         call_value {
           functionName: "Get Map Item (CameraRegion)"
           args {
-            string_value: "519fef486331650c140039b4"
+            string_value: "588260486631361812003290"
           }
         }
       }
@@ -6980,17 +6980,20 @@ characters {
     interactionRadius: 4
     prerequisites {
       ops {
-        functionName: "Comparison (Actor)"
+        functionName: "Comparison (int)"
         args {
           call_value {
-            functionName: "Active Actor"
+            functionName: "Get Variable (int)"
+            args {
+              string_value: "Lockdown"
+            }
           }
         }
         args {
           call_value {
             functionName: "Get Preset Value (int)"
             args {
-              string_value: "IsOrIsNot"
+              string_value: "Comparison Ops"
             }
             args {
               int_value: 1
@@ -6998,12 +7001,7 @@ characters {
           }
         }
         args {
-          call_value {
-            functionName: "Get Map Item (Player)"
-            args {
-              int_value: 0
-            }
-          }
+          int_value: 1
         }
       }
     }
@@ -7831,11 +7829,11 @@ characters {
       }
       specializations {
       }
-      archetypeName: "Guard - Seek And Destroy"
+      archetypeName: "Non-Combatant"
       attitude: AttitudeBoss
       attackRandom: AttackStyle_AllEqual
     }
-    team_id: "Inmates"
+    team_id: "Speakers"
     char_name: "Dr. Holmes"
     enabled_at_start: true
     pc_spawn_number: -1
@@ -8277,7 +8275,7 @@ characters {
     z: -21
   }
   orientation: ORIENTATION_S
-  displayName: "Doctor Holmes"
+  displayName: "ShadowySpeaker"
   idRef {
     id: "58c8ef0a3966306400007aa4"
   }
@@ -8322,8 +8320,8 @@ characters {
       vulnerabilities {
       }
     }
-    team_id: "Inmates"
-    char_name: "Doctor"
+    team_id: "Speakers"
+    char_name: "Dr. Holmes"
     pc_spawn_number: -1
     portrait {
       filename: "npc_elfmale_holmessilhouetted"
@@ -8520,9 +8518,11 @@ team_affiliations {
   affiliation: 1
   affiliation: 0
   affiliation: 1
+  affiliation: 0
 }
 team_affiliations {
   team_name: "Cameras"
+  affiliation: 0
   affiliation: 0
   affiliation: 0
   affiliation: 0
@@ -8536,9 +8536,11 @@ team_affiliations {
   affiliation: 0
   affiliation: 0
   affiliation: 0
+  affiliation: 0
 }
 team_affiliations {
   team_name: "Inmates"
+  affiliation: 0
   affiliation: 0
   affiliation: 0
   affiliation: 0
@@ -8548,6 +8550,16 @@ team_affiliations {
 team_affiliations {
   team_name: "IC"
   affiliation: 1
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+  affiliation: 0
+}
+team_affiliations {
+  team_name: "Speakers"
+  affiliation: 0
+  affiliation: 0
   affiliation: 0
   affiliation: 0
   affiliation: 0
@@ -8565,8 +8577,6 @@ scene_dimensions {
 ambience_template: "asylum-busy"
 combat_music: "Seattle-Set3-Combat"
 matrix_music: "Seattle-Set8-Stealth"
-character_roster {
-}
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
   prereq_description: ""
