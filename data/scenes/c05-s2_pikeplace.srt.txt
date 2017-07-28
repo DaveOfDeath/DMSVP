@@ -4759,16 +4759,36 @@ triggers {
       functionName: "Evaluate If Actor Has Item"
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "All Actors on Team"
           args {
             call_value {
-              functionName: "Get Map Item (Player)"
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
               args {
                 int_value: 0
               }
             }
           }
           args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
           }
         }
       }
@@ -4839,16 +4859,36 @@ triggers {
       }
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "All Actors on Team"
           args {
             call_value {
-              functionName: "Get Map Item (Player)"
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
               args {
                 int_value: 0
               }
             }
           }
           args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "AllOrAny"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
           }
         }
       }
@@ -8362,6 +8402,17 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eCheckFrankStatus"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -9271,6 +9322,17 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eCheckFrankStatus"
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -9742,6 +9804,83 @@ triggers {
   isActive: true
   idRef {
     id: "580c485c663136280f003672"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
+  name: "SSE.FrankReenable"
+  events {
+    ops {
+      functionName: "Get Map Item (Event)"
+      args {
+        string_value: "eCheckFrankStatus"
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Goal"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Recover Lucy\342\200\231s Necklace from the Pike Place Crime Scene"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "8bdf6c18306434d80c000a08"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "597ac46334383168000056de"
   }
   elseActions {
   }
@@ -13984,9 +14123,9 @@ patrolRoutes {
 characters {
   name: "system_spawner_playerSpawner"
   gridPoint {
-    x: -13
+    x: 37
     y: 0
-    z: 40
+    z: 105
   }
   orientation: ORIENTATION_W
   idRef {
@@ -15849,7 +15988,7 @@ characters {
       specializations {
         shotgun: 0
       }
-      archetypeName: "gumbo_Soldier"
+      archetypeName: "Non-Combatant"
       vulnerabilities {
       }
     }
@@ -15860,7 +15999,7 @@ characters {
     char_name: "Junkie"
     pc_spawn_number: -1
     portrait {
-      filename: ""
+      filename: "pc_humanmale_05b_dreads"
     }
     karma: 35
   }
@@ -17231,6 +17370,7 @@ mapEvents: "eHostility"
 mapEvents: "ePacify"
 mapEvents: "eReason"
 mapEvents: "eDestroyComputer"
+mapEvents: "eCheckFrankStatus"
 senseTags: "isTarget"
 senseTags: "hasDrone"
 goals {
@@ -17356,8 +17496,6 @@ scene_dimensions {
   heat_response_rating: 1
 }
 combat_music: "Seattle-Set6-Combat"
-character_roster {
-}
 show_hiring_screen_on_scene_load: false
 scene_hiring_prerequisites {
   prereq_description: ""

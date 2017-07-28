@@ -79,14 +79,14 @@ nodes {
   }
   branches {
     responseText: "I hear you have a pass card. Give it to me."
-    nextNodeIndex: 8
+    nextNodeIndex: 9
     idRef {
       id: "370b5bf6306434fc04000b13:5864588a3966303c2900461a"
     }
   }
   branches {
     responseText: "I want to buy your pass card."
-    nextNodeIndex: 9
+    nextNodeIndex: 10
     idRef {
       id: "370b5bf6306434fc04000b13:5864588a3966303c2900461d"
     }
@@ -115,6 +115,25 @@ nodes {
   }
   branches {
     responseText: "{{GM}}Pay 100\302\245.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 100
+        }
+      }
+    }
     actions {
       ops {
         functionName: "Remove Nuyen"
@@ -195,23 +214,23 @@ nodes {
     responseText: "{{GM}}Walk away.{{/GM}}"
     actions {
       ops {
-        functionName: "Enable/Disable Interactable Object"
+        functionName: "Set Variable (bool)"
         args {
           call_value {
-            functionName: "Get Preset Value (int)"
+            functionName: "Get Variable (bool)"
             args {
-              string_value: "EnableOrDisable"
-            }
-            args {
-              int_value: 1
+              string_value: "TalkedToJamal"
             }
           }
         }
         args {
           call_value {
-            functionName: "Get Map Item (InteractableObject)"
+            functionName: "Get Preset Value (int)"
             args {
-              string_value: "3709dba2306434fc04000b12"
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
             }
           }
         }
@@ -231,7 +250,41 @@ nodes {
   index: 6
   text: "And I was thinking slot off."
   branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "370b5bf6306434fc04000b13:597acaf734383168000059ad"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "597acaf734383168000059b0"
+  }
+  index: 7
+  text: ""
+  branches {
     responseText: "{{GM}}Pay 100\302\245.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 100
+        }
+      }
+    }
     actions {
       ops {
         functionName: "Remove Nuyen"
@@ -310,7 +363,7 @@ nodes {
   }
   branches {
     responseText: "Maybe you should just hand it over."
-    nextNodeIndex: 7
+    nextNodeIndex: 8
     idRef {
       id: "370b5bf6306434fc04000b13:5864588a3966303c29004611"
     }
@@ -319,23 +372,23 @@ nodes {
     responseText: "{{GM}}Walk away.{{/GM}}"
     actions {
       ops {
-        functionName: "Enable/Disable Interactable Object"
+        functionName: "Set Variable (bool)"
         args {
           call_value {
-            functionName: "Get Preset Value (int)"
+            functionName: "Get Variable (bool)"
             args {
-              string_value: "EnableOrDisable"
-            }
-            args {
-              int_value: 1
+              string_value: "TalkedToJamal"
             }
           }
         }
         args {
           call_value {
-            functionName: "Get Map Item (InteractableObject)"
+            functionName: "Get Preset Value (int)"
             args {
-              string_value: "3709dba2306434fc04000b12"
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
             }
           }
         }
@@ -347,42 +400,11 @@ nodes {
     }
   }
   nodeType: ConversationNodeType_Simple
+  comment: "ReturnToJamal"
 }
 nodes {
   idRef {
     id: "51d21ddc35616484120005b3"
-  }
-  index: 7
-  text: "{{GM}}His lip curls into a feral snarl.{{/GM}}\n\nDis is the Barrens, omae. You want it, you take it."
-  nodeType: ConversationNodeType_Simple
-  actions {
-    ops {
-      functionName: "Set Variable (bool)"
-      args {
-        call_value {
-          functionName: "Get Variable (bool)"
-          args {
-            string_value: "JamalCombat"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "bool"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
-  }
-}
-nodes {
-  idRef {
-    id: "51d21e3f3561648412000631"
   }
   index: 8
   text: "{{GM}}His lip curls into a feral snarl.{{/GM}}\n\nDis is the Barrens, omae. You want it, you take it."
@@ -414,27 +436,59 @@ nodes {
 }
 nodes {
   idRef {
-    id: "51d21e533561648412000633"
+    id: "51d21e3f3561648412000631"
   }
   index: 9
+  text: "{{GM}}His lip curls into a feral snarl.{{/GM}}\n\nDis is the Barrens, omae. You want it, you take it."
+  nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "JamalCombat"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51d21e533561648412000633"
+  }
+  index: 10
   text: "{{GM}}He studies you, suspiciously.{{/GM}}\n\nYeah? How d\342\200\231you know I have a pass card? How much?"
   branches {
     responseText: "People hear things."
-    nextNodeIndex: 10
+    nextNodeIndex: 11
     idRef {
       id: "370b5bf6306434fc04000b13:5864588a3966303c29004620"
     }
   }
   branches {
     responseText: "Lady down the hall told me."
-    nextNodeIndex: 11
+    nextNodeIndex: 12
     idRef {
       id: "370b5bf6306434fc04000b13:5864588a3966303c29004626"
     }
   }
   branches {
     responseText: "I need three passes. How about 50\302\245?"
-    nextNodeIndex: 15
+    nextNodeIndex: 16
     idRef {
       id: "370b5bf6306434fc04000b13:586458f83966303c2900466f"
     }
@@ -445,11 +499,11 @@ nodes {
   idRef {
     id: "51d21e793561648412000637"
   }
-  index: 10
+  index: 11
   text: "{{GM}}He grunts.{{/GM}}\n\nWell, you heard right."
   branches {
     responseText: ""
-    nextNodeIndex: 12
+    nextNodeIndex: 13
     idRef {
       id: "370b5bf6306434fc04000b13:5864588a3966303c29004623"
     }
@@ -461,11 +515,11 @@ nodes {
   idRef {
     id: "51d21e823561648412000639"
   }
-  index: 11
+  index: 12
   text: "{{GM}}He grunts.{{/GM}}\n\nBitch should keep her mouth shut, but at least she told you right."
   branches {
     responseText: ""
-    nextNodeIndex: 12
+    nextNodeIndex: 13
     idRef {
       id: "370b5bf6306434fc04000b13:5864588a3966303c29004629"
     }
@@ -476,17 +530,36 @@ nodes {
   idRef {
     id: "51d21eef356164841200063c"
   }
-  index: 12
+  index: 13
   text: "I sell \342\200\230em at a discount. Charlie charges 50 nuyen apiece for \342\200\230em but I can get you three for 100\302\245 flat."
   branches {
     responseText: "I was thinking 75\302\245."
-    nextNodeIndex: 13
+    nextNodeIndex: 14
     idRef {
       id: "370b5bf6306434fc04000b13:5864588a3966303c2900462c"
     }
   }
   branches {
     responseText: "{{GM}}Pay 100\302\245.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 100
+        }
+      }
+    }
     actions {
       ops {
         functionName: "Remove Nuyen"
@@ -567,23 +640,23 @@ nodes {
     responseText: "{{GM}}Walk away.{{/GM}}"
     actions {
       ops {
-        functionName: "Enable/Disable Interactable Object"
+        functionName: "Set Variable (bool)"
         args {
           call_value {
-            functionName: "Get Preset Value (int)"
+            functionName: "Get Variable (bool)"
             args {
-              string_value: "EnableOrDisable"
-            }
-            args {
-              int_value: 1
+              string_value: "TalkedToJamal"
             }
           }
         }
         args {
           call_value {
-            functionName: "Get Map Item (InteractableObject)"
+            functionName: "Get Preset Value (int)"
             args {
-              string_value: "3709dba2306434fc04000b12"
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
             }
           }
         }
@@ -600,10 +673,29 @@ nodes {
   idRef {
     id: "51d21f5a3561648412000673"
   }
-  index: 13
+  index: 14
   text: "And I was thinkin\342\200\231 slot off."
   branches {
     responseText: "{{GM}}Pay 100\302\245.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate Nuyen"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "Comparison Ops"
+            }
+            args {
+              int_value: 3
+            }
+          }
+        }
+        args {
+          int_value: 100
+        }
+      }
+    }
     actions {
       ops {
         functionName: "Remove Nuyen"
@@ -682,7 +774,7 @@ nodes {
   }
   branches {
     responseText: "Maybe you should just hand it over."
-    nextNodeIndex: 14
+    nextNodeIndex: 15
     idRef {
       id: "370b5bf6306434fc04000b13:5864588a3966303c29004631"
     }
@@ -691,23 +783,23 @@ nodes {
     responseText: "{{GM}}Walk away.{{/GM}}"
     actions {
       ops {
-        functionName: "Enable/Disable Interactable Object"
+        functionName: "Set Variable (bool)"
         args {
           call_value {
-            functionName: "Get Preset Value (int)"
+            functionName: "Get Variable (bool)"
             args {
-              string_value: "EnableOrDisable"
-            }
-            args {
-              int_value: 1
+              string_value: "TalkedToJamal"
             }
           }
         }
         args {
           call_value {
-            functionName: "Get Map Item (InteractableObject)"
+            functionName: "Get Preset Value (int)"
             args {
-              string_value: "3709dba2306434fc04000b12"
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
             }
           }
         }
@@ -724,7 +816,7 @@ nodes {
   idRef {
     id: "51d21f983561648412000678"
   }
-  index: 14
+  index: 15
   text: "{{GM}}His lip curls into a feral snarl.{{/GM}}\n\nDis is the Barrens, omae. You want it, you come and take it."
   nodeType: ConversationNodeType_Simple
   actions {
@@ -756,13 +848,29 @@ nodes {
   idRef {
     id: "5864594b3966303c2900468f"
   }
-  index: 15
+  index: 16
   text: "{{GM}}He snorts.{{/GM}}\n\nHow about slot off?"
   branches {
     responseText: ""
-    nextNodeIndex: 12
+    nextNodeIndex: 13
     idRef {
       id: "370b5bf6306434fc04000b13:5864595c3966303c29004691"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "597acb0234383168000059b7"
+  }
+  index: 17
+  text: "Look Chum... I ain\'t running no fraggin\' charity, and I ain\'t interested in your fraggin\' story.\n\nHand over the cash, or bugger off."
+  branches {
+    responseText: ""
+    nextNodeIndex: 7
+    idRef {
+      id: "370b5bf6306434fc04000b13:597acb2e34383168000059b9"
     }
     auxiliaryLink: true
   }
@@ -870,11 +978,45 @@ roots {
         }
       }
     }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "TalkedToJamal"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   nextNodeIndex: 0
   idRef {
     id: "370b5bf6306434fc04000b13:5864588a3966303c290045f1"
   }
+  comment: "Ork/Human"
 }
 roots {
   responseText: ""
@@ -912,11 +1054,45 @@ roots {
         }
       }
     }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "TalkedToJamal"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   nextNodeIndex: 1
   idRef {
     id: "370b5bf6306434fc04000b13:5864588a3966303c290045f7"
   }
+  comment: "Dwarf"
 }
 roots {
   responseText: ""
@@ -954,11 +1130,45 @@ roots {
         }
       }
     }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "TalkedToJamal"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   nextNodeIndex: 2
   idRef {
     id: "370b5bf6306434fc04000b13:5864588a3966303c290045fd"
   }
+  comment: "Troll"
 }
 roots {
   responseText: ""
@@ -996,9 +1206,86 @@ roots {
         }
       }
     }
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "TalkedToJamal"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   nextNodeIndex: 3
   idRef {
     id: "370b5bf6306434fc04000b13:5864588a3966303c29004603"
   }
+  comment: "Elf"
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "TalkedToJamal"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 17
+  idRef {
+    id: "370b5bf6306434fc04000b13:597aca9134383168000059a7"
+  }
+  comment: "Return"
 }
