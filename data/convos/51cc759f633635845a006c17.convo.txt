@@ -97,9 +97,79 @@ nodes {
     }
     nextNodeIndex: -1
     hideIfUnavailable: true
+    idRef {
+      id: "51cc759f633635845a006c17:597ad260343831b005006933"
+    }
   }
   branches {
-    responseText: "{{CC}}Decking: 1{{/CC}} {{GM}}Try hacking the door.{{/GM}}"
+    responseText: "{{CC}}Violet{{/CC}} Have Violet examine the lock."
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isViolet"
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: 1
+    hideIfUnavailable: true
+    idRef {
+      id: "51cc759f633635845a006c17:597ad421343831b00500694c"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Decking{{/CC}} Hack the doors MagLock."
     conditions {
       ops {
         functionName: "Compare Actor Skill"
@@ -196,10 +266,14 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 1
+    nextNodeIndex: 2
+    hideIfUnavailable: true
+    idRef {
+      id: "51cc759f633635845a006c17:597ad260343831b005006935"
+    }
   }
   branches {
-    responseText: "{{CC}}Decking: 5{{/CC}}{{GM}} Hack the door lock using your decking skill.{{/GM}}"
+    responseText: "{{CC}}Decking{{/CC}} Hack the doors MagLock."
     conditions {
       ops {
         functionName: "Compare Actor Skill"
@@ -297,26 +371,87 @@ nodes {
     }
     nextNodeIndex: -1
     hideIfUnavailable: true
+    idRef {
+      id: "51cc759f633635845a006c17:597ad260343831b005006938"
+    }
   }
   branches {
     responseText: "{{GM}}Leave the door alone.{{/GM}}"
     nextNodeIndex: -1
+    idRef {
+      id: "51cc759f633635845a006c17:597ad260343831b00500693a"
+    }
   }
   nodeType: ConversationNodeType_GM_Voice
 }
 nodes {
   idRef {
-    id: "51cc75d0633635845a006c2c"
+    id: "597ad466343831b00500694f"
   }
   index: 1
-  text: "Your decking skill isn\'t high enough to hack the door, but you learn that it needs a special keycard from a Brotherhood Mother or Father. "
+  text: "{{GM}}She tinkers with the settings in the lock for a few moments{{/GM}}\n\nWhoa.  That was a seriously high grade MagLock.  It should be much more receptive to your touch now though, Boss."
+  nodeType: ConversationNodeType_Simple
+  sourceWithTagInScene: "isViolet"
+  actions {
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "51ad81a8633635580a00179b"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "EnableOrDisable"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "51cc7cc9633635845a006c40"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "51cc75d0633635845a006c2c"
+  }
+  index: 2
+  text: "This MagLock is beyond your decking skill.\n\nYou do however learn that it this door requires a special keycard from a high ranking Brotherhood Mother or Father."
   nodeType: ConversationNodeType_GM_Voice
 }
 nodes {
   idRef {
     id: "51ccafaf633635845a006d11"
   }
-  index: 2
+  index: 3
   text: "You must let your team in from the alley before attempting to open the secret door. "
   nodeType: ConversationNodeType_GM_Voice
 }
@@ -358,8 +493,14 @@ roots {
     }
   }
   nextNodeIndex: 0
+  idRef {
+    id: "51cc759f633635845a006c17:597ad260343831b005006930"
+  }
 }
 roots {
   responseText: ""
-  nextNodeIndex: 2
+  nextNodeIndex: 3
+  idRef {
+    id: "51cc759f633635845a006c17:597ad260343831b00500693c"
+  }
 }
