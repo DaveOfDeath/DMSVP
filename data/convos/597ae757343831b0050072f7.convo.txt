@@ -1,0 +1,195 @@
+idRef {
+  id: "597ae757343831b0050072f7"
+}
+ui_name: "c03-s1_JakeNoMotel"
+nodes {
+  idRef {
+    id: "597ae7a8343831b005007301"
+  }
+  index: 0
+  text: "Uh, $(l.name)... I hate to do this to you, but I don\'t think I can handle checking out this coffin motel with you. These places are a dump at the best of times, and this hardly qualifies for that.\n\nThink you can do this later when I\'m not around?"
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "597ae757343831b0050072f7:597ae8b1343831b005007311"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "a99a7ac5623331441b003061"
+  }
+}
+nodes {
+  idRef {
+    id: "597ae8b1343831b005007314"
+  }
+  index: 1
+  text: ""
+  branches {
+    responseText: "Sure Jake.   No problem."
+    nextNodeIndex: 2
+    idRef {
+      id: "597ae757343831b0050072f7:597ae811343831b005007303"
+    }
+  }
+  branches {
+    responseText: "Sorry Jake.  Got to do it."
+    nextNodeIndex: 3
+    idRef {
+      id: "597ae757343831b0050072f7:597ae811343831b005007305"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+  comment: "JakeLoop"
+}
+nodes {
+  idRef {
+    id: "597ae819343831b005007308"
+  }
+  index: 2
+  text: "Thanks Chum.   Appreciate that."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "a99a7ac5623331441b003061"
+  }
+}
+nodes {
+  idRef {
+    id: "597ae835343831b00500730b"
+  }
+  index: 3
+  text: "I hate to do it to you, but I\'ve gotta put my foot down.   I\'ve slept in morgue drawers more times that I can count, but these coffin motels just give me the creeps.  \n\nNo can do, Amigo."
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "a99a7ac5623331441b003061"
+  }
+}
+nodes {
+  idRef {
+    id: "597ae8ba343831b00500731b"
+  }
+  index: 4
+  text: "{{GM}}He glances around a few times, then back at you.{{/GM}}\n\nShort memory?  Sorry Amigo, but I can\'t do coffin motels.  You\'ll need to check it out sometime later."
+  branches {
+    responseText: ""
+    nextNodeIndex: 1
+    idRef {
+      id: "597ae757343831b0050072f7:597ae916343831b00500731d"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "a99a7ac5623331441b003061"
+  }
+}
+roots {
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bJakeNoMotel"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bJakeNoMotel"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 0
+  idRef {
+    id: "597ae757343831b0050072f7:597ae757343831b0050072fb"
+  }
+  comment: "First Try"
+}
+roots {
+  responseText: ""
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bJakeNoMotel"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  nextNodeIndex: 4
+  idRef {
+    id: "597ae757343831b0050072f7:597ae798343831b0050072fe"
+  }
+  comment: "Return"
+}
