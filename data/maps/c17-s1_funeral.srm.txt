@@ -14575,11 +14575,65 @@ props {
   }
   interactionRoot {
     isEnabled: true
-    interactionRadius: 1
-    doorPoint {
-      doorState: false
-      aiOnlyDoor: true
+    interactionRadius: 3
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Evaluate If Actor Is Downed"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Actor)"
+                args {
+                  string_value: "c79b855b303031141100730a"
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
     }
+    transitionPoint {
+      scene_name: "c17-s2_seamstress"
+      confirmation_text: "Head to the Seamstress\' Union?"
+    }
+    interaction_info_text: "Leave to Seamstress Union?"
   }
   lod: 0
 }
