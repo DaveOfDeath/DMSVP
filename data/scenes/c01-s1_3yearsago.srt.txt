@@ -2782,6 +2782,115 @@ triggers {
   is_oneshot: true
 }
 triggers {
+  name: "ForCleanUp.TagSpirits"
+  events {
+    ops {
+      functionName: "On Actor Alive"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "OR"
+      args {
+        call_value {
+          functionName: "Compare Actor Race"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "IsOrIsNot"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Race"
+              }
+              args {
+                int_value: 7
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Compare Actor Race"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "IsOrIsNot"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Race"
+              }
+              args {
+                int_value: 12
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Add Tag to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (SenseTagList)"
+          args {
+            string_value: "FreeSpirit"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "597f9185343831e011005754"
+  }
+  elseActions {
+  }
+  is_oneshot: false
+}
+triggers {
   name: "GrenadePickup01"
   events {
     ops {
@@ -2910,6 +3019,17 @@ triggers {
   }
   actions {
     ops {
+      functionName: "Send Event"
+      args {
+        call_value {
+          functionName: "Get Map Item (Event)"
+          args {
+            string_value: "eventCleanUpActors"
+          }
+        }
+      }
+    }
+    ops {
       functionName: "Enable/Disable Manual Turn Mode in Dimension"
       args {
         call_value {
@@ -2998,17 +3118,6 @@ triggers {
           }
           args {
             int_value: 1
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Send Event"
-      args {
-        call_value {
-          functionName: "Get Map Item (Event)"
-          args {
-            string_value: "eventCleanUpActors"
           }
         }
       }

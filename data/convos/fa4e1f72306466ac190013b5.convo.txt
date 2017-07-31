@@ -55,7 +55,45 @@ nodes {
     responseText: ""
     actions {
       ops {
-        functionName: "Attack Actor With Weapon"
+        functionName: "Play Animation From Manifest"
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "fa36ebe8306466ac190013b0"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Animation)"
+            args {
+              string_value: "HongKong:General/standing_attack_backfist"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Play Animation From Manifest"
+        args {
+          call_value {
+            functionName: "Get Map Item (Actor)"
+            args {
+              string_value: "fa3a6ffa306466ac190013b1"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Animation)"
+            args {
+              string_value: "HongKong:General/standing_hitreaction_smallfront"
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Cause Damage"
         args {
           call_value {
             functionName: "Specific Actor"
@@ -63,7 +101,7 @@ nodes {
               call_value {
                 functionName: "Get Map Item (Actor)"
                 args {
-                  string_value: "fa36ebe8306466ac190013b0"
+                  string_value: "fa3a6ffa306466ac190013b1"
                 }
               }
             }
@@ -72,10 +110,46 @@ nodes {
           }
         }
         args {
+          int_value: 2
+        }
+        args {
           call_value {
-            functionName: "Get Map Item (Actor)"
+            functionName: "Get Preset Value (int)"
             args {
-              string_value: "fa3a6ffa306466ac190013b1"
+              string_value: "HPOrAP"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+      ops {
+        functionName: "Play FX at Point"
+        args {
+          string_value: "SquibRedBlood"
+        }
+        args {
+          call_value {
+            functionName: "Current Location of Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Actor)"
+                args {
+                  string_value: "fa3a6ffa306466ac190013b1"
+                }
+              }
             }
           }
         }

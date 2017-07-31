@@ -5838,35 +5838,70 @@ triggers {
   }
   conditions {
     ops {
-      functionName: "Evaluate Tag for Actor"
+      functionName: "AND"
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "Evaluate Tag for Actor"
           args {
             call_value {
-              functionName: "Triggering Actor"
+              functionName: "Specific Actor"
+              args {
+                call_value {
+                  functionName: "Triggering Actor"
+                }
+              }
+              args {
+              }
             }
           }
           args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "HasOrHasNot"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isSeamus"
+              }
+            }
           }
         }
       }
       args {
         call_value {
-          functionName: "Get Preset Value (int)"
+          functionName: "Comparison (int)"
           args {
-            string_value: "HasOrHasNot"
+            call_value {
+              functionName: "Get Story Variable (int)"
+              args {
+                string_value: "57084f7c6631365c1600767e"
+              }
+              args {
+                string_value: "Crew_Loyalty_Seamus"
+              }
+            }
           }
           args {
-            int_value: 1
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Comparison Ops"
+              }
+              args {
+                int_value: 0
+              }
+            }
           }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (SenseTagList)"
           args {
-            string_value: "isSeamus"
+            int_value: 0
           }
         }
       }
@@ -5928,50 +5963,6 @@ triggers {
         }
       }
     }
-    ops {
-      functionName: "Trigger: Run Alternate Trigger"
-      args {
-        call_value {
-          functionName: "Get Map Item (Trigger)"
-          args {
-            string_value: "5961605e396630042e006eab"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WaitOrNot"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
   }
   isActive: true
   idRef {
@@ -5998,39 +5989,74 @@ triggers {
   }
   conditions {
     ops {
-      functionName: "Compare Actor Team"
+      functionName: "AND"
       args {
         call_value {
-          functionName: "Triggering Actor"
+          functionName: "Compare Actor Team"
+          args {
+            call_value {
+              functionName: "Triggering Actor"
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "IsOrIsNot"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (string)"
+              args {
+                string_value: "FactionList"
+              }
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SceneDimension)"
+              args {
+                string_value: "Default"
+              }
+            }
+          }
         }
       }
       args {
         call_value {
-          functionName: "Get Preset Value (int)"
+          functionName: "Comparison (int)"
           args {
-            string_value: "IsOrIsNot"
+            call_value {
+              functionName: "Get Story Variable (int)"
+              args {
+                string_value: "57084f7c6631365c1600767e"
+              }
+              args {
+                string_value: "Crew_Loyalty_Seamus"
+              }
+            }
           }
           args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (string)"
-          args {
-            string_value: "FactionList"
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "Comparison Ops"
+              }
+              args {
+                int_value: 0
+              }
+            }
           }
           args {
             int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (SceneDimension)"
-          args {
-            string_value: "Default"
           }
         }
       }
@@ -6141,79 +6167,6 @@ triggers {
   }
   conditions {
     ops {
-      functionName: "AND"
-      args {
-        call_value {
-          functionName: "Compare Actor Team"
-          args {
-            call_value {
-              functionName: "Triggering Actor"
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Preset Value (int)"
-              args {
-                string_value: "IsOrIsNot"
-              }
-              args {
-                int_value: 1
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Preset Value (string)"
-              args {
-                string_value: "FactionList"
-              }
-              args {
-                int_value: 0
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Map Item (SceneDimension)"
-              args {
-                string_value: "Default"
-              }
-            }
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Comparison (int)"
-          args {
-            call_value {
-              functionName: "Get Story Variable (int)"
-              args {
-                string_value: "57084f7c6631365c1600767e"
-              }
-              args {
-                string_value: "Crew_Loyalty_Seamus"
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Preset Value (int)"
-              args {
-                string_value: "Comparison Ops"
-              }
-              args {
-                int_value: 0
-              }
-            }
-          }
-          args {
-            int_value: -10
-          }
-        }
-      }
-    }
-    ops {
       functionName: "Evaluate Turn Mode in Dimension"
       args {
         call_value {
@@ -6231,6 +6184,103 @@ triggers {
           functionName: "Get Map Item (SceneDimension)"
           args {
             string_value: "Default"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "AND"
+      args {
+        call_value {
+          functionName: "Evaluate Tag for Actor"
+          args {
+            call_value {
+              functionName: "All Actors on Team"
+              args {
+                call_value {
+                  functionName: "Get Preset Value (string)"
+                  args {
+                    string_value: "FactionList"
+                  }
+                  args {
+                    int_value: 0
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Preset Value (int)"
+                  args {
+                    string_value: "AllOrAny"
+                  }
+                  args {
+                    int_value: 1
+                  }
+                }
+              }
+              args {
+                call_value {
+                  functionName: "Get Map Item (SceneDimension)"
+                  args {
+                    string_value: "Default"
+                  }
+                }
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "HasOrHasNot"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isSeamus"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Evaluate Goal"
+          args {
+            call_value {
+              functionName: "Get Map Item (Goal)"
+              args {
+                string_value: "Recover Seamus\' Ritual Sample"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "GoalStatus"
+              }
+              args {
+                int_value: 1
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Preset Value (int)"
+              args {
+                string_value: "IsOrIsNot"
+              }
+              args {
+                int_value: 1
+              }
+            }
           }
         }
       }
@@ -6285,90 +6335,12 @@ triggers {
         }
       }
     }
-    ops {
-      functionName: "Enable/Disable Trigger"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Trigger)"
-          args {
-            string_value: "59614bd23966304c0d003693"
-          }
-        }
-      }
-    }
   }
   isActive: true
   idRef {
     id: "59614bd23966304c0d003693"
   }
   elseActions {
-    ops {
-      functionName: "Display Text over Actor"
-      args {
-        call_value {
-          functionName: "Nearest Tagged Actor to Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (SenseTagList)"
-              args {
-                string_value: "isSeamus"
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Triggering Actor"
-            }
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "TextPopupStyle"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        string_value: "That\'s the basement elevator!"
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 0
-      }
-      args {
-        float_value: 10
-      }
-      args {
-        float_value: 3
-      }
-      args {
-        float_value: 0
-      }
-    }
   }
   is_oneshot: true
 }
@@ -23168,94 +23140,6 @@ triggers {
   }
   is_oneshot: true
 }
-triggers {
-  name: "Seamus.Notsoloyal"
-  events {
-  }
-  conditions {
-    ops {
-      functionName: "Comparison (int)"
-      args {
-        call_value {
-          functionName: "Get Story Variable (int)"
-          args {
-            string_value: "57084f7c6631365c1600767e"
-          }
-          args {
-            string_value: "Crew_Loyalty_Seamus"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "Comparison Ops"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        int_value: -10
-      }
-    }
-  }
-  actions {
-    ops {
-      functionName: "Enable/Disable Trigger"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Trigger)"
-          args {
-            string_value: "59614bd23966304c0d003693"
-          }
-        }
-      }
-    }
-  }
-  isActive: true
-  idRef {
-    id: "5961605e396630042e006eab"
-  }
-  elseActions {
-    ops {
-      functionName: "Enable/Disable Trigger"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Trigger)"
-          args {
-            string_value: "59614bd23966304c0d003693"
-          }
-        }
-      }
-    }
-  }
-  is_oneshot: true
-}
 regions {
   name: "EnforcerMoveInTarget"
   position {
@@ -26313,10 +26197,10 @@ regions {
 regions {
   name: "rLift_Return"
   position {
-    x: -8
+    x: -10
     y: -21
-    width: 6
-    height: 3
+    width: 10
+    height: 4
   }
   enabledAtStart: true
   is_camera_region: false
@@ -31380,6 +31264,14 @@ variables {
   variableref_value {
     scope: TsVariableScope_Scene
     name: "bDeckerBeenWarned"
+    typeName: "bool"
+  }
+}
+variables {
+  bool_value: false
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "bSeamus_GivenInitialLoyaltyRunInfo"
     typeName: "bool"
   }
 }
