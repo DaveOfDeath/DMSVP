@@ -7,32 +7,17 @@ nodes {
     id: "574c7581663136b813004dff"
   }
   index: 0
-  text: "{{GM}}A shelf of slightly folded uniforms-- most of them are filthy. Apparently Stuffer Shack\'s top-tier employees aren\'t big on personal hygiene.\n\nRifle through the uniforms and find one that fits you?{{/GM}}"
+  text: "{{GM}}A shelf of slightly folded uniforms-- most of them are filthy. Apparently Stuffer Shack\'s top-tier employees aren\'t big on personal hygiene.\n\nRifle through the uniforms?{{/GM}}"
   branches {
     responseText: "{{CC}}Yes{{/CC}}"
     actions {
       ops {
-        functionName: "Add Item to Actor"
+        functionName: "Set Variable (bool)"
         args {
           call_value {
-            functionName: "Get Map Item (Item)"
+            functionName: "Get Variable (bool)"
             args {
-              string_value: "Tsang Disguise"
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Specific Actor"
-            args {
-              call_value {
-                functionName: "Get Map Item (Player)"
-                args {
-                  int_value: 0
-                }
-              }
-            }
-            args {
+              string_value: "bHasStufferShackID"
             }
           }
         }
@@ -40,27 +25,16 @@ nodes {
           call_value {
             functionName: "Get Preset Value (int)"
             args {
-              string_value: "WithOrWithout"
+              string_value: "bool"
             }
             args {
-              int_value: 0
-            }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (int)"
-            args {
-              string_value: "WithOrWithout"
-            }
-            args {
-              int_value: 0
+              int_value: 1
             }
           }
         }
       }
     }
-    nextNodeIndex: -1
+    nextNodeIndex: 1
     idRef {
       id: "574c753e663136b813004df3:574c75fb663136b813004e01"
     }
@@ -76,28 +50,29 @@ nodes {
 }
 nodes {
   idRef {
-    id: "574c764c663136b813004e0b"
+    id: "5988961e663136b40a002c5e"
   }
   index: 1
+  text: "Among the filthy uniforms, you find a misplaced RFID badge belonging to \" Frank Debouski\"\n\nYou pocket the ID."
+  nodeType: ConversationNodeType_GM_Voice
+}
+nodes {
+  idRef {
+    id: "574c764c663136b813004e0b"
+  }
+  index: 2
   text: "{{GM}}You are already wearing the cleanest of the filthy uniforms that fit you.{{/GM}}"
   nodeType: ConversationNodeType_GM_Voice
 }
 roots {
   conditions {
     ops {
-      functionName: "Evaluate If Actor Has Item"
+      functionName: "Comparison (bool)"
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "Get Variable (bool)"
           args {
-            call_value {
-              functionName: "Get Map Item (Player)"
-              args {
-                int_value: 0
-              }
-            }
-          }
-          args {
+            string_value: "bHasStufferShackID"
           }
         }
       }
@@ -105,18 +80,21 @@ roots {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "HasOrHasNot"
+            string_value: "IsOrIsNot"
           }
           args {
-            int_value: 0
+            int_value: 1
           }
         }
       }
       args {
         call_value {
-          functionName: "Get Map Item (Item)"
+          functionName: "Get Preset Value (int)"
           args {
-            string_value: "Tsang Disguise"
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
           }
         }
       }
@@ -132,19 +110,12 @@ roots {
   responseText: ""
   conditions {
     ops {
-      functionName: "Evaluate If Actor Has Item"
+      functionName: "Comparison (bool)"
       args {
         call_value {
-          functionName: "Specific Actor"
+          functionName: "Get Variable (bool)"
           args {
-            call_value {
-              functionName: "Get Map Item (Player)"
-              args {
-                int_value: 0
-              }
-            }
-          }
-          args {
+            string_value: "bHasStufferShackID"
           }
         }
       }
@@ -152,7 +123,7 @@ roots {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "HasOrHasNot"
+            string_value: "IsOrIsNot"
           }
           args {
             int_value: 1
@@ -161,15 +132,18 @@ roots {
       }
       args {
         call_value {
-          functionName: "Get Map Item (Item)"
+          functionName: "Get Preset Value (int)"
           args {
-            string_value: "Tsang Disguise"
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
           }
         }
       }
     }
   }
-  nextNodeIndex: 1
+  nextNodeIndex: 2
   idRef {
     id: "574c753e663136b813004df3:574c7632663136b813004e08"
   }

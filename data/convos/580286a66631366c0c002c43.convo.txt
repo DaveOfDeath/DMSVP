@@ -45,19 +45,12 @@ nodes {
     responseText: "{{GM}}Sign paperwork{{/GM}} There you go!"
     conditions {
       ops {
-        functionName: "Evaluate If Actor Has Item"
+        functionName: "Comparison (bool)"
         args {
           call_value {
-            functionName: "Specific Actor"
+            functionName: "Get Variable (bool)"
             args {
-              call_value {
-                functionName: "Get Map Item (Player)"
-                args {
-                  int_value: 0
-                }
-              }
-            }
-            args {
+              string_value: "bHasStufferShackID"
             }
           }
         }
@@ -65,7 +58,7 @@ nodes {
           call_value {
             functionName: "Get Preset Value (int)"
             args {
-              string_value: "HasOrHasNot"
+              string_value: "IsOrIsNot"
             }
             args {
               int_value: 1
@@ -74,9 +67,12 @@ nodes {
         }
         args {
           call_value {
-            functionName: "Get Map Item (Item)"
+            functionName: "Get Preset Value (int)"
             args {
-              string_value: "Tsang Disguise"
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
             }
           }
         }
@@ -93,19 +89,12 @@ nodes {
     responseText: "{{GM}}Sign paperwork{{/GM}} I\'ll sign it."
     conditions {
       ops {
-        functionName: "Evaluate If Actor Has Item"
+        functionName: "Comparison (bool)"
         args {
           call_value {
-            functionName: "Specific Actor"
+            functionName: "Get Variable (bool)"
             args {
-              call_value {
-                functionName: "Get Map Item (Player)"
-                args {
-                  int_value: 0
-                }
-              }
-            }
-            args {
+              string_value: "bHasStufferShackID"
             }
           }
         }
@@ -113,24 +102,27 @@ nodes {
           call_value {
             functionName: "Get Preset Value (int)"
             args {
-              string_value: "HasOrHasNot"
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
             }
             args {
               int_value: 0
             }
           }
         }
-        args {
-          call_value {
-            functionName: "Get Map Item (Item)"
-            args {
-              string_value: "Tsang Disguise"
-            }
-          }
-        }
       }
     }
-    nextNodeIndex: 4
+    nextNodeIndex: 5
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -166,7 +158,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 5
+    nextNodeIndex: 6
     hideIfUnavailable: true
     idRef {
       id: "580286a66631366c0c002c43:580287126631366c0c002c56"
@@ -209,7 +201,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 11
+    nextNodeIndex: 12
     hideIfUnavailable: true
     idRef {
       id: "580286a66631366c0c002c43:580287136631366c0c002c58"
@@ -252,7 +244,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 12
+    nextNodeIndex: 13
     hideIfUnavailable: true
     idRef {
       id: "580286a66631366c0c002c43:580293036631366c0c002f45"
@@ -266,6 +258,21 @@ nodes {
     id: "5802875e6631366c0c002c5b"
   }
   index: 3
+  text: "Sorry... But I really need an employee to sign off on this delivery."
+  branches {
+    responseText: "{{CC}}Show him your lifted ID card{{/CC}}  Right here."
+    nextNodeIndex: 4
+    idRef {
+      id: "580286a66631366c0c002c43:59889a1366313620040016f7"
+    }
+  }
+  nodeType: ConversationNodeType_Simple
+}
+nodes {
+  idRef {
+    id: "59889a2066313620040016fc"
+  }
+  index: 4
   text: "{{GM}}The delivery guy seems genuinely surprised by you actually signing the paperwork.{{/GM}}\n\nThank you, I\'m glad to get out of here. You know these places get robbed on a regular basis? "
   nodeType: ConversationNodeType_Simple
   actions {
@@ -297,7 +304,7 @@ nodes {
   idRef {
     id: "58028a3c6631366c0c002d4e"
   }
-  index: 4
+  index: 5
   text: "{{GM}}The ork truck driver doesn\'t give you the paperwork.{{/GM}}\n\nI appreciate that, and as much as I\'d like to get out of here, you gotta be a Stuffer Shack employee."
   branches {
     responseText: ""
@@ -313,11 +320,11 @@ nodes {
   idRef {
     id: "580287c16631366c0c002c5e"
   }
-  index: 5
+  index: 6
   text: "{{GM}}The ork gestures to the delivery of nearly-expires krill poppers and soy foodstuffs.{{/GM}}\n\nI\'m just doing the regular delivery. The manager keeps trying to get me to pick up the crate over there.\n\nI\'m not touching it though, and I come on the nights he\'s not in."
   branches {
     responseText: ""
-    nextNodeIndex: 6
+    nextNodeIndex: 7
     idRef {
       id: "580286a66631366c0c002c43:580287df6631366c0c002c63"
     }
@@ -328,7 +335,7 @@ nodes {
   idRef {
     id: "580287df6631366c0c002c66"
   }
-  index: 6
+  index: 7
   text: ""
   branches {
     responseText: "Crate?"
@@ -348,7 +355,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 7
+    nextNodeIndex: 8
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -373,7 +380,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 8
+    nextNodeIndex: 9
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -398,7 +405,7 @@ nodes {
         }
       }
     }
-    nextNodeIndex: 9
+    nextNodeIndex: 10
     hideIfUnavailable: true
     onlyOnce: true
     idRef {
@@ -407,7 +414,7 @@ nodes {
   }
   branches {
     responseText: "Guess that\'s it for now."
-    nextNodeIndex: 10
+    nextNodeIndex: 11
     idRef {
       id: "580286a66631366c0c002c43:580288346631366c0c002c79"
     }
@@ -419,11 +426,11 @@ nodes {
   idRef {
     id: "580287f06631366c0c002c6a"
   }
-  index: 7
+  index: 8
   text: "{{GM}}He looks at you like you\'re an idiot.{{/GM}}\n\nThe big orange box behind you? Says ARES on the side? You should pay attention to details like that if you expect to survive long."
   branches {
     responseText: ""
-    nextNodeIndex: 6
+    nextNodeIndex: 7
     idRef {
       id: "580286a66631366c0c002c43:580288246631366c0c002c6c"
     }
@@ -435,11 +442,11 @@ nodes {
   idRef {
     id: "580288706631366c0c002cb8"
   }
-  index: 8
+  index: 9
   text: "{{GM}}The driver shuffles through the paperwork.{{/GM}}\n\nProtien in all the colors of the rainbow, some shelf stuffers... uh, parts for a broken soykaf machine, and another load of those weird smelling burgers.\n\nPretty standard stuff."
   branches {
     responseText: ""
-    nextNodeIndex: 6
+    nextNodeIndex: 7
     idRef {
       id: "580286a66631366c0c002c43:58028cd26631366c0c002dcc"
     }
@@ -451,11 +458,11 @@ nodes {
   idRef {
     id: "580288dd6631366c0c002cbd"
   }
-  index: 9
+  index: 10
   text: "{{GM}}He sighs heavily.{{/GM}}\n\nYeah, I got mugged right before a big firefight in Puyallup a few years back. Made the news for a couple weeks. Being famous for getting mugged- not my finest hour."
   branches {
     responseText: ""
-    nextNodeIndex: 6
+    nextNodeIndex: 7
     idRef {
       id: "580286a66631366c0c002c43:5802892f6631366c0c002cd5"
     }
@@ -467,7 +474,7 @@ nodes {
   idRef {
     id: "5802893c6631366c0c002cd9"
   }
-  index: 10
+  index: 11
   text: "{{GM}}The trucker shrugs.{{/GM}}\n\nFair enough."
   branches {
     responseText: ""
@@ -483,7 +490,7 @@ nodes {
   idRef {
     id: "580289ae6631366c0c002d09"
   }
-  index: 11
+  index: 12
   text: "{{GM}}The trucker shrugs.{{/GM}}\n\nYeah.  Thanks."
   nodeType: ConversationNodeType_Simple
 }
@@ -491,7 +498,7 @@ nodes {
   idRef {
     id: "5802930e6631366c0c002f48"
   }
-  index: 12
+  index: 13
   text: "{{GM}}The trucker shrugs.{{/GM}}\n\nLater."
   nodeType: ConversationNodeType_Simple
 }
@@ -499,7 +506,7 @@ nodes {
   idRef {
     id: "580290846631366c0c002e61"
   }
-  index: 13
+  index: 14
   text: "{{GM}}The trucker looks at you expectantly, before recognizing you from earlier. The name on his uniform is Dave.{{/GM}}\n\nYeah?"
   branches {
     responseText: ""
@@ -617,7 +624,7 @@ roots {
       }
     }
   }
-  nextNodeIndex: 13
+  nextNodeIndex: 14
   idRef {
     id: "580286a66631366c0c002c43:5802903c6631366c0c002e5e"
   }

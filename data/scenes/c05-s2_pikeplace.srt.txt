@@ -4756,63 +4756,6 @@ triggers {
       }
     }
     ops {
-      functionName: "Evaluate If Actor Has Item"
-      args {
-        call_value {
-          functionName: "All Actors on Team"
-          args {
-            call_value {
-              functionName: "Get Preset Value (string)"
-              args {
-                string_value: "FactionList"
-              }
-              args {
-                int_value: 0
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Preset Value (int)"
-              args {
-                string_value: "AllOrAny"
-              }
-              args {
-                int_value: 1
-              }
-            }
-          }
-          args {
-            call_value {
-              functionName: "Get Map Item (SceneDimension)"
-              args {
-                string_value: "Default"
-              }
-            }
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "HasOrHasNot"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (Item)"
-          args {
-            string_value: "Tsang Disguise"
-          }
-        }
-      }
-    }
-    ops {
       functionName: "Comparison (bool)"
       args {
         call_value {
@@ -4949,7 +4892,7 @@ triggers {
       }
     }
   }
-  isActive: true
+  isActive: false
   idRef {
     id: "5738d32b663136200d00383b"
   }
@@ -7897,6 +7840,27 @@ triggers {
       }
     }
     ops {
+      functionName: "Add Camera Point of Interest (Actors)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "574c7cbe663136b813004e63"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        float_value: -1
+      }
+    }
+    ops {
       functionName: "Start Conversation"
       args {
         call_value {
@@ -7924,27 +7888,6 @@ triggers {
             int_value: 0
           }
         }
-      }
-    }
-    ops {
-      functionName: "Add Camera Point of Interest (Actors)"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "574c7cbe663136b813004e63"
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        float_value: -1
       }
     }
   }
@@ -16753,7 +16696,7 @@ characters {
         vision_cone_angle: 0
       }
       skills {
-        ranged_combat: 0
+        ranged_combat: 1
         close_combat: 0
         throwing_weapons: 0
         spellcasting: 0
@@ -16776,7 +16719,7 @@ characters {
       specializations {
         pistol: 0
         rifle: 0
-        shotgun: 0
+        shotgun: 2
         smg: 0
         edged: 0
         unarmed: 0
@@ -16796,7 +16739,7 @@ characters {
       prefab_name: "Grenade (Smoke)"
     }
     equipment {
-      prefab_name: "Berlin_Sh 1 Benelli Raffaello"
+      prefab_name: "Sh 1 Benelli (Sawed Off)"
     }
     team_id: "Civilians"
     char_name: "Mendoza"
@@ -16807,7 +16750,7 @@ characters {
       filename: "pc_humanmale_elpolodelacroix"
     }
     portrait_code_override: "s4h21c6b4c6t0"
-    karma: 41
+    karma: 49
   }
 }
 characters {
@@ -17787,6 +17730,14 @@ variables {
   variableref_value {
     scope: TsVariableScope_Scene
     name: "bBeenThroughAmbush"
+    typeName: "bool"
+  }
+}
+variables {
+  bool_value: false
+  variableref_value {
+    scope: TsVariableScope_Scene
+    name: "bHasStufferShackID"
     typeName: "bool"
   }
 }
