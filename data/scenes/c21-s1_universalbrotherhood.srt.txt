@@ -10979,6 +10979,80 @@ triggers {
         }
       }
     }
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Cult Follower"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Remove Item from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Maintenance"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   isActive: true
   idRef {
@@ -15700,6 +15774,64 @@ regions {
   combat_outro_stinger: ""
   vfx_fill_prefab_name: ""
 }
+regions {
+  name: "cHoldingArea"
+  position {
+    x: 28
+    y: -94
+    width: 27
+    height: 10
+  }
+  enabledAtStart: true
+  is_camera_region: true
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "59890d1e663136c005005992"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
 characters {
   name: "system_spawner_playerSpawner"
   gridPoint {
@@ -17546,6 +17678,7 @@ characters {
       filename: "Generic_Machine"
     }
     karma: 2
+    is_prop_character: true
   }
 }
 characters {
@@ -18467,7 +18600,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Core/TrollMale"
+    prefab_name: "Seattle:Core/TrollMale"
     character_sheet_id: "Lvl4_Troll_Samurai"
     character_mod {
       stats {
@@ -18524,15 +18657,17 @@ characters {
       }
       archetypeName: "Guard - Protect"
       attitude: AttitudeAggressive
-    }
-    equipment {
-      prefab_name: "Outfit_Cult Follower"
+      vulnerabilities {
+      }
     }
     equipment {
       prefab_name: "c21-s1_Sanctuary Access Card"
     }
     equipment {
       prefab_name: "Sh 2 Remington 990"
+    }
+    equipment {
+      prefab_name: "Cult Follower"
     }
     team_id: "LoneStar"
     char_name: "Inner Sanctum Security"
@@ -18560,7 +18695,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Core/ElfFemale"
+    prefab_name: "Seattle:Core/ElfFemale"
     character_sheet_id: "Lvl5_Elf_Shaman"
     character_mod {
       stats {
@@ -18617,15 +18752,17 @@ characters {
       }
       archetypeName: "Guard - Hunt And Destroy"
       attitude: AttitudeAggressive
-    }
-    equipment {
-      prefab_name: "Outfit_Cult Follower"
+      vulnerabilities {
+      }
     }
     equipment {
       prefab_name: "c21-s1_Sanctuary Access Card"
     }
     equipment {
       prefab_name: "Pi 1 Fichetti Security 500"
+    }
+    equipment {
+      prefab_name: "Cult Follower"
     }
     team_id: "LoneStar"
     char_name: "Inner Sanctum Security"
@@ -18668,6 +18805,7 @@ characters {
       }
       specializations {
       }
+      archetypeName: "Non-Combatant"
     }
     team_id: "Civilians"
     char_name: "Letter"
@@ -18676,6 +18814,7 @@ characters {
       filename: ""
     }
     karma: 30
+    is_prop_character: true
   }
 }
 characters {
@@ -19648,6 +19787,43 @@ team_affiliations {
   affiliation: 0
   affiliation: 0
 }
+scene_disguises {
+  id: "Maintenance"
+  type: ItemType_Disguise
+  uirep {
+    icon: "icon_outfit_disguise_Janitor"
+    name: "Maintenance Worker"
+    description: "Toilets and boilers, that\'s what I handle. And that one boiling toilet."
+  }
+  gear_bundle: "DisguiseJanitor"
+  outfit_texture: "disguise_janitor"
+  sorting_group: "Disguises"
+}
+scene_disguises {
+  id: "Cult Follower"
+  type: ItemType_Disguise
+  uirep {
+    icon: "icon_outfit_disguise_cultistub"
+    name: "Cult Follower"
+    description: "Dark robes are fashionable in July."
+  }
+  gear_bundle: "DisguiseBrotherhood"
+  outfit_texture: "disguise_ubmember"
+  gear_prefab: "gear_disguise_ubmember"
+  sorting_group: "Disguises"
+}
+scene_disguises {
+  id: "Corporate Salaryman"
+  type: ItemType_Disguise
+  uirep {
+    icon: "icon_outfit_disguise_corporate"
+    name: "Corporate Salaryman"
+    description: "Grey suit, grey tie, grey skin."
+  }
+  gear_bundle: "DisguiseSalaryman"
+  outfit_texture: "disguise_salaryman"
+  sorting_group: "Disguises"
+}
 scene_dimensions {
   dimension_name: "Default"
 }
@@ -19663,13 +19839,6 @@ hiring_slot_count: 3
 hiring_minimum_karma: 0
 hiring_maximum_karma: 0
 roster_overrides {
-  roster_entries {
-    reference_id: "Lvl6_Elf_Decker"
-    hiring_conditions {
-    }
-    hiring_cost: -1
-    content_pack_source: "518d7672643431b03f0041aa"
-  }
 }
 use_hiring_cost_warning: false
 hiring_average_cost: 0
