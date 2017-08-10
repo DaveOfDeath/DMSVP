@@ -1,0 +1,168 @@
+idRef {
+  id: "598afac834626518050071f8"
+}
+ui_name: "c15-s2_LabRun_PanelBox"
+nodes {
+  idRef {
+    id: "598afada3462651805007200"
+  }
+  index: 0
+  text: "There\'s a Matrix junction inside the panel."
+  branches {
+    responseText: "{{CC}}Decker{{/CC}} {{GM}}Jack In.{{/GM}}"
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Is Decker"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Force-Use Interactable Object (with Actor)"
+        args {
+          call_value {
+            functionName: "Get Map Item (InteractableObject)"
+            args {
+              string_value: "598af96b34626518050071f4"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Triggering Actor"
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "598afac834626518050071f8:598afb973462651805007202"
+    }
+  }
+  branches {
+    responseText: "{{CC}}Violet{{/CC}} You want to take a look at their system, kid?"
+    conditions {
+      ops {
+        functionName: "Evaluate Tag for Actor"
+        args {
+          call_value {
+            functionName: "All Actors on Team"
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "AllOrAny"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SenseTagList)"
+            args {
+              string_value: "isViolet"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Force-Use Interactable Object (with Actor)"
+        args {
+          call_value {
+            functionName: "Get Map Item (InteractableObject)"
+            args {
+              string_value: "598af96b34626518050071f4"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Nearest Tagged Actor to Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (SenseTagList)"
+                args {
+                  string_value: "isViolet"
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "598afac834626518050071f8:598afbd83462651805007204"
+    }
+  }
+  nodeType: ConversationNodeType_GM_Voice
+}
+roots {
+  nextNodeIndex: 0
+  idRef {
+    id: "598afac834626518050071f8:598afac834626518050071fc"
+  }
+}
