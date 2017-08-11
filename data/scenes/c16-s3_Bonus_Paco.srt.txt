@@ -11454,9 +11454,6 @@ triggers {
   }
   actions {
     ops {
-      functionName: "Trigger: Wait for Motion"
-    }
-    ops {
       functionName: "Force-Use Interactable Object (Basic)"
       args {
         call_value {
@@ -11985,6 +11982,66 @@ triggers {
         }
       }
     }
+  }
+  is_oneshot: false
+}
+triggers {
+  name: "Plane.Interact.EmergencyExit.OpenDoor"
+  events {
+    ops {
+      functionName: "On Item Interaction"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "598e363f3462658811000f41"
+          }
+        }
+      }
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Evaluate Prop Is Closed Door"
+      args {
+        call_value {
+          functionName: "Get Map Item (Prop)"
+          args {
+            string_value: "585c86d2346265fc22004e0d"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Force-Use Interactable Object (Basic)"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "585c86d2346265fc22004e0d"
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "598e36a73462658811000f45"
+  }
+  elseActions {
   }
   is_oneshot: false
 }
