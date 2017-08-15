@@ -2999,6 +2999,131 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "Debugger.Spawn"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "_DEBUGGER"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Teleport Actor to Area Around Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 1
+      }
+      args {
+        int_value: 2
+      }
+      args {
+        call_value {
+          functionName: "Current Location of Prop"
+          args {
+            call_value {
+              functionName: "Get Map Item (Prop)"
+              args {
+                string_value: "59925b8f6631369409003dc7"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "59925b986631369409003dc8"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "LightsOff"
   position {
@@ -3543,6 +3668,7 @@ characters {
     team_id: "LoneStar"
     char_name: "Dr. Holmes"
     GeneralTags: "CanOpenDoor"
+    enabled_at_start: true
     pc_spawn_number: -1
     unkillable: true
     portrait {

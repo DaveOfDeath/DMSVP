@@ -6,6 +6,42 @@ triggers {
     }
   }
   conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "_DEBUGGER"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
   }
   actions {
     ops {
@@ -23140,6 +23176,131 @@ triggers {
   }
   is_oneshot: true
 }
+triggers {
+  name: "DEBUGGER"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "_DEBUGGER"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Teleport Actor to Area Around Point"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Player)"
+              args {
+                int_value: 0
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        int_value: 0
+      }
+      args {
+        call_value {
+          functionName: "Center of Region"
+          args {
+            call_value {
+              functionName: "Get Map Item (Region)"
+              args {
+                string_value: "599243d3663136cc13002f32"
+              }
+            }
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "TeleportMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Teleport Camera To Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Player)"
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5992458e663136cc13002f51"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
 regions {
   name: "EnforcerMoveInTarget"
   position {
@@ -26324,6 +26485,64 @@ regions {
   is_vfx_fill_region: false
   idRef {
     id: "59445032663136c407006daf"
+  }
+  highlight_color {
+    r: 0
+    g: 0
+    b: 0
+    a: 1
+  }
+  visible_at_start: false
+  is_closet: false
+  is_teleporter_region: false
+  directional_light_dir {
+    x: -0.5
+    y: -1
+    z: -0.75
+  }
+  directional_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambient_light_color {
+    r: 0.50196081
+    g: 0.50196081
+    b: 0.50196081
+    a: 1
+  }
+  ambience_template: ""
+  combat_music: ""
+  default_music: ""
+  loop_combat_music: true
+  loop_default_music: false
+  no_fow_in_region: false
+  combat_intense_music: ""
+  combat_wrapup_music: ""
+  loop_combat_intense_music: true
+  loop_combat_wrapup_music: true
+  combat_intense_threshold: 5
+  combat_wrapup_threshold: 2
+  combat_fade_interval: 2
+  combat_intro_stinger: ""
+  combat_outro_stinger: ""
+  vfx_fill_prefab_name: ""
+}
+regions {
+  name: "rDeckerRegion"
+  position {
+    x: -43
+    y: -49
+    width: 7
+    height: 7
+  }
+  enabledAtStart: true
+  is_camera_region: false
+  is_matrix_node: false
+  is_vfx_fill_region: false
+  idRef {
+    id: "599243d3663136cc13002f32"
   }
   highlight_color {
     r: 0
@@ -30252,7 +30471,7 @@ characters {
     GeneralTags: "isIC"
     GeneralTags: "isHRIC"
     pc_spawn_number: -1
-    spawn_type: SpawnType_Normal
+    spawn_type: SpawnType_Matrix
     portrait {
       filename: ""
     }
@@ -31586,6 +31805,6 @@ override_hiring_average_cost: false
 show_equip_screen_on_scene_load: false
 is_persistant: false
 is_persistant_has_value: false
-can_move_outside_camera_regions: true
+can_move_outside_camera_regions: false
 can_start_before_triggers: true
 can_use_team_advancement: false

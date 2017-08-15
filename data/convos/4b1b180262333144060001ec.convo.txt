@@ -281,7 +281,14 @@ nodes {
     id: "c84e34166236658815003e82"
   }
   index: 12
-  text: "{{GM}}He begins weeping, his body racked in great, inconsolable, heaving sobs.{{/GM}}"
+  text: "{{GM}}He begins weeping, his body racked in great, inconsolable, heaving sobs.{{/GM}}\n\n{{GM}}His female companion reaches down, grabbing the small pistol from the dead guards belt, and presses it to her temple.{{/GM}}"
+  branches {
+    responseText: ""
+    nextNodeIndex: 13
+    idRef {
+      id: "4b1b180262333144060001ec:59925a776631369409003d78"
+    }
+  }
   nodeType: ConversationNodeType_GM_Speaker_Voice
   actions {
     ops {
@@ -331,6 +338,191 @@ nodes {
           }
           args {
             int_value: 5
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Add Item to Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Item)"
+          args {
+            string_value: "Pi 1 Fichetti Security 500"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "4717b7c3623331cc0400003c"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Play Animation From Manifest"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "4717b7c3623331cc0400003c"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Animation)"
+          args {
+            string_value: "HongKong:General/standing_idle_suicidal"
+          }
+        }
+      }
+    }
+  }
+}
+nodes {
+  idRef {
+    id: "59925a776631369409003d7b"
+  }
+  index: 13
+  text: "Whhhaa..... Whhhaaatttt Happened?\n\nWhat have you done to me?!?"
+  branches {
+    responseText: "I didn\'t.   It was a madma..."
+    nextNodeIndex: 14
+    idRef {
+      id: "4b1b180262333144060001ec:59925aff6631369409003d9d"
+    }
+  }
+  branches {
+    responseText: "I\'m here to help you.  Please... Give me the gun."
+    nextNodeIndex: 14
+    idRef {
+      id: "4b1b180262333144060001ec:59925aff6631369409003d9f"
+    }
+    auxiliaryLink: true
+  }
+  nodeType: ConversationNodeType_Simple
+  sourceInSceneRef {
+    id: "4717b7c3623331cc0400003c"
+  }
+}
+nodes {
+  idRef {
+    id: "59925b1f6631369409003da2"
+  }
+  index: 14
+  text: "She pulls the trigger."
+  nodeType: ConversationNodeType_GM_Voice
+  sourceInSceneRef {
+    id: "4717b7c3623331cc0400003c"
+  }
+  actions {
+    ops {
+      functionName: "Play Sound"
+      args {
+        call_value {
+          functionName: "Get Map Item (Sound)"
+          args {
+            string_value: "HongKong:weapons"
+          }
+          args {
+            string_value: "Pistol"
+          }
+        }
+      }
+      args {
+        float_value: 1
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Kill Actor"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "4717b7c3623331cc0400003c"
+              }
+            }
+          }
+          args {
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "DeathMethod"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "FacingDirection"
+          }
+          args {
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
           }
         }
       }
