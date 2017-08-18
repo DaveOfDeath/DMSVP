@@ -11,10 +11,16 @@ nodes {
   branches {
     responseText: "{{GM}}Take the uniform.{{/GM}}"
     nextNodeIndex: 1
+    idRef {
+      id: "51b39d7a633635c017002644:599754926631369417001569"
+    }
   }
   branches {
     responseText: "{{GM}}Walk away.{{/GM}}"
     nextNodeIndex: -1
+    idRef {
+      id: "51b39d7a633635c017002644:59975492663136941700156c"
+    }
   }
   nodeType: ConversationNodeType_GM_Voice
 }
@@ -26,43 +32,6 @@ nodes {
   text: "You put the Universal Brotherhood uniform over your clothes."
   nodeType: ConversationNodeType_GM_Voice
   actions {
-    ops {
-      functionName: "Add Item to Actor"
-      args {
-        call_value {
-          functionName: "Get Map Item (Item)"
-          args {
-            string_value: "Cult Follower"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Player)"
-              args {
-                int_value: 0
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 1
-          }
-        }
-      }
-    }
     ops {
       functionName: "Enable/Disable Interactable Object"
       args {
@@ -81,6 +50,50 @@ nodes {
           functionName: "Get Map Item (InteractableObject)"
           args {
             string_value: "51ae13ac6336351c0a001562"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bHasDisguise_Cult"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bHasDisguise_Janitor"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 0
           }
         }
       }
@@ -133,6 +146,9 @@ roots {
     }
   }
   nextNodeIndex: 0
+  idRef {
+    id: "51b39d7a633635c017002644:599754926631369417001566"
+  }
 }
 roots {
   responseText: ""
@@ -172,4 +188,7 @@ roots {
     }
   }
   nextNodeIndex: 2
+  idRef {
+    id: "51b39d7a633635c017002644:59975492663136941700156e"
+  }
 }
