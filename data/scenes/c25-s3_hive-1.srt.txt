@@ -794,37 +794,65 @@ triggers {
       }
     }
     ops {
-      functionName: "Trigger: Wait for Rounds"
+      functionName: "Force-Use Interactable Object (with Actor)"
       args {
-        int_value: 2
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "51a2964e3030319c0a00164e"
+          }
+        }
       }
       args {
         call_value {
-          functionName: "Get Map Item (SceneDimension)"
+          functionName: "Nearest Tagged Actor to Prop"
           args {
-            string_value: "Default"
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isClosetBug"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Prop)"
+              args {
+                string_value: "51a2964e3030319c0a00164e"
+              }
+            }
           }
         }
       }
     }
     ops {
-      functionName: "Enable/Disable Trigger"
+      functionName: "Force-Use Interactable Object (with Actor)"
       args {
         call_value {
-          functionName: "Get Preset Value (int)"
+          functionName: "Get Map Item (InteractableObject)"
           args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 0
+            string_value: "51a296803030319c0a001650"
           }
         }
       }
       args {
         call_value {
-          functionName: "Get Map Item (Trigger)"
+          functionName: "Nearest Tagged Actor to Prop"
           args {
-            string_value: "a5d59240303031c016005fa9"
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isClosetBug"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Prop)"
+              args {
+                string_value: "51a296803030319c0a001650"
+              }
+            }
           }
         }
       }
@@ -903,38 +931,88 @@ triggers {
         }
       }
     }
-  }
-  isActive: true
-  idRef {
-    id: "a550fe163030318017004dab"
-  }
-  elseActions {
-  }
-  is_oneshot: true
-}
-triggers {
-  name: "DoCloset3"
-  events {
     ops {
-      functionName: "On Actor Start Turn"
-    }
-  }
-  conditions {
-    ops {
-      functionName: "Compare Actor Team"
+      functionName: "Trigger: Wait for Rounds"
+      args {
+        int_value: 2
+      }
       args {
         call_value {
-          functionName: "Triggering Actor"
+          functionName: "Get Map Item (SceneDimension)"
+          args {
+            string_value: "Default"
+          }
         }
       }
+    }
+    ops {
+      functionName: "Enable/Disable Interactable Object"
       args {
         call_value {
           functionName: "Get Preset Value (int)"
           args {
-            string_value: "IsOrIsNot"
+            string_value: "EnableOrDisable"
           }
           args {
-            int_value: 1
+            int_value: 0
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "51a2975f3030319c0a001654"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Force-Use Interactable Object (with Actor)"
+      args {
+        call_value {
+          functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "51a2975f3030319c0a001654"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Nearest Tagged Actor to Prop"
+          args {
+            call_value {
+              functionName: "Get Map Item (SenseTagList)"
+              args {
+                string_value: "isClosetBug"
+              }
+            }
+          }
+          args {
+            call_value {
+              functionName: "Get Map Item (Prop)"
+              args {
+                string_value: "51a2975f3030319c0a001654"
+              }
+            }
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Order Actor to Seek And Destroy (Team)"
+      args {
+        call_value {
+          functionName: "Specific Actor"
+          args {
+            call_value {
+              functionName: "Get Map Item (Actor)"
+              args {
+                string_value: "a541a58c3030318017004da2"
+              }
+            }
+          }
+          args {
           }
         }
       }
@@ -959,84 +1037,9 @@ triggers {
       }
     }
   }
-  actions {
-    ops {
-      functionName: "Enable/Disable Interactable Object"
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "EnableOrDisable"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Map Item (InteractableObject)"
-          args {
-            string_value: "51a2975f3030319c0a001654"
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Activate Actor Spawner"
-      args {
-        call_value {
-          functionName: "Get Map Item (Actor Reference)"
-          args {
-            string_value: "a541a58c3030318017004da2"
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "WithOrWithout"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-    ops {
-      functionName: "Order Actor to Hunt And Destroy (ThreatType)"
-      args {
-        call_value {
-          functionName: "Specific Actor"
-          args {
-            call_value {
-              functionName: "Get Map Item (Actor)"
-              args {
-                string_value: "a541a58c3030318017004da2"
-              }
-            }
-          }
-          args {
-          }
-        }
-      }
-      args {
-        call_value {
-          functionName: "Get Preset Value (int)"
-          args {
-            string_value: "ThreatType"
-          }
-          args {
-            int_value: 0
-          }
-        }
-      }
-    }
-  }
-  isActive: false
+  isActive: true
   idRef {
-    id: "a5d59240303031c016005fa9"
+    id: "a550fe163030318017004dab"
   }
   elseActions {
   }
@@ -5415,9 +5418,9 @@ regions {
   name: "ClosetTripWire"
   position {
     x: -157
-    y: -11
+    y: -13
     width: 16
-    height: 1
+    height: 3
   }
   enabledAtStart: true
   is_camera_region: false
@@ -5685,20 +5688,20 @@ regions {
     a: 0.88235295
   }
   ambience_template: "underground-quiet"
-  combat_music: "Seattle-Set9-Combat"
-  default_music: "Seattle-Set9-Stealth"
+  combat_music: "HongKong-Combat-VictoriaHarbor-Int1"
+  default_music: "HongKong-Legwork-VictoriaHarbor"
   loop_combat_music: true
   loop_default_music: true
   no_fow_in_region: false
-  combat_intense_music: ""
-  combat_wrapup_music: ""
+  combat_intense_music: "HongKong-Combat-VictoriaHarbor-Int2"
+  combat_wrapup_music: "HongKong-Combat-VictoriaHarbor-WrapUp"
   loop_combat_intense_music: true
   loop_combat_wrapup_music: true
   combat_intense_threshold: 5
   combat_wrapup_threshold: 2
   combat_fade_interval: 2
-  combat_intro_stinger: ""
-  combat_outro_stinger: ""
+  combat_intro_stinger: "HongKong-Combat-Stinger-Start"
+  combat_outro_stinger: "HongKong-Combat-Stinger-End"
   vfx_fill_prefab_name: ""
 }
 regions {
@@ -6650,6 +6653,7 @@ characters {
     z: -1
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isClosetBug"
   displayName: "ClosetSolider"
   idRef {
     id: "a541a58c3030318017004da2"
@@ -6720,6 +6724,7 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "True Form Worker"
+    GeneralTags: "isClosetBug"
     enabled_at_start: false
     pc_spawn_number: -1
     hiring_type: HiringType_None
@@ -7011,6 +7016,7 @@ characters {
     z: -24
   }
   orientation: ORIENTATION_N
+  GeneralTags: "isClosetBug"
   displayName: "Spitter2"
   idRef {
     id: "a551ce533030318017004dad"
@@ -7090,6 +7096,7 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "True Form Venom"
+    GeneralTags: "isClosetBug"
     enabled_at_start: true
     pc_spawn_number: -1
     hiring_type: HiringType_None
@@ -7108,6 +7115,7 @@ characters {
     z: -24
   }
   orientation: ORIENTATION_S
+  GeneralTags: "isClosetBug"
   displayName: "Spitter1"
   idRef {
     id: "a551f8723030318017004dae"
@@ -7187,6 +7195,7 @@ characters {
     }
     team_id: "LoneStar"
     char_name: "True Form Venom"
+    GeneralTags: "isClosetBug"
     enabled_at_start: true
     pc_spawn_number: -1
     hiring_type: HiringType_None
@@ -7494,6 +7503,7 @@ characters {
     equipment_sheet_id: "Lonestar_Captain_Low"
     team_id: "LoneStar"
     char_name: "Lonestar Captain"
+    enabled_at_start: false
     pc_spawn_number: -1
     portrait {
       filename: ""
@@ -7514,7 +7524,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Seattle:Core/HumanMale"
+    prefab_name: "Seattle:Story/HumanMaleBrotherhoodAcolyte"
     character_sheet_id: "Errant_Lv7_Rigger"
     character_mod {
       stats {
@@ -7607,7 +7617,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Berlin:Aztechnology/HumanFemaleAztechGuard"
+    prefab_name: "Seattle:Story/HumanFemaleBrotherhoodAcolyte"
     character_sheet_id: "Errant_Lv7_Assassin"
     equipment_sheet_id: "Errant_Lv7_Assassin"
     character_mod {
@@ -7781,7 +7791,7 @@ characters {
   }
   lod: 0
   character_instance {
-    prefab_name: "Seattle:Core/HumanMale"
+    prefab_name: "Seattle:Story/HumanFemaleBrotherhoodAcolyte"
     character_sheet_id: "Errant_Lv6_Captain"
     equipment_sheet_id: "Errant_Lv6_Captain"
     character_mod {
@@ -7911,6 +7921,7 @@ characters {
     z: -20
   }
   orientation: ORIENTATION_E
+  GeneralTags: "isHarelquinn"
   idRef {
     id: "51a2951f3030319c0a00164c"
   }
@@ -7921,6 +7932,7 @@ characters {
     }
     team_id: "Shadowrunners"
     char_name: "New Actor"
+    GeneralTags: "isHarelquinn"
     enabled_at_start: true
     pc_spawn_number: 1
   }

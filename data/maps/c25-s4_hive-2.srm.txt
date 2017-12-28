@@ -575,31 +575,79 @@ props {
     interactionRadius: 1
     prerequisites {
       ops {
-        functionName: "Compare Actor Team"
+        functionName: "OR"
         args {
           call_value {
-            functionName: "Triggering Actor"
+            functionName: "Compare Actor Team"
+            args {
+              call_value {
+                functionName: "Triggering Actor"
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "IsOrIsNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Preset Value (string)"
+                args {
+                  string_value: "FactionList"
+                }
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+              call_value {
+                functionName: "Get Map Item (SceneDimension)"
+                args {
+                  string_value: "Default"
+                }
+              }
+            }
           }
         }
         args {
           call_value {
-            functionName: "Get Preset Value (int)"
+            functionName: "Comparison (bool)"
             args {
-              string_value: "IsOrIsNot"
+              call_value {
+                functionName: "Get Variable (bool)"
+                args {
+                  string_value: "bSummonPriests"
+                }
+              }
             }
             args {
-              int_value: 1
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "IsOrIsNot"
+                }
+                args {
+                  int_value: 1
+                }
+              }
             }
-          }
-        }
-        args {
-          call_value {
-            functionName: "Get Preset Value (string)"
             args {
-              string_value: "FactionList"
-            }
-            args {
-              int_value: 0
+              call_value {
+                functionName: "Get Preset Value (int)"
+                args {
+                  string_value: "bool"
+                }
+                args {
+                  int_value: 1
+                }
+              }
             }
           }
         }
@@ -608,7 +656,10 @@ props {
     doorPoint {
       doorState: true
       aiOnlyDoor: false
+      doorSound: "DoorSlide"
+      doorSoundBundle: "HongKong:props"
     }
+    interaction_info_text: ""
   }
   lod: 0
 }
@@ -18477,7 +18528,10 @@ props {
     doorPoint {
       doorState: false
       aiOnlyDoor: false
+      doorSound: ""
+      doorSoundBundle: ""
     }
+    interaction_info_text: ""
   }
   lod: 0
 }
@@ -19856,8 +19910,15 @@ props {
     z: 12
   }
   orientation: ORIENTATION_E
+  displayName: "First Aid Cabinet1"
   idRef {
     id: "51c1f23830363360170015bb"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Check Cabinet"
   }
   lod: 0
 }
@@ -19869,8 +19930,15 @@ props {
     z: 12
   }
   orientation: ORIENTATION_E
+  displayName: "First Aid Cabinet2"
   idRef {
     id: "51c1f24030363360170015bc"
+  }
+  interactionRoot {
+    isEnabled: true
+    interactionRadius: 1
+    interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Check Cabinet"
   }
   lod: 0
 }
@@ -20158,57 +20226,14 @@ props {
       itemName: "Grenade (HE Phosphorus)"
       destroyOnPickup: true
     }
+    interaction_info_text: "Search crate"
   }
   lod: 0
 }
 props {
   name: "system_invisible_nonsolidProp"
   gridPoint {
-    x: -116.6
-    y: 1.0999999
-    z: 12.5
-  }
-  orientation: ORIENTATION_S
-  displayName: "Medkits"
-  idRef {
-    id: "51c1f8b930363360170015da"
-  }
-  interactionRoot {
-    isEnabled: true
-    interactionRadius: 1
-    pickupItem {
-      itemName: "HealthPack_hi"
-      destroyOnPickup: true
-    }
-  }
-  lod: 0
-}
-props {
-  name: "system_invisible_nonsolidProp"
-  gridPoint {
-    x: -116.6
-    y: 1.1
-    z: 12.5
-  }
-  orientation: ORIENTATION_S
-  displayName: "Medkits"
-  idRef {
-    id: "51c1f8b930363360170015db"
-  }
-  interactionRoot {
-    isEnabled: true
-    interactionRadius: 1
-    pickupItem {
-      itemName: "HealthPack_hi"
-      destroyOnPickup: true
-    }
-  }
-  lod: 0
-}
-props {
-  name: "system_invisible_nonsolidProp"
-  gridPoint {
-    x: -118
+    x: -118.5
     y: 0
     z: 14
   }
@@ -20224,6 +20249,7 @@ props {
       itemName: "DocWagonGold"
       destroyOnPickup: true
     }
+    interaction_info_text: "Search Footlocker"
   }
   lod: 0
 }
@@ -20431,14 +20457,39 @@ props {
   interactionRoot {
     isEnabled: true
     interactionRadius: 1
+    prerequisites {
+      ops {
+        functionName: "Evaluate Turn Mode in Dimension"
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "TurnBasedOrFreeMove"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (SceneDimension)"
+            args {
+              string_value: "Default"
+            }
+          }
+        }
+      }
+    }
     interactionIcon: InteractionIcon_Generic
+    interaction_info_text: "Examine Safe"
   }
   lod: 0
 }
 props {
   name: "office_storage_safeEmpty01"
   gridPoint {
-    x: -123
+    x: -124
     y: 0
     z: 0
   }
@@ -20454,6 +20505,7 @@ props {
       itemName: "DocWagonPlatinum"
       destroyOnPickup: false
     }
+    interaction_info_text: "Loot Safe"
   }
   lod: 0
 }
