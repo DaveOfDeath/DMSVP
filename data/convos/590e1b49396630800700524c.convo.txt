@@ -110,6 +110,8 @@ nodes {
       }
     }
     nextNodeIndex: 7
+    hideIfUnavailable: true
+    onlyOnce: true
     idRef {
       id: "590e1b49396630800700524c:590e217e3966308007005373"
     }
@@ -269,6 +271,19 @@ nodes {
   }
   branches {
     responseText: "I\'ll consider it. "
+    conditions {
+      ops {
+        functionName: "Invert Bool"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bTalkedToPacoDoc"
+            }
+          }
+        }
+      }
+    }
     actions {
       ops {
         functionName: "Order Actor to Move To (Prop)"
@@ -309,8 +324,52 @@ nodes {
       }
     }
     nextNodeIndex: 11
+    hideIfUnavailable: true
     idRef {
-      id: "590e1b49396630800700524c:590e253d39663080070053ba"
+      id: "590e1b49396630800700524c:5d12caeb3462652c18009f0b"
+    }
+  }
+  branches {
+    responseText: "I\'m still considering it. "
+    conditions {
+      ops {
+        functionName: "Comparison (bool)"
+        args {
+          call_value {
+            functionName: "Get Variable (bool)"
+            args {
+              string_value: "bTalkedToPacoDoc"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "IsOrIsNot"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "bool"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    hideIfUnavailable: true
+    idRef {
+      id: "590e1b49396630800700524c:5d12cc723462652c1800a0df"
     }
   }
   nodeType: ConversationNodeType_Simple
@@ -569,7 +628,7 @@ nodes {
 }
 nodes {
   idRef {
-    id: "595aba3c396630f016006b95"
+    id: "590e1b49396630800700524c:5d12caeb3462652c18009f0d"
   }
   index: 11
   text: "{{GM}}Doctor Castle nods.{{/GM}}\n\nI\'ll upload the coordinates to your map, and when you\'re ready I\'ll bring the van around."
@@ -577,14 +636,38 @@ nodes {
     responseText: "Van?"
     nextNodeIndex: 12
     idRef {
-      id: "590e1b49396630800700524c:595abb1f396630f016006b97"
+      id: "590e1b49396630800700524c:5d12caeb3462652c18009f0f"
     }
   }
   nodeType: ConversationNodeType_Simple
+  actions {
+    ops {
+      functionName: "Set Variable (bool)"
+      args {
+        call_value {
+          functionName: "Get Variable (bool)"
+          args {
+            string_value: "bTalkedToPacoDoc"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+  }
 }
 nodes {
   idRef {
-    id: "595abb1f396630f016006b9a"
+    id: "590e1b49396630800700524c:5d12caeb3462652c18009f11"
   }
   index: 12
   text: "{{GM}}Doctor Castle nods.{{/GM}}\n\nDocWagon HTR, armored and packed with enough medicine to revive a dead man or suppress a zombie plague."

@@ -1473,19 +1473,6 @@ nodes {
         }
       }
       ops {
-        functionName: "Open Hiring Screen and Open Scene"
-        args {
-          call_value {
-            functionName: "Get Map Item (Scene)"
-            args {
-              string_value: "c25-s3_hive-1"
-            }
-          }
-        }
-        args {
-        }
-      }
-      ops {
         functionName: "Set Variable (int)"
         args {
           call_value {
@@ -1500,6 +1487,17 @@ nodes {
         }
         args {
           int_value: 5
+        }
+      }
+      ops {
+        functionName: "Open Scene"
+        args {
+          call_value {
+            functionName: "Get Map Item (Scene)"
+            args {
+              string_value: "c25-s3_hive-1"
+            }
+          }
         }
       }
     }
@@ -1562,6 +1560,102 @@ nodes {
     nextNodeIndex: -1
     idRef {
       id: "596101323966304c0d002d13:597733fe346265d008002527"
+    }
+  }
+  branches {
+    responseText: "Add Insecticide Launcher."
+    conditions {
+      ops {
+        functionName: "Evaluate If Actor Has Item"
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "HasOrHasNot"
+            }
+            args {
+              int_value: 0
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "Sh 1 Aegis (Insecticide)"
+            }
+          }
+        }
+      }
+    }
+    actions {
+      ops {
+        functionName: "Add Item to Actor"
+        args {
+          call_value {
+            functionName: "Get Map Item (Item)"
+            args {
+              string_value: "Sh 1 Aegis (Insecticide)"
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Specific Actor"
+            args {
+              call_value {
+                functionName: "Get Map Item (Player)"
+                args {
+                  int_value: 0
+                }
+              }
+            }
+            args {
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+        args {
+          call_value {
+            functionName: "Get Preset Value (int)"
+            args {
+              string_value: "WithOrWithout"
+            }
+            args {
+              int_value: 1
+            }
+          }
+        }
+      }
+    }
+    nextNodeIndex: -1
+    idRef {
+      id: "596101323966304c0d002d13:59b3f5d5346265bc26005b02"
     }
   }
   nodeType: ConversationNodeType_Simple
