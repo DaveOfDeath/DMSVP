@@ -702,6 +702,161 @@ triggers {
   is_oneshot: true
 }
 triggers {
+  name: "SceneInit_BaronDone_SeamusNot"
+  events {
+    ops {
+      functionName: "On Map Start"
+    }
+  }
+  conditions {
+    ops {
+      functionName: "Comparison (bool)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (bool)"
+          args {
+            string_value: "518d7674643431b03f0041ab"
+          }
+          args {
+            string_value: "c15_hasCompletedBaron"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "IsOrIsNot"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "bool"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Comparison (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Loyalty_Seamus"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "Comparison Ops"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        int_value: 0
+      }
+    }
+  }
+  actions {
+    ops {
+      functionName: "Set Goal Status"
+      args {
+        call_value {
+          functionName: "Get Map Item (Goal)"
+          args {
+            string_value: "Talk to Seamus about Telestrian"
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "GoalStatus"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "WithOrWithout"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Waypoint on Actor"
+      args {
+        call_value {
+          functionName: "Get Preset Value (int)"
+          args {
+            string_value: "PrimaryOrSecondary"
+          }
+          args {
+            int_value: 1
+          }
+        }
+      }
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
+          args {
+            string_value: "5d1bdcc03462652417001dcf"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Set Variable (int)"
+      args {
+        call_value {
+          functionName: "Get Story Variable (int)"
+          args {
+            string_value: "57084f7c6631365c1600767e"
+          }
+          args {
+            string_value: "Crew_Loyalty_Seamus"
+          }
+        }
+      }
+      args {
+        int_value: -2
+      }
+    }
+  }
+  isActive: true
+  idRef {
+    id: "5d2bca8e346265b0180010af"
+  }
+  elseActions {
+  }
+  is_oneshot: true
+}
+triggers {
   name: "SceneInit_FoundShane"
   events {
     ops {
@@ -3532,6 +3687,17 @@ triggers {
       args {
         call_value {
           functionName: "Get Map Item (InteractableObject)"
+          args {
+            string_value: "5d1bdcc03462652417001dcf"
+          }
+        }
+      }
+    }
+    ops {
+      functionName: "Clear Waypoint from Actor"
+      args {
+        call_value {
+          functionName: "Get Map Item (Actor)"
           args {
             string_value: "5d1bdcc03462652417001dcf"
           }
@@ -7679,6 +7845,11 @@ goals {
 }
 goals {
   name: "Tell Cherry Bomb About Shane"
+  type: GoalType_Secondary
+  status: GoalStatus_Hidden
+}
+goals {
+  name: "Talk to Seamus about Telestrian"
   type: GoalType_Secondary
   status: GoalStatus_Hidden
 }
